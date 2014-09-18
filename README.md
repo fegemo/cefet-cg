@@ -11,12 +11,11 @@
 
 ## Objetivos
 
-1. Conhecer os fundamentos teóricos e práticos da computação gráfica.
-1. Conhecer as técnicas de modelagem, representação e visualização de objetos Bi
+1. Conhecer os **fundamentos teóricos e práticos** da computação gráfica.
+1. Conhecer as **técnicas de modelagem, representação e visualização** de objetos Bi
 e Tridimensionais.
-1. Conhecer técnicas de modelagem geométrica.
-1. Conhecer técnicas de geração de imagens foto-realísticas
-1. Conhecer e utilizar a biblioteca gráfica OpenGL
+1. Conhecer técnicas de **geração de imagens fotorrealísticas**
+1. Conhecer e utilizar a biblioteca gráfica **OpenGL**
 
 ---
 ## Interdisciplinariedades
@@ -58,14 +57,22 @@ e Tridimensionais.
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/)
-- Transformações
-- OpenGL
+- Introdução à Computação Gráfica
+- Introdução ao OpenGL (em C/C++)
+- Introdução a Geometria
+- Transformações Geométricas
+  ...
 
 ---
-# Trabalhos
+# Prova e Listas (30 pontos)
 
-- Trabalho Prático 1: [Galaxian](assignments/tp1/)
-- Trabalho Prático 2
-- Trabalho Prático 3
-- Trabalho Prático 4
+- Listas de exercício (10 pontos)
+- Prova (20 pontos)
+
+---
+# Trabalhos (70 pontos)
+
+- TP1: Galaxian (15 pontos)
+- TP2: Ray-tracer (15 pontos)
+- TP3: Boids (15 pontos)
+- TP4 - duplas: Animação (25 pontos)
