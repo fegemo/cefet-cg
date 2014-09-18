@@ -9,11 +9,11 @@
 ---
 ## Objetivos
 
-1. Criar páginas **HTML com uso de CSS e Javascript**.
-1. Desenvolver **sistemas web dinâmicos** com banco de dados, ~~JSP, JSF~~ (ou
-  Grails? ou NodeJS?).
-1. Fazer trabalhos práticos legais
-1. Tornar-se um ninja Javascript
+1. Conhecer os **fundamentos teóricos e práticos** da computação gráfica.
+1. Conhecer as **técnicas de modelagem, representação e visualização** de objetos Bi
+e Tridimensionais.
+1. Conhecer técnicas de **geração de imagens fotorrealísticas**
+1. Conhecer e utilizar a biblioteca gráfica **OpenGL**
 
 ---
 # Bibliografia
@@ -67,18 +67,22 @@
 ---
 # Aulas
 
-- História da Web (23/09/14)
+- Introdução à Computação Gráfica
+- Introdução ao OpenGL (em C/C++)
+- Introdução a Geometria
+- Transformações Geométricas
+- ...
 
 ---
-# Provas (35 pontos)
+# Prova e Listas (30 pontos)
 
-- Primeira prova (20 pontos) - data _TBD_
-- Segunda prova (15 pontos) - data _TBD_
+- Listas de exercício (10 pontos)
+- Prova (20 pontos)
 
 ---
-# Trabalhos (65 pontos)
+# Trabalhos (70 pontos)
 
-- TP0: [Git](assignments/tp0) (3 pontos, data: 25/09/2014 23:59)
-- TP1: Seu site pessoal (12 pontos, data _TBD_)
-- TP2: _TBD_
-- Projeto _TBD_
+- TP1: Galaxian (15 pontos)
+- TP2: Ray-tracer (15 pontos)
+- TP3: Boids (15 pontos)
+- TP4 - duplas: Animação (25 pontos)
