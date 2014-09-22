@@ -35,18 +35,23 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ![Interação da Computação Gráfica com outras áreas](images/interacao-areas.png)
 
 ---
-# Foco deste curso
+## Foco deste curso
 
 - Produção de imagens fotorrealísticas em tempo real
 - Teoria e prática das técnicas e algoritmos envolvidos
 
 ---
-# Professor, mas eu quero fazer desenhos em 3D
+## Professor, mas eu quero fazer desenhos em 3D
 
 - Você pode e mesmo terá a oportunidade no nosso projeto final
 - Contudo, o foco do curso está em conhecer e entender como funcionam as
   ferramentas utilizadas na criação de imagens e animações 3D
-- Algumas ferramentas 3D: [3d studio max, Maya, blender, z-brush]
+- Algumas ferramentas 3D:
+  - [3ds Max](3ds-max) (licença de estudante gratuita)
+  - [Maya lt](maya-lt) (licença de estudante gratuita)
+  - [blender](blender) (gratuito)
+  - [ZBrush](z-brush) (comercial)
+  - [clara.io](claraio) (versão gratuita, programa limitado)
 
 ---
 # Dispositivos Gráficos
@@ -55,9 +60,8 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ## Interfaces Gráficas
 
 - Interfaces baseadas em texto (~1980)
-- Interface WIMP
-  - Windows, Icons, Menus and Pointers
-  ![Tela do Apple Lisa - interface WIMP](images/wimp.jpg)
+- Interface WIMP: Windows, Icons, Menus and Pointers
+  - ![Tela do Apple Lisa - interface WIMP](images/wimp.png)
 
 ---
 ## Dispositivos Gráficos
@@ -84,7 +88,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 
 - Liquid Cristal Display (LCD)
   - Cada pixel são três (rgb) "orifícios" que permitem passagem de luz branca
-  - Demonstração: http://en.wikipedia.org/wiki/File:Lcd-engineerguy.ogv
+  - Demonstração: [Desmontando um monitor de LCD (Enginner Guy)](lcd-teardown)
 - Plasma
   - Composto por um grande número de lâmpadas de neon
   - Cada pixel tem uma célula de fósforo que é incandencida por raios violeta
@@ -92,9 +96,18 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
   - Cada pixel tem 3 (rgb) subpixels
 
 ---
-# Arquitetura do Sistema Gráfico
+# Arquitetura de sistema gráfico raster
 
--
+---
+## Modelo **Simples**
+
+![Diagrama da arquitetura de sistema gráfico simples](images/raster-architecture.png)
+
+---
+## Modelo **Moderno**
+
+![Diagrama da arquitetura de sistema gráfico moderno](images/raster-architecture-modern.png)
+
 ---
 # Representação de Imagens
 
@@ -104,34 +117,29 @@ Imagens podem ser representadas em duas formas principais:
   - Formulados por modelos geométricos
   - Ocupam menos espaço de armazenamento
   - Não perdem qualidade quando ampliados
-  - Extensões: [svg, cdr]
+  - Extensões: [**svg, cdr**]
 - Raster (matricial ou matriz de pixels)
   - Matriz de pixels (_picture elements_)
   - Muito simples de gerar
-  - Extensões: [gif, jpg, png, bmp]
+  - Extensões: [**gif, jpg, png, bmp**]
 
 ---
-# Imagem vetorial
+## Imagem vetorial
 
-<p>
-  <a href="http://commons.wikimedia.org/wiki/File:Vector-based_example.svg#mediaviewer/File:Vector-based_example.svg">
-    <img src="http://upload.wikimedia.org/wikipedia/commons/3/30/Vector-based_example.svg" alt="Vector-based example.svg" height="145" width="145">
-  </a>
-  <br>
-  "<a href="http://commons.wikimedia.org/wiki/File:Vector-based_example.svg#mediaviewer/File:Vector-based_example.svg">
-    Vector-based example</a>" por <a href="//commons.wikimedia.org/wiki/User:Tonchino" title="User:Tonchino">Tonchino</a> - <span class="int-own-work">Obra do próprio</span>. Licenciado sob <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a> via <a href="//commons.wikimedia.org/wiki/">Wikimedia Commons
-  </a>.
-</p>
+![Exemplo de imagem vetorial](images/vector-image.svg)
 
 ---
-# Imagem raster
+## Imagem raster
 
 ![Imagem raster](images/raster.jpg)
 
 ---
 # O Olho
 
-![Modelo do olho humano](images/eye-model.jpg)
+![Modelo do olho humano](images/eye-model.png)
+
+---
+## Modelo do olho humano
 
 - Fótons (raios de luz) entram pela pupila de forma reta até atingirem a retina
 - A imagem é formada pela contribuição da luz nos cones da retina
@@ -140,9 +148,12 @@ Imagens podem ser representadas em duas formas principais:
 - Este modelo é complexo demais para a Computação Gráfica...
 
 ---
-## A Câmera "pinhole" (estenopeica)
+## A Câmera _"pinhole"_ (estenopeica)
 
-![A Câmera pinhole](images/pinhole-camera.jpg)
+![A Câmera pinhole](images/pinhole-camera.png)
+
+---
+## A Câmera _"pinhole"_
 
 - Versão mais simples de um modelo de visão
 - Imagens mais próximas são retratadas maiores
@@ -171,17 +182,21 @@ Imagens podem ser representadas em duas formas principais:
   - 8 bits para vermelho (0 a 255)
   - 8 bits para verde
   - 8 bits para azul
+  - Exemplo: <span class="color-portrait ffd5d5"> </span> (<span class="pure-red">255</span>, <span class="pure-green">213</span>, <span class="pure-blue">213</span>) ou (<span class="pure-red">1</span>, <span class="pure-green">0.84</span>, <span class="pure-blue">0.84</span>)
 
 ---
 # Referências
 
-- []()
-- []()
-- []()
-- []()
+- [Programa de modelagem 3D blender](blender)
+- [Aplicativo Web de modelagem 3D clara.io](claraio)
+- [Programa de modelagem 3D Autodesk 3ds Max](3ds-max)
+- [Programa de modelagem 3D Autodesk Maya](maya-lt)
+- [Programa de modelagem 3D ZBrush](z-brush)
+- [Desmontando um monitor de LCD (Enginner Guy)](lcd-teardown)
 
-[]:
-[]:
-[]:
-[]:
-[]:
+[blender]: http://www.blender.org/
+[claraio]: https://clara.io/
+[3ds-max]: http://www.autodesk.com/education/free-software/3ds-max
+[maya-lt]: http://www.autodesk.com/education/free-software/maya-lt
+[z-brush]: http://pixologic.com/
+[lcd-teardown]: http://www.engineerguy.com/videos/video-lcd.htm
