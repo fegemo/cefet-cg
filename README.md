@@ -1,13 +1,13 @@
-# (TEES) Programação Web
+# Computação Gráfica
 *Professor:* Flávio Coutinho
 
 <img class="page-author-picture" src="images/flavio-avatar.jpg">
 
 ---
+
 # Ementa
 
 ---
-## Objetivos
 
 1. Conhecer os **fundamentos teóricos e práticos** da computação gráfica.
 1. Conhecer as **técnicas de modelagem, representação e visualização** de objetos Bi
@@ -16,58 +16,46 @@ e Tridimensionais.
 1. Conhecer e utilizar a biblioteca gráfica **OpenGL**
 
 ---
+## Interdisciplinariedades
+
+- Pré-requisitos
+  - Cálculo I
+  - GAAL
+  - PC I
+
+- Co-requisito
+  - Cálculo II
+
+---
 # Bibliografia
 
 ---
-## **Livro texto** da parte 1
+## Este é o nosso **livro texto**
 
 <div class="book-cover-container">
-  <img class="book-cover" src="images/head-first-html-css.jpg">
+  <img class="book-cover" src="images/rtr3.jpg">
   <div class="book-left"></div>
 </div>
 
-- **Título**	Head First HTML and CSS, Second Edition
-- **Autores**	Elisabeth Robson, Eric Freeman
-- **Editora** O'Reilly Media, 2012
+- **Título**	Real-Time Rendering, Third Edition
+- **Autores**	Tomas Akenine-Möller, Eric Haines, Naty Hoffman
+- **Editora**	Taylor & Francis, 2008
 
 ---
-## **Livro texto** da parte 2
+## Apostila da UFSCAR
 
 <div class="book-cover-container">
-  <img class="book-cover" src="images/head-first-servlets-jsp.jpg">
-  <div class="book-left"></div>
-</div>
-
-- **Título**	Use a Cabeça! Servlets e JSP, 2a Edição
-- **Autores**	Bryan Basham, Kathy Sierra & Ber
-- **Editora** Alta Books Editora
-
----
-## Dive into HTML5
-
-<div class="book-cover-container">
-  <img class="book-cover" src="images/dive-into-html5.png">
+  <img class="book-cover" src="images/apostila-ufscar-thumb.png">
   <div class="book-left book-light"></div>
 </div>
 
-- [Online, gratuito](http://diveintohtml5.com.br/)
-
----
-## JavaScript: The Good Parts
-
-<div class="book-cover-container">
-  <img class="book-cover" src="images/js-good-parts.png">
-  <div class="book-left book-light"></div>
-</div>
-
-- **Título**	JavaScript, the Good Parts, First Edition
-- **Autores**	Douglas Crockford
-- **Editora** O'Reilly Media, 2008
+- Material complementar
+- [Download](https://drive.google.com/file/d/0B6-KCjtlxaKIY21UOWxBTEp4VTA/edit?usp=sharing)
 
 ---
 # Aulas
 
-- Introdução à Computação Gráfica
+- [Introdução à Computação Gráfica](classes/intro/)
 - Introdução ao OpenGL (em C/C++)
 - Introdução a Geometria
 - Transformações Geométricas
