@@ -9,8 +9,6 @@
 
 ---
 
-## Objetivos
-
 1. Conhecer os **fundamentos teóricos e práticos** da computação gráfica.
 1. Conhecer as **técnicas de modelagem, representação e visualização** de objetos Bi
 e Tridimensionais.
@@ -57,11 +55,11 @@ e Tridimensionais.
 ---
 # Aulas
 
-- Introdução à Computação Gráfica
+- [Introdução à Computação Gráfica](classes/intro/)
 - Introdução ao OpenGL (em C/C++)
 - Introdução a Geometria
 - Transformações Geométricas
-  ...
+- ...
 
 ---
 # Prova e Listas (30 pontos)
