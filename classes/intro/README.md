@@ -148,6 +148,16 @@ Imagens podem ser representadas em duas formas principais:
 - Este modelo é complexo demais para a Computação Gráfica...
 
 ---
+## Qual é mais escuro? A ou B?
+
+![](images/illusion-a.png)
+
+---
+## Resposta
+
+![](images/illusion-b.png)
+
+---
 ## A Câmera _"pinhole"_ (estenopeica)
 
 ![A Câmera pinhole](images/pinhole-camera.png)
