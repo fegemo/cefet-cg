@@ -8,7 +8,8 @@
 1. Sistemas de janelas
 1. O _pipeline_ gráfico
 1. Criando um projeto OpenGL
-1. OpenGL OpenGL OpenGL
+1. GLUT
+1. OpenGL
 1. Referências
 
 ---
@@ -54,6 +55,20 @@ int main(int argc, char** argv)
 # Conceitos
 
 ---
+## Cena 3D
+
+![Uma imagem mostrando uma chaleira](images/cena-3d.png)
+
+---
+## Cena 3D (cont.)
+
+1. É um conjunto de:
+  1. Objetos geométricos (triângulos, pontos, linhas etc.)
+  1. Fontes de iluminação
+  1. Texturas (imagens "grudadas" nos obj. geométricos)
+  1. Materiais (propriedades físicas (reflexão, cor) dos obj. geométricos)
+
+---
 ## OpenGL
 
 1. _Open Graphics Library_ ou biblioteca gráfica aberta
@@ -75,20 +90,6 @@ int main(int argc, char** argv)
     2006
 1. Depende de um sistema de janelas
   1. OpenGL cuida apenas de gerar o "conteúdo" das janelas
-
----
-## Cena 3D
-
-![Uma imagem mostrando uma chaleira](images/cena-3d.png)
-
----
-## Cena 3D (cont.)
-
-1. É um conjunto de:
-  1. Objetos geométricos (triângulos, pontos, linhas etc.)
-  1. Fontes de iluminação
-  1. Texturas (imagens "grudadas" nos obj. geométricos)
-  1. Materiais (propriedades físicas (reflexão, cor) dos obj. geométricos)
 
 ---
 # Sistemas de janelas
@@ -383,8 +384,37 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
   Estabelece o tamanho (em pixels) da janela a ser criada
 
 ---
+## Programa OpenGL/GLUT - Inicialização (cont.)
 
+- Criação da(s) janela(s)
+  ```c
+  int glutCreateWindow (char* nome)
+  ```
+  - Cria uma nova janela primária (top-level)
+  - Nome é tipicamente usado para rotular a janela
+  - O número inteiro retornado é usado pelo GLUT para identificar a janela
+- Outras inicializações
+  - Após a criação da janela é costumeiro configurar variáveis de estado do
+    OpenGL que não mudarão no decorrer do programa. Por exemplo:
+    - Cor do fundo
+    - Tipo de sombreamento de desejado
 
+---
+## Programa OpenGL/GLUT – Laço Principal
+
+- Depois de registradas as _callbacks_, o controle é entregue ao sistema de
+  janelas:
+  ```c
+  glutMainDisplayLoop (void)
+  ```
+- Esta rotina na verdade é o "despachante" de eventos
+- Ela nunca retorna
+
+---
+# OpenGL
+
+---
+## 
 
 ---
 # Referências

@@ -56,7 +56,8 @@ e Tridimensionais.
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/)
-- Introdução ao OpenGL (em C/C++)
+- [Introdução ao OpenGL (em C/C++) pt1](classes/opengl/)
+- [Introdução ao OpenGL (em C/C++) pt2](classes/opengl-handson/)
 - Introdução a Geometria
 - Transformações Geométricas
 - ...
