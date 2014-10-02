@@ -7,8 +7,6 @@
 1. Projeção Ortogonal, Caixa de Visualização e **Coordenadas do Mundo**
 1. A Janela do OpenGL e as **Coordenadas da Tela**
 1. **_Clipping_** (recorte)
-1. Cores, Máquina de Estado e Interpolação
-1. Primitivas Geométricas
 
 ---
 # Primeiro programa (square.c)
@@ -321,78 +319,6 @@ glOrtho(left, right, bottom, top, near, far);
 ## Triângulo recortado
 
 ![](images/clipped-triangle.jpg)
-
----
-# Cores, Máquina de Estado e Interpolação
-
----
-## Cores
-
-- A cor do quadrado é definida pelos três parâmetros da função `glColor3f`
-  - RGB (vermelho, verde, azul)
-- Os valores de cada componente são presos (_clamped_) entre .0 e 1.0
-  - Se menores que `0`, `0`
-  - Se maiores que `1.0`, `1.0`
-  - Se entre `0.0` e `1.0`, usa o valor
-
----
-## Valores RGB de algumas cores
-
-- Preto: glColor3f(0.0, 0.0, 0.0)
-- Vermelho: glColor3f(1.0, 0.0, 0.0)
-- Verde: glColor3f(0.0, 1.0, 0.0)
-- Azul: glColor3f(0.0, 0.0, 1.0)
-- Amarelo: glColor3f(1.0, 1.0, 0.0)
-- Magenta: glColor3f(1.0, 0.0, 1.0)
-- Ciano: glColor3f(0.0, 1.0, 1.0)
-- Branco: glColor3f(1.0, 1.0, 1.0)
-
----
-## Máquina de estados
-
-- A função `glColor3f(...)` **altera a cor de pintura CORRENTE**
-- Todos os vértices desenhados têm a cor da COR CORRENTE
-- A COR CORRENTE muda apenas se chamarmos `glColor3f(...)` novamente
-- Este é um modelo de máquina de estados
-  - O OpenGL mantém o estado de coisas como cor, grossura das linhas,
-    tamanho dos pontos etc.
-- `glClearColor(...)` é como **alteramos a cor do fundo**
-
----
-## Experimento com cores
-
-1. Alterar a cor do quadrado
-1. Desenhar um quadrado de cada cor
-1. Desenhar um quadrado com cores interpoladas
-
----
-# Primitivas Geométricas
-
----
-## Primitivas Geométricas
-
-- Também chamadas de primitivas de desenho ou apenas primitivas
-- São as construções geométricas que o OpenGL entende
-- Exemplos
-  1. Pontos (`GL_POINTS`)
-  1. Linhas (`GL_LINES`)
-  1. Polígonos (`GL_POLYGON`)
-- São os "tijolos" para construirmos objetos complexos
-
----
-## Experimentos com as primitivas
-
-1. Desenhar pontos (`GL_POINTS`) em vez de quadrados. Para que os
-  pontos fiquem visíveis, aumentar seu tamanho (`glPointSize()`).
-
-1. Usar outras primitivas: `GL_LINES, GL_LINE_STRIP, GL_LINE_LOOP`
-
-1. Alterar a forma de desenho das primitivas
-  ```c
-  glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );  //GL_FILL
-  ```
----
-![](images/primitives.jpg)
 
 ---
 # Referências

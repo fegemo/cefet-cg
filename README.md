@@ -56,8 +56,9 @@ e Tridimensionais.
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/)
-- [Introdução ao OpenGL (em C/C++) pt1](classes/opengl/)
-- [Introdução ao OpenGL (em C/C++) pt2](classes/opengl-handson/)
+- [Introdução ao OpenGL (em C/C++)](classes/opengl/)
+- [OpenGL - _hands on_ pt1](classes/opengl-handson/)
+- [OpenGL - _hands on_ pt2](classes/opengl-handson2/)
 - Introdução a Geometria
 - Transformações Geométricas
 - ...
@@ -72,6 +73,6 @@ e Tridimensionais.
 # Trabalhos (70 pontos)
 
 - TP1: Galaxian (15 pontos)
-- TP2: Ray-tracer (15 pontos)
-- TP3: Boids (15 pontos)
+- TP2: Boids (15 pontos)
+- TP3: Ray-tracer (15 pontos)
 - TP4 - duplas: Animação (25 pontos)
