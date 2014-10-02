@@ -411,10 +411,4 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
 - Ela nunca retorna
 
 ---
-# OpenGL
-
----
-## 
-
----
 # Referências
