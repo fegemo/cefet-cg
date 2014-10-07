@@ -13,7 +13,8 @@ mais agressivo contra o defensor solitário que, por sua vez, também se
 movimenta lateralmente esquivando-se das bombas e disparando mísseis contras os
 invasores alienígenas.
 
-![Tela do jogo Galaxian original](images/galaxian-original.png)
+<img alt="Tela do jogo Galaxian original" src="images/galaxian-original.png"
+  style="float: left; width: 250px;">
 A figura é um _screenshot_ do Galaxian original. Na configuração básica
 do trabalho, vamos modificar e resumir um pouco o jogo. Primeiramente, o jogo
 terá um fim. Se o jogador elimina todos os alienígenas, ele é declarado
