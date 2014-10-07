@@ -1,5 +1,14 @@
 # Transformações Geométricas... na prática primeiro!
 
+![](images/transformations.jpg)
+
+---
+# Roteiro
+
+1.
+1.
+1.
+
 ---
 ## Introdução
 
@@ -12,3 +21,20 @@
   - Outras transformações
     - Espelhamento ou reflexão
     - Cisalhamento (_shearing_)
+
+---
+
+---
+# TP1 \o/
+
+_"A wild TP1 appears..."_
+
+---
+## TP1 está a solta
+
+"Nele, o jogador pilota uma nave que fica na parte de baixo da tela e, com ela,
+se defende de um ataque alienígena. Os alienígenas realizam o seu ataque como
+uma grande esquadra que se movimenta lateralmente na parte superior da tela. Os
+diversos alienígenas podem soltar bombas contra a heróica nave [...]"
+
+-
