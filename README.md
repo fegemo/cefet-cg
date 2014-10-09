@@ -1,7 +1,7 @@
 # Computação Gráfica
 *Professor:* Flávio Coutinho
 
-<img class="page-author-picture" src="images/flavio-avatar.jpg">
+<img class="page-author-picture" src="src/images/flavio-avatar.jpg">
 
 ---
 
@@ -33,7 +33,7 @@ e Tridimensionais.
 ## Este é o nosso **livro texto**
 
 <div class="book-cover-container">
-  <img class="book-cover" src="images/rtr3.jpg">
+  <img class="book-cover" src="src/images/rtr3.jpg">
   <div class="book-left"></div>
 </div>
 
@@ -45,7 +45,7 @@ e Tridimensionais.
 ## Apostila da UFSCAR
 
 <div class="book-cover-container">
-  <img class="book-cover" src="images/apostila-ufscar-thumb.png">
+  <img class="book-cover" src="src/images/apostila-ufscar-thumb.png">
   <div class="book-left book-light"></div>
 </div>
 
@@ -55,10 +55,10 @@ e Tridimensionais.
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/)
-- [Introdução ao OpenGL (em C/C++)](classes/opengl/)
-- [OpenGL - _hands on_ pt1](classes/opengl-handson/)
-- [OpenGL - _hands on_ pt2](classes/opengl-handson2/)
+- [Introdução à Computação Gráfica](src/classes/intro/)
+- [Introdução ao OpenGL (em C/C++)](src/classes/opengl/)
+- [OpenGL - _hands on_ pt1](src/classes/opengl-handson/)
+- [OpenGL - _hands on_ pt2](src/classes/opengl-handson2/)
 - Introdução a Geometria
 - Transformações Geométricas
 - ...
