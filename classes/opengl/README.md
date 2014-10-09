@@ -9,7 +9,6 @@
 1. O _pipeline_ gráfico
 1. Criando um projeto OpenGL
 1. GLUT
-1. OpenGL
 1. Referências
 
 ---
