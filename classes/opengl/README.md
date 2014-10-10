@@ -1,4 +1,4 @@
-# Introdução a OpenGL
+# OpenGL, Sistemas de Janelas e GLUT
 
 ---
 # Roteiro

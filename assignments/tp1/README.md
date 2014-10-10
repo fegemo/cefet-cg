@@ -1,5 +1,7 @@
 # Trabalho Prático 1 - Galaxian
 
+![Tela do jogo Galaxian original](images/galaxian-original.png)
+
 Neste primeiro trabalho prático vamos experimentar programação orientada a
 eventos usando OpenGL. Para isso, vamos implementar um _video game_ simples.
 
@@ -13,8 +15,6 @@ mais agressivo contra o defensor solitário que, por sua vez, também se
 movimenta lateralmente esquivando-se das bombas e disparando mísseis contras os
 invasores alienígenas.
 
-<img alt="Tela do jogo Galaxian original" src="images/galaxian-original.png"
-  style="float: left; width: 250px; margin: 0 20px 5px 0">
 A figura é um _screenshot_ do Galaxian original. Na configuração básica
 do trabalho, vamos modificar e resumir um pouco o jogo. Primeiramente, o jogo
 terá um fim. Se o jogador elimina todos os alienígenas, ele é declarado
@@ -33,7 +33,7 @@ direita e para a esquerda a nave defensora acelera na mesma direção. O disparo
 dos mísseis pode ser realizado pressionando o botão esquerdo do mouse.
 
 Além disso, ainda na funcionalidade básica, o jogo deve interpretar o
-pressionamento da tecla R como comando para reiniciar o jogo, e a tecla ESC 
+pressionamento da tecla R como comando para reiniciar o jogo, e a tecla ESC
 para terminar o programa. O botão direito do mouse deve colocar o jogo em
 pausa, deixando o mesmo congelado até que o botão direito seja novamente
 pressionado. Esse conjunto de funcionalidades básica vale 70% da nota deste
