@@ -56,9 +56,10 @@ e Tridimensionais.
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/)
-- [Introdução ao OpenGL (em C/C++)](classes/opengl/)
+- [OpenGL, Sistemas de Janelas e GLUT](classes/opengl/)
 - [OpenGL - _hands on_ pt1](classes/opengl-handson/)
 - [OpenGL - _hands on_ pt2](classes/opengl-handson2/)
+- [OpenGL - _hands on_ pt3](classes/opengl-handson3/)
 - Introdução a Geometria
 - Transformações Geométricas
 - ...
@@ -72,7 +73,9 @@ e Tridimensionais.
 ---
 # Trabalhos (70 pontos)
 
-- TP1: Galaxian (15 pontos)
+- [TP1: Galaxian][tp1] (15 pontos, data 11/Nov/14)
 - TP2: Boids (15 pontos)
 - TP3: Ray-tracer (15 pontos)
 - TP4 - duplas: Animação (25 pontos)
+
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1#trabalho-pr%C3%A1tico-1---galaxian

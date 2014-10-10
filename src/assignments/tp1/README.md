@@ -1,8 +1,6 @@
 # Trabalho Prático 1 - Galaxian
 
-<div style="text-align: center">
 ![Tela do jogo Galaxian original](images/galaxian-original.png)
-</div>
 
 Neste primeiro trabalho prático vamos experimentar programação orientada a
 eventos usando OpenGL. Para isso, vamos implementar um _video game_ simples.
