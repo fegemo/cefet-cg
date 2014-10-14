@@ -113,6 +113,8 @@ gulp.task('cefet-files', ['js', 'html', 'md', 'css', 'images'], function() {
         var t = [];
         t.push(gulp.src(['dist/images/**/*.*', 'dist/build/**/*.*'], { read: true, base: 'dist' })
           .pipe(gulp.dest(path.join('dist', folder))));
+        t.push(gulp.src(['src/samples/**/*.*'], { read: true, base: 'src' })
+          .pipe(gulp.dest(path.join('dist', folder))));
         t.push(gulp.src(['src/index.html'])
           .pipe(replace('{path-to-root}', '../../.'))
           .pipe(gulp.dest(path.join('dist', folder))));
