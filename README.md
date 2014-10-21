@@ -60,9 +60,9 @@ e Tridimensionais.
 - [OpenGL - _hands on_ pt1](classes/opengl-handson/)
 - [OpenGL - _hands on_ pt2](classes/opengl-handson2/)
 - [OpenGL - _hands on_ pt3](classes/opengl-handson3/)
-- Introdução a Geometria
-- Transformações Geométricas
-- ...
+- [Introdução a Geometria](classes/geometry/)
+- [Transformações Geométricas](classes/transforms)
+
 
 ---
 # Prova e Listas (30 pontos)
