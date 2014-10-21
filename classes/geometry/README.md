@@ -345,6 +345,10 @@ independentes**
   - G.O[F] = (5, 1, 1)
 
 ---
+## Mudança do sistema de coordenadas
+
+
+---
 # Referências
 
 1. Apêndice A do livro Real-Time Rendering
