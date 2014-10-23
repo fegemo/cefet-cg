@@ -62,6 +62,7 @@ e Tridimensionais.
 - [OpenGL - _hands on_ pt3](classes/opengl-handson3/)
 - [Introdução a Geometria](classes/geometry/)
 - [Transformações Geométricas](classes/transforms)
+- [Orientação e Mudança de Sistema de Coordenadas](classes/baseorientation/)
 
 
 ---
