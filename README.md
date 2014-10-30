@@ -62,8 +62,13 @@ e Tridimensionais.
 - [OpenGL - _hands on_ pt3](classes/opengl-handson3/)
 - [Introdução a Geometria](classes/geometry/)
 - [Transformações Geométricas](classes/transforms)
-- [Orientação e Mudança de Sistema de Coordenadas](classes/baseorientation/)
 
+---
+# Aulas (cont.)
+
+- [Orientação e Mudança de Sistema de Coordenadas](classes/baseorientation/)
+- [O Pipeline Gráfico](classes/pipeline)
+- [Projeção Perspectiva](classes/perspectiva)
 
 ---
 # Prova e Listas (30 pontos)
