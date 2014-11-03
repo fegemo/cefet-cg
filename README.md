@@ -68,7 +68,7 @@ e Tridimensionais.
 
 - [Orientação e Mudança de Sistema de Coordenadas](classes/baseorientation/)
 - [O Pipeline Gráfico](classes/pipeline)
-- [Projeção Perspectiva](classes/perspectiva)
+- [Projeção](classes/projection)
 
 ---
 # Prova e Listas (30 pontos)
