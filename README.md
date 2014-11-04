@@ -69,7 +69,7 @@ e Tridimensionais.
 - [Orientação e Mudança de Sistema de Coordenadas](classes/baseorientation/)
 - [O Pipeline Gráfico](classes/pipeline)
 - [Projeção](classes/projection)
-
+- [Modelagem de Objetos](classes/modeling)
 ---
 # Prova e Listas (30 pontos)
 
