@@ -1,4 +1,4 @@
-# Modelagem de Objetos
+# Modelagem de Objetos - Parte 2
 
 ---
 # Objetivos
@@ -99,6 +99,7 @@
   - Por bordo ou fronteira (B-rep – _Boundary Representation_)
   - Operações de conjuntos (CSG – _Constructive Solid Geometry_)
   - Por enumeração do espaço em células (_BSP-trees_, _Octrees_, etc.)
+  - Por volume do objeto
 
 ---
 # Representação por Bordo

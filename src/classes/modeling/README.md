@@ -291,3 +291,105 @@
 ## 9 tipos de Relacionamentos de Adjacência
 
 ![](images/malha-aresta-alada-2.png)
+
+---
+# Representação <abbr title="Constructive Solid Geometry">CSG</abbr>
+
+---
+## _Constructive Solid Geometry_
+
+- Operações CSG definem objetos através de operações regularizadas de
+  conjuntos de pontos
+  - União, Interseção e Diferença
+- Possibilita uma codificação bastante simples e concisa
+- Requer mais computação para renderizar do que _b-rep_
+
+  ![](images/csg-exemplo.png)
+
+---
+## Codificação do CSG: Árvore
+
+- <img src="images/csg-exemplo2.png" style="float:right;margin-left:20px;">
+  Um modelo CSG é codificado por uma árvore
+  - Os **nós internos** contêm **operações** de conjunto ou transformações
+    lineares afim
+  - **Folhas** contêm objetos **primitivos**
+    - Cubóides, cilindros, prismas, pirâmides, esferas, cones etc.
+
+---
+## Exemplo: SolidWorks
+
+![](images/csg-solidworks.png)
+
+---
+## Exemplo _real-life_: o jogo Spore
+
+![](images/spore-creature-creator.jpg)
+
+---
+# Representações por Células
+
+---
+## Representações por Células
+
+- Dividem o espaço em sub-regiões convexas
+  - Grades: Cubos de tamanho igual
+  - Octrees: Cubos cujos lados são potências de 2 (1980)
+  - BSP-trees: Poliedros convexos
+- Às células são atribuídas valores de um campo escalar F(x, y, z)
+  - Campo é assumido constante dentro de cada célula
+- Sólido é definido como o conjunto de pontos tais que A < F(x, y, z) < B
+  para valores A e B estipulados
+
+---
+## **Quadtree** (2D), Octree (3D)
+
+![](images/octree.png)
+
+---
+## Grids, Octrees
+
+- São úteis para a visualização de objetos que podem ser particionados:
+  - <img src="images/octree-medical.png" style="float:right;margin-left:20px;">
+    Imagens médicas
+  - <img src="images/volumetric-cup.png" style="float:right;margin-left:20px;">
+    Imagens obtidas por meio de sensores de densidade
+
+---
+## Voxels
+
+![](images/octree-minecraft.png)
+
+---
+## Exemplos
+
+![](images/octree-dragon.png)
+
+---
+# Conversões entre Representações
+
+---
+## Conversões entre Representações
+
+- Conversão CSG → B-rep é denominada avaliação do bordo
+- Conversão B-rep → CSG é muito mais complicada
+- Conversão B-rep → Células é simples
+- Conversão Células → B-rep é relativamente simples (marching cubes)
+- Conversão CSG → Células é simples
+- Conversão Células → CSG é complicado
+
+---
+# Representação Fractal
+
+---
+## Fractais
+
+![](images/benoit-mandelbrot.png)
+
+- Benoit Mandelbrot:
+  <blockquote>“Clouds are not spheres, mountains are 	not cones, coastlines are not circles and 	bark is not smooth, nor does lightning 	travel in a straight line.”</blockquote>
+
+---
+## Fractais... mais nos próximos capítulos
+
+![](images/fractal-samambaia.png)
