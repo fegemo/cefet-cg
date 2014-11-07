@@ -70,6 +70,8 @@ e Tridimensionais.
 - [O Pipeline Gráfico](classes/pipeline)
 - [Projeção](classes/projection)
 - [Modelagem de Objetos](classes/modeling)
+- Iluminação
+
 ---
 # Prova e Listas (30 pontos)
 
