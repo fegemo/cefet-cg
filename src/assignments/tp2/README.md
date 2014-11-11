@@ -103,10 +103,10 @@ funcionalidades extras com suas respectivas pontuações:
   vetorial de X e Z (para o lado), a rotação em torno de Y é chamada _pitch_ e
   faz o objeto apontar pra cima quando sobe e pra baixo quando desce. A
   rotação em torno de Z se chama _yaw_ e faz o objeto apontar pra direção
-  (lateral) em que voa. A rotação em X, se chama _row_, e o ato de executar
-  essa rotação se chama _banking_. O ângulo de _row_ está relacionado com a
+  (lateral) em que voa. A rotação em X, se chama _roll_, e o ato de executar
+  essa rotação se chama _banking_. O ângulo de _roll_ está relacionado com a
   taxa da curva (derivada segunda da trajetória). O cálculo de um ângulo de
-  _row_ suave pode ser complicado, portanto preste atenção
+  _roll_ suave pode ser complicado, portanto preste atenção
 1. **Qualquer outra idéia (??%)** que torne a simulação mais interessante ou
    agradável aos sentidos. Essas idéias precisam ser documentadas e explicadas
    no documento de entrega do trabalho (README)
