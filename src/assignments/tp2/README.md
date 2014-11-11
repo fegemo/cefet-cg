@@ -88,9 +88,6 @@ funcionalidades extras com suas respectivas pontuações:
 1. **Temática (5%)**: você pode usar outra temática para seus _boids_ que não
    passarinhos. Por exemplo, pode ser um cardume de peixes, esquadrão de
    aviões anti-alienígenas ou rebanho de ovelhas. Basta que saibam voar
-1. **Sombras (5%)**: Não é necessário projetar sombra de um _boid_ no outro,
-   mas apenas uma projeção paralela simples dos _boids_ no chão. Modelos mais
-   sofisticados podem ter mais pontos extras
 1. **Fog (5%)**: funcionalidade acrescentada por comando do teclado, podendo
    ser habilitada e desabilitada durante a execução
 1. **Modo de pausa (3%)**: acionado pelo teclado para a simulação dos _bois_,
