@@ -70,7 +70,7 @@ e Tridimensionais.
 - [O Pipeline Gráfico](classes/pipeline)
 - [Projeção](classes/projection)
 - [Modelagem de Objetos](classes/modeling)
-- Iluminação
+- [Iluminação](classes/lighting)
 
 ---
 # Prova e Listas (30 pontos)
@@ -82,8 +82,9 @@ e Tridimensionais.
 # Trabalhos (70 pontos)
 
 - [TP1: Galaxian][tp1] (15 pontos, data 11/Nov/14)
-- TP2: Boids (15 pontos)
+- [TP2: Boids][tp2] (15 pontos, data 02/Dez/14)
 - TP3: Ray-tracer (15 pontos)
 - TP4 - duplas: Animação (25 pontos)
 
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1#trabalho-pr%C3%A1tico-1---galaxian
+[tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2
