@@ -71,6 +71,7 @@ e Tridimensionais.
 - [Projeção](classes/projection)
 - [Modelagem de Objetos](classes/modeling)
 - [Iluminação](classes/lighting)
+- [Sombreamento](classes/shading)
 
 ---
 # Prova e Listas (30 pontos)
