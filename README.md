@@ -7,8 +7,6 @@
 
 # Ementa
 
----
-
 1. Conhecer os **fundamentos teóricos e práticos** da computação gráfica.
 1. Conhecer as **técnicas de modelagem, representação e visualização** de objetos Bi
 e Tridimensionais.
@@ -72,20 +70,22 @@ e Tridimensionais.
 - [Modelagem de Objetos](classes/modeling)
 - [Iluminação](classes/lighting)
 - [Sombreamento](classes/shading)
+- [Texturas](classes/textures)
 
 ---
-# Prova e Listas (30 pontos)
+# Prova e Listas (40 pontos)
 
 - Listas de exercício (10 pontos)
+- Lista de revisão da prova (10 pontos)
 - Prova (20 pontos)
 
 ---
-# Trabalhos (70 pontos)
+# Trabalhos (60 pontos)
 
 - [TP1: Galaxian][tp1] (15 pontos, data 11/Nov/14)
-- [TP2: Boids][tp2] (15 pontos, data 02/Dez/14)
+- [TP2: Boids][tp2] (15 pontos, data 16/Dez/14)
 - TP3: Ray-tracer (15 pontos)
-- TP4 - duplas: Animação (25 pontos)
+- TP4 - duplas: Animação (15 pontos)
 
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1#trabalho-pr%C3%A1tico-1---galaxian
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2
