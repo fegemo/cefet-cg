@@ -10,9 +10,11 @@ Os modelos e a animação não precisam ser profissionais. Você pode usar um
 conjunto de primitivas do programa como esferas, cilindros, pirâmides, cubos e
 formar objetos compostos (à la _boid_ de 5 pirâmides). Por exemplo, um cachorro
 feito de "cápsulas":
+
 ![](images/balloon-dog.jpg)
 
 Sua cena deve conter:
+
 1. Um personagem principal (não precisa ser um "ser vivo")
 1. Pelo menos uma fonte de luz
 1. Pelo menos uma textura em um objeto (no chão, por exemplo)
@@ -42,8 +44,9 @@ funcionalidades adicionais, descritas abaixo:
 1. **(??%):** outros adicionais propostos por você
 
 A entrega será dividida em 3 partes:
+
 1. Divisão do grupo (04/12/15 - quinta-feira)
-1. Roteiro + mini _story-board_ (09/12/14 - terça-feira)
+1. Roteiro + mini [_storyboard_](http://pt.wikipedia.org/wiki/Storyboard) (09/12/14 - terça-feira)
 1. Animação final: um vídeo no Youtube (20/01/15 - terça-feira)
 
 **Entrega (1):** o grupo é de 2 pessoas. Posso abrir exceção para grupos de 3,
