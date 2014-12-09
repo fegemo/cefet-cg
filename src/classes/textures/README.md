@@ -83,7 +83,7 @@
 
 - Depois, você deve especificar a textura para o OpenGL:
   ```c
-  glTexImage1D(GL_TEXTURE_1D,
+  glTexImage1D(GL_TEXTURE_1D, // sempre este valor
     0,                // índice do MipMap (veremos adiante)
     GL_RGBA,          // especificando nosso array como RGBA
     largura,          // "largura" da imagem (potência de 2)
@@ -92,6 +92,7 @@
     GL_UNSIGNED_BYTE, // tipo de dado do array
     arrayCores);      // array com as cores
   ```
+- [Referência](https://www.opengl.org/sdk/docs/man2/xhtml/glTexImage1D.xml)
 
 ---
 ## Textura 1D no OpenGL (cont.)
@@ -116,12 +117,22 @@
 - Exatamente como 1D, porém o espaço da textura é T(s,t) em vez de T(t)
 
 ---
+## Textura 2D (cont.)
+
+![](images/texture-space.png)
+
+- Tipicamente, representamos qualquer textura 2D no espaço bidimensional com
+  0 &le; s, t &le; 1
+
+---
 ## Parametrização de superfície
 
 - Quando mapeamos uma textura 2D em um objeto 3D, precisamos, primeiro,
   parametrizar o objeto 3D em 2D, para então fazer o mapeamento
 
   ![](images/textura-parametrizacao-esfera.png)
+- Devemos associar cada ponto da superfície do objeto com duas coordenadas
+  `(u,v)` no **espaço da superfície**
 
 ---
 ## Função de mapeamento
@@ -151,52 +162,217 @@
 
 - <img src="images/textura-parametrizacao-objetos-genericos.png" style="float:right;margin-left:20px;">
   O que fazer quando o objeto não comporta uma parametrização natural?
-- Uma possibilidade é usar um mapeamento em 2 estágios [Bier e Sloan]:
-  - Mapear textura sobre uma superfície simples como cilindro, esfera, etc
-    aproximadamente englobando o objeto
-  - Mapear superfície simples sobre a superfície do objeto. Pode ser feito de
-    diversas maneiras:
-    - Raios passando pelo centróide do objeto
-    - Raios normais à superfície do objeto
-    - Raios normais à superfície simples
-    - Raios refletidos
+- Fazemos o mapeamento em 2 estágios:
+  1. Mapear textura sobre uma superfície simples como cilindro, esfera, etc
+     aproximadamente englobando o objeto
+  1. Mapear superfície simples sobre a superfície do objeto. Pode ser feito de
+     diversas maneiras:
+     - Raios passando pelo centróide do objeto
+     - Raios normais à superfície do objeto
+     - Raios normais à superfície simples
 
 ---
-## Exemplos de parametrização genérica
+## Exemplos de parametrização **cúbica**
 
 ![](images/textura-para-generica-cubica.png)
 
 ---
-## Exemplos de parametrização genérica
+## Exemplos de parametrização **cilíndrica**
 
 ![](images/textura-para-generica-cilindrica.png)
 
 ---
-## Exemplos de parametrização genérica
+## Exemplos de parametrização **esférica**
 
 ![](images/textura-para-generica-esferica.png)
 
 ---
+## Exemplo na vida real
+
+![](images/texture-projections.png)
+
+- Tipicamente, o mapeamento da textura é feito durante a modelagem dos objetos
+  (e.g., no blender) e armazenado no arquivo do objeto
+
+---
+## Exemplo na vida real (cont.)
+
+![](images/texture-unwrapped.png)
+
+- Um programa de modelagem tipicamente "desembrulha" a malha do objeto para
+  auxiliar o artista a criar a imagem da textura
+
+---
+## Texturas 2D em OpenGL
+
+- Tipicamente, feito em 4 passos
+
+- (1) Ligar o mapeamento de texturas 2D
+  ```c
+  glEnable(GL_TEXTURE_2D);
+  ```
+
+- (2) Assinatura da função para definir uma textura:
+  ```c
+  void glTexImage2D(GLenum target, GLint level, GLint internalFormat,
+    GLsizei width, GLsizei height, GLint border,
+    GLenum format, GLenum type,
+    const GLvoid* pixels);
+  ```
+
+---
+## Texturas 2D em OpenGL (cont.)
+
+- (2) Exemplo de definição da textura:
+  ```c
+  glTexImage2D(GL_TEXTURE_2D,   // sempre este valor
+    0,                  // nível do mipmap
+    GL_RGBA,            // especificando nosso array como RGBA  
+    256,                // largura (potência de 2!! mínimo: 64)
+    128,                // altura  (potência de 2!! mínimo: 64)
+    0,                  // sem borda
+    GL_RGBA,            // ordem dos bytes do array
+    GL_UNSIGNED_BYTE,   // tipo de dados de cada posição do array
+    arrayCores);        // array com as cores
+  ```
+
+---
+## Texturas 2D em OpenGL (cont.)
+
+- (3) Configurar diversos parâmetros
+  - Modos de filtragem
+    - Magnificação ou minificação
+    - Filtros _mipmap_ de minificação
+  - Modos de repetição de padrões
+    - Cortar ou repetir
+  - Funções de aplicação de textura
+    - Como misturar a cor do objeto com a da textura
+      - Misturar, modular ou substituir texels
+- Os detalhes de cada tópico serão mostrados mais adiante
+
+---
+## Texturas 2D em OpenGL (cont.)
+
+- (4) Por fim, devemos mapear cada vértice a um valor (s,t) da textura usando
+  `glTextCoord*` para cada vértice
+  ```c
+  glBegin(GL_POLYGON);
+    glTexCoord2f(0.0, 0.0); glVertex3f(-10.0, -10.0, 0.0);
+    glTexCoord2f(1.0, 0.0); glVertex3f( 10.0, -10.0, 0.0);
+    glTexCoord2f(1.0, 1.0); glVertex3f( 10.0,  10.0, 0.0);
+    glTexCoord2f(0.0, 1.0); glVertex3f(-10.0,  10.0, 0.0);
+  glEnd();
+  ```
+
+---
+## Filtragem
+
+![](images/filtragem-textura.png)
+
+---
+## _Mipmaps_
+
+![](images/mipmaps.png)
+
+---
+## _Mipmaps_
+
+- Possibilita o uso de texturas de diferentes níveis de resolução aplicadas
+  de forma adaptativa
+  - Reduz _aliasing_ devido a problemas de interpolação
+  - Reduz o consumo de memória para objetos distantes
+  - O nível da textura na hierarquia _mipmap_ é especificada durante a
+    definição da textura:
+    ```c
+    glTexImage2D(GL_TEXTURE_2D, nivel_mipmap /*... */ );
+    ```
+
+---
+## Modos de Repetição
+
+- Exemplo:
+  ```c
+  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
+  ```
+
+  ![](images/texturas-modo-repeticao.png)
+
+---
+## Modos de Aplicação de Textura
+
+- Controla como a cor da textura afeta a cor do pixel
+  ```c
+  glTexEnv{fi}[v](GL_TEXTURE_ENV, prop, param );
+  ```
+- Modos (`prop = TEXTURE_ENV_MODE`)
+  - `GL_MODULATE`
+  - `GL_BLEND`
+  - `GL_REPLACE`
+- Cor a ser misturada (`GL_BLEND`)
+  - Especificada com `prop = GL_TEXTURE_ENV_COLOR`
+
+---
 # Texturas Procedurais
 
+---
+## Texturas Procedurais
+
+- O OpenGL recebe uma matriz de cores, não um arquivo de imagem
+- Podemos criar uma função que escreva uma matriz de cores
+  - Chamamos isso de **textura procedural**
+- Exemplo:
+
+  ![](images/textura-xadrez-redbook.png)
 
 ---
-## De volta ao _pipeline_ gráfico
+## Exemplo de textura procedural (livro vermelho)
 
-![](images/pipeline-grafico-fases.png)
-
----
-## Fases de **geometria** e do **rasterizador**
-
-![](images/pipeline-geometria-fases.png)
-
-![](images/pipeline-rasterizador-fases.png)
+```c
+// Cria uma textura de xadrez
+#define checkImageWidth 64
+#define checkImageHeight 64
+GLubyte checkImage[checkImageHeight][checkImageWidth][4];
+void makeCheckImage()
+{
+  for (int i = 0; i < checkImageHeight; i++) {
+    for (int j = 0; j < checkImageWidth; j++) {
+      int color = ((((i & 0x8)==0)^((j & 0x8))==0))*255;
+      checkImage[i][j][0] = (GLubyte) color;
+      checkImage[i][j][1] = (GLubyte) color;
+      checkImage[i][j][2] = (GLubyte) color;
+      checkImage[i][j][3] = (GLubyte) 255;
+    }
+  }
+}
+```
 
 ---
 # Outras propriedades mapeáveis
 
 ---
+## Outras propriedades mapeáveis
+
+- <img src="images/texturas-bump-map.jpg" style="width: 250px; float:right; margin-left: 10px;">
+  Quais parâmetros ou propriedades pode-se reproduzir a partir de texturas:
+  - Cor (coeficientes de reflexão difusa)
+  - Coeficientes de reflexão especular e difusa
+    - Mapeamento de ambiente
+  - Perturbação do vetor normal
+    - _Bump Mapping_
+  - Perturbação da superfície na direção da normal
+    - _Displacement Mapping_
+  - Transparência / opacidade
+
+---
+## Exemplo de normal mapping
+
+
+- [Código fonte](http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/)
+- [Exemplo](http://coryg89.github.io/MoonDemo/)
+
+---
 # Referências
 
-- Capítulos 5 e 7 (parcialmente) do livro Real-Time Rendering
-- [Capítulo 6 do OpenGL RedBook](http://www.glprogramming.com/red/chapter06.html)
+- Capítulo 6 do livro Real-Time Rendering
+- [Capítulo 9 do OpenGL RedBook](http://www.glprogramming.com/red/chapter09.html)
