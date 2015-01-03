@@ -65,6 +65,12 @@ gulp.task('images', ['clean:images'], function() {
     .pipe(connect.reload());
 });
 
+gulp.task('attachments', ['clean:attachments'], function() {
+  return gulp.src('src/attachments/**/*')
+    .pipe(gulp.dest('dist/attachments'))
+    .pipe(connect.reload());
+});
+
 gulp.task('clean', function() {
   return gulp.src('dist')
     .pipe(rimraf());
@@ -95,6 +101,11 @@ gulp.task('clean:images', function() {
     .pipe(rimraf());
 });
 
+gulp.task('clean:attachments', function() {
+  return gulp.src('dist/attachments')
+    .pipe(rimraf());
+});
+
 
 function getFolders(cwd, dir) {
   var targetDirectory = path.join(cwd, dir);
@@ -107,7 +118,7 @@ function getFolders(cwd, dir) {
     });
 }
 
-gulp.task('cefet-files', ['js', 'html', 'md', 'css', 'images'], function() {
+gulp.task('cefet-files', ['js', 'html', 'md', 'css', 'images', 'attachments'], function() {
   var folders = getFolders('src', 'classes').concat(getFolders('src', 'assignments')),
       tasks = folders.map(function(folder) {
         var t = [];
