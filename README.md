@@ -85,7 +85,9 @@ e Tridimensionais.
 - [TP1: Galaxian][tp1] (15 pontos, data 11/Nov/14)
 - [TP2: Boids][tp2] (15 pontos, data 16/Dez/14)
 - TP3: Ray-tracer (15 pontos)
-- TP4 - duplas: Animação (15 pontos)
+- [TP4 - duplas: Animação][tp4] (15 pontos)
 
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1#trabalho-pr%C3%A1tico-1---galaxian
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2
+[tp3]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp3
+[tp4]: https://github.com/fegemo/cefet-cg/blob/master/src/assignments/tp4
