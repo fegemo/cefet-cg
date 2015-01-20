@@ -1,4 +1,4 @@
-# _Raytracing_
+# _Ray tracing_
 
 ---
 # Objetivos
@@ -6,7 +6,7 @@
 1. Relembrar das **limitações de modelos de iluminação global**
 1. Conhecer um modelo de iluminação **global**
 1. Entender a mecânica geral da técnica de geração de imagens chamada
-   _raytracing_
+   _ray tracing_
 
 ---
 ## Modelo de iluminação local
