@@ -1,9 +1,8 @@
-var pkg = require('./package.json'),
-    fs = require('fs'),
+var fs = require('fs'),
     gulp = require('gulp'),
     gutil = require('gulp-util'),
     plumber = require('gulp-plumber'),
-    rimraf = require('gulp-rimraf'),
+    del = require('del'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
     browserify = require('gulp-browserify'),
@@ -39,15 +38,15 @@ gulp.task('html', ['clean:html'], function() {
 
 gulp.task('md', ['clean:md'], function() {
   var tasks = [];
-  tasks.push(gulp.src(['README.md'])
+  tasks.push(gulp.src('README.md')
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/'))
     .pipe(connect.reload()));
-  tasks.push(gulp.src(['classes/**/*.md'])
+  tasks.push(gulp.src('classes/**/*.md')
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/classes'))
     .pipe(connect.reload()));
-  tasks.push(gulp.src(['assignments/**/*.md'])
+  tasks.push(gulp.src('assignments/**/*.md')
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/assignments'))
     .pipe(connect.reload()));
@@ -81,39 +80,32 @@ gulp.task('attachments', ['clean:attachments'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('clean', function() {
-  return gulp.src('dist')
-    .pipe(rimraf());
+gulp.task('clean', function(cb) {
+  del('dist', cb);
 });
 
-gulp.task('clean:html', function() {
-  return gulp.src('dist/index.html')
-    .pipe(rimraf());
+gulp.task('clean:html', function(cb) {
+  del('dist/index.html', cb);
 });
 
-gulp.task('clean:md', function() {
-  return gulp.src('dist/**/*.md')
-    .pipe(rimraf());
+gulp.task('clean:md', function(cb) {
+  del('dist/**/*.md', cb);
 });
 
-gulp.task('clean:js', function() {
-  return gulp.src('dist/build/build.js')
-    .pipe(rimraf());
+gulp.task('clean:js', function(cb) {
+  del('dist/build/build.js', cb);
 });
 
-gulp.task('clean:css', function() {
-  return gulp.src('dist/build/build.css')
-    .pipe(rimraf());
+gulp.task('clean:css', function(cb) {
+  del('dist/build/build.css', cb);
 });
 
-gulp.task('clean:images', function() {
-  return gulp.src('dist/images')
-    .pipe(rimraf());
+gulp.task('clean:images', function(cb) {
+  del('dist/images', cb);
 });
 
-gulp.task('clean:attachments', function() {
-  return gulp.src('dist/attachments')
-    .pipe(rimraf());
+gulp.task('clean:attachments', function(cb) {
+  del('dist/attachments', cb);
 });
 
 

@@ -9,7 +9,7 @@ var bespoke = require('bespoke'),
     hash = require('bespoke-hash'),
     progress = require('bespoke-progress'),
     state = require('bespoke-state'),
-    markdown = require('bespoke-markdown');
+    markdown = require('bespoke-meta-markdown');
 
 // Bespoke.js
 bespoke.from('article', [
