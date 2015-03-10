@@ -127,7 +127,7 @@
   - Representa uma grandeza geométrica. Entendido como um deslocamento.
   - Notação típica
     - Letras minúsculas
-      - u, v, w
+      - <span class="math">u, v, w</span>
 
 ---
 ## Operações

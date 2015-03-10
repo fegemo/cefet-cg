@@ -129,3 +129,31 @@ $book-height = 250px
 
   &.ffd5d5
     background-color #ffd5d5
+
+
+
+/// Tutorial
+$tutorial-right = 20px
+.tutorial
+  position absolute
+  right $tutorial-right
+  bottom 80px
+  padding .5em .75em
+  border-radius 20px
+  background-color rgba(255, 255, 255, .7)
+  font-family 'Cookie', cursive
+  font-size 2em
+  transition opacity 300ms ease-out
+  opacity 0
+  &.tutorial-on
+    opacity 1
+    animation bounce 1s ease-out 0s infinite alternate
+
+@keyframes bounce
+  from
+    right: $tutorial-right;
+
+  to
+    right: $tutorial-right * 2;
+
+

@@ -19,7 +19,7 @@ var fs = require('fs'),
     isDist = process.argv.indexOf('serve') === -1;
 
 gulp.task('js', ['clean:js'], function() {
-  return gulp.src('scripts/main.js')
+  return gulp.src(['scripts/tutorial.js', 'scripts/main.js'])
     .pipe(isDist ? through() : plumber())
     .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
     .pipe(isDist ? uglify() : through())

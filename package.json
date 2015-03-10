@@ -1,9 +1,9 @@
 {
-  "name": "cefet-class-template",
+  "name": "cefet-cg",
   "version": "0.1.0",
   "homepage": "https://github.com/fegemo/cefet-class-template",
   "bugs": {
-    "url": "https://github.com/fegemo/cefet-class-template/issues"
+    "url": "https://github.com/fegemo/cefet-cg/issues"
   },
   "author": {
     "name": "Flávio Coutinho",
@@ -12,19 +12,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/fegemo/cefet-class-template.git"
+    "url": "git://github.com/fegemo/cefet-cg.git"
   },
   "dependencies": {
     "bespoke": "^1.0.0",
     "bespoke-bullets": "^1.1.0",
     "bespoke-hash": "^1.0.2",
     "bespoke-keys": "^1.0.0",
+    "bespoke-math": "^1.0.1",
+    "bespoke-meta-markdown": "^1.0.0",
     "bespoke-progress": "^1.0.0",
     "bespoke-scale": "^1.0.1",
     "bespoke-state": "^1.0.0",
     "bespoke-theme-fancy": "^0.3.1",
-    "bespoke-touch": "^1.0.0",
-    "bespoke-meta-markdown": "^1.0.0"
+    "bespoke-touch": "^1.0.0"
   },
   "devDependencies": {
     "debowerify": "^1.2.0",

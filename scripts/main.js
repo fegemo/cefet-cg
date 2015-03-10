@@ -9,7 +9,9 @@ var bespoke = require('bespoke'),
     hash = require('bespoke-hash'),
     progress = require('bespoke-progress'),
     state = require('bespoke-state'),
-    markdown = require('bespoke-meta-markdown');
+    math = require('bespoke-math'),
+    markdown = require('bespoke-meta-markdown'),
+    tutorial = require('./tutorial');
 
 // Bespoke.js
 bespoke.from('article', [
@@ -18,8 +20,10 @@ bespoke.from('article', [
   keys(),
   touch(),
   bullets('li, .bullet'),
-  //scale(),
+  scale(),
   hash(),
   progress(),
-  state()
+  math(),
+  state(),
+  tutorial(document.getElementsByClassName('tutorial')[0])
 ]);
