@@ -14,7 +14,7 @@
   ou objetos a partir de um espaço tridimensional (uma cena) em um plano
   bidimensional (uma imagem).
 
-  ![](images/proj-casa-foto.png)
+  ![](../../images/proj-casa-foto.png)
 
 ---
 ## Projeção
@@ -22,14 +22,14 @@
 - De forma geral, trata-se de representar objetos de R<sup>n</sup> em
   R<sup>n-1</sup>
 
-  ![](images/proj-waze.jpg)
+  ![](../../images/proj-waze.jpg)
 
 ---
 ## Relembrando o pipeline gráfico
 
-![](images/pipeline-grafico-fases.png)
+![](../../images/pipeline-grafico-fases.png)
 
-![](images/pipeline-geometria-fases.png)
+![](../../images/pipeline-geometria-fases.png)
 
 ---
 ## O problema da projeção em Computação Gráfica
@@ -43,7 +43,7 @@
 ---
 ## Elementos da projeção
 
-![](images/proj-conceitos.png)
+![](../../images/proj-conceitos.png)
 
 ---
 ## Elementos da projeção
@@ -59,12 +59,12 @@ representada no plano de projeção
 ---
 ## Tipos de projeção
 
-![](images/proj-tipos-principais.png)
+![](../../images/proj-tipos-principais.png)
 
 ---
 ## Outros tipos de projeção
 
-![](images/tipos-projecao.png)
+![](../../images/tipos-projecao.png)
 
 ---
 # Projeção Paralela
@@ -72,7 +72,7 @@ representada no plano de projeção
 ---
 ## Projeção Paralela
 
-- <img src="images/proj-paralela.png" style="float:right;margin-left:10px; width: 250px">
+- <img src="../../images/proj-paralela.png" style="float:right;margin-left:10px; width: 250px">
   Centro de projeção se encontra no infinito
 - Raios de projeção são paralelos entre si
 - Tamanho relativo em cada eixo é preservado
@@ -83,7 +83,7 @@ representada no plano de projeção
 ---
 ## Projeção Paralela, Ortogonal
 
-![](images/proj-orto.png)
+![](../../images/proj-orto.png)
 
 - Projeção ortogonal
   - Ângulo dos raios no plano de projeção = 90º
@@ -91,7 +91,7 @@ representada no plano de projeção
 ---
 ## Projeção Paralela, Isométrica
 
-![](images/proj-isometrica.png)
+![](../../images/proj-isometrica.png)
 
 - A cena é orientada em 45º relativo ao plano de projeção
 
@@ -101,7 +101,7 @@ representada no plano de projeção
 ---
 ## Projeção Perspectiva
 
-![](images/proj-perspectiva.png)
+![](../../images/proj-perspectiva.png)
 
 - A Projeção Perspectiva mapeia os pontos no plano de projeção ao longo dos
   raios de projeção que emanam de um centro de projeção
@@ -121,8 +121,8 @@ representada no plano de projeção
 
 - Um objeto tridimensional é formado por várias faces (triângulos) adjacentes
   que podem estar no mesmo plano ou não
-  ![](images/3d-objects-1.png)
-  ![](images/3d-objects-2.png)
+  ![](../../images/3d-objects-1.png)
+  ![](../../images/3d-objects-2.png)
 
 ---
 ## Exemplo de objetos 3D
@@ -155,18 +155,18 @@ representada no plano de projeção
   objetos tridimensionais
   1. `glutSolidTeapot, glutWireTeapot`
 
-     ![](images/glut-shapes-3.png)
+     ![](../../images/glut-shapes-3.png)
 - [Referência das funções](https://www.opengl.org/resources/libraries/glut/spec3/node80.html)
 
 ---
 ## Formas 3D do GLUT
 
-![](images/glut-shapes.png)
+![](../../images/glut-shapes.png)
 
 ---
 ## Formas 3D do GLUT (cont.)
 
-![](images/glut-shapes-2.png)
+![](../../images/glut-shapes-2.png)
 
 ---
 # Projeção em OpenGL
@@ -174,7 +174,7 @@ representada no plano de projeção
 ---
 ## glOrtho ([referência](http://earth.uni-muenster.de/~joergs/opengl/glOrtho.html))
 
-- <img src="images/gl-ortho.png" style="float: right; margin-left: 10px;">
+- <img src="../../images/gl-ortho.png" style="float: right; margin-left: 10px;">
   Assinatura da função
   ```c
   void glOrtho(double left,
@@ -189,7 +189,7 @@ representada no plano de projeção
 ---
 ## glFrustum ([referência](http://earth.uni-muenster.de/~joergs/opengl/glFrustum.html))
 
-![](images/gl-frustum-diagram.gif)
+![](../../images/gl-frustum-diagram.gif)
 - Assinatura da função
   ```c
   void glFrustum(double left,   double right,
@@ -200,7 +200,7 @@ representada no plano de projeção
 ---
 ## glFrustum (cont.)
 
-- <img src="images/gl-frustum.gif" style="float: right; margin-left: 20px;">
+- <img src="../../images/gl-frustum.gif" style="float: right; margin-left: 20px;">
   A função multiplica a matriz corrente por uma matriz da forma acima
 - A matriz de projeção (independente se `glOrtho` ou `glFrustum`) deve ser
   colocada na **pilha de matrizes de projeção do OpenGL**
@@ -217,7 +217,7 @@ representada no plano de projeção
 - Uma forma mais comum para configurar perspectiva é usando dois parâmetros
   1. Um ângulo para o campo de visão
   1. Razão de aspecto (largura / altura)
-- ![](images/gl-frustum-diagram.gif)
+- ![](../../images/gl-frustum-diagram.gif)
 
 ---
 ## gluPerspective (cont.)
@@ -244,10 +244,10 @@ representada no plano de projeção
 ---
 ## gluPerspective (cont.)
 
-- ![](images/fov1.jpg)
-  ![](images/fov2.jpg)
-  ![](images/fov3.jpg)
-  ![](images/fov4.jpg)
+- ![](../../images/fov1.jpg)
+  ![](../../images/fov2.jpg)
+  ![](../../images/fov3.jpg)
+  ![](../../images/fov4.jpg)
 
 ---
 ## gluPerspective (cont.)
@@ -263,7 +263,7 @@ representada no plano de projeção
 - Além de configurar a projeção que queremos (via `glOrtho, glFrustum, glPerspective`),
   queremos também poder **posicionar** e **mirar** nossa câmera virtual
 
-  ![](images/glulookat.gif)
+  ![](../../images/glulookat.gif)
 
 - É uma transformação de visualização - ou seja, usamos a pilha de matrizes
   `GL_MODELVIEW`

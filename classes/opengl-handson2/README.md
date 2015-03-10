@@ -13,7 +13,7 @@
 ---
 # Primeiro programa (square.c)
 
-![Tela do programa square.c](images/square1.jpg)
+![Tela do programa square.c](../../images/square1.jpg)
 
 ---
 ## square.c
@@ -148,10 +148,10 @@ int main(int argc, char **argv)
 - São os "tijolos" para construirmos objetos complexos
 
 ---
-![](images/primitives.jpg)
+![](../../images/primitives.jpg)
 
 ---
-![](images/primitives2.png)
+![](../../images/primitives2.png)
 
 ---
 ## Do livro vermelho
@@ -258,7 +258,7 @@ nossa cena
 # Convenção de nomes do OpenGL
 
 ---
-![](images/opengl-name-conv.png)
+![](../../images/opengl-name-conv.png)
 
 ---
 # Lista de exercícios 1

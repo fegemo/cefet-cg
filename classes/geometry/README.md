@@ -47,8 +47,8 @@
 - Para gerar a segunda figura à partir da primeira, preciso reescrever as
   coordenadas de cada vértice "na mão"?
 
-![](images/geometry-square-transform1.png)
-![](images/geometry-square-transform2.png)
+![](../../images/geometry-square-transform1.png)
+![](../../images/geometry-square-transform2.png)
 
 - Sim, é possível!
   - Mas dá muito trabalho e programadores são preguiçosos
@@ -58,7 +58,7 @@
 
 - E se quisermos fazer uma animação?
 
-<iframe src="samples/rotate/rotate-anim.htm" width="100%" height="500" frameborder="0"></iframe>
+<iframe src="../../samples/rotate/rotate-anim.htm" width="100%" height="500" frameborder="0"></iframe>
 
 ---
 # Geometria
@@ -127,7 +127,7 @@
   - Representa uma grandeza geométrica. Entendido como um deslocamento.
   - Notação típica
     - Letras minúsculas
-      - u, v, w
+      - <span class="math">u, v, w</span>
 
 ---
 ## Operações
@@ -205,7 +205,7 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
   - Suponha que um vetor num espaço R<sup>n</sup> é expressado como d escalares
     (coordenadas): u = (u<sub>0</sub>, u<sub>1</sub>, ..., <sub>d-1</sub>)
 
-    ![](images/dot-product.png)
+    ![](../../images/dot-product.png)
 
 ---
 ## Conceitos derivados
@@ -213,9 +213,9 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 - Comprimento (norma)
   - Dado pela raiz quadrada da do produto interno do vetor consigo mesmo
 
-    ![](images/norm.png)
+    ![](../../images/norm.png)
 - Normalização
-  - <img src="images/normalization.png" style="float: right;">
+  - <img src="../../images/normalization.png" style="float: right;">
     Um vetor não nulo normalizado corresponde a um vetor na mesma direção do
     vetor original, porém com comprimento unitário
 
@@ -224,7 +224,7 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 ## Conceitos derivados (cont.)
 
 - Distância entre dois pontos
-  - <img src="images/distance.png" style="float: right">
+  - <img src="../../images/distance.png" style="float: right">
     Corresponde ao comprimento do vetor diferença
 
 
@@ -232,7 +232,7 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
   - O ângulo entre dois vetores corersponde ao arco-cosseno do produto interno
     dos dois vetores normalizados
 
-    ![](images/angle.png)
+    ![](../../images/angle.png)
 
 ---
 ## Conceitos derivados (cont.)
@@ -243,7 +243,7 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
   - Dados u e v, pode-se representar u como sendo a soma de dois vetores
     u<sub>1</sub> e u<sub>2</sub> tais que u<sub>1</sub> é paralelo a v e
     u<sub>2</sub> é perpendicular
-    ![](images/ortho-projection.png)
+    ![](../../images/ortho-projection.png)
   - u<sub>1</sub> é chamado a projeção ortogonal de u em v
 
 ---
@@ -261,8 +261,8 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 ---
 ## Representação de vetores (cont.)
 
-![](images/ortho-basis.png)
-![](images/ortho-vectors.png)
+![](../../images/ortho-basis.png)
+![](../../images/ortho-vectors.png)
 
 - Dada uma base ortonormal (ortogonal, unitária) e o espaço R³
   - Qualquer vetor pode ser expresso como a combinação linear:
@@ -294,7 +294,7 @@ independentes**
 ---
 ## Exemplo
 
-![](images/sample-frame.png)
+![](../../images/sample-frame.png)
 
 ---
 ## Exemplo (cont.)

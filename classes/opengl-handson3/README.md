@@ -13,7 +13,7 @@
 ---
 ## Exercício 1 da lista
 
-![](images/display-lists.png)
+![](../../images/display-lists.png)
 
 - Como desenhar o polígono E as linhas ao mesmo tempo?
 ---
@@ -131,7 +131,7 @@
 ## Atividade
 
 - Desenhar um anel vermelho
-  ![](images/anel-vermelho.png)
+  ![](../../images/anel-vermelho.png)
 
 ---
 ## **Três** formas
@@ -185,7 +185,7 @@ void drawDisc(float R, float X, float Y, float Z) {
 - Alterar o código para usar o _depth buffer_
 - O segundo anel é desenhado de forma correta independente da ordem de desenho
 
-  ![](images/aneis-vermelhos.png)
+  ![](../../images/aneis-vermelhos.png)
 
 ---
 # Trabalho Prático 1 \o/
@@ -195,7 +195,7 @@ _A wild TP1 appears..._
 ---
 ## TP1 está a solta
 
-<img alt="Tela do jogo Galaxian original" src="images/galaxian-original.png"
+<img alt="Tela do jogo Galaxian original" src="../../images/galaxian-original.png"
   style="float: right; width: 280px; margin: 0 0 5px 20px">
 _"[...] nele, o jogador pilota uma nave que fica na parte de baixo da tela e,
 com ela, se defende de um ataque alienígena. Os alienígenas realizam o seu

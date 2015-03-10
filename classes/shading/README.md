@@ -34,12 +34,12 @@
 ---
 # De volta ao _pipeline_ gráfico
 
-![](images/pipeline-grafico-fases.png)
+![](../../images/pipeline-grafico-fases.png)
 
 ---
 ## Fase do **Rasterizador**
 
-![](images/pipeline-rasterizador-fases.png)
+![](../../images/pipeline-rasterizador-fases.png)
 
 - Sombreamento de Pixels
   - Para cada pixel que possui um fragmento, devemos obter sua cor
@@ -77,7 +77,7 @@
 ---
 ## _Flat shading_
 
-![](images/shading-flat-exemplo.png)
+![](../../images/shading-flat-exemplo.png)
 
 - Usa (apenas) um vetor normal para cada polígono
   - Portanto, cada polígono tem apenas uma cor
@@ -88,7 +88,7 @@
 ---
 ## _Gouraud shading_
 
-![](images/shading-gouraud-exemplo.png)
+![](../../images/shading-gouraud-exemplo.png)
 
 - Usa a cor calculada **em cada vértice** pelo modelo de iluminação
 - Para colorir o polígono, interpola a cor dos vértices em seu interior
@@ -100,12 +100,12 @@
 - O vetor normal de um vértice precisa ser fornecido como a média das normais
   das faces adjacentes ao vértice
 
-![](images/normal-media-faces.png)
+![](../../images/normal-media-faces.png)
 
 ---
 ## Exemplo de _flat_ e _Gouraud shading_
 
-![](images/shading-flat-exemplo2.png)
+![](../../images/shading-flat-exemplo2.png)
 
 ---
 ## Limitações do _Gouraud shading_
@@ -113,13 +113,13 @@
 - Realces da luz especular (_highlights_) sofrem por baixa amostragem de
   vértices
 
-  ![](images/shading-gouraud-low-anim.gif)
-  ![](images/shading-gouraud-high.gif)
+  ![](../../images/shading-gouraud-low-anim.gif)
+  ![](../../images/shading-gouraud-high.gif)
 
 ---
 ## _Phong shading_
 
-![](images/shading-phong-exemplo.jpg)
+![](../../images/shading-phong-exemplo.jpg)
 
 - Não confundir com o **modelo de iluminação de _Phong_**
 
@@ -136,41 +136,41 @@
 
 - Em _Gouraud_, temos uma amostragem de vértices muito menor
 
-  ![](images/highlight-gouraud.png)
+  ![](../../images/highlight-gouraud.png)
 
 ---
 ## Consertando o problema dos _highlights_ de Gouraud (cont.)
 
 - Em _Phong_, a amostragem é bem maior
 
-  ![](images/highlight-phong.png)
+  ![](../../images/highlight-phong.png)
 
 ---
 ## Comparação entre os três modelos de **sombreamento**
 
-![](images/shading-comparacao-normais.png)
+![](../../images/shading-comparacao-normais.png)
 
-![](images/shading-comparacao-exemplo.png)
+![](../../images/shading-comparacao-exemplo.png)
 
 ---
 ## Comparação: iluminação desligada
 
-![](images/shading-cena-exemplo-sem-luz.png)
+![](../../images/shading-cena-exemplo-sem-luz.png)
 
 ---
 ## Comparação: iluminação ligada, **_flat shading_**
 
-![](images/shading-cena-exemplo-flat.png)
+![](../../images/shading-cena-exemplo-flat.png)
 
 ---
 ## Comparação: iluminação ligada, **_Gouraud shading_**
 
-![](images/shading-cena-exemplo-gouraud.png)
+![](../../images/shading-cena-exemplo-gouraud.png)
 
 ---
 ## Comparação: iluminação ligada, **_Phong shading_**
 
-![](images/shading-cena-exemplo-phong.png)
+![](../../images/shading-cena-exemplo-phong.png)
 
 ---
 # _Fog_
@@ -178,12 +178,12 @@
 ---
 ## _Fog_
 
-![](images/fog.jpg)
+![](../../images/fog.jpg)
 
 ---
 ## Sem _fog, com _fog_
 
-![](images/fog-volumetric.jpg)
+![](../../images/fog-volumetric.jpg)
 
 ---
 ## _Fog_ (cont.)

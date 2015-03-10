@@ -11,7 +11,7 @@
 ---
 # Motivação
 
-![](images/obj-vaca.png)
+![](../../images/obj-vaca.png)
 
 ---
 ## Histórico
@@ -30,14 +30,15 @@
   - Implícita ou explicitamente contém informações do fechamento e
     conectividade dos objetos
   - Garante a realização física
-  - Sistemas <abbr title="Computer Aided Design">CAD</abbr>-<abbr title="Computer Aided Manufacture">CAM</abbr> utilizados pela indústria
+  - Sistemas <abbr title="Computer Aided Design">CAD</abbr>-<abbr title="Computer Aided Manufacture">CAM</abbr> 
+    utilizados pela indústria
 
 ---
 ## Paradigmas de Abstração
 
 - A necessidade de paradigmas (Ari Requicha)
 
-  ![](images/paradigma-universos.png)
+  ![](../../images/paradigma-universos.png)
 - Paradigma dos universos
   - Físico F
   - Matemático M
@@ -59,7 +60,7 @@
 ---
 ## Do mundo físico (real) ao mundo matemático
 
-![](images/paradigmas-real-matematico.png)
+![](../../images/paradigmas-real-matematico.png)
 
 ---
 ## Problemas da Área
@@ -84,7 +85,7 @@
 ---
 ## Geometria pode ser complicada
 
-![](images/geometria-complicada.png)
+![](../../images/geometria-complicada.png)
 
 ---
 ## Descrição dos sólidos
@@ -107,7 +108,7 @@
   - compacta (fechada e limitada)
 - Superfícies são descritas parametricamente por um mapeamento chamado de parametrização:
 
-  ![](images/eq-parametrizacao-superficies.png)
+  ![](../../images/eq-parametrizacao-superficies.png)
 
 ---
 ## Parametrização
@@ -115,7 +116,7 @@
 - Estabelece um sistema de coordenadas sobre a superfície herdado de um
   sistema de coordenadas no plano
 
-  ![](images/eq-curva-aproximada.png)
+  ![](../../images/eq-curva-aproximada.png)
 - Em geral, não é possível cobrir (descrever) toda a superfície com uma
   única parametrização.
   - Usam-se várias parametrizações que formam um Atlas
@@ -123,12 +124,12 @@
 ---
 ## Parametrização de uma Superfície
 
-![](images/aprox-superficies.png)
+![](../../images/aprox-superficies.png)
 
 ---
 ## Parametrizações Válidas
 
-- <img src="images/parametrizacoes-validas.png" style="float: right; margin-left: 20px">
+- <img src="../../images/parametrizacoes-validas.png" style="float: right; margin-left: 20px">
   Sólido deve estar bem definido
   - Superfície sem autointerseção
   - Vetor normal não se anula sobre a superfície
@@ -139,35 +140,35 @@
 
 - Parametrização da esfera de raio 1, centrada na origem
 
-  ![](images/parametrizacao-esfera.png)
+  ![](../../images/parametrizacao-esfera.png)
 - Se &phi; = &pi; ou &phi; = 0 a normal não está definida nos pólos por esta
   parametrização
 
 ---
 ## Domínio do Exemplo Anterior
 
-- <img src="images/parametrizacao-esfera2.png" style="float: right; margin-left: 20px">
+- <img src="../../images/parametrizacao-esfera2.png" style="float: right; margin-left: 20px">
   Toda parametrização da esfera deixa pelo menos um ponto de fora
 - É impossível mapear continuamente a esfera no plano sem retirar pelo menos
   um ponto
 
-![](images/parametrizacao-esfera3.png)
+![](../../images/parametrizacao-esfera3.png)
 
 ---
 ## Parametrização do Círculo
 
-- <img src="images/parametrizacao-circulo.png" style="float: right; margin-left: 20px">
+- <img src="../../images/parametrizacao-circulo.png" style="float: right; margin-left: 20px">
   Forma implícita
   - y = tx + t
   - x<sup>2</sup> + y<sup>2</sup> = 1
 - Resolvendo esse sistema, chega-se a uma parametrização alternativa do círculo
 
-![](images/parametrizacao-circulo2.png)
+![](../../images/parametrizacao-circulo2.png)
 
 ---
 ## Representação Linear por Partes
 
-- <img src="images/esfera-triangulada.png" style="float: right; margin-left: 20px">
+- <img src="../../images/esfera-triangulada.png" style="float: right; margin-left: 20px">
   Superfície parametrizada com geometria complexa pode ser aproximada por uma
   superfície linear por partes
 - Pode-se particionar o domínio da parametrização por um conjunto de polígonos
@@ -188,12 +189,12 @@
 ---
 ## Decomposição Poligonal
 
-![](images/malhas-poligonais.png)
+![](../../images/malhas-poligonais.png)
 
 ---
 ## Operações sobre Malhas Poligonais
 
-- <img src="images/malha-arestas.png" style="float: right; margin-left: 20px">
+- <img src="../../images/malha-arestas.png" style="float: right; margin-left: 20px">
   Desenhar a malha
 - Achar todas as arestas que incidem em um vértice
 - Achar as faces que incidem numa aresta ou vértice
@@ -219,7 +220,7 @@
 - Cada face armazena explicitamente a lista ordenada das coordenadas dos seus
   vértices:
 
-  ![](images/malha-cod-explicita.png)
+  ![](../../images/malha-cod-explicita.png)
 - Muita redundância de informação
 - Consultas são complicadas
   - Obriga a execução de algoritmos geométricos para determinar adjacências
@@ -237,7 +238,7 @@
 ---
 ## Exemplo de **Ponteiros para Lista de Vértices**
 
-![](images/malha-ponteiro-lista-vertices.png)
+![](../../images/malha-ponteiro-lista-vertices.png)
 
 - V = { V<sub>1</sub> = (x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>), V<sub>2</sub> = (x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>), V<sub>3</sub> = (x<sub>3</sub>, y<sub>3</sub>, z<sub>3</sub>), V<sub>4</sub> = (x<sub>4</sub>, y<sub>4</sub>, z<sub>4</sub>) }
 - P<sub>1</sub> = { V<sub>1</sub>, V<sub>2</sub>, V<sub>4</sub> }
@@ -256,7 +257,7 @@
 ## Exemplo de **Ponteiros para Lista de Arestas**
 
 - V = { V<sub>1</sub> = (x<sub>1</sub>, y<sub>1</sub>, z<sub>1</sub>), V<sub>2</sub> = (x<sub>2</sub>, y<sub>2</sub>, z<sub>2</sub>), V<sub>3</sub> = (x<sub>3</sub>, y<sub>3</sub>, z<sub>3</sub>), V<sub>4</sub> = (x<sub>4</sub>, y<sub>4</sub>, z<sub>4</sub>) }
-- <img src="images/malha-ponteiro-lista-vertices.png" style="float: right; margin-left: 20px; cursor: crosshair">
+- <img src="../../images/malha-ponteiro-lista-vertices.png" style="float: right; margin-left: 20px; cursor: crosshair">
   E<sub>1</sub> = { V<sub>1</sub>, V<sub>2</sub>, P<sub>1</sub>, &lambda; }
 - E<sub>2</sub> = { V<sub>2</sub>, V<sub>3</sub>, P<sub>2</sub>, &lambda; }
 - E<sub>3</sub> = { V<sub>3</sub>, V<sub>4</sub>, P<sub>2</sub>, &lambda; }
@@ -268,7 +269,7 @@
 ---
 ## _Winged-Edge_ (Aresta Alada)
 
-![](images/malha-aresta-alada.png)
+![](../../images/malha-aresta-alada.png)
 
 ---
 ## _Winged-Edge_ (cont.)
@@ -285,12 +286,12 @@
 ---
 ## Exemplo
 
-[![](images/winged-edge-example.jpg)](images/winged-edge-example-big.jpg)
+[![](../../images/winged-edge-example.jpg)](../../images/winged-edge-example-big.jpg)
 
 ---
 ## 9 tipos de Relacionamentos de Adjacência
 
-![](images/malha-aresta-alada-2.png)
+![](../../images/malha-aresta-alada-2.png)
 
 ---
 # Representação <abbr title="Constructive Solid Geometry">CSG</abbr>
@@ -304,12 +305,12 @@
 - Possibilita uma codificação bastante simples e concisa
 - Requer mais computação para renderizar do que _b-rep_
 
-  ![](images/csg-exemplo.png)
+  ![](../../images/csg-exemplo.png)
 
 ---
 ## Codificação do CSG: Árvore
 
-- <img src="images/csg-exemplo2.png" style="float:right;margin-left:20px;">
+- <img src="../../images/csg-exemplo2.png" style="float:right;margin-left:20px;">
   Um modelo CSG é codificado por uma árvore
   - Os **nós internos** contêm **operações** de conjunto ou transformações
     lineares afim
@@ -319,12 +320,12 @@
 ---
 ## Exemplo: SolidWorks
 
-![](images/csg-solidworks.png)
+![](../../images/csg-solidworks.png)
 
 ---
 ## Exemplo _real-life_: o jogo Spore
 
-![](images/spore-creature-creator.jpg)
+![](../../images/spore-creature-creator.jpg)
 
 ---
 # Representações por Células
@@ -344,26 +345,26 @@
 ---
 ## **Quadtree** (2D), Octree (3D)
 
-![](images/octree.png)
+![](../../images/octree.png)
 
 ---
 ## Grids, Octrees
 
 - São úteis para a visualização de objetos que podem ser particionados:
-  - <img src="images/octree-medical.png" style="float:right;margin-left:20px;">
+  - <img src="../../images/octree-medical.png" style="float:right;margin-left:20px;">
     Imagens médicas
-  - <img src="images/volumetric-cup.png" style="float:right;margin-left:20px;">
+  - <img src="../../images/volumetric-cup.png" style="float:right;margin-left:20px;">
     Imagens obtidas por meio de sensores de densidade
 
 ---
 ## Voxels
 
-![](images/octree-minecraft.png)
+![](../../images/octree-minecraft.png)
 
 ---
 ## Exemplos
 
-![](images/octree-dragon.png)
+![](../../images/octree-dragon.png)
 
 ---
 # Conversões entre Representações
@@ -384,7 +385,7 @@
 ---
 ## Fractais
 
-![](images/benoit-mandelbrot.png)
+![](../../images/benoit-mandelbrot.png)
 
 - Benoit Mandelbrot:
   <blockquote>“Clouds are not spheres, mountains are 	not cones, coastlines are not circles and 	bark is not smooth, nor does lightning 	travel in a straight line.”</blockquote>
@@ -392,4 +393,4 @@
 ---
 ## Fractais... mais nos próximos capítulos
 
-![](images/fractal-samambaia.png)
+![](../../images/fractal-samambaia.png)

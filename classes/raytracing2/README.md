@@ -36,7 +36,7 @@ perguntas:
   1. Se raio atingiu objeto, retorne a cor do objeto
   1. Se raio atingiu objeto, considerar as fontes de luz e a cor do objeto:
 
-    ![](images/raytracer-shading-lights.png)
+    ![](../../images/raytracer-shading-lights.png)
 
 ---
 # Como colorir um pixel?
@@ -58,17 +58,17 @@ perguntas:
 - Chamado de NPR: _non-photorrealistic rendering_
 - Exemplo: Choudhury e Parker, 08
 
-  ![](images/raytracing-npr.png)
+  ![](../../images/raytracing-npr.png)
 
 ---
 ## Objetivo não-realista (Zelda Wind Waker)
 
-![](images/zelda-ww-realtime.png)
+![](../../images/zelda-ww-realtime.png)
 
 ---
 ## Objetivo não-realista (Zelda Wind Waker)''
 
-![](images/zelda-ww-raytracing.png)
+![](../../images/zelda-ww-raytracing.png)
 
 ---
 ## Objetivo realista
@@ -88,7 +88,7 @@ perguntas:
 ---
 ## Modelo de Phong
 
-![](images/phong-components.png)
+![](../../images/phong-components.png)
 - A cor é dividida em três componentes:
   1. Cor ambiente (cor do objeto não iluminado)
   1. Cor difusa (cor do objeto iluminado)
@@ -97,7 +97,7 @@ perguntas:
 ---
 ## Geometria
 
-![](images/ray-tracer-phong-geometry.png)
+![](../../images/ray-tracer-phong-geometry.png)
 
 
 ---
@@ -133,7 +133,7 @@ perguntas:
 ---
 ## Equação de iluminação
 
-![](images/raytracer-phong-equation.png)
+![](../../images/raytracer-phong-equation.png)
 
 ---
 ## Calculando os vetores
@@ -152,7 +152,7 @@ perguntas:
 ---
 ## Reflexão lambertiana
 
-![](images/lambertian-reflection.png)
+![](../../images/lambertian-reflection.png)
 
 - Reflexão:
   - O ângulo de incidência do raio é igual ao ângulo de reflexão
@@ -160,7 +160,7 @@ perguntas:
 ---
 ## Calculando vetor de reflexão
 
-![](images/lambertian-reflection-calculated.png)
+![](../../images/lambertian-reflection-calculated.png)
 
 - `S` é o vetor que sai do ponto de interseção até a fonte de luz
 - `r` é o raio refletido (que queremos encontrar)
@@ -170,7 +170,7 @@ perguntas:
 ---
 ## Calculando vetor de reflexão (cont.)
 
-![](images/lambertian-reflection-calculated.png)
+![](../../images/lambertian-reflection-calculated.png)
 
 - Podemos usar produto interno para calcular a projeção de um vetor no outro
 - Assim, encontramos `a` e o somamos duas vezes

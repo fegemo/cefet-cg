@@ -26,14 +26,14 @@
 1. Divisão de trabalho em etapas
 1. As etapas são executadas em paralelo
 1. Exemplo: pipeline da exploração de diamantes
-  ![](images/pipeline-diamante.png)
+  ![](../../images/pipeline-diamante.png)
   - A velocidade com que se produz diamantes é dada pela velocidade da etapa
     mais lenta
 
 ---
 ## O _pipeline_ gráfico
 
-![](images/pipeline-grafico-fases.png)
+![](../../images/pipeline-grafico-fases.png)
 
 - É o processo de transformação de um modelo de descrição de objetos (vértices)
   em uma imagem digital (imagem renderizada na tela)
@@ -80,7 +80,7 @@
 - Responsável pela grande maioria das operações em polígonos e vértices
 - Subdividido em:
 
-  ![](images/pipeline-geometria-fases.png)
+  ![](../../images/pipeline-geometria-fases.png)
   1. Transformação de modelo e visualização
   1. Sombreamento de vértices
   1. Projeção
@@ -102,7 +102,7 @@
 ---
 ## Geometria &gt;&gt; Transf. de Modelo e visualização
 
-![](images/view-transform.png)
+![](../../images/view-transform.png)
 
 - A câmera e os objetos da cena sofrem uma **tranformação de vizualização**
   - Espaço da câmera ou do olho
@@ -118,7 +118,7 @@
 ---
 ## Geometria &gt;&gt; Sombreamento de vértices
 
-- <img src="images/cena-3d.png" style="float: right; margin-left: 10px; width: 200px;">
+- <img src="../../images/cena-3d.png" style="float: right; margin-left: 10px; width: 200px;">
   Para produzir uma cena realística, precisamos usar um conceito de iluminação
 - Com os vértices em suas posições em um único sistema de coordenadas, podemos
   agora definir a contribuição das fontes de luz de cada vértice
@@ -140,7 +140,7 @@
 ---
 ## Geometria &gt;&gt; Projeção
 
-![](images/proj-tipos.png)
+![](../../images/proj-tipos.png)
 
 ---
 ## Geometria &gt;&gt; Projeção
@@ -171,7 +171,7 @@
 ---
 ## Geometria &gt;&gt; Recorte
 
-![](images/pipeline-recorte.png)
+![](../../images/pipeline-recorte.png)
 
 - Como toda nossa cena está representada no cubo de visualização (da etapa de
   projeção), para fazer o recorte calculamos a intersecção das primitivas com
@@ -182,7 +182,7 @@
 ---
 ## Geometria &gt;&gt; Mapeamento de tela
 
-![](images/pipeline-tela.png)
+![](../../images/pipeline-tela.png)
 
 - As coordenadas das primitivas devem ser agora mapeadas para coordenadas da
   tela (ou da janela)
@@ -195,7 +195,7 @@
 ---
 ## Estágio de **Rasterização**
 
-![](images/pipeline-rasterizador-fases.png)
+![](../../images/pipeline-rasterizador-fases.png)
 
 - Recebemos vértices tranformados e projetados e suas informações de cor e
   textura provenientes do estágio de geometria
@@ -226,7 +226,7 @@
   - Sombreamento de _Goraud_
   - Texturização etc.
 
-    ![](images/texturizacao.png)
+    ![](../../images/texturizacao.png)
 
 ---
 ## Rasterização &gt;&gt; Fusão

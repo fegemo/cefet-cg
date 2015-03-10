@@ -18,8 +18,8 @@
 - Da geometria Euclidiana, permite achar um vetor perpendicular a outros dois
 - Útil na construção de sistemas de coordenadas
 
-  ![](images/prod-vetorial.png)
-  ![](images/prod-vetorial-grafico.png)
+  ![](../../images/prod-vetorial.png)
+  ![](../../images/prod-vetorial-grafico.png)
 
 ---
 ## Produto Vetorial (cont.)
@@ -41,7 +41,7 @@
 - Orientação de 3 pontos em 2D
   - O percurso P1 , P2 , P3  é feito no sentido dos ponteiros do relógio, no
     sentido contrário ou são colineares
-- ![](images/orientacao.png)
+- ![](../../images/orientacao.png)
 
 ---
 ## Orientação
@@ -50,7 +50,7 @@
   - O percurso P1 , P2 , P3 , P4  está definido segundo a regra da mão direita,
     mão esquerda ou são coplanares
 
-    ![](images/orientacao3d.png)
+    ![](../../images/orientacao3d.png)
 
 ---
 ## Computando a orientação
@@ -59,7 +59,7 @@
   do determinante da matriz** cujas colunas são as coordenadas homogêneas
   dos pontos **com o 1 vindo primeiro**
 
-  ![](images/orientacao-comp.png)
+  ![](../../images/orientacao-comp.png)
 
 ---
 # Mudança de Sistema de Coordenadas
@@ -72,10 +72,10 @@
   os vetores X e Y. Então,
   - Um ponto P é dado por coordenadas xP e yP tais que
 
-    ![](images/coord-eq1.png)
+    ![](../../images/coord-eq1.png)
   - Um vetor V é dado por coordenadas xV e yV tais que
 
-    ![](images/coord-eq2.png)
+    ![](../../images/coord-eq2.png)
 
 ---
 ## Mudança de Sistema
@@ -83,7 +83,7 @@
 - Se estabelecemos um outro sistema (ex.: Q/T/U), como computar as novas
   coordenadas dadas as antigas?
 
-  ![](images/coord-grafico.png)
+  ![](../../images/coord-grafico.png)
 
 ---
 ## Mudança de Sistema (cont.)
@@ -91,27 +91,27 @@
 - Como computar as coordenadas de um ponto P = (xP, yP) em O/X/Y dadas as
   coordenadas de P em Q/T/U, isto é, (tP, uP)?
 
-  ![](images/coord-eq3.png)
+  ![](../../images/coord-eq3.png)
 - Logo,
 
-  ![](images/coord-eq4.png)
+  ![](../../images/coord-eq4.png)
 
 ---
 ## Mudança de Sistema (cont.)
 
 - Matricialmente:
 
-  ![](images/coord-eq5.png)
+  ![](../../images/coord-eq5.png)
 - Usando coordenadas homogêneas:
 
-  ![](images/coord-eq6.png)
+  ![](../../images/coord-eq6.png)
 
 ---
 ## Mudança de Sistema (cont.)
 
 - Para resolver o problema inverso:
 
-  ![](images/coord-eq7.png)
+  ![](../../images/coord-eq7.png)
 
 
 ---

@@ -36,7 +36,7 @@
 ---
 ## Texturas
 
-![](images/textura-2d-esfera.png)
+![](../../images/textura-2d-esfera.png)
 
 - Tipicamente definida por uma imagem carregada de um arquivo
 - Podemos "colar" uma imagem em um objeto
@@ -51,9 +51,9 @@
   - Apenas uma escala de cor
   - Exemplos:
     1. Um degradê horizontal
-       ![](images/textura-1d1.png)
+       ![](../../images/textura-1d1.png)
     1. Um código de barras
-       ![](images/textura-1d2.png)
+       ![](../../images/textura-1d2.png)
 - Pode ser representado como um array de valores RGB
 - Contudo, é mais elegante considerar que uma textura é uma função que mapeia
   um ponto `t` no espaço da textura a um valor RGB
@@ -62,12 +62,12 @@
 ---
 ## Textura em 1D - Exemplo sem textura
 
-![](images/textura-triangulo-gouraud.png)
+![](../../images/textura-triangulo-gouraud.png)
 
 ---
 ## Textura em 1D - Exemplo usando textura 1D
 
-![](images/textura-triangulo-textura1d.png)
+![](../../images/textura-triangulo-textura1d.png)
 
 ---
 ## Textura 1D no OpenGL
@@ -112,14 +112,14 @@
 ---
 ## Textura **2D**
 
-![](images/textura-2d.png)
+![](../../images/textura-2d.png)
 
 - Exatamente como 1D, porém o espaço da textura é T(s,t) em vez de T(t)
 
 ---
 ## Textura 2D (cont.)
 
-![](images/texture-space.png)
+![](../../images/texture-space.png)
 
 - Tipicamente, representamos qualquer textura 2D no espaço bidimensional com
   0 &le; s, t &le; 1
@@ -130,7 +130,7 @@
 - Quando mapeamos uma textura 2D em um objeto 3D, precisamos, primeiro,
   parametrizar o objeto 3D em 2D, para então fazer o mapeamento
 
-  ![](images/textura-parametrizacao-esfera.png)
+  ![](../../images/textura-parametrizacao-esfera.png)
 - Devemos associar cada ponto da superfície do objeto com duas coordenadas
   `(u,v)` no **espaço da superfície**
 
@@ -150,17 +150,17 @@
 ---
 ## Parametrização da Esfera
 
-![](images/textura-parametrizacao-esfera-formula.png)
+![](../../images/textura-parametrizacao-esfera-formula.png)
 
 ---
 ## Parametrização do Cilindro
 
-![](images/textura-parametrizacao-cilindro-formula.png)
+![](../../images/textura-parametrizacao-cilindro-formula.png)
 
 ---
 ## Parametrização de Objetos Genéricos
 
-- <img src="images/textura-parametrizacao-objetos-genericos.png" style="float:right;margin-left:20px;">
+- <img src="../../images/textura-parametrizacao-objetos-genericos.png" style="float:right;margin-left:20px;">
   O que fazer quando o objeto não comporta uma parametrização natural?
 - Fazemos o mapeamento em 2 estágios:
   1. Mapear textura sobre uma superfície simples como cilindro, esfera, etc
@@ -174,22 +174,22 @@
 ---
 ## Exemplos de parametrização **cúbica**
 
-![](images/textura-para-generica-cubica.png)
+![](../../images/textura-para-generica-cubica.png)
 
 ---
 ## Exemplos de parametrização **cilíndrica**
 
-![](images/textura-para-generica-cilindrica.png)
+![](../../images/textura-para-generica-cilindrica.png)
 
 ---
 ## Exemplos de parametrização **esférica**
 
-![](images/textura-para-generica-esferica.png)
+![](../../images/textura-para-generica-esferica.png)
 
 ---
 ## Exemplo na vida real
 
-![](images/texture-projections.png)
+![](../../images/texture-projections.png)
 
 - Tipicamente, o mapeamento da textura é feito durante a modelagem dos objetos
   (e.g., no blender) e armazenado no arquivo do objeto
@@ -197,7 +197,7 @@
 ---
 ## Exemplo na vida real (cont.)
 
-![](images/texture-unwrapped.png)
+![](../../images/texture-unwrapped.png)
 
 - Um programa de modelagem tipicamente "desembrulha" a malha do objeto para
   auxiliar o artista a criar a imagem da textura
@@ -267,12 +267,12 @@
 ---
 ## Filtragem
 
-![](images/filtragem-textura.png)
+![](../../images/filtragem-textura.png)
 
 ---
 ## _Mipmaps_
 
-![](images/mipmaps.png)
+![](../../images/mipmaps.png)
 
 ---
 ## _Mipmaps_
@@ -296,7 +296,7 @@
   glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
   ```
 
-  ![](images/texturas-modo-repeticao.png)
+  ![](../../images/texturas-modo-repeticao.png)
 
 ---
 ## Modos de Aplicação de Textura
@@ -323,7 +323,7 @@
   - Chamamos isso de **textura procedural**
 - Exemplo:
 
-  ![](images/textura-xadrez-redbook.png)
+  ![](../../images/textura-xadrez-redbook.png)
 
 ---
 ## Exemplo de textura procedural (livro vermelho)
@@ -353,7 +353,7 @@ void makeCheckImage()
 ---
 ## Outras propriedades mapeáveis
 
-- <img src="images/texturas-bump-map.jpg" style="width: 250px; float:right; margin-left: 10px;">
+- <img src="../../images/texturas-bump-map.jpg" style="width: 250px; float:right; margin-left: 10px;">
   Quais parâmetros ou propriedades pode-se reproduzir a partir de texturas:
   - Cor (coeficientes de reflexão difusa)
   - Coeficientes de reflexão especular e difusa

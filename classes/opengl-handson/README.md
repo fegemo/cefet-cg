@@ -11,7 +11,7 @@
 ---
 # Primeiro programa (square.c)
 
-![Tela do programa square.c](images/square1.jpg)
+![Tela do programa square.c](../../images/square1.jpg)
 
 ---
 ## square.c
@@ -133,8 +133,8 @@ glEnd();
 ---
 ## Possíveis sistemas de coordenadas
 
-![Sistemas de coordenadas 1](images/sist-coord1.jpg)
-![Sistemas de coordenadas 2](images/sist-coord2.jpg)
+![Sistemas de coordenadas 1](../../images/sist-coord1.jpg)
+![Sistemas de coordenadas 2](../../images/sist-coord2.jpg)
 
 ---
 # Projeção Ortogonal, Caixa de Visualização e **Coordenadas do Mundo**
@@ -157,7 +157,7 @@ glEnd();
 ---
 ## Projeção Ortogonal (cont.)
 
-![Exemplo de projeção ortogonal](images/proj-orto.JPG)
+![Exemplo de projeção ortogonal](../../images/proj-orto.JPG)
 
 ---
 ## glOrtho
@@ -173,7 +173,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## glOrtho (cont.)
 
-![](images/glortho.jpg)
+![](../../images/glortho.jpg)
 
 ---
 ## glOrtho (cont.)
@@ -187,7 +187,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## A Caixa de Visualização do square.c
 
-![](images/glortho-square.jpg)
+![](../../images/glortho-square.jpg)
 
 ---
 ## Passos para renderização
@@ -202,7 +202,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## Passos para renderização (cont.)
 
-![](images/glortho-render-steps.jpg)
+![](../../images/glortho-render-steps.jpg)
 
 ---
 ## Sistema de **coordenadas global**
@@ -228,7 +228,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## Resultado do experimento
 
-![](images/coord-system-change.jpg)
+![](../../images/coord-system-change.jpg)
 
 ---
 ## Mais experimentos
@@ -277,8 +277,8 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## **Mapeamento** entre os dois espaços de coordenadas
 
-- ![](images/viewport1.jpg)
-- ![](images/viewport2.gif)
+- ![](../../images/viewport1.jpg)
+- ![](../../images/viewport2.gif)
 
 ---
 ## Experimento
@@ -318,7 +318,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## Triângulo recortado
 
-![](images/clipped-triangle.jpg)
+![](../../images/clipped-triangle.jpg)
 
 ---
 # Referências

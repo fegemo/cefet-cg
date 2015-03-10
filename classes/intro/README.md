@@ -32,7 +32,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Interação com outras áreas
 
-![Interação da Computação Gráfica com outras áreas](images/interacao-areas.png)
+![Interação da Computação Gráfica com outras áreas](../../images/interacao-areas.png)
 
 ---
 ## Foco deste curso
@@ -61,7 +61,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 
 - Interfaces baseadas em texto (~1980)
 - Interface WIMP: Windows, Icons, Menus and Pointers
-  - ![Tela do Apple Lisa - interface WIMP](images/wimp.png)
+  - ![Tela do Apple Lisa - interface WIMP](../../images/wimp.png)
 
 ---
 ## Dispositivos Gráficos
@@ -77,7 +77,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## _Cathode Ray Tube_ (CRT)
 
-![Diagrama de funcionamento de um tubo de raio catódico](images/crt.png)
+![Diagrama de funcionamento de um tubo de raio catódico](../../images/crt.png)
 
 - Tubo de raio catódico
 - Baixo custo de produção
@@ -101,12 +101,12 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Modelo **Simples**
 
-![Diagrama da arquitetura de sistema gráfico simples](images/raster-architecture.png)
+![Diagrama da arquitetura de sistema gráfico simples](../../images/raster-architecture.png)
 
 ---
 ## Modelo **Moderno**
 
-![Diagrama da arquitetura de sistema gráfico moderno](images/raster-architecture-modern.png)
+![Diagrama da arquitetura de sistema gráfico moderno](../../images/raster-architecture-modern.png)
 
 ---
 # Representação de Imagens
@@ -126,17 +126,17 @@ Imagens podem ser representadas em duas formas principais:
 ---
 ## Imagem vetorial
 
-![Exemplo de imagem vetorial](images/vector-image.svg)
+![Exemplo de imagem vetorial](../../images/vector-image.svg)
 
 ---
 ## Imagem raster
 
-![Imagem raster](images/raster.jpg)
+![Imagem raster](../../images/raster.jpg)
 
 ---
 # O Olho
 
-![Modelo do olho humano](images/eye-model.png)
+![Modelo do olho humano](../../images/eye-model.png)
 
 ---
 ## Modelo do olho humano
@@ -150,17 +150,17 @@ Imagens podem ser representadas em duas formas principais:
 ---
 ## Qual é mais escuro? A ou B?
 
-![](images/illusion-a.png)
+![](../../images/illusion-a.png)
 
 ---
 ## Resposta
 
-![](images/illusion-b.png)
+![](../../images/illusion-b.png)
 
 ---
 ## A Câmera _"pinhole"_ (estenopeica)
 
-![A Câmera pinhole](images/pinhole-camera.png)
+![A Câmera pinhole](../../images/pinhole-camera.png)
 
 ---
 ## A Câmera _"pinhole"_
@@ -172,7 +172,7 @@ Imagens podem ser representadas em duas formas principais:
 ---
 ## O _View Frustum_
 
-![O view frustum](images/view-frustum.gif)
+![O view frustum](../../images/view-frustum.gif)
 
 - A câmera é colocada na ponta da pirâmide
 - Frustum: tronco de pirâmide formado pelo plano próximo e plano distante
@@ -181,7 +181,7 @@ Imagens podem ser representadas em duas formas principais:
 ---
 # Representação de Cores
 
-![Sistema de cores aditivas e subtrativas](images/cmyk-rgb.png)
+![Sistema de cores aditivas e subtrativas](../../images/cmyk-rgb.png)
 
 ---
 ## Representação de Cores

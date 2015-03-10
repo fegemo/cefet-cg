@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 ---
 # Rodando nosso _Hello World_...
 
-![Uma tela preta com um quadrado branco](images/opengl-hw-inicial.png)
+![Uma tela preta com um quadrado branco](../../images/opengl-hw-inicial.png)
 
 ---
 # Conceitos
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
 ---
 ## Cena 3D
 
-![Uma imagem mostrando uma chaleira](images/cena-3d.png)
+![Uma imagem mostrando uma chaleira](../../images/cena-3d.png)
 
 ---
 ## Cena 3D (cont.)
@@ -131,14 +131,14 @@ Utiliza o paradigma de **programação orientada a eventos** (PoE).
 ---
 ## _Widgets_ no X e no Windows
 
-![Tela do linux mostrando algumas widgets do X](images/widgets-linux.png)
-![Tela do Windows mostrando algumas widgets](images/widgets-windows.png)
+![Tela do linux mostrando algumas widgets do X](../../images/widgets-linux.png)
+![Tela do Windows mostrando algumas widgets](../../images/widgets-windows.png)
 
 ---
 ## _Hello World_ OpenGL no Windows e no OSX
 
-![Hello World em OpenGL no Windows](images/opengl-hw-windows.gif)
-![Hello World em OpenGL no OSX](images/opengl-hw-mac.png)
+![Hello World em OpenGL no Windows](../../images/opengl-hw-windows.gif)
+![Hello World em OpenGL no OSX](../../images/opengl-hw-mac.png)
 
 ---
 ## Interação do OpenGL com os SJs
@@ -152,7 +152,7 @@ Utiliza o paradigma de **programação orientada a eventos** (PoE).
 ---
 Como cada SJs tem uma API diferente
 
-<img class="page-author-picture" src="images/philosoraptor.jpg">
+<img class="page-author-picture" src="../../images/philosoraptor.jpg">
 
 Como faço se eu quiser fazer um programa OpenGL que **execute em vários
 sistemas operacionais**?
@@ -181,7 +181,7 @@ https://gist.github.com/fegemo/1f534a2a59d7d289ec48
 
 1. Uma fila de trabalhos que são realizados em paralelo, por etapas, por um
   conjunto de elementos de processamento
-  - ![Linha de montagem do início do século XX](images/assembling-line.png)
+  - ![Linha de montagem do início do século XX](../../images/assembling-line.png)
 1. Uma espécie de linha de montagem
 
 ---

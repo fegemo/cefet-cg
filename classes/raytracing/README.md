@@ -36,18 +36,18 @@
 ---
 ## _Soft shadows_ (sombras com penumbra)
 
-![](images/soft-shadows.jpg)
+![](../../images/soft-shadows.jpg)
 
 ---
 ## _Color bleeding_ ("sangramento" de cor)
 
-![](images/color-bleeding.png)
+![](../../images/color-bleeding.png)
 
 ---
 # Modelo de iluminação global
 
 ---
-![](images/raytraced-high-realism.png)
+![](../../images/raytraced-high-realism.png)
 
 ---
 ## Modelo de iluminação global
@@ -78,7 +78,7 @@
 ---
 ## Lançamento de raios
 
-![](images/ray-casting1.png)
+![](../../images/ray-casting1.png)
 
 ---
 ## Algoritmo basicão
@@ -100,7 +100,7 @@
 ---
 ## História do _Ray tracing_
 
-- <img src="images/raytraced-image-whitted.png" style="float:right;margin:0 0 15px 15px">
+- <img src="../../images/raytraced-image-whitted.png" style="float:right;margin:0 0 15px 15px">
   Trabalhos Seminais
   - [Appel 68](http://graphics.stanford.edu/courses/Appel.pdf), _ray casting_
   - [Whitted 80](http://dl.acm.org/citation.cfm?id=358882), _ray tracing_ recursivo
@@ -114,12 +114,12 @@
 ---
 ## Verificação de sombras
 
-![](images/ray-casting2.png)
+![](../../images/ray-casting2.png)
 
 ---
 ## Reflexão
 
-![](images/ray-casting3.png)
+![](../../images/ray-casting3.png)
 
 ---
 ## Algoritmo do _ray tracing_ recursivo
@@ -159,7 +159,7 @@
 ---
 ## Interseção Raio / Objeto
 
-![](images/raytracing-ray.png)
+![](../../images/raytracing-ray.png)
 
 - Raio é modelado como uma reta em forma paramétrica:
   `R(t) = P`<sub>0</sub>` + t(P`<sub>1</sub>` – P`<sub>0</sub>`) = P`<sub>0</sub>` + tV`
@@ -188,7 +188,7 @@
 ---
 ## Exemplo: Interseção com Esfera
 
-![](images/raytracing-raio-esfera.png)
+![](../../images/raytracing-raio-esfera.png)
 
 ---
 ## Exemplo: Normal do ponto P
@@ -196,7 +196,7 @@
 - A normal no ponto de interseção `P` é dada pelo gradiente no ponto de
   interseção:
 
-  ![](images/raytracing-raio-esfera-normal.png)
+  ![](../../images/raytracing-raio-esfera-normal.png)
 
 ---
 ## Implementando um _ray tracer_ em C++
@@ -214,12 +214,12 @@
 ---
 ## _Preview_
 
-![](images/raytracer-input-file.png)
+![](../../images/raytracer-input-file.png)
 
 ---
 ## _Preview_
 
-![](images/raytracer-output-file.png)
+![](../../images/raytracer-output-file.png)
 
 ---
 # Referências

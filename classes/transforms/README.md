@@ -1,6 +1,6 @@
 # Transformações Geométricas
 
-![](images/transformations.jpg)
+![](../../images/transformations.jpg)
 
 ---
 # Roteiro
@@ -67,7 +67,7 @@
 
 - Podemos representar a equação anterior na forma matricial:
 
-  ![](images/transform-matrix-equation.png)
+  ![](../../images/transform-matrix-equation.png)
 
   - As colunas representam as imagens dos elementos do sistema F transformado
     por T
@@ -80,7 +80,7 @@
 
 - A transformação de translação move um objeto de uma posição para outra.
 
-  ![](images/translacao-exemplo.png)
+  ![](../../images/translacao-exemplo.png)
 
 ---
 ## Translação (cont.)
@@ -88,7 +88,7 @@
 - Mantém os ângulos e comprimentos
 - Pode ser representada por uma matriz T(t), em que t é o vetor de deslocamento
 
-  ![](images/translacao-matriz.png)
+  ![](../../images/translacao-matriz.png)
 
 ---
 ## Translação em OpenGL
@@ -146,7 +146,7 @@ de rotação.
 - Equações para a rotação de um ponto (x, y) através de um ângulo Θ com relação
   à origem:
 
-  ![](images/rotacao-exemplo.png)
+  ![](../../images/rotacao-exemplo.png)
 
 ---
 ## Rotação (cont.)
@@ -158,7 +158,7 @@ de rotação.
   - Se rotacionar-mos vértices em `x`, suas coordenadas `y` e `z` alteram, mas
     `x` se mantêm
 
-    ![](images/rotacao-eixos.png)
+    ![](../../images/rotacao-eixos.png)
 
     - Portanto, em 2D, para rotacionar um objeto provavelmente queremos usar o
       eixo Z
@@ -169,15 +169,15 @@ de rotação.
 - Pode ser representada por uma matriz R(&alpha;), em que &alpha; é o ângulo de
   rotação.
 
-  ![](images/rotacao-matriz.png)
+  ![](../../images/rotacao-matriz.png)
 
 ---
 ## Rotação nos **eixos X e Y**
 
 - Similarmente, as matrizes de rotação nos eixos `x` e `y`
 
-  ![](images/rotacao-matriz-x.png)
-  ![](images/rotacao-matriz-y.png)
+  ![](../../images/rotacao-matriz-x.png)
+  ![](../../images/rotacao-matriz-y.png)
 
 ---
 ## Rotação em OpenGL
@@ -220,7 +220,7 @@ de rotação.
 - Quando rotacionamos um objeto, o fazemos em relação à origem
   - Exemplo da casinha
 
-    ![](images/rotacao-exemplo.png)
+    ![](../../images/rotacao-exemplo.png)
 
 ---
 ## Rotação em torno de um ponto (cont.)
@@ -228,7 +228,7 @@ de rotação.
 - Para rotacionar um objeto que não está na origem em torno de si mesmo,
   precisamos, primeiro  (1) movê-lo até a origem, (2) rotacionar e (3) movê-lo
   de volta à sua posição original
-  ![](images/rotacao-ponto.png)
+  ![](../../images/rotacao-ponto.png)
 - Assim, fazemos uma transformação composta dada pela matriz `X`:
   X = T(p)R<sub>z</sub>(45º)T(-p)
 
@@ -252,7 +252,7 @@ de rotação.
   - Além de alterar o tamanho do objeto (espaço entre vértices), a operação
     também os move
 
-    ![](images/escala-exemplo.png)
+    ![](../../images/escala-exemplo.png)
 
 ---
 ## Escala (cont.)
@@ -261,7 +261,7 @@ de rotação.
   posições (x, y, z) de um objeto por fatores escalares s<sub>x</sub>, s<sub>y</sub>, s<sub>z</sub>
 - A transformação de escada pode ser representada por uma matriz S tal que:
 
-  ![](images/escala-matriz.png)
+  ![](../../images/escala-matriz.png)
 
 ---
 ## Escala em OpenGL
@@ -293,7 +293,7 @@ de rotação.
 
 - Equivale a "entortar" um objeto (seus vértices) em certo eixo
 
-  ![](images/shear-exemplo.png)
+  ![](../../images/shear-exemplo.png)
 
 ---
 ## Inclinação (cont.)
@@ -301,7 +301,7 @@ de rotação.
 - Pode ocorrer em 1 de 6 combinações de planos de coordenadas
 - Matriz da transformação no plano `xy`
 
-  ![](images/shear-matriz.png)
+  ![](../../images/shear-matriz.png)
 
 ---
 ## Inclinação em OpenGL
@@ -328,14 +328,14 @@ de rotação.
 ---
 ## Composição - Exemplo em 2D
 
-![](images/composicao-exemplo.png)
+![](../../images/composicao-exemplo.png)
 
 ---
 ## Composição (cont.)
 
 - As três matrizes de transformação são combinadas como a seguir
 
-![](images/composicao-matriz.png)
+![](../../images/composicao-matriz.png)
 
 Lembre-se: multiplicação de matrizes não é comutativo - a ordem importa.
 

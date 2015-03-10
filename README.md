@@ -4,8 +4,7 @@
 <img class="page-author-picture" src="images/flavio-avatar.jpg">
 
 ---
-
-# Ementa
+# Objetivos
 
 1. Conhecer os **fundamentos teóricos e práticos** da computação gráfica.
 1. Conhecer as **técnicas de modelagem, representação e visualização** de objetos Bi
@@ -18,32 +17,58 @@ e Tridimensionais.
 
 - Pré-requisitos
   - Cálculo I
-  - GAAL
+  - Geometria Analítica e Álgebra Vetorial
   - PC I
-
 - Co-requisito
   - Cálculo II
 
 ---
-# Bibliografia
+# Bibliografia Básica
 
 ---
-## Este é o nosso **livro texto**
+## _Computer Graphics with OpenGL_ 
 
 <div class="book-cover-container">
-  <img class="book-cover" src="images/rtr3.jpg">
+  <img class="book-cover" src="images/book-cg-with-opengl.jpg">
+  <div class="book-left"></div>
+</div>
+
+- Este é o nosso **livro texto**
+- **Título**	Computer Graphics with OpenGL, Fourth Edition
+- **Autores**	Donald D. Hearn, M. Pauline Baker, Warren Carithers
+- **Editora**	Prentice Hall, 2010
+
+---
+## _Real-Time Rendering_
+
+<div class="book-cover-container">
+  <img class="book-cover" src="images/book-rtr3.jpg">
   <div class="book-left"></div>
 </div>
 
 - **Título**	Real-Time Rendering, Third Edition
 - **Autores**	Tomas Akenine-Möller, Eric Haines, Naty Hoffman
-- **Editora**	Taylor & Francis, 2008
+- **Editora**	Taylor &amp; Francis, 2008
+
+---
+# Bibliografia Complementar
+
+---
+## Notas de aula do Prof. David Mount
+
+<div class="book-cover-container">
+  <img class="book-cover" src="images/book-lecture-notes.png">
+  <div class="book-left book-light"></div>
+</div>
+
+- Material complementar
+- [Download](attachments/DavidMountsLectureNotes.pdf)
 
 ---
 ## Apostila da UFSCAR
 
 <div class="book-cover-container">
-  <img class="book-cover" src="images/apostila-ufscar-thumb.png">
+  <img class="book-cover" src="images/book-apostila-ufscar.png">
   <div class="book-left book-light"></div>
 </div>
 
@@ -53,39 +78,26 @@ e Tridimensionais.
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/)
-- [OpenGL, Sistemas de Janelas e GLUT](classes/opengl/)
-- [OpenGL - _hands on_ pt1](classes/opengl-handson/)
-- [OpenGL - _hands on_ pt2](classes/opengl-handson2/)
-- [OpenGL - _hands on_ pt3](classes/opengl-handson3/)
-- [Introdução a Geometria](classes/geometry/)
-- [Transformações Geométricas](classes/transforms)
+- [Introdução à Computação Gráfica](classes/intro/) (12/03/2015)
+
 
 ---
-# Aulas (cont.)
-
-- [Orientação e Mudança de Sistema de Coordenadas](classes/baseorientation/)
-- [O Pipeline Gráfico](classes/pipeline)
-- [Projeção](classes/projection)
-- [Modelagem de Objetos](classes/modeling)
-- [Iluminação](classes/lighting)
-- [Sombreamento](classes/shading)
-- [Texturas](classes/textures)
+# Atividades Avaliativas
 
 ---
-# Prova e Listas (40 pontos)
+## Prova e Listas (40 pontos)
 
 - Listas de exercício (10 pontos)
 - Lista de revisão da prova (10 pontos)
-- Prova (20 pontos)
+- Prova (20 pontos, 14/05/2015 a priori)
 
 ---
-# Trabalhos (60 pontos)
+## Trabalhos (60 pontos)
 
-- [TP1: Galaxian][tp1] (15 pontos, data 11/Nov/14)
-- [TP2: Boids][tp2] (15 pontos, data 16/Dez/14)
-- TP3: Ray-tracer (15 pontos)
-- [TP4 - duplas: Animação][tp4] (15 pontos)
+- TP1: Galaxian (ou Breakout) (15 pontos, 24/03/2015 + 21 dias)
+- TP2: Boids (15 pontos, 16/04/2015 + 21 dias)
+- TP3: Ray-tracer (15 pontos, data a definir)
+- TP4 - duplas: Animação (15 pontos, data a definir)
 
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2

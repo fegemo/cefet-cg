@@ -21,9 +21,9 @@
 ---
 ## De volta ao _pipeline_
 
-![](images/pipeline-grafico-fases.png)
+![](images/../../pipeline-grafico-fases.png)
 
-![](images/pipeline-geometria-fases.png)
+![](images/../../pipeline-geometria-fases.png)
 
 ---
 # Iluminação em Computação Gráfica
@@ -32,8 +32,8 @@
 ## Cena sem _vs_ com iluminação
 
 <figure style="position:relative; height:450px;width:800px;">
-  <img src="images/cena-sem-luz.jpg" class="bullet bullet-no-anim" style="position:absolute;left:0;top:0; height:450px;width:800px;">
-  <img src="images/cena-com-luz.jpg" class="bullet bullet-no-anim" style="position:absolute;left:0;top:0; height:450px;width:800px;">
+  <img src="../../images/cena-sem-luz.jpg" class="bullet bullet-no-anim" style="position:absolute;left:0;top:0; height:450px;width:800px;">
+  <img src="../../images/cena-com-luz.jpg" class="bullet bullet-no-anim" style="position:absolute;left:0;top:0; height:450px;width:800px;">
 </figure>
 
 ---
@@ -42,7 +42,7 @@
 ---
 ## Iluminação
 
-- <img src="images/iluminacao.png" style="float:right;margin-left:20px;">
+- <img src="../../images/iluminacao.png" style="float:right;margin-left:20px;">
   Estudo de como a luz interage com objetos de uma cena
     - Emissão
     - Transmissão
@@ -110,7 +110,7 @@ do objeto
 ---
 ## Modelo físico
 
-- <img src="images/luz-modelo-fisico.png" style="float: right; margin-left: 20px;">
+- <img src="../../images/luz-modelo-fisico.png" style="float: right; margin-left: 20px;">
   Luz modelada como radiação eletromagnética
 - Leva em conta todas as interações (todos os caminhos da luz)
 - Intratável computacionalmente
@@ -121,16 +121,17 @@ do objeto
 
 - Característica de materiais foscos.
 - Lei de Lambert (fluxo de energia):
-  - a luminosidade aparente da superfície não depende da posição do observador, mas apenas do cosseno do ângulo entre a normal e a direção da luz
+  - a luminosidade aparente da superfície não depende da posição do observador, mas apenas do cosseno do 
+    ângulo entre a normal e a direção da luz
 
-    ![](images/modelo-lambertiano.png)
+    ![](../../images/modelo-lambertiano.png)
 
 ---
 ## Modelo Difuso
 
 - Intensidade em um ponto p é dada por:
 
-  ![](images/modelo-difuso.png)
+  ![](../../images/modelo-difuso.png)
 
 ---
 ## Iluminação Especular
@@ -147,7 +148,7 @@ do objeto
 
 - Contribuição especular é dada por
 
-  ![](images/modelo-phong.png)
+  ![](../../images/modelo-phong.png)
 
 ---
 ## Coeficiente de Especularidade
@@ -156,7 +157,7 @@ do objeto
   - Espelho ideal tem especularidade infinita
   - Na prática, usam-se valores entre 5 e 100
 
-![](images/specular-coefficient.png)
+![](../../images/specular-coefficient.png)
 
 ---
 ## Componentes do Modelo de Phong
@@ -169,7 +170,7 @@ do objeto
 ---
 ## Componentes do Modelo de Phong (cont.)
 
-![](images/phong-components.png)
+![](../../images/phong-components.png)
 
 ---
 # Iluminação em OpenGL
@@ -264,11 +265,11 @@ do objeto
 ---
 ## Computando o vetor normal
 
-- <img src="images/tri-normal.png" style="float:right; margin-left: 20px;">
+- <img src="../../images/tri-normal.png" style="float:right; margin-left: 20px;">
   Triângulo
   - Dados três vértices,
 
-    ![](images/tri-normal-eq.png)
+    ![](../../images/tri-normal-eq.png)
 - Polígono planar
   - Uma opção é usar a fórmula do triângulo para quaisquer 3 vértices
   - Outra opção é determinar a equação do plano
@@ -278,11 +279,11 @@ do objeto
 ---
 ## Vetor Normal de Superfícies Paramétricas
 
-- <img src="images/normal-parametricas.png" style="float:right; margin-left: 20px;">
+- <img src="../../images/normal-parametricas.png" style="float:right; margin-left: 20px;">
   Normal é dada pelo produto vetorial dos gradientes em relação aos
   parâmetros u e v
 
-  ![](images/normal-parametricas-eq.png)
+  ![](../../images/normal-parametricas-eq.png)
 
 ---
 ## Iluminação Ambiente
@@ -298,7 +299,7 @@ do objeto
   ```
 - Contribuição é dada por:
 
-  ![](images/luz-contribuicao-ambiente.png)
+  ![](../../images/luz-contribuicao-ambiente.png)
 
 ---
 ## Atenuação
@@ -309,7 +310,7 @@ do objeto
 - Coeficientes são definidos pela função `glLight()`
 - Por _default_, não há atenuação `(c0=1, c1=c2=0)`
 
-  ![](images/luz-atenuacao-eq.png)
+  ![](../../images/luz-atenuacao-eq.png)
 
 ---
 ## Juntando tudo
@@ -317,11 +318,12 @@ do objeto
 - A atenuação só é aplicada sobre às componentes difusa e especular.
 - A fórmula que calcula a cor de um vértice devida a uma fonte luminosa i é dada por:
 
-  ![](images/luz-formula-cor.png)
+  ![](../../images/luz-formula-cor.png)
 
-- Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz) somada à luz emitida e às contribuições Ci
+- Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz) 
+  somada à luz emitida e às contribuições Ci
 
-  ![](images/luz-eq-total.png)
+  ![](../../images/luz-eq-total.png)
 
 ---
 # Referências
