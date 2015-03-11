@@ -1,6 +1,7 @@
 // Require Node modules in the browser thanks to Browserify: http://browserify.org
 
 var bespoke = require('bespoke'),
+    isMobile = require('ismobilejs'),
     fancy = require('bespoke-theme-fancy'),
     keys = require('bespoke-keys'),
     touch = require('bespoke-touch'),
@@ -20,7 +21,7 @@ bespoke.from('article', [
   keys(),
   touch(),
   bullets('li, .bullet'),
-  scale(),
+  scale(isMobile.any ? 'transform' : {}),
   hash(),
   progress(),
   math(),
