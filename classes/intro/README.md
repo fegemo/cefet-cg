@@ -6,8 +6,7 @@
 1. Conceitos
 1. Dispositivos Gráficos
 1. Representação de Imagens
-1. O Olho
-1. Representação de Cores
+1. Modelos usados em Computação Gráfica
 
 ---
 # Alguns conceitos
@@ -22,12 +21,53 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Áreas de aplicação
 
-- CAD (_Computer Aided Design_)
-- Apresentações Gráficas
-- Arte por Computador
-- Entretenimento
-- Educação e Treinamento
-- Visualização Científica
+1. Jogos
+1. Filmes e TV
+1. CAD (_Computer Aided Design_)
+1. Educação e Treinamento
+1. Arte por Computador
+1. Apresentações Gráficas
+1. Simulação Científica
+
+---
+## 1. Jogos \o/
+
+<img src="../../images/cg-area-games.jpg" class="full-height-right">
+
+---
+## 2. Filmes, TV
+
+<img src="../../images/cg-area-movies1.jpg" class="full-height-right">
+
+---
+## 2. Filmes, TV
+
+<img src="../../images/cg-area-movies2.jpg" class="full-height-right">
+
+---
+## 3. CAD (_Computer Aided Design_)
+
+<img src="../../images/cg-area-cad.jpg" class="full-height-right">
+
+---
+## 4. Educação e Treinamento
+
+<img src="../../images/cg-area-education.jpg" class="full-height-right">
+
+---
+## 5. Arte por Computador
+
+<img src="../../images/cg-area-art.jpg" class="full-height-right">
+
+---
+## 6. Apresentações Gráficas
+
+<img src="../../images/cg-area-presentation.jpg" class="full-height-right">
+
+---
+## 7. Simulações Científicas
+
+<img src="../../images/cg-area-simulation.jpg" class="full-height-right">
 
 ---
 ## Interação com outras áreas
@@ -35,9 +75,74 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ![Interação da Computação Gráfica com outras áreas](../../images/interacao-areas.png)
 
 ---
+# Problemas abordados em Computação Gráfica
+
+---
+## Problemas
+
+![](../../images/cg-overall-tasks.png)
+
+---
+## Processamento Digital de Imagens
+
+- Área que envolve as técnicas de transformação de imagens, em que tanto a imagem original 
+  quanto a imagem resultado apresentam-se sob uma representação visual (geralmente matricial).
+– Estas transformações visam melhorar as características visuais da imagem. Ex.:
+  - aumentar contraste 
+  - alterar foco
+  - diminuir ruídos e algumas distorções
+
+---
+## Exemplo: Processamento Digital de Imagens
+
+![](../../images/pdi-lena.png)
+
+---
+## Análise de Imagens
+
+- Área que procura obter a especificação dos componentes de uma imagem a partir de sua representação visual.
+– Por exemplo, reconstrução de primitivas elementares (cubos, esferas, etc.) que aproximam um objeto visualizado em uma imagem
+
+---
+## Exemplo: Análise de Imagens
+
+![](../../images/juiz-virtual.jpg)
+
+---
+## Exemplo 2: Análise de Imagens
+
+![](../../images/reconhecimento-padores.jpg)
+
+---
+## Modelagem
+
+- A modelagem geométrica consiste de um conjunto de métodos que visam descrever a forma e as 
+  características geométricas de um objeto. Ela provê uma descrição ou modelo muito mais analítico, 
+  matemático e abstrato que o real.
+  
+---
+## Exemplo: Modelagem 
+
+![](../../images/modeling.png)
+
+---
+## Síntese
+
+- A síntese de imagem designa o processo de geração de imagens digitais a partir da descrição dos elementos que 
+  compõem uma cena 3D, baseando-se em modelos que descrevem o comportamento da luz
+– Síntese e modelagem são consideradas, por muitos autores, como a própria Computação Gráfica.
+
+---
+## Exemplo: Síntese
+
+![](../../images/image-synthesis.png)
+
+---
 ## Foco deste curso
 
-- Produção de imagens fotorrealísticas em tempo real
+- Modelagem e síntese de imagens
+  - Processamento de imagens é uma área por si só
+  - Visão computacional estuda a análise de imagens (e vídeos)
 - Teoria e prática das técnicas e algoritmos envolvidos
 
 ---
@@ -51,7 +156,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
   - [Maya lt](maya-lt) (licença de estudante gratuita)
   - [blender](blender) (gratuito)
   - [ZBrush](z-brush) (comercial)
-  - [clara.io](claraio) (versão gratuita, programa limitado)
+  - [clara.io](claraio) (tem uma versão gratuita, programa limitado)
 
 ---
 # Dispositivos Gráficos
@@ -133,8 +238,11 @@ Imagens podem ser representadas em duas formas principais:
 
 ![Imagem raster](../../images/raster.jpg)
 
+
 ---
-# O Olho
+# Modelos usados em Computação Gráfica
+---
+## O olho humano
 
 ![Modelo do olho humano](../../images/eye-model.png)
 
@@ -179,7 +287,7 @@ Imagens podem ser representadas em duas formas principais:
 - Apenas o que está dentro deles é renderizado
 
 ---
-# Representação de Cores
+## Representação de Cores
 
 ![Sistema de cores aditivas e subtrativas](../../images/cmyk-rgb.png)
 
@@ -202,7 +310,7 @@ Imagens podem ser representadas em duas formas principais:
 - [Programa de modelagem 3D Autodesk 3ds Max](3ds-max)
 - [Programa de modelagem 3D Autodesk Maya](maya-lt)
 - [Programa de modelagem 3D ZBrush](z-brush)
-- [Desmontando um monitor de LCD (Enginner Guy)](lcd-teardown)
+- [Desmontando um monitor de LCD (Enginner Guy)][lcd-teardown]
 
 [blender]: http://www.blender.org/
 [claraio]: https://clara.io/

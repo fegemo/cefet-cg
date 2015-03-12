@@ -14,6 +14,7 @@ var fs = require('fs'),
     through = require('through'),
     opn = require('opn'),
     ghpages = require('gh-pages'),
+    changed = require('gulp-changed'),
     path = require('path'),
     merge = require('merge-stream'),
     isDist = process.argv.indexOf('serve') === -1;
@@ -68,8 +69,9 @@ gulp.task('css', ['clean:css'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('images', ['clean:images'], function() {
+gulp.task('images', function() {
   return gulp.src('images/**/*')
+    .pipe(changed('dist/images'))
     .pipe(gulp.dest('dist/images'))
     .pipe(connect.reload());
 });
