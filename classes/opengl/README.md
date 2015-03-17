@@ -6,10 +6,9 @@
 1. _Hello World_
 1. Conceitos
 1. Sistemas de janelas
-1. O _pipeline_ gráfico
 1. Criando um projeto OpenGL
 1. GLUT
-1. Referências
+1. Para casa: **TP0**
 
 ---
 # _Hello World_
@@ -85,7 +84,7 @@ int main(int argc, char** argv)
   1. Mecanismo padronizado de extensões
   1. Novas versões são estabelecidas por um comitê (ARB) de usuários e
     fabricantes
-    1. Tornou-se OpenGL Working group dentro do Khronous Group em Setembro de
+    1. Tornou-se OpenGL Working group dentro do Khronos Group em Setembro de
     2006
 1. Depende de um sistema de janelas
   1. OpenGL cuida apenas de gerar o "conteúdo" das janelas
@@ -172,31 +171,6 @@ https://gist.github.com/fegemo/ddfa33441281e564eefe
 https://gist.github.com/fegemo/1f534a2a59d7d289ec48
 
 ---
-# O _pipeline_ gráfico
-
-<bloquote>"Um corrente é tão forte quanto seu elo mais fraco"</bloquote>
-
----
-## O que é um _pipeline_?
-
-1. Uma fila de trabalhos que são realizados em paralelo, por etapas, por um
-  conjunto de elementos de processamento
-  - ![Linha de montagem do início do século XX](../../images/assembling-line.png)
-1. Uma espécie de linha de montagem
-
----
-## O que é o **_pipeline_ gráfico**, então?
-
-É o motor que gera transforma descrições de cenas em 3D em imagens no monitor.
-
-1. Três estágios conceituais
-  1. Aplicação
-  1. Geometria (Transformações de Câmera e Modelo)
-  1. Rasterização
-1. Cada um desses estágios tem subdivisões
-1. Vamos estudar os estágios em detalhes em próximas aulas (Capítulo 2 do livro)
-
----
 # Criando um projeto em OpenGL
 
 ---
@@ -206,7 +180,7 @@ https://gist.github.com/fegemo/1f534a2a59d7d289ec48
   - Uma IDE ou editor de texto (CodeBlocks, DevCpp etc.)
   - Um compilador (gcc, mingW, cygwin + gcc)
 - As bibliotecas do OpenGL e do GLUT (.dll, .h)
-- [sugestão] A biblioteca GLU (OpenGL Utilities) que facilita algumas funções
+- A biblioteca GLU (OpenGL Utilities) que facilita algumas funções
   do OpenGL
 
 ---
@@ -217,13 +191,14 @@ https://gist.github.com/fegemo/1f534a2a59d7d289ec48
   - [PDF][tut-isabela-manssour-pdf]
   - [html][tut-isabela-manssour-html]
 1. [Capítulo 2 do Tutorial de Utilização do OpenGL][tut-opengl-marcionilo]
+1. Mais tutoriais (de alunos) estão disponíveis no **Moodle**
 
 [tut-isabela-manssour-pdf]: http://wiki.icmc.usp.br/images/c/c2/Introdu%C3%A7%C3%A3oPr%C3%A1ticaOpenGL.pdf
 [tut-isabela-manssour-html]: http://www.inf.pucrs.br/~manssour/CG/pratica1/
 [tut-opengl-marcionilo]: http://www.cin.ufpe.br/~mgrb/arquivos/TutorialOpenGL-MarcioniloBarbosa.pdf
 
 ---
-# OpenGL OpenGL OpenGL
+# Programas em OpenGL
 
 ---
 ## Anatomia de um programa OpenGL/GLUT
@@ -410,4 +385,17 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
 - Ela nunca retorna
 
 ---
-# Referências
+# Para casa: TP0
+
+---
+## TP0: Instalação do OpenGL
+
+1. Atividade A (valor: 1 ponto):
+  1. Para a próxima aula, você deve configurar um ambiente de desenvolvimento em OpenGL (até a versão 2.0)
+  1. Escreva um programa `hello world` em OpenGL e GLUT cujo **título da janela é seu nome completo**
+    - Sua cena deve conter apenas um quadrado, como no exemplo desta aula 
+  1. **No Moodle**, poste uma _screenshot_ da sua janela na tarefa do TP0
+1. Atividade B (valor: até 1 ponto **extra**): 
+  - Opcionalmente, você pode escrever um guia passo a passo sobre como configurar o OpenGL usando suas ferramentas 
+    favoritas
+  - Os passos **DEVEM** ser reprodutíveis e funcionar para que se consiga os pontos
