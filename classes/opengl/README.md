@@ -395,7 +395,15 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
   1. Escreva um programa `hello world` em OpenGL e GLUT cujo **título da janela é seu nome completo**
     - Sua cena deve conter apenas um quadrado, como no exemplo desta aula 
   1. **No Moodle**, poste uma _screenshot_ da sua janela na tarefa do TP0
+1. (continua...)
+
+---
+## TP0: Instalação do OpenGL
+
 1. Atividade B (valor: até 1 ponto **extra**): 
   - Opcionalmente, você pode escrever um guia passo a passo sobre como configurar o OpenGL usando suas ferramentas 
     favoritas
   - Os passos **DEVEM** ser reprodutíveis e funcionar para que se consiga os pontos
+  - Enviar via **Moodle** também
+  
+  
