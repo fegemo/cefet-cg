@@ -80,6 +80,10 @@ e Tridimensionais.
 
 - [Introdução à Computação Gráfica](classes/intro/) (12/03/2015)
 - [Sistemas de Janelas](classes/opengl/) (17/03/2015)
+- [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (19/03/2015)
+- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (19/03/2015)
+- [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (24/03/2015)
+- [OpenGL Hands-on - Parte 4](classes/opengl-handson4/) (26/03/2015)
 
 
 ---
@@ -95,12 +99,12 @@ e Tridimensionais.
 ---
 ## Trabalhos (60 pontos)
 
-- TP1: Galaxian (ou Breakout) (15 pontos, 24/03/2015 + 21 dias)
+- [TP1: Breakout][tp1] (15 pontos, 26/03/2015 + 21 dias)
 - TP2: Boids (15 pontos, 16/04/2015 + 21 dias)
-- TP3: Ray-tracer (15 pontos, data a definir)
+- TP3 - duplas: Ray-tracer (15 pontos, data a definir)
 - TP4 - duplas: Animação (15 pontos, data a definir)
 
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1-breakout
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp3
 [tp4]: https://github.com/fegemo/cefet-cg/blob/master/src/assignments/tp4
