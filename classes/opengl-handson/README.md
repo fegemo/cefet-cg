@@ -202,7 +202,9 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## Passos para renderização (cont.)
 
-![](../../images/glortho-render-steps.jpg)
+<a href="../../images/glortho-render-steps.jpg">
+  <img src="../../images/glortho-render-steps.jpg" style="height: 400px">
+</a>
 
 ---
 ## Sistema de **coordenadas global**
@@ -222,7 +224,7 @@ glOrtho(left, right, bottom, top, near, far);
   ```
 - Para
   ```c
-  glOrtho(0.0, 100.0, 0.0, 100.0, −1.0, 1.0);
+  glOrtho(-100.0, 100.0, -100.0, 100.0, −1.0, 1.0);
   ```
 
 ---

@@ -162,3 +162,32 @@ $tutorial-right = 20px
 .full-height-right
   float right
   max-height 80%
+
+
+// TODO: put this on the theme
+table
+  max-width 760px
+
+td:not(:last-child), th:not(:last-child)
+  border-right 1px solid rgba(0,0,0,.2)
+
+td
+  padding 6px
+
+th
+  padding 10px
+
+tr
+  border 1px solid rgba(0,0,0,.4)
+
+tr:nth-of-type(2n) > td
+  background-color rgba(255,255,255,.4)
+
+thead > tr
+  background-color #555
+  color white
+
+
+// utility slide classes
+.right-aligned
+  float right

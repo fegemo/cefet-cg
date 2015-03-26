@@ -21,7 +21,7 @@ se `NUM_LADOS=5`, um pentágono regular e assim por diante.
 _Dica: a posição x,y dos vértices vai variar de acordo com `sin(t)`, `cos(t)`,
 sendo `t` uma variável que contém ângulo e varia de 0 a 2*Pi (360 graus)._
 
-![](images/circle-aprox2.png)
+![](./images/circle-aprox2.png)
 
 
 Você deve entregar esta atividade via **Moodle**.
