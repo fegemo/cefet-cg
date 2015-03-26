@@ -3,126 +3,164 @@
 ---
 # Roteiro
 
-1. Display Lists
-1. Depth buffer e a coordenada Z
-1. TP1
+1. Tipos de dados
+1. Gráficos _raster_
+1. _Depth buffer_ e a coordenada Z
+
 
 ---
-# Display Lists
+# Tipos de dados em OpenGL
 
 ---
-## Exercício 1 da lista
+## Tipos em C
 
-![](../../images/display-lists.png)
-
-- Como desenhar o polígono E as linhas ao mesmo tempo?
----
-## Tentativa 1
-
-- Desenha-se o polígono preenchido
+- A linguagem C possui diversos tipos de dados primitivos
   ```c
-  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glBegin(GL_TRIANGLE_STRIP);
-    // 10 vértices aqui...
-  glEnd();
+  int numCarros = 10;
+  float pesoEmKg = 895.532f;
+  double terraParaSol = 1.49597870700e11;
+  long int numeroDeCliquesNosSlides = 20040402040l;
   ```
-- Desenha-se o polígono em modo _wire_
-  ```c
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
-  glBegin(GL_TRIANGLE_STRIP);
-    // os mesmos 10 vértices aqui...
-  glEnd();
-  ```
+- Esses tipos diferentes usam **quantidades diferentes de espaço (bits)** da memória
+  - Um `short int`, **normalmente** usa 16 bits
+  - Um `int`, 32 bits
+  - Um `float`, 32 bits
+  - Um `double`, 64 bits
 
 ---
-## Tentativa 1 - discussão
+## Tipos em OpenGL
 
-- Temos um **_code smell_** - algo está errado
-- **Não devemos repetir código** para que não precisemos alterar mais de um
-  lugar
-  - Princípio DRY - _Don't Repeat Yourself_
-- Podemos resolver isso extraindo o código repetido para uma função...
-
----
-## Tentativa 2
-
-- Criamos uma função: `desenhaAnelQuadrado`
-  ```c
-  void desenhaAnelQuadrado() {
-    glBegin(GL_TRIANGLE_STRIP);
-      // 10 vértices aqui...
-    glEnd();
-  }
-  //...
-
-  void desenhaCena() {
-    glColor3f(1.0, 0, 0);     // azul
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    desenhaAnelQuadrado();
-
-    glColor3f(1.0, 0, 0);     // preto
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
-    desenhaAnelQuadrado();
-  }
-  ```
+- Contudo, compiladores (e plataformas) diferentes podem usar uma quantidade diferente do tradicional
+  - Por exemplo, o console Nintendo possuía apenas 8 bits
+- O OpenGL, com seu objetivo de executar em plataformas variadas, sugere o uso de seus próprios tipos de dados
+  - Exemplo: `GLint` em vez de `int`
+- Assim, **garante-se a precisão necessária** (e.g., 32 bits) em cada tipo de dados, em vez de deixar o compilador 
+  da plataforma decidir
+- A seguir, veja o **mapeamento** dos tipos primitivos em **C para os tipos sugeridos pelo OpenGL**
 
 ---
-## Tentativa 2 - discussão
+## Tabela de tipos do OpenGL
 
-- Resolvemos o _code smell_, mas não paramos por aí
-- Se, em vez de 10 vértices, nosso polígono tivesse 1 mil vértices?
-  - Cada chamada a `glVertex` faz uma viagem da CPU à GPU
-- O OpenGL pode registrar um polígono caso queiramos desenhá-lo várias vezes
+| Tipo em C                       | Descrição do tipo         | Tipo do OpenGL                | Sufixo |
+|---------------------------------|---------------------------|-------------------------------|:------:|
+| `signed char`                   | 8-bit inteiro             | `GLbyte`                      | b      |
+| `short`                         | 16-bit inteiro            | `GLshort`                     | s      |
+| `int` ou `long`                 | 32-bit inteiro            | `GLint, GLsizei`              | i      |
+| `float`                         | 32-bit ponto flutuante    | `GLfloat, GLclampf`           | f      |
+| `double`                        | 64-bit ponto flutuante    | `GLdouble, GLclampd`          | d      |
+| `unsigned char`                 | 8-bit inteiro sem sinal   | `GLubyte, GLboolean`          | ub     |
+| `unsigned short`                | 16-bit inteiro sem sinal  | `GLushort`                    | us     |
+| `unsigned int or unsigned long` | 32-bit inteiro sem sinal  | `GLuint, GLenum, GLbitfield`  | ui     |
+
 
 ---
-## Tentativa 3 - usando **lista de visualização**
-
-- Em vez de chamar o método de desenho na _callback_ de desenho, vamos registar
-  os vértices **em tempo de inicialização do programa** e apenas instruir o
-  OpenGL a executar esses vértices em tempo de desenho
-- Assim, otimizamos bem as chamadas de desenho de vértices
+# Gráficos _raster_
 
 ---
-## Tentativa 3
+## Gráficos _raster_
 
-- ```c
-  int listaAnel;
-  void criaListaAnelQuadrado() {
-  	listaAnel = glGenLists(1);
-  	glNewList(listaAnel, GL_COMPILE);
-      glBegin(GL_TRIANGLE_STRIP);
-        // os 10 vértices
-      glEnd();
-  	glEndList();
-  }
-  ```
+- Até agora, vimos como desenhar primitivas geométricas em OpenGL
+- Contudo, queremos também **desenhar áreas retangulares de cores** 
+  - Exemplos:
+    1. Colocar imagens na tela
+    1. Escrever texto
+- Veremos duas formas para escrever texto na tela
+  1. OpenGL puro
+  1. GLUT _to the rescue_ \o/
+
 ---
-## Tentativa 3
+## **_Bitmaps_ e fontes** (OpenGL puro)
 
-- ```c
-  int main(int argc, char** argv) {
-    glutInit(argc, argv);
-    //...
-    criaListaAnelQuadrado();
-    //...
-    glutMainLoop();
-  }
+- O OpenGL provê primitivas de nível baixo para a escrita de caracteres na tela
+- <img src="../../images/bitmap-f.gif" class="right-aligned">
+  Os comandos `glRasterPos*()` e `glBitmap()` posicionam e desenham um _bitmap_ 
+- Pode-se usar _display lists_ (próxima aula) para armazenar o _bitmap_ de cada letra e apenas
+  usá-lo por seu índice posteriormente
+- O restante é com a gente =)
+
+---
+## **Exemplo** de texto na tela em OpenGL puro
+
+```c
+GLubyte rasters[24] = {
+   0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00,
+   0xff, 0x00, 0xff, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00,
+   0xff, 0xc0, 0xff, 0xc0};
+
+void init(void)
+{
+   glPixelStorei (GL_UNPACK_ALIGNMENT, 1);
+   glClearColor (0.0, 0.0, 0.0, 0.0);
+}
+
+void display(void)
+{
+   glClear(GL_COLOR_BUFFER_BIT);
+   glColor3f (1.0, 1.0, 1.0);
+   glRasterPos2i (20, 20);
+   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
+   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
+   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
+   glFlush();
+}
 ```
 
 ---
-## Tentativa 3
+## **glBitmap**
 
-- ```c
-  void desenhaCena() {
-    glColor3f(1.0, 0, 0);     // azul
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    glCallList(listaAnel);
+```c
+void glBitmap(
+  GLsizei width,
+  GLsizei height,
+  GLfloat xorig,
+  GLfloat yorig,
+  GLfloat xmove,
+  GLfloat ymove,
+  const GLubyte* bitmap);
+```
 
-    glColor3f(1.0, 0, 0);     // preto
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
-    glCallList(listaAnel);
-  }
+## **glRasterPosi**
+
+```c
+void glRasterPos2i(GLint x, GLint y);
+```
+
+---
+## **_Bitmaps_ e fontes** (usando GLUT)
+
+- GLUT já implementou algumas fontes (usando glBitmap()) e nos oferece **algumas
+  opções mais simples**
+- Documentação da função [glutBitmapCharacter](https://www.opengl.org/documentation/specs/glut/spec3/node76.html)
+  ```c
+  void glutBitmapCharacter(void *font, int character);
   ```
+  - Algumas opções para o parâmetro `font`:
+    ```c
+    GLUT_BITMAP_8_BY_13
+    GLUT_BITMAP_9_BY_15
+    GLUT_BITMAP_TIMES_ROMAN_10
+    GLUT_BITMAP_HELVETICA_18
+    ```
+
+---
+## **Exemplo** de texto na tela em GLUT
+
+```c
+void drawString (void * font, char *s, float x, float y, float z) {
+    unsigned int i;
+    glRasterPos3f(x, y, z);
+
+    for (i = 0; i < strlen (s); i++)
+       glutBitmapCharacter (font, s[i]);
+}
+
+void display() {
+   glClear(GL_COLOR_BUFFER_BIT);
+   glColor3f (1.0, 1.0, 1.0);
+   drawString(GLUT_BITMAP_HELVETICA_18, "FFF", 20, 20, 0);
+   glFlush();
+}
+```
 
 ---
 # Depth buffer e a coordenada Z
@@ -131,6 +169,7 @@
 ## Atividade
 
 - Desenhar um anel vermelho
+
   ![](../../images/anel-vermelho.png)
 
 ---
@@ -157,6 +196,7 @@ void drawDisc(float R, float X, float Y, float Z) {
   glEnd();
 }
 ```
+
 ---
 ## Experimento
 
@@ -188,25 +228,8 @@ void drawDisc(float R, float X, float Y, float Z) {
   ![](../../images/aneis-vermelhos.png)
 
 ---
-# Trabalho Prático 1 \o/
-
-_A wild TP1 appears..._
-
----
-## TP1 está a solta
-
-<img alt="Tela do jogo Galaxian original" src="../../images/galaxian-original.png"
-  style="float: right; width: 280px; margin: 0 0 5px 20px">
-_"[...] nele, o jogador pilota uma nave que fica na parte de baixo da tela e,
-com ela, se defende de um ataque alienígena. Os alienígenas realizam o seu
-ataque como uma grande esquadra que se movimenta lateralmente na parte
-superior da tela. Os diversos alienígenas podem soltar bombas contra a heróica
-nave [...]"_
-
-- Enunciado no Moodle (ou na página do curso).
-
----
 # Referências
 
+- Capítulo 4 do livro **Computer Graphics with OpenGL 4th edition**
 - Documentação do OpenGL 2: https://www.opengl.org/sdk/docs/man2/
-- Livro Vermelho: http://www.glprogramming.com/red/
+- Livro Vermelho: http://www.glprogramming.com/red/ (capítulo 8)
