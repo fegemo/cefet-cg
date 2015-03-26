@@ -5,7 +5,6 @@
 
 1. Display Lists
 1. Vertex Array
-1. Depth buffer e a coordenada Z
 1. Texturas
 1. TP1
 

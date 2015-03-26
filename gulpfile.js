@@ -19,8 +19,9 @@ var fs = require('fs'),
     merge = require('merge-stream'),
     isDist = process.argv.indexOf('serve') === -1;
 
-gulp.task('js', ['clean:js'], function() {
+gulp.task('js', function() {
   return gulp.src(['scripts/tutorial.js', 'scripts/main.js'])
+    .pipe(changed('dist/build'))
     .pipe(isDist ? through() : plumber())
     .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
     .pipe(isDist ? uglify() : through())
@@ -29,33 +30,38 @@ gulp.task('js', ['clean:js'], function() {
     .pipe(connect.reload());
 });
 
-gulp.task('html', ['clean:html'], function() {
+gulp.task('html', function() {
   return gulp.src('html/index.html')
+    .pipe(changed('dist'))
     .pipe(isDist ? through() : plumber())
     .pipe(replace('{path-to-root}', './'))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
 });
 
-gulp.task('md', ['clean:md'], function() {
+gulp.task('md', function() {
   var tasks = [];
   tasks.push(gulp.src('README.md')
+    .pipe(changed('dist'))
     .pipe(isDist ? through() : plumber())
-    .pipe(gulp.dest('dist/'))
+    .pipe(gulp.dest('dist'))
     .pipe(connect.reload()));
   tasks.push(gulp.src('classes/**/*.md')
+    .pipe(changed('dist/classes'))
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/classes'))
     .pipe(connect.reload()));
   tasks.push(gulp.src('assignments/**/*.md')
+    .pipe(changed('dist/assignments'))
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/assignments'))
     .pipe(connect.reload()));
   return merge(tasks);
 });
 
-gulp.task('css', ['clean:css'], function() {
+gulp.task('css', function() {
   return gulp.src('styles/main.styl')
+    .pipe(changed('dist/build'))
     .pipe(isDist ? through() : plumber())
     .pipe(stylus({
       // Allow CSS to be imported from node_modules and bower_components
@@ -76,8 +82,9 @@ gulp.task('images', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('attachments', ['clean:attachments'], function() {
+gulp.task('attachments', function() {
   return gulp.src('attachments/**/*')
+    .pipe(changed('dist/attachments'))
     .pipe(gulp.dest('dist/attachments'))
     .pipe(connect.reload());
 });

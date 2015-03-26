@@ -95,7 +95,7 @@ e Tridimensionais.
 ---
 ## Trabalhos (60 pontos)
 
-- TP1: Galaxian (ou Breakout) (15 pontos, 24/03/2015 + 21 dias)
+- TP1: Breakout (15 pontos, 26/03/2015 + 21 dias)
 - TP2: Boids (15 pontos, 16/04/2015 + 21 dias)
 - TP3: Ray-tracer (15 pontos, data a definir)
 - TP4 - duplas: Animação (15 pontos, data a definir)
