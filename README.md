@@ -95,12 +95,12 @@ e Tridimensionais.
 ---
 ## Trabalhos (60 pontos)
 
-- TP1: Breakout (15 pontos, 26/03/2015 + 21 dias)
+- [TP1: Breakout][tp1] (15 pontos, 26/03/2015 + 21 dias)
 - TP2: Boids (15 pontos, 16/04/2015 + 21 dias)
-- TP3: Ray-tracer (15 pontos, data a definir)
+- TP3 - duplas: Ray-tracer (15 pontos, data a definir)
 - TP4 - duplas: Animação (15 pontos, data a definir)
 
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1-breakout
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp3
 [tp4]: https://github.com/fegemo/cefet-cg/blob/master/src/assignments/tp4
