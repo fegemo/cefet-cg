@@ -5,7 +5,7 @@
 
 ///
 /// Variables
-$page-header-height = 5vh
+$page-header-height = 12vh
 
 
 ///
@@ -15,7 +15,6 @@ html, body
   overflow hidden
 
 body
-  background-color #FFD5D5
 
 .bespoke-slide
   img.full-width
@@ -40,15 +39,33 @@ del
 
 
 /// Header and content layout
+body
+  perspective 800px
+  perspective-origin 50% 0
+  &.menu-open
+    &> #page-header
+      transform translate3d(0,0,0)
+
+    &> #presentation-container
+      transform-origin 50% 0%
+      transform translateY($page-header-height) rotateX(-15deg)
+      transform-style preserve-3d
+
+      &:before
+        background-image -webkit-linear-gradient(top, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.25) 100%)
+
 
 #page-header
+  position fixed
+  width 100%
   height $page-header-height
   padding 0
-  transition height 200ms ease-out, transform 200ms ease-out
-  transform translate3d(0, -($page-header-height/2), 0)
-  &:hover
-    height 12vh
-    transform translate3d(0, 0, 0)
+  transition transform 400ms ease-out
+  transform translateY(-100%) translateY(10px)
+  z-index 1
+  overflow hidden
+  background-color rgb(255, 213, 213)
+
 
 #page-title
   display inline-block
@@ -57,10 +74,27 @@ del
   font-size 7vh
   vertical-align top
 
+  &> a
+    &:hover
+      text-decoration none
+
+    position relative
+    color rgba(0,0,0,0.2)
+
+    &:before
+      color #b66c7e
+      content attr(data-hover)
+      position absolute
+      transition transform 0.3s, opacity 0.3s
+
+    &:hover:before
+      opacity 0
+      transform scale(0.98)
+
 #page-author
   display inline-block
   float right
-  margin 8px;
+  margin 8px
 
 #page-author-name
   display none
@@ -72,7 +106,39 @@ del
 
 #presentation-container
   position relative
-  height "calc(100vh - %s)" % $page-header-height
+  height 100%
+  transition all 400ms ease-out
+  //transform translateY(10px)
+  &:before
+    content ''
+    position absolute
+    display: block
+    left 0
+    top 0
+    bottom 0
+    right 0
+    z-index 1000
+    pointer-events none
+    -webkit-transition all 400ms ease-out
+    transition: all 400ms ease-out
+    background-image none
+
+// animated background of the body
+@media screen and (min-device-width: 640px)
+  body
+    background-image linear-gradient(328deg, #fff, #e8e8e8, #fff, #fcfcfc, #e1e1e1, #f4f4f4)
+    background-size 800% 800%
+    animation bodyAnim 25s ease infinite
+
+@keyframes bodyAnim
+  0%
+    background-position 49% 0
+  50%
+    background-position 52% 100%
+  100%
+    background-position 49% 0
+
+
 
 .bullet.bullet.bullet-no-anim.bespoke-bullet-inactive
   transform none
@@ -129,6 +195,8 @@ $book-height = 250px
 
   &.ffd5d5
     background-color #ffd5d5
+
+
 
 
 
@@ -191,3 +259,5 @@ thead > tr
 // utility slide classes
 .right-aligned
   float right
+
+

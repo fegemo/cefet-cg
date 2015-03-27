@@ -12,7 +12,8 @@ var bespoke = require('bespoke'),
     state = require('bespoke-state'),
     math = require('bespoke-math'),
     markdown = require('bespoke-meta-markdown'),
-    tutorial = require('./tutorial');
+    tutorial = require('./tutorial'),
+    sleek = require('./sleek-menu');
 
 // Bespoke.js
 bespoke.from('article', [
@@ -28,3 +29,5 @@ bespoke.from('article', [
   state(),
   tutorial(document.getElementsByClassName('tutorial')[0])
 ]);
+
+sleek();
