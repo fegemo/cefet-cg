@@ -108,7 +108,7 @@ body
   position relative
   height 100%
   transition all 400ms ease-out
-  //transform translateY(10px)
+
   &:before
     content ''
     position absolute
@@ -197,7 +197,18 @@ $book-height = 250px
     background-color #ffd5d5
 
 
+$portrait-size = 100px
+.portrait,
+.portrait img
+  display inline-block
+  width $portrait-size
+  height $portrait-size
+  border-radius ($portrait-size / 2)
+  figcaption
+    background-color transparent
 
+.portrait.right
+  float right
 
 
 /// Tutorial
