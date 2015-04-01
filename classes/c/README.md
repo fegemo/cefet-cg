@@ -76,14 +76,6 @@ int (*func2)(void);         // ponteiro para função que ret. int
 ```
 
 ---
-## Referências da linguagem C
-
-- Tudo sobre o preprocessador:
-  - https://gcc.gnu.org/onlinedocs/cpp/
-- Tudo sobre o compilador mais utilizado (gcc):
-  - https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/index.html
-
----
 # Alterando valores dentro de funções
 
 ---
@@ -105,9 +97,9 @@ void atendePessoaNoRangoDoRei(int fila) {
 
 int main(int argc, char* argv[]) {
   int fila = 30;
-  printf("Pessoas: %d\n");            // Imprime 10
+  printf("Pessoas: %d\n");            // Imprime 30
   atendePessoaNoRangoDoRei(fila);
-  printf("Pessoas: %d\n");            // Imprime 10 :O
+  printf("Pessoas: %d\n");            // Imprime 30 :O
 
   return 0;
 }
@@ -403,3 +395,12 @@ clean:
   $ make run
   ```
   - Para executar o programa
+
+---
+## Referências da linguagem C
+
+- Tudo sobre o preprocessador:
+  - https://gcc.gnu.org/onlinedocs/cpp/
+- Tudo sobre o compilador mais utilizado (gcc):
+  - https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/index.html
+
