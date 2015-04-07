@@ -39,12 +39,15 @@ del
 
 
 /// Header and content layout
+$meny-offset-top = 10px
+
 body
   perspective 800px
   perspective-origin 50% 0
   &.menu-open
     &> #page-header
       transform translate3d(0,0,0)
+      transition transform 200ms ease-out
 
     &> #presentation-container
       transform-origin 50% 0%
@@ -52,8 +55,10 @@ body
       transform-style preserve-3d
 
       &:before
-        background-image -webkit-linear-gradient(top, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.25) 100%)
+        background-image -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.65) 100%)
 
+    .bespoke-progress-parent
+      transform translateY(0)
 
 #page-header
   position fixed
@@ -61,7 +66,8 @@ body
   height $page-header-height
   padding 0
   transition transform 400ms ease-out
-  transform translateY(-100%) translateY(10px)
+  -webkit-transform-origin 50% 0% 0px
+  transform rotateX(30deg) translateY(-100%) translateY($meny-offset-top)
   z-index 1
   overflow hidden
   background-color rgb(255, 213, 213)
@@ -90,6 +96,11 @@ body
     &:hover:before
       opacity 0
       transform scale(0.98)
+
+.bespoke-progress-parent
+  transform translateY($meny-offset-top - 1)
+  transition transform 200ms ease-out
+
 
 #page-author
   display inline-block
@@ -120,8 +131,9 @@ body
     z-index 1000
     pointer-events none
     -webkit-transition all 400ms ease-out
-    transition: all 400ms ease-out
+    transition transform 400ms ease-out
     background-image none
+    will-change background-image
 
 // animated background of the body
 @media screen and (min-device-width: 640px)
@@ -139,6 +151,11 @@ body
     background-position 49% 0
 
 
+// only render the necessary slides: current, immediately after, immed. before (to improve performance)
+.bespoke-slide.bespoke-inactive.bespoke-after:not(.bespoke-after-1)
+  display none
+.bespoke-slide.bespoke-inactive.bespoke-before:not(.bespoke-before-1)
+  display none
 
 .bullet.bullet.bullet-no-anim.bespoke-bullet-inactive
   transform none
