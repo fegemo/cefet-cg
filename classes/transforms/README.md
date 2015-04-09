@@ -17,10 +17,10 @@
 # Introdução a transformações
 
 ---
-## Introdução (teoria)
+## Teoria geométrica das transformações
 
-- Transformação é uma função que mapeia pontos de um espaço Euclidiano em
-  outros (ou possivelmente os mesmos) pontos do mesmo espaço.
+- Transformação é uma função que **mapeia pontos de um espaço Euclidiano em
+  outros pontos** do mesmo espaço.
 - Se uma transformação é linear, então
   - Se um conjunto de pontos está contido em uma reta, depois de
     transformados eles também estarão contidos sobre uma reta.
@@ -28,7 +28,7 @@
     então essa relação de distância é mantida pela transformação.
 
 ---
-## Introdução (em OpenGL)
+## Prática das transformações (em OpenGL)
 
 - Desenhamos quaisquer objetos em OpenGL **descrevendo seus vértices**
   - `glVertex3f(x, y, z)`
@@ -42,21 +42,22 @@
     - Inclinação (_shearing_)
 
 ---
-## Forma geral
+## **Forma geral** de ponto ou vetor
 
 - Na geometria afim, vimos que podemos representar um ponto ou um vetor na
   forma:
 
   R = &alpha;<sub>0</sub>F.e<sub>0</sub> + &alpha;<sub>1</sub>F.e<sub>1</sub> + &alpha;<sub>2</sub>F.e<sub>2</sub> + &alpha;<sub>3</sub>O
 
-  - Em que &alpha;<sub>3</sub> é 0 para vetores ou 1 para pontos, R é um ponto
-    ou um vetor representado em termos do sistema de coordenadas F.
+  - Em que **&alpha;<sub>3</sub>** é 0 para vetores ou 1 para pontos 
+    (é a **coordenada homogênea**), R é um ponto ou um vetor representado 
+    em termos do sistema de coordenadas F
 
 ---
 ## Forma geral (cont.)
 
-- Das propriedades da geometria afim, podemos propor uma função T que, se
-  aplicada a cada componente da equação anterior se mantém uma equação afim:
+- Das propriedades da geometria afim, podemos propor **uma função T** que, se
+  aplicada a cada componente da equação anterior, **se mantém uma equação afim**:
 
   T(R) = &alpha;<sub>0</sub>T(F.e<sub>0</sub>) + &alpha;<sub>1</sub>T(F.e<sub>1</sub>) + &alpha;<sub>2</sub>T(F.e<sub>2</sub>) + &alpha;<sub>3</sub>T(O)
 
@@ -73,10 +74,13 @@
     por T
   - Disso temos que **aplicar uma transformação afim é equivalente a
     multiplicar as coordenadas (de um ponto ou vetor) por uma matriz**
-    - Em `n` dimensões, isso equivale a uma matriz `(n + 1) x (n + 1)`
+    - Em <span class="math">n</span> dimensões, isso equivale a uma matriz <span class="math">(n + 1)(n + 1)</span>
 
 ---
-## Translação
+# Tipos comuns de transformações
+
+---
+## **Translação**
 
 - A transformação de translação move um objeto de uma posição para outra.
 
@@ -111,6 +115,7 @@
     glVertex3f(-10, -10, 0);    glVertex3f(10, -10, 0);
     glVertex3f(10, 10, 0);      glVertex3f(-10, 10, 0);
   glEnd();
+  glTranslatef(-player.x, -player.y, 0); // desfaz translação
   ```
 - Benefícios
   - Podemos definir objetos (vértices) em um **sistemas de coordenadas local**
@@ -123,17 +128,13 @@
 
 - Pode-se usar a matriz inversa de uma transformação para **se desfazer a
   operação** efetuada por ela
-  - `Ctrl-Z`
 - A matriz inversa de uma translação T(t) é dada por T<sup>-1</sup>(t) tal que:
   - T<sup>-1</sup>(t) = T(-t)
   - Ou seja, basta multiplicar o vetor t de deslocamento por -1 para se obter a
     matriz inversa
 
 ---
-# Rotação
-
----
-## Rotação
+## **Rotação**
 
 - A rotação de um objeto é especificada por um ângulo de rotação e um eixo
 de rotação.
@@ -157,16 +158,14 @@ de rotação.
     deita-se para a direita ou esquerda
   - Se rotacionar-mos vértices em `x`, suas coordenadas `y` e `z` alteram, mas
     `x` se mantêm
-
     ![](../../images/rotacao-eixos.png)
-
     - Portanto, em 2D, para rotacionar um objeto provavelmente queremos usar o
       eixo Z
 
 ---
 ## Rotação no **eixo Z**
 
-- Pode ser representada por uma matriz R(&alpha;), em que &alpha; é o ângulo de
+- Pode ser representada por uma matriz <span class="math">R_{z}(\alpha)</span>, em que &alpha; é o ângulo de
   rotação.
 
   ![](../../images/rotacao-matriz.png)
@@ -200,6 +199,7 @@ de rotação.
     glVertex3f(-10, -10, 0);    glVertex3f(10, -10, 0);
     glVertex3f(10, 10, 0);      glVertex3f(-10, 10, 0);
   glEnd();
+  glRotatef(-player.angle, 0, 0, 1);  // desfaz
   ```
 
 ---
@@ -228,8 +228,9 @@ de rotação.
 - Para rotacionar um objeto que não está na origem em torno de si mesmo,
   precisamos, primeiro  (1) movê-lo até a origem, (2) rotacionar e (3) movê-lo
   de volta à sua posição original
+  
   ![](../../images/rotacao-ponto.png)
-- Assim, fazemos uma transformação composta dada pela matriz `X`:
+- Assim, fazemos uma transformação composta dada pela matriz obtida pela multiplicação:
   X = T(p)R<sub>z</sub>(45º)T(-p)
 
 ---
@@ -259,7 +260,7 @@ de rotação.
 
 - Uma transformação de escala simples é realizada pela multiplicação das
   posições (x, y, z) de um objeto por fatores escalares s<sub>x</sub>, s<sub>y</sub>, s<sub>z</sub>
-- A transformação de escada pode ser representada por uma matriz S tal que:
+- A transformação de escala pode ser representada por uma matriz S tal que:
 
   ![](../../images/escala-matriz.png)
 
@@ -286,6 +287,9 @@ de rotação.
     glVertex3f(-10, -10, 0);    glVertex3f(10, -10, 0);
     glVertex3f(10, 10, 0);      glVertex3f(-10, 10, 0);
   glEnd();
+  if (player.isSmall) {
+    glScalef(1/.5, 1/.5, 1/.5);   // desfaz
+  }
   ```
 
 ---
@@ -337,7 +341,7 @@ de rotação.
 
 ![](../../images/composicao-matriz.png)
 
-Lembre-se: multiplicação de matrizes não é comutativo - a ordem importa.
+Lembre-se: multiplicação de matrizes não é comutativa - a ordem importa.
 
 ---
 # Push, Pop
@@ -368,9 +372,11 @@ Lembre-se: multiplicação de matrizes não é comutativo - a ordem importa.
 - `glPushMatrix` empilha a matriz corrente e a duplica no topo da pilha.
   - Ou seja, assim que `glPushMatrix` é chamada, as duas primeiras matrizes da
   pilha são idênticas
-
 - `glPopMatrix` desempilha a matriz corrente
-
+- `glLoadIdentity` define a matriz do topo como uma identidade
+- `glRotate, glTranslate` etc., multiplicam a matriz do topo pela matriz de 
+  transformação correspondente
+  
 ---
 # Referências
 

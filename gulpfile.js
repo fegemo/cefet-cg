@@ -89,6 +89,13 @@ gulp.task('attachments', function() {
     .pipe(connect.reload());
 });
 
+gulp.task('samples', function() {
+  return gulp.src('samples/**/*')
+    .pipe(changed('dist/samples'))
+    .pipe(gulp.dest('dist/samples'))
+    .pipe(connect.reload());
+});
+
 gulp.task('clean', function(cb) {
   del('dist', cb);
 });
@@ -129,7 +136,7 @@ function getFolders(cwd, dir) {
     });
 }
 
-gulp.task('cefet-files', ['js', 'html', 'md', 'css', 'images', 'attachments'], function() {
+gulp.task('cefet-files', ['js', 'html', 'md', 'css', 'images', 'attachments', 'samples'], function() {
   var folders = getFolders('.', 'classes').concat(getFolders('.', 'assignments')),
       tasks = folders.map(function(folder) {
         var t = [];

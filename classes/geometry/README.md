@@ -24,22 +24,24 @@
 ---
 ## Problemas Típicos (1/2)
 
-- **Interseção**
-  - Dados um cubo e um raio (privatizador), o raio acerta o cubo?
+- **Interseção** (ou colisão)
+  - Dado um cubo e um raio (privatizador), o raio acerta o cubo?
   - Se acerta, em qual face?
   - Se ele refletir dessa face, em qual direção?
 - **Transformação**
   - Dados 4 vértices formando um polígono, quais seriam as novas coordenadas se
     o polígono fosse rotacionado 30° no eixo X?
+    - Ou então se mudarmos a câmera de posição
 
 ---
 ## Problemas Típicos (2/2)
+
 - **Orientação**
   - 3 pontos colineares definem um plano. Dado um quarto ponto, ele está acima,
     abaixo ou pertence ao plano?
 - **Mudança de coordenadas**
-  - Dada uma esfera em um sistema de coordenadas, quais seriam as coordenadas
-    da esfera em um outro sistema de coordenadas?
+  - Dada uma esfera em um sistema de coordenadas (e.g., polar), quais seriam as coordenadas
+    da esfera em um outro sistema de coordenadas (e.g., cartesiano)?
 
 ---
 ## Exemplo de problema: **rotação**
@@ -47,8 +49,8 @@
 - Para gerar a segunda figura à partir da primeira, preciso reescrever as
   coordenadas de cada vértice "na mão"?
 
-![](../../images/geometry-square-transform1.png)
-![](../../images/geometry-square-transform2.png)
+![Figura mostrando um quadrado](../../images/geometry-square-transform1.png)
+![Figura mostrando o mesmo quadrado da figura anterior, porém girado em 45º](../../images/geometry-square-transform2.png)
 
 - Sim, é possível!
   - Mas dá muito trabalho e programadores são preguiçosos
@@ -60,6 +62,17 @@
 
 <iframe src="../../samples/rotate/rotate-anim.htm" width="100%" height="500" frameborder="0"></iframe>
 
+---
+# Objetivos de hoje
+
+- Vamos supor que estamos na década de 90 e **vamos inventar uma peça de _hardware_ 
+  para fazer os cálculos necessários** (podemos batizá-la de placa de vídeo :) 
+  para gerar imagens à partir de cenas bi/tridimensionais
+- Vamos precisar:
+  1. Definir que **tipos de operações com números** nosso _hardware_ deve fazer
+  1. Restringir as operações a um **conjunto mínimo viável** (porque _hardware_ é caro)
+  1. Encontrar uma forma de fazer **várias operações ao mesmo tempo** (para que seja rápido)
+  
 ---
 # Geometria
 
@@ -73,28 +86,37 @@
   - Aplicação em construções, como as pirâmides
 - Porém, somente na época de **Euclides**, a geometria foi axiomatizada e
   formalizada
-  - Século 3 a.C
+  - **300 a.C.**
 
 ---
 ## Geometria Afim
 
-- Somente no século XVII, com Descartes, as coordenadas cartesianas foram
+- Somente por volta de **1600 d.C.**, com Descartes, as coordenadas cartesianas foram
   desenvolvidas
   - Possibilitando conceitos geométricos serem representados aritmeticamente
-- No século XIX começou-se a questionar a geometria de Euclides e novas
-  geometrias foram propostas
-  - Lobachevski (hiperbólica) e Gauss (diferencial)
-  - Fundamentais, por exemplo, para a teoria da relatividade de Einstein
-- Estaremos discutindo 3 geometrias
+- À partir dos anos **1900 d.C.** começou-se a questionar se a geometria de Euclides 
+  era a única geometria possível
+  - Novas geometrias foram propostas
+    - Lobachevski (hiperbólica) e Gauss (diferencial)
+- Vamos discutir 3 geometrias no nosso curso:
   - Geometria afim
   - Geometria euclidiana
-  - Geometria projetiva (mais adiante no curso)
+  - Geometria projetiva (_en passant_)
 
 ---
 # Geometria Afim
 
 ---
-## Geometria Afim
+## **Definição** de Geometria Afim
+
+- Estudo de propriedades geométricas preservadas por
+  transformações afim
+- **Transformação afim** = transformações lineares + translações
+- **Transformação linear** = função entre dois espaços de vetores
+  que preservam soma de vetores e multiplicação por escalares
+
+---
+## Elementos da Geometria Afim
 
 - Elementos fundamentais
   - Escalares
@@ -116,13 +138,12 @@
 ---
 ## Ponto e Vetor
 
-- Podem ser representados por um conjunto de coordenadas no espaço (R², R³,
-  R<sup>n</sup>)
+- Podem ser representados por um conjunto de coordenadas no espaço (<span class="math">R^2, R^3, R^n</span>)
 - Ponto
   - Representa uma localização no espaço
   - Notação típica:
     - Letras maíusculas
-      - P, Q, R
+      - <span class="math">P, Q, R</span>
 - Vetor
   - Representa uma grandeza geométrica. Entendido como um deslocamento.
   - Notação típica
@@ -130,16 +151,35 @@
       - <span class="math">u, v, w</span>
 
 ---
-## Operações
+## Operações (1/4)
+
+![](../../images/afim-multiplicacao-escalar.png)
 
 - Multiplicação escalar-vetor
-  - v = &alpha; &middot; v
+  - v = &alpha; &middot; u
+
+---
+## Operações (2/4)
+
+![](../../images/afim-soma-vetores.png)
+
 - Adição vetor-vetor
-  - v = u + w
-  - v = u - w
-    - v = u + (-1 &middot; w)
+  - w = u + v
+  - w = u - v
+    - w = u + (-1 &middot; v)
+
+
+---
+## Operações (3/4)
+
+![](../../images/afim-subtracao-pontos.png)
+
 - Diferença ponto-ponto
   - v = P - Q
+
+---
+## Operações (4/4)
+
 - Adição ponto-vetor
   - R = P + u
   - R = P - u
@@ -343,10 +383,6 @@ independentes**
   - G.e<sub>0</sub>[F] = (-2, -1, 0)
   - G.e<sub>1</sub>[F] = (0, 1, 0)
   - G.O[F] = (5, 1, 1)
-
----
-## Mudança do sistema de coordenadas
-
 
 ---
 # Referências
