@@ -14,7 +14,6 @@
 ---
 ## Produto Vetorial
 
--
 - Da geometria Euclidiana, permite achar um vetor perpendicular a outros dois
 - Útil na construção de sistemas de coordenadas
 
@@ -24,11 +23,13 @@
 ---
 ## Produto Vetorial (cont.)
 
-- Propriedades (assume-se u, v linearmente independentes):
-  - Antisimetria: u × v = – v × u
-  - Bilinearidade: u × (&alpha;v) = &alpha; (u × v)  e  u × (v + w) = (u × v) + (u × w)
-  - u × v é perpendicular tanto a u quanto a v
-  - O comprimento de u × v é igual a área do paralelogramo definido por  u  e v, isto é, | u × v | = | u | | v | sin &theta;
+- Propriedades (assume-se <span class="math">u, v</span> linearmente independentes):
+  - Antisimetria: <span class="math">u \times v = -v \times u</span>
+  - Bilinearidade:
+    - <span class="math">u \times (\alpha v) = \alpha (u \times v)</span>  e
+    - <span class="math">u \times (v + w) = (u \times v) + (u \times w)</span>
+  - <span class="math">u \times v</span> é perpendicular tanto a <span class="math">u</span> quanto a <span class="math">v</span>
+  - O comprimento de <span class="math">u \times v</span> é igual a área do paralelogramo definido por  <span class="math">u</span> e <span class="math">v</span>, isto é, <span class="math">| u \times v | = | u | | v | \sin \theta</span>
 
 ---
 # Orientação
@@ -65,31 +66,31 @@
 # Mudança de Sistema de Coordenadas
 
 ---
-## Sistema de Coordenadas
+## Sistema de Coordenadas (**revisão**)
 
-- Um sistema de coordenadas para Rn é definido por um ponto (origem) e n vetores
-- Por exmplo: Seja um sistema de coordenadas para R2 definido pelo ponto O e
-  os vetores X e Y. Então,
-  - Um ponto P é dado por coordenadas xP e yP tais que
+- Um sistema de coordenadas para <span class="math">R^n</span> é definido por um ponto (origem) e <span class="math">n</span> vetores
+- Por exmplo: Seja um sistema de coordenadas para <span class="math">R^2</span> definido pelo ponto <span class="math">O</span> e
+  os vetores <span class="math">X</span> e <span class="math">Y</span>. Então,
+  - Um ponto <span class="math">P</span> é dado por coordenadas <span class="math">x_P</span> e <span class="math">y_P</span> tais que
 
-    ![](../../images/coord-eq1.png)
-  - Um vetor V é dado por coordenadas xV e yV tais que
+    <div class="math">P = x_P . X + y_P . Y + O</div>
+  - Um vetor <span class="math">V</span> é dado por coordenadas <span class="math">x_V</span> e <span class="math">y_V</span> tais que
 
-    ![](../../images/coord-eq2.png)
+    <div class="math">V = x_V . X + y_V . Y</div>
 
 ---
 ## Mudança de Sistema
 
-- Se estabelecemos um outro sistema (ex.: Q/T/U), como computar as novas
-  coordenadas dadas as antigas?
+- Se estabelecemos um outro sistema (ex.: <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span>), como computar as coordenadas
+  nesse novo sistema?
 
   ![](../../images/coord-grafico.png)
 
 ---
 ## Mudança de Sistema (cont.)
 
-- Como computar as coordenadas de um ponto P = (xP, yP) em O/X/Y dadas as
-  coordenadas de P em Q/T/U, isto é, (tP, uP)?
+- Como computar as coordenadas de um ponto <span class="math">P = (x_P, y_P)</span> em <span class="math">O</span>/<span class="math">X</span>/<span class="math">Y</span> dadas as
+  coordenadas de <span class="math">P</span> em <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span>, isto é, <span class="math">(t_P, u_P)</span>?
 
   ![](../../images/coord-eq3.png)
 - Logo,
