@@ -143,6 +143,8 @@ gulp.task('cefet-files', ['js', 'html', 'md', 'css', 'images', 'attachments', 's
         t.push(gulp.src(['html/index.html'])
           .pipe(replace('{path-to-root}', '../..'))
           .pipe(gulp.dest(path.join('dist', folder))));
+        t.push(gulp.src(['node_modules/bespoke-math/node_modules/katex-build/fonts/**/*'])
+          .pipe(gulp.dest(path.join('dist', folder, 'fonts'))));
         return merge(t);
       });
   return merge(tasks);
