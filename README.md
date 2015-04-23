@@ -85,8 +85,14 @@ e Tridimensionais.
 - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (24/03/2015)
 - [OpenGL Hands-on - Parte 4](classes/opengl-handson4/) (26/03/2015)
 - [Cê](classes/c) (31/03/2015)
+
+---
+# Aulas (p. 2)
+
 - [Geometria](classes/geometry) (07/04/2015)
 - [Transformações Geométricas](classes/transforms) (09/04/2015)
+- [Orientação e Mudança de Coordenadas](classes/baseorientation) (16/04/2015)
+- [O Pipeline Gráfico](classes/pipeline) (23/04/2015)
 
 ---
 # Atividades Avaliativas
