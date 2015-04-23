@@ -23,31 +23,36 @@
 ---
 ## Um _pipeline_
 
-1. Divisão de trabalho em etapas
-1. As etapas são executadas em paralelo
-1. Exemplo: pipeline da exploração de diamantes
-  ![](../../images/pipeline-diamante.png)
-  - A velocidade com que se produz diamantes é dada pela velocidade da etapa
-    mais lenta
+1. **Divisão** de trabalho **em etapas**
+1. As etapas são executadas **em paralelo**
+1. Exemplo: pipeline de pacientes em um hospital
+  ![](../../images/pipeline-hospital.png)
+  - A velocidade com que se atende pacientes é dada pela **velocidade da etapa
+    mais lenta**
 
 ---
-## O _pipeline_ gráfico
+## O _pipeline_ **gráfico**
 
 ![](../../images/pipeline-grafico-fases.png)
 
-- É o processo de transformação de um modelo de descrição de objetos (vértices)
-  em uma imagem digital (imagem renderizada na tela)
-- Dividido em três etapas conceituais
+- É o **processo de transformação de um modelo de descrição de objetos** (vértices)
+  **em uma imagem digital** (imagem renderizada na tela)
+- Dividido em três etapas conceituais:
   1. Aplicação
   1. Geometria
   1. Rasterização
+  
 ---
 ## O _pipeline_ gráfico
 
 - Cada etapa pode ser, por si só, outro _pipeline_
-- O tempo de renderização é dado pela velocidade da etapa mais devagar
+- O **tempo de renderização** é dado pela velocidade da etapa mais devagar
   - Depende da cena e de como foi implementada
-
+- Na analogia do hospital:
+  1. Os **vértices** são os **pacientes** que precisam ser renderizados
+  1. Para isso eles precisam passar por algumas etapas, em que **são transformados**
+  1. Os **atendentes/enfermeiros/médicos** são componentes de **_software_ ou _hardware_**
+  
 ---
 # Estágio de **aplicação**
 
@@ -56,14 +61,14 @@
 
 - Controlado pelo desenvolvedor
 - É onde define-se a descrição dos objetos da cena
-  - Basicamente, seu código fonte de um programa em OpenGL
+  - Basicamente, seu **código fonte** de um programa em OpenGL
 - Ao final do estágio, sua saída são as primitivas geométricas a serem
   entregues para o próximo estágio, de geometria
 
 ---
 ## Estágio de **aplicação** (cont.)
 
-- Como este estágio está todo em software, geralmente ele não é subdividido
+- Como este estágio está **completamente em _software_**, geralmente ele não é subdividido
   paralelizado
 - Atividades típicas que executamos neste estágio
   - Cálculo de colisão
@@ -89,7 +94,7 @@
 
 
 ---
-## Geometria &gt;&gt; Transf. de Modelo e visualização
+## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
 
 - Tipicamente, descrevemos os objetos em um sistema de coordenadas local a eles
   - Espaço do objeto
@@ -100,7 +105,7 @@
   ela são exibidos
 
 ---
-## Geometria &gt;&gt; Transf. de Modelo e visualização
+## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
 
 ![](../../images/view-transform.png)
 
@@ -108,7 +113,7 @@
   - Espaço da câmera ou do olho
 
 ---
-## Geometria &gt;&gt; Transf. de Modelo e visualização
+## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
 
 - A **transformação de modelo e visualização**, então, se trata da
   transformação de **diversos sistemas de coordenadas em um sistema comum**
@@ -116,21 +121,21 @@
   coordenadas
 
 ---
-## Geometria &gt;&gt; Sombreamento de vértices
+## Geometria &gt;&gt; (2) Sombreamento de vértices
 
 - <img src="../../images/cena-3d.png" style="float: right; margin-left: 10px; width: 200px;">
-  Para produzir uma cena realística, precisamos usar um conceito de iluminação
+  Para produzir uma cena realística, precisamos usar um conceito de **iluminação**
 - Com os vértices em suas posições em um único sistema de coordenadas, podemos
-  agora definir a contribuição das fontes de luz de cada vértice
-- Ao final do sombreamento, temos cores e coordenadas de textura para cada
-  vértice da cena
+  agora **definir a contribuição das fontes de luz de cada vértice**
+- Ao final do sombreamento, temos **cores e coordenadas de textura para cada
+  vértice** da cena
   - Essa informação será passada para o sub-estágio seguinte
 
 ---
-## Geometria &gt;&gt; Projeção
+## Geometria &gt;&gt; (3) Projeção
 
 - Após o sombreamento, o sistema de renderização realiza uma projeção
-  - Transform o volume de visualização em um cubo unitário com extremos em
+  - Transforma o volume de visualização em um cubo unitário com extremos em
     (-1, -1, -1) e (1, 1, 1)
   - Cubo unitário é chamado de **volume de visualização canônico**
 - Dois métodos de projeção:
@@ -138,12 +143,12 @@
   1. Perspectivo
 
 ---
-## Geometria &gt;&gt; Projeção
+## Geometria &gt;&gt; (3) Projeção
 
 ![](../../images/proj-tipos.png)
 
 ---
-## Geometria &gt;&gt; Projeção
+## Geometria &gt;&gt; (3) Projeção
 
 - Projeção paralela
   - Linhas paralelas continuam paralelas
@@ -156,9 +161,10 @@
   - Dizemos que temos **coordenadas de dispositivo normalizadas**
   - A coordenada Z dos vértices é removida (3D -> 2D), porém armazenada em um
     espaço chamado _Z-buffer_
+    - Por isso precisamos usar `glEnable(GL_DEPTH_TEST)` para usar :O
 
 ---
-## Geometria &gt;&gt; Recorte
+## Geometria &gt;&gt; (4) Recorte
 
 - Apenas as primitivas **dentro do volume de visualização** precisam
   ser renderizadas
@@ -169,7 +175,7 @@
   - Primitivas **parcialmente representadas**: precisam ser **recortadas**
 
 ---
-## Geometria &gt;&gt; Recorte
+## Geometria &gt;&gt; (4) Recorte
 
 ![](../../images/pipeline-recorte.png)
 
@@ -180,7 +186,7 @@
 - Na etapa de recorte, novos vértices podem ser criados
 
 ---
-## Geometria &gt;&gt; Mapeamento de tela
+## Geometria &gt;&gt; (5) Mapeamento de tela
 
 ![](../../images/pipeline-tela.png)
 
@@ -202,13 +208,13 @@
 - Entregaremos a cor a ser definida para cada pixel da janela
 
 ---
-## Rasterização &gt;&gt; Configuração de Triângulos
+## Rasterização &gt;&gt; (1) Configuração de Triângulos
 
 - Neste estágio, informações sobre os triângulos definidos pelos vértices são
   determinadas
 
 ---
-## Rasterização &gt;&gt; _Scan Conversion_
+## Rasterização &gt;&gt; (2) _Scan Conversion_
 
 - Cada pixel que tem seu centro "coberto" por um triângulo é verificado e um
   fragmento é criado
@@ -218,18 +224,18 @@
   advém da interpolação dos três vértices do triângulo
 
 ---
-## Rasterização &gt;&gt; Sombreamento de Pixels
+## Rasterização &gt;&gt; (3) Sombreamento de Pixels
 
 - Para cada pixel que possui um fragmento, devemos obter sua cor
 - Várias técnicas podem ser usadas aqui
   - Sombreamento de _Phong_
   - Sombreamento de _Goraud_
-  - Texturização etc.
-
-    ![](../../images/texturizacao.png)
+  - <img src="../../images/texturizacao.png" style="float:right;">
+    Texturização etc.
+    
 
 ---
-## Rasterização &gt;&gt; Fusão
+## Rasterização &gt;&gt; (4) Fusão
 
 - Do estágio anterior, podemos ter vários fragmentos por pixel (e.g.,
   triângulos sobrepostos)
