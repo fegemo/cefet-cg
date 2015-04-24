@@ -93,6 +93,9 @@ e Tridimensionais.
 - [Transformações Geométricas](classes/transforms) (09/04/2015)
 - [Orientação e Mudança de Coordenadas](classes/baseorientation) (16/04/2015)
 - [O Pipeline Gráfico](classes/pipeline) (23/04/2015)
+- [Projeção](classes/projection) (28/04/2015)
+- [Modelagem Hierárquica](classes/hierarch) (30/04/2015)
+- [Modelagem de Objetos](classes/modeling) (05/05/15)
 
 ---
 # Atividades Avaliativas
@@ -102,13 +105,13 @@ e Tridimensionais.
 
 - Listas de exercício (10 pontos)
 - Lista de revisão da prova (10 pontos)
-- Prova (20 pontos, 14/05/2015 a priori)
+- Prova (20 pontos, 21/05/2015)
 
 ---
 ## Trabalhos (60 pontos)
 
 - [TP1: Breakout][tp1] (15 pontos, 26/03/2015 + 21 dias)
-- TP2: Boids (15 pontos, 16/04/2015 + 21 dias)
+- TP2: Boids (15 pontos, 28/04/2015 + 21 dias)
 - TP3 - duplas: Ray-tracer (15 pontos, data a definir)
 - TP4 - duplas: Animação (15 pontos, data a definir)
 
