@@ -14,15 +14,15 @@
   ou objetos a partir de um espaço tridimensional (uma cena) em um plano
   bidimensional (uma imagem).
 
-  ![](../../images/proj-casa-foto.png)
+![](../../images/proj-casa-foto.png)
 
 ---
 ## Projeção
 
-- De forma geral, trata-se de representar objetos de R<sup>n</sup> em
-  R<sup>n-1</sup>
+- De forma geral, trata-se de representar objetos de <span class="math">R^n</span> em
+  <span class="math">R^{n-1}</span>
 
-  ![](../../images/proj-waze.jpg)
+![](../../images/proj-waze.jpg)
 
 ---
 ## Relembrando o pipeline gráfico
@@ -32,13 +32,13 @@
 ![](../../images/pipeline-geometria-fases.png)
 
 ---
-## O problema da projeção em Computação Gráfica
+## O problema da projeção **em Computação Gráfica**
 
 - Trata-se de transformar o volume de visualização em um volume de cubo
   unitário, descartando as coordenadas Z dos vértices
   - Na verdade, as coordenadas Z saem dos vértices e vão para o Z-buffer
-- Essa transformação é feita por meio de uma matriz que vai multiplicar as
-  coordenadas dos vértices
+- Essa transformação é feita por meio de **uma matriz que vai multiplicar as
+  coordenadas dos vértices**, assim como as outras transformações que vimos
 
 ---
 ## Elementos da projeção
@@ -52,7 +52,7 @@
   - Definido pelo sistema de coordenadas da câmera (ou do olho)
 1. Raios de projeção
   - Raios que ligam um ponto no espaço tridimensional à imagem 2D
-representada no plano de projeção
+    representada no plano de projeção
 1. Centro de projeção
   - ponto fixo na cena de onde todos os raios de projeção surgem
 
@@ -96,6 +96,24 @@ representada no plano de projeção
 - A cena é orientada em 45º relativo ao plano de projeção
 
 ---
+## Projeção **Ortogonal em OpenGL**
+
+- Queridíssimo `glOrtho` ([referência](http://earth.uni-muenster.de/~joergs/opengl/glOrtho.html))
+- <div>Assinatura da função:</div>
+  <img src="../../images/gl-ortho.png" style="float: right; margin-left: 10px; margin-top: 18px">
+  ```c
+  void glOrtho(double left,
+               double right,
+               double bottom,
+               double top,
+               double near,
+               double far);
+  ```
+- A função multiplica a matriz corrente por uma matriz da forma acima (direita)
+  - Devemos multiplicar a matriz **de projeção (`GL_PROJECTION`)**
+
+
+---
 # Projeção Perspectiva
 
 ---
@@ -103,51 +121,49 @@ representada no plano de projeção
 
 ![](../../images/proj-perspectiva.png)
 
-- A Projeção Perspectiva mapeia os pontos no plano de projeção ao longo dos
-  raios de projeção que emanam de um centro de projeção
+- A projeção perspectiva mapeia os pontos no plano de projeção **ao longo dos
+  raios de projeção que emanam de um centro de projeção**
 
 ---
 ## Características da Projeção Perspectiva
 
-1. Objetos mais próximo ao plano de projeção são maiores
+1. Objetos mais próximos ao plano de projeção são maiores
 1. Linhas paralelas se encontram em pontos de fuga
 1. Aparência semelhante ao modelo do nosso olho
 
 ---
 # Objetos 3D
 
----
-## Objetos 3D
+- Façamos uma breve digressão...
 
-- Um objeto tridimensional é formado por várias faces (triângulos) adjacentes
+---
+## O pulo ~~do gato~~ da raposa
+
+- Um objeto tridimensional é formado por várias faces (polígonos) adjacentes
   que podem estar no mesmo plano ou não
-  ![](../../images/3d-objects-1.png)
-  ![](../../images/3d-objects-2.png)
+
+![](../../images/3d-objects-1.png)
+![](../../images/3d-objects-2.png)
 
 ---
 ## Exemplo de objetos 3D
 
-- Para desenhar um cubo em vez de um quadrado, precisamos desenhar 6 faces em
+- <img src="../../images/fearful-32.png" style="float:right;margin-left:10px;margin-top:1.3em" alt="OMG era só isso??">
+  Para desenhar um cubo em vez de um quadrado, precisamos desenhar 6 faces em
   vez de 1
   ```c
   glBegin(GL_QUADS);
     // Cima (y = 1.0f)
     glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3f( 1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f,  1.0f);
-    glVertex3f( 1.0f, 1.0f,  1.0f);
+    glVertex3f( 1.0f, 1.0f, -1.0f); glVertex3f(-1.0f, 1.0f, -1.0f);
+    glVertex3f(-1.0f, 1.0f,  1.0f); glVertex3f( 1.0f, 1.0f,  1.0f);
 
     // Baixo
     glColor3f(1.0f, 0.5f, 0.0f);
-    glVertex3f( 1.0f, -1.0f,  1.0f);
-    glVertex3f(-1.0f, -1.0f,  1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f( 1.0f, -1.0f, -1.0f);
-
-    //...
-
+    glVertex3f( 1.0f, -1.0f,  1.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
+    glVertex3f(-1.0f, -1.0f, -1.0f); glVertex3f( 1.0f, -1.0f, -1.0f);
   ```
+  
 ---
 ## Roubando com o GLUT
 
@@ -169,22 +185,9 @@ representada no plano de projeção
 ![](../../images/glut-shapes-2.png)
 
 ---
-# Projeção em OpenGL
+# Projeção Perspectiva
 
----
-## glOrtho ([referência](http://earth.uni-muenster.de/~joergs/opengl/glOrtho.html))
-
-- <img src="../../images/gl-ortho.png" style="float: right; margin-left: 10px;">
-  Assinatura da função
-  ```c
-  void glOrtho(double left,
-               double right,
-               double bottom,
-               double top,
-               double near,
-               double far);
-  ```
-- A função multiplica a matriz corrente por uma matriz da forma ao lado
+- Voltando ao tema de hoje...
 
 ---
 ## glFrustum ([referência](http://earth.uni-muenster.de/~joergs/opengl/glFrustum.html))
@@ -201,7 +204,7 @@ representada no plano de projeção
 ## glFrustum (cont.)
 
 - <img src="../../images/gl-frustum.gif" style="float: right; margin-left: 20px;">
-  A função multiplica a matriz corrente por uma matriz da forma acima
+  A função multiplica a matriz corrente por uma matriz da forma à direita
 - A matriz de projeção (independente se `glOrtho` ou `glFrustum`) deve ser
   colocada na **pilha de matrizes de projeção do OpenGL**
   ```c
@@ -211,13 +214,17 @@ representada no plano de projeção
   ```
 
 ---
-## gluPerspective
+## **gluPerspective**
+
+![](../../images/gl-frustum-diagram.gif)
+![](../../images/glu-perspective-diagram.gif)
 
 - Não é muito intuitivo configurar a perspectiva usando glFrustum
 - Uma forma mais comum para configurar perspectiva é usando dois parâmetros
   1. Um ângulo para o campo de visão
   1. Razão de aspecto (largura / altura)
-- ![](../../images/gl-frustum-diagram.gif)
+
+ 
 
 ---
 ## gluPerspective (cont.)
@@ -231,14 +238,16 @@ representada no plano de projeção
   // fovy, aspect, nearZ, farZ
   gluPerspective(45.0f, 4.0f/3.0f, 1, 20);
   ```
-- O `gluPerspective` chama o `glFrustum` internamente
+- O `gluPerspective` substitui o uso de `glFrustum`, já que ele gera uma matriz 
+  de transformação perspectiva da mesma forma, porém usando outros tipos de 
+  parâmetros
 
 ---
 ## gluPerspective (cont.)
 
-- Campo de visão (_fov_)
+- Campo de visão (_fov_, ou _field of view_)
   - Determina o quanto queremos enxergar da cena
-  - Valores maiores acarretam em um campo de visão maior - espelho côncavo
+  - **Valores maiores** acarretam em um **campo de visão maior** - espelho convexo
   - Para aplicações interativas, tipicamente algo entre 45º e 60º
 
 ---
@@ -260,31 +269,31 @@ representada no plano de projeção
 ---
 ## gluLookAt
 
-- Além de configurar a projeção que queremos (via `glOrtho, glFrustum, glPerspective`),
+- Além de configurar a projeção que queremos (via `glOrtho, glFrustum, gluPerspective`),
   queremos também poder **posicionar** e **mirar** nossa câmera virtual
 
-  ![](../../images/glulookat.gif)
-
-- É uma transformação de visualização - ou seja, usamos a pilha de matrizes
-  `GL_MODELVIEW`
+  ![](../../images/glu-look-at.gif)
+- É uma **transformação de visualização** - ou seja, usamos a pilha de matrizes
+  **`GL_MODELVIEW`**
 
 ---
 ## gluLookAt (cont.)
 
 ```c
-void gluLookAt(	double eyeX,
-                 double eyeY,
-                 double eyeZ,
-                 double centerX,
-                 double centerY,
-                 double centerZ,
-                 double upX,
-                 double upY,
-                 double upZ);
+void gluLookAt(double eyeX,     // posição do olho
+               double eyeY,
+               double eyeZ,
+               double centerX,  // para onde olhamos
+               double centerY,
+               double centerZ,
+               double upX,      // onde fica "para cima"
+               double upY,
+               double upZ);
 ```
 
 ---
 # Referências
 
+- [FAQ sobre visualização em OpenGL](https://www.opengl.org/archives/resources/faq/technical/viewing.htm#view0030) (excelente leitura)
 - Capítulo 3 do livro Real-Time Rendering
 - Lições 5 e 8 das anotações do prof. David Mount
