@@ -111,7 +111,7 @@ e Tridimensionais.
 ## Trabalhos (60 pontos)
 
 - [TP1: Breakout][tp1] (15 pontos, 26/03/2015 + 21 dias)
-- TP2: Boids (15 pontos, 28/04/2015 + 21 dias)
+- [TP2: Boids][tp2] (15 pontos, 28/04/2015 + 21 dias)
 - TP3 - duplas: Ray-tracer (15 pontos, data a definir)
 - TP4 - duplas: Animação (15 pontos, data a definir)
 
