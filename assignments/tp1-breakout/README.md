@@ -141,4 +141,4 @@ Deve ser entregue **um arquivo .tar.gz ou .zip** via **Moodle** contendo:
      seu jogo mostrando as opções implementadas
 
 Qualquer dúvida, entre em contato comigo. Ou acrescente a sua interpretação no
-arquivo README e mãos a obra.
+arquivo README e mãos à obra.
