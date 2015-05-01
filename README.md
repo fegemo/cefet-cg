@@ -94,7 +94,7 @@ e Tridimensionais.
 - [Orientação e Mudança de Coordenadas](classes/baseorientation) (16/04/2015)
 - [O Pipeline Gráfico](classes/pipeline) (23/04/2015)
 - [Projeção](classes/projection) (28/04/2015)
-- [Modelagem Hierárquica](classes/hierarch) (30/04/2015)
+- [Modelagem Hierárquica](classes/hierarchical) (30/04/2015)
 - [Modelagem de Objetos](classes/modeling) (05/05/15)
 
 ---
@@ -111,7 +111,7 @@ e Tridimensionais.
 ## Trabalhos (60 pontos)
 
 - [TP1: Breakout][tp1] (15 pontos, 26/03/2015 + 21 dias)
-- [TP2: Boids][tp2] (15 pontos, 28/04/2015 + 21 dias)
+- [TP2 - duplas: Boids][tp2] (15 pontos, 28/04/2015 + 21 dias)
 - TP3 - duplas: Ray-tracer (15 pontos, data a definir)
 - TP4 - duplas: Animação (15 pontos, data a definir)
 
