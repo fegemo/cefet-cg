@@ -30,6 +30,7 @@ void Desenha() {
   glScalef(.25f, .25f, .25f);
   glColor3f(1, 1, 1);
   DesenhaObjeto();
+  glFlush();
 }
 ```
 
@@ -64,6 +65,7 @@ void Desenha(void) {
     glTranslatef(0,5,0);
     DesenhaObjeto();        // Figura 4
   glPopMatrix();
+  glFlush();
 }
 ```
 

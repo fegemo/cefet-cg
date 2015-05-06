@@ -12,12 +12,17 @@ var bespoke = require('bespoke'),
     state = require('bespoke-state'),
     math = require('bespoke-math'),
     markdown = require('bespoke-meta-markdown'),
+    backdrop = require('bespoke-backdrop'),
     tutorial = require('./tutorial'),
     sleek = require('./sleek-menu');
 
 // Bespoke.js
 bespoke.from('article', [
-  markdown(),
+  markdown({
+    backdrop: function(slide, value) {
+      slide.setAttribute('data-bespoke-backdrop', value);
+    }
+  }),
   fancy(),
   keys(),
   touch(),
@@ -27,6 +32,7 @@ bespoke.from('article', [
   progress(),
   math(),
   state(),
+  backdrop(),
   tutorial(document.getElementsByClassName('tutorial')[0])
 ]);
 

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "bespoke": "^1.0.0",
+    "bespoke-backdrop": "^1.0.0",
     "bespoke-bullets": "^1.1.0",
     "bespoke-hash": "^1.0.2",
     "bespoke-keys": "^1.0.0",

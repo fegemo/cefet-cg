@@ -14,19 +14,30 @@
 ![](../../images/obj-vaca.png)
 
 ---
+## Um arquivo .obj
+
+1. Vamos instalar o **programa "Obj Model Viewer"**
+1. **Abrir um modelo** descrito em um arquivo `.obj`
+1. Após visualizar o modelo, vamos **abrir** o arquivo `.obj` **usando um 
+   editor de texto** e entender o que está acontencendo ali
+   
+---
 ## Histórico
 
 - Modelagem por arames (_wireframes_)
-  - Representa os objetos por arestas e pontos sobre a sua superfície
-  - Gera modelos ambíguos
-- Modelagem por superfícies (década de 60)
-  - Fornece a descrição matemática das superfícies que delimitam o objeto
-  - Poucos testes de integridade do modelo.
+  - ![right](../../images/wireframe-ambiguous.png)
+    Representa os objetos por arestas e pontos sobre a sua superfície
+  - Gera **modelos ambíguos**
+  - Ainda é usado como uma forma barata para visualização (mas não para 
+    representação)
 
 ---
 ## Histórico
 
-- Modelagem de Sólidos (década de 70)
+- Modelagem por **superfícies** (década de 60)
+  - Fornece a descrição matemática das superfícies que delimitam o objeto
+  - Poucos testes de integridade do modelo
+- Modelagem de **sólidos** (década de 70)
   - Implícita ou explicitamente contém informações do fechamento e
     conectividade dos objetos
   - Garante a realização física
@@ -36,9 +47,8 @@
 ---
 ## Paradigmas de Abstração
 
-- A necessidade de paradigmas (Ari Requicha)
+![](../../images/paradigma-universos.png)
 
-  ![](../../images/paradigma-universos.png)
 - Paradigma dos universos
   - Físico F
   - Matemático M
@@ -46,34 +56,49 @@
   - Implementação I
 
 ---
+<!--
+backdrop: paradigma-universos
+-->
+
 ## Paradigma dos Universos
 
 - FÍSICO
-  - Contém objetos do mundo real que  pretendemos estudar
+  - Contém **objetos do mundo real** que pretendemos estudar
 - MATEMÁTICO
-  - Contém uma descrição abstrata  dos objetos do mundo físico
+  - Contém uma **descrição abstrata** dos objetos do mundo físico
 - REPRESENTAÇÃO
-  - Constituído por representações simbólicas e finitas associadas a objetos do universo matemático
+  - Constituído por **representações simbólicas e finitas** associadas a objetos do universo matemático
 - IMPLEMENTAÇÃO
-  - Associamos às descrições simbólicas e finitas do universo de representação com estrutura de dados, com a finalidade de se obter uma representação do objeto no computador
+  - Associamos às descrições simbólicas e finitas do universo de representação com **estrutura de dados**, com a finalidade de se obter uma representação do objeto no computador
 
 ---
+<!--
+backdrop: paradigma-universos
+-->
+
 ## Do mundo físico (real) ao mundo matemático
 
 ![](../../images/paradigmas-real-matematico.png)
 
 ---
+<!--
+backdrop: paradigma-universos
+-->
+
 ## Problemas da Área
 
 - Estudar fenômenos em F
-- Definir os modelos
 - Estudar as relações entre R e M
 - Definir representações de modelos em M
-- Estudar conversões entre representações
-- Definir métodos de implementação
+- Estudar conversões entre representações R
+- Definir métodos de implementação I
 - Comparar estratégias em I
 
 ---
+<!--
+backdrop: paradigma-universos
+-->
+
 ## Esquemas de Representação
 
 - Objetos do universo físico: "sólidos"
@@ -99,13 +124,13 @@
 - Originam três tipos de representação:
   - Por bordo ou fronteira (B-rep – _Boundary Representation_)
   - Operações de conjuntos (CSG – _Constructive Solid Geometry_)
-  - Por enumeração do espaço em células (_BSP-trees_, _Octrees_, etc.)
+  - Por particionamento do espaço (_BSP-trees_, _Octrees_, etc.)
 
 ---
-# Representação por Bordo
+# Representação por Fronteira
 
-- Sólido definido indiretamente **através da superfície que o delimita**
-  - compacta (fechada e limitada)
+- Sólido definido indiretamente **por meio da superfície que o delimita**
+  - Compacta (fechada e limitada)
 - Superfícies são descritas parametricamente por um mapeamento chamado de parametrização:
 
   ![](../../images/eq-parametrizacao-superficies.png)
@@ -184,7 +209,7 @@
   faces
   - Cada aresta é compartilhada por no máximo duas faces
   - A interseção de duas faces é uma aresta, um vértice ou vazia
-- Adjacência de vértices, arestas e faces é chamada de topologia da superfície
+- Adjacência de vértices, arestas e faces é chamada de **topologia** da superfície
 
 ---
 ## Decomposição Poligonal
@@ -195,7 +220,7 @@
 ## Operações sobre Malhas Poligonais
 
 - <img src="../../images/malha-arestas.png" style="float: right; margin-left: 20px">
-  Desenhar a malha
+  **Desenhar a malha** (óbviozão)
 - Achar todas as arestas que incidem em um vértice
 - Achar as faces que incidem numa aresta ou vértice
 - Achar as arestas na fronteira de uma face
@@ -323,7 +348,7 @@
 ![](../../images/csg-solidworks.png)
 
 ---
-## Exemplo _real-life_: o jogo Spore
+## Exemplo _divertido_: o jogo Spore
 
 ![](../../images/spore-creature-creator.jpg)
 
@@ -343,41 +368,51 @@
   para valores A e B estipulados
 
 ---
-## **Quadtree** (2D), Octree (3D)
+## Grids vs Quadtrees (2D)
 
-![](../../images/octree.png)
+![](../../images/grid-vs-quadtrees.png)
+
+- Objeto bidimensional (esquerda), sua representação usando um grid (centro) 
+  e sua representação usando uma quadtree (direita)
+  
+---
+## Representação de uma **Quadtree** (2D)
+
+![](../../images/quadtree-representacao.png)
+
+- Neste exemplo, o objeto é formado apenas por um ponto (vinho)
 
 ---
-## Grids, Octrees
+## Representação de uma **Quadtree** (2D) - cont.
+
+- ![right](../../images/quadtree-exemplo-complexo.png)
+  Mais um exemplo de quadtree
+- Uma **árvore quaternária** pode ser usada para representar uma quadtree
+- Apenas os quadrantes que possuem subquadrantes terão nós filhos (i.e., 
+  ocuparão espaço na memória)
+  
+---
+## Octrees
 
 - São úteis para a visualização de objetos que podem ser particionados:
   - <img src="../../images/octree-medical.png" style="float:right;margin-left:20px;">
     Imagens médicas
   - <img src="../../images/volumetric-cup.png" style="float:right;margin-left:20px;">
     Imagens obtidas por meio de sensores de densidade
+- Cada elemeto de um quadrante em um _grid_ é chamado de **voxel**
 
 ---
 ## Voxels
 
 ![](../../images/octree-minecraft.png)
 
+- Um **voxel** representa um valor em um _grid_ tridimensional
+  - Pixel = _picture element_; Voxel = _volume element_
+
 ---
 ## Exemplos
 
 ![](../../images/octree-dragon.png)
-
----
-# Conversões entre Representações
-
----
-## Conversões entre Representações
-
-- Conversão CSG → B-rep é denominada avaliação do bordo
-- Conversão B-rep → CSG é muito mais complicada
-- Conversão B-rep → Células é simples
-- Conversão Células → B-rep é relativamente simples (marching cubes)
-- Conversão CSG → Células é simples
-- Conversão Células → CSG é complicado
 
 ---
 # Representação Fractal
@@ -394,3 +429,8 @@
 ## Fractais... mais nos próximos capítulos
 
 ![](../../images/fractal-samambaia.png)
+
+---
+# Referências
+
+- Capítulo 13 do livro Computer Graphics with OpenGL, 4th edition
