@@ -1,4 +1,4 @@
-# Trabalho Prático 1 - Galaxian
+# Trabalho Prático 1 - Breakout
 
 ![Tela do jogo Breakout original](images/breakout-original.png)
 
