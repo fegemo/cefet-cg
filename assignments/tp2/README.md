@@ -47,7 +47,7 @@ usuário através de comandos do teclado (ou do mouse). Lembre-se de
 ajustar a direção e o módulo do vetor velocidade de cada _boid_, de forma
 a manter o grupo.
 
-Esse trabalho deve ser individual, e como funcionalidade básica, valendo
+Esse trabalho deve ser individual ou em duplas, e como funcionalidade básica, valendo
 70% da nota, deve ter os seguintes itens:
 
 1. Deve haver um mundo definido razoavelmente grande, com um "chão" que pode
