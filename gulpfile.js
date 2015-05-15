@@ -30,6 +30,17 @@ gulp.task('js', function() {
     .pipe(connect.reload());
 });
 
+gulp.task('js-classes', function() {
+  var destination = 'dist/scripts/classes';
+  return gulp.src(['scripts/classes/**/*.js'])
+    .pipe(changed(destination))
+    .pipe(isDist ? through() : plumber())
+    .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
+    .pipe(isDist ? uglify() : through())
+    .pipe(uglify())
+    .pipe(gulp.dest(destination));
+});
+
 gulp.task('html', function() {
   return gulp.src('html/index.html')
     .pipe(changed('dist'))
@@ -73,6 +84,13 @@ gulp.task('css', function() {
     .pipe(rename('build.css'))
     .pipe(gulp.dest('dist/build'))
     .pipe(connect.reload());
+});
+
+gulp.task('css-classes', function() {
+  var destination = 'dist/styles/classes';
+  return gulp.src(['styles/classes/**/*.css'])
+    .pipe(changed(destination))
+    .pipe(gulp.dest(destination));
 });
 
 gulp.task('images', function() {
@@ -142,7 +160,7 @@ function getFolders(cwd, dir) {
     });
 }
 
-gulp.task('cefet-files', ['js', 'html', 'md', 'css', 'images', 'attachments', 'samples', 'favicon'], function() {
+gulp.task('cefet-files', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes', 'images', 'attachments', 'samples', 'favicon'], function() {
   var folders = getFolders('.', 'classes').concat(getFolders('.', 'assignments')),
       tasks = folders.map(function(folder) {
         var t = [];
@@ -172,8 +190,10 @@ gulp.task('watch', function() {
   gulp.watch('assignments/**/*.md', ['md']);
   gulp.watch('README.md', ['md']);
   gulp.watch('styles/**/*.styl', ['css']);
+  gulp.watch('styles/classes/*.css', ['css-classes']);
   gulp.watch('images/**/*', ['images']);
   gulp.watch('scripts/**/*.js', ['js']);
+  gulp.watch('scripts/classes/*.js', ['js-classes']);
 });
 
 gulp.task('deploy', ['build'], function(done) {

@@ -95,7 +95,13 @@ e Tridimensionais.
 - [O Pipeline Gráfico](classes/pipeline) (23/04/2015)
 - [Projeção](classes/projection) (28/04/2015)
 - [Modelagem Hierárquica](classes/hierarchical) (30/04/2015)
-- [Modelagem de Objetos](classes/modeling) (05/05/15)
+- [Modelagem de Objetos](classes/modeling) (05/05/2015)
+
+---
+# Aulas (p. 3)
+
+- Demonstração do 3ds max (12/05/2015)
+- [Iluminação](classes/lighting) (14/05/2015)
 
 ---
 # Atividades Avaliativas
