@@ -87,7 +87,7 @@ e Tridimensionais.
 - [Cê](classes/c) (31/03/2015)
 
 ---
-# Aulas (p. 2)
+# Aulas (pág. 2)
 
 - [Geometria](classes/geometry) (07/04/2015)
 - [Transformações Geométricas](classes/transforms) (09/04/2015)
@@ -98,10 +98,11 @@ e Tridimensionais.
 - [Modelagem de Objetos](classes/modeling) (05/05/2015)
 
 ---
-# Aulas (p. 3)
+# Aulas (pág. 3)
 
 - Demonstração do 3ds max (12/05/2015)
-- [Iluminação](classes/lighting) (14/05/2015)
+- [_Feedback_ do TP1](classes/breakout-feedback) (14/05/2015)
+- [Iluminação e Sombreamento](classes/lighting) (19/05/2015 e 21/05/2015)
 
 ---
 # Atividades Avaliativas
@@ -111,13 +112,13 @@ e Tridimensionais.
 
 - Listas de exercício (10 pontos)
 - Lista de revisão da prova (10 pontos)
-- Prova (20 pontos, 21/05/2015)
+- Prova (20 pontos, 26/05/2015)
 
 ---
 ## Trabalhos (60 pontos)
 
 - [TP1: Breakout][tp1] (15 pontos, 26/03/2015 + 21 dias)
-- [TP2 - duplas: Boids][tp2] (15 pontos, 28/04/2015 + 21 dias)
+- [TP2 - duplas: Boids][tp2] (15 pontos, 28/04/2015 + ~~21~~31 dias)
 - TP3 - duplas: Ray-tracer (15 pontos, data a definir)
 - TP4 - duplas: Animação (15 pontos, data a definir)
 
