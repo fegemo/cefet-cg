@@ -581,10 +581,12 @@
 ---
 # Referências
 
-- Livro _Real-Time Rendering (3rd edition)_
+- Livro _Real-Time Rendering (3<sup>rd</sup> edition)_
   - Capítulo 5: _Visual Appearance_ 
-- Computer Graphics with OpenGL (4th edition)
+- Livro _Computer Graphics with OpenGL (4<sup>th</sup> edition)_
   - Capítulo 17: _Illumination Models and Surface-Rendering Methods_
+- Livro _Computer Graphics through OpenGL (2<sup>nd</sup> edition)_
+  - Capítulo 11: [_Color and Light_](http://www.sumantaguha.com/files/materials/ch11.pdf)
 - _Red Book_
   - [Capítulo 5: _Lighting_](http://www.glprogramming.com/red/chapter05.html)
   - [Capítulo 6: _Blending, Antialiasing, Fog, and Polygon Offset_](http://www.glprogramming.com/red/chapter06.html)
