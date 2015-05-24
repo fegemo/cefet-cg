@@ -60,6 +60,3 @@ e um parágrafo explicando o roteiro. Também deve ser entregue via Moodle.
 **Entrega (3):** você deve gerar um vídeo usando a própria ferramenta de
 modelagem e fazer _upload_ para o Youtube. O link da sua animação deve ser
 postado no Moodle.
-
-Dia 22/01/15 (quinta-feira) teremos uma apresentação dos trabalhos regada a
-**pizza e refrigerante**. Tragam suas barrigas com fome \o/
