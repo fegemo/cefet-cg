@@ -8,14 +8,14 @@ Max, Maya, Cinema 4D ou LightWave 3D e criar uma pequena animação de 20 a 30
 segundos.A utilização de outro programa diferente dos listados deve ser
 aprovada pelo professor.
 
-Os modelos e a animação não precisam ser profissionais e devem ser criados por 
-vocês. Você pode usar conjunto de primitivas do programa como esferas, cilindros, 
-pirâmides, cubos e formar objetos compostos (à la _boid_ de 5 pirâmides). 
+Os modelos e a animação não precisam ser profissionais e devem ser criados por
+vocês. Você pode usar conjunto de primitivas do programa como esferas, cilindros,
+pirâmides, cubos e formar objetos compostos (à la _boid_ de 5 pirâmides).
 Por exemplo, um cachorro feito de "cápsulas":
 
-![](images/balloon-dog.jpg)
+![](images/balloon-dog.png)
 
-Você até pode usar um modelo de terceiros, mas precisa mencionar de onde veio e pode 
+Você até pode usar um modelo de terceiros, mas precisa mencionar de onde veio e pode
 ser aplicada uma penalidade na pontuação referente à modelagem do seu trabalho.
 
 Sua cena deve conter:
@@ -42,10 +42,12 @@ funcionalidades adicionais, descritas abaixo:
 1. **(10%):** animação via _rigging_ (uso de "ossos")
 1. **(até 10%):** um ou mais sistemas de partículas para criar fumaça, vapor, fogo
    ou outros fenômenos naturais
+1. **(até 5%):** uso de animação de texturas
+1. **(até 5%):** uso de simulações físicas
 1. **(5-10%):** animação da câmera
   - Câmera em movimento (5%)
   - Alternância entre câmeras diferentes (5%)
-1. **(1%):** a cada 1s adicional da animação acima de 30s. Só não vale
+1. **(1%):** a cada 2s adicionais da animação acima de 30s. Só não vale
    fingir que é o Stanley Kubrick no filme 2001: Uma Odisséia no Espaço
 1. **(??%):** outros adicionais propostos por você e avaliados pelo
   professor
@@ -69,8 +71,6 @@ A entrega será dividida em 2 partes:
     - **Slide 4**: referências aos tutoriais e material que foram usados
   - O link e a apresentação devem ser entregues pelo Moodle (há tarefas separadas para cada um)
 
-No dia da entrega (**07/07/15**), teremos as apresentações dos slides + vídeos 
-no horário da nossa aula. Portanto, tudo deve ser entregue antes das 16:40. Trabalhos entregues depois 
+No dia da entrega (**07/07/15**), teremos as apresentações dos slides + vídeos
+no horário da nossa aula. Portanto, tudo deve ser entregue antes das 16:40. Trabalhos entregues depois
 disso terão notas iguais a 0.
-  
-  
