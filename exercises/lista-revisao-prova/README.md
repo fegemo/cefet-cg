@@ -102,10 +102,12 @@ _Dikentinha: Uma espiral é um círculo cujo raio vai aumentando._
 _Sua resposta deve ser dada na forma de uma árvore cujos nós são células vazias ou células que contêm outros nós._
 
 **Questão 11**: Sobre modelos de iluminação, responda:
+
   1. Qual é a diferença entre um modelo de iluminação **local** e um modelo **global**?
   1. Qual é o modelo implementado pelo OpenGL?
 
 **Questão 12**: Explique cada uma das 4 componentes do modelo de iluminação local de _Phong_:
+
   1. Emissiva
   1. Ambiente
   1. Difusa
@@ -114,5 +116,6 @@ _Sua resposta deve ser dada na forma de uma árvore cujos nós são células vaz
 **Questão 13**: Qual é o impacto em uma imagem renderizada de se alterar (aumentar, diminuir) o valor do coeficiente de especularidade do material aplicado a um objeto que sofre contribuição de uma fonte de luz que tem componente especular diferente de zero?
 
 **Questão 14**: Sobre modelos de sombreamento constante, _Gouraud_ e _Phong_, responda:
+
 1. Discuta seu custo computacional.
 1. Quais deles são oferecidos pelo OpenGL?
