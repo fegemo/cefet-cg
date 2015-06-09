@@ -292,7 +292,13 @@ thead > tr
 // utility slide classes
 .right-aligned
   float right
+.left-aligned
+  float left
 
+.side-by-side-children
+  display flex
+  flex-direction row
+  align-items flex-start
 
 // Slide backdrops
 .paradigma-universos.bespoke-backdrop-active
@@ -302,3 +308,11 @@ thead > tr
   background-repeat: no-repeat;
   width 100%
   height 100%
+
+.stars.bespoke-backdrop-active
+  background-image url(../images/stars-bg.png)
+  background-size: initial;
+  width 100%
+  height 100%
+.bespoke-slide[data-bespoke-backdrop="stars"]
+  color white
