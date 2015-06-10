@@ -288,6 +288,18 @@
     ```
 
 ---
+## Exemplo de _Mipmaps_ e filtragem
+
+<div class="side-by-side-children">
+  <video width="380" height="383" class="left-aligned" controls loop>
+    <source src="../../videos/texture-nearest.mp4" type="video/mp4" />
+  </video>
+  <video width="380" height="383" class="right-aligned" controls loop>
+    <source src="../../videos/texture-mipmaps.mp4" type="video/mp4" />
+  </video>
+</div>
+
+---
 ## Modos de Repetição
 
 - Exemplo:
@@ -360,16 +372,51 @@ void makeCheckImage()
     - Mapeamento de ambiente
   - Perturbação do vetor normal
     - _Bump Mapping_
+  - Definição do vetor normal
+    - _Normal Mapping_
   - Perturbação da superfície na direção da normal
     - _Displacement Mapping_
   - Transparência / opacidade
 
 ---
-## Exemplo de normal mapping
+<!--
+backdrop: stars
+-->
+
+## Exemplo de **normal mapping**
+
+![](../../images/moon-demo.png)
+
+![left](../../images/texture-moon.png)_
+![right](../../images/texture-moon-normals.png)
+
+- [Demonstração](http://coryg89.github.io/MoonDemo/) do [Cory Gross](http://coryg89.github.io/)
+- [Explicação](http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/) sobre como a demonstração foi feita
+
+---
+## Exemplo de **bump mapping**
 
 
-- [Código fonte](http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/)
-- [Exemplo](http://coryg89.github.io/MoonDemo/)
+![left](../../images/texture-bump-mapping-1.png)
+![left](../../images/seta-direita.png)
+![right](../../images/texture-bump-mapping-2.jpg)
+
+- Perturbando a normal <span class="math">(0,1,0)</span> de cada vértice de 
+  acordo com o cosseno de seu <span class="math">x</span> 
+  - Dentro de um `for`, desenhando `GL_TRIANGLE_STRIP`:
+    ```c
+      float valorZoado = cos(2.0 * x);
+      glNormal3f((bumpMappingLigado ? valorBumped : 0), 1, 0);
+      glVertex3f(x, 0, z - 1.0);
+      glVertex3f(x, 0, z);
+    ```
+
+---
+## Exemplo de **height map**
+
+<video width="496" height="496" class="left-aligned" poster="../../height-map-poster.png" controls loop>
+  <source src="../../videos/height-map.mp4" type="video/mp4" />
+</video>
 
 ---
 # Referências
