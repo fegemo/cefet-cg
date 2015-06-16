@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<svg width="585" height="110" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="112" width="587" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000" id="svg_9" height="59.000001" width="146.999981" y="10.5" x="403.500006" stroke-width="1.5" fill="#fff"/>
+  <rect stroke="#000" id="svg_1" height="59.000001" width="120.99999" y="10.5" x="35.5" stroke-width="1.5" fill="#fff"/>
+  <text font-weight="normal" xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="22" id="svg_2" y="37" x="47.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">Descri&#231;&#227;o</text>
+  <text xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="22" id="svg_3" y="59.5" x="55.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">da cena</text>
+  <text xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="22" id="svg_4" y="40.5" x="217.5" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000">Raytracer.exe</text>
+  <text xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="22" id="svg_5" y="64.5" x="211.5" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#b2b2b2">./Raytracer</text>
+  <text xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="22" id="svg_6" y="37" x="433.5" stroke-width="0" stroke="#b2b2b2" fill="#000000">Imagem</text>
+  <text xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="22" id="svg_7" y="59.5" x="414.5" stroke-width="0" stroke="#b2b2b2" fill="#000000">Renderizada</text>
+  <path id="svg_10" d="m176.042007,53.66803l11.198364,-11.197998l-11.198364,-11.197998l6.399902,-6.399857l17.600098,17.597855l-17.600098,17.60321" stroke-width="1.5" stroke="#006300" fill="#007f00"/>
+  <path id="svg_11" d="m365.042023,53.66803l11.198364,-11.197998l-11.198364,-11.197998l6.399872,-6.399857l17.600128,17.597855l-17.600128,17.60321" stroke-width="1.5" stroke="#006300" fill="#007f00"/>
+  <text xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="22" id="svg_12" y="98.5" x="15.5" stroke-width="0" stroke="#006300" fill="#ff5656">cena-simples.txt</text>
+  <text xml:space="preserve" text-anchor="left" font-family="Helvetica, Arial, sans-serif" font-size="22" id="svg_13" y="98.5" x="346.5" stroke-width="0" stroke="#006300" fill="#00bf00">simples.{png,ppm,bmp}</text>
+ </g>
+</svg>

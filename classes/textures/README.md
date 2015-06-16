@@ -414,7 +414,7 @@ backdrop: stars
 ---
 ## Exemplo de **height map**
 
-<video width="496" height="496" class="left-aligned" poster="../../height-map-poster.png" controls loop>
+<video width="496" height="496" class="left-aligned" poster="../../images/height-map-poster.png" controls loop>
   <source src="../../videos/height-map.mp4" type="video/mp4" />
 </video>
 
