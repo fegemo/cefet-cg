@@ -1,3 +1,7 @@
+<!--
+backdrop: raytraced-teapot
+-->
+
 # _Ray tracing_
 
 ---
@@ -57,7 +61,8 @@
   - Dessa forma, podemos modelar reflexão, refração, sombras e vários dos
     efeitos necessários para a criação de imagens com alto realismo
   - O _pipeline_ gráfico das placas de vídeo não suportam modelos globais
-
+    - Isso porque ele é focado em renderização em tempo real
+    
 ---
 # _Ray tracing_
 ---
@@ -70,7 +75,7 @@
     - Reflexões
     - Sombras
     - Refração
-- Funcionamento **basicão**
+- Funcionamento **basicão**:
   - Raios são lançados do olho para cada pixel da imagem a ser gerada
   - Raios que acertam objetos, são coloridos com sua cor
   - Raios que não atingem nada, são pintados com a cor do fundo
@@ -78,24 +83,24 @@
 ---
 ## Lançamento de raios
 
-![](../../images/ray-casting1.png)
+![](../../images/ray-tracing.png)
 
 ---
 ## Algoritmo basicão
 
 - `pixels[] renderScene(scene)`:
   1. Dada uma configuração de câmera, gerar um raio
-     R<sub>ij</sub> que sai do olho, passando pelo centro de cada pixel `(i, j)`
-     da sua janela
+     <span class="math">R_{ij}</span> que sai do olho, passando pelo centro de cada pixel 
+     <span class="math">(i, j)</span> da sua janela
   1. Chame `castRay(R)` e assinale a cor do pixel com a cor retornada
 - `color castRay(R, scene)`:
-  1. Dispara o raio `R` na cena. Seja `X` o 1º objeto atingido e `P` o ponto
-     do objeto que foi atingido
-  1. Para cada fonte de luz `L`:
-     1. Dispara um raio R<sub>l</sub> de `P` até `L`
-     1. Se R<sub>l</sub> não atinge nada até chegar em `L`, aplique o
-        modelo de iluminação para determinar a cor do ponto `P`
-  1. Combine as cores retornadas para cada fonte e a retorne
+  1. Dispara o raio <span class="math">R</span> na cena. Seja <span class="math">X</span> o 1º objeto 
+    atingido e <span class="math">P</span> o ponto do objeto que foi atingido
+  1. Para cada fonte de luz <span class="math">L</span>:
+     1. Dispara um raio <span class="math">R_l</span> de <span class="math">P</span> até <span class="math">L</span>
+     1. Se <span class="math">R_l</span> não atinge nada até chegar em <span class="math">L</span>, aplique o
+        modelo de iluminação para determinar a cor do ponto <span class="math">P</span>
+  1. Combine as cores retornadas para cada fonte e retorne a resultante
 
 ---
 ## História do _Ray tracing_
@@ -126,103 +131,197 @@
 
 - Mantém o método `renderScene(scene)` como está e modifica o
   `castRay(R, scene)` para:
-  1. Dispara o raio `R` na cena. Seja `X` o 1º objeto atingido e `P` o ponto
-  do objeto que foi atingido
-  1. **Se `X` reflexivo, compute raio de reflexão `R`<sub>r</sub> em `P`. `C`<sub>r</sub> = `castRay(R`<sub>r</sub>`)`**
-  1. **Se `X` transparente, compute raio de refração `R`<sub>t</sub> em `P`. `C`<sub>t</sub> = `castRay(R`<sub>t</sub>`)`**
-  1. Para cada fonte de luz `L`:
-     1. Dispara um raio R<sub>l</sub> de `P` até `L`
-     1. Se R<sub>l</sub> não atinge nada até chegar em `L`, aplique o
+  1. Dispara o raio <span class="math">R</span> na cena. Seja <span class="math">X</span> o 1º objeto atingido e 
+  <span class="math">P</span> o ponto do objeto que foi atingido
+  1. **Se <span class="math">X</span> reflexivo, compute raio de reflexão <span class="math">R_r</span> em 
+    <span class="math">P</span>. <span class="math">C_r</span> = `castRay(R`<sub>r</sub>`)`**
+  1. **Se <span class="math">X</span> transparente, compute raio de refração <span class="math">R_t</span> em 
+    <span class="math">P</span>. <span class="math">C_t</span> = `castRay(R`<sub>t</sub>`)`**
+  1. Para cada fonte de luz <span class="math">L</span>:
+     1. Dispara um raio <span class="math">R_l</span> de <span class="math">P</span> até <span class="math">L</span>
+     1. Se <span class="math">R_l</span> não atinge nada até chegar em <span class="math">L</span>, aplique o
         modelo de iluminação para determinar a cor do ponto `P`
-  1. Combine as cores **`C`<sub>r</sub>, `C`<sub>t</sub>** e das fontes de luz (4) e a retorne
+  1. Combine as cores **<span class="math">C_r</span>, <span class="math">C_t</span>** e das fontes de luz (4) e 
+    a retorne
 
 ---
 ## Implementação
 
-- Para implementar um _ray tracing_, precisamos responder a pelo menos 2
-  perguntas:
-  1. Como determinar qual objeto (se) um raio intercepta?
+- Para implementar um _ray tracing_, precisamos **responder a pelo menos 2
+  perguntas**:
+  1. Como determinar se um raio atinge um objeto (e em qual)?
   1. Dado que um raio atingiu um objeto, como devemos calcular a cor retornada?
 - Vejamos, primeiro, a representação de raios e sua interseção com objetos
 
 ---
 ## Interseção Raio / Objeto
 
-- É o coração de um _ray tracer_ (onde ele passa o maior tempo computando)
+- É o coração de um _ray tracer_ (onde ele passa o maior tempo de execução)
   - Foi uma das primeiras áreas de pesquisa
   - Existem rotinas otimizadas para vários tipos de primitivas (esferas, toróides, triângulos etc.)
 - Devem calcular diversos tipos de informação:
   - Para _shadow rays_: intercepta/não intercepta
-  - Raios primários: ponto de interseção, material, normal
+  - Para raios primários: ponto de interseção, material, normal
   - Coordenadas de textura
 
 ---
-## Interseção Raio / Objeto
+## Como **representar um raio**?
 
 ![](../../images/raytracing-ray.png)
 
-- Raio é modelado como uma reta em forma paramétrica:
-  `R(t) = P`<sub>0</sub>` + t(P`<sub>1</sub>` – P`<sub>0</sub>`) = P`<sub>0</sub>` + tV`
-- Computa-se para quais valores do parâmetro `t` a reta intercepta o objeto
+- **Raio é modelado** como uma **reta** em forma **paramétrica**:
+  <span class="math">R(t) = P_0 + t(P_1 - P_0)</span>, ou seja
+  <div class="math">R(t) = P_0 + tV</div>
+- Computa-se para quais valores do parâmetro <span class="math">t</span> a reta o intercepta
+
+
+---
+## Como representar um raio **em C/C++ ou Java**?
+
+<div class="layout-split-3" style="height: auto;">
+  <section style="border-right: 4px dotted silver; background: cornflowerblue;">
+    <h3>Em C:</h3>
+    <pre style="text-align: left; ">
+      <code class="hljs">struct ray {
+  Vector3 p0
+  Vector3 v;
+}</code>
+    </pre>
+  </section>
+  <section style="border-right: 4px dotted silver; background: aliceblue;">
+    <h3>Em C++:</h3>
+    <pre style="text-align: left; ">
+      <code class="hljs">class ray {
+public:      
+  Vector3 p0
+  Vector3 v;
+}</code>
+    </pre>
+  </section>
+  <section style="background: darkseagreen;">
+    <h3>Em Java:</h3>
+    <pre style="text-align: left;">
+      <code class="hljs">public class Ray {
+  public Vector3 p0
+  public Vector3 v;
+}</code>
+    </pre>
+  </section>
+</div>
 
 ---
 ## Objetos Implícitos
 
-- Objeto implícito é dado por uma equação da forma `f(x, y, z) = 0`
-- Muitas superfícies importantes podem ser modeladas como objetos implícitos principalmente os dados por equações polinomiais
+- Um objeto implícito é dado por uma equação da forma <span class="math">f(x, y, z) = 0</span>
+- Muitas superfícies importantes podem ser modeladas como objetos implícitos,
+  principalmente os dados por equações polinomiais:
   - Planos (grau 1)
+    - _i.e._, <span class="math">ax + by + cz + d = 0</span>
   - Quádricas (grau 2)
-    - elipsóides, cones, parabolóides, hiperbolóides
+    - Elipsóide: <span class="math">\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2} = 1</span>
+    - Cones, Parabolóides, Hiperbolóides...
   - Quárticas (grau 4)
-    - toróides
+    - Toróides
 
 ---
 ## Interseção Raio / Objeto Implícito
 
 - Raio é modelado em forma paramétrica:
-  - `R(t) = [Rx(t) Ry(t) Rz(t)]`
+  - <span class="math">R(t) = [R_x(t) R_y(t) R_z(t)]</span>
 - Logo, os pontos de interseção satisfazem
-  - `f(Rx(t),Ry(t),Rz(t)) = 0`
-- Basta resolver a equação para determinar o(s) valor(es) de `t` que a satisfazem
+  - <span class="math">f(R_x(t),R_y(t),R_z(t)) = 0</span>
+- Basta resolver a equação para determinar o(s) valor(es) de <span class="math">t</span> que a satisfazem
 
 ---
 ## Exemplo: Interseção com Esfera
 
+- Esfera de raio 1 centrada na origem:
+  <div class="math">x^2+y^2+z^2 - 1 = 0</div>
+- Raio parametrizado como:
+  <div class="math">[V_xt+P_x \;\;\; V_yt+P_y \;\;\; V_zt+P_z]^T</div>
+- Logo,
+  <div class="math">(V_xt+P_x)^2 + (V_yt+P_y)^2 + (V_zt+P_z])^2-1=0</div>
+  <ul>
+    <li>ou<ul><li>
+      <div class="math">at^2+bt+c=0</div></li></ul>
+    </li>
+    <li>onde<ul>
+      <li><div class="math">a = V_x^2 + V_y^2 + V_z^2</div></li>
+      <li><div class="math">b = 2(V_xP_x + V_yP_y + V_zP_z)</div></li>
+      <li><div class="math">c = P_x^2 + P_y^2 + P_z^2 - 1</div></li></ul>
+    </li>
+  </ul>
+
+---
+## Interpretando a interseção com esfera
+
+- Seja <span class="math">\Delta = b^2 - 4ac</span>, então <span class="math">t = \frac{-b \pm \sqrt(\Delta)}{2a}</span> 
+  
 ![](../../images/raytracing-raio-esfera.png)
 
+Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver 
+  uma equação de 2º grau** ;)
+  
 ---
-## Exemplo: Normal do ponto P
+## Exemplo: Normal do ponto <span class="math">P</span>
 
-- A normal no ponto de interseção `P` é dada pelo gradiente no ponto de
+- A normal no ponto de interseção <span class="math">P</span> é dada pelo gradiente no ponto de
   interseção:
 
-  ![](../../images/raytracing-raio-esfera-normal.png)
+![](../../images/raytracing-raio-esfera-normal.png)
+- No caso da esfera, podemos simplesmente fazer o vetor <span class="math">N = P - C</span>, 
+  onde <span class="math">C</span> é o centro da esfera
 
 ---
-## Implementando um _ray tracer_ em C++
+## Implementando um _ray tracer_
 
 - Precisamos de
-  1. Uma classe Vetor
-  1. Uma classe ObjetoDaCena
-  1. Uma estrutura FonteDeLuz
-  1. Uma estrutura Raio
+  1. Uma classe **Vetor**
+  1. Uma classe **ObjetoDaCena**
+  1. Uma estrutura/classe **FonteDeLuz**
+  1. Uma estrutura/classe **Raio**
   1. E mais algumas coisinhas...
-- Não precisamos de:
-  - Do OpenGL ou do DirectX, já que não conseguimos usar a placa de vídeo para estes cálculos
+- **Não precisamos** de:
+  - Do **OpenGL ou do DirectX**, já que não conseguimos usar a placa de vídeo para estes cálculos
     - Na verdade essa é uma área de pesquisa recente
 
 ---
-## _Preview_
+## Um programa _raytracer_
+
+![](../../images/raytracer-input-output.svg)
+
+---
+## Entrada
+
+- Descrição da cena
 
 ![](../../images/raytracer-input-file.png)
 
 ---
-## _Preview_
+## Saída
+
+- Arquivo da imagem renderizada (png, ppm, bmp)
 
 ![](../../images/raytracer-output-file.png)
 
+---
+<!--
+backdrop: cpp-vs-java
+-->
+
+<h1 style="margin-bottom: 4em">_Choose your side_</h1>
+
+---
+# Para a próxima aula
+
+- Ler as aulas 18 e 19 do prof. David Mount (link no Moodle)
+  - Fazer isto = certeza de sucesso, TP resolvido durante a aula
+  - Não fazer = TPs incompletos, trabalho no final de semana :/
+  
 ---
 # Referências
 
 - Aulas 18 e 19 do prof. David Mount (link na página do curso)
 - Capítulo 10 do livro **Computer Graphics with OpenGL** de _Hearn and Baker_
+- [Disciplina _Ray Tracing for Graphics_](http://www.cemyuksel.com/courses/utah/cs6620/) da _University of Utah_
+  - Uma matéria inteira sobre a criação de _ray tracers_

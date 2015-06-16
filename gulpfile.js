@@ -188,11 +188,11 @@ gulp.task('cefet-files', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes'
 gulp.task('connect', ['build'], function(done) {
   connect.server({
     root: ['dist'],
-    port: 8081,
+    port: 8082,
     livereload: true
   });
 
-  opn('http://localhost:8081', done);
+  opn('http://localhost:8082', done);
 });
 
 gulp.task('watch', function() {

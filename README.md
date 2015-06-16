@@ -104,6 +104,9 @@ e Tridimensionais.
 - [_Feedback_ do TP1](classes/breakout-feedback) (14/05/2015)
 - [Iluminação e Sombreamento](classes/lighting) (19/05/2015 e 21/05/2015)
 - [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (02/06/2015)
+- [Texturas](classes/textures) (09/06/2015)
+- [Efeitos Visuais](classes/visual-effects) (11/06/2015)
+- [Ray tracing 1](classes/raytracing) (16/06/2015)
 
 ---
 # Atividades Avaliativas
