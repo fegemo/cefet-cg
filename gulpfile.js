@@ -207,7 +207,7 @@ gulp.task('watch', function() {
   gulp.watch('scripts/classes/*.js', ['js-classes']);
 });
 
-gulp.task('deploy', ['build'], function(done) {
+gulp.task('deploy', /*['build'],*/ function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
