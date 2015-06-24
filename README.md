@@ -26,7 +26,7 @@ e Tridimensionais.
 # Bibliografia Básica
 
 ---
-## _Computer Graphics with OpenGL_
+## _Computer Graphics with OpenGL_ 
 
 <div class="book-cover-container">
   <img class="book-cover" src="images/book-cg-with-opengl.jpg">
@@ -107,6 +107,8 @@ e Tridimensionais.
 - [Texturas](classes/textures) (09/06/2015)
 - [Efeitos Visuais](classes/visual-effects) (11/06/2015)
 - [Ray tracing 1](classes/raytracing) (16/06/2015)
+- [Ray tracing 2](classes/raytracing2) (23/06/2015)
+- [Pipeline Programável](classes/programmable-pipeline) (02/07/2015)
 
 ---
 # Atividades Avaliativas
@@ -124,14 +126,15 @@ e Tridimensionais.
 - [TP1: Breakout][tp1] (15 pontos, 26/03/2015 + 21 dias)
 - [TP2 - duplas: Boids][tp2] (15 pontos, 28/04/2015 + ~~21~~31 dias)
 - TP3 - duplas: Ray-tracer (15 pontos, em duas entregas)
+  - (11/Jun) Aula teórica de introdução a C++
   - (16/Jun) Aula teórica 1
-  - (18/Jun) [Aula prática 1][tp3]
+  - (18/Jun) Aula prática 1 
   - (23/Jun) Aula teórica 2 (entrega 1: até antes da aula - 7 pontos)
-  - (25/Jun) [Aula prática 2][tp3]
+  - (25/Jun) Aula prática 2
   - (30/Jun) Entrega 2 (8 pontos)
 - [TP4 - duplas: Animação][tp4] (15 pontos, 07/07/2015)
 
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-breakout/README.md
-[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2/README.md
-[tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3/README.md
-[tp4]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp4/README.md
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1-breakout
+[tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2
+[tp3]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp3
+[tp4]: https://github.com/fegemo/cefet-cg/blob/master/src/assignments/tp4

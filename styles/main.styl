@@ -318,8 +318,23 @@ for num in (2..5)
       flex-grow 1
       text-align center
 
+.appear-right
+  position absolute
+  left inherit
+  bottom 100%
+  transition bottom 200ms ease-out
+  &.bespoke-bullet-active
+    bottom 0
+    left inherit
+    right 0
 
-
+.phong-vectors
+  .reveal-on-complete
+    opacity 0
+    transition opacity 100ms ease-out
+  &.complete
+    .reveal-on-complete
+      opacity 1
 
 
 // ------------------------------------------------------------
@@ -404,4 +419,29 @@ full-dimension-backdrop(repeat)
   h1
     color #37A956
     text-shadow 1px 1px darken(#37A956, 75%)
+
+.ninokuni.bespoke-backdrop-active
+  background-image url(../images/ni-no-kuni.jpg)
+  full-dimension-backdrop(false)
+
+.bespoke-slide[data-bespoke-backdrop="ninokuni"],
+.bespoke-slide[data-bespoke-backdrop="wind-waker-raytraced"]
+  h1
+    text-shadow 1px 1px black
+    background-color rgba(white,.5)
+    padding .3em
+    border-radius 10px
+    transition opacity 200ms ease-out
+    &:hover
+      background-color rgba(white, 0)
+      opacity 0
+
+.wind-waker-raytraced.bespoke-backdrop-active
+  background-image url(../images/zelda-ww-raytracing.jpg)
+  full-dimension-backdrop(false)
+  background-position-y 100%
+
+.wind-waker-raytraced-2.bespoke-backdrop-active
+  background-image url(../images/zelda-ww-raytracing-2.jpg)
+  full-dimension-backdrop(false)
 
