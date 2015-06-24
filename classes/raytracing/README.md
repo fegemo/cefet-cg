@@ -7,7 +7,7 @@ backdrop: raytraced-teapot
 ---
 # Objetivos
 
-1. Relembrar das **limitações de modelos de iluminação global**
+1. Relembrar das **limitações de modelos de iluminação local**
 1. Conhecer um modelo de iluminação **global**
 1. Entender a mecânica geral da técnica de geração de imagens chamada
    _ray tracing_

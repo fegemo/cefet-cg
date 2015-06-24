@@ -107,6 +107,8 @@ e Tridimensionais.
 - [Texturas](classes/textures) (09/06/2015)
 - [Efeitos Visuais](classes/visual-effects) (11/06/2015)
 - [Ray tracing 1](classes/raytracing) (16/06/2015)
+- [Ray tracing 2](classes/raytracing2) (23/06/2015)
+- [Pipeline Programável](classes/programmable-pipeline) (02/07/2015)
 
 ---
 # Atividades Avaliativas
