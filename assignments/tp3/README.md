@@ -33,11 +33,27 @@ Saída desejada para cena-simples.txt.
 ## Parte 2: **Colorindo** os pixels com o sombreamento de Phong-_ish_
 
 Nesta parte, vocês implementarão o modelo de iluminação e sombreamento bem semelhante ao de Phong.
-
+Você pode usar o código pronto da primeira parte, ou [baixar o do professor aqui](http://moodle.cefetmg.br/mod/resource/view.php?id=15443).
 Acompanhe a apostila do Professor David Mount.
 Você vai precisar especialmente das páginas 82 (últimas linhas) e 83.
 
 Além delas, você pode querer visualizar as derivações dos vetores (normal, reflexão, visualização etc.) usados no modelo de Phong. Você vai encontrar essas informações na aula 14 da apostila (páginas 62 até 66).
+
+Considere as cenas descritas pelos arquivos `cena-simples.txt` e `cena-2-fontes-luz.txt`. A saída do seu programa para cada cena deve ser igual às imagens a seguir, na mesma ordem com que os arquivos foram apresentados:
+
+![Uma imagem mostrando uma esfera verde sombreada](images/cena-simples-objetivo-2.png)
+
+![Uma imagem mostrando uma esfera azul, brilhosa, refletindo os focos de iluminação (especular) de duas fontes luminosas](images/cena-2-fontes-luz-objetivo-2.png)
+
+### Extras
+
+Se seu trabalho estiver gerando uma imagem semelhante à imagem a seguir quando usado para renderizar a cena descrita em `cena-3-esferas.txt`, você terá o adicional de **1 ponto extra**.
+
+Na entrega do seu trabalho, **você <u>deve declarar que está pleiteando este item extra</u>** (em um arquivo README.txt no seu código fonte). Caso isso não seja feito no ato da entrega, não adianta pedir pra avaliar depois.
+
+![](images/cena-3-esferas-objetivo-2.png)
+
+### Entrega
 
 Você deve entregar no Moodle um **arquivo compactado contendo seu código fonte**.
 O valor da segunda parte é de **(8 pontos)** e ela deve ser entregue preferencialmente
