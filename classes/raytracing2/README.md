@@ -176,7 +176,7 @@ scripts: ['../../scripts/classes/phong-vectors.js']
 ![](../../images/lambertian-reflection-calculated.png)
 
 - Podemos usar produto interno para calcular a projeção de um vetor no outro
-  - <span class="math">\vec{a} = -(\vec{S} - ( \left | \vec{a} \right | \cos{\Theta}) \vec{N})</span>
+  - <span class="manpmth">\vec{a} = -(\vec{S} - ( \left | \vec{a} \right | \cos{\Theta}) \vec{N})</span>
 - Assim, encontramos <span class="math">\vec{a}</span> e o somamos duas vezes
   - Equação: <span class="math">\vec{r} = \vec{S} + 2\vec{a}</span>
 
