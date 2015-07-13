@@ -130,7 +130,6 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 }
 
 .hljs-comment,
-.hljs-javadoc,
 .hljs-annotation,
 .hljs-decorator,
 .hljs-pi,
@@ -217,7 +216,7 @@ body.menu-open> #presentation-container {
 }
 body.menu-open> #presentation-container:before {
   background-image: -webkit-linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.65) 100%);
-  background-image: linear-gradient(top, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.65) 100%);
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.65) 100%);
 }
 body.menu-open .bespoke-progress-parent {
   -webkit-transform: translateY(0);
@@ -311,9 +310,11 @@ body.menu-open .bespoke-progress-parent {
     background-image: -webkit-linear-gradient(122deg, #fff, #e8e8e8, #fff, #fcfcfc, #e1e1e1, #f4f4f4);
     background-image: linear-gradient(328deg, #fff, #e8e8e8, #fff, #fcfcfc, #e1e1e1, #f4f4f4);
     background-size: 800% 800%;
-    -webkit-animation: bodyAnim 25s ease infinite;
-            animation: bodyAnim 25s ease infinite;
   }
+}
+.bespoke-slide {
+  width: 800px;
+  height: 600px;
 }
 .bespoke-slide.bespoke-inactive.bespoke-after:not(.bespoke-after-1) {
   display: none;
@@ -543,7 +544,7 @@ thead > tr {
   width: 100%;
 }
 .layout-split-3 > section {
-  width: 33.3333333333333%;
+  width: 33.33333333333333%;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
@@ -799,28 +800,6 @@ thead > tr {
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
-}
-@-webkit-keyframes bodyAnim {
-  0% {
-    background-position: 49% 0;
-  }
-  50% {
-    background-position: 52% 100%;
-  }
-  100% {
-    background-position: 49% 0;
-  }
-}
-@keyframes bodyAnim {
-  0% {
-    background-position: 49% 0;
-  }
-  50% {
-    background-position: 52% 100%;
-  }
-  100% {
-    background-position: 49% 0;
-  }
 }
 @-webkit-keyframes bounce {
   from {
