@@ -18,6 +18,7 @@ var bespoke = require('bespoke'),
 
 // Bespoke.js
 bespoke.from('article', [
+  fancy(),
   markdown({
     backdrop: function(slide, value) {
       slide.setAttribute('data-bespoke-backdrop', value);
@@ -49,17 +50,23 @@ bespoke.from('article', [
       });
     }
   }),
-  fancy(),
   keys(),
   touch(),
   bullets('li, .bullet'),
-  // scale(isMobile.any ? 'transform' : {}),
   hash(),
   progress(),
   math(),
   state(),
   backdrop(),
-  tutorial(document.getElementsByClassName('tutorial')[0])
+  tutorial(document.getElementsByClassName('tutorial')[0]),
+  function() {
+    var deck = arguments[0],
+      delayedScale = function() {
+        return scale(isMobile.any ? 'transform' : 'zoom')(deck);
+      };
+    setTimeout(delayedScale, 700);
+  }
+
 ]);
 
 sleek();

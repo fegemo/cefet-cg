@@ -135,21 +135,18 @@ body
     background-image none
     will-change background-image
 
-// animated background of the body
+// background of the body
 @media screen and (min-device-width: 640px)
   body
     background-image linear-gradient(328deg, #fff, #e8e8e8, #fff, #fcfcfc, #e1e1e1, #f4f4f4)
     background-size 800% 800%
-    animation bodyAnim 25s ease infinite
 
-@keyframes bodyAnim
-  0%
-    background-position 49% 0
-  50%
-    background-position 52% 100%
-  100%
-    background-position 49% 0
 
+// bringing this from the theme, because with the use of markdown,
+// bespoke-scale can't calculate the sizes of slides properly
+.bespoke-slide
+  width 800px
+  height 600px
 
 // only render the necessary slides: current, immediately after, immed. before (to improve performance)
 .bespoke-slide.bespoke-inactive.bespoke-after:not(.bespoke-after-1)
@@ -472,3 +469,13 @@ full-dimension-backdrop(repeat)
 .threed-hardware-generation-4.bespoke-backdrop-active
   background-image url(../images/duke-nuken-3d.png)
   full-dimension-backdrop(false)
+
+
+
+// Print styles
+@media print
+  #page-header
+    display none !important
+  .book-cover
+    height 150px !important
+

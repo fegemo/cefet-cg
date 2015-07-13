@@ -9,6 +9,7 @@ var fs = require('fs'),
     uglify = require('gulp-uglify'),
     stylus = require('gulp-stylus'),
     replace = require('gulp-replace'),
+    preprocess = require('gulp-preprocess'),
     autoprefixer = require('gulp-autoprefixer'),
     csso = require('gulp-csso'),
     through = require('through'),
@@ -17,7 +18,8 @@ var fs = require('fs'),
     changed = require('gulp-changed'),
     path = require('path'),
     merge = require('merge-stream'),
-    isDist = process.argv.indexOf('serve') === -1;
+    isDist = process.argv.indexOf('serve') === -1,
+    environment = process.env.NODE_ENV || 'development';
 
 gulp.task('js', function() {
   return gulp.src(['scripts/tutorial.js', 'scripts/main.js'])
@@ -46,6 +48,7 @@ gulp.task('html', function() {
     .pipe(changed('dist'))
     .pipe(isDist ? through() : plumber())
     .pipe(replace('{path-to-root}', './'))
+    .pipe(preprocess({context: { NODE_ENV: environment, DEBUG: true}}))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
 });
@@ -176,6 +179,7 @@ gulp.task('cefet-files', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes'
       tasks = folders.map(function(folder) {
         var t = [];
         t.push(gulp.src(['html/index.html'])
+          .pipe(preprocess({context: { NODE_ENV: environment, DEBUG: true}}))
           .pipe(replace('{path-to-root}', '../..'))
           .pipe(gulp.dest(path.join('dist', folder))));
         t.push(gulp.src(['node_modules/bespoke-math/node_modules/katex-build/fonts/**/*'])
@@ -207,7 +211,7 @@ gulp.task('watch', function() {
   gulp.watch('scripts/classes/*.js', ['js-classes']);
 });
 
-gulp.task('deploy', /*['build'],*/ function(done) {
+gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
