@@ -18,8 +18,7 @@ var fs = require('fs'),
     changed = require('gulp-changed'),
     path = require('path'),
     merge = require('merge-stream'),
-    isDist = process.argv.indexOf('serve') === -1,
-    environment = process.env.NODE_ENV || 'development';
+    isDist = process.argv.indexOf('serve') === -1;
 
 gulp.task('js', function() {
   return gulp.src(['scripts/tutorial.js', 'scripts/main.js'])
@@ -45,10 +44,9 @@ gulp.task('js-classes', function() {
 
 gulp.task('html', function() {
   return gulp.src('html/index.html')
-    .pipe(changed('dist'))
+    .pipe(preprocess({context: { NODE_ENV: isDist ? 'production' : 'development', DEBUG: true}}))
     .pipe(isDist ? through() : plumber())
-    .pipe(replace('{path-to-root}', './'))
-    .pipe(preprocess({context: { NODE_ENV: environment, DEBUG: true}}))
+    .pipe(replace('{path-to-root}', '.'))
     .pipe(gulp.dest('dist'))
     .pipe(connect.reload());
 });
@@ -125,9 +123,10 @@ gulp.task('videos', ['clean:videos'], function() {
 });
 
 gulp.task('favicon', function() {
-  return gulp.src('favicon.ico')
-    .pipe(gulp.dest('dist'))
-    .pipe(connect.reload());
+  var destination = 'dist/favicon';
+  return gulp.src('favicon/**/*')
+    .pipe(changed(destination))
+    .pipe(gulp.dest(destination));
 });
 
 gulp.task('clean', function(cb) {
@@ -174,12 +173,12 @@ function getFolders(cwd, dir) {
     });
 }
 
-gulp.task('cefet-files', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes', 'images', 'videos', 'attachments', 'samples', 'favicon'], function() {
+gulp.task('build', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes', 'images', 'videos', 'attachments', 'samples', 'favicon'], function() {
   var folders = getFolders('.', 'classes').concat(getFolders('.', 'assignments')),
       tasks = folders.map(function(folder) {
         var t = [];
         t.push(gulp.src(['html/index.html'])
-          .pipe(preprocess({context: { NODE_ENV: environment, DEBUG: true}}))
+          .pipe(preprocess({context: { NODE_ENV: isDist ? 'production' : 'development', DEBUG: true}}))
           .pipe(replace('{path-to-root}', '../..'))
           .pipe(gulp.dest(path.join('dist', folder))));
         t.push(gulp.src(['node_modules/bespoke-math/node_modules/katex-build/fonts/**/*'])
@@ -215,6 +214,5 @@ gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
-gulp.task('build', ['cefet-files']);
 gulp.task('serve', ['connect', 'watch']);
 gulp.task('default', ['build']);
