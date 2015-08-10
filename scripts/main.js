@@ -12,7 +12,9 @@ var bespoke = require('bespoke'),
     state = require('bespoke-state'),
     math = require('bespoke-math'),
     markdown = require('bespoke-meta-markdown'),
+    search = require('bespoke-search'),
     backdrop = require('bespoke-backdrop'),
+    overview = require('bespoke-overview'),
     tutorial = require('./tutorial'),
     sleek = require('./sleek-menu');
 
@@ -58,6 +60,8 @@ bespoke.from('article', [
   math(),
   state(),
   backdrop(),
+  search(),
+  overview(),
   tutorial(document.getElementsByClassName('tutorial')[0]),
   function() {
     var deck = arguments[0],
@@ -66,7 +70,6 @@ bespoke.from('article', [
       };
     setTimeout(delayedScale, 700);
   }
-
 ]);
 
 sleek();

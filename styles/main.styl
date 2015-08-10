@@ -347,6 +347,12 @@ for num in (2..5)
     opacity 1
     transition-delay 800ms
 
+// backdrop + bespoke-overview: should be less visible (low opacity)
+.bespoke-overview
+  .bespoke-backdrop
+    transition-delay 0ms
+    opacity .1
+
 .bespoke-slide[data-bespoke-backdrop]
   z-index 2
 
