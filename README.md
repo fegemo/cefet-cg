@@ -78,37 +78,42 @@ e Tridimensionais.
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/) (12/03/2015)
-- [Sistemas de Janelas](classes/opengl/) (17/03/2015)
-- [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (19/03/2015)
-- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (19/03/2015)
-- [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (24/03/2015)
-- [OpenGL Hands-on - Parte 4](classes/opengl-handson4/) (26/03/2015)
-- [Cê](classes/c) (31/03/2015)
+- [Introdução à Computação Gráfica](classes/intro/) (13/08/2015)
 
----
-# Aulas (pág. 2)
+<!--
+  - [Sistemas de Janelas](classes/opengl/) (17/03/2015)
+  - [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (19/03/2015)
+  - [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (19/03/2015)
+  - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (24/03/2015)
+  - [OpenGL Hands-on - Parte 4](classes/opengl-handson4/) (26/03/2015)
+  - [Cê](classes/c) (31/03/2015)
+-->
 
-- [Geometria](classes/geometry) (07/04/2015)
-- [Transformações Geométricas](classes/transforms) (09/04/2015)
-- [Orientação e Mudança de Coordenadas](classes/baseorientation) (16/04/2015)
-- [O Pipeline Gráfico](classes/pipeline) (23/04/2015)
-- [Projeção](classes/projection) (28/04/2015)
-- [Modelagem Hierárquica](classes/hierarchical) (30/04/2015)
-- [Modelagem de Objetos](classes/modeling) (05/05/2015)
+<!--
+  # Aulas (pág. 2)
+  
+  - [Geometria](classes/geometry) (07/04/2015)
+  - [Transformações Geométricas](classes/transforms) (09/04/2015)
+  - [Orientação e Mudança de Coordenadas](classes/baseorientation) (16/04/2015)
+  - [O Pipeline Gráfico](classes/pipeline) (23/04/2015)
+  - [Projeção](classes/projection) (28/04/2015)
+  - [Modelagem Hierárquica](classes/hierarchical) (30/04/2015)
+  - [Modelagem de Objetos](classes/modeling) (05/05/2015)
 
----
-# Aulas (pág. 3)
-
-- Demonstração do 3ds max (12/05/2015)
-- [_Feedback_ do TP1](classes/breakout-feedback) (14/05/2015)
-- [Iluminação e Sombreamento](classes/lighting) (19/05/2015 e 21/05/2015)
-- [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (02/06/2015)
-- [Texturas](classes/textures) (09/06/2015)
-- [Efeitos Visuais](classes/visual-effects) (11/06/2015)
-- [Ray tracing 1](classes/raytracing) (16/06/2015)
-- [Ray tracing 2](classes/raytracing2) (23/06/2015)
-- [Pipeline Programável](classes/programmable-pipeline) (02/07/2015)
+-->
+<!--
+  # Aulas (pág. 3)
+  
+  - Demonstração do 3ds max (12/05/2015)
+  - [_Feedback_ do TP1](classes/breakout-feedback) (14/05/2015)
+  - [Iluminação e Sombreamento](classes/lighting) (19/05/2015 e 21/05/2015)
+  - [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (02/06/2015)
+  - [Texturas](classes/textures) (09/06/2015)
+  - [Efeitos Visuais](classes/visual-effects) (11/06/2015)
+  - [Ray tracing 1](classes/raytracing) (16/06/2015)
+  - [Ray tracing 2](classes/raytracing2) (23/06/2015)
+  - [Pipeline Programável](classes/programmable-pipeline) (02/07/2015)
+-->
 
 ---
 # Atividades Avaliativas
@@ -123,18 +128,12 @@ e Tridimensionais.
 ---
 ## Trabalhos (60 pontos)
 
-- [TP1: Breakout][tp1] (15 pontos, 26/03/2015 + 21 dias)
-- [TP2 - duplas: Boids][tp2] (15 pontos, 28/04/2015 + ~~21~~31 dias)
+- TP1: Whack-a-mole (15 pontos, 27/08/2015 + 21 dias)
+- TP2 (15 pontos, 17/09/2015 + 21 dias)
 - TP3 - duplas: Ray-tracer (15 pontos, em duas entregas)
-  - (11/Jun) Aula teórica de introdução a C++
-  - (16/Jun) Aula teórica 1
-  - (18/Jun) Aula prática 1 
-  - (23/Jun) Aula teórica 2 (entrega 1: até antes da aula - 7 pontos)
-  - (25/Jun) Aula prática 2
-  - (30/Jun) Entrega 2 (8 pontos)
-- [TP4 - duplas: Animação][tp4] (15 pontos, 07/07/2015)
+- TP4 - duplas: Animação (15 pontos, 03/12/2015)
 
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1-breakout
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1-whack
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp3
 [tp4]: https://github.com/fegemo/cefet-cg/blob/master/src/assignments/tp4
