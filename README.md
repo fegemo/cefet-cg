@@ -78,10 +78,10 @@ e Tridimensionais.
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/) (13/08/2015)
+- [Introdução à Computação Gráfica](classes/intro/) (18/08/2015)
+- [Sistemas de Janelas](classes/opengl/) (20/08/2015)
 
 <!--
-  - [Sistemas de Janelas](classes/opengl/) (17/03/2015)
   - [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (19/03/2015)
   - [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (19/03/2015)
   - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (24/03/2015)
