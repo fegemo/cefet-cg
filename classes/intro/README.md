@@ -116,8 +116,8 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Modelagem
 
-- A modelagem geométrica consiste de um conjunto de métodos que visam descrever a forma e as 
-  características geométricas de um objeto. Ela provê uma descrição ou modelo muito mais analítico, 
+- A modelagem geométrica consiste de um **conjunto de métodos que visam descrever a forma e as 
+  características geométricas de um objeto**. Ela provê uma descrição ou modelo muito mais analítico, 
   matemático e abstrato que o real.
   
 ---
@@ -128,9 +128,11 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Síntese
 
-- A síntese de imagem designa o processo de geração de imagens digitais a partir da descrição dos elementos que 
-  compõem uma cena 3D, baseando-se em modelos que descrevem o comportamento da luz
-– Síntese e modelagem são consideradas, por muitos autores, como a própria Computação Gráfica.
+- A síntese de imagem designa o **processo de geração de imagens 
+  digitais a partir da descrição dos elementos que compõem uma cena 3D**, 
+  baseando-se em modelos que descrevem o comportamento da luz
+- Síntese e modelagem são consideradas, por muitos autores, como 
+  **a própria Computação Gráfica de hoje em dia**.
 
 ---
 ## Exemplo: Síntese
@@ -140,18 +142,19 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Foco deste curso
 
-- Modelagem e síntese de imagens
+- **Modelagem e síntese** de imagens
   - Processamento de imagens é uma área por si só
   - Visão computacional estuda a análise de imagens (e vídeos)
-- Teoria e prática das técnicas e algoritmos envolvidos
+- Teoria e prática das técnicas e algoritmos envolvidos em modelagem e síntese
+- Objetivo fotorrealista, em tempo real
 
 ---
-## Professor, mas eu quero fazer desenhos em 3D
+## Professor, mas eu quero fazer desenhos em 3D!
 
 - Você pode e mesmo terá a oportunidade no nosso projeto final
 - Contudo, o foco do curso está em conhecer e entender como funcionam as
   ferramentas utilizadas na criação de imagens e animações 3D
-- Algumas ferramentas 3D:
+- Algumas ferramentas para criar cenas 3D:
   - [3ds Max](3ds-max) (licença de estudante gratuita)
   - [Maya lt](maya-lt) (licença de estudante gratuita)
   - [blender](blender) (gratuito)
@@ -166,7 +169,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 
 - Interfaces baseadas em texto (~1980)
 - Interface WIMP: Windows, Icons, Menus and Pointers
-  - ![Tela do Apple Lisa - interface WIMP](../../images/wimp.png)
+  ![Tela do Apple Lisa - interface WIMP](../../images/wimp.png)
 
 ---
 ## Dispositivos Gráficos
