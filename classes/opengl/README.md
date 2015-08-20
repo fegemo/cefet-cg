@@ -128,10 +128,9 @@ Utiliza o paradigma de **programação orientada a eventos** (PoE).
   1. **Disparar eventos** na aplicação que contenha o foco
 
 ---
-## _Widgets_ no X e no Windows
+## _Widgets_ no OSX e no Windows
 
-![Tela do linux mostrando algumas widgets do X](../../images/widgets-linux.png)
-![Tela do Windows mostrando algumas widgets](../../images/widgets-windows.png)
+![Tela mostrando algumas widgets do OSX e do Windows](../../images/widgets-differences.png)
 
 ---
 ## _Hello World_ OpenGL no Windows e no OSX
@@ -390,20 +389,21 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
 ---
 ## TP0: Instalação do OpenGL
 
-1. Atividade A (valor: 1 ponto):
-  1. Para a próxima aula, você deve configurar um ambiente de desenvolvimento em OpenGL (até a versão 2.0)
-  1. Escreva um programa `hello world` em OpenGL e GLUT cujo **título da janela é seu nome completo**
-    - Sua cena deve conter apenas um quadrado, como no exemplo desta aula 
+1. Atividade A (valor: 0,5 ponto):
+  1. Para a próxima aula, você deve configurar um ambiente de
+    desenvolvimento em OpenGL na sua casa
+    - Basicamente, você precisa instalar o Freeglut
+  1. Escreva um programa `hello world` em OpenGL e GLUT cujo **título da
+    janela é seu nome completo**
+    - Sua cena deve conter apenas um quadrado, como no exemplo desta aula
   1. **No Moodle**, poste uma _screenshot_ da sua janela na tarefa do TP0
 1. (continua...)
 
 ---
 ## TP0: Instalação do OpenGL
 
-1. Atividade B (valor: até 1 ponto **extra**): 
-  - Opcionalmente, você pode escrever um guia passo a passo sobre como configurar o OpenGL usando suas ferramentas 
-    favoritas
+1. Atividade B (valor: até 0,5 ponto **extra**):
+  - Opcionalmente, você pode escrever um guia passo a passo sobre
+    como configurar o OpenGL usando suas ferramentas favoritas
   - Os passos **DEVEM** ser reprodutíveis e funcionar para que se consiga os pontos
   - Enviar via **Moodle** também
-  
-  

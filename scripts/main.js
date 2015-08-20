@@ -19,7 +19,7 @@ var bespoke = require('bespoke'),
     sleek = require('./sleek-menu');
 
 // Bespoke.js
-bespoke.from('article', [
+window.deck = bespoke.from('article', [
   fancy(),
   markdown({
     backdrop: function(slide, value) {
@@ -50,7 +50,14 @@ bespoke.from('article', [
         l.href = url;
         placeToPutStyles.appendChild(l);
       });
-    }
+    },
+    bespokeEvent: function(slide, events) {
+      setTimeout(function() {
+        events.split(' ').forEach(function(event) {
+          deck.fire(event);
+        });
+      },100);
+    },
   }),
   keys(),
   touch(),
