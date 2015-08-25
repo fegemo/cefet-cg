@@ -19,16 +19,16 @@
 ## square.c
 
 ```c
-#include <GL/glut.h>
+#include "GL/glut.h" // use sinal maior,menor
 
-// Drawing routine.
+// Rotina de desenho
 void drawScene(void)
 {
    glClear(GL_COLOR_BUFFER_BIT);
 
    glColor3f(0.0, 0.0, 0.0);
 
-   // Draw a polygon with specified vertices.
+   // Desenha um polígono por seus vértices
    glBegin(GL_POLYGON);
       glVertex3f(20.0, 20.0, 0.0);
       glVertex3f(80.0, 20.0, 0.0);
@@ -39,14 +39,14 @@ void drawScene(void)
    glFlush();
 }
 
-// Initialization routine.
+// Inicia certas variáveis do OpenGL
 void setup(void)
 {
    glClearColor(1.0, 1.0, 1.0, 0.0);
-  //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+   //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 }
 
-// OpenGL window reshape routine.
+// Callback de "reshape"
 void resize(int w, int h)
 {
    glViewport(0, 0, w, h);
@@ -57,7 +57,7 @@ void resize(int w, int h)
    glLoadIdentity();
 }
 
-// Keyboard input processing routine.
+// Callback de "tecla pressionada"
 void keyInput(unsigned char key, int x, int y)
 {
    switch(key)
@@ -70,8 +70,8 @@ void keyInput(unsigned char key, int x, int y)
    }
 }
 
-// Main routine.
-int main(int argc, char **argv)
+// Função principal
+int main(int argc, char** argv)
 {
    glutInit(&argc, argv);
 
@@ -79,6 +79,8 @@ int main(int argc, char **argv)
    glutInitWindowSize(500, 500);
    glutInitWindowPosition(100, 100);
    glutCreateWindow("square.cpp");
+
+   // Registra callbacks para eventos
    glutDisplayFunc(drawScene);
    glutReshapeFunc(resize);  
    glutKeyboardFunc(keyInput);
@@ -218,9 +220,8 @@ int main(int argc, char **argv)
 ## glutTimerFunc(msecs, func, value)
 
 - Podemos registrar uma _callback_ para **ser invocada daí a `x` ms**.
-- Assim, podemos usar uma função para alterar parâmetros (cor, posição etc.) da
-nossa cena
-- ```c
+- Podemos usá-la p/ alterar parâmetros (cor, posição etc.) da cena
+  ```c
     void mudaCena()
     {
       // altera a cor do quadrado
@@ -230,10 +231,9 @@ nossa cena
       // registra a callback novamente
       glutTimerFunc(25, mudaCena, 0);
     }
-    ...
-    glutTimerFunc(25, mudaCena, 0);
+    glutTimerFunc(0, mudaCena, 0);
+  ```
 
-  ```  
 ---
 ## Experimento
 
@@ -243,11 +243,9 @@ nossa cena
   {
     color += colorIncrement;
   	if (color > 1) {
-  		color = 1;
-  		colorIncrement = colorIncrement * -1;
+  		color = 1; colorIncrement = colorIncrement * -1;
   	} else if (color < 0) {
-  		color = 0;
-  		colorIncrement = colorIncrement * -1;
+  		color = 0; colorIncrement = colorIncrement * -1;
   	}
     glutPostRedisplay();
     glutTimerFunc(25, timerColored, 0);
