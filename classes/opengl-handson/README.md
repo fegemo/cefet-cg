@@ -17,16 +17,16 @@
 ## square.c
 
 ```c
-#include <GL/glut.h>
+#include "GL/glut.h" // use sinal maior,menor
 
-// Drawing routine.
+// Rotina de desenho
 void drawScene(void)
 {
    glClear(GL_COLOR_BUFFER_BIT);
 
    glColor3f(0.0, 0.0, 0.0);
 
-   // Draw a polygon with specified vertices.
+   // Desenha um polígono por seus vértices
    glBegin(GL_POLYGON);
       glVertex3f(20.0, 20.0, 0.0);
       glVertex3f(80.0, 20.0, 0.0);
@@ -37,14 +37,14 @@ void drawScene(void)
    glFlush();
 }
 
-// Initialization routine.
+// Inicia certas variáveis do OpenGL
 void setup(void)
 {
    glClearColor(1.0, 1.0, 1.0, 0.0);
-  //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+   //glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
 }
 
-// OpenGL window reshape routine.
+// Callback de "reshape"
 void resize(int w, int h)
 {
    glViewport(0, 0, w, h);
@@ -55,7 +55,7 @@ void resize(int w, int h)
    glLoadIdentity();
 }
 
-// Keyboard input processing routine.
+// Callback de "tecla pressionada"
 void keyInput(unsigned char key, int x, int y)
 {
    switch(key)
@@ -68,8 +68,8 @@ void keyInput(unsigned char key, int x, int y)
    }
 }
 
-// Main routine.
-int main(int argc, char **argv)
+// Função principal
+int main(int argc, char** argv)
 {
    glutInit(&argc, argv);
 
@@ -77,6 +77,8 @@ int main(int argc, char **argv)
    glutInitWindowSize(500, 500);
    glutInitWindowPosition(100, 100);
    glutCreateWindow("square.cpp");
+
+   // Registra callbacks para eventos
    glutDisplayFunc(drawScene);
    glutReshapeFunc(resize);  
    glutKeyboardFunc(keyInput);
@@ -98,7 +100,7 @@ void drawScene(void)
 
    glColor3f(0.0, 0.0, 0.0);
 
-   // Draw a polygon with specified vertices.
+   // Desenha um polígono por seus vértices
    glBegin(GL_POLYGON);
       glVertex3f(20.0, 20.0, 0.0);
       glVertex3f(80.0, 20.0, 0.0);
@@ -125,9 +127,10 @@ glEnd();
 ---
 ## glBegin e glEnd
 
-- Os "cantos" do quadrado estão especificados por quatro vértices entre
+- **Os "cantos" do quadrado** estão especificados por **quatro vértices** entre
   `glBegin` e `glEnd`
-- Para criar um vértice, usamos `glVertex3f` e passamos as coordenadas
+- Para **criar um vértice, usamos `glVertex3f`** e passamos as suas coordenadas
+  como argumento
 - Mas qual é o **sistema de coordenadas** que estamos usando?
 
 ---
@@ -157,7 +160,7 @@ glEnd();
 ---
 ## Projeção Ortogonal (cont.)
 
-![Exemplo de projeção ortogonal](../../images/proj-orto.JPG)
+![Exemplo de projeção ortogonal](../../images/proj-ortho-comparison-ortho.png)
 
 ---
 ## glOrtho
@@ -173,7 +176,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## glOrtho (cont.)
 
-![](../../images/glortho.jpg)
+![](../../images/glortho.png)
 
 ---
 ## glOrtho (cont.)
@@ -187,7 +190,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## A Caixa de Visualização do square.c
 
-![](../../images/glortho-square.jpg)
+![](../../images/glortho-square.png)
 
 ---
 ## Passos para renderização
@@ -202,8 +205,8 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## Passos para renderização (cont.)
 
-<a href="../../images/glortho-render-steps.jpg">
-  <img src="../../images/glortho-render-steps.jpg" style="height: 400px">
+<a href="../../images/glortho-render-steps.png">
+  <img src="../../images/glortho-render-steps.png" style="height: 400px">
 </a>
 
 ---
@@ -230,7 +233,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## Resultado do experimento
 
-![](../../images/coord-system-change.jpg)
+![](../../images/coord-system-change.png)
 
 ---
 ## Mais experimentos
@@ -279,8 +282,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## **Mapeamento** entre os dois espaços de coordenadas
 
-- ![](../../images/viewport1.jpg)
-- ![](../../images/viewport2.gif)
+![](../../images/viewport2.gif)
 
 ---
 ## Experimento
@@ -320,7 +322,7 @@ glOrtho(left, right, bottom, top, near, far);
 ---
 ## Triângulo recortado
 
-![](../../images/clipped-triangle.jpg)
+![](../../images/clipped-triangle.png)
 
 ---
 # Referências
