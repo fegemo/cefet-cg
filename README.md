@@ -10,10 +10,10 @@
 - [Introdução à Computação Gráfica](classes/intro/) (18/08/2015)
 - [OpenGL, Sistemas de Janelas](classes/opengl/) (20/08/2015)
 - [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (25/08/2015)
+- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (25/08/2015)
+- [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (27/08/2015)
 
 <!--
-  - [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (19/03/2015)
-  - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (24/03/2015)
   - [OpenGL Hands-on - Parte 4](classes/opengl-handson4/) (26/03/2015)
   - [Cê](classes/c) (31/03/2015)
 -->
@@ -129,10 +129,10 @@ e Tridimensionais.
 ---
 ## Trabalhos (60 pontos)
 
-- TP1: Whack-a-mole (15 pontos, 27/08/2015 + 21 dias)
+- TP1: Whack-a-mole (15 pontos, 01/08/2015 + 21 dias)
 - TP2 (15 pontos, 17/09/2015 + 21 dias)
 - TP3 - duplas: Ray-tracer (15 pontos, em duas entregas)
-- TP4 - duplas: Animação (15 pontos, 03/12/2015)
+- TP4 - duplas: Animação (15 pontos, entrega final em 03/12/2015)
 
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp1-whack
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/src/assignments/tp2
