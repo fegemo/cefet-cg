@@ -478,10 +478,24 @@ full-dimension-backdrop(repeat)
 
 
 
+// codeblocks opener styles
+a[href^="codeblocks:"]
+  &:before
+    content ' '
+    display inline-block
+    width 16px
+    height 16px
+    background-image url(../images/icon-codeblocks.png)
+    background-repeat no-repeat
+    vertical-align middle
+    margin-right 5px
+
+
+
+
 // Print styles
 @media print
   #page-header
     display none !important
   .book-cover
     height 150px !important
-

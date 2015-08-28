@@ -34,7 +34,7 @@
   - Por exemplo, o console Nintendo possuía apenas 8 bits
 - O OpenGL, com seu objetivo de executar em plataformas variadas, sugere o uso de seus próprios tipos de dados
   - Exemplo: `GLint` em vez de `int`
-- Assim, **garante-se a precisão necessária** (e.g., 32 bits) em cada tipo de dados, em vez de deixar o compilador 
+- Assim, **garante-se a precisão necessária** (e.g., 32 bits) em cada tipo de dados, em vez de deixar o compilador
   da plataforma decidir
 - A seguir, veja o **mapeamento** dos tipos primitivos em **C para os tipos sugeridos pelo OpenGL**
 
@@ -60,7 +60,7 @@
 ## Gráficos _raster_
 
 - Até agora, vimos como desenhar primitivas geométricas em OpenGL
-- Contudo, queremos também **desenhar áreas retangulares de cores** 
+- Contudo, queremos também **desenhar áreas retangulares de cores**
   - Exemplos:
     1. Colocar imagens na tela
     1. Escrever texto
@@ -73,10 +73,11 @@
 
 - O OpenGL provê primitivas de nível baixo para a escrita de caracteres na tela
 - <img src="../../images/bitmap-f.gif" class="right-aligned">
-  Os comandos `glRasterPos*()` e `glBitmap()` posicionam e desenham um _bitmap_ 
+  Os comandos `glRasterPos*()` e `glBitmap()` posicionam e desenham um _bitmap_
 - Pode-se usar _display lists_ (próxima aula) para armazenar o _bitmap_ de cada letra e apenas
   usá-lo por seu índice posteriormente
 - O restante é com a gente =)
+  - [Exemplo de desenho de texto **em OpenGL "puro"**](codeblocks:fontes-opengl-f/CodeBlocks/fontes-opengl-f.cbp)
 
 ---
 ## **Exemplo** de texto na tela em OpenGL puro
@@ -128,7 +129,7 @@ void glRasterPos2i(GLint x, GLint y);
 ---
 ## **_Bitmaps_ e fontes** (usando GLUT)
 
-- GLUT já implementou algumas fontes (usando glBitmap()) e nos oferece **algumas
+- GLUT já implementou algumas fontes (usando `glBitmap()`) e nos oferece **algumas
   opções mais simples**
 - Documentação da função [glutBitmapCharacter](https://www.opengl.org/documentation/specs/glut/spec3/node76.html)
   ```c
@@ -160,7 +161,11 @@ void display() {
    drawString(GLUT_BITMAP_HELVETICA_18, "FFF", 20, 20, 0);
    glFlush();
 }
+
 ```
+
+- [Exemplo de texto usando GLUT](codeblocks:fontes-glut/CodeBlocks/fontes-glut.cbp)
+- [Mesmo exemplo, em OpenGL puro](codeblocks:fontes-opengl/CodeBlocks/fontes-opengl.cbp)
 
 ---
 # Depth buffer e a coordenada Z
@@ -170,7 +175,7 @@ void display() {
 
 - Desenhar um anel vermelho
 
-  ![](../../images/anel-vermelho.png)
+![](../../images/anel-vermelho.png)
 
 ---
 ## **Três** formas
@@ -196,6 +201,8 @@ void drawDisc(float R, float X, float Y, float Z) {
   glEnd();
 }
 ```
+
+- [Exemplo do Disco](codeblocks:discos/CodeBlocks/discos.cbp)
 
 ---
 ## Experimento

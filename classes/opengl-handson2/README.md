@@ -216,6 +216,8 @@ int main(int argc, char** argv)
 ---
 # Criando uma pequena animação
 
+[Exemplo: Animação de cor](codeblocks:animacao-cor/CodeBlocks/animacao.cbp)
+
 ---
 ## glutTimerFunc(msecs, func, value)
 
