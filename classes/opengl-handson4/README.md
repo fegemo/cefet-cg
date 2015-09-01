@@ -97,7 +97,7 @@ void criaListaAnelQuadrado() {
   glEndList();
 }
 ```
-  
+
 ---
 ## Tentativa 3 (cont.)
 
@@ -139,11 +139,12 @@ void desenhaCena() {
   - `glBindTexture(GL_TEXTURE_2D, int)`, para **começar a usar** uma textura
   - `glTexCoord2f(x, y)`, para definir **coordenada de textura para cada vértice**
 - Vamos ver um exemplo...
-  
+  - [Textura simples usando SOIL](codeblocks:textura-simples-soil/CodeBlocks/textura-simples-soil.cbp)
+
 ---
 ## Variável global
 
-- Temos uma variável global que armazenará um **identificador de textura**, que é 
+- Temos uma variável global que armazenará um **identificador de textura**, que é
   um número inteiro que será gerado pelo OpenGL
   ```c
   GLuint texturaDoMario;
@@ -178,13 +179,13 @@ glDisable(GL_TEXTURE_2D);
 
 - O OpenGL não possui funções para carregar texturas
 - Basicamente, precisamos abrir o arquivo de imagem nós mesmos (`fopen` e amigos) e
-  usar outros 4-5 métodos do OpenGL para então conseguirmos usar um arquivo como 
+  usar outros 4-5 métodos do OpenGL para então conseguirmos usar um arquivo como
   textura:
   - `glGenTextures(...), glTexParameteri(..), glTexImage2D(...), glTexEnvf(...)`
-- Veremos como esses métodos funcionam em aulas futuras, mas hoje vamos usar 
-  uma biblioteca chamada SOIL que possui funções para carregar arquivos de imagem 
+- Veremos como esses métodos funcionam em aulas futuras, mas hoje vamos usar
+  uma biblioteca chamada SOIL que possui funções para carregar arquivos de imagem
   diretamente
-  
+
 ---
 ## <abbr title="Simple OpenGL Image Library">SOIL</abbr>
 
@@ -223,13 +224,13 @@ _A wild TP1 appears..._
 ---
 ## TP1 está a solta
 
-<img alt="Tela do jogo Breakout original" src="../../images/breakout-cool-stages.png"
+<img alt="Animação de um jogo de tiro com personagens Lego" src="../../images/na-faca.gif"
   style="float: right; width: 420px; margin: 0 0 5px 20px">
-_"[...] consiste em uma parede de tijolos que são destruídos quando uma bola, 
-        que se movimenta sozinha, colide com eles. A bola se movimenta em duas direções, 
-        quatro sentidos diferentes, conforme mostra a imagem abaixo [...]"_
+  _"Shooters, shooting games ou simplesmente joguinhos de tiro-ao-alvo são um
+    gênero comum entre jogos de ação [...] na esperança de escutar
+    '**HEADSHOT!!!**'"_
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-breakout)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game)).
 
 ---
 # Referências

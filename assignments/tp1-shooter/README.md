@@ -1,6 +1,6 @@
 # Trabalho Prático 1 - Shooting Game
 
-![](images/na-faca.gif)
+![](../../images/na-faca.gif)
 
 Agora que você conhece um pouco mais sobre OpenGL, vamos implementar um jogo digital simples usando seus conhecimentos sobre ele e uma linguagem de programação a sua escolha¹ (**C/C++**, Java, etc.).
 
@@ -74,7 +74,10 @@ Outros descuidos também o farão **perder pontos no trabalho**, como:
 - Baixa qualidade da implementação;
 - Entregar fora do prazo. Cada dia de atraso reduz o valor máximo de nota de acordo com a equação abaixo, de modo que `x` representa o número de dias de atraso e `f(x)` equivale à penalidade percentual da nota:
 
-  ![Isso implica que 1 ou 2 dias de atraso são pouco penalizados, mas em 5 dias seu trabalho vale 0](../../images/penalidade-por-atraso.png)
+  ![Fórmula de penalidade por atraso](../../images/penalidade-por-atraso.png)
+  - Isso implica que 1 ou 2 dias de atraso são pouco penalizados
+  - E após 5 dias de atraso, o trabalho vale 0
+  - _Seeing is believing_: https://www.google.com.br/search?q=y%3D(2%5E(x-2)%2F0.16)%2Cy%3D100
 
 ## O que deve ser entregue
 
