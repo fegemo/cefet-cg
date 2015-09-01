@@ -134,7 +134,7 @@ e Tridimensionais.
 - TP3 - duplas: Ray-tracer (15 pontos, em duas entregas)
 - TP4 - duplas: Animação (15 pontos, entrega final em 03/12/2015)
 
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-shooter/README.md
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
 [tp4]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp4

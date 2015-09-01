@@ -1,6 +1,6 @@
 # Trabalho Prático 1 - Shooting Game
 
-![](images/na-faca.gif)
+![](../../images/na-faca.gif)
 
 Agora que você conhece um pouco mais sobre OpenGL, vamos implementar um jogo digital simples usando seus conhecimentos sobre ele e uma linguagem de programação a sua escolha¹ (**C/C++**, Java, etc.).
 
