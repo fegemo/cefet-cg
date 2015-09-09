@@ -1,8 +1,12 @@
+<!--
+  bespokeEvent: bullets.disable
+-->
+
 # Computação Gráfica
 
 *Professor:* Flávio Coutinho
 
-<img class="page-author-picture" src="images/flavio-avatar.jpg">
+<img class="portrait" src="images/flavio-avatar.jpg">
 
 ---
 # Aulas
@@ -14,14 +18,14 @@
 - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (27/08/2015)
 - [OpenGL Hands-on - Parte 4](classes/opengl-handson4/) (01/09/2015)
 - [Cê](classes/c) (03/09/2015)
+- [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (03/09/2015)
 
-<!--
--->
-
-<!--
+---
   # Aulas (pág. 2)
 
-  - [Geometria](classes/geometry) (07/04/2015)
+- [Geometria](classes/geometry) (07/04/2015)
+
+<!--
   - [Transformações Geométricas](classes/transforms) (09/04/2015)
   - [Orientação e Mudança de Coordenadas](classes/baseorientation) (16/04/2015)
   - [O Pipeline Gráfico](classes/pipeline) (23/04/2015)

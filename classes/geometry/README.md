@@ -1,3 +1,7 @@
+<!--
+  backdrop: affine-geometry
+-->
+
 # Geometria
 
 ---
@@ -7,7 +11,7 @@
 1. História da Geometria
 1. Geometria Afim
 1. Geometria Euclidiana
-1. Sistema de coordenadas
+1. Sistema de Coordenadas
 
 ---
 # Motivação
@@ -65,14 +69,16 @@
 ---
 # Objetivos de hoje
 
-- Vamos supor que estamos na década de 90 e **vamos inventar uma peça de _hardware_ 
-  para fazer os cálculos necessários** (podemos batizá-la de placa de vídeo :) 
+- Vamos supor que estamos na década de 90 e **vamos inventar uma peça de _hardware_
+  para fazer os cálculos necessários** (podemos batizá-la de placa de vídeo :)
   para gerar imagens à partir de cenas bi/tridimensionais
 - Vamos precisar:
   1. Definir que **tipos de operações com números** nosso _hardware_ deve fazer
-  1. Restringir as operações a um **conjunto mínimo viável** (porque _hardware_ é caro)
-  1. Encontrar uma forma de fazer **várias operações ao mesmo tempo** (para que seja rápido)
-  
+  1. Restringir as operações a um **conjunto mínimo viável** (porque _hardware_
+    é caro e complexo)
+  1. Encontrar uma forma de fazer **várias operações ao mesmo tempo** (para
+    que seja rápido)
+
 ---
 # Geometria
 
@@ -89,12 +95,12 @@
   - **300 a.C.**
 
 ---
-## Geometria Afim
+## Surgimento da Geometria Afim
 
 - Somente por volta de **1600 d.C.**, com Descartes, as coordenadas cartesianas foram
   desenvolvidas
   - Possibilitando conceitos geométricos serem representados aritmeticamente
-- À partir dos anos **1900 d.C.** começou-se a questionar se a geometria de Euclides 
+- À partir dos anos **1900 d.C.** começou-se a questionar se a geometria de Euclides
   era a única geometria possível
   - Novas geometrias foram propostas
     - Lobachevski (hiperbólica) e Gauss (diferencial)
@@ -133,7 +139,7 @@
 - Representa uma grandeza não geométrica
 - Notação típica:
   - Letras gregas minúsculas
-    - &alpha;, &beta;, &gamma;
+    - <span class="math">\alpha, \beta, \gamma</span>
 
 ---
 ## Ponto e Vetor
@@ -156,7 +162,7 @@
 ![](../../images/afim-multiplicacao-escalar.png)
 
 - Multiplicação escalar-vetor
-  - v = &alpha; &middot; u
+  - <span class="math">\vec{v} = \alpha \times \vec{u}</span>
 
 ---
 ## Operações (2/4)
@@ -164,9 +170,9 @@
 ![](../../images/afim-soma-vetores.png)
 
 - Adição vetor-vetor
-  - w = u + v
-  - w = u - v
-    - w = u + (-1 &middot; v)
+  - <span class="math">\vec{w} = \vec{u} + \vec{v}</span>
+  - <span class="math">\vec{w} = \vec{u} - \vec{v}</span>
+    - <span class="math">\vec{w} = \vec{u} + (-1 \times \vec{v})</span>
 
 
 ---
@@ -175,14 +181,14 @@
 ![](../../images/afim-subtracao-pontos.png)
 
 - Diferença ponto-ponto
-  - v = P - Q
+  - <span class="math">\vec{v} = P - Q</span>
 
 ---
 ## Operações (4/4)
 
 - Adição ponto-vetor
-  - R = P + u
-  - R = P - u
+  - <span class="math">R = P + \vec{u}</span>
+  - <span class="math">R = P - \vec{u}</span>
 
 ---
 ## Combinação Afim

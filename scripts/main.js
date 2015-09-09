@@ -60,6 +60,18 @@ window.deck = bespoke.from('article', [
     },
   }),
   keys(),
+  function() {
+    var deck = arguments[0];
+    document.addEventListener('keydown', function(e) {
+      if ((e.which == 40) || // DOWN
+          (e.which == 38)) { // UP
+        deck.fire('bullets.disable');
+        if (e.which == 40) deck.next();
+        else deck.prev();
+        deck.fire('bullets.enable');
+      }
+    });
+  },
   touch(),
   bullets('li, .bullet'),
   hash(),
