@@ -1,6 +1,6 @@
 # Transformações Geométricas
 
-![](../../images/transformations.jpg)
+![](../../images/transformations.png)
 
 ---
 # Roteiro
@@ -49,8 +49,8 @@
 
   R = &alpha;<sub>0</sub>F.e<sub>0</sub> + &alpha;<sub>1</sub>F.e<sub>1</sub> + &alpha;<sub>2</sub>F.e<sub>2</sub> + &alpha;<sub>3</sub>O
 
-  - Em que **&alpha;<sub>3</sub>** é 0 para vetores ou 1 para pontos 
-    (é a **coordenada homogênea**), R é um ponto ou um vetor representado 
+  - Em que **&alpha;<sub>3</sub>** é 0 para vetores ou 1 para pontos
+    (é a **coordenada homogênea**), R é um ponto ou um vetor representado
     em termos do sistema de coordenadas F
 
 ---
@@ -218,20 +218,19 @@ de rotação.
 ## Rotação em torno de um ponto
 
 - Quando rotacionamos um objeto, o fazemos em relação à origem
-  - Exemplo da casinha
 
-    ![](../../images/rotacao-exemplo.png)
+![](../../images/rotacao-exemplo.png)
 
 ---
 ## Rotação em torno de um ponto (cont.)
 
-- Para rotacionar um objeto que não está na origem em torno de si mesmo,
+- Para rotacionar **um objeto que não está na origem em torno de si mesmo**,
   precisamos, primeiro  (1) movê-lo até a origem, (2) rotacionar e (3) movê-lo
   de volta à sua posição original
-  
+
   ![](../../images/rotacao-ponto.png)
 - Assim, fazemos uma transformação composta dada pela matriz obtida pela multiplicação:
-  X = T(p)R<sub>z</sub>(45º)T(-p)
+  <span class="math">Resultante = T(p)R_z(45)T(-p)</span>
 
 ---
 ## Rotações em geral (quaisquer eixos)
@@ -239,7 +238,7 @@ de rotação.
 - Uma rotação em eixos arbitrários pode ser definida pela multiplicação das
   matrizes de rotação em cada eixo
 
-  E(h, p, r) = R<sub>z</sub>(r)R<sub>x</sub>(p)R<sub>y</sub>(h)
+  <div class="math">E(h, p, r) = R_z(r)R_x(p)R_y(h)</div>
 - Chamada de transformação de Euler
 - É a matriz gerada pelo `glRotate`
 
@@ -339,9 +338,10 @@ de rotação.
 
 - As três matrizes de transformação são combinadas como a seguir
 
-![](../../images/composicao-matriz.png)
+  ![](../../images/composicao-matriz.png)
 
-Lembre-se: multiplicação de matrizes não é comutativa - a ordem importa.
+- Lembre-se: multiplicação de matrizes não é comutativa - a ordem importa.
+  - Além disso, o OpenGL **pré-multiplica** as matrizes
 
 ---
 # Push, Pop
@@ -374,8 +374,19 @@ Lembre-se: multiplicação de matrizes não é comutativa - a ordem importa.
   pilha são idênticas
 - `glPopMatrix` desempilha a matriz corrente
 - `glLoadIdentity` define a matriz do topo como uma identidade
-- `glRotate, glTranslate` etc., multiplicam a matriz do topo pela matriz de 
+- `glRotate, glTranslate` etc., multiplicam a matriz do topo pela matriz de
   transformação correspondente
+
+---
+# Exemplo de Rotação com Animação
+
+Veja este exemplo de [quadrado girando](codeblocks:tranformacao-rotacao/CodeBlocks/tranformacao-rotacao.cbp)
+ao longo do tempo - ou seja, uma rotação no eixo Z de pequenos ângulos a cada
+quadro.
+
+- Usar `glPushMatrix()`/`glPopMatrix()` é preferível porque eles tornam
+  desnecessários desfazer as transformações - que, tipicamente, se faz
+  aplicando a transformação inversa
   
 ---
 # Referências

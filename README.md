@@ -23,10 +23,10 @@
 ---
   # Aulas (pág. 2)
 
-- [Geometria](classes/geometry) (07/04/2015)
+- [Geometria](classes/geometry) (08/09/2015)
+- [Transformações Geométricas](classes/transforms) (10/09/2015)
 
 <!--
-  - [Transformações Geométricas](classes/transforms) (09/04/2015)
   - [Orientação e Mudança de Coordenadas](classes/baseorientation) (16/04/2015)
   - [O Pipeline Gráfico](classes/pipeline) (23/04/2015)
   - [Projeção](classes/projection) (28/04/2015)
