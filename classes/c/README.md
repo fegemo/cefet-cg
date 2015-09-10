@@ -14,7 +14,7 @@
   - `#include "meuProgramaFavorito.h"`
 1. ~~Makefiles~~ IDEs, pra que te quero
   - `make run`
-  
+
 ---
 # Revisão de PC1
 
@@ -25,7 +25,7 @@
 - <figure class="portrait right">
     <img src="../../images/dennis-ritchie.png" alt="Foto de Dennis Ritchie">
   </figure>
-    
+
     Feita por Dennis Ricthie praticamente sozinho
 - Projetada para programação de:
   - Sistemas operacionais
@@ -64,7 +64,7 @@ int *j, k;                  // ponteiro para inteiro j, inteiro k
 
 unsigned char *ch;          // ponteiro para char sem sinal
 
-int a[3][5];                // vetor de 3 posições de 5 inteiros 
+int a[3][5];                // vetor de 3 posições de 5 inteiros
 
 float f[10];                // vetor de 10 floats
 
@@ -83,7 +83,7 @@ int (*func2)(void);         // ponteiro para função que ret. int
 
 - Em C, quando uma função recebe um argumento, tipicamente ela
   recebe uma **cópia** do valor real
-  - Portanto, se a função altera seu valor, ao sair dela, 
+  - Portanto, se a função altera seu valor, ao sair dela,
     o valor da variável será o mesmo valor de antes da alteração
 - Veja o exemplão na próxima página.
 
@@ -104,13 +104,13 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 ```
-  
+
 ---
 ## Passando valores a funções **por referência**
 
-- Contudo, às vezes precisamos alterar o valor das variáveis 
+- Contudo, às vezes precisamos alterar o valor das variáveis
   recebidas como argumento da função
-  - Para isso, podemos passar o **"endereço" de memória da variável**, 
+  - Para isso, podemos passar o **"endereço" de memória da variável**,
     em vez do seu valor
 - Exemplo:
   ```c
@@ -121,23 +121,23 @@ int main(int argc, char* argv[]) {
   ```
   atendePessoaNoRangoDoRei(&fila);
   ```
-  - Ainda assim o C está **copiando o valor** para a função. Contudo, ele 
+  - Ainda assim o C está **copiando o valor** para a função. Contudo, ele
     copiou o endereço de memória e não o valor
-  
+
 ---
 # Imprimindo no terminal
 
 ---
 ## Entrada e saída (E/S)
 
-- E/S em C pode ser realizado de forma básica usando os utililtários da 
+- E/S em C pode ser realizado de forma básica usando os utililtários da
   biblioteca `stdio.h`
   - O nome advém de _Standard in/out_
-- Para escrever texto no terminal, tipicamente usamos a função de [impressão 
+- Para escrever texto no terminal, tipicamente usamos a função de [impressão
   formatada (`printf`)](http://www.cplusplus.com/reference/cstdio/printf/)
   - Com ela, é possível facilmente formatar os dados a serem escritos
-    - Cada variável é representada pelo caractere `%`, seguido por uma letra 
-      que indica seu tipo e alguns modificadores (opcionais). O formato completo 
+    - Cada variável é representada pelo caractere `%`, seguido por uma letra
+      que indica seu tipo e alguns modificadores (opcionais). O formato completo
       é dado por:
       ```
       %[flags][largura][.precisão][comprimento]identificador
@@ -181,9 +181,9 @@ int main(int argc, char* argv[]) {
 ## Motivação
 
 - Às vezes precisamos reunir informações variadas sobre um mesmo objeto
-  - Por exemplo, um vetor geométrico possui um `float` para `x` e outro 
+  - Por exemplo, um vetor geométrico possui um `float` para `x` e outro
     para `y`
-- A linguagem permite a criação de **estruturas de dados**. Para tal, 
+- A linguagem permite a criação de **estruturas de dados**. Para tal,
   usamos a sintaxe:
   ```c
   struct vetorGeometrico {
@@ -191,11 +191,11 @@ int main(int argc, char* argv[]) {
     float y;
   }
   ```
-  
+
 ---
 ## Como usar uma estrutura
 
-- Uma vez definida, podemos usar a estrutura para criar objetos que têm 
+- Uma vez definida, podemos usar a estrutura para criar objetos que têm
   o mesmo tipo definido por ela:
   ```c
   struct vetorGeometrico posicao;
@@ -206,7 +206,7 @@ int main(int argc, char* argv[]) {
   posicao.x = 1.5f;
   velocidade.y *= 2;
   ```
-  
+
 ---
 # Dividindo seu programa em módulos
 
@@ -289,7 +289,7 @@ int main(int argc, char* argv[]) {
  struct vetor somaEscalar(struct vetor, float);
  ```
 
-    
+
 ---
 ## Exemplão (continuação)
 
@@ -308,7 +308,7 @@ int main(int argc, char* argv[]) {
   struct vetor velocidade;
   posicao.x = 1;
   posicao.y = 1;
-  
+
   velocidade = somaEscalar(velocidade, 2);
   printf("novaPosicao: %f, %f\n", velocidade.x, velocidade.y);
   return 0;
@@ -327,15 +327,15 @@ int main(int argc, char* argv[]) {
   - Visual Studio
   - Eclipse etc.
 - Reúne ferramentas e utilitários normalmente utilizados para a programação
-  - Um desses utilitários (o rei da floresta) é um compilador 
-- Apesar da facilidade gratuita dos IDEs, como não precisamos usar 
-  os compiladores diretamente, ficamos sem conhecer (e entender) como 
+  - Um desses utilitários (o rei da floresta) é um compilador
+- Apesar da facilidade gratuita dos IDEs, como não precisamos usar
+  os compiladores diretamente, ficamos sem conhecer (e entender) como
   ele funciona
 
 ---
 ## O GCC
 
-- O GCC é o compilador da linguagem C (e de C++, Objective-C, Objective-C++ e GO) 
+- O GCC é o compilador da linguagem C (e de C++, Objective-C, Objective-C++ e GO)
   mais famoso e utilizado
 - Ele foi feito para Unix e só executa lá
   - Felizmente, alguns _ports_ não oficiais foram feitos para Windows:
@@ -348,7 +348,7 @@ int main(int argc, char* argv[]) {
 ## Usando o GCC
 
 - Fazemos o processo em dois passos: (1) compilação e (2) linkedição
-  1. Para compilar um programa com dois arquivos .c: 
+  1. Para compilar um programa com dois arquivos .c:
     ```shell
     gcc -o arquivo1.o -c arquivo1.c -Wall
     gcc -o arquivo2.o -c arquivo2.c -Wall
@@ -399,8 +399,9 @@ clean:
 ---
 ## Referências da linguagem C
 
+- Guia sobre o _linker_ (linkeditor)
+  - http://www.lurklurk.org/linkers/linkers.html
 - Tudo sobre o preprocessador:
   - https://gcc.gnu.org/onlinedocs/cpp/
 - Tudo sobre o compilador mais utilizado (gcc):
   - https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/index.html
-
