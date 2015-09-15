@@ -25,10 +25,10 @@
 
 - [Geometria](classes/geometry) (08/09/2015)
 - [Transformações Geométricas](classes/transforms) (10/09/2015)
+- [Orientação e Mudança de Coordenadas](classes/baseorientation) (15/09/2015)
+- [O Pipeline Gráfico](classes/pipeline) (17/09/2015)
 
 <!--
-  - [Orientação e Mudança de Coordenadas](classes/baseorientation) (16/04/2015)
-  - [O Pipeline Gráfico](classes/pipeline) (23/04/2015)
   - [Projeção](classes/projection) (28/04/2015)
   - [Modelagem Hierárquica](classes/hierarchical) (30/04/2015)
   - [Modelagem de Objetos](classes/modeling) (05/05/2015)

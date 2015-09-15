@@ -17,13 +17,17 @@ Considerando as matrizes de transformação que vimos em aula (translação, rot
 ---
 **Questão 2** - 1,5 ponto:
 
-Para cada uma das tarefas a seguir, explique como você a resolveria usando métodos das geometrias afim ou euclidiana que discutimos em sala. Tente expressar suas respostas em termos de operações de alto nível como combinações afins, produto interno e produto vetorial em vez de manipulações de coordenadas de baixo nível ou funções trigonométricas.
+Para as tarefas a seguir, explique como você as resolveria usando métodos das
+geometrias afim ou euclidiana que discutimos em sala. Tente expressar suas
+respostas em termos de operações de alto nível como combinações afins, produto
+interno e produto vetorial em vez de manipulações de coordenadas de baixo
+nível ou funções trigonométricas.
 
 ![](images/geoafim.png)
 
 1. Dado um triângulo `△pqr` no plano, explique como determinar um quarto ponto s tal que `{p, s, q, r}` defina um paralelogramo que tem pq como diagonal (veja Figura a).
 
-1. Um observador está localizado em um ponto `e` no espaço R<sup>3</sup> e ele enxerga um triângulo definido pelos vértices `p`, `q` e `r`. O lado da frente desse triângulo é o lado para o qual `p`, `q` e `r` aparecem no sentido anti-horário e o outro lado é lado de trás. Assumindo que `e` não é co-planar com o triângulo, determine se o observador vê o lado da frente do triângulo ou o de trás (veja Figura b).
+1. Um observador está localizado em um ponto `e` no espaço R<sup>3</sup> e ele enxerga um triângulo definido pelos vértices `p`, `q` e `r`. O lado da frente desse triângulo é o lado para o qual `p`, `q` e `r` aparecem no sentido anti-horário e o outro lado é lado de trás. Assumindo que `e` não é co-planar com o triângulo, **discuta** se o observador vê o lado da frente do triângulo ou o de trás (veja Figura b).
 
 ---
 **Questão 3** (prática) - 4 pontos:
@@ -43,6 +47,8 @@ tipo de ponto flutuante (e.g., **float**, **double**) e deve implementar as segu
 
 Você deve fazer seu TAD em um módulo. Ou seja, se usar a
 linguagem C ou C++, deve haver um arquivo vetor.c(pp) e outro vetor.h.
-Além disso, faça alguns testes usando seu TAD no programa principal (e.g., main.c), imprimindo os resultados na saída padrão.
+Além disso, faça alguns testes usando seu TAD no programa principal (e.g.,
+  main.c), imprimindo os resultados na saída padrão.
 
-**Dikentinha**: use a mesma linguagem que você pretende usar no seu TP2, porque você certamente precisará usar um TAD de vetor.
+**Dikentinha**: use a mesma linguagem que você pretende usar no seu TP2,
+porque você certamente precisará usar um TAD de vetor.

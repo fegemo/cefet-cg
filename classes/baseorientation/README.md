@@ -23,7 +23,7 @@
 ---
 ## Produto Vetorial (cont.)
 
-- Propriedades (assume-se <span class="math">u, v</span> linearmente independentes):
+- Propriedades (assume-se <span class="math">u</span>, <span class="math">v</span> linearmente independentes):
   - Antisimetria: <span class="math">u \times v = -v \times u</span>
   - Bilinearidade:
     - <span class="math">u \times (\alpha v) = \alpha (u \times v)</span>  e
@@ -42,7 +42,8 @@
 - Orientação de 3 pontos em 2D
   - O percurso P1 , P2 , P3  é feito no sentido dos ponteiros do relógio, no
     sentido contrário ou são colineares
-- ![](../../images/orientacao.png)
+
+    ![](../../images/orientacao.png)
 
 ---
 ## Orientação
@@ -92,7 +93,16 @@
 - Como computar as coordenadas de um ponto <span class="math">P = (x_P, y_P)</span> em <span class="math">O</span>/<span class="math">X</span>/<span class="math">Y</span> dadas as
   coordenadas de <span class="math">P</span> em <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span>, isto é, <span class="math">(t_P, u_P)</span>?
 
-  ![](../../images/coord-eq3.png)
+  1. Defina <span class="math">P</span> como um ponto no sistema <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span>
+  1. Defina as componentes do sistema <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span> no sistema <span class="math">O</span>/<span class="math">X</span>/<span class="math">Y</span>
+  1. Fatore a fórmula de forma a isolar as componentes de <span class="math">O</span>/<span class="math">X</span>/<span class="math">Y</span>
+  1. Você achou <span class="math">P = (x_P, y_P)</span> :)
+
+---
+## Algebricamente...
+
+![](../../images/coord-eq3.png)
+
 - Logo,
 
   ![](../../images/coord-eq4.png)
