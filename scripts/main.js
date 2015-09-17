@@ -81,14 +81,15 @@ window.deck = bespoke.from('article', [
   backdrop(),
   search(),
   overview(),
-  tutorial(document.getElementsByClassName('tutorial')[0]),
-  function() {
-    var deck = arguments[0],
-      delayedScale = function() {
-        return scale(isMobile.any ? 'transform' : 'zoom')(deck);
-      };
-    setTimeout(delayedScale, 700);
-  }
+  tutorial(document.getElementsByClassName('tutorial')[0])
+  // ,
+  // function() {
+  //   var deck = arguments[0],
+  //     delayedScale = function() {
+  //       return scale(isMobile.any ? 'transform' : 'zoom')(deck);
+  //     };
+  //   setTimeout(delayedScale, 700);
+  // }
 ]);
 
 sleek();

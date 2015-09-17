@@ -1,3 +1,7 @@
+<!--
+  backdrop: assembly-line
+-->
+
 # Pipeline Gráfico
 
 ---
@@ -31,6 +35,13 @@
     mais lenta**
 
 ---
+<!--
+  backdrop: pipeline-subway
+-->
+
+## Pipeline na _Real-Life_
+
+---
 ## O _pipeline_ **gráfico**
 
 ![](../../images/pipeline-grafico-fases.png)
@@ -41,7 +52,7 @@
   1. Aplicação
   1. Geometria
   1. Rasterização
-  
+
 ---
 ## O _pipeline_ gráfico
 
@@ -52,7 +63,7 @@
   1. Os **vértices** são os **pacientes** que precisam ser renderizados
   1. Para isso eles precisam passar por algumas etapas, em que **são transformados**
   1. Os **atendentes/enfermeiros/médicos** são componentes de **_software_ ou _hardware_**
-  
+
 ---
 # Estágio de **aplicação**
 
@@ -212,6 +223,7 @@
 
 - Neste estágio, informações sobre os triângulos definidos pelos vértices são
   determinadas
+  - Basicamente, determina-se a conectividade das primitivas
 
 ---
 ## Rasterização &gt;&gt; (2) _Scan Conversion_
@@ -224,15 +236,16 @@
   advém da interpolação dos três vértices do triângulo
 
 ---
-## Rasterização &gt;&gt; (3) Sombreamento de Pixels
+## Rasterização &gt;&gt; (3) Sombreamento de ~~Pixels~~ Fragmentos
 
-- Para cada pixel que possui um fragmento, devemos obter sua cor
+- Para cada fragmento, devemos obter sua cor
 - Várias técnicas podem ser usadas aqui
   - Sombreamento de _Phong_
   - Sombreamento de _Goraud_
+  - Sombreamento _flat_
   - <img src="../../images/texturizacao.png" style="float:right;">
     Texturização etc.
-    
+
 
 ---
 ## Rasterização &gt;&gt; (4) Fusão
@@ -240,9 +253,9 @@
 - Do estágio anterior, podemos ter vários fragmentos por pixel (e.g.,
   triângulos sobrepostos)
 - Neste estágio, todos os fragmentos de um pixel são combinados para se
-  determinar a cor final do pixel (COLOR_BUFFER)
+  determinar a cor final do pixel (`COLOR_BUFFER`)
 - Além disso, usa-se o valor do Z-buffer para determinar a visibilidade (ou a
-  ordem) dos fragmentos (DEPTH_BUFFER)
+  ordem) dos fragmentos (`DEPTH_BUFFER`)
 
 ---
 ## Rasterização &gt;&gt; Fusão
@@ -253,8 +266,8 @@
   atualizada no meio de uma operação de rasterização e a pintura dos pixels
   fica visível
   - Isso pode ser solucionado usando-se mais de um buffer
-    - Double-buffer: front-buffer e back-buffer
-    - Triple-bufer
+    - _Double-buffer_: _front-buffer e back-buffer_
+    - [_Triple-buffer_](http://www.anandtech.com/show/2794/2)
 
 ---
 # Referências
