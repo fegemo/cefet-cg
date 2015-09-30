@@ -27,11 +27,11 @@
 - [Transformações Geométricas](classes/transforms) (10/09/2015)
 - [Orientação e Mudança de Coordenadas](classes/baseorientation) (15/09/2015)
 - [O Pipeline Gráfico](classes/pipeline) (17/09/2015)
+- [Projeção](classes/projection) (22/09/2015)
+- [Modelagem Hierárquica](classes/hierarchical) (29/09/2015)
+- [Modelagem de Objetos](classes/modeling) (01/09/2015)
 
 <!--
-  - [Projeção](classes/projection) (28/04/2015)
-  - [Modelagem Hierárquica](classes/hierarchical) (30/04/2015)
-  - [Modelagem de Objetos](classes/modeling) (05/05/2015)
 
 -->
 <!--
@@ -134,11 +134,11 @@ e Tridimensionais.
 ## Trabalhos (60 pontos)
 
 - [TP1: _Shooter_][tp1] (15 pontos, 01/09/2015 + 21 dias)
-- TP2 (15 pontos, 17/09/2015 + 21 dias)
-- TP3 - duplas: Ray-tracer (15 pontos, em duas entregas)
-- TP4 - duplas: Animação (15 pontos, entrega final em 03/12/2015)
+- [TP2: _Townsville_][tp2], grupos &lte; 3 (15 pontos, 01/10/2015 + 21 dias)
+- TP3: Ray-tracer, duplas (15 pontos, em duas entregas)
+- TP4: Animação, grupos &lte; 3 (15 pontos, entrega final em 03/12/2015)
 
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game
-[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2
+[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-townsville/README.md
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
 [tp4]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp4

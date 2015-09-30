@@ -132,6 +132,11 @@
 1. Aparência semelhante ao modelo do nosso olho
 
 ---
+## Mesmo objeto, projeções diferentes
+
+![](../../images/proj-tipos.png)
+
+---
 # Objetos 3D
 
 - Façamos uma breve digressão...
@@ -163,7 +168,7 @@
     glVertex3f( 1.0f, -1.0f,  1.0f); glVertex3f(-1.0f, -1.0f,  1.0f);
     glVertex3f(-1.0f, -1.0f, -1.0f); glVertex3f( 1.0f, -1.0f, -1.0f);
   ```
-  
+
 ---
 ## Roubando com o GLUT
 
@@ -214,6 +219,15 @@
   ```
 
 ---
+## Exemplo
+
+- [Projeção Ortogonal _vs_ Perpsectiva](codeblocks:ortho-vs-perspective2/CodeBlocks/ortho-vs-perspective2.cbp)
+  - Pressionar <key>barra de espaço</key> para alternar de
+    projeção perspectiva para ortogonal
+
+    ![](../../images/projecao-orto-vs-perspectiva.png)
+
+---
 ## **gluPerspective**
 
 ![](../../images/gl-frustum-diagram.gif)
@@ -224,7 +238,7 @@
   1. Um ângulo para o campo de visão
   1. Razão de aspecto (largura / altura)
 
- 
+
 
 ---
 ## gluPerspective (cont.)
@@ -238,8 +252,8 @@
   // fovy, aspect, nearZ, farZ
   gluPerspective(45.0f, 4.0f/3.0f, 1, 20);
   ```
-- O `gluPerspective` substitui o uso de `glFrustum`, já que ele gera uma matriz 
-  de transformação perspectiva da mesma forma, porém usando outros tipos de 
+- O `gluPerspective` substitui o uso de `glFrustum`, já que ele gera uma matriz
+  de transformação perspectiva da mesma forma, porém usando outros tipos de
   parâmetros
 
 ---
@@ -253,10 +267,10 @@
 ---
 ## gluPerspective (cont.)
 
-- ![](../../images/fov1.jpg)
-  ![](../../images/fov2.jpg)
-  ![](../../images/fov3.jpg)
-  ![](../../images/fov4.jpg)
+![](../../images/fov1.jpg)
+![](../../images/fov2.jpg)
+![](../../images/fov3.jpg)
+![](../../images/fov4.jpg)
 
 ---
 ## gluPerspective (cont.)
