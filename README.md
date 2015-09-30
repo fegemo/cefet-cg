@@ -134,11 +134,11 @@ e Tridimensionais.
 ## Trabalhos (60 pontos)
 
 - [TP1: _Shooter_][tp1] (15 pontos, 01/09/2015 + 21 dias)
-- TP2 (15 pontos, 17/09/2015 + 21 dias)
-- TP3 - duplas: Ray-tracer (15 pontos, em duas entregas)
-- TP4 - duplas: Animação (15 pontos, entrega final em 03/12/2015)
+- [TP2: _Townsville_][tp2], grupos &lte; 3 (15 pontos, 01/10/2015 + 21 dias)
+- TP3: Ray-tracer, duplas (15 pontos, em duas entregas)
+- TP4: Animação, grupos &lte; 3 (15 pontos, entrega final em 03/12/2015)
 
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game
-[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2
+[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-townsville/README.md
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
 [tp4]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp4
