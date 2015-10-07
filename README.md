@@ -29,7 +29,7 @@
 - [O Pipeline Gráfico](classes/pipeline) (17/09/2015)
 - [Projeção](classes/projection) (22/09/2015)
 - [Modelagem Hierárquica](classes/hierarchical) (29/09/2015)
-- [Modelagem de Objetos](classes/modeling) (01/09/2015)
+- [Iluminação e Sombreamento](classes/lighting) (06/10/2015)
 
 <!--
 
@@ -37,9 +37,9 @@
 <!--
   # Aulas (pág. 3)
 
+  - [Modelagem de Objetos](classes/modeling) (01/09/2015)
   - Demonstração do 3ds max (12/05/2015)
   - [_Feedback_ do TP1](classes/breakout-feedback) (14/05/2015)
-  - [Iluminação e Sombreamento](classes/lighting) (19/05/2015 e 21/05/2015)
   - [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (02/06/2015)
   - [Texturas](classes/textures) (09/06/2015)
   - [Efeitos Visuais](classes/visual-effects) (11/06/2015)

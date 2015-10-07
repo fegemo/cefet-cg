@@ -191,11 +191,11 @@ gulp.task('build', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes', 'ima
 gulp.task('connect', ['build'], function(done) {
   connect.server({
     root: ['dist'],
-    port: 8082,
+    port: 8080,
     livereload: true
   });
 
-  opn('http://localhost:8082', done);
+  opn('http://localhost:8080', done);
 });
 
 gulp.task('watch', function() {

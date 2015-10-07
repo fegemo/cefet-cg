@@ -102,6 +102,20 @@ body
   transition transform 200ms ease-out
 
 
+.picture-steps
+  position relative
+  img:not(:first-child)
+    position absolute
+    top 0
+    left 0
+  img
+    &:not(.bespoke-bullet-active)
+      transform initial
+  &.clean
+    img:not(:last-child):not(.bespoke-bullet-current)
+      opacity 0
+
+
 #page-author
   display inline-block
   float right
@@ -401,6 +415,21 @@ full-dimension-backdrop(repeat)
   full-dimension-backdrop(true)
 .bespoke-slide[data-bespoke-backdrop="stars"]
   color white
+
+.lighting-balloons.bespoke-backdrop-active
+  background-image url(../images/lighting-balloons.png)
+  full-dimension-backdrop(true)
+  background-size cover
+.shading.bespoke-backdrop-active
+  background-image url(../images/shading.png)
+  full-dimension-backdrop(true)
+  background-size cover
+.bespoke-slide[data-bespoke-backdrop="lighting-balloons"],
+.bespoke-slide[data-bespoke-backdrop="shading"]
+  h1
+    color #f92672
+    font-weight bold
+  text-shadow 3px 1px #e8e8e8
 
 .skybox.bespoke-backdrop-active
   background-image url(../images/skybox.jpg)
