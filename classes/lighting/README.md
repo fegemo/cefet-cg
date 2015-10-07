@@ -1,3 +1,7 @@
+<!--
+  backdrop: lighting-balloons
+-->
+
 # Iluminação e Sombreamento
 
 ---
@@ -86,13 +90,13 @@
   - _real-life_, programado por Deus em C++
 - Modelos **locais**
   - Apenas caminhos do tipo fonte luminosa → superfície → olho são tratados
-  - A intensidade da luz em um vértice é dada pelas 
+  - A intensidade da luz em um vértice é dada pelas
     fontes de luz da cena
   - Simples
     - Ex.: Modelo de Phong no OpenGL
 - Modelos **globais**
   - Muitos caminhos da transmissão da luz são considerados
-  - A intensidade é dada pelas fontes de luz e pela interação dos fótons com 
+  - A intensidade é dada pelas fontes de luz e pela interação dos fótons com
     todos os objetos da cena
   - Complexos (e.g., _ray tracing_, _radiosidade_)
 
@@ -114,7 +118,7 @@
   o objeto** (vértice) iluminado
   - Um objeto não "tampa" o outro (i.e., sem sombras)
 - A luz é discretizada em componentes vermelha, verde e azul
-- Como os objetos da cena não interferem na cor um do outro, uma vez que 
+- Como os objetos da cena não interferem na cor um do outro, uma vez que
   a cor de um vértice foi calculada e ele passou pelo pipeline, suas informações podem
   ser descartadas
 
@@ -122,11 +126,11 @@
 ## Modelo global
 
 - <img src="../../images/luz-modelo-global.png" style="float: right; margin-left: 20px;">
-  Considera-se **vários caminhos percorridos pela luz**, incluindo a relação 
+  Considera-se **vários caminhos percorridos pela luz**, incluindo a relação
   entre os objetos da cena
   - Um objeto pode impedir que outro receba a luz (i.e., há sombras)
   - Objetos podem ser semi-transparentes e a luz pode refletir ou refratar
-  
+
 
 ---
 # Montando um modelo local
@@ -142,7 +146,7 @@
   - Pode emitir [0, 100%] luz de uma cor (**emissiva**)
   - É indiretamente [0, 100%] iluminado pelas infinitas interações da luz na cena (**ambiente**)
   - A cor final do vértice pode ser dada pelo **somatório dessas 4 componentes**
-    
+
 ---
 ## **Cor ambiente** de um objeto
 
@@ -160,7 +164,7 @@
 
 - Objetos foscos refletem a luz em todas as direções uniformemente e possuem uma cor
 - Segundo a Lei de Lambert (fluxo de energia):
-  - a luminosidade aparente da superfície não depende da posição do observador, mas apenas do cosseno do 
+  - a luminosidade aparente da superfície não depende da posição do observador, mas apenas do cosseno do
     **ângulo entre a normal e a direção da luz**
 
     ![](../../images/modelo-lambertiano.png)
@@ -210,11 +214,11 @@
 ![](../../images/phong-components.png)
 
 ---
-## Demonstração do Modelo de Phong
+## Demonstração do Modelo de Iluminação de Phong
 
 ![](../../images/exemplo-luz-e-materiais.png)
 
-- Exemplo: [luz-e-material](https://github.com/fegemo/cefet-cg-exemplos-opengl/blob/master/luz-e-material/main.cpp)
+- Exemplo: [luz-e-material](codeblocks:luz-e-material/CodeBlocks/luz-e-material.cbp)
 
 ---
 # Iluminação em OpenGL
@@ -246,8 +250,8 @@
 
 ---
 ## **3 passos** para iluminar
- 
-- O sistema de iluminação do OpenGL vem, por padrão, **desativado**. Para ativá-lo, 
+
+- O sistema de iluminação do OpenGL vem, por padrão, **desativado**. Para ativá-lo,
   devemos tomar as seguintes medidas:
   1. Ativar/desativar o sistema quando apropriado:
      ```c
@@ -257,10 +261,10 @@
      ```
   1. Ativar e configurar uma ou mais fontes de luz (veremos como)
   1. Configurar materiais antes de desenhar os objetos  (idem)
-  
-  
+
+
 ---
-## Passo 2: Ativando **fontes de luz** 
+## Passo 2: Ativando **fontes de luz**
 
 - Para ativar uma fonte:
   ```c
@@ -274,7 +278,7 @@
     ```
 
 ---
-## Passo 2: Configurando **fontes de luz** 
+## Passo 2: Configurando **fontes de luz**
 
 - Para configurar as propriedades de cada fonte:
   ```c
@@ -343,7 +347,7 @@
 
 - Dada pelas cores `GL_AMBIENT` tanto das fontes luminosas quanto
   dos materiais
-- Além das fontes luminosas, o OpenGL possui uma **luz ambiente global**, que é usada 
+- Além das fontes luminosas, o OpenGL possui uma **luz ambiente global**, que é usada
   para iluminar uniformemente todos os objetos da cena
   ```c
   glLightMaterialfv (GL_LIGHT_MODEL_AMBIENT, color);
@@ -367,22 +371,21 @@
 - Para fontes de luz posicionais, é possível definir um fator de
   atenuação que leva em conta a distância d entre a fonte de luz e o
   objeto sendo iluminado
-      
+
 ---
 ## Atenuação
 
 - A atenuação de uma fonte de luz é calculada como:
   <div class="math">aten = \frac{1}{k_c+k_ld+k_qd^2}</div>
-- Os coeficientes são definidos pela função `glLight()`, usando os parâmetros 
+- Os coeficientes são definidos pela função `glLight()`, usando os parâmetros
   `GL_CONSTANT_ATTENUATION, GL_LINEAR_ATTENUATION` e `GL_QUADRATIC_ATTENUATION`
-  - Exemplo: 
+  - Exemplo:
     ```
     glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 1.0);
     ```
 - Por padrão, não há atenuação. Ou seja:
-  - <span class="math">k_c = 0</span>  
-  - <span class="math">k_l = 0</span>  
-  - <span class="math">k_q = 0</span>  
+  - <span class="math">k_c = 0</span>, <span class="math">k_l = 0</span>,
+    <span class="math">k_q = 0</span>  
 
 ---
 ## Juntando tudo
@@ -392,7 +395,7 @@
 
   ![](../../images/luz-formula-cor.png)
 
-- Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz) 
+- Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz)
   somada à luz emitida e às contribuições Ci
 
   ![](../../images/luz-eq-total.png)
@@ -400,7 +403,7 @@
 ---
 # Recapitulando iluminação
 
-- Vimos alguns modelos para simularmos um sistema de iluminação local 
+- Vimos alguns modelos para simularmos um sistema de iluminação local
   nas nossas cenas de forma a torná-las mais realísticas
 - O modelo de iluminação calcula a cor de **cada vértice** da nossa geometria,
   dadas fontes de luz e o material dos objetos
@@ -425,6 +428,10 @@
     possamos **atribuir cores para cada pixel**
 
 ---
+<!--
+  backdrop: shading
+-->
+
 # Sombreamento
 
 ---
@@ -432,7 +439,7 @@
 
 - Uma opção seria calcular a iluminação em cada pixel da nossa geometria
   - Contudo, isso é caro computacionalmente
-- Uma opção melhor é **interpolar** os valores da função de iluminação 
+- Uma opção melhor é **interpolar** os valores da função de iluminação
   **nos vértices dos polígonos para os pixels** no interior do polígono
   - Assim, aumentamos muito a velocidade de renderização
 
@@ -449,6 +456,9 @@
     glShadeModel(GL_SMOOTH);    // é o valor padrão
     ```
   - Phong
+    ```c
+    glShadeModel(GL_PHONG);    // não há!!
+    ```
 
 ---
 ## _Flat shading_
@@ -477,11 +487,6 @@
   das faces adjacentes ao vértice
 
 ![](../../images/normal-media-faces.png)
-
----
-## Exemplo de _flat_ e _Gouraud shading_
-
-![](../../images/shading-flat-exemplo2.png)
 
 ---
 ## Limitações do _Gouraud shading_
@@ -529,37 +534,27 @@
 ![](../../images/shading-comparacao-exemplo.png)
 
 ---
-## Comparação: iluminação desligada
+## (a) Sem iluminação, (b) _flat_, (c) _gouraud_, (d) _phong_
 
-![](../../images/shading-cena-exemplo-sem-luz.png)
-
----
-## Comparação: iluminação ligada, **_flat shading_**
-
-![](../../images/shading-cena-exemplo-flat.png)
-
----
-## Comparação: iluminação ligada, **_Gouraud shading_**
-
-![](../../images/shading-cena-exemplo-gouraud.png)
-
----
-## Comparação: iluminação ligada, **_Phong shading_**
-
-![](../../images/shading-cena-exemplo-phong.png)
+<figure class="picture-steps">
+  <img class="bullet" src="../../images/shading-cena-exemplo-sem-luz.png">
+  <img class="bullet" src="../../images/shading-cena-exemplo-flat.png">
+  <img class="bullet" src="../../images/shading-cena-exemplo-gouraud.png">
+  <img class="bullet" src="../../images/shading-cena-exemplo-phong.png">
+</figure>
 
 ---
 # _Fog_
 
 ---
-## _Fog_
+## _Fog_ (1)
 
 ![](../../images/fog.jpg)
 
 ---
-## Sem _fog, com _fog_
+## _Fog_ (2)
 
-![](../../images/fog-volumetric.jpg)
+![](../../images/fog-game.jpg)
 
 ---
 ## _Fog_ (cont.)
@@ -582,7 +577,7 @@
 # Referências
 
 - Livro _Real-Time Rendering (3<sup>rd</sup> edition)_
-  - Capítulo 5: _Visual Appearance_ 
+  - Capítulo 5: _Visual Appearance_
 - Livro _Computer Graphics with OpenGL (4<sup>th</sup> edition)_
   - Capítulo 17: _Illumination Models and Surface-Rendering Methods_
 - Livro _Computer Graphics through OpenGL (2<sup>nd</sup> edition)_
@@ -590,4 +585,3 @@
 - _Red Book_
   - [Capítulo 5: _Lighting_](http://www.glprogramming.com/red/chapter05.html)
   - [Capítulo 6: _Blending, Antialiasing, Fog, and Polygon Offset_](http://www.glprogramming.com/red/chapter06.html)
-
