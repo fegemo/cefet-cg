@@ -25,4 +25,4 @@ sendo `t` uma variável que contém ângulo e varia de 0 a 2*Pi (360 graus)._
 
 
 Você deve entregar esta atividade via **Moodle**.
-Valor: 3 pontos
+Valor: 4 pontos
