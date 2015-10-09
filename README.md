@@ -30,6 +30,7 @@
 - [Projeção](classes/projection) (22/09/2015)
 - [Modelagem Hierárquica](classes/hierarchical) (29/09/2015)
 - [Iluminação e Sombreamento](classes/lighting) (06/10/2015)
+- [Modelagem de Objetos](classes/modeling) (08/10/2015)
 
 <!--
 
@@ -37,7 +38,6 @@
 <!--
   # Aulas (pág. 3)
 
-  - [Modelagem de Objetos](classes/modeling) (01/09/2015)
   - Demonstração do 3ds max (12/05/2015)
   - [_Feedback_ do TP1](classes/breakout-feedback) (14/05/2015)
   - [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (02/06/2015)
