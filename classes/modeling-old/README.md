@@ -4,7 +4,7 @@
 # Objetivos
 
 1. Parar de desenhar retângulos :)
-1. Conhecer algumas formas para a representação de objetos complexos
+1. Conhecer métodos para a representação de objetos complexos
 1. Refletir sobre melhores formatos para armazenamento de objetos e para sua
    renderização
 
@@ -18,9 +18,9 @@
 
 1. Vamos instalar o **programa "Obj Model Viewer"**
 1. **Abrir um modelo** descrito em um arquivo `.obj`
-1. Após visualizar o modelo, vamos **abrir** o arquivo `.obj` **usando um
+1. Após visualizar o modelo, vamos **abrir** o arquivo `.obj` **usando um 
    editor de texto** e entender o que está acontencendo ali
-
+   
 ---
 ## Histórico
 
@@ -28,7 +28,7 @@
   - ![right](../../images/wireframe-ambiguous.png)
     Representa os objetos por arestas e pontos sobre a sua superfície
   - Gera **modelos ambíguos**
-  - Ainda é usado como uma forma barata para visualização (mas não para
+  - Ainda é usado como uma forma barata para visualização (mas não para 
     representação)
 
 ---
@@ -41,7 +41,7 @@
   - Implícita ou explicitamente contém informações do fechamento e
     conectividade dos objetos
   - Garante a realização física
-  - Sistemas <abbr title="Computer Aided Design">CAD</abbr>-<abbr title="Computer Aided Manufacture">CAM</abbr>
+  - Sistemas <abbr title="Computer Aided Design">CAD</abbr>-<abbr title="Computer Aided Manufacture">CAM</abbr> 
     utilizados pela indústria
 
 ---
@@ -54,15 +54,6 @@
   - Matemático M
   - Representação R
   - Implementação I
-
----
-<!--
-backdrop: paradigma-universos
--->
-
-## Do mundo físico (real) ao mundo matemático
-
-![](../../images/paradigmas-real-matematico.png)
 
 ---
 <!--
@@ -85,6 +76,15 @@ backdrop: paradigma-universos
 backdrop: paradigma-universos
 -->
 
+## Do mundo físico (real) ao mundo matemático
+
+![](../../images/paradigmas-real-matematico.png)
+
+---
+<!--
+backdrop: paradigma-universos
+-->
+
 ## Problemas da Área
 
 - Estudar fenômenos em F
@@ -99,27 +99,26 @@ backdrop: paradigma-universos
 backdrop: paradigma-universos
 -->
 
-# Representação
----
-## Tipos de Representação
+## Esquemas de Representação
 
-- Pontos
-- Curvas
-- **Superfícies e Sólidos**
-  - Um sólido é uma superfície que é (ou tenta ser) fechada
-- Volumes
-  - Exemplo: Cubo
-    - Superfície = 6 quadriláteros (0,0,0)(0,0,1)(0,1,1)…
-    - Volume = espaço interno 0 <= x,y,z < 1
+- Objetos do universo físico: "sólidos"
+  - O que é um sólido?
+- Objetos do universo matemático vêm da:
+  - Geometria diferencial
+  - Topologia diferencia
 
 ---
-## Descrição dos Sólidos
+## Geometria pode ser complicada
+
+![](../../images/geometria-complicada.png)
+
+---
+## Descrição dos sólidos
 
 - Assuma que um **sólido é um conjunto tridimensional de pontos**
 - Conjuntos de pontos podem ser descritos
-  - Por suas fronteiras (superfícies)
-  - Por composição de sólidos mais simples
-  - Por um conjunto de escalares
+  - Por suas fronteiras
+  - Por campos escalares
     - Definidos por equações
     - Amostrados
 - Originam três tipos de representação:
@@ -128,57 +127,89 @@ backdrop: paradigma-universos
   - Por particionamento do espaço (_BSP-trees_, _Octrees_, etc.)
 
 ---
+# Representação por Fronteira
+
+- Sólido definido indiretamente **por meio da superfície que o delimita**
+  - Compacta (fechada e limitada)
+- Superfícies são descritas parametricamente por um mapeamento chamado de parametrização:
+
+  ![](../../images/eq-parametrizacao-superficies.png)
+
+---
+## Parametrização
+
+- Estabelece um sistema de coordenadas sobre a superfície herdado de um
+  sistema de coordenadas no plano
+
+  ![](../../images/eq-curva-aproximada.png)
+- Em geral, não é possível cobrir (descrever) toda a superfície com uma
+  única parametrização.
+  - Usam-se várias parametrizações que formam um Atlas
+
+---
+## Parametrização de uma Superfície
+
+![](../../images/aprox-superficies.png)
+
+---
+## Parametrizações Válidas
+
+- <img src="../../images/parametrizacoes-validas.png" style="float: right; margin-left: 20px">
+  Sólido deve estar bem definido
+  - Superfície sem autointerseção
+  - Vetor normal não se anula sobre a superfície
+- Normal é usada para determinar o interior e o exterior do sólido
+
+---
+## Exemplo
+
+- Parametrização da esfera de raio 1, centrada na origem
+
+  ![](../../images/parametrizacao-esfera.png)
+- Se &phi; = &pi; ou &phi; = 0 a normal não está definida nos pólos por esta
+  parametrização
+
+---
+## Domínio do Exemplo Anterior
+
+- <img src="../../images/parametrizacao-esfera2.png" style="float: right; margin-left: 20px">
+  Toda parametrização da esfera deixa pelo menos um ponto de fora
+- É impossível mapear continuamente a esfera no plano sem retirar pelo menos
+  um ponto
+
+![](../../images/parametrizacao-esfera3.png)
+
+---
+## Parametrização do Círculo
+
+- <img src="../../images/parametrizacao-circulo.png" style="float: right; margin-left: 20px">
+  Forma implícita
+  - y = tx + t
+  - x<sup>2</sup> + y<sup>2</sup> = 1
+- Resolvendo esse sistema, chega-se a uma parametrização alternativa do círculo
+
+![](../../images/parametrizacao-circulo2.png)
+
+---
 ## Representação Linear por Partes
 
 - <img src="../../images/esfera-triangulada.png" style="float: right; margin-left: 20px">
   Superfície parametrizada com geometria complexa pode ser aproximada por uma
   superfície linear por partes
 - Pode-se particionar o domínio da parametrização por um conjunto de polígonos
-  - Tipicamente **usamos triângulos** (todos os vértices no mesmo plano)
-  - Os triângulos formam um **lado de dentro e um de fora**
-  - Devemos **usar uma orientação consistente**: _e.g._, sempre CW ou sempre CCW
-- Abordagens: (a) sopa de polígonos e (b) malha poligonal
+  - Cada vértice no domínio poligonal é levado para a superfície pela
+    parametrização
+  - Em seguida é ligado aos vértices adjacentes mantendo as conectividades do
+    domínio
 
 ---
-## Sopa de Polígonos
-
-- ![right](../../images/polygon-soup1.png)
-  Organização aleatória (caos)
-- Não estruturado (`GL_TRIANGLES`)
-  – A única ordem garantida é de lado de dentro/fora
-- Não contém informação sobre a conectividade dos triângulos
-- Muita informação (vértices) redundantes
-
----
-## Problemas da Sopa de Polígonos
-
-- ![right](../../images/polygon-soup2.png)
-  Vantagens:
-  - Fácil
-- Problemas
-  - Redundância
-  - Sem conectividade
-  - Difícil editar/transformar
-  - Risco de _cracking_
-
----
-## Malhas Poligonais
+## Propriedades
 
 - Gera uma malha poligonal, definida por um conjunto de vértices, arestas e
   faces
   - Cada aresta é compartilhada por no máximo duas faces
   - A interseção de duas faces é uma aresta, um vértice ou vazia
 - Adjacência de vértices, arestas e faces é chamada de **topologia** da superfície
-
----
-## Malhas Uniformes
-
-- ![right](../../images/mesh1.png)
-  _grids_, _fans_, _strips_
-  - Conectividade é implícita
-  - Muito eficiente
-  - Processamento fácil
-  - Evita transformações redundantes
 
 ---
 ## Decomposição Poligonal
@@ -341,9 +372,9 @@ backdrop: paradigma-universos
 
 ![](../../images/grid-vs-quadtrees.png)
 
-- Objeto bidimensional (esquerda), sua representação usando um grid (centro)
+- Objeto bidimensional (esquerda), sua representação usando um grid (centro) 
   e sua representação usando uma quadtree (direita)
-
+  
 ---
 ## Representação de uma **Quadtree** (2D)
 
@@ -357,9 +388,9 @@ backdrop: paradigma-universos
 - ![right](../../images/quadtree-exemplo-complexo.png)
   Mais um exemplo de quadtree
 - Uma **árvore quaternária** pode ser usada para representar uma quadtree
-- Apenas os quadrantes que possuem subquadrantes terão nós filhos (i.e.,
+- Apenas os quadrantes que possuem subquadrantes terão nós filhos (i.e., 
   ocuparão espaço na memória)
-
+  
 ---
 ## Octrees
 
