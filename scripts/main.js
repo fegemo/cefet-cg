@@ -56,7 +56,7 @@ window.deck = bespoke.from('article', [
         events.split(' ').forEach(function(event) {
           deck.fire(event);
         });
-      },100);
+      },800);
     },
   }),
   keys(),
