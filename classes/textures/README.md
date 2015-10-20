@@ -1,4 +1,9 @@
-# Texturas
+<!--
+  backdrop: tf2-texture
+-->
+
+<link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
+<h1 class="inset-shadow" title="Texturas">Texturas</h1>
 
 ---
 # Objetivos
@@ -268,6 +273,7 @@
 ## Filtragem
 
 ![](../../images/filtragem-textura.png)
+- [Explicação](http://www.felixgers.de/teaching/jogl/textureFiltering.html) sobre cada filtro
 
 ---
 ## _Mipmaps_
@@ -284,7 +290,7 @@
   - O nível da textura na hierarquia _mipmap_ é especificada durante a
     definição da textura:
     ```c
-    glTexImage2D(GL_TEXTURE_2D, nivel_mipmap /*... */ );
+    glTexImage2D(GL_TEXTURE_2D, nivel_mipmap /* ... * /  );
     ```
 
 ---
@@ -310,7 +316,7 @@
 
   ![](../../images/texturas-modo-repeticao.png)
 
----
+<!--
 ## Modos de Aplicação de Textura
 
 - Controla como a cor da textura afeta a cor do pixel
@@ -323,6 +329,7 @@
   - `GL_REPLACE`
 - Cor a ser misturada (`GL_BLEND`)
   - Especificada com `prop = GL_TEXTURE_ENV_COLOR`
+-->
 
 ---
 # Texturas Procedurais
@@ -349,7 +356,7 @@ void makeCheckImage()
 {
   for (int i = 0; i < checkImageHeight; i++) {
     for (int j = 0; j < checkImageWidth; j++) {
-      int color = ((((i & 0x8)==0)^((j & 0x8))==0))*255;
+      int color = ((((i & 0x8)==0)^((j & 0x8))==0))* 255;
       checkImage[i][j][0] = (GLubyte) color;
       checkImage[i][j][1] = (GLubyte) color;
       checkImage[i][j][2] = (GLubyte) color;
@@ -380,7 +387,7 @@ void makeCheckImage()
 
 ---
 <!--
-backdrop: stars
+  backdrop: stars
 -->
 
 ## Exemplo de **normal mapping**
@@ -401,11 +408,11 @@ backdrop: stars
 ![left](../../images/seta-direita.png)
 ![right](../../images/texture-bump-mapping-2.jpg)
 
-- Perturbando a normal <span class="math">(0,1,0)</span> de cada vértice de 
-  acordo com o cosseno de seu <span class="math">x</span> 
+- Perturbando a normal <span class="math">(0,1,0)</span> de cada vértice de
+  acordo com o cosseno de seu <span class="math">x</span>
   - Dentro de um `for`, desenhando `GL_TRIANGLE_STRIP`:
     ```c
-      float valorZoado = cos(2.0 * x);
+      float valorBumped = cos(2.0 * x);
       glNormal3f((bumpMappingLigado ? valorBumped : 0), 1, 0);
       glVertex3f(x, 0, z - 1.0);
       glVertex3f(x, 0, z);
@@ -417,6 +424,8 @@ backdrop: stars
 <video width="496" height="496" class="left-aligned" poster="../../images/height-map-poster.png" controls loop>
   <source src="../../videos/height-map.mp4" type="video/mp4" />
 </video>
+
+- [Explicação](http://www.lighthouse3d.com/opengl/terrain/index.php?heightmap) em lighthouse3d
 
 ---
 # Referências

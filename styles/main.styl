@@ -115,6 +115,21 @@ body
     img:not(:last-child):not(.bespoke-bullet-current)
       opacity 0
 
+.inset-shadow
+  position relative
+  &:before,
+  &:after
+    content attr(title)
+    position absolute
+    color rgba(white, 0.1)
+  &:before
+    top 1px
+    left 1px
+  &:after
+    top 2px
+    left 2px
+
+
 
 #page-author
   display inline-block
@@ -432,6 +447,16 @@ full-dimension-backdrop(repeat)
     font-weight bold
   text-shadow 3px 1px #e8e8e8
 
+.tf2-texture.bespoke-backdrop-active
+  background-image url(../images/tf2-woodwall-texture.jpg)
+  full-dimension-backdrop(false)
+  background-size cover
+.bespoke-slide[data-bespoke-backdrop="tf2-texture"]
+  h1
+    font-family Aladin, cursive
+    color black
+    font-size 8em
+
 .skybox.bespoke-backdrop-active
   background-image url(../images/skybox.jpg)
   full-dimension-backdrop(false)
@@ -506,13 +531,11 @@ full-dimension-backdrop(repeat)
 
 
 
-.bespoke-slide[data-bespoke-backdrop="big-code"] {
-  pre {
+.bespoke-slide[data-bespoke-backdrop="big-code"]
+  pre
     overflow auto
     width 100%
     height 320px
-  }
-}
 
 
 .threed-hardware-generation-1.bespoke-backdrop-active
