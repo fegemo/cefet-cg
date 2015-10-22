@@ -37,6 +37,9 @@ void Desenha() {
 **Questão 2**: Mostre a imagem gerada pelo trecho de programa em OpenGL dado
 a seguir. Numere os desenhos de acordo com os comentários do código fonte.
 
+Dica: lembre-se da aula sobre composição de transformações. Prefira pensar que uma transformação
+está [transformando não o objeto, mas o sistema de coordenadas inteiro](http://fegemo.github.io/cefet-cg/classes/hierarchical/#10).
+
 ```c
 void DesenhaObjeto() {
   glBegin(GL_LINE_STRIP);     // Atente: não é GL_LINE_LOOP
@@ -47,23 +50,26 @@ void DesenhaObjeto() {
   glEnd();
 }
 
-void Desenha(void) {
+void Desenha() {
   glClear(GL_COLOR_BUFFER_BIT);
   glLoadIdentity();
   glColor3f(0, 0, 0);
   glTranslatef(5,0,0);
-  DesenhaObjeto();          // Figura 1
+  desenhaObjeto();            // Figura 1 (preta)
   glPushMatrix();
     glTranslatef(-10,0,0);
-    DesenhaObjeto();        // Figura 2
+    glColor3f(1, 0, 0);
+    desenhaObjeto();          // Figura 2 (verm.)
     glPushMatrix();
-      glRotatef(90,0,0,1);
+      glRotatef(90,0,0,1);    // (+): sent. anti-hor.
       glTranslatef(0,-5,0);
-      DesenhaObjeto();      // Figura 3
+      glColor3f(0, 1, 0);
+      desenhaObjeto();        // Figura 3 (verde)
     glPopMatrix();
-    glRotatef(-90,0,0,1);
+    glRotatef(-90,0,0,1);     // (-): sent. horário
     glTranslatef(0,5,0);
-    DesenhaObjeto();        // Figura 4
+    glColor3f(0, 0, 1);
+    desenhaObjeto();          // Figura 4 (azul)
   glPopMatrix();
   glFlush();
 }
@@ -80,7 +86,7 @@ _Dikentinha: Uma espiral é um círculo cujo raio vai aumentando._
   1. Explique o que ele é, mostrando qual seu papel na Computação Gráfica.
   1. Explique quais são os três grandes estágios do _pipeline_ gráfico - qual o seu próposito, o que eles fazem, onde eles são processados etc.
 
-**Questão 5**: Explique a diferença de representação de uma imagem vetorial e uma imagem _raster_. Sua resposta deve incluir uma discussão sobre os benefícios e custos de cada opção.
+**Questão 5**: Sobre o estágio do _pipeline_ de Geometria, **explique em 1 frase** cada um dos seus 5 subestágios.
 
 **Questão 6**: Sobre as pilhas de matrizes em OpenGL (`GL_MODELVIEW`, `GL_PROJECTION`), responda:
 
@@ -89,17 +95,17 @@ _Dikentinha: Uma espiral é um círculo cujo raio vai aumentando._
 
 **Questão 7**: O que é _Z-buffer_ ou _depth buffer_ e qual sua principal função para a renderização de imagens?
 
-**Questão 8**: Determine um produto de matrizes homogêneas que represente a seqüência de transformações geométricas que leva a janela da figura da esquerda na janela da figura da direita.
+**Questão 8**: Determine um produto de matrizes homogêneas que represente a sequência de transformações geométricas que leva a janela da figura da esquerda na janela da figura da direita.
 
 ![](images/coordenadas.png)
 
-**Questão 9**: Compare as formas de representação de sólidos B-rep (_Boundary representation_) e CSG (_Constructive Solid Geometry_) quanto a espaço de armazenamento e a custo para renderização.
+**Questão 9**: Dados três pontos P, Q e R não-colineares como é possível encontrar um vetor normal do triângulo formado por eles?
 
 **Questão 10**: _Octrees_ são uma estrutura de dados para a representação de sólidos no espaço R³ de forma otimizada, enquanto que as _quadtrees_ trabalham no espaço R². Crie uma _quadtree_ para representar a figura abaixo:
 
 ![](images/quadtree.png)
 
-_Sua resposta deve ser dada na forma de uma árvore cujos nós são células vazias ou células que contêm outros nós._
+_Sua resposta deve ser dada graficamente, <u>na forma de uma árvore</u> cujos nós são células vazias ou células que contêm outros nós._
 
 **Questão 11**: Sobre modelos de iluminação, responda:
 
