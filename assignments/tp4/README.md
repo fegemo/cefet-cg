@@ -18,7 +18,9 @@ Por exemplo, um cachorro feito de "cápsulas":
 Você até pode usar um modelo de terceiros, mas precisa mencionar de onde veio e pode
 ser aplicada uma penalidade na pontuação referente à modelagem do seu trabalho.
 
-Sua cena deve conter:
+O trabalho pode ser feito individualmente, ou em dupla, ou em trio, e
+como funcionalidade básica, valendo 85%, 70% ou 60% (respectivamente) da
+nota, deve ter os seguintes itens:
 
 1. Um personagem principal (não precisa ser um "ser vivo", pode ser uma colher)
 1. Pelo menos uma fonte de luz
@@ -29,9 +31,9 @@ Sua cena deve conter:
 1. Animações simples dos objetos, mas de uma forma "verossímel"
   - Se for um cachorro andando, ele deve parecer que está andando =)
 
-A implementação dos itens citados equivale a 80% da pontuação do trabalho. Os
-20% restantes (e mais uns pontinhos extras, até um limite de 133%) podem ser conseguidos com
-funcionalidades adicionais, descritas abaixo:
+Para ganhar os pontos restantes (e mais uns pontinhos extras, até um
+limite de 133%) podem ser conseguidos com funcionalidades adicionais,
+descritas a seguir:
 
 1. **(até 10%):** uso de sons e trilha sonora
 1. **(5%):** uso de uma textura para _bump mapping_ ou _displacement mapping_
@@ -47,8 +49,9 @@ funcionalidades adicionais, descritas abaixo:
 1. **(5-10%):** animação da câmera
   - Câmera em movimento (5%)
   - Alternância entre câmeras diferentes (5%)
-1. **(1%):** a cada 2s adicionais da animação acima de 30s. Só não vale
-   fingir que é o Stanley Kubrick no filme 2001: Uma Odisséia no Espaço
+1. **(1%):** a cada 2s adicionais da animação acima de 25s. Só não vale
+   fingir que é o Stanley Kubrick no filme 2001: Uma Odisséia no Espaço. Limite
+   de 10% adicionais neste item.
 1. **(??%):** outros adicionais propostos por você e avaliados pelo
   professor
 
