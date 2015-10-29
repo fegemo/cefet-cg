@@ -24,6 +24,8 @@ backdrop: ninokuni
 ![](../../images/pipeline-rasterizador-fases.png)
 
 ---
+![](../../images/fun-pipeline1.png)
+---
 # Evolução do _hardware_ gráfico
 
 ---
@@ -94,7 +96,7 @@ backdrop: threed-hardware-generation-3
 ## Geração IV e meio: GeForce6/X800 (2004)
 
 - Renderização simultânea para mais de um _buffer_
-  - Aceleração para sombras, múltiplas câmeras na cena (_e.g._, um retrovisor de um carro, 
+  - Aceleração para sombras, múltiplas câmeras na cena (_e.g._, um retrovisor de um carro,
     um avatar 3D do personsagem selecionado)
 - Para os _shaders_, condicionais e _loops_ (antes não tinha :)
 - Aumento de precisão de 32bits para 64bits nas operações do pipeline
@@ -103,7 +105,7 @@ backdrop: threed-hardware-generation-3
 ---
 # OpenGL Moderno
 
-- No pipeline fixo, certas decisões estão encrustadas 
+- No pipeline fixo, certas decisões estão encrustadas
 - Para tirar proveito das novas características do _hardware_, o OpenGL (e o DirectX) evoluíram
   - Em vez de oferecer apenas um modelo de iluminação (Phong), agora você pode criar o seu
   - Na prática, podemos escrever:
@@ -116,441 +118,231 @@ backdrop: threed-hardware-generation-3
 backdrop: big-code
 -->
 
-## Hello world em OpenGL 3.0+
+## Hello World em OpenGL 4.3+
 
 ```c
-#include "GL/freeglut.h"
-#include "stdlib.h"
-#include "stdio.h"
-#include "stddef.h"
-#include "string.h"
+#include <iostream>
+#include <fstream>
 
-/* report GL errors, if any, to stderr */
-void checkError(const char *functionName)
-{
-   GLenum error;
-   while (( error = glGetError() ) != GL_NO_ERROR) {
-      fprintf (stderr, "GL error 0x%X detected in %s\n", error, functionName);
-   }
-}
+#include <GL\glew.h>
+#include <GL\freeglut.h>
 
-/* extension #defines, types and entries, avoiding a dependency on additional
-   libraries like GLEW or the GL/glext.h header */
-#ifndef GL_ARRAY_BUFFER
-#define GL_ARRAY_BUFFER 0x8892
-#endif
+using namespace std;
 
-#ifndef GL_STATIC_DRAW
-#define GL_STATIC_DRAW 0x88E4
-#endif
-
-#ifndef GL_FRAGMENT_SHADER
-#define GL_FRAGMENT_SHADER 0x8B30
-#endif
-
-#ifndef GL_VERTEX_SHADER
-#define GL_VERTEX_SHADER 0x8B31
-#endif
-
-#ifndef GL_SHADING_LANGUAGE_VERSION
-#define GL_SHADING_LANGUAGE_VERSION 0x8B8C
-#endif
-
-#ifndef GL_COMPILE_STATUS
-#define GL_COMPILE_STATUS 0x8B81
-#endif
-
-#ifndef GL_LINK_STATUS
-#define GL_LINK_STATUS 0x8B82
-#endif
-
-#ifndef GL_INFO_LOG_LENGTH
-#define GL_INFO_LOG_LENGTH 0x8B84
-#endif
-
-typedef ptrdiff_t ourGLsizeiptr;
-typedef char ourGLchar;
-
-#ifndef APIENTRY
-#define APIENTRY
-#endif
-
-
-#ifndef GL_ARB_vertex_array_object
-typedef void (APIENTRY *PFNGLGENVERTEXARRAYSPROC) (GLsizei n, GLuint *arrays);
-typedef void (APIENTRY *PFNGLBINDVERTEXARRAYPROC) (GLuint array);
-#endif
-#ifndef GL_VERSION_1_5
-typedef void (APIENTRY *PFNGLGENBUFFERSPROC) (GLsizei n, GLuint *buffers);
-typedef void (APIENTRY *PFNGLBINDBUFFERPROC) (GLenum target, GLuint buffer);
-typedef void (APIENTRY *PFNGLBUFFERDATAPROC) (GLenum target, ourGLsizeiptr size, const GLvoid *data, GLenum usage);
-#endif
-#ifndef GL_VERSION_2_0
-typedef GLuint (APIENTRY *PFNGLCREATESHADERPROC) (GLenum type);
-typedef void (APIENTRY *PFNGLSHADERSOURCEPROC) (GLuint shader, GLsizei count, const ourGLchar **string, const GLint *length);
-typedef void (APIENTRY *PFNGLCOMPILESHADERPROC) (GLuint shader);
-typedef GLuint (APIENTRY *PFNGLCREATEPROGRAMPROC) (void);
-typedef void (APIENTRY *PFNGLATTACHSHADERPROC) (GLuint program, GLuint shader);
-typedef void (APIENTRY *PFNGLLINKPROGRAMPROC) (GLuint program);
-typedef void (APIENTRY *PFNGLUSEPROGRAMPROC) (GLuint program);
-typedef void (APIENTRY *PFNGLGETSHADERIVPROC) (GLuint shader, GLenum pname, GLint *params);
-typedef void (APIENTRY *PFNGLGETSHADERINFOLOGPROC) (GLuint shader, GLsizei bufSize, GLsizei *length, ourGLchar *infoLog);
-typedef void (APIENTRY *PFNGLGETPROGRAMIVPROC) (GLenum target, GLenum pname, GLint *params);
-typedef void (APIENTRY *PFNGLGETPROGRAMINFOLOGPROC) (GLuint program, GLsizei bufSize, GLsizei *length, ourGLchar *infoLog);
-typedef GLint (APIENTRY *PFNGLGETATTRIBLOCATIONPROC) (GLuint program, const ourGLchar *name);
-typedef void (APIENTRY *PFNGLVERTEXATTRIBPOINTERPROC) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
-typedef void (APIENTRY *PFNGLENABLEVERTEXATTRIBARRAYPROC) (GLuint index);
-typedef GLint (APIENTRY *PFNGLGETUNIFORMLOCATIONPROC) (GLuint program, const ourGLchar *name);
-typedef void (APIENTRY *PFNGLUNIFORMMATRIX4FVPROC) (GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-#endif
-
-PFNGLGENVERTEXARRAYSPROC gl_GenVertexArrays;
-PFNGLBINDVERTEXARRAYPROC gl_BindVertexArray;
-PFNGLGENBUFFERSPROC gl_GenBuffers;
-PFNGLBINDBUFFERPROC gl_BindBuffer;
-PFNGLBUFFERDATAPROC gl_BufferData;
-PFNGLCREATESHADERPROC gl_CreateShader;
-PFNGLSHADERSOURCEPROC gl_ShaderSource;
-PFNGLCOMPILESHADERPROC gl_CompileShader;
-PFNGLCREATEPROGRAMPROC gl_CreateProgram;
-PFNGLATTACHSHADERPROC gl_AttachShader;
-PFNGLLINKPROGRAMPROC gl_LinkProgram;
-PFNGLUSEPROGRAMPROC gl_UseProgram;
-PFNGLGETSHADERIVPROC gl_GetShaderiv;
-PFNGLGETSHADERINFOLOGPROC gl_GetShaderInfoLog;
-PFNGLGETPROGRAMIVPROC gl_GetProgramiv;
-PFNGLGETPROGRAMINFOLOGPROC gl_GetProgramInfoLog;
-PFNGLGETATTRIBLOCATIONPROC gl_GetAttribLocation;
-PFNGLVERTEXATTRIBPOINTERPROC gl_VertexAttribPointer;
-PFNGLENABLEVERTEXATTRIBARRAYPROC gl_EnableVertexAttribArray;
-PFNGLGETUNIFORMLOCATIONPROC gl_GetUniformLocation;
-PFNGLUNIFORMMATRIX4FVPROC gl_UniformMatrix4fv;
-
-void initExtensionEntries(void)
-{
-   gl_GenVertexArrays = (PFNGLGENVERTEXARRAYSPROC) glutGetProcAddress ("glGenVertexArrays");
-   gl_BindVertexArray = (PFNGLBINDVERTEXARRAYPROC) glutGetProcAddress ("glBindVertexArray");
-   if (!gl_GenVertexArrays || !gl_BindVertexArray)
-   {
-       fprintf (stderr, "glGenVertexArrays or glBindVertexArray not found");
-       exit(1);
-   }
-   gl_GenBuffers = (PFNGLGENBUFFERSPROC) glutGetProcAddress ("glGenBuffers");
-   gl_BindBuffer = (PFNGLBINDBUFFERPROC) glutGetProcAddress ("glBindBuffer");
-   gl_BufferData = (PFNGLBUFFERDATAPROC) glutGetProcAddress ("glBufferData");
-   if (!gl_GenBuffers || !gl_BindBuffer || !gl_BufferData)
-   {
-       fprintf (stderr, "glGenBuffers, glBindBuffer or glBufferData not found");
-       exit(1);
-   }
-   gl_CreateShader = (PFNGLCREATESHADERPROC) glutGetProcAddress ("glCreateShader");
-   gl_ShaderSource = (PFNGLSHADERSOURCEPROC) glutGetProcAddress ("glShaderSource");
-   gl_CompileShader = (PFNGLCOMPILESHADERPROC) glutGetProcAddress ("glCompileShader");
-   gl_CreateProgram = (PFNGLCREATEPROGRAMPROC) glutGetProcAddress ("glCreateProgram");
-   gl_AttachShader = (PFNGLATTACHSHADERPROC) glutGetProcAddress ("glAttachShader");
-   gl_LinkProgram = (PFNGLLINKPROGRAMPROC) glutGetProcAddress ("glLinkProgram");
-   gl_UseProgram = (PFNGLUSEPROGRAMPROC) glutGetProcAddress ("glUseProgram");
-   gl_GetShaderiv = (PFNGLGETSHADERIVPROC) glutGetProcAddress ("glGetShaderiv");
-   gl_GetShaderInfoLog = (PFNGLGETSHADERINFOLOGPROC) glutGetProcAddress ("glGetShaderInfoLog");
-   gl_GetProgramiv = (PFNGLGETPROGRAMIVPROC) glutGetProcAddress ("glGetProgramiv");
-   gl_GetProgramInfoLog = (PFNGLGETPROGRAMINFOLOGPROC) glutGetProcAddress ("glGetProgramInfoLog");
-   gl_GetAttribLocation = (PFNGLGETATTRIBLOCATIONPROC) glutGetProcAddress ("glGetAttribLocation");
-   gl_VertexAttribPointer = (PFNGLVERTEXATTRIBPOINTERPROC) glutGetProcAddress ("glVertexAttribPointer");
-   gl_EnableVertexAttribArray = (PFNGLENABLEVERTEXATTRIBARRAYPROC) glutGetProcAddress ("glEnableVertexAttribArray");
-   gl_GetUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC) glutGetProcAddress ("glGetUniformLocation");
-   gl_UniformMatrix4fv = (PFNGLUNIFORMMATRIX4FVPROC) glutGetProcAddress ("glUniformMatrix4fv");
-   if (!gl_CreateShader || !gl_ShaderSource || !gl_CompileShader || !gl_CreateProgram || !gl_AttachShader || !gl_LinkProgram || !gl_UseProgram || !gl_GetShaderiv || !gl_GetShaderInfoLog || !gl_GetProgramiv || !gl_GetProgramInfoLog || !gl_GetAttribLocation || !gl_VertexAttribPointer || !gl_EnableVertexAttribArray || !gl_GetUniformLocation || !gl_UniformMatrix4fv)
-   {
-       fprintf (stderr, "glCreateShader, glShaderSource, glCompileShader, glCreateProgram, glAttachShader, glLinkProgram, glUseProgram, glGetShaderiv, glGetShaderInfoLog, glGetProgramiv, glGetProgramInfoLog, glGetAttribLocation, glVertexAttribPointer, glEnableVertexAttribArray, glGetUniformLocation or glUniformMatrix4fv not found");
-       exit(1);
-   }
-}
-
-/* vertex array data for a colored 2D triangle, consisting of RGB color values
-   and XY coordinates */
-const GLfloat varray[] = {
-   1.0f, 0.0f, 0.0f, /* red */
-   5.0f, 5.0f,       /* lower left */
-
-   0.0f, 1.0f, 0.0f, /* green */
-   25.0f, 5.0f,      /* lower right */
-
-   0.0f, 0.0f, 1.0f, /* blue */
-   5.0f, 25.0f       /* upper left */
+struct Vertex {
+  float coords[4];
+  float colors[4];
 };
 
-/* ISO C somehow enforces this silly use of 'enum' for compile-time constants */
-enum {
-  numColorComponents = 3,
-  numVertexComponents = 2,
-  stride = sizeof(GLfloat) * (numColorComponents + numVertexComponents),
-  numElements = sizeof(varray) / stride
+struct Matrix4x4 {
+  float entries[16];
 };
 
-/* the name of the vertex buffer object */
-GLuint vertexBufferName;
-GLuint vertexArrayName;
-
-void initBuffer(void)
-{
-   /* Need to setup a vertex array as otherwise invalid operation errors can
-    * occur when accessing vertex buffer (OpenGL 3.3 has no default zero named
-    * vertex array)
-    */
-   gl_GenVertexArrays(1, &vertexArrayName);
-   gl_BindVertexArray(vertexArrayName);
-
-   gl_GenBuffers (1, &vertexBufferName);
-   gl_BindBuffer (GL_ARRAY_BUFFER, vertexBufferName);
-   gl_BufferData (GL_ARRAY_BUFFER, sizeof(varray), varray, GL_STATIC_DRAW);
-   checkError ("initBuffer");
-}
-
-const ourGLchar *vertexShaderSource[] = {
-   "#version 140\n",
-   "uniform mat4 fg_ProjectionMatrix;\n",
-   "in vec4 fg_Color;\n",
-   "in vec4 fg_Vertex;\n",
-   "smooth out vec4 fg_SmoothColor;\n",
-   "void main()\n",
-   "{\n",
-   "   fg_SmoothColor = fg_Color;\n",
-   "   gl_Position = fg_ProjectionMatrix * fg_Vertex;\n",
-   "}\n"
+static const Matrix4x4 IDENTITY_MATRIX4x4 = {
+  {
+    1.0, 0.0, 0.0, 0.0,
+    0.0, 1.0, 0.0, 0.0,
+    0.0, 0.0, 1.0, 0.0,
+    0.0, 0.0, 0.0, 1.0
+  }
 };
 
-const ourGLchar *fragmentShaderSource[] = {
-   "#version 140\n",
-   "smooth in vec4 fg_SmoothColor;\n",
-   "out vec4 fg_FragColor;\n",
-   "void main(void)\n",
-   "{\n",
-   "   fg_FragColor = fg_SmoothColor;\n",
-   "}\n"
+enum buffer {SQUARE_VERTICES};
+enum object {SQUARE};
+
+// Globals
+static Vertex squareVertices[] = {
+  { { 20.0, 20.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
+  { { 80.0, 20.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
+  { { 20.0, 80.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
+  { { 80.0, 80.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } }
 };
 
-void compileAndCheck(GLuint shader)
+static Matrix4x4
+  modelViewMat = IDENTITY_MATRIX4x4,
+  projMat = IDENTITY_MATRIX4x4;
+
+static unsigned int
+  programId,
+  vertexShaderId,
+  fragmentShaderId,
+  modelViewMatLoc,
+  projMatLoc,
+  buffer[1],
+  vao[1];
+
+// Function to read text file.
+char* readTextFile(char* aTextFile)
 {
-   GLint status;
-   gl_CompileShader (shader);
-   gl_GetShaderiv (shader, GL_COMPILE_STATUS, &status);
-   if (status == GL_FALSE) {
-     GLint infoLogLength;
-     ourGLchar *infoLog;
-     gl_GetShaderiv (shader, GL_INFO_LOG_LENGTH, &infoLogLength);
-     infoLog = (ourGLchar*) malloc (infoLogLength);
-     gl_GetShaderInfoLog (shader, infoLogLength, NULL, infoLog);
-     fprintf (stderr, "compile log: %s\n", infoLog);
-     free (infoLog);
-   }
+  FILE* filePointer = fopen(aTextFile, "rb");
+  char* content = NULL;
+  long numVal = 0;
+
+  fseek(filePointer, 0L, SEEK_END);
+  numVal = ftell(filePointer);
+  fseek(filePointer, 0L, SEEK_SET);
+  content = (char*) malloc((numVal+1) * sizeof(char));
+  fread(content, 1, numVal, filePointer);
+  content[numVal] = '\0';
+  fclose(filePointer);
+  return content;
 }
 
-GLuint compileShaderSource(GLenum type, GLsizei count, const ourGLchar **string)
+// Initialization routine.
+void setup(void)
 {
-   GLuint shader = gl_CreateShader (type);
-   gl_ShaderSource (shader, count, string, NULL);
-   compileAndCheck (shader);
-   return shader;
+  glClearColor(1.0, 1.0, 1.0, 0.0);
+
+  // Create shader program executable.
+  char* vertexShader = readTextFile("vertexShader.glsl");
+  vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
+  glShaderSource(vertexShaderId, 1,
+                 (const char**) &vertexShader, NULL);
+  glCompileShader(vertexShaderId);
+
+  char* fragmentShader = readTextFile("fragmentShader.glsl");
+  fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
+  glShaderSource(fragmentShaderId, 1,
+                 (const char**) &fragmentShader, NULL);
+  glCompileShader(fragmentShaderId);
+
+  programId = glCreateProgram();
+  glAttachShader(programId, vertexShaderId);
+  glAttachShader(programId, fragmentShaderId);
+  glLinkProgram(programId);
+  glUseProgram(programId);
+  ///////////////////////////////////////
+
+  // Create VAO and VBO and associate data with vertex shader.
+  glGenVertexArrays(1, vao);
+  glGenBuffers(1, buffer);
+  glBindVertexArray(vao[SQUARE]);
+  glBindBuffer(GL_ARRAY_BUFFER, buffer[SQUARE_VERTICES]);
+  glBufferData(GL_ARRAY_BUFFER,
+               sizeof(squareVertices),
+               squareVertices, GL_STATIC_DRAW);
+
+  glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE,
+                        sizeof(squareVertices[0]), 0);
+  glEnableVertexAttribArray(0);
+  glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,
+                        sizeof(squareVertices[0]),
+                        (GLvoid*)sizeof(squareVertices[0].coords));
+  glEnableVertexAttribArray(1);
+  ///////////////////////////////////////
+
+  // Obtain projection matrix uniform location and set value.
+  Matrix4x4 projMat = {
+      {
+          0.02, 0.0,  0.0, -1.0,
+          0.0,  0.02, 0.0, -1.0,
+          0.0,  0.0, -1.0,  0.0,
+          0.0,  0.0,  0.0,  1.0
+      }
+  };
+  projMatLoc = glGetUniformLocation(programId,"projMat");
+  glUniformMatrix4fv(projMatLoc, 1, GL_TRUE, projMat.entries);
+  ///////////////////////////////////////
+
+  // Obtain modelview matrix uniform location and set value.
+  Matrix4x4 modelViewMat = IDENTITY_MATRIX4x4;
+  modelViewMatLoc = glGetUniformLocation(programId, "modelViewMat");
+  glUniformMatrix4fv(modelViewMatLoc, 1, GL_TRUE,
+                     modelViewMat.entries);
+  ///////////////////////////////////////
 }
 
-void linkAndCheck(GLuint program)
+// Drawing routine.
+void drawScene(void)
 {
-   GLint status;
-   gl_LinkProgram (program);
-   gl_GetProgramiv (program, GL_LINK_STATUS, &status);
-   if (status == GL_FALSE) {
-     GLint infoLogLength;
-     ourGLchar *infoLog;
-     gl_GetProgramiv (program, GL_INFO_LOG_LENGTH, &infoLogLength);
-     infoLog = (ourGLchar*) malloc (infoLogLength);
-     gl_GetProgramInfoLog (program, infoLogLength, NULL, infoLog);
-     fprintf (stderr, "link log: %s\n", infoLog);
-     free (infoLog);
-   }
+  glClear(GL_COLOR_BUFFER_BIT);
+
+  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+  glFlush();
 }
 
-GLuint createProgram(GLuint vertexShader, GLuint fragmentShader)
+// OpenGL window reshape routine.
+void resize(int w, int h)
 {
-   GLuint program = gl_CreateProgram ();
-   if (vertexShader != 0) {
-      gl_AttachShader (program, vertexShader);
-   }
-   if (fragmentShader != 0) {
-      gl_AttachShader (program, fragmentShader);
-   }
-   linkAndCheck (program);
-   return program;
+  glViewport(0, 0, w, h);
 }
 
-GLuint fgProjectionMatrixIndex;
-GLuint fgColorIndex;
-GLuint fgVertexIndex;
-
-void initShader(void)
+// Keyboard input processing routine.
+void keyInput(unsigned char key, int x, int y)
 {
-   const GLsizei vertexShaderLines = sizeof(vertexShaderSource) / sizeof(ourGLchar*);
-   GLuint vertexShader =
-     compileShaderSource (GL_VERTEX_SHADER, vertexShaderLines, vertexShaderSource);
-
-   const GLsizei fragmentShaderLines = sizeof(fragmentShaderSource) / sizeof(ourGLchar*);
-   GLuint fragmentShader =
-     compileShaderSource (GL_FRAGMENT_SHADER, fragmentShaderLines, fragmentShaderSource);
-
-   GLuint program = createProgram (vertexShader, fragmentShader);
-
-   gl_UseProgram (program);
-
-   fgProjectionMatrixIndex = gl_GetUniformLocation(program, "fg_ProjectionMatrix");
-
-   fgColorIndex = gl_GetAttribLocation(program, "fg_Color");
-   gl_EnableVertexAttribArray (fgColorIndex);
-
-   fgVertexIndex = gl_GetAttribLocation(program, "fg_Vertex");
-   gl_EnableVertexAttribArray (fgVertexIndex);
-
-   checkError ("initShader");
+  switch(key) {
+    case 27:
+      exit(0);
+      break;
+    default:
+      break;
+  }
 }
 
-void initRendering(void)
+// Main routine.
+int main(int argc, char* argv[])
 {
-   glClearColor (0.0, 0.0, 0.0, 0.0);
-   checkError ("initRendering");
-}
+  glutInit(&argc, argv);
 
-void init(void)
-{
-   initExtensionEntries ();
-   initBuffer ();
-   initShader ();
-   initRendering ();
-}
+  glutInitContextVersion(4, 3);
+  glutInitContextProfile(GLUT_CORE_PROFILE);
+  glutInitContextFlags(GLUT_FORWARD_COMPATIBLE);
 
-void dumpInfo(void)
-{
-   printf ("Vendor: %s\n", glGetString (GL_VENDOR));
-   printf ("Renderer: %s\n", glGetString (GL_RENDERER));
-   printf ("Version: %s\n", glGetString (GL_VERSION));
-   printf ("GLSL: %s\n", glGetString (GL_SHADING_LANGUAGE_VERSION));
-   checkError ("dumpInfo");
-}
+  glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+  glutInitWindowSize(500, 500);
+  glutInitWindowPosition(100, 100);
+  glutCreateWindow("Hello World - Pipeline Programável");
+  glutDisplayFunc(drawScene);
+  glutReshapeFunc(resize);
+  glutKeyboardFunc(keyInput);
 
-const GLvoid *bufferObjectPtr (GLsizei index)
-{
-   return (const GLvoid *) (((char *) NULL) + index);
-}
+  glewExperimental = GL_TRUE;
+  glewInit();
 
-GLfloat projectionMatrix[16];
+  setup();
 
-void triangle(void)
-{
-   gl_UniformMatrix4fv (fgProjectionMatrixIndex, 1, GL_FALSE, projectionMatrix);
-
-   gl_BindBuffer (GL_ARRAY_BUFFER, vertexBufferName);
-   gl_VertexAttribPointer (fgColorIndex, numColorComponents, GL_FLOAT, GL_FALSE,
-                           stride, bufferObjectPtr (0));
-   gl_VertexAttribPointer (fgVertexIndex, numVertexComponents, GL_FLOAT, GL_FALSE,
-                           stride, bufferObjectPtr (sizeof(GLfloat) * numColorComponents));
-   glDrawArrays(GL_TRIANGLES, 0, numElements);
-   checkError ("triangle");
-}
-
-void display(void)
-{
-   glClear (GL_COLOR_BUFFER_BIT);
-   triangle ();
-   glFlush ();
-   checkError ("display");
-}
-
-void loadOrthof(GLfloat *m, GLfloat l, GLfloat r, GLfloat b, GLfloat t,
-                GLfloat n, GLfloat f)
-{
-   m[ 0] = 2.0f / (r - l);
-   m[ 1] = 0.0f;
-   m[ 2] = 0.0f;
-   m[ 3] = 0.0f;
-
-   m[ 4] = 0.0f;
-   m[ 5] = 2.0f / (t - b);
-   m[ 6] = 0.0f;
-   m[ 7] = 0.0f;
-
-   m[ 8] = 0.0f;
-   m[ 9] = 0.0f;
-   m[10] = -2.0f / (f - n);
-   m[11] = 0.0f;
-
-   m[12] = -(r + l) / (r - l);
-   m[13] = -(t + b) / (t - b);
-   m[14] = -(f + n) / (f - n);
-   m[15] = 1.0f;
-}
-
-void loadOrtho2Df(GLfloat *m, GLfloat l, GLfloat r, GLfloat b, GLfloat t)
-{
-   loadOrthof (m, l, r, b, t, -1.0f, 1.0f);
-}
-
-void reshape (int w, int h)
-{
-   glViewport (0, 0, (GLsizei) w, (GLsizei) h);
-   if (w <= h) {
-      loadOrtho2Df (projectionMatrix, 0.0f, 30.0f, 0.0f, 30.0f * (GLfloat) h/(GLfloat) w);
-   } else {
-      loadOrtho2Df (projectionMatrix, 0.0f, 30.0f * (GLfloat) w/(GLfloat) h, 0.0f, 30.0f);
-   }
-   checkError ("reshape");
-}
-
-void keyboard(unsigned char key, int x, int y)
-{
-   switch (key) {
-      case 27:
-         exit(0);
-         break;
-   }
-}
-
-void samplemenu(int menuID)
-{}
-
-int main(int argc, char** argv)
-{
-   int menuA;
-   glutInit(&argc, argv);
-   glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-   /* add command line argument "classic" for a pre-3.x context */
-   if ((argc != 2) || (strcmp (argv[1], "classic") != 0)) {
-      glutInitContextVersion (3, 1);
-      glutInitContextFlags (GLUT_FORWARD_COMPATIBLE | GLUT_DEBUG);
-   }
-   glutInitWindowSize (500, 500);
-   glutInitWindowPosition (100, 100);
-   glutCreateWindow (argv[0]);
-   dumpInfo ();
-   init ();
-   glutDisplayFunc(display);
-   glutReshapeFunc(reshape);
-   glutKeyboardFunc (keyboard);
-
-   /* Add a menu. They have their own context and should thus work with forward compatible main windows too. */
-   menuA = glutCreateMenu(samplemenu);
-   glutAddMenuEntry("Sub menu A1 (01)",1);
-   glutAddMenuEntry("Sub menu A2 (02)",2);
-   glutAddMenuEntry("Sub menu A3 (03)",3);
-   glutSetMenu(menuA);
-   glutAttachMenu(GLUT_RIGHT_BUTTON);
-
-   glutMainLoop();
-   return 0;
+  glutMainLoop();
 }
 ```
-- Exemplo `smooth_opengl3.c` da freeglut (470 <abbr title="Lines of code">LOC</abbr>)
+- Exemplo `hello-world-modern.c` (130 <abbr title="Lines of code">LOC</abbr>)
 
 ---
 ## Resultado...
 
 ![](../../images/modern-hello-world.png)
+
+---
+## E esse arquivo **.glsl**?
+
+- `vertexShader.glsl`
+  ```glsl
+  layout(location=0) in vec4 squareCoords;
+  layout(location=1) in vec4 squareColors;  
+  uniform mat4 projMat;
+  uniform mat4 modelViewMat;
+  out vec4 colorsExport;
+
+  void main(void)
+  {
+     gl_Position = projMat * modelViewMat * squareCoords;
+     colorsExport = squareColors;
+  }
+  ```
+
+---
+## E esse outro **.glsl**?
+
+- `fragmentShader.glsl`
+  ```glsl
+  in vec4 colorsExport;
+  out vec4 colorsOut;
+
+  void main(void)
+  {
+     colorsOut = colorsExport;
+  }
+  ```
 
 ---
 ## O que mudou?
@@ -569,18 +361,212 @@ int main(int argc, char** argv)
 ## Então #comofaz?
 
 - **Pilhas de matrizes**: crie e gerencie você mesmo, caso precise
-  - Crie você mesmo uma classe matriz com as operações e com as matrizes de transformação
+  - Crie você mesmo uma classe matriz com as operações e com as matrizes
+    de transformação
   - Ou então use uma biblioteca. Exemplo: [glm](http://glm.g-truc.net/0.9.6/index.html)
 - **Modo imediatista**: uma chamada _vs._ múltiplas
-  - Faça uma chamada para criação de múltiplos vértices (e cores, e normais) em vez de uma para cada
+  - Faça uma chamada para criação de múltiplos vértices (e cores, e normais)
+    em vez de uma para cada
   - Para isso, temos disponível os <abbr title="Vertex Buffer Objects">VBOs</abbr>
 - **Informações sobre vértices**: envie diretamente para os _shaders_
   - Vetor com informações de todos vértices (`glVertexAttribPointer`)
 - **Iluminação**: escreva seu modelo
-  - Use uma linguagem de _shaders_ e escreva pelo menos um _Vertex shader_ e um _Fragment shader_
+  - Use uma linguagem de _shaders_ e escreva pelo menos um _Vertex shader_ e
+    um _Fragment shader_
 
 ---
-# Exemplos em GLSL 
+##  O que é programável?
+
+![](../../images/programmable-pipeline-stages.png)
+- _Shaders_ são programas (bem) pequenos **executados inteiramente pela GPU**
+- **_Vertex_ e _Fragment shaders_** são programáveis desde OpenGL 2.0
+  - Ambos são **obrigatórios**
+- **_Geometry_ e _Tessellation shaders_** são mais recentes (**opcionais**)
+
+---
+# _**Vertex** shader_
+
+- O programa é **executado uma vez para <u>cada vértice</u>** da cena
+- Como **saída**, o _vertex shader_ deve dar, pelo menos, a **coordenada xyz
+  transformada pelas matrizes _modelview_ e _projection_**
+  - Faz sentido, porque os estágios _ModelView_ e _Projection_ foram removidos
+    do _pipeline_
+- Mas também pode usar e definir:
+  - Cor do vértice
+  - Normal do vértice
+  - Coordenadas de textura etc.
+
+---
+## _**Tessellation** shader_
+
+- Estágio opcional
+- Composto por 2 fases: controle e avaliação
+- Introduzido no OpenGL 4.0
+- Útil para fazer <abbr title="Level of Detail">LOD</abbr>
+  - Um objeto pode, adaptativamente, ser renderizado com **mais ou menos
+    polígonos, dependendo da distância da câmera**
+
+---
+## _**Geometry** shader_
+
+- Também é um estágio opcional
+- Introduzido no OpenGL 3.2
+- Permite ao programador substituir ou transformar primitivas
+  - _Input_: um ponto, um segmento, um triângulo de uma malha
+  - _Output_: zero ou mais primitivas
+
+---
+# _**Fragment** shader_
+
+- O programa é **executado uma vez para <u>cada fragmento</u>** da cena
+  rasterizada
+- Como **saída**, o _vertex shader_ deve dar a **cor do fragmento**
+  - Também pode simplesmente descartar o fragmento
+- Mas também pode usar:
+  - Textura para colorir
+
+---
+<!--
+  backdrop: minecraft-glsl
+-->
+
+# GLSL
+
+---
+## Primeiros passos
+
+1. Não incluir `gl.h` diretamente, mas alguma biblioteca de
+  carregamento dinâmico do OpenGL (_e.g._, [GLEW](http://glew.sourceforge.net/))
+1. Solicitar um contexto OpenGL na versão desejada:
+  ```c
+  glutInitContextVersion(4, 3); // versão 4.3
+  ```
+1. Indicar o perfil: retrocompatível ou moderno
+  - `glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE)`
+  - `glutInitContextProfile(GLUT_CORE_PROFILE)`
+1. Opcionalmente proibir tudo que esteja _deprecated_ via
+  `glutInitContextFlags(GLUT_FORWARD_COMPATIBLE)`
+
+---
+## Tipos de dados do GLSL
+
+- Escalares:
+  <ul class="multi-column-list-2">
+    <li>**`float`: 32-bit ponto flutuante**</li>
+    <li>`int`: 32-bit inteiro</li>
+    <li>`uint`: 32-bit inteiro sem sinal</li>
+    <li>`bool`: booleano</li>
+  </ul>
+- Agregados:
+
+| `float`: | `vec2`  | `vec3`  | `vec4`  |
+|---------:|---------|---------|---------|
+| `int`:   | `ivec2` | `ivec3` | `ivec4` |
+| `uint`:  | `uvec2` | `uvec3` | `uvec4` |
+| `bool`:  | `bvec2` | `bvec3` | `bvec4` |
+
+---
+## Mais tipos
+
+- Agregados bidimensionais:
+
+| mat2   | mat3   | mat4   |
+|--------|--------|--------|
+| mat2x2 | mat2x3 | mat2x4 |
+| mat3x2 | mat3x3 | uvec3  |
+| mat4x2 | mat4x3 | mat4x4 |
+
+---
+## Iniciando variáveis
+
+- Escalares
+  ```glsl
+  vec4 color;
+  color = vec4(1.0, 0.0, 1.0, 1.0);
+  vec3 rgbColor = vec3(color);
+  ```
+- Matriz
+
+  ![](../../images/glsl-matrix.png)
+  ```glsl
+  mat3x2 M = mat3x2(1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+  ```
+
+---
+## Iniciando variáveis (2)
+
+```glsl
+vec2 column0 = vec2(1.0, 2.0);
+vec2 column1 = vec2(3.0, 4.0);
+vec2 column2 = vec2(5.0, 6.0);
+mat3x2 M = mat3x2(column0, column1, column2);
+```
+
+---
+## Acessando campos
+
+- Um `vec{2,3,4}` pode ser acessado por `x, y, z, w`, `r, g, b, a`
+  ou `s, t, p, q` (apenas por conveniência)
+- Além disso, em GLSL, existe o **_swizzling_**:
+  ```glsl
+  vec4 pos1 = vec4(1.0, 2.0, 3.0, 4.0);
+  float xVal = pos1[0]; // xVal = 1.0
+  float xVal = pos1.x; // xVal = 1.0
+  float yVal = pos1.y; // yVal = 2.0
+  float yVal = pos1.g; // yVal = 2.0
+  vec4 pos2 = pos1.yxzw; // Rearranging: pos2 = (2.0, 1.0, 3.0, 4.0)
+  vec4 pos3 = pos1.rrba; // Duplication: pos3 = (1.0, 1.0, 3.0, 4.0)
+  vec4 pos4 = vec4(pos1.xyz, 5.0); // pos4 = (1.0, 2.0, 3.0, 5.0).
+  ```
+
+---
+## Acessando campos (2)
+
+- No caso de matrizes:
+  ```glsl
+  mat3x2 M = mat3x2(1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
+  vec2 column2 = M[2]; // column2 = vec2(5.0, 6.0)
+  float xTan = M[2][1]; // xTan = 6.0
+  float xTan = M[2].y; // xTan = 6.0
+  ```
+  - `M[j][i]` (**coluna**, depois **linha**)
+
+---
+## Operações algébricas em Agregados
+
+```glsl
+mat2 M = mat2(1.0, 2.0, 3.0, 4.0);
+mat2 N = mat2(1.0, 0.0, 0.0, 2.0);
+mat2 P = M + N; // P = mat2(2.0, 2.0, 3.0, 6.0)
+P = M * N; // P = mat2(1.0, 2.0, 6.0, 8.0)
+
+vec2 V = vec2(1.0, 2.0);
+vec2 W = M * V; // W = vec2(7.0, 10.0)
+```
+
+---
+## Qualificadores de armazenamento
+
+- Declarações de variáveis podem ser precedidas de, no máximo, 1 destes:
+
+| Qualificador       | Descrição                                                |
+|--------------------|----------------------------------------------------------|
+| `in` (`attribute`) | Variável cujo valor vem de uma etapa anterior            |
+| `out` (`varying`)  | Variável cujo valor será enviado para próxima etapa      |
+| `uniform`          | Variável dada pela aplicação, constante para a primitiva |
+- Exemplos:
+  ```glsl
+  in vec3 coordinates;
+  out vec3 color;
+  uniform mat4 modelViewMatrix;
+  ```
+
+---
+## Criando _shader_ na aplicação
+
+- Os _shaders_ são **compilados em tempo de execução** do programa
+- Para isso, de dentro da aplicação, devemos **chamar uma série de comandos**:
+  ![](../../images/modern-create-shader.png)
 
 ---
 ## [Gouraud _shading_](https://www.shadertoy.com/view/lsl3Wn)
@@ -617,7 +603,9 @@ int main(int argc, char** argv)
 # Referências
 
 - Livro _Real-Time Rendering (3<sup>rd</sup> edition)_
-  - Capítulo 3: _The Graphics Processing Unit_ 
+  - Capítulo 3: _The Graphics Processing Unit_
+- Livro _Computer Graphics through OpenGL (2<sup>nd</sup> edition)_
+  - Capítulo 20: _OpenGL 4.3, Shaders and the Programmable Pipeline: Liftoff Programmers_
 - Livro _Computer Graphics with OpenGL (4<sup>th</sup> edition)_
   - Capítulo 22: _Programmable Shaders_
 - Livro _OpenGL® Shading Language (2<sup>nd</sup> edition)_ (conhecido como _orange book_)
