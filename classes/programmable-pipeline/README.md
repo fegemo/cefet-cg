@@ -12,7 +12,7 @@ backdrop: ninokuni
 
 1. Evolução do _hardware_ gráfico
 1. OpenGL Moderno
-1. Exemplos em GLSL: OpenGL _Shading Language_
+1. GLSL: OpenGL _Shading Language_
 
 ---
 ## O pipeline gráfico
@@ -113,6 +113,8 @@ backdrop: threed-hardware-generation-3
     - **_Vertex shader_**: Programas que calculam a cor de cada vértice
     - **_Fragment (pixel) shader_**: Programas que calculam a cor de cada pixel
 
+---
+![](../../images/opengl-timeline.png)
 ---
 <!--
 backdrop: big-code
@@ -564,14 +566,26 @@ vec2 W = M * V; // W = vec2(7.0, 10.0)
 ---
 ## Criando _shader_ na aplicação
 
-- Os _shaders_ são **compilados em tempo de execução** do programa
+- Os _shaders_ são **compilados em tempo de execução** do programa, **durante
+  o _setup()_ da cena
 - Para isso, de dentro da aplicação, devemos **chamar uma série de comandos**:
   ![](../../images/modern-create-shader.png)
 
 ---
-## [Gouraud _shading_](https://www.shadertoy.com/view/lsl3Wn)
+## Código OpenGL de criação dos _shaders_
+
+
+
+---
+## Iniciando dados e comunicando com os _shaders_
+
+
+---
+## Gouraud _shading_
 
 <iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/lsl3Wn?gui=true&t=10&paused=true" allowfullscreen></iframe>
+
+- http://www.lighthouse3d.com/tutorials/glsl-tutorial/directional-lights-per-vertex-ii/
 
 ---
 ## [Phong _shading_](https://www.shadertoy.com/view/XlXGDj)
