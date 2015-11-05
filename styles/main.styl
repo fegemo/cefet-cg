@@ -60,6 +60,10 @@ body
     .bespoke-progress-parent
       transform translateY(0)
 
+.bullet.bullet.bullet-no-anim.bespoke-bullet-inactive
+  transform none
+  transition none
+
 #page-header
   position fixed
   width 100%
@@ -467,6 +471,12 @@ full-dimension-backdrop(repeat)
 .particles.bespoke-backdrop-active
   background-image url(../images/sistema-particulas-infamous.jpg)
   full-dimension-backdrop(false)
+.particle-system-fire.bespoke-backdrop-active
+  background-image url(../images/particle-system-fire.jpg)
+  full-dimension-backdrop(false)
+  background-size contain
+  background-position-x 50%
+  background-color #ababab
 .depth-of-field.bespoke-backdrop-active
   background-image url(../images/depth-of-field-unreal.png)
   full-dimension-backdrop(false)
@@ -478,6 +488,8 @@ full-dimension-backdrop(repeat)
   border-radius 5px
   h1
     color #0833BF
+.bespoke-slide[data-bespoke-backdrop="particle-system-fire"],
+  background-color #ababab
 
 .bespoke-slide[data-bespoke-backdrop="billboarding"]
   h1

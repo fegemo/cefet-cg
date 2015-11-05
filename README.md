@@ -35,24 +35,24 @@
 ---
   # Aulas (pág. 3)
 
-  - Demonstração do blender (15/10/2015)
-  - [Texturas](classes/textures) (20/10/2015)
+- Demonstração do blender (15/10/2015)
+- [Texturas](classes/textures) (20/10/2015)
+- [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (02/06/2015)
+- [Efeitos Visuais](classes/visual-effects) (11/06/2015)
+- [Ray tracing 1](classes/raytracing) (17/11/2015)
+- [Ray tracing 2](classes/raytracing2) (24/11/2015)
+- [Pipeline Programável](classes/programmable-pipeline) (01/12/2015)
 
 <!--
   - [_Feedback_ do TP1](classes/breakout-feedback) (14/05/2015)
-  - [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (02/06/2015)
-  - [Efeitos Visuais](classes/visual-effects) (11/06/2015)
-  - [Ray tracing 1](classes/raytracing) (16/06/2015)
-  - [Ray tracing 2](classes/raytracing2) (23/06/2015)
-  - [Pipeline Programável](classes/programmable-pipeline) (02/07/2015)
 -->
 
 ---
 # Objetivos
 
 1. Conhecer os **fundamentos teóricos e práticos** da computação gráfica.
-1. Conhecer as **técnicas de modelagem, representação e visualização** de objetos Bi
-e Tridimensionais.
+1. Conhecer as **técnicas de modelagem, representação e visualização** de
+  objetos Bi e Tridimensionais.
 1. Conhecer técnicas de **geração de imagens fotorrealísticas**
 1. Conhecer e utilizar a biblioteca gráfica **OpenGL**
 
@@ -133,7 +133,7 @@ e Tridimensionais.
 ## Trabalhos (60 pontos)
 
 - [TP1: _Shooter_][tp1] (15 pontos, 01/09/2015 + 21 dias)
-- [TP2: _Townsville_][tp2], grupos &lte; 3 (15 pontos, 01/10/2015 + ~~21~~ 29 dias)
+- [TP2: _Townsville_][tp2], grupos <span class="math">\leq</span> 3 (15 pontos, 01/10/2015 + ~~21~~ 29 dias)
 - TP3: Ray-tracer, duplas (15 pontos, em duas entregas)
   - Primeira parte: no laboratório 19/11/2015
   - Segunda parte: no laboratório 26/11/2015
