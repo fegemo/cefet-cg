@@ -62,7 +62,7 @@ backdrop: raytraced-teapot
     efeitos necessários para a criação de imagens com alto realismo
   - O _pipeline_ gráfico das placas de vídeo não suportam modelos globais
     - Isso porque ele é focado em renderização em tempo real
-    
+
 ---
 # _Ray tracing_
 ---
@@ -90,11 +90,11 @@ backdrop: raytraced-teapot
 
 - `pixels[] renderScene(scene)`:
   1. Dada uma configuração de câmera, gerar um raio
-     <span class="math">R_{ij}</span> que sai do olho, passando pelo centro de cada pixel 
+     <span class="math">R_{ij}</span> que sai do olho, passando pelo centro de cada pixel
      <span class="math">(i, j)</span> da sua janela
   1. Chame `castRay(R)` e assinale a cor do pixel com a cor retornada
 - `color castRay(R, scene)`:
-  1. Dispara o raio <span class="math">R</span> na cena. Seja <span class="math">X</span> o 1º objeto 
+  1. Dispara o raio <span class="math">R</span> na cena. Seja <span class="math">X</span> o 1º objeto
     atingido e <span class="math">P</span> o ponto do objeto que foi atingido
   1. Para cada fonte de luz <span class="math">L</span>:
      1. Dispara um raio <span class="math">R_l</span> de <span class="math">P</span> até <span class="math">L</span>
@@ -131,17 +131,17 @@ backdrop: raytraced-teapot
 
 - Mantém o método `renderScene(scene)` como está e modifica o
   `castRay(R, scene)` para:
-  1. Dispara o raio <span class="math">R</span> na cena. Seja <span class="math">X</span> o 1º objeto atingido e 
+  1. Dispara o raio <span class="math">R</span> na cena. Seja <span class="math">X</span> o 1º objeto atingido e
   <span class="math">P</span> o ponto do objeto que foi atingido
-  1. **Se <span class="math">X</span> reflexivo, compute raio de reflexão <span class="math">R_r</span> em 
+  1. **Se <span class="math">X</span> reflexivo, compute raio de reflexão <span class="math">R_r</span> em
     <span class="math">P</span>. <span class="math">C_r</span> = `castRay(R`<sub>r</sub>`)`**
-  1. **Se <span class="math">X</span> transparente, compute raio de refração <span class="math">R_t</span> em 
+  1. **Se <span class="math">X</span> transparente, compute raio de refração <span class="math">R_t</span> em
     <span class="math">P</span>. <span class="math">C_t</span> = `castRay(R`<sub>t</sub>`)`**
   1. Para cada fonte de luz <span class="math">L</span>:
      1. Dispara um raio <span class="math">R_l</span> de <span class="math">P</span> até <span class="math">L</span>
      1. Se <span class="math">R_l</span> não atinge nada até chegar em <span class="math">L</span>, aplique o
         modelo de iluminação para determinar a cor do ponto `P`
-  1. Combine as cores **<span class="math">C_r</span>, <span class="math">C_t</span>** e das fontes de luz (4) e 
+  1. Combine as cores **<span class="math">C_r</span>, <span class="math">C_t</span>** e das fontes de luz (4) e
     a retorne
 
 ---
@@ -212,7 +212,7 @@ public:
 ---
 ## Objetos Implícitos
 
-- Um objeto implícito é dado por uma equação da forma <span class="math">f(x, y, z) = 0</span>
+- Um **objeto implícito** é dado por uma **equação da forma <span class="math">f(x, y, z) = 0</span>**
 - Muitas superfícies importantes podem ser modeladas como objetos implícitos,
   principalmente os dados por equações polinomiais:
   - Planos (grau 1)
@@ -221,7 +221,7 @@ public:
     - Elipsóide: <span class="math">\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2} = 1</span>
     - Cones, Parabolóides, Hiperbolóides...
   - Quárticas (grau 4)
-    - Toróides
+    - Toróides (_dunkin donuts_)
 
 ---
 ## Interseção Raio / Objeto Implícito
@@ -231,37 +231,75 @@ public:
 - Logo, os pontos de interseção satisfazem
   - <span class="math">f(R_x(t),R_y(t),R_z(t)) = 0</span>
 - Basta resolver a equação para determinar o(s) valor(es) de <span class="math">t</span> que a satisfazem
+  - Veja como fazer para uma esfera no próximo slide...
 
 ---
 ## Exemplo: Interseção com Esfera
 
-- Esfera de raio 1 centrada na origem:
+- Primeiramente, vamos **simplificar** o problema e assumir que a **esfera é
+  unitária e está centrada na origem**:
   <div class="math">x^2+y^2+z^2 - 1 = 0</div>
 - Raio parametrizado como:
-  <div class="math">[V_xt+P_x \;\;\; V_yt+P_y \;\;\; V_zt+P_z]^T</div>
+  <div class="math">[P_x+V_xt \;\;\; P_y+V_yt \;\;\; P_z+V_zt]^T</div>
+- (continua...)
+
+---
+## Exemplo: Interseção com Esfera (2)
+
 - Logo,
-  <div class="math">(V_xt+P_x)^2 + (V_yt+P_y)^2 + (V_zt+P_z])^2-1=0</div>
+  <div class="math">(P_x+V_xt)^2 + (P_y+V_yt)^2 + (P_z+V_zt])^2-1=0</div>
   <ul>
     <li>ou<ul><li>
-      <div class="math">at^2+bt+c=0</div></li></ul>
+      <span class="math">at^2+bt+c=0</span></li></ul>
     </li>
     <li>onde<ul>
-      <li><div class="math">a = V_x^2 + V_y^2 + V_z^2</div></li>
-      <li><div class="math">b = 2(V_xP_x + V_yP_y + V_zP_z)</div></li>
-      <li><div class="math">c = P_x^2 + P_y^2 + P_z^2 - 1</div></li></ul>
+      <li><span class="math">a = V_x^2 + V_y^2 + V_z^2</span></li>
+      <li><span class="math">b = 2(V_xP_x + V_yP_y + V_zP_z)</span></li>
+      <li><span class="math">c = P_x^2 + P_y^2 + P_z^2 - 1</span></li></ul>
     </li>
   </ul>
 
 ---
 ## Interpretando a interseção com esfera
 
-- Seja <span class="math">\Delta = b^2 - 4ac</span>, então <span class="math">t = \frac{-b \pm \sqrt(\Delta)}{2a}</span> 
-  
+- Seja <span class="math">\Delta = b^2 - 4ac</span>, então <span class="math">t = \frac{-b \pm \sqrt(\Delta)}{2a}</span>
+
 ![](../../images/raytracing-raio-esfera.png)
 
-Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver 
+Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
   uma equação de 2º grau** ;)
-  
+
+---
+## Para **esferas genéricas**
+
+- Dada uma esfera com centro <span class="math">C</span> e raio <span class="math">r</span>
+  - Nosso raio: <span class="math">P+t\vec{u}</span>
+- Um ponto <span class="math">Q</span> está superfície da esfera se sua distância ao seu centro é igual a <span class="math">r</span>. Ou seja, <span class="math">\left| Q-C \right|=r</span>
+  <div class="math">\left| (P+t\vec{u})-C \right|=r</div>
+- Se chamarmos <span class="math">\vec{p}=C-P</span>, podemos:
+  <div class="math">\left| t\vec{u}-(C-P)\right|=r</div>
+  <div class="math">\left| t\vec{u}-\vec{p} \right|=r</div>
+
+---
+## Para **esferas genéricas** (2)
+
+- Conhecemos <span class="math">\vec{u}, \vec{p}</span> e <span class="math">r</span> e queremos encontrar <span class="math">t</span>. Pelo produto interno:
+  <div class="math">(t\vec{u}-\vec{p}).(t\vec{u}-\vec{p})=r^2</div>
+- Sabendo que o lado esquerdo resulta em um escalar, podemos:
+  <div class="math">t^2(\vec{u}.\vec{u})-2t(\vec{u}.\vec{p})+(\vec{p}.\vec{p})-r^2=0</div>
+- ...que é uma equação do 2º grau e podemos resolver para <span class="math">t</span>
+
+---
+## Para **esferas genéricas** (3)
+
+- Da equação quadrática, temos que:
+  <ul>
+    <li><span class="math">a = (\vec{u}.\vec{u})=1</span> (já que <span class="math">\vec{u}</span> está normalizado)</li>
+    <li><span class="math">b = -2(\vec{u}.\vec{p})</span></li>
+    <li><span class="math">c = (\vec{p}.\vec{p})-r^2</span></li>
+  </ul>
+- Disto, podemos estudar o sinal do <span class="math">\Delta</span> para saber se há interseção(ões) (raiz(es)) e, caso exista(m), com o valor encontrado para <span class="math">t</span> podemos determinar o ponto de interseção <span class="math">Q</span> na esfera
+
 ---
 ## Exemplo: Normal do ponto <span class="math">P</span>
 
@@ -269,7 +307,7 @@ Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
   interseção:
 
 ![](../../images/raytracing-raio-esfera-normal.png)
-- No caso da esfera, podemos simplesmente fazer o vetor <span class="math">N = P - C</span>, 
+- No caso da esfera, podemos simplesmente fazer o vetor <span class="math">N = P - C</span>,
   onde <span class="math">C</span> é o centro da esfera
 
 ---
@@ -309,7 +347,7 @@ Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
 backdrop: cpp-vs-java
 -->
 
-<h1 style="margin-bottom: 4em">_Choose your side_</h1>
+<h1 style="margin-bottom: 4em; font-weight: bold;">_Choose your side_</h1>
 
 ---
 # Para a próxima aula
@@ -317,7 +355,7 @@ backdrop: cpp-vs-java
 - Ler as aulas 18 e 19 do prof. David Mount (link no Moodle)
   - Fazer isto = certeza de sucesso, TP resolvido durante a aula
   - Não fazer = TPs incompletos, trabalho no final de semana :/
-  
+
 ---
 # Referências
 

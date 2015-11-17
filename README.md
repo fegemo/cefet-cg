@@ -37,8 +37,8 @@
 
 - Demonstração do blender (15/10/2015)
 - [Texturas](classes/textures) (20/10/2015)
-- [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (02/06/2015)
-- [Efeitos Visuais](classes/visual-effects) (11/06/2015)
+- [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (03/11/2015)
+- [Efeitos Visuais](classes/visual-effects) (05/11/2015)
 - [Ray tracing 1](classes/raytracing) (17/11/2015)
 - [Ray tracing 2](classes/raytracing2) (24/11/2015)
 - [Pipeline Programável](classes/programmable-pipeline) (01/12/2015)
