@@ -60,9 +60,7 @@ A entrega será dividida em 2 partes:
 - **Entrega (1):** Roteiro + mini [_storyboard_](http://pt.wikipedia.org/wiki/Storyboard) (**03/Nov/15** - terça-feira) via Moodle
   - Você deve enviar, pelo Moodle, **o roteiro** (1 parágrafo) e um **_storyboard_** bem simples (sequência de quadros -
     algo entre 4-6 quadros - desenhados com os acontecimentos da sua animação), bem como mencionar quem integra
-    a dupla
-  - O grupo para fazer o trabalho é de 2 pessoas. Posso abrir exceção para grupos de 3,
-    mas isso faz com que os itens do escopo inicial do trabalho passem a valer 60% em vez de 80%
+    a dupla/trio
 - **Entrega (2):** Animação final: um **vídeo no Youtube** e uma apresentação de **slides** (**03/Dez/15** - terça-feira)
   - Você deve gerar um vídeo usando a própria ferramenta de modelagem (pode haver pós-edição, sem problemas) e
     fazer _upload_ para o Youtube (Vimeo, etc.)
