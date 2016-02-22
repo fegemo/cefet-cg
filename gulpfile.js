@@ -115,7 +115,7 @@ gulp.task('samples', function() {
     .pipe(connect.reload());
 });
 
-gulp.task('videos', ['clean:videos'], function() {
+gulp.task('videos', function() {
   var destination = 'dist/videos';
   return gulp.src('videos/**/*')
     .pipe(changed(destination))
@@ -129,38 +129,9 @@ gulp.task('favicon', function() {
     .pipe(gulp.dest(destination));
 });
 
-gulp.task('clean', function(cb) {
-  del('dist', cb);
+gulp.task('clean', function() {
+  return del('dist');
 });
-
-gulp.task('clean:html', function(cb) {
-  del('dist/index.html', cb);
-});
-
-gulp.task('clean:md', function(cb) {
-  del('dist/**/*.md', cb);
-});
-
-gulp.task('clean:js', function(cb) {
-  del('dist/build/build.js', cb);
-});
-
-gulp.task('clean:css', function(cb) {
-  del('dist/build/build.css', cb);
-});
-
-gulp.task('clean:images', function(cb) {
-  del('dist/images', cb);
-});
-
-gulp.task('clean:videos', function(cb) {
-  del('dist/videos', cb);
-});
-
-gulp.task('clean:attachments', function(cb) {
-  del('dist/attachments', cb);
-});
-
 
 function getFolders(cwd, dir) {
   var targetDirectory = path.join(cwd, dir);
