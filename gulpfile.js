@@ -24,7 +24,7 @@ gulp.task('js', function() {
   return gulp.src(['scripts/tutorial.js', 'scripts/main.js'])
     .pipe(changed('dist/build'))
     .pipe(isDist ? through() : plumber())
-    .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
+    .pipe(browserify({ debug: !isDist }))
     .pipe(isDist ? uglify() : through())
     .pipe(rename('build.js'))
     .pipe(gulp.dest('dist/build'))
@@ -36,7 +36,7 @@ gulp.task('js-classes', function() {
   return gulp.src(['scripts/classes/**/*.js'])
     .pipe(changed(destination))
     .pipe(isDist ? through() : plumber())
-    .pipe(browserify({ transform: ['debowerify'], debug: !isDist }))
+    .pipe(browserify({ debug: !isDist }))
     .pipe(isDist ? uglify() : through())
     .pipe(uglify())
     .pipe(gulp.dest(destination));
