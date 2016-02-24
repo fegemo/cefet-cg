@@ -12,9 +12,9 @@ var bespoke = require('bespoke'),
     state = require('bespoke-state'),
     math = require('bespoke-math'),
     markdown = require('bespoke-meta-markdown'),
-    search = require('bespoke-search'),
+    //search = require('bespoke-search'),
     backdrop = require('bespoke-backdrop'),
-    overview = require('bespoke-overview'),
+    overview = require('bespoke-simple-overview'),
     tutorial = require('./tutorial'),
     sleek = require('./sleek-menu');
 
@@ -54,7 +54,7 @@ window.deck = bespoke.from('article', [
     bespokeEvent: function(slide, events) {
       setTimeout(function() {
         events.split(' ').forEach(function(event) {
-          deck.fire(event);
+          //deck.fire(event);
         });
       },800);
     },
@@ -73,14 +73,16 @@ window.deck = bespoke.from('article', [
     });
   },
   touch(),
+  overview({
+    insertStyles: false
+  }),
   bullets('li, .bullet'),
   hash(),
   progress(),
   math(),
   state(),
   backdrop(),
-  search(),
-  overview(),
+  //search(),
   tutorial(document.getElementsByClassName('tutorial')[0])
   // ,
   // function() {

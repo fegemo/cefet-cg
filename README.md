@@ -11,41 +11,7 @@
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/) (18/08/2015)
-- [OpenGL, Sistemas de Janelas](classes/opengl/) (20/08/2015)
-- [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (25/08/2015)
-- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (25/08/2015)
-- [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (27/08/2015)
-- [OpenGL Hands-on - Parte 4](classes/opengl-handson4/) (01/09/2015)
-- [Cê](classes/c) (03/09/2015)
-- [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (03/09/2015)
-
----
-  # Aulas (pág. 2)
-
-- [Geometria](classes/geometry) (08/09/2015)
-- [Transformações Geométricas](classes/transforms) (10/09/2015)
-- [Orientação e Mudança de Coordenadas](classes/baseorientation) (15/09/2015)
-- [O Pipeline Gráfico](classes/pipeline) (17/09/2015)
-- [Projeção](classes/projection) (22/09/2015)
-- [Modelagem Hierárquica](classes/hierarchical) (29/09/2015)
-- [Iluminação e Sombreamento](classes/lighting) (06/10/2015)
-- [Modelagem de Objetos](classes/modeling) (08/10/2015)
-
----
-  # Aulas (pág. 3)
-
-- Demonstração do blender (15/10/2015)
-- [Texturas](classes/textures) (20/10/2015)
-- [Animações](attachments/AnimacaoFlavioCoutinho.pptx) (03/11/2015)
-- [Efeitos Visuais](classes/visual-effects) (05/11/2015)
-- [Ray tracing 1](classes/raytracing) (17/11/2015)
-- [Ray tracing 2](classes/raytracing2) (24/11/2015)
-- [Pipeline Programável](classes/programmable-pipeline) (01/12/2015)
-
-<!--
-  - [_Feedback_ do TP1](classes/breakout-feedback) (14/05/2015)
--->
+- [Introdução à Computação Gráfica](classes/intro/)
 
 ---
 # Objetivos
@@ -126,18 +92,18 @@
 ## Prova e Listas (40 pontos)
 
 - Listas de exercício (10 pontos)
+- Questionários marotos (5 pontos)
 - Lista de revisão da prova (10 pontos)
-- Prova (20 pontos, 26/05/2015)
+- Prova (15 pontos)
 
 ---
 ## Trabalhos (60 pontos)
 
-- [TP1: _Shooter_][tp1] (15 pontos, 01/09/2015 + 21 dias)
-- [TP2: _Townsville_][tp2], grupos <span class="math">\leq</span> 3 (15 pontos, 01/10/2015 + ~~21~~ 29 dias)
-- TP3: Ray-tracer, duplas (15 pontos, em duas entregas)
-  - Primeira parte: no laboratório 19/11/2015
-  - Segunda parte: no laboratório 26/11/2015
-- TP4: Animação, grupos até 3 (15 pontos, entrega final em 03/12/2015)
+- [TP1: ~~_Shooter_~~][tp1] (20 pontos, data TBD)
+- [TP2: ~~_Townsville_~~][tp2], grupos <span class="math">\leq</span> 3 (20 pontos, data TBD)
+- TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
+  - Primeira parte: no laboratório TBD
+  - Segunda parte: no laboratório TBD
 
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-townsville/README.md
