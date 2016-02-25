@@ -38,12 +38,28 @@
 ---
 ## _Computer Graphics with OpenGL_
 
-<div class="book-cover-container">
-  <img class="book-cover" src="images/book-cg-with-opengl.jpg">
-  <div class="book-left"></div>
-</div>
+<figure class="book">
+  <ul class="hardcover_front" class="no-bullet">
+    <li class="no-bullet"><img src="images/book-cg-with-opengl.jpg" width="100%" height="100%"></li>
+    <li class="no-bullet"></li>
+  </ul>
+  <ul class="page no-bullet">
+    <li class="no-bullet"></li>
+    <li class="no-bullet"><a class="book-btn" href="http://www.pearsonhighered.com/educator/product/Computer-Graphics-with-Open-GL/9780136053583.page" target="blank">Sobre</a></li>
+    <li class="no-bullet"></li>
+    <li class="no-bullet"></li>
+    <li class="no-bullet"></li>
+  </ul>
+  <ul class="hardcover_back no-bullet">
+    <li class="no-bullet"></li>
+    <li class="no-bullet"></li>
+  </ul>
+  <ul class="book_spine no-bullet">
+    <li class="no-bullet"></li>
+    <li class="no-bullet"></li>
+  </ul>
+</figure>  
 
-- Este é o nosso **livro texto**
 - **Título**	Computer Graphics with OpenGL, Fourth Edition
 - **Autores**	Donald D. Hearn, M. Pauline Baker, Warren Carithers
 - **Editora**	Prentice Hall, 2010
@@ -51,10 +67,27 @@
 ---
 ## _Real-Time Rendering_
 
-<div class="book-cover-container">
-  <img class="book-cover" src="images/book-rtr3.jpg">
-  <div class="book-left"></div>
-</div>
+<figure class="book">
+  <ul class="hardcover_front" class="no-bullet">
+    <li class="no-bullet"><img src="images/book-rtr3.jpg" width="100%" height="100%"></li>
+    <li class="no-bullet"></li>
+  </ul>
+  <ul class="page no-bullet">
+    <li class="no-bullet"></li>
+    <li class="no-bullet"><a class="book-btn" href="http://www.realtimerendering.com/book.html" target="blank">Sobre</a></li>
+    <li class="no-bullet"></li>
+    <li class="no-bullet"></li>
+    <li class="no-bullet"></li>
+  </ul>
+  <ul class="hardcover_back no-bullet">
+    <li class="no-bullet"></li>
+    <li class="no-bullet"></li>
+  </ul>
+  <ul class="book_spine no-bullet">
+    <li class="no-bullet"></li>
+    <li class="no-bullet"></li>
+  </ul>
+</figure>
 
 - **Título**	Real-Time Rendering, Third Edition
 - **Autores**	Tomas Akenine-Möller, Eric Haines, Naty Hoffman
@@ -73,17 +106,6 @@
 
 - Material complementar
 - [Download](attachments/DavidMountsLectureNotes.pdf)
-
----
-## Apostila da UFSCAR
-
-<div class="book-cover-container">
-  <img class="book-cover" src="images/book-apostila-ufscar.png">
-  <div class="book-left book-light"></div>
-</div>
-
-- Material complementar
-- [Download](https://drive.google.com/file/d/0B6-KCjtlxaKIY21UOWxBTEp4VTA/edit?usp=sharing)
 
 ---
 # Atividades Avaliativas
