@@ -12,15 +12,15 @@ var fs = require('fs'),
   csso = require('gulp-csso'),
   changed = require('gulp-changed'),
   sourcemaps = require('gulp-sourcemaps'),
+  connect = require('gulp-connect'),            // Blacklisted, but whatever
   source = require('vinyl-source-stream'),
   buffer = require('vinyl-buffer'),
   browserify = require('browserify'),
-  browserSync = require('browser-sync'),
-  reload = function() { browserSync.reload() },
   through = require('through'),
   ghpages = require('gh-pages'),
   path = require('path'),
   merge = require('merge-stream'),
+  opn = require('opn'),
   isDist = process.argv.indexOf('serve') === -1;
 
 
@@ -32,7 +32,6 @@ gulp.task('js', function() {
     .bundle()
     .on('error', function() {
       gutil.log(err.message);
-      browserSync.notify("Browserify Error!");
       this.emit('end');
     })
     .pipe(source('build.js'))
@@ -42,10 +41,8 @@ gulp.task('js', function() {
       .on('error', gutil.log)
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/build'))
-    .pipe(browserSync.stream({ once: true }));
+    .pipe(connect.reload());
 });
-
-gulp.task('js-watch', ['js'], reload);
 
 // gulp.task('js-classes', function() {
   // var destination = 'dist/scripts/classes';
@@ -64,7 +61,7 @@ gulp.task('html', function() {
     .pipe(isDist ? through() : plumber())
     .pipe(replace('{path-to-root}', '.'))
     .pipe(gulp.dest('dist'))
-    .on('end', reload);
+    .pipe(connect.reload());
 });
 
 gulp.task('md', function() {
@@ -73,17 +70,17 @@ gulp.task('md', function() {
     .pipe(changed('dist'))
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist'))
-    .on('end', reload));
+    .pipe(connect.reload()));
   tasks.push(gulp.src('classes/**/*.md')
     .pipe(changed('dist/classes'))
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/classes'))
-    .on('end', reload));
+    .pipe(connect.reload()));
   tasks.push(gulp.src('assignments/**/*.md')
     .pipe(changed('dist/assignments'))
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/assignments'))
-    .on('end', reload));
+    .pipe(connect.reload()));
   return merge(tasks);
 });
 
@@ -100,35 +97,36 @@ gulp.task('css', function() {
     .pipe(isDist ? csso() : through())
     .pipe(rename('build.css'))
     .pipe(gulp.dest('dist/build'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(connect.reload());
 });
 
 gulp.task('css-classes', function() {
   var destination = 'dist/styles/classes';
   return gulp.src(['styles/classes/**/*.css'])
     .pipe(changed(destination))
-    .pipe(gulp.dest(destination));
+    .pipe(gulp.dest(destination))
+    .pipe(connect.reload());
 });
 
 gulp.task('images', function() {
   return gulp.src('images/**/*')
     .pipe(changed('dist/images'))
     .pipe(gulp.dest('dist/images'))
-    .on('end', reload);
+    .pipe(connect.reload());
 });
 
 gulp.task('attachments', function() {
   return gulp.src('attachments/**/*')
     .pipe(changed('dist/attachments'))
     .pipe(gulp.dest('dist/attachments'))
-    .on('end', reload);
+    .pipe(connect.reload());
 });
 
 gulp.task('samples', function() {
   return gulp.src('samples/**/*')
     .pipe(changed('dist/samples'))
     .pipe(gulp.dest('dist/samples'))
-    .on('end', reload);
+    .pipe(connect.reload());
 });
 
 gulp.task('videos', function() {
@@ -136,7 +134,7 @@ gulp.task('videos', function() {
   return gulp.src('videos/**/*')
     .pipe(changed(destination))
     .pipe(gulp.dest(destination))
-    .on('end', reload);
+    .pipe(connect.reload());
 });
 
 gulp.task('favicon', function() {
@@ -144,7 +142,7 @@ gulp.task('favicon', function() {
   return gulp.src('favicon/**/*')
     .pipe(changed(destination))
     .pipe(gulp.dest(destination))
-    .on('end', reload);
+    .pipe(connect.reload());
 });
 
 gulp.task('clean', function() {
@@ -181,13 +179,17 @@ gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
-gulp.task('serve', ['build'], function() {
-  browserSync.init({
-    server: 'dist',
-    port: 8080
+gulp.task('serve', ['build'], function(done) {
+  var port = 8080;
+  connect.server({
+    root: ['dist'],
+    port: port,
+    livereload: true
   });
 
-  gulp.watch('scripts/*.js', ['js-watch']);
+  opn('http://localhost:' + port, done);
+
+  gulp.watch('scripts/*.js', ['js']);
   // gulp.watch('scripts/classes/*.js', ['js-classes']);
   gulp.watch('html/**/*.html', ['html']);
   gulp.watch('classes/**/*.md');

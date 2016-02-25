@@ -12,6 +12,7 @@
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/)
+- [OpenGL, Sistemas de Janelas](classes/opengl/)
 
 ---
 # Objetivos
