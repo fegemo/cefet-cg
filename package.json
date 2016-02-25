@@ -18,7 +18,7 @@
   "dependencies": {
     "bespoke": "^1.0.0",
     "bespoke-backdrop": "^1.0.0",
-    "bespoke-bullets": "fegemo/bespoke-bullets#deactivate-using-events",
+    "bespoke-bullets": "^1.1.0",
     "bespoke-classes": "^1.0.0",
     "bespoke-hash": "^1.0.2",
     "bespoke-keys": "^1.0.0",
@@ -35,25 +35,26 @@
     "katex": "^0.5.1"
   },
   "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "browserify": "^13.0.0",
     "del": "^2.2.0",
     "gh-pages": "^0.10.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
-    "gulp-browserify": "^0.5.1",
     "gulp-changed": "^1.2.1",
-    "gulp-connect": "^2.2.0",
     "gulp-csso": "^1.0.0",
     "gulp-plumber": "^1.0.1",
     "gulp-preprocess": "^2.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "~0.5.3",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.0.5",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.6",
-    "insert-css": "^0.2.0",
     "merge-stream": "~1.0.0",
-    "opn": "^4.0.0",
-    "through": "^2.3.8"
+    "through": "^2.3.8",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "engines": {
     "node": ">=0.10.0"

@@ -1,46 +1,62 @@
 var fs = require('fs'),
-    gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    plumber = require('gulp-plumber'),
-    del = require('del'),
-    rename = require('gulp-rename'),
-    connect = require('gulp-connect'),
-    browserify = require('gulp-browserify'),
-    uglify = require('gulp-uglify'),
-    stylus = require('gulp-stylus'),
-    replace = require('gulp-replace'),
-    preprocess = require('gulp-preprocess'),
-    autoprefixer = require('gulp-autoprefixer'),
-    csso = require('gulp-csso'),
-    through = require('through'),
-    opn = require('opn'),
-    ghpages = require('gh-pages'),
-    changed = require('gulp-changed'),
-    path = require('path'),
-    merge = require('merge-stream'),
-    isDist = process.argv.indexOf('serve') === -1;
+  gulp = require('gulp'),
+  gutil = require('gulp-util'),
+  plumber = require('gulp-plumber'),
+  del = require('del'),
+  rename = require('gulp-rename'),
+  uglify = require('gulp-uglify'),
+  stylus = require('gulp-stylus'),
+  replace = require('gulp-replace'),
+  preprocess = require('gulp-preprocess'),
+  autoprefixer = require('gulp-autoprefixer'),
+  csso = require('gulp-csso'),
+  changed = require('gulp-changed'),
+  sourcemaps = require('gulp-sourcemaps'),
+  source = require('vinyl-source-stream'),
+  buffer = require('vinyl-buffer'),
+  browserify = require('browserify'),
+  browserSync = require('browser-sync'),
+  reload = function() { browserSync.reload() },
+  through = require('through'),
+  ghpages = require('gh-pages'),
+  path = require('path'),
+  merge = require('merge-stream'),
+  isDist = process.argv.indexOf('serve') === -1;
+
 
 gulp.task('js', function() {
-  return gulp.src(['scripts/tutorial.js', 'scripts/main.js'])
-    .pipe(changed('dist/build'))
-    .pipe(isDist ? through() : plumber())
-    .pipe(browserify({ debug: !isDist }))
-    .pipe(isDist ? uglify() : through())
-    .pipe(rename('build.js'))
+  return browserify({
+      entries: 'scripts/main.js',
+      debug: true
+    })
+    .bundle()
+    .on('error', function() {
+      gutil.log(err.message);
+      browserSync.notify("Browserify Error!");
+      this.emit('end');
+    })
+    .pipe(source('build.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+      .pipe(isDist ? uglify() : through())
+      .on('error', gutil.log)
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/build'))
-    .pipe(connect.reload());
+    .pipe(browserSync.stream({ once: true }));
 });
 
-gulp.task('js-classes', function() {
-  var destination = 'dist/scripts/classes';
-  return gulp.src(['scripts/classes/**/*.js'])
-    .pipe(changed(destination))
-    .pipe(isDist ? through() : plumber())
-    .pipe(browserify({ debug: !isDist }))
-    .pipe(isDist ? uglify() : through())
-    .pipe(uglify())
-    .pipe(gulp.dest(destination));
-});
+gulp.task('js-watch', ['js'], reload);
+
+// gulp.task('js-classes', function() {
+  // var destination = 'dist/scripts/classes';
+  // return gulp.src(['scripts/classes/**/*.js'])
+  //   .pipe(changed(destination))
+  //   .pipe(isDist ? through() : plumber())
+  //   .pipe(browserify({ debug: !isDist }))
+  //   .pipe(isDist ? uglify() : through())
+  //   .pipe(uglify())
+  //   .pipe(gulp.dest(destination));
+// });
 
 gulp.task('html', function() {
   return gulp.src('html/index.html')
@@ -48,7 +64,7 @@ gulp.task('html', function() {
     .pipe(isDist ? through() : plumber())
     .pipe(replace('{path-to-root}', '.'))
     .pipe(gulp.dest('dist'))
-    .pipe(connect.reload());
+    .on('end', reload);
 });
 
 gulp.task('md', function() {
@@ -57,17 +73,17 @@ gulp.task('md', function() {
     .pipe(changed('dist'))
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist'))
-    .pipe(connect.reload()));
+    .on('end', reload));
   tasks.push(gulp.src('classes/**/*.md')
     .pipe(changed('dist/classes'))
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/classes'))
-    .pipe(connect.reload()));
+    .on('end', reload));
   tasks.push(gulp.src('assignments/**/*.md')
     .pipe(changed('dist/assignments'))
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/assignments'))
-    .pipe(connect.reload()));
+    .on('end', reload));
   return merge(tasks);
 });
 
@@ -78,13 +94,13 @@ gulp.task('css', function() {
     .pipe(stylus({
       // Allow CSS to be imported from node_modules and bower_components
       'include css': true,
-      'paths': ['./node_modules', './bower_components']
+      'paths': ['./node_modules']
     }))
     .pipe(autoprefixer('last 2 versions', { map: false }))
     .pipe(isDist ? csso() : through())
     .pipe(rename('build.css'))
     .pipe(gulp.dest('dist/build'))
-    .pipe(connect.reload());
+    .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('css-classes', function() {
@@ -98,35 +114,37 @@ gulp.task('images', function() {
   return gulp.src('images/**/*')
     .pipe(changed('dist/images'))
     .pipe(gulp.dest('dist/images'))
-    .pipe(connect.reload());
+    .on('end', reload);
 });
 
 gulp.task('attachments', function() {
   return gulp.src('attachments/**/*')
     .pipe(changed('dist/attachments'))
     .pipe(gulp.dest('dist/attachments'))
-    .pipe(connect.reload());
+    .on('end', reload);
 });
 
 gulp.task('samples', function() {
   return gulp.src('samples/**/*')
     .pipe(changed('dist/samples'))
     .pipe(gulp.dest('dist/samples'))
-    .pipe(connect.reload());
+    .on('end', reload);
 });
 
 gulp.task('videos', function() {
   var destination = 'dist/videos';
   return gulp.src('videos/**/*')
     .pipe(changed(destination))
-    .pipe(gulp.dest(destination));
+    .pipe(gulp.dest(destination))
+    .on('end', reload);
 });
 
 gulp.task('favicon', function() {
   var destination = 'dist/favicon';
   return gulp.src('favicon/**/*')
     .pipe(changed(destination))
-    .pipe(gulp.dest(destination));
+    .pipe(gulp.dest(destination))
+    .on('end', reload);
 });
 
 gulp.task('clean', function() {
@@ -144,7 +162,7 @@ function getFolders(cwd, dir) {
     });
 }
 
-gulp.task('build', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes', 'images', 'videos', 'attachments', 'samples', 'favicon'], function() {
+gulp.task('build', ['js', /*'js-classes',*/ 'html', 'md', 'css', 'css-classes', 'images', 'videos', 'attachments', 'samples', 'favicon'], function() {
   var folders = getFolders('.', 'classes').concat(getFolders('.', 'assignments')),
       tasks = folders.map(function(folder) {
         var t = [];
@@ -159,31 +177,25 @@ gulp.task('build', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes', 'ima
   return merge(tasks);
 });
 
-gulp.task('connect', ['build'], function(done) {
-  connect.server({
-    root: ['dist'],
-    port: 8080,
-    livereload: true
-  });
-
-  opn('http://localhost:8080', done);
+gulp.task('deploy', ['build'], function(done) {
+  ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
-gulp.task('watch', function() {
+gulp.task('serve', ['build'], function() {
+  browserSync.init({
+    server: 'dist',
+    port: 8080
+  });
+
+  gulp.watch('scripts/*.js', ['js-watch']);
+  // gulp.watch('scripts/classes/*.js', ['js-classes']);
   gulp.watch('html/**/*.html', ['html']);
-  gulp.watch('classes/**/*.md', ['md']);
+  gulp.watch('classes/**/*.md');
   gulp.watch('assignments/**/*.md', ['md']);
   gulp.watch('README.md', ['md']);
   gulp.watch('styles/**/*.styl', ['css']);
   gulp.watch('styles/classes/*.css', ['css-classes']);
   gulp.watch('images/**/*', ['images']);
-  gulp.watch('scripts/**/*.js', ['js']);
-  gulp.watch('scripts/classes/*.js', ['js-classes']);
 });
 
-gulp.task('deploy', ['build'], function(done) {
-  ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
-});
-
-gulp.task('serve', ['connect', 'watch']);
 gulp.task('default', ['serve']);
