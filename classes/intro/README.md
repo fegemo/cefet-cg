@@ -219,6 +219,24 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ![Diagrama da arquitetura de sistema gráfico moderno](../../images/raster-architecture-modern.png)
 
 ---
+## Representação de Cores
+
+![Sistema de cores aditivas e subtrativas](../../images/cmyk-rgb.png)
+
+---
+## Representação de Cores
+
+- Depende da natureza do dispositivo gráfico: aditivo (monitores) ou subtrativo
+  (impressoras)
+- Monitores: 24-bit RGB
+  - 8 bits para vermelho (0 a 255)
+  - 8 bits para verde
+  - 8 bits para azul
+  - Exemplo: <span class="color-portrait ffd5d5"> </span> (<span class="pure-red">255</span>, <span class="pure-green">213</span>, <span class="pure-blue">213</span>) ou (<span class="pure-red">1</span>, <span class="pure-green">0.84</span>, <span class="pure-blue">0.84</span>)
+- [Questionário Maroto - parte 1](https://moodle.cefetmg.br/mod/quiz/view.php?id=17597)
+
+
+---
 # Representação de Imagens
 
 Imagens podem ser representadas em duas formas principais:
@@ -229,7 +247,7 @@ Imagens podem ser representadas em duas formas principais:
   - Não perdem qualidade quando ampliados
   - Extensões: [**svg, cdr**]
 - Raster (matricial ou matriz de pixels)
-  - Matriz de pixels (_picture elements_)
+  - Matriz de **pixels** (_picture elements_)
   - Muito simples de gerar
   - Extensões: [**gif, jpg, png, bmp**]
 
@@ -241,34 +259,39 @@ Imagens podem ser representadas em duas formas principais:
 ---
 ## Imagem raster
 
-![Imagem raster](../../images/raster.jpg)
+![Imagem raster](../../images/raster-image.png)
 
 
 ---
 # Modelos usados em Computação Gráfica
 ---
-## O olho humano
+## Modelos de Sistema Visual
 
-![Modelo do olho humano](../../images/eye-model.png)
+- Há várias formas de tentar reproduzir o sistema visual:
+  - Modelo do olho humano
+  - Modelo da camera escura (estenopeica)
+  - Modelo do _frustum_
+- Vamos escolher um \o/
 
 ---
 ## Modelo do olho humano
 
-- Fótons (raios de luz) entram pela pupila de forma reta até atingirem a retina
+- ![left](../../images/eye-model.png)
+  Fótons (raios de luz) entram pela pupila de forma reta até atingirem a retina
 - A imagem é formada pela contribuição da luz nos cones da retina
 - Quanto mais próximo ao centro da retina, maior o nível de detalhes que
   percebemos
-- Este modelo é complexo demais para a Computação Gráfica...
+- Este modelo é complexo demais para a Computação Gráfica
+  - Basicamente porque o sistema visual humano envolve fatores até
+    [mesmo psicológicos da percepção de luminosidade](http://web.mit.edu/persci/gaz/)
 
 ---
 ## Qual é mais escuro? A ou B?
 
-![](../../images/illusion-a.png)
-
----
-## Resposta
-
-![](../../images/illusion-b.png)
+<figure class="picture-steps">
+  <img class="bullet" src="../../images/illusion-a.png">
+  <img class="bullet" src="../../images/illusion-b.png">
+</figure>
 
 ---
 ## A Câmera _"pinhole"_ (estenopeica)
@@ -288,24 +311,10 @@ Imagens podem ser representadas em duas formas principais:
 ![O view frustum](../../images/view-frustum.gif)
 
 - A câmera é colocada na ponta da pirâmide
-- Frustum: tronco de pirâmide formado pelo plano próximo e plano distante
-- Apenas o que está dentro deles é renderizado
-
----
-## Representação de Cores
-
-![Sistema de cores aditivas e subtrativas](../../images/cmyk-rgb.png)
-
----
-## Representação de Cores
-
-- Depende da natureza do dispositivo gráfico: aditivo (monitores) ou subtrativo
-  (impressoras)
-- Monitores: 24-bit RGB
-  - 8 bits para vermelho (0 a 255)
-  - 8 bits para verde
-  - 8 bits para azul
-  - Exemplo: <span class="color-portrait ffd5d5"> </span> (<span class="pure-red">255</span>, <span class="pure-green">213</span>, <span class="pure-blue">213</span>) ou (<span class="pure-red">1</span>, <span class="pure-green">0.84</span>, <span class="pure-blue">0.84</span>)
+- **_Frustum_**: sólido geométrico que é um **tronco de pirâmide** formado pelo
+  plano próximo e plano distante
+- Apenas o que está dentro do _frustum_ importa
+- [Questionário Maroto - parte 2](https://moodle.cefetmg.br/mod/quiz/view.php?id=17596)
 
 ---
 # Referências
@@ -316,6 +325,7 @@ Imagens podem ser representadas em duas formas principais:
 - [Programa de modelagem 3D Autodesk Maya][maya-lt]
 - [Programa de modelagem 3D ZBrush][z-brush]
 - [Desmontando um monitor de LCD (Enginner Guy)][lcd-teardown]
+- [Explicação da ilusão de ótica][optics-illusion]
 
 [blender]: http://www.blender.org/
 [claraio]: https://clara.io/
@@ -323,3 +333,4 @@ Imagens podem ser representadas em duas formas principais:
 [maya-lt]: http://www.autodesk.com/education/free-software/maya-lt
 [z-brush]: http://pixologic.com/
 [lcd-teardown]: http://www.engineerguy.com/videos/video-lcd.htm
+[optics-illusion]: http://web.mit.edu/persci/people/adelson/checkershadow_description.html
