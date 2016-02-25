@@ -85,10 +85,10 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Processamento Digital de Imagens
 
-- Área que envolve as técnicas de transformação de imagens, em que tanto a imagem original 
+- Área que envolve as técnicas de transformação de imagens, em que tanto a imagem original
   quanto a imagem resultado apresentam-se sob uma representação visual (geralmente matricial).
 – Estas transformações visam melhorar as características visuais da imagem. Ex.:
-  - aumentar contraste 
+  - aumentar contraste
   - alterar foco
   - diminuir ruídos e algumas distorções
 
@@ -116,22 +116,22 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Modelagem
 
-- A modelagem geométrica consiste de um **conjunto de métodos que visam descrever a forma e as 
-  características geométricas de um objeto**. Ela provê uma descrição ou modelo muito mais analítico, 
+- A modelagem geométrica consiste de um **conjunto de métodos que visam descrever a forma e as
+  características geométricas de um objeto**. Ela provê uma descrição ou modelo muito mais analítico,
   matemático e abstrato que o real.
-  
+
 ---
-## Exemplo: Modelagem 
+## Exemplo: Modelagem
 
 ![](../../images/modeling.png)
 
 ---
 ## Síntese
 
-- A síntese de imagem designa o **processo de geração de imagens 
-  digitais a partir da descrição dos elementos que compõem uma cena 3D**, 
+- A síntese de imagem designa o **processo de geração de imagens
+  digitais a partir da descrição dos elementos que compõem uma cena 3D**,
   baseando-se em modelos que descrevem o comportamento da luz
-- Síntese e modelagem são consideradas, por muitos autores, como 
+- Síntese e modelagem são consideradas, por muitos autores, como
   **a própria Computação Gráfica de hoje em dia**.
 
 ---
@@ -196,12 +196,14 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 
 - Liquid Cristal Display (LCD)
   - Cada pixel são três (rgb) "orifícios" que permitem passagem de luz branca
-  - Demonstração: [Desmontando um monitor de LCD (Enginner Guy)](lcd-teardown)
+  - Demonstração: [Desmontando um monitor de LCD (Enginner Guy)][lcd-teardown]
 - Plasma
   - Composto por um grande número de lâmpadas de neon
   - Cada pixel tem uma célula de fósforo que é incandencida por raios violeta
     emitidos pelo plasma
   - Cada pixel tem 3 (rgb) subpixels
+
+[lcd-teardown]: http://www.engineerguy.com/videos/video-lcd.htm
 
 ---
 # Arquitetura de sistema gráfico raster
@@ -308,11 +310,11 @@ Imagens podem ser representadas em duas formas principais:
 ---
 # Referências
 
-- [Programa de modelagem 3D blender](blender)
-- [Aplicativo Web de modelagem 3D clara.io](claraio)
-- [Programa de modelagem 3D Autodesk 3ds Max](3ds-max)
-- [Programa de modelagem 3D Autodesk Maya](maya-lt)
-- [Programa de modelagem 3D ZBrush](z-brush)
+- [Programa de modelagem 3D blender][blender]
+- [Aplicativo Web de modelagem 3D clara.io][claraio]
+- [Programa de modelagem 3D Autodesk 3ds Max][3ds-max]
+- [Programa de modelagem 3D Autodesk Maya][maya-lt]
+- [Programa de modelagem 3D ZBrush][z-brush]
 - [Desmontando um monitor de LCD (Enginner Guy)][lcd-teardown]
 
 [blender]: http://www.blender.org/
