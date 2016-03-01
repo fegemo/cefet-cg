@@ -30,10 +30,6 @@ gulp.task('js', function() {
       debug: true
     })
     .bundle()
-    .on('error', function() {
-      gutil.log(err.message);
-      this.emit('end');
-    })
     .pipe(source('build.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
@@ -188,13 +184,13 @@ gulp.task('serve', ['build'], function(done) {
   });
 
   opn('http://localhost:' + port, done);
+});
 
+gulp.task('watch', function() {
   gulp.watch('scripts/*.js', ['js']);
   // gulp.watch('scripts/classes/*.js', ['js-classes']);
   gulp.watch('html/**/*.html', ['html']);
-  gulp.watch('classes/**/*.md');
-  gulp.watch('assignments/**/*.md', ['md']);
-  gulp.watch('README.md', ['md']);
+  gulp.watch(['README.md', 'classes/**/*.md', 'assignments/**/*.md'], ['md']);
   gulp.watch('styles/**/*.styl', ['css']);
   gulp.watch('styles/classes/*.css', ['css-classes']);
   gulp.watch('images/**/*', ['images']);
