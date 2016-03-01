@@ -295,6 +295,7 @@ void passiveMotion (int x, int y)
   ```
   Chamada continuamente quando nenhum outro evento ocorre
 - Várias outras
+- Questionário Maroto: [Eventos e Callbacks do Freeglut](https://moodle.cefetmg.br/mod/quiz/view.php?id=17737)
 
 ---
 ## Programa OpenGL/Freeglut - Inicialização
