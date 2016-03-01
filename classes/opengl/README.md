@@ -7,17 +7,18 @@
 1. Conceitos
 1. Sistemas de janelas
 1. Criando um projeto OpenGL
-1. GLUT
-1. Para casa: **TP0**
+1. ~~GLUT~~ Freeglut
+1. **TP0**
 
 ---
 # _Hello World_
 
 ---
-Apenas uma janela preta com um quadrado branco :)
+Apenas uma janela preta com um quadrado verde :)
 
 ```c
-#include 'GL/glut.h'
+#include 'GL/freeglut.h'
+#include 'GL/glew.h'
 
 void desenharMinhaCena(void)
 {
@@ -50,23 +51,6 @@ int main(int argc, char** argv)
 ![Uma tela preta com um quadrado branco](../../images/opengl-hw-inicial.png)
 
 ---
-# Conceitos
-
----
-## Cena 3D
-
-![Uma imagem mostrando uma chaleira](../../images/cena-3d.png)
-
----
-## Cena 3D (cont.)
-
-1. É um conjunto de:
-  1. Objetos geométricos (triângulos, pontos, linhas etc.)
-  1. Fontes de iluminação
-  1. Texturas (imagens "grudadas" nos obj. geométricos)
-  1. Materiais (propriedades físicas (reflexão, cor) dos obj. geométricos)
-
----
 ## OpenGL
 
 1. _Open Graphics Library_ ou biblioteca gráfica aberta
@@ -84,10 +68,10 @@ int main(int argc, char** argv)
   1. Mecanismo padronizado de extensões
   1. Novas versões são estabelecidas por um comitê (ARB) de usuários e
     fabricantes
-    1. Tornou-se OpenGL Working group dentro do Khronos Group em Setembro de
-    2006
+    1. Tornou-se _OpenGL Working Group_ dentro do _Khronos Group_ em
+      setembro de 2006
 1. Depende de um sistema de janelas
-  1. OpenGL cuida apenas de gerar o "conteúdo" das janelas
+  1. **OpenGL cuida apenas de gerar o "conteúdo" das janelas**
 
 ---
 # Sistemas de janelas
@@ -109,14 +93,13 @@ int main(int argc, char** argv)
 
 Utiliza o paradigma de **programação orientada a eventos** (PoE).
 
-1. A interação é comunicada via **eventos**
+1. A interação é comunicada via **eventos**:
   - Mouse se movimentou (10u, 5u)
   - A tecla 'K' foi pressionada
   - Janela foi redimensionada
 1. Eventos são "tratados" por rotinas _callback_
   1. Redesenhar a janela quando ela for redimensionada
-  1. Mover objeto X quando a tecla <key>W</key> for pressionada
-1. Demonstração de PoE (em Javascript)
+  1. Mover o personagem quando a tecla <kbd>W</kbd> for pressionada
 
 ---
 ## Sistemas de janelas (cont.)
@@ -156,7 +139,7 @@ Como faço se eu quiser fazer um programa OpenGL que **execute em vários
 sistemas operacionais**?
 
 ---
-## GLUT (OpenGL Toolkit)
+## ~~GLUT~~ Freeglut (_Free OpenGL Utilities Toolkit_)
 
 - **API portátil** de acesso aos SJs que cria uma abstração
 - **Não** é parte **oficial** do OpenGL
@@ -166,8 +149,8 @@ sistemas operacionais**?
 Hmm... Precisa de mais motivação para usar o GLUT??
 Veja um _hello world_ usando GLUT e outro usando a API do SJ do Windows.
 
-https://gist.github.com/fegemo/ddfa33441281e564eefe
-https://gist.github.com/fegemo/1f534a2a59d7d289ec48
+- Usando GLUT: https://gist.github.com/fegemo/ddfa33441281e564eefe
+- Usando `windows.h`: https://gist.github.com/fegemo/1f534a2a59d7d289ec48
 
 ---
 # Criando um projeto em OpenGL
@@ -175,26 +158,13 @@ https://gist.github.com/fegemo/1f534a2a59d7d289ec48
 ---
 ## Você vai precisar de:
 
-- Um ambiente para desenvolvimento em C/C++
+- Um **ambiente para desenvolvimento** em C/C++:
   - Uma IDE ou editor de texto (CodeBlocks, DevCpp etc.)
   - Um compilador (gcc, mingW, cygwin + gcc)
-- As bibliotecas do OpenGL e do GLUT (.dll, .h)
-- A biblioteca GLU (OpenGL Utilities) que facilita algumas funções
+- As bibliotecas do **OpenGL** (já está instalada) e do **freeglut**
+- A biblioteca **GLU** (_OpenGL Utilities_) que facilita algumas funções
   do OpenGL
-
----
-## Tutoriais de configuração
-
-1. Tutorial de Configuração de projeto usando OpenGL em várias plataformas
-(Windows, Linux) e ambientes (DevCpp, CodeBlocks etc.)
-  - [PDF][tut-isabela-manssour-pdf]
-  - [html][tut-isabela-manssour-html]
-1. [Capítulo 2 do Tutorial de Utilização do OpenGL][tut-opengl-marcionilo]
-1. Mais tutoriais (de alunos) estão disponíveis no **Moodle**
-
-[tut-isabela-manssour-pdf]: http://wiki.icmc.usp.br/images/c/c2/Introdu%C3%A7%C3%A3oPr%C3%A1ticaOpenGL.pdf
-[tut-isabela-manssour-html]: http://www.inf.pucrs.br/~manssour/CG/pratica1/
-[tut-opengl-marcionilo]: http://www.cin.ufpe.br/~mgrb/arquivos/TutorialOpenGL-MarcioniloBarbosa.pdf
+- A biblioteca **GLEW** (_OpenGL Extension Wrangler_)
 
 ---
 # Programas em OpenGL
@@ -203,7 +173,8 @@ https://gist.github.com/fegemo/1f534a2a59d7d289ec48
 ## Anatomia de um programa OpenGL/GLUT
 
 ```c
-#include 'GL/glut.h'
+#include 'GL/glew.h'
+#include 'GL/freeglut.h'
 // Outros cabeçalhos
 
 void desenharMinhaCena(void) {
@@ -215,13 +186,20 @@ void teclaPressionada() {
 // Outras callbacks
 
 int main(int argc, char** argv) {
-    // Inicialização do GLUT
+    // Acordando o GLUT
     glutInit(&argc, argv);
-    // Inicialização e configuração da janela
-    glutInitDisplayMode(GLUT_SINGLE);
-    glutInitWindowSize(300, 300);
+
+    // Definindo a versão do OpenGL que vamos usar
+    glutInitContextVersion(1, 1);
+    glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
+
+    // Configuração inicial da janela do GLUT
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+    glutInitWindowSize(400, 400);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("Hello world :D");
+
+    // Abre a janela
+    glutCreateWindow("Quadrado");
 
     // Registro de callbacks de eventos
     glutDisplayFunc(desenharMinhaCena);
@@ -235,20 +213,21 @@ int main(int argc, char** argv) {
 
 ---
 ## Headers OpenGL/GLUT
+
 ```c
-#include 'GL/glut.h'
+#include 'GL/freeglut.h'
 ```
-1. O GLUT já inclui automaticamente os headers do OpenGL, então não é necessário
-  incluir o `gl.h` e o `glu.h`
+1. O Freeglut já inclui automaticamente os _headers_ do OpenGL, então **não
+  é necessário** incluir o `gl.h` e o `glu.h`:
   ```c
   #include 'GL/gl.h'
   #include 'GL/glu.h'
   ```
-1. Se GLUT não for usado, os headers OpenGL têm que ser incluídos
-  explicitamente, junto com os de outra camada de interface (`windows.h`)
+1. Se freeglut não for usado, os headers OpenGL têm que ser incluídos
+  explicitamente, junto com os de sistema de janelas (_e.g._, `windows.h`)
 
 ---
-## GLUT – Registrando _Callbacks_
+## Freeglut – Registrando _Callbacks_
 
 - _Callbacks_ são rotinas que serão chamadas para tratar eventos.
 - Para uma rotina _callback_ ser efetivamente chamada ela precisa ser
@@ -260,10 +239,10 @@ int main(int argc, char** argv) {
 `glutDisplayFunc(Desenho);`
 
 ---
-## GLUT – _Callback_ de **desenho**
+## Freeglut – _Callback_ de **desenho**
 
 - Chamada automaticamente sempre que a janela precisa
-- Todo programa GLUT precisa ter uma!
+- Todo programa Freeglut precisa ter uma!
 - Exemplo:
   ```c
 void display(void) {
@@ -279,7 +258,7 @@ void display(void) {
   ```
 
 ---
-## GLUT – Callback de **redimensionamento**
+## Freeglut – Callback de **redimensionamento**
 
 - Chamada sempre que a janela é redimensionada, isto é, teve seu tamanho
   alterado
@@ -293,7 +272,7 @@ void reshape (int width, int height) { }
     para usar toda a área da janela
 
 ---
-## GLUT - Outras _callbacks_
+## Freeglut - Outras _callbacks_
 
 - Outras callbacks comumente usadas
   - Eventos de teclado
@@ -308,7 +287,7 @@ void passiveMotion (int x, int y)
   ```
 
 ---
-## GLUT - Outras _callbacks_ (cont.)
+## Freeglut - Outras _callbacks_ (cont.)
 
 - Evento "tô atoa"
   ```c
@@ -318,9 +297,9 @@ void passiveMotion (int x, int y)
 - Várias outras
 
 ---
-## Programa OpenGL/GLUT - Inicialização
+## Programa OpenGL/Freeglut - Inicialização
 
-Inicialização do GLUT
+Inicialização do Freeglut
 ```c
 glutInit (int* argc, char** argv)
 ```
@@ -328,7 +307,7 @@ Estabelece contato com sistema de janelas
 Em X, opções de linha de comando são processadas e removidas
 
 ---
-## Programa OpenGL/GLUT - Inicialização (cont.)
+## Programa OpenGL/Freeglut - Inicialização (cont.)
 
 - Inicialização da janela:
   ```c
@@ -343,7 +322,7 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
     - `GLUT_ALPHA` buffer de cores terá componente alfa
 
 ---
-## Programa OpenGL/GLUT - Inicialização (cont.)
+## Programa OpenGL/Freeglut - Inicialização (cont.)
 
 - Posicionamento da janela
   ```c
@@ -357,7 +336,7 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
   Estabelece o tamanho (em pixels) da janela a ser criada
 
 ---
-## Programa OpenGL/GLUT - Inicialização (cont.)
+## Programa OpenGL/Freeglut - Inicialização (cont.)
 
 - Criação da(s) janela(s)
   ```c
@@ -373,7 +352,7 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
     - Tipo de sombreamento de desejado
 
 ---
-## Programa OpenGL/GLUT – Laço Principal
+## Programa OpenGL/Freeglut – Laço Principal
 
 - Depois de registradas as _callbacks_, o controle é entregue ao sistema de
   janelas:
@@ -389,21 +368,22 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
 ---
 ## TP0: Instalação do OpenGL
 
-1. Atividade A (valor: 0,5 ponto):
+
+- [Especificação do TP0](https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md)
+- Atividade A (valor: 1 ponto):
   1. Para a próxima aula, você deve configurar um ambiente de
     desenvolvimento em OpenGL na sua casa
     - Basicamente, você precisa instalar o Freeglut
-  1. Escreva um programa `hello world` em OpenGL e GLUT cujo **título da
+  1. Escreva um programa `hello world` em OpenGL e Freeglut cujo **título da
     janela é seu nome completo**
     - Sua cena deve conter apenas um quadrado, como no exemplo desta aula
   1. **No Moodle**, poste uma _screenshot_ da sua janela na tarefa do TP0
-1. (continua...)
 
 ---
 ## TP0: Instalação do OpenGL
 
-1. Atividade B (valor: até 0,5 ponto **extra**):
+- Atividade B (valor: até 1 ponto **extra**):
   - Opcionalmente, você pode escrever um guia passo a passo sobre
     como configurar o OpenGL usando suas ferramentas favoritas
   - Os passos **DEVEM** ser reprodutíveis e funcionar para que se consiga os pontos
-  - Enviar via **Moodle** também
+  - Enviar via Sistema de [Tutoriais OpenGL](http://opengl.meteor.com) da disciplina
