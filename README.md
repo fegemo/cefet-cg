@@ -122,13 +122,14 @@
 ---
 ## Trabalhos (60 pontos)
 
+- [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra, para 03/Mar/2016)
 - [TP1: ~~_Shooter_~~][tp1] (20 pontos, data TBD)
 - [TP2: ~~_Townsville_~~][tp2], grupos <span class="math">\leq</span> 3 (20 pontos, data TBD)
 - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
   - Primeira parte: no laboratório TBD
   - Segunda parte: no laboratório TBD
 
+[tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-townsville/README.md
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
-[tp4]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp4
