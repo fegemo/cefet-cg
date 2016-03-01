@@ -31,8 +31,7 @@
     "bespoke-theme-fancy": "^0.6.0",
     "bespoke-touch": "^1.0.0",
     "d3": "^3.5.6",
-    "ismobilejs": "^0.3.8",
-    "katex": "^0.5.1"
+    "ismobilejs": "^0.3.8"
   },
   "devDependencies": {
     "browserify": "^13.0.0",
@@ -58,6 +57,6 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=5.4.0"
   }
 }
