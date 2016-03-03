@@ -13,6 +13,7 @@
 
 - [Introdução à Computação Gráfica](classes/intro/)
 - [OpenGL, Sistemas de Janelas](classes/opengl/)
+- [OpenGL Hands-on - Parte 1](classes/opengl-handson/)
 
 ---
 # Objetivos
