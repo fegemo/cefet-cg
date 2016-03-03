@@ -175,7 +175,7 @@ gulp.task('deploy', ['build'], function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
-gulp.task('serve', ['build', 'watch'], function(done) {
+gulp.task('serve', ['watch', 'build'], function(done) {
   var port = 8080;
   connect.server({
     root: ['dist'],

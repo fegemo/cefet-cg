@@ -37,6 +37,8 @@ void desenharMinhaCena(void)
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
+    glutInitContextVersion(1, 1);
+    glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
     glutInitDisplayMode(GLUT_SINGLE);
     glutInitWindowSize(300, 300);
     glutInitWindowPosition(100, 100);
