@@ -8,7 +8,7 @@
 1. Sistemas de janelas
 1. Criando um projeto OpenGL
 1. ~~GLUT~~ Freeglut
-1. **TP0**
+1. TP0
 
 ---
 # _Hello World_
@@ -17,17 +17,19 @@
 Apenas uma janela preta com um quadrado verde :)
 
 ```c
-#include 'GL/freeglut.h'
-#include 'GL/glew.h'
+#include "GL/glew.h"
+#include "GL/freeglut.h"
 
 void desenharMinhaCena(void)
 {
+    glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.0, 1.0, 0.0);
     glBegin(GL_POLYGON);
-        glVertex3f(0.0, 0.0, 0.0);
-        glVertex3f(0.5, 0.0, 0.0);
-        glVertex3f(0.5, 0.5, 0.0);
-        glVertex3f(0.0, 0.5, 0.0);
+        glVertex3f(-0.5, -0.5, 0.0);
+        glVertex3f( 0.5, -0.5, 0.0);
+        glVertex3f( 0.5,  0.5, 0.0);
+        glVertex3f(-0.5,  0.5, 0.0);
     glEnd();
     glFlush();
 }
@@ -38,7 +40,7 @@ int main(int argc, char** argv)
     glutInitDisplayMode(GLUT_SINGLE);
     glutInitWindowSize(300, 300);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("Hello world :D");
+    glutCreateWindow("Quadrado");
     glutDisplayFunc(desenharMinhaCena);
     glutMainLoop();
     return 0;
@@ -173,15 +175,14 @@ Veja um _hello world_ usando GLUT e outro usando a API do SJ do Windows.
 ## Anatomia de um programa OpenGL/GLUT
 
 ```c
-#include 'GL/glew.h'
-#include 'GL/freeglut.h'
-// Outros cabeçalhos
+#include "GL/glew.h"        // DEVE VIR ANTES DO GLUT
+#include "GL/freeglut.h"    // DEPOIS DO GLEW
 
-void desenharMinhaCena(void) {
-  //...
+void desenharMinhaCena() {
+  // comandos para desenhar coisas
 }
-void teclaPressionada() {
-  //...
+void teclaPressionada(unsigned int key, int x, int y) {
+  // tomar ação baseada em alguma tecla pressionada
 }
 // Outras callbacks
 
@@ -203,9 +204,9 @@ int main(int argc, char** argv) {
 
     // Registro de callbacks de eventos
     glutDisplayFunc(desenharMinhaCena);
-    glutKeyboardFunc(desenharMinhaCena);
+    glutKeyboardFunc(teclaPressionada);
 
-    // Dá início no loop de atualização
+    // Dá início ao loop de atualização do glut
     glutMainLoop();
     return 0;
 }
@@ -215,13 +216,13 @@ int main(int argc, char** argv) {
 ## Headers OpenGL/GLUT
 
 ```c
-#include 'GL/freeglut.h'
+#include "GL/freeglut.h"
 ```
 1. O Freeglut já inclui automaticamente os _headers_ do OpenGL, então **não
   é necessário** incluir o `gl.h` e o `glu.h`:
   ```c
-  #include 'GL/gl.h'
-  #include 'GL/glu.h'
+  #include "GL/gl.h"
+  #include "GL/glu.h"
   ```
 1. Se freeglut não for usado, os headers OpenGL têm que ser incluídos
   explicitamente, junto com os de sistema de janelas (_e.g._, `windows.h`)
@@ -229,72 +230,100 @@ int main(int argc, char** argv) {
 ---
 ## Freeglut – Registrando _Callbacks_
 
-- _Callbacks_ são rotinas que serão chamadas para tratar eventos.
-- Para uma rotina _callback_ ser efetivamente chamada ela precisa ser
-  registrada através da função `glutXxxFunc(callback)`
-  - Onde `Xxx` designa uma classe de eventos e _callback_ é o nome da rotina
-    - `glutKeyboardFunc`
-    - `glutMouseFunc` etc.
-- Por exemplo, para registrar uma _callback_ de desenho chamada Desenho, usa-se
-`glutDisplayFunc(Desenho);`
-
----
-## Freeglut – _Callback_ de **desenho**
-
-- Chamada automaticamente sempre que a janela precisa
-- Todo programa Freeglut precisa ter uma!
-- Exemplo:
+- _Callbacks_ são funções que serão chamadas para tratar eventos
+- Para uma _callback_ ser efetivamente chamada, ela precisa ser
+  registrada por meio de uma função do tipo `glut`**`{Evento}`**`Func(callback)`
+  - Onde `{Evento}` designa um tipo de evento e _callback_ é o nome da função.
+    Exemplos:
+    - `glut`**`Keyboard`**`Func`
+    - `glut`**`Mouse`**`Func` etc.
+- Por exemplo, para registrar uma _callback_ de desenho chamada
+  `desenharMinhaCena`, usa-se:
   ```c
-void display(void) {
-    glClear( GL_COLOR_BUFFER_BIT );
-    glBegin( GL_TRIANGLE_STRIP );
-    glVertex3fv( v[0] );
-    glVertex3fv( v[1] );
-    glVertex3fv( v[2] );
-    glVertex3fv( v[3] );
-    glEnd();
-    glutSwapBuffers(); // double-buffering!
-}
+  glutDisplayFunc(desenhaMinhaCena);
   ```
 
 ---
+
+<!--
+  classes: "two-column-code"
+-->
+
+## Freeglut – _Callback_ de **desenho**
+
+- Chamada automaticamente sempre que a janela precisa ser redesenhada
+- Contém comandos do OpenGL para desenhar coisas na janela:
+  ```c
+  void desenha() {
+      glClear(GL_COLOR_BUFFER_BIT);
+      glBegin(GL_LINE_LOOP);
+          glVertex3fv(0,  0, 0);
+          glVertex3fv(0, 10, 0);
+      glEnd();
+      glutSwapBuffers();
+  }
+
+  //... resto do programa
+  int main(int argc, char** argv) {
+      // ...
+      glutDisplayFunc(desenha);
+      // ...
+  }
+  ```
+
+---
+<!--
+  classes: "two-column-code"
+-->
+
 ## Freeglut – Callback de **redimensionamento**
 
 - Chamada sempre que a janela é redimensionada, isto é, teve seu tamanho
   alterado
 - Tem a forma
   ```c
-void reshape (int width, int height) { }
+  void redimensionada(
+    int width, int height) {
+    // ...
+  }
+
+  // resto do programa
+  int main(int argc/*...*/) {
+      // ...
+      glutReshapeFunc(
+        redimensionada);
+      // ...
+  }
   ```
   - `width`/`height` são a nova largura/altura da janela (em pixels)
-  - Se uma rotina de redimensionamento não for especificada, o GLUT usa uma
-    rotina de redimensionamento _default_ que simplesmente ajusta o _viewport_
-    para usar toda a área da janela
 
 ---
 ## Freeglut - Outras _callbacks_
 
 - Outras callbacks comumente usadas
-  - Eventos de teclado
+  - Eventos de teclado - `glutKeyboardFunc(callback)`:
   ```c
-  void keyboard (unsigned char key, int x, int y)
+  void teclaPressionada(unsigned char key, int x, int y) {}
   ```
-  - Eventos de _mouse_
+  - Eventos de _mouse_:
   ```c
-void mouse (int button, int state, int x, int y)
-void motion (int x, int y)
-void passiveMotion (int x, int y)
+  void mouse (int button, int state, int x, int y) {  }
+  void motion (int x, int y) { /*...*/ }
+  void passiveMotion (int x, int y) { /*...*/ }
   ```
 
 ---
 ## Freeglut - Outras _callbacks_ (cont.)
 
-- Evento "tô atoa"
+- Evento "tô atoa" - `glutIdleFunc(atoa)`:
   ```c
-  void idle (void)
+  void atoa() { /*...*/ }
   ```
   Chamada continuamente quando nenhum outro evento ocorre
-- Várias outras
+- Evento _"timer"_ - `glutTimerFunc(alarme, 500)`:
+  ```c
+  void alarme(int numero) { /*...*/ }
+  ```
 - Questionário Maroto: [Eventos e Callbacks do Freeglut](https://moodle.cefetmg.br/mod/quiz/view.php?id=17737)
 
 ---
@@ -302,17 +331,17 @@ void passiveMotion (int x, int y)
 
 Inicialização do Freeglut
 ```c
-glutInit (int* argc, char** argv)
+glutInit(int* argc, char** argv);
 ```
 Estabelece contato com sistema de janelas
-Em X, opções de linha de comando são processadas e removidas
+Opções de linha de comando são processadas e removidas
 
 ---
 ## Programa OpenGL/Freeglut - Inicialização (cont.)
 
 - Inicialização da janela:
   ```c
-  glutInitDisplayMode (int modo)
+  glutInitDisplayMode(int modoDeOperacao);
   ```
   Estabelece o tipo de recursos necessários para as janelas que serão
 criadas. Modo é um "ou" bit-a-bit de constantes:
@@ -327,12 +356,12 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
 
 - Posicionamento da janela
   ```c
-  glutInitWindowPosition (int x, int y)
+  glutInitWindowPosition(int x, int y);
   ```
   Estabelece a posição inicial do canto superior esquerdo da janela a ser criada
 - Tamanho da janela
   ```c
-  glutInitWindowSize (int width, height)
+  glutInitWindowSize(int largura, altura);
   ```
   Estabelece o tamanho (em pixels) da janela a ser criada
 
@@ -341,7 +370,7 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
 
 - Criação da(s) janela(s)
   ```c
-  int glutCreateWindow (char* nome)
+  int glutCreateWindow(char* tituloDaJanela);
   ```
   - Cria uma nova janela primária (top-level)
   - Nome é tipicamente usado para rotular a janela
@@ -358,7 +387,7 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
 - Depois de registradas as _callbacks_, o controle é entregue ao sistema de
   janelas:
   ```c
-  glutMainDisplayLoop (void)
+  glutMainLoop();
   ```
 - Esta rotina na verdade é o "despachante" de eventos
 - Ela nunca retorna

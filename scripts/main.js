@@ -59,6 +59,9 @@ window.deck = bespoke.from('article', [
         });
       },800);
     },
+    classes: function(slide, names) {
+      slide.classList.add(names);
+    }
   }),
   keys(),
   function() {
