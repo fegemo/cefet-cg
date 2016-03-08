@@ -1,242 +1,239 @@
-# Introdução a OpenGL **_hands on_** - Parte 3
+# Introdução a OpenGL **_hands on_** - Parte 4
 
 ---
 # Roteiro
 
-1. Tipos de dados
-1. Gráficos _raster_
-1. _Depth buffer_ e a coordenada Z
-
-
----
-# Tipos de dados em OpenGL
+1. Display Lists
+1. Texturas
+1. TP1
 
 ---
-## Tipos em C
+# Display Lists
 
-- A linguagem C possui diversos tipos de dados primitivos
+---
+## Exercício 1 da lista
+
+![](../../images/display-lists.png)
+
+- Como desenhar o polígono E as linhas ao mesmo tempo?
+
+---
+## Tentativa 1
+
+- Desenha-se o polígono preenchido
   ```c
-  int numCarros = 10;
-  float pesoEmKg = 895.532f;
-  double terraParaSol = 1.49597870700e11;
-  long int numeroDeCliquesNosSlides = 20040402040l;
-  ```
-- Esses tipos diferentes usam **quantidades diferentes de espaço (bits)** da memória
-  - Um `short int`, **normalmente** usa 16 bits
-  - Um `int`, 32 bits
-  - Um `float`, 32 bits
-  - Um `double`, 64 bits
-
----
-## Tipos em OpenGL
-
-- Contudo, compiladores (e plataformas) diferentes podem usar uma quantidade diferente do tradicional
-  - Por exemplo, o console Nintendo possuía apenas 8 bits
-- O OpenGL, com seu objetivo de executar em plataformas variadas, sugere o uso de seus próprios tipos de dados
-  - Exemplo: `GLint` em vez de `int`
-- Assim, **garante-se a precisão necessária** (e.g., 32 bits) em cada tipo de dados, em vez de deixar o compilador
-  da plataforma decidir
-- A seguir, veja o **mapeamento** dos tipos primitivos em **C para os tipos sugeridos pelo OpenGL**
-
----
-## Tabela de tipos do OpenGL
-
-| Tipo em C                       | Descrição do tipo         | Tipo do OpenGL                | Sufixo |
-|---------------------------------|---------------------------|-------------------------------|:------:|
-| `signed char`                   | 8-bit inteiro             | `GLbyte`                      | b      |
-| `short`                         | 16-bit inteiro            | `GLshort`                     | s      |
-| `int` ou `long`                 | 32-bit inteiro            | `GLint, GLsizei`              | i      |
-| `float`                         | 32-bit ponto flutuante    | `GLfloat, GLclampf`           | f      |
-| `double`                        | 64-bit ponto flutuante    | `GLdouble, GLclampd`          | d      |
-| `unsigned char`                 | 8-bit inteiro sem sinal   | `GLubyte, GLboolean`          | ub     |
-| `unsigned short`                | 16-bit inteiro sem sinal  | `GLushort`                    | us     |
-| `unsigned int or unsigned long` | 32-bit inteiro sem sinal  | `GLuint, GLenum, GLbitfield`  | ui     |
-
-
----
-# Gráficos _raster_
-
----
-## Gráficos _raster_
-
-- Até agora, vimos como desenhar primitivas geométricas em OpenGL
-- Contudo, queremos também **desenhar áreas retangulares de cores**
-  - Exemplos:
-    1. Colocar imagens na tela
-    1. Escrever texto
-- Veremos duas formas para escrever texto na tela
-  1. OpenGL puro
-  1. GLUT _to the rescue_ \o/
-
----
-## **_Bitmaps_ e fontes** (OpenGL puro)
-
-- O OpenGL provê primitivas de nível baixo para a escrita de caracteres na tela
-- <img src="../../images/bitmap-f.gif" class="right-aligned">
-  Os comandos `glRasterPos*()` e `glBitmap()` posicionam e desenham um _bitmap_
-- Pode-se usar _display lists_ (próxima aula) para armazenar o _bitmap_ de cada letra e apenas
-  usá-lo por seu índice posteriormente
-- O restante é com a gente =)
-  - [Exemplo de desenho de texto **em OpenGL "puro"**](codeblocks:fontes-opengl-f/CodeBlocks/fontes-opengl-f.cbp)
-
----
-## **Exemplo** de texto na tela em OpenGL puro
-
-```c
-GLubyte rasters[24] = {
-   0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00,
-   0xff, 0x00, 0xff, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00,
-   0xff, 0xc0, 0xff, 0xc0};
-
-void init(void)
-{
-   glPixelStorei (GL_UNPACK_ALIGNMENT, 1);
-   glClearColor (0.0, 0.0, 0.0, 0.0);
-}
-
-void display(void)
-{
-   glClear(GL_COLOR_BUFFER_BIT);
-   glColor3f (1.0, 1.0, 1.0);
-   glRasterPos2i (20, 20);
-   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
-   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
-   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
-   glFlush();
-}
-```
-
----
-## **glBitmap**
-
-```c
-void glBitmap(
-  GLsizei width,
-  GLsizei height,
-  GLfloat xorig,
-  GLfloat yorig,
-  GLfloat xmove,
-  GLfloat ymove,
-  const GLubyte* bitmap);
-```
-
-## **glRasterPosi**
-
-```c
-void glRasterPos2i(GLint x, GLint y);
-```
-
----
-## **_Bitmaps_ e fontes** (usando GLUT)
-
-- GLUT já implementou algumas fontes (usando `glBitmap()`) e nos oferece **algumas
-  opções mais simples**
-- Documentação da função [glutBitmapCharacter](https://www.opengl.org/documentation/specs/glut/spec3/node76.html)
-  ```c
-  void glutBitmapCharacter(void *font, int character);
-  ```
-  - Algumas opções para o parâmetro `font`:
-    ```c
-    GLUT_BITMAP_8_BY_13
-    GLUT_BITMAP_9_BY_15
-    GLUT_BITMAP_TIMES_ROMAN_10
-    GLUT_BITMAP_HELVETICA_18
-    ```
-
----
-## **Exemplo** de texto na tela em GLUT
-
-```c
-void drawString (void * font, char *s, float x, float y, float z) {
-    unsigned int i;
-    glRasterPos3f(x, y, z);
-
-    for (i = 0; i < strlen (s); i++)
-       glutBitmapCharacter (font, s[i]);
-}
-
-void display() {
-   glClear(GL_COLOR_BUFFER_BIT);
-   glColor3f (1.0, 1.0, 1.0);
-   drawString(GLUT_BITMAP_HELVETICA_18, "FFF", 20, 20, 0);
-   glFlush();
-}
-
-```
-
-- [Exemplo de texto usando GLUT](codeblocks:fontes-glut/CodeBlocks/fontes-glut.cbp)
-- [Mesmo exemplo, em OpenGL puro](codeblocks:fontes-opengl/CodeBlocks/fontes-opengl.cbp)
-
----
-# Depth buffer e a coordenada Z
-
----
-## Atividade
-
-- Desenhar um anel vermelho
-
-![](../../images/anel-vermelho.png)
-
----
-## **Três** formas
-
-1. Desenha um círculo vermelho grande, depois um branco pequeno
-1. Igual anterior, mas coloca o branco mais próximo da tela
-1. Desenha um círculo furado
-
----
-## Função: desenhaDisco(R, x, y, z)
-
-```c
-void drawDisc(float R, float X, float Y, float Z) {
-  float t;
-  int i;
-
-  glBegin(GL_TRIANGLE_FAN);
-    glVertex3f( X, Y, Z);
-      for(i = 0; i <= N; ++i) {
-        t = 2 * PI * i / N;
-        glVertex3f(X + cos(t) * R, Y + sin(t) * R, Z);
-      }
+  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  glBegin(GL_TRIANGLE_STRIP);
+    // 10 vértices aqui...
   glEnd();
-}
-```
-
-- [Exemplo do Disco](codeblocks:discos/CodeBlocks/discos.cbp)
-
----
-## Experimento
-
-- E se alterarmos a ordem do branco com o vermelho?
-
----
-## **Depth Buffer**
-
-- O OpenGL simplesmente desenha os triângulos, na ordem que pedimos
-- Para que ele faça um teste da coordenada `Z`, precisamos ativar o **teste
-  de profundidade**
-  - ```c
-    glEnable(GL_DEPTH_TEST);
-    // desenha
-    glDisable(GL_DEPTH_TEST);
-    ```
-- Também precisamos limpar o _depth buffer_, da mesma forma que limpamos a cor
-  da janela
+  ```
+- Desenha-se o polígono em modo _wire_
   ```c
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+  glBegin(GL_TRIANGLE_STRIP);
+    // os mesmos 10 vértices aqui...
+  glEnd();
   ```
 
 ---
-## Experimento
+## Tentativa 1 - discussão
 
-- Alterar o código para usar o _depth buffer_
-- O segundo anel é desenhado de forma correta independente da ordem de desenho
+- Temos um **_code smell_** - algo está errado
+- **Não devemos repetir código** para que não precisemos alterar mais de um
+  lugar
+  - Princípio DRY - _Don't Repeat Yourself_
+- Podemos resolver isso extraindo o código repetido para uma função...
 
-  ![](../../images/aneis-vermelhos.png)
+---
+## Tentativa 2
+
+- Criamos uma função: `desenhaAnelQuadrado`
+  ```c
+  void desenhaAnelQuadrado() {
+    glBegin(GL_TRIANGLE_STRIP);
+      // 10 vértices aqui...
+    glEnd();
+  }
+  //...
+
+  void desenhaCena() {
+    glColor3f(1.0, 0, 0);     // azul
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    desenhaAnelQuadrado();
+
+    glColor3f(1.0, 0, 0);     // preto
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+    desenhaAnelQuadrado();
+  }
+  ```
+
+---
+## Tentativa 2 - discussão
+
+- Resolvemos o _code smell_, mas não paramos por aí
+- Se, em vez de 10 vértices, nosso polígono tivesse 1 mil vértices?
+  - Cada chamada a `glVertex` faz uma viagem da CPU à GPU
+- O OpenGL pode registrar um polígono caso queiramos desenhá-lo várias vezes
+
+---
+## Tentativa 3 - usando **lista de visualização**
+
+- Em vez de chamar o método de desenho na _callback_ de desenho, vamos registar
+  os vértices **em tempo de inicialização do programa** e apenas instruir o
+  OpenGL a executar esses vértices em tempo de desenho
+- Assim, otimizamos bem as chamadas de desenho de vértices
+
+---
+## Tentativa 3
+
+```c
+int listaAnel;
+void criaListaAnelQuadrado() {
+  listaAnel = glGenLists(1);
+  glNewList(listaAnel, GL_COMPILE);
+    glBegin(GL_TRIANGLE_STRIP);
+      // os 10 vértices
+    glEnd();
+  glEndList();
+}
+```
+
+---
+## Tentativa 3 (cont.)
+
+```c
+int main(int argc, char** argv) {
+  glutInit(argc, argv);
+  //...
+  criaListaAnelQuadrado();
+  //...
+  glutMainLoop();
+}
+```
+
+---
+## Tentativa 3 (cont.)
+
+```c
+void desenhaCena() {
+  glColor3f(1.0, 0, 0);     // azul
+  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  glCallList(listaAnel);
+
+  glColor3f(1.0, 0, 0);     // preto
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+  glCallList(listaAnel);
+}
+```
+
+---
+# Texturas
+
+---
+## Texturas
+
+- Teremos uma aula sobre o tópico texturas mais a frente
+- Contudo, vamos começar a aprender para já ir usando
+- As funções básicas são:
+  - `glEnable(GL_TEXTURE_2D);`, para **habilitar texturas**
+  - `glBindTexture(GL_TEXTURE_2D, int)`, para **começar a usar** uma textura
+  - `glTexCoord2f(x, y)`, para definir **coordenada de textura para cada vértice**
+- Vamos ver um exemplo...
+  - [Textura simples usando SOIL](codeblocks:textura-simples-soil/CodeBlocks/textura-simples-soil.cbp)
+
+---
+## Variável global
+
+- Temos uma variável global que armazenará um **identificador de textura**, que é
+  um número inteiro que será gerado pelo OpenGL
+  ```c
+  GLuint texturaDoMario;
+  ```
+
+---
+## Na _callback_ de desenho
+
+```c
+glEnable(GL_TEXTURE_2D);
+glBindTexture(GL_TEXTURE_2D, texturaDoMario);
+glBegin(GL_QUADS);
+  glTexCoord2f(0, 0); glVertex3f(-1, -1,  0);
+  glTexCoord2f(1, 0); glVertex3f( 1, -1,  0);
+  glTexCoord2f(1, 1); glVertex3f( 1,  1,  0);
+  glTexCoord2f(0, 1); glVertex3f(-1,  1,  0);
+glEnd();
+glDisable(GL_TEXTURE_2D);
+```
+
+---
+## Explicando o uso das funções
+
+- Ao desenhar o polígono que queremos texturizar, devemos:
+  1. Habilitar o uso de texturas bidimensionais
+  1. Especificar qual textura vamos aplicar ao próximo polígono a ser desenhado
+  1. Mapear cada canto da textura a cada vértice do polígono
+- Agora, falta saber como carregar uma imagem no OpenGL para servir de textura
+
+---
+## Carregando texturas
+
+- O OpenGL não possui funções para carregar texturas
+- Basicamente, precisamos abrir o arquivo de imagem nós mesmos (`fopen` e amigos) e
+  usar outros 4-5 métodos do OpenGL para então conseguirmos usar um arquivo como
+  textura:
+  - `glGenTextures(...), glTexParameteri(..), glTexImage2D(...), glTexEnvf(...)`
+- Veremos como esses métodos funcionam em aulas futuras, mas hoje vamos usar
+  uma biblioteca chamada SOIL que possui funções para carregar arquivos de imagem
+  diretamente
+
+---
+## <abbr title="Simple OpenGL Image Library">SOIL</abbr>
+
+- Biblioteca para carregar arquivos de imagem no formato esperado pelo OpenGL
+- Suporta diversos formatos de imagem:
+  - png
+  - jpg
+  - bmp etc.
+- Para baixar e ler a documentação: http://lonesock.net/soil.html
+
+---
+## Em alguma função de inicialização
+
+```c
+GLuint texturaDoMario;    // id de textura
+
+void init() {
+  texturaDoMario = SOIL_load_OGL_texture(
+    "mario.png",
+    SOIL_LOAD_AUTO,
+    SOIL_CREATE_NEW_ID,
+    SOIL_FLAG_INVERT_Y
+  );
+
+  if (texturaDoMario == 0 ) {
+    printf("Erro ao carregar textura: '%s'\n", SOIL_last_result());
+  }
+}
+```
+
+---
+# Trabalho Prático 1 \o/
+
+_A wild TP1 appears..._
+
+---
+## TP1 está a solta
+
+<img alt="Animação de um jogo de tiro com personagens Lego" src="../../images/na-faca.gif"
+  style="float: right; width: 420px; margin: 0 0 5px 20px">
+  _"Shooters, shooting games ou simplesmente joguinhos de tiro-ao-alvo são um
+    gênero comum entre jogos de ação [...] na esperança de escutar
+    '**HEADSHOT!!!**'"_
+
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game)).
 
 ---
 # Referências
 
-- Capítulo 4 do livro **Computer Graphics with OpenGL 4th edition**
 - Documentação do OpenGL 2: https://www.opengl.org/sdk/docs/man2/
-- Livro Vermelho: http://www.glprogramming.com/red/ (capítulo 8)
+- Livro Vermelho: http://www.glprogramming.com/red/

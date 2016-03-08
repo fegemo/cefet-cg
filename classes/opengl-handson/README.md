@@ -8,7 +8,6 @@
 1. _Clipping_ (recorte)
 1. Cores, Máquina de Estado e Interpolação
 1. Primitivas Geométricas
-1. Criando uma pequena animação
 1. Convenção de nomes do OpenGL
 1. Lista de exercícios 1
 

@@ -11,9 +11,10 @@
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/)
-- [OpenGL, Sistemas de Janelas](classes/opengl/)
-- [OpenGL Hands-on - Parte 1](classes/opengl-handson/)
+- [Introdução à Computação Gráfica](classes/intro/) (25/02/2016)
+- [OpenGL, Sistemas de Janelas](classes/opengl/) (01/03/2016)
+- [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (03/03/2016)
+- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (08/03/2016)
 
 ---
 # Objetivos
@@ -25,7 +26,7 @@
 1. Conhecer e utilizar a biblioteca gráfica **OpenGL**
 
 ---
-## Interdisciplinariedades
+## Interdisciplinaridades
 
 - Pré-requisitos
   - Cálculo I
