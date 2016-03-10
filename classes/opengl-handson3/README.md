@@ -1,21 +1,22 @@
-# Introdução a OpenGL **_hands on_** - Parte 4
+# Introdução a OpenGL **_hands on_** - Parte 3
 
 ---
 # Roteiro
 
 1. Display Lists
-1. Texturas
-1. TP1
+1. Orientação dos Polígonos
+1. Usando Texturas
+1. **Trabalho Prático 1**
 
 ---
 # Display Lists
 
 ---
-## Exercício 1 da lista
+## Exercício 2 da lista
 
 ![](../../images/display-lists.png)
 
-- Como desenhar o polígono E as linhas ao mesmo tempo?
+- E se quisermos desenhar o polígono E as linhas ao mesmo tempo?
 
 ---
 ## Tentativa 1
@@ -127,7 +128,88 @@ void desenhaCena() {
 ```
 
 ---
-# Texturas
+# Orientação de Polígonos
+
+---
+## Orientação
+
+- Todo polígono convexo possui um lado de fora e um lado de dentro
+  - Ou lado da frente e lado de trás
+- Em computação gráfica, é importante saber qual é o lado do polígono que
+  estamos vendo por:
+  - **Desempenho**: muitas vezes desenhamos só o lado de fora/frente
+  - **Flexibilidade**: alguns polígonos podem precisar ser desenhados
+    diferentemente se o estamos pela frente ou por trás
+- Em OpenGL, definimos a orientação dos polígonos de forma implícita...
+
+---
+## Orientação no OpenGL
+
+- O lado de fora/frente de um polígono em OpenGL é dado **pela ordem em que
+  declaramos seus vértices**
+
+  ![](../../images/opengl-primitive-orientation.png)
+
+---
+## Exemplo de Orientação
+
+```c
+void desenhaMinhaCena()
+{
+    //...
+    glPolygonMode(GL_BACK, GL_FILL);  // Lado de trás: preenchido
+    glPolygonMode(GL_FRONT, GL_LINE); // Da frente: contorno
+
+    // Desenha um polígono por seus vértices
+    glBegin(GL_TRIANGLE_FAN);
+        glVertex3f(20.0, 20.0, 0.0);
+        glVertex3f(80.0, 20.0, 0.0);
+        glVertex3f(80.0, 80.0, 0.0);
+        glVertex3f(20.0, 80.0, 0.0);
+    glEnd();
+    //...
+}
+```
+- [Exemplo de Orientação](codeblocks:orientacao-poligono/CodeBlocks/orientacao-poligono.cbp)
+
+---
+# Posicionamento
+
+---
+## Posicionando Objetos - O Jeito Ruim
+
+- A forma como temos posicionado objetos não é legal:
+  ```c
+  glBegin(GL_POLYGON);
+      glVertex2f(per.x,             per.y);
+      glVertex2f(per.x + per.larg,  per.y);
+      glVertex2f(per.x + per.larg,  per.y + per.alt);
+      glVertex2f(per.x,             per.y + per.alt);
+  glEnd();
+  ```
+  - Problema: e se houver muito mais do que 4 vértices?
+  - Solução: é bem mais fácil achar as coordenadas se **considerarmos que estamos
+    sempre na origem**!
+
+---
+## Posicionando Objetos - Do Jeito Top
+
+- Damos as coordenadas assumindo que estamos na origem, mas transladamos
+  o objeto para onde queremos que ele realmente seja desenhado:
+  ```c
+  glPushMatrix();                 // Importante!!
+      glTranslatef(per.x, per.y, 0);
+      glBegin(GL_POLYGON);
+          glVertex2f(0,         0);
+          glVertex2f(per.larg,  0);
+          glVertex2f(per.larg,  per.alt);
+          glVertex2f(0,         per.alt);
+      glEnd();
+  glPopMatrix();                  // Importante!!
+  ```
+
+---
+# Usando Texturas
 
 ---
 ## Texturas
@@ -149,6 +231,8 @@ void desenhaCena() {
   ```c
   GLuint texturaDoMario;
   ```
+  - Pense nesta variável como guardando o **número da gavetinha** onde o OpenGL
+    reservou espaço para a **matriz de cores da imagem**
 
 ---
 ## Na _callback_ de desenho
@@ -168,10 +252,10 @@ glDisable(GL_TEXTURE_2D);
 ---
 ## Explicando o uso das funções
 
-- Ao desenhar o polígono que queremos texturizar, devemos:
-  1. Habilitar o uso de texturas bidimensionais
-  1. Especificar qual textura vamos aplicar ao próximo polígono a ser desenhado
-  1. Mapear cada canto da textura a cada vértice do polígono
+- Ao desenhar o polígono que queremos texturizar, devemos seguir **3 passos**:
+  1. **Habilitar** o uso de texturas bidimensionais
+  1. **Especificar qual textura vamos aplicar** ao próximo polígono a ser desenhado
+  1. **Mapear** cada canto da textura a cada vértice do polígono
 - Agora, falta saber como carregar uma imagem no OpenGL para servir de textura
 
 ---
@@ -183,7 +267,7 @@ glDisable(GL_TEXTURE_2D);
   textura:
   - `glGenTextures(...), glTexParameteri(..), glTexImage2D(...), glTexEnvf(...)`
 - Veremos como esses métodos funcionam em aulas futuras, mas hoje vamos usar
-  uma biblioteca chamada SOIL que possui funções para carregar arquivos de imagem
+  uma **biblioteca chamada SOIL** que possui funções para carregar arquivos de imagem
   diretamente
 
 ---
@@ -211,7 +295,7 @@ void init() {
   );
 
   if (texturaDoMario == 0 ) {
-    printf("Erro ao carregar textura: '%s'\n", SOIL_last_result());
+    printf("Erro carregando textura: '%s'\n", SOIL_last_result());
   }
 }
 ```
@@ -222,15 +306,13 @@ void init() {
 _A wild TP1 appears..._
 
 ---
-## TP1 está a solta
+## TP1: **Tá Chovendo {PARADAS}**
 
-<img alt="Animação de um jogo de tiro com personagens Lego" src="../../images/na-faca.gif"
+<img alt="Animação de um jogo com uma chuva de carros, ônibus e aviões em um personagem" src="../../images/beware-falling-objects.gif"
   style="float: right; width: 420px; margin: 0 0 5px 20px">
-  _"Shooters, shooting games ou simplesmente joguinhos de tiro-ao-alvo são um
-    gênero comum entre jogos de ação [...] na esperança de escutar
-    '**HEADSHOT!!!**'"_
+  _"A metáfora mais crível para o curso de Engenharia de Computação no CEFET é um aluno que precisa evitar que a grande e colossal quantidade de TPs caia em sua cabeça"_
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-tprain/README.md)).
 
 ---
 # Referências
