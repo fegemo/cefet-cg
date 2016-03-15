@@ -37,6 +37,12 @@
 - Evoluiu a partir da linguagem B
 
 ---
+<figure class="picture-steps">
+  <img class="bullet" src="../../images/dennis-ritchie.jpg">
+  <img class="bullet" src="../../images/dennis-ritchie-alter.jpg">
+</figure>
+
+---
 ## Partes da linguagem
 
 - Tipos e variáveis
@@ -400,6 +406,34 @@ clean:
   $ make run
   ```
   - Para executar o programa
+
+---
+# Depuração de Programas
+
+---
+## Depuração
+
+- Quando temos um problema no código que não conseguimos explicar,
+  temos três opções:
+  1. Verificar o código laboriosamente com olhar de águia meticulosa
+  1. Espalhar `printf` por toda a parte
+  1. Usar a temperança e **depurar o código**
+- Depurar (_to debug_) consiste em executar o código fonte passo a passo
+  com o objetivo de se encontrar erros difíceis
+- Neste ponto, um IDE é extremamente útil
+  - Mas quem sabe depurar não é a IDE, mas **o utilitário `gdb`** distribuído
+    junto com o `gcc`
+
+---
+## Depurando no CodeBlocks
+
+- ![right](../../images/debugging-breakpoint.png)
+  Para depurar, definimos **_breakpoints_** - linhas no código onde a
+  execução do programa será pausada:
+- Depois, executamos a aplicação **em modo _debug_**:
+
+  ![](../../images/debugging-debug-button.png)
+  - O programa começará a ser executado, mas pausará no _breakpoint_
 
 ---
 ## Referências da linguagem C

@@ -171,7 +171,7 @@ gulp.task('build', ['js', /*'js-classes',*/ 'html', 'md', 'css', 'css-classes', 
   return merge(tasks);
 });
 
-gulp.task('deploy', ['build'], function(done) {
+gulp.task('deploy', function(done) {
   ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
 });
 
