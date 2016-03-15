@@ -3,6 +3,9 @@
 //@import 'bespoke-meta-markdown/node_modules/highlight.js/styles/monokai_sublime.css'
 @import 'highlight.js/styles/monokai_sublime.css'
 
+// Imports the cool book styles
+@require book
+
 ///
 /// Variables
 $page-header-height = 12vh
@@ -423,6 +426,17 @@ full-dimension-backdrop(repeat)
   width 100%
   height 100%
 
+.c-jump-boardgame.bespoke-backdrop-active
+  background-image url(../images/c-jump-boardgame.jpg)
+  full-dimension-backdrop(false)
+  background-position 50% 50%
+  opacity .3
+.bespoke-slide[data-bespoke-backdrop="c-jump-boardgame"]
+  h1
+    font-weight bolder
+    text-shadow 2px 2px black
+
+
 .affine-geometry.bespoke-backdrop-active
   background-image url(../images/affine-geometry.svg)
   full-dimension-backdrop(false)
@@ -614,10 +628,6 @@ a[href^="codeblocks:"]
     background-repeat no-repeat
     vertical-align middle
     margin-right 5px
-
-
-// Imports the cool book styles
-@require book
 
 
 // Print styles
