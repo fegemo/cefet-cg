@@ -37,6 +37,12 @@
 - Evoluiu a partir da linguagem B
 
 ---
+<figure class="picture-steps">
+  <img class="bullet" src="../../images/dennis-ritchie.jpg">
+  <img class="bullet" src="../../images/dennis-ritchie-alter.jpg">
+</figure>
+
+---
 ## Partes da linguagem
 
 - Tipos e variáveis
@@ -424,8 +430,6 @@ clean:
 - ![right](../../images/debugging-breakpoint.png)
   Para depurar, definimos **_breakpoints_** - linhas no código onde a
   execução do programa será pausada:
-
-
 - Depois, executamos a aplicação **em modo _debug_**:
 
   ![](../../images/debugging-debug-button.png)

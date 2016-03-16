@@ -22,7 +22,7 @@
 1. Modelos globais
 1. Sombreamento
 1. Atenuação
-1. Fog
+1. _Fog_ (neblina)
 
 ---
 ## De volta ao _pipeline_
