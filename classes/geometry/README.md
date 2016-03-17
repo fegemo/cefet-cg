@@ -135,7 +135,7 @@
     - Representam apenas um deslocamento em uma direção/sentido
     - Não são posicionados
   - ~~Distâncias~~, ~~Ângulos~~ Fim! :)
-- //Não há o conceito de origem do mundo
+- Não há o conceito de origem do mundo
 - Premissa da geometria afim: preservar **paralelismo** e **colineraridade**
 
 ---
@@ -197,33 +197,53 @@
   - <span class="math">Q = P - \vec{u}</span>
 
 ---
-## Combinação Afim
+## **Combinação Afim**
 
-- Dados dois pontos P e Q, um ponto entre P e Q que divide o segmento PQ em
-  dois com proporções &alpha; e (1 - &alpha;), &alpha; &isin; [0, 1]
-  - No ponto central, &alpha; = &frac12;
-- Corresponde a pegar o vetor Q – P, multiplicar pelo escalar &alpha;, e então
-  somar o vetor resultando ao ponto P
-  - R = P + &alpha;(Q - P) = (1 – &alpha;)P + &alpha;Q
+- ![right](../../images/combinacao-afim.png)
+  Dados dois pontos <span class="math">P</span> e <span class="math">Q</span>,
+  um ponto entre <span class="math">P</span> e <span class="math">Q</span> que
+  divide o segmento <span class="math">PQ</span> em
+  dois com proporções <span class="math">\alpha</span> e
+  <span class="math">(1 - \alpha)</span>, <span class="math">\alpha \in [0, 1]</span>
+  - No ponto central, <span class="math">\alpha = \frac{1}{2}</span>
+- Corresponde a pegar o vetor <span class="math">P - Q</span>, multiplicar
+  pelo escalar <span class="math">\alpha</span>, e então somar o vetor
+  resultante ao ponto <span class="math">Q</span>:
+  <div class="math bullet">R = Q + \alpha (P-Q)</div>
+  <div class="math bullet">R = Q + \alpha P - \alpha Q</div>
+  <div class="math bullet">R = (1 - \alpha) Q + \alpha P</div>
 
 ---
 ## Combinação Afim (cont.)
 
-- Observe que na medida em que &alpha; varia entre 0 e 1, R varia entre P e Q
-- Podemos permitir &alpha; variar arbitrariamente, definindo toda a reta
-- No caso particular em que &alpha; &isin; [0, 1], chamamos a combinação afim
-  de combinação convexa
+- Observe que na medida em que <span class="math">\alpha</span> varia entre
+  <span class="math">0</span> e <span class="math">1</span>,
+  <span class="math">R</span> varia de <span class="math">Q</span> até
+  <span class="math">P</span>
+- Podemos permitir <span class="math">\alpha</span> variar arbitrariamente,
+  definindo toda a reta
+- No caso particular em que <span class="math">\alpha \in [0,1]</span>,
+  chamamos a combinação afim de **combinação convexa**
 
 ---
-## Definição Geral da Combinação Afim
+## **Definição Geral** da Combinação Afim
 
-- Dada uma sequência de pontos P<sub>1</sub>, P<sub>2</sub>, ... P<sub>n</sub>,
-  uma combinação afim seria uma soma da forma &alpha;<sub>1</sub>P<sub>1</sub> +
-   &alpha;<sub>2</sub>P<sub>2</sub> + ... + &alpha;<sub>n</sub>P<sub>n</sub>
-  onde os escalares satisfazem a regra &Sigma;<sub>i</sub>&alpha;<sub>i</sub> =
-  1
-- Para combinação convexa, &alpha;<sub>i</sub> &ge; 0, 1 &le; i &le; n
+- Dada uma sequência de pontos <span class="math">P_1, P_2, ..., P_n</span>,
+  uma combinação afim seria uma soma da forma:
+  <div class="math">\alpha_1 P_1 + \alpha_2 P_2 + ... + \alpha_n P_n</div>
+
+  ...onde os escalares satisfazem a regra:
+
+  <div class="math">\sum_{i=1}^{n} {\alpha} = 1</div>
+
+- Para combinação convexa, <span class="math">\alpha_i \ge 0</span> e
+  <span class="math">1 \le i \le n</span>
 - O que seria uma combinação afim de 3 pontos? E uma combinação convexa?
+
+---
+## Combinação Afim de 3 pontos
+
+![](../../images/combinacao-afim-3.png)
 
 ---
 # Geometria Euclidiana
@@ -304,11 +324,13 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 - Se a geometria afim não define uma origem, não temos como representar objetos
   ainda
 - A partir de 2 vetores **linearmente independentes**
-  (u<sub>1</sub> e u<sub>2</sub>) é possível representar unicamente qualquer
-  outro vetor num plano
+  (<span class="math">\vec{u}_1</span> e <span class="math">\vec{u}_2</span>)
+  é possível representar unicamente qualquer outro vetor num plano
   - Conceito de algebra linear
-  - Combinação linear: v = &alpha;<sub>0</sub>u<sub>0</sub> + &alpha;<sub>1</sub>u<sub>1</sub>
-- **Dikentinha OpenGL**: `glOrtho` nos permite definir exatamente esses vetores
+  - Combinação linear:
+
+    <div class="math">\vec{v} = \alpha_1 \vec{u}_1 + \alpha_2 \vec{u}_2</div>
+- **Em OpenGL**: `glOrtho` nos permite definir exatamente esses vetores
 
 ---
 ## Representação de vetores (cont.)
@@ -318,12 +340,9 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 
 - Dada uma base ortonormal (ortogonal, unitária) e o espaço R³
   - Qualquer vetor pode ser expresso como a combinação linear:
-    v = &alpha;<sub>x</sub>e<sub>x</sub> + &alpha;<sub>y</sub>e<sub>y</sub> + &alpha;<sub>z</sub>e<sub>z</sub>
-  - O vetor ()&alpha;<sub>x</sub>, &alpha;<sub>y</sub>, &alpha;<sub>z</sub>)
-    contém as **coordenadas cartesianas** do vetor v
-- Dualidade na representação
-  - C/C++ - row-major
-  - OpenGL - column-major
+    <div class="math">\vec{v} = \alpha_x \vec{e}_x + \alpha_y \vec{e}_y + \alpha_z \vec{e}_z</div>
+  - O vetor <span class="math">(\alpha_x, \alpha_y, \alpha_z)</span>
+    contém as **coordenadas cartesianas** do vetor <span class="math">\vec{v}</span>
 
 ---
 ## Representação de pontos (cont.)
@@ -339,9 +358,9 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 ---
 # Sistema de Coordenadas
 
-Um sistema de coordenadas para um espaço afim d-dimensional consiste de um
-**ponto origem** e um conjunto de **d vetores de base linearmente
-independentes**
+Um sistema de coordenadas para um espaço afim <span class="math">n</span>-
+dimensional consiste de um **ponto origem** e um conjunto de
+**<span class="math">n</span> vetores de base linearmente independentes**
 
 ---
 ## Exemplo
@@ -349,21 +368,11 @@ independentes**
 ![](../../images/sample-frame.png)
 
 ---
-## Exemplo (cont.)
+## **Coordenadas Homogêneas**
 
-- Como representar P e w na base F?
-  - P[F] = (3, 2, 1)
-  - w[F] = (2, 1, 0)
-- Como representar P e w na base G?
-  - P[G] = (1, 2, 1)
-  - P[G] = (-1, 0, 0)
-
----
-## Coordenadas Homogêneas
-
-- Vetores e pontos no espaço R<sup>d</sup> são normalmente representados por
-  uma tupla com d+1 escalares
-  - Define-se que o último valor seja
+- Vetores e pontos no espaço <span class="math">R^n</span> são normalmente
+  representados por uma tupla com <span class="math">n+1</span> escalares
+  - Define-se que o último componente seja:
     - 0 para vetores
     - 1 para pontos
 - A coordenada homogênea é usada para se distinguir um ponto de um vetor
@@ -383,19 +392,6 @@ independentes**
   - e<sub>1</sub> = (0, 1, 0, 0)
   - e<sub>2</sub> = (0, 0, 1, 0)
   - O = (0, 0, 0, 1)
-
----
-## Mudança de sistema de coordenadas
-
-- Uma das operações mais comuns em Computação Gráfica
-- Do exemplo anterior
-  - P[F] = (3, 2, 1) e w[F] = (2, 1, 0)
-  - P[G] = &alpha;<sub>0</sub>G.e<sub>0</sub> + &alpha;<sub>1</sub>G.e<sub>1</sub> + &alpha;<sub>2</sub>G.O
-- Componentes de G em termos de F
-  - G.e<sub>0</sub>[F] = (-2, -1, 0)
-  - G.e<sub>1</sub>[F] = (0, 1, 0)
-  - G.O[F] = (5, 1, 1)
-
 ---
 # Referências
 
