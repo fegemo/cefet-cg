@@ -20,8 +20,8 @@
 ## Motivação
 
 - Muitas áreas na computação usam **programação geométrica**
-  - Computação Gráfica, Visão Computacional, Robótica, <abbr title="Geographic Information
-  Systems">GIS</abbr>
+  - Computação Gráfica, Visão Computacional, Robótica,
+    <abbr title="Geographic Information Systems">GIS</abbr>
 - Computação Gráfica lida com geometria de retas e objetos lineares num espaço
   bi ou tridimensional
 
@@ -29,7 +29,7 @@
 ## Problemas Típicos (1/2)
 
 - **Interseção** (ou colisão)
-  - Dado um cubo e um raio (privatizador), o raio acerta o cubo?
+  - Dado um cubo e um raio ~~privatizador~~ (uma semi-reta), o raio acerta o cubo?
   - Se acerta, em qual face?
   - Se ele refletir dessa face, em qual direção?
 - **Transformação**
@@ -50,14 +50,14 @@
 ---
 ## Exemplo de problema: **rotação**
 
-- Para gerar a segunda figura à partir da primeira, preciso reescrever as
+- Para gerar a segunda figura a partir da primeira, preciso reescrever as
   coordenadas de cada vértice "na mão"?
 
 ![Figura mostrando um quadrado](../../images/geometry-square-transform1.png)
 ![Figura mostrando o mesmo quadrado da figura anterior, porém girado em 45º](../../images/geometry-square-transform2.png)
 
 - Sim, é possível!
-  - Mas dá muito trabalho e programadores são preguiçosos
+  - Mas dá muito trabalho e **bons programadores são preguiçosos**
 
 ---
 ## Exemplo de problema: **rotação** (cont.)
@@ -69,9 +69,9 @@
 ---
 # Objetivos de hoje
 
-- Vamos supor que estamos na década de 90 e **vamos inventar uma peça de _hardware_
-  para fazer os cálculos necessários** (podemos batizá-la de placa de vídeo :)
-  para gerar imagens à partir de cenas bi/tridimensionais
+- Vamos supor que estamos na década de 90 e **vamos inventar uma peça de
+  _hardware_ para fazer os cálculos necessários** (podemos batizá-la de
+  placa de vídeo :) para gerar imagens à partir de cenas bi/tridimensionais
 - Vamos precisar:
   1. Definir que **tipos de operações com números** nosso _hardware_ deve fazer
   1. Restringir as operações a um **conjunto mínimo viável** (porque _hardware_
@@ -92,22 +92,22 @@
   - Aplicação em construções, como as pirâmides
 - Porém, somente na época de **Euclides**, a geometria foi axiomatizada e
   formalizada
-  - **300 a.C.**
+  - **300 a.C.** na Grécia
 
 ---
-## Surgimento da Geometria Afim
+## Surgimento da **Geometria Afim**
 
-- Somente por volta de **1600 d.C.**, com Descartes, as coordenadas cartesianas foram
-  desenvolvidas
-  - Possibilitando conceitos geométricos serem representados aritmeticamente
-- À partir dos anos **1900 d.C.** começou-se a questionar se a geometria de Euclides
-  era a única geometria possível
-  - Novas geometrias foram propostas
-    - Lobachevski (hiperbólica) e Gauss (diferencial)
-- Vamos discutir 3 geometrias no nosso curso:
-  - Geometria afim
-  - Geometria euclidiana
-  - Geometria projetiva (_en passant_)
+- Somente por volta de **1600 d.C.**, com Descartes, as coordenadas
+  cartesianas foram desenvolvidas
+  - Possibilitando conceitos geométricos serem representados algebricamente
+- A partir dos anos **1800 d.C.** começou-se a questionar se a geometria
+  de Euclides era a única geometria possível
+  - Novas geometrias foram propostas:
+    - Lobachevski (hiperbólica), Gauss (diferencial)
+- Vamos discutir 3 geometrias ao longo da matéria:
+  - Geometria euclidiana (300 a.C.)
+  - Geometria afim (1800+ d.C.)
+  - Geometria projetiva (1900 d.C., _en passant_)
 
 ---
 # Geometria Afim
@@ -117,44 +117,49 @@
 
 - Estudo de propriedades geométricas preservadas por
   transformações afim
-- **Transformação afim** = transformações lineares + translações
-- **Transformação linear** = função entre dois espaços de vetores
-  que preservam soma de vetores e multiplicação por escalares
+  - Informalmente chamada de "estudo das linhas paralelas"
+- Conceitos:
+    - **Transformação linear**: função entre dois espaços de vetores
+      que preserva soma de vetores e multiplicação por escalares
+      - Exemplo: rotação de um objeto
+    - **Transformação afim**: transformações lineares + transformação de
+      translação
 
 ---
 ## Elementos da Geometria Afim
 
-- Elementos fundamentais
-  - Escalares
-  - Pontos
-  - Vetores (livres)
+- Elementos fundamentais:
+  - **Escalares**: números reais
+  - **Pontos**
+  - **Vetores (livres)**:
+    - Representam apenas um deslocamento em uma direção/sentido
+    - Não são posicionados
   - ~~Distâncias~~, ~~Ângulos~~ Fim! :)
-- Não possui origem, apenas um vetor nulo (v = 0)
-- Idéia: preservar **paralelismo** e **colineraridade**
+- //Não há o conceito de origem do mundo
+- Premissa da geometria afim: preservar **paralelismo** e **colineraridade**
 
 ---
-## Escalar
+## **Escalar**
 
 - Números reais
-- Representa uma grandeza não geométrica
+- Representa uma **grandeza não geométrica**
 - Notação típica:
-  - Letras gregas minúsculas
-    - <span class="math">\alpha, \beta, \gamma</span>
+  - Letras minúsculas (inclusive gregas):
+    - <span class="math">\alpha, \beta, \gamma, x, t</span>
 
 ---
-## Ponto e Vetor
+## **Ponto** e **Vetor**
 
-- Podem ser representados por um conjunto de coordenadas no espaço (<span class="math">R^2, R^3, R^n</span>)
-- Ponto
+- Podem ser representados por um conjunto de coordenadas no espaço
+  (<span class="math">R^2, R^3, R^n</span>)
+- **Ponto**
   - Representa uma localização no espaço
-  - Notação típica:
-    - Letras maíusculas
-      - <span class="math">P, Q, R</span>
-- Vetor
+  - Notação típica: letras maíusculas
+    - <span class="math">P, Q, R</span>
+- **Vetor**
   - Representa uma grandeza geométrica. Entendido como um deslocamento.
-  - Notação típica
-    - Letras minúsculas
-      - <span class="math">u, v, w</span>
+  - Notação típica: letras minúsculas com setinha
+    - <span class="math">\vec{u}, \vec{v}, \vec{w}</span>
 
 ---
 ## Operações (1/4)
@@ -174,7 +179,6 @@
   - <span class="math">\vec{w} = \vec{u} - \vec{v}</span>
     - <span class="math">\vec{w} = \vec{u} + (-1 \times \vec{v})</span>
 
-
 ---
 ## Operações (3/4)
 
@@ -186,9 +190,11 @@
 ---
 ## Operações (4/4)
 
+![](../../images/afim-soma-vetor-ponto.png)
+
 - Adição ponto-vetor
-  - <span class="math">R = P + \vec{u}</span>
-  - <span class="math">R = P - \vec{u}</span>
+  - <span class="math">Q = P + \vec{u}</span>
+  - <span class="math">Q = P - \vec{u}</span>
 
 ---
 ## Combinação Afim

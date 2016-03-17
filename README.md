@@ -20,6 +20,11 @@
 - [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (15/03/2016)
 
 ---
+# Aulas (página 2)
+
+- [Geometria](classes/geometry) (17/03/2016)
+
+---
 # Objetivos
 
 1. Conhecer os **fundamentos teóricos e práticos** da computação gráfica.
@@ -127,14 +132,14 @@
 ---
 ## Trabalhos (60 pontos)
 
-- [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra, para 03/Mar/2016)
-- [TP1: ~~_Shooter_~~][tp1] (20 pontos, data TBD)
-- [TP2: ~~_Townsville_~~][tp2], grupos <span class="math">\leq</span> 3 (20 pontos, data TBD)
+- [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
+- [TP1: Tá Chovendo {Paradas}][tp1] (20 pontos)
+- TP2: ~~_Townsville_~~, grupos <span class="math">\leq</span> 3 (20 pontos)
 - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
-  - Primeira parte: no laboratório TBD
-  - Segunda parte: no laboratório TBD
+  - Primeira parte: no laboratório
+  - Segunda parte: no laboratório
 
 [tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-shooter/README.md#trabalho-prático-1---shooting-game
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-tprain/README.md
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-townsville/README.md
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
