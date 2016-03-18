@@ -29,7 +29,8 @@
 ## Problemas Típicos (1/2)
 
 - **Interseção** (ou colisão)
-  - Dado um cubo e um raio ~~privatizador~~ (uma semi-reta), o raio acerta o cubo?
+  - Dado um cubo e um raio ~~privatizador~~ (uma semi-reta), o raio acerta
+    o cubo?
   - Se acerta, em qual face?
   - Se ele refletir dessa face, em qual direção?
 - **Transformação**
@@ -41,11 +42,12 @@
 ## Problemas Típicos (2/2)
 
 - **Orientação**
-  - 3 pontos colineares definem um plano. Dado um quarto ponto, ele está acima,
-    abaixo ou pertence ao plano?
+  - 3 pontos não-colineares definem um plano. Dado um quarto ponto, ele está
+    acima, abaixo ou pertence ao plano?
 - **Mudança de coordenadas**
-  - Dada uma esfera em um sistema de coordenadas (e.g., polar), quais seriam as coordenadas
-    da esfera em um outro sistema de coordenadas (e.g., cartesiano)?
+  - Dada uma esfera em um sistema de coordenadas (e.g., polar), quais seriam
+    as coordenadas da esfera em um outro sistema de coordenadas
+    (e.g., cartesiano)?
 
 ---
 ## Exemplo de problema: **rotação**
@@ -241,9 +243,14 @@
 - O que seria uma combinação afim de 3 pontos? E uma combinação convexa?
 
 ---
-## Combinação Afim de 3 pontos
+## Combinação de 3 pontos
 
 ![](../../images/combinacao-afim-3.png)
+
+- Combinação afim: o plano
+- Combinação convexa: o triângulo
+- Dados os valores de <span class="math">\alpha_A, \alpha_B, \alpha_C</span>,
+  fica fácil determinar a cor de qualquer ponto
 
 ---
 # Geometria Euclidiana
@@ -263,61 +270,71 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 - Acrescenta-se uma operação: **Produto Interno**
   - Definição
     - Transforma dois vetores em um escalar
-    - Expressa como (u, v) ou u &middot; v
+    - Expressa como <span class="math">(\vec{u}, \vec{v})</span> ou
+      <span class="math">\vec{u} \cdot \vec{v}</span>
   - Várias propriedades
-    - Positividade: (u, u) &ge; 0, e (u, u) = 0 &hArr; u = 0
-    - Simetria: (u, v) = (v, u)
-    - Bilinearidade: (u, v+w) = (u, v) + (u, w) e (u, &alpha;v) = &alpha;(u, v)
+    - Positividade: <span class="math">(\vec{u}, \vec{u}) \ge 0</span> e
+      <span class="math">(\vec{u}, \vec{u}) = 0 \Leftrightarrow \vec{u} = \vec{0}</span>
+    - Simetria: <span class="math">(\vec{u}, \vec{v})</span> =
+      <span class="math">(\vec{v}, \vec{u})</span>
+    - Bilinearidade: <span class="math">(\vec{u}, \vec{v}+\vec{w}) =
+      (\vec{u}, \vec{v}) + (\vec{u}, \vec{w})</span> e
+      <span class="math">(\vec{u}, \alpha \vec{v}) = \alpha (\vec{u}, \vec{v})</span>
 
 ---
 ## Produto Interno
 
-- Foco na definição mais comum de produto interno
-  - _Dot Product_, ou **produto escalar**
-  - Suponha que um vetor num espaço R<sup>n</sup> é expressado como d escalares
-    (coordenadas): u = (u<sub>0</sub>, u<sub>1</sub>, ..., <sub>d-1</sub>)
+- Há duas definições:
+  - **Algébrica** (usa as coordenadas cartesianas):
 
-    ![](../../images/dot-product.png)
+    <div class="math">\vec{u} \cdot \vec{v} = \sum_{i=0}^{n-1} u_i v_i</div>
+  - **Geométrica** (geometria euclidiana):
+
+    <div class="math">\vec{u} \cdot \vec{v} = \lVert \vec{u} \rVert \lVert \vec{v} \rVert cos \theta</div >
 
 ---
 ## Conceitos derivados
 
-- Comprimento (norma)
+- **Comprimento (norma)**:
   - Dado pela raiz quadrada da do produto interno do vetor consigo mesmo
 
-    ![](../../images/norm.png)
-- Normalização
-  - <img src="../../images/normalization.png" style="float: right;">
+    <div class="math">\lVert \vec{v} \rVert = \sqrt{\vec{v} \cdot \vec{v}}</div>
+- **Normalização**:
+  - <div class="math" style="float: right;">\hat{v} = \frac{\vec{v}}{\lVert \vec{v} \rVert}</div>
     Um vetor não nulo normalizado corresponde a um vetor na mesma direção do
     vetor original, porém com comprimento unitário
 
-
 ---
 ## Conceitos derivados (cont.)
 
-- Distância entre dois pontos
-  - <img src="../../images/distance.png" style="float: right">
-    Corresponde ao comprimento do vetor diferença
-
-
-- Ângulo
-  - O ângulo entre dois vetores corersponde ao arco-cosseno do produto interno
-    dos dois vetores normalizados
-
-    ![](../../images/angle.png)
-
----
-## Conceitos derivados (cont.)
-
-- Ortogonalidade
+- <span class="math" style="float: right;">dist(P,Q) = \lVert P-Q \rVert</span>
+  **Distância entre dois pontos**:
+  - Corresponde ao comprimento do vetor diferença
+- **Ângulo**:
+  - ![right](../../images/angle.png)
+    O ângulo entre dois vetores corersponde ao arco-cosseno do produto interno
+    dos dois vetores normalizados    
+    <div class="math" style="float: left">ang(\vec{u}, \vec{v}) = \cos^{-1} \left(\frac{\vec{u} \cdot \vec{v}}{\lVert \vec{u} \rVert \lVert \vec{v} \rVert} \right) = \cos^{-1} \left( \hat{u} \cdot \hat{v} \right)</div>
+    <div style="clear:both"></div>
+- **Ortogonalidade**:
   - Dois vetores são ditos ortogonais (perpendiculares) se o produto interno é 0
-- Projeção ortogonal
-  - Dados u e v, pode-se representar u como sendo a soma de dois vetores
-    u<sub>1</sub> e u<sub>2</sub> tais que u<sub>1</sub> é paralelo a v e
-    u<sub>2</sub> é perpendicular
-    ![](../../images/ortho-projection.png)
-  - u<sub>1</sub> é chamado a projeção ortogonal de u em v
 
+---
+## Conceitos derivados (cont.)
+
+- **Decomposição ortogonal**:
+  - Dados <span class="math">\vec{u}</span> e <span class="math">\vec{v}</span>,
+    pode-se representar u como sendo a soma de dois vetores
+    <span class="math">\vec{u}_1</span> e
+    <span class="math">\vec{u}_2</span> tais que
+    <span class="math">\vec{u}_1</span> é paralelo a
+    <span class="math">\vec{v}</span> e
+    <span class="math">\vec{u}_2</span> é perpendicular
+    ![](../../images/ortho-projection.png)
+- **Projeção ortogonal**:
+  - <span class="math">\vec{u}_1</span> é chamado a projeção ortogonal de
+    <span class="math">\vec{u}</span> em <span class="math">\vec{v}</span>
+    <div class="math" style="float: left">proj_{\vec{v}} \vec{u} = \vec{u_1} = \frac{\vec{u} \cdot \vec{v}}{\vec{v} \cdot \vec{v}} \vec{v}</div>
 ---
 ## Representação de objetos
 
@@ -330,7 +347,6 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
   - Combinação linear:
 
     <div class="math">\vec{v} = \alpha_1 \vec{u}_1 + \alpha_2 \vec{u}_2</div>
-- **Em OpenGL**: `glOrtho` nos permite definir exatamente esses vetores
 
 ---
 ## Representação de vetores (cont.)
@@ -348,12 +364,17 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 ## Representação de pontos (cont.)
 
 - Vamos considerar um ponto arbitrário O como o centro do nosso espaço
-- Consideremos, também, uma base u (u<sub>0</sub>, u<sub>1</sub>, u<sub>2</sub>)
-- Dado um ponto P qualquer, P - O é um vetor
+- Consideremos, também, uma base (<span class="math">\vec{e}_x</span>,
+  <span class="math">\vec{e}_y</span>, <span class="math">\vec{e}_z</span>)
+- Dado um ponto <span class="math">P</span> qualquer,
+  <span class="math">P-O</span> é um vetor
   - Que pode ser expresso a partir de uma combinação linear dos
-    vetores da base
+    vetores da base:
 
-    P = &alpha;<sub>0</sub>u<sub>0</sub> + &alpha;<sub>1</sub>u<sub>1</sub> + &alpha;<sub>2</sub>u<sub>2</sub> + O;
+    <div class="math">P = \alpha_x \vec{e}_x + \alpha_y \vec{u}_y + \alpha_z \vec{u}_z + O</div>
+
+    - <span class="math">(\alpha_x, \alpha_y, \alpha_z)</span> contém
+      as coordenadas cartesianas de <span class="math">P</span>
 
 ---
 # Sistema de Coordenadas
@@ -373,25 +394,24 @@ dimensional consiste de um **ponto origem** e um conjunto de
 - Vetores e pontos no espaço <span class="math">R^n</span> são normalmente
   representados por uma tupla com <span class="math">n+1</span> escalares
   - Define-se que o último componente seja:
-    - 0 para vetores
-    - 1 para pontos
+    - 0 para vetores, _e.g._, <span class="math">\vec{u} = (3, 4, -1, 0)</span>
+    - 1 para pontos, _e.g._, <span class="math">S = (0, 2, -8, 1)</span>
 - A coordenada homogênea é usada para se distinguir um ponto de um vetor
   - última coordenada = 1 &hArr; ponto
   - última coordenada = 0 &hArr; vetor
   - outros valores, operação ilegal
 
 ---
-## Sistemas de Coordenadas alternativos
+## Sistema de Coordenadas Padrão
 
-- Podemos ter mais de um sistema presente em um mesmo modelo
-  - Para conveniência da modelagem
-  - Cada objeto tem o seu
-  - Coordenadas da cena
-- Sistema de coordenadas padrão
-  - e<sub>0</sub> = (1, 0, 0, 0)
-  - e<sub>1</sub> = (0, 1, 0, 0)
-  - e<sub>2</sub> = (0, 0, 1, 0)
-  - O = (0, 0, 0, 1)
+- Juntando uma **base ortonormal** e um **ponto de origem**, formamos um
+  **sistema de coordenadas**
+- Consideremos o seguinte sistema... parece com alguma coisa?
+  - <span class="math">\vec{e}_0 = (1, 0, 0, 0)</span>
+  - <span class="math">\vec{e}_1 = (0, 1, 0, 0)</span>
+  - <span class="math">\vec{e}_2 = (0, 0, 1, 0)</span>
+  - <span class="math">O = (0, 0, 0, 1)</span>
+
 ---
 # Referências
 
