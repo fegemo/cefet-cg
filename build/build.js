@@ -1,4 +1,16 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (global){
+/*! bespoke-math v1.2.0 © 2016 Flávio, MIT License */
+!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,t=t.bespoke||(t.bespoke={}),t=t.plugins||(t.plugins={}),t.math=e()}}(function(){return function e(t,i,h){function a(r,l){if(!i[r]){if(!t[r]){var n="function"==typeof require&&require;if(!l&&n)return n(r,!0);if(s)return s(r,!0);var p=new Error("Cannot find module '"+r+"'");throw p.code="MODULE_NOT_FOUND",p}var o=i[r]={exports:{}};t[r][0].call(o.exports,function(e){var i=t[r][1][e];return a(i?i:e)},o,o.exports,e,t,i,h)}return i[r].exports}for(var s="function"==typeof require&&require,r=0;r<h.length;r++)a(h[r]);return a}({1:[function(e,t,i){var h="@font-face {\n  font-family: KaTeX_AMS;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.eot);\n  src: url(fonts/KaTeX_AMS-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Caligraphic;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.eot);\n  src: url(fonts/KaTeX_Caligraphic-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Caligraphic;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.eot);\n  src: url(fonts/KaTeX_Caligraphic-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Fraktur;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.eot);\n  src: url(fonts/KaTeX_Fraktur-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Fraktur;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.eot);\n  src: url(fonts/KaTeX_Fraktur-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.eot);\n  src: url(fonts/KaTeX_Main-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.eot);\n  src: url(fonts/KaTeX_Main-Italic.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.ttf) format('ttf');\n  font-weight: 400;\n  font-style: italic;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.eot);\n  src: url(fonts/KaTeX_Main-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Math;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.eot);\n  src: url(fonts/KaTeX_Math-Italic.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.ttf) format('ttf');\n  font-weight: 400;\n  font-style: italic;\n}\n@font-face {\n  font-family: KaTeX_SansSerif;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.eot);\n  src: url(fonts/KaTeX_SansSerif-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Script;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.eot);\n  src: url(fonts/KaTeX_Script-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size1;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.eot);\n  src: url(fonts/KaTeX_Size1-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size2;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.eot);\n  src: url(fonts/KaTeX_Size2-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size3;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.eot);\n  src: url(fonts/KaTeX_Size3-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size4;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.eot);\n  src: url(fonts/KaTeX_Size4-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Typewriter;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.eot);\n  src: url(fonts/KaTeX_Typewriter-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n.katex-display {\n  display: block;\n  margin: 1em 0;\n  text-align: center;\n}\n.katex-display>.katex {\n  display: inline-block;\n}\n.katex {\n  font: 400 1.21em KaTeX_Main;\n  line-height: 1.2;\n  white-space: nowrap;\n  text-indent: 0;\n}\n.katex .katex-html {\n  display: inline-block;\n}\n.katex .katex-mathml {\n  position: absolute;\n  clip: rect(1px,1px,1px,1px);\n  padding: 0;\n  border: 0;\n  height: 1px;\n  width: 1px;\n  overflow: hidden;\n}\n.katex .base,\n.katex .strut {\n  display: inline-block;\n}\n.katex .mathit {\n  font-family: KaTeX_Math;\n  font-style: italic;\n}\n.katex .mathbf {\n  font-family: KaTeX_Main;\n  font-weight: 700;\n}\n.katex .amsrm,\n.katex .mathbb {\n  font-family: KaTeX_AMS;\n}\n.katex .mathcal {\n  font-family: KaTeX_Caligraphic;\n}\n.katex .mathfrak {\n  font-family: KaTeX_Fraktur;\n}\n.katex .mathtt {\n  font-family: KaTeX_Typewriter;\n}\n.katex .mathscr {\n  font-family: KaTeX_Script;\n}\n.katex .mathsf {\n  font-family: KaTeX_SansSerif;\n}\n.katex .mainit {\n  font-family: KaTeX_Main;\n  font-style: italic;\n}\n.katex .textstyle>.mord+.mop {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mord+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mord+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mop+.mop,\n.katex .textstyle>.mop+.mord,\n.katex .textstyle>.mord+.minner {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mop+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mop+.minner {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mbin+.minner,\n.katex .textstyle>.mbin+.mop,\n.katex .textstyle>.mbin+.mopen,\n.katex .textstyle>.mbin+.mord {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mrel+.minner,\n.katex .textstyle>.mrel+.mop,\n.katex .textstyle>.mrel+.mopen,\n.katex .textstyle>.mrel+.mord {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mclose+.mop {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mclose+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mclose+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mclose+.minner,\n.katex .textstyle>.minner+.mop,\n.katex .textstyle>.minner+.mord,\n.katex .textstyle>.mpunct+.mclose,\n.katex .textstyle>.mpunct+.minner,\n.katex .textstyle>.mpunct+.mop,\n.katex .textstyle>.mpunct+.mopen,\n.katex .textstyle>.mpunct+.mord,\n.katex .textstyle>.mpunct+.mpunct,\n.katex .textstyle>.mpunct+.mrel {\n  margin-left: .16667em;\n}\n.katex .textstyle>.minner+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.minner+.mrel {\n  margin-left: .27778em;\n}\n.katex .mclose+.mop,\n.katex .minner+.mop,\n.katex .mop+.mop,\n.katex .mop+.mord,\n.katex .mord+.mop,\n.katex .textstyle>.minner+.minner,\n.katex .textstyle>.minner+.mopen,\n.katex .textstyle>.minner+.mpunct {\n  margin-left: .16667em;\n}\n.katex .reset-textstyle.textstyle {\n  font-size: 1em;\n}\n.katex .reset-textstyle.scriptstyle {\n  font-size: .7em;\n}\n.katex .reset-textstyle.scriptscriptstyle {\n  font-size: .5em;\n}\n.katex .reset-scriptstyle.textstyle {\n  font-size: 1.42857em;\n}\n.katex .reset-scriptstyle.scriptstyle {\n  font-size: 1em;\n}\n.katex .reset-scriptstyle.scriptscriptstyle {\n  font-size: .71429em;\n}\n.katex .reset-scriptscriptstyle.textstyle {\n  font-size: 2em;\n}\n.katex .reset-scriptscriptstyle.scriptstyle {\n  font-size: 1.4em;\n}\n.katex .reset-scriptscriptstyle.scriptscriptstyle {\n  font-size: 1em;\n}\n.katex .style-wrap {\n  position: relative;\n}\n.katex .vlist {\n  display: inline-block;\n}\n.katex .vlist>span {\n  display: block;\n  height: 0;\n  position: relative;\n}\n.katex .vlist>span>span {\n  display: inline-block;\n}\n.katex .vlist .baseline-fix {\n  display: inline-table;\n  table-layout: fixed;\n}\n.katex .msupsub {\n  text-align: left;\n}\n.katex .mfrac>span>span {\n  text-align: center;\n}\n.katex .mfrac .frac-line {\n  width: 100%;\n}\n.katex .mfrac .frac-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .mfrac .frac-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .mspace {\n  display: inline-block;\n}\n.katex .mspace.negativethinspace {\n  margin-left: -.16667em;\n}\n.katex .mspace.thinspace {\n  width: .16667em;\n}\n.katex .mspace.mediumspace {\n  width: .22222em;\n}\n.katex .mspace.thickspace {\n  width: .27778em;\n}\n.katex .mspace.enspace {\n  width: .5em;\n}\n.katex .mspace.quad {\n  width: 1em;\n}\n.katex .mspace.qquad {\n  width: 2em;\n}\n.katex .llap,\n.katex .rlap {\n  width: 0;\n  position: relative;\n}\n.katex .llap>.inner,\n.katex .rlap>.inner {\n  position: absolute;\n}\n.katex .llap>.fix,\n.katex .rlap>.fix {\n  display: inline-block;\n}\n.katex .llap>.inner {\n  right: 0;\n}\n.katex .rlap>.inner {\n  left: 0;\n}\n.katex .katex-logo .a {\n  font-size: .75em;\n  margin-left: -.32em;\n  position: relative;\n  top: -.2em;\n}\n.katex .katex-logo .t {\n  margin-left: -.23em;\n}\n.katex .katex-logo .e {\n  margin-left: -.1667em;\n  position: relative;\n  top: .2155em;\n}\n.katex .katex-logo .x {\n  margin-left: -.125em;\n}\n.katex .rule {\n  display: inline-block;\n  border-style: solid;\n  position: relative;\n}\n.katex .overline .overline-line {\n  width: 100%;\n}\n.katex .overline .overline-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .overline .overline-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .sqrt>.sqrt-sign {\n  position: relative;\n}\n.katex .sqrt .sqrt-line {\n  width: 100%;\n}\n.katex .sqrt .sqrt-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .sqrt .sqrt-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .sqrt>.root {\n  margin-left: .27777778em;\n  margin-right: -.55555556em;\n}\n.katex .fontsize-ensurer,\n.katex .sizing {\n  display: inline-block;\n}\n.katex .fontsize-ensurer.reset-size1.size1,\n.katex .sizing.reset-size1.size1 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size1.size2,\n.katex .sizing.reset-size1.size2 {\n  font-size: 1.4em;\n}\n.katex .fontsize-ensurer.reset-size1.size3,\n.katex .sizing.reset-size1.size3 {\n  font-size: 1.6em;\n}\n.katex .fontsize-ensurer.reset-size1.size4,\n.katex .sizing.reset-size1.size4 {\n  font-size: 1.8em;\n}\n.katex .fontsize-ensurer.reset-size1.size5,\n.katex .sizing.reset-size1.size5 {\n  font-size: 2em;\n}\n.katex .fontsize-ensurer.reset-size1.size6,\n.katex .sizing.reset-size1.size6 {\n  font-size: 2.4em;\n}\n.katex .fontsize-ensurer.reset-size1.size7,\n.katex .sizing.reset-size1.size7 {\n  font-size: 2.88em;\n}\n.katex .fontsize-ensurer.reset-size1.size8,\n.katex .sizing.reset-size1.size8 {\n  font-size: 3.46em;\n}\n.katex .fontsize-ensurer.reset-size1.size9,\n.katex .sizing.reset-size1.size9 {\n  font-size: 4.14em;\n}\n.katex .fontsize-ensurer.reset-size1.size10,\n.katex .sizing.reset-size1.size10 {\n  font-size: 4.98em;\n}\n.katex .fontsize-ensurer.reset-size2.size1,\n.katex .sizing.reset-size2.size1 {\n  font-size: .71428571em;\n}\n.katex .fontsize-ensurer.reset-size2.size2,\n.katex .sizing.reset-size2.size2 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size2.size3,\n.katex .sizing.reset-size2.size3 {\n  font-size: 1.14285714em;\n}\n.katex .fontsize-ensurer.reset-size2.size4,\n.katex .sizing.reset-size2.size4 {\n  font-size: 1.28571429em;\n}\n.katex .fontsize-ensurer.reset-size2.size5,\n.katex .sizing.reset-size2.size5 {\n  font-size: 1.42857143em;\n}\n.katex .fontsize-ensurer.reset-size2.size6,\n.katex .sizing.reset-size2.size6 {\n  font-size: 1.71428571em;\n}\n.katex .fontsize-ensurer.reset-size2.size7,\n.katex .sizing.reset-size2.size7 {\n  font-size: 2.05714286em;\n}\n.katex .fontsize-ensurer.reset-size2.size8,\n.katex .sizing.reset-size2.size8 {\n  font-size: 2.47142857em;\n}\n.katex .fontsize-ensurer.reset-size2.size9,\n.katex .sizing.reset-size2.size9 {\n  font-size: 2.95714286em;\n}\n.katex .fontsize-ensurer.reset-size2.size10,\n.katex .sizing.reset-size2.size10 {\n  font-size: 3.55714286em;\n}\n.katex .fontsize-ensurer.reset-size3.size1,\n.katex .sizing.reset-size3.size1 {\n  font-size: .625em;\n}\n.katex .fontsize-ensurer.reset-size3.size2,\n.katex .sizing.reset-size3.size2 {\n  font-size: .875em;\n}\n.katex .fontsize-ensurer.reset-size3.size3,\n.katex .sizing.reset-size3.size3 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size3.size4,\n.katex .sizing.reset-size3.size4 {\n  font-size: 1.125em;\n}\n.katex .fontsize-ensurer.reset-size3.size5,\n.katex .sizing.reset-size3.size5 {\n  font-size: 1.25em;\n}\n.katex .fontsize-ensurer.reset-size3.size6,\n.katex .sizing.reset-size3.size6 {\n  font-size: 1.5em;\n}\n.katex .fontsize-ensurer.reset-size3.size7,\n.katex .sizing.reset-size3.size7 {\n  font-size: 1.8em;\n}\n.katex .fontsize-ensurer.reset-size3.size8,\n.katex .sizing.reset-size3.size8 {\n  font-size: 2.1625em;\n}\n.katex .fontsize-ensurer.reset-size3.size9,\n.katex .sizing.reset-size3.size9 {\n  font-size: 2.5875em;\n}\n.katex .fontsize-ensurer.reset-size3.size10,\n.katex .sizing.reset-size3.size10 {\n  font-size: 3.1125em;\n}\n.katex .fontsize-ensurer.reset-size4.size1,\n.katex .sizing.reset-size4.size1 {\n  font-size: .55555556em;\n}\n.katex .fontsize-ensurer.reset-size4.size2,\n.katex .sizing.reset-size4.size2 {\n  font-size: .77777778em;\n}\n.katex .fontsize-ensurer.reset-size4.size3,\n.katex .sizing.reset-size4.size3 {\n  font-size: .88888889em;\n}\n.katex .fontsize-ensurer.reset-size4.size4,\n.katex .sizing.reset-size4.size4 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size4.size5,\n.katex .sizing.reset-size4.size5 {\n  font-size: 1.11111111em;\n}\n.katex .fontsize-ensurer.reset-size4.size6,\n.katex .sizing.reset-size4.size6 {\n  font-size: 1.33333333em;\n}\n.katex .fontsize-ensurer.reset-size4.size7,\n.katex .sizing.reset-size4.size7 {\n  font-size: 1.6em;\n}\n.katex .fontsize-ensurer.reset-size4.size8,\n.katex .sizing.reset-size4.size8 {\n  font-size: 1.92222222em;\n}\n.katex .fontsize-ensurer.reset-size4.size9,\n.katex .sizing.reset-size4.size9 {\n  font-size: 2.3em;\n}\n.katex .fontsize-ensurer.reset-size4.size10,\n.katex .sizing.reset-size4.size10 {\n  font-size: 2.76666667em;\n}\n.katex .fontsize-ensurer.reset-size5.size1,\n.katex .sizing.reset-size5.size1 {\n  font-size: .5em;\n}\n.katex .fontsize-ensurer.reset-size5.size2,\n.katex .sizing.reset-size5.size2 {\n  font-size: .7em;\n}\n.katex .fontsize-ensurer.reset-size5.size3,\n.katex .sizing.reset-size5.size3 {\n  font-size: .8em;\n}\n.katex .fontsize-ensurer.reset-size5.size4,\n.katex .sizing.reset-size5.size4 {\n  font-size: .9em;\n}\n.katex .fontsize-ensurer.reset-size5.size5,\n.katex .sizing.reset-size5.size5 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size5.size6,\n.katex .sizing.reset-size5.size6 {\n  font-size: 1.2em;\n}\n.katex .fontsize-ensurer.reset-size5.size7,\n.katex .sizing.reset-size5.size7 {\n  font-size: 1.44em;\n}\n.katex .fontsize-ensurer.reset-size5.size8,\n.katex .sizing.reset-size5.size8 {\n  font-size: 1.73em;\n}\n.katex .fontsize-ensurer.reset-size5.size9,\n.katex .sizing.reset-size5.size9 {\n  font-size: 2.07em;\n}\n.katex .fontsize-ensurer.reset-size5.size10,\n.katex .sizing.reset-size5.size10 {\n  font-size: 2.49em;\n}\n.katex .fontsize-ensurer.reset-size6.size1,\n.katex .sizing.reset-size6.size1 {\n  font-size: .41666667em;\n}\n.katex .fontsize-ensurer.reset-size6.size2,\n.katex .sizing.reset-size6.size2 {\n  font-size: .58333333em;\n}\n.katex .fontsize-ensurer.reset-size6.size3,\n.katex .sizing.reset-size6.size3 {\n  font-size: .66666667em;\n}\n.katex .fontsize-ensurer.reset-size6.size4,\n.katex .sizing.reset-size6.size4 {\n  font-size: .75em;\n}\n.katex .fontsize-ensurer.reset-size6.size5,\n.katex .sizing.reset-size6.size5 {\n  font-size: .83333333em;\n}\n.katex .fontsize-ensurer.reset-size6.size6,\n.katex .sizing.reset-size6.size6 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size6.size7,\n.katex .sizing.reset-size6.size7 {\n  font-size: 1.2em;\n}\n.katex .fontsize-ensurer.reset-size6.size8,\n.katex .sizing.reset-size6.size8 {\n  font-size: 1.44166667em;\n}\n.katex .fontsize-ensurer.reset-size6.size9,\n.katex .sizing.reset-size6.size9 {\n  font-size: 1.725em;\n}\n.katex .fontsize-ensurer.reset-size6.size10,\n.katex .sizing.reset-size6.size10 {\n  font-size: 2.075em;\n}\n.katex .fontsize-ensurer.reset-size7.size1,\n.katex .sizing.reset-size7.size1 {\n  font-size: .34722222em;\n}\n.katex .fontsize-ensurer.reset-size7.size2,\n.katex .sizing.reset-size7.size2 {\n  font-size: .48611111em;\n}\n.katex .fontsize-ensurer.reset-size7.size3,\n.katex .sizing.reset-size7.size3 {\n  font-size: .55555556em;\n}\n.katex .fontsize-ensurer.reset-size7.size4,\n.katex .sizing.reset-size7.size4 {\n  font-size: .625em;\n}\n.katex .fontsize-ensurer.reset-size7.size5,\n.katex .sizing.reset-size7.size5 {\n  font-size: .69444444em;\n}\n.katex .fontsize-ensurer.reset-size7.size6,\n.katex .sizing.reset-size7.size6 {\n  font-size: .83333333em;\n}\n.katex .fontsize-ensurer.reset-size7.size7,\n.katex .sizing.reset-size7.size7 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size7.size8,\n.katex .sizing.reset-size7.size8 {\n  font-size: 1.20138889em;\n}\n.katex .fontsize-ensurer.reset-size7.size9,\n.katex .sizing.reset-size7.size9 {\n  font-size: 1.4375em;\n}\n.katex .fontsize-ensurer.reset-size7.size10,\n.katex .sizing.reset-size7.size10 {\n  font-size: 1.72916667em;\n}\n.katex .fontsize-ensurer.reset-size8.size1,\n.katex .sizing.reset-size8.size1 {\n  font-size: .28901734em;\n}\n.katex .fontsize-ensurer.reset-size8.size2,\n.katex .sizing.reset-size8.size2 {\n  font-size: .40462428em;\n}\n.katex .fontsize-ensurer.reset-size8.size3,\n.katex .sizing.reset-size8.size3 {\n  font-size: .46242775em;\n}\n.katex .fontsize-ensurer.reset-size8.size4,\n.katex .sizing.reset-size8.size4 {\n  font-size: .52023121em;\n}\n.katex .fontsize-ensurer.reset-size8.size5,\n.katex .sizing.reset-size8.size5 {\n  font-size: .57803468em;\n}\n.katex .fontsize-ensurer.reset-size8.size6,\n.katex .sizing.reset-size8.size6 {\n  font-size: .69364162em;\n}\n.katex .fontsize-ensurer.reset-size8.size7,\n.katex .sizing.reset-size8.size7 {\n  font-size: .83236994em;\n}\n.katex .fontsize-ensurer.reset-size8.size8,\n.katex .sizing.reset-size8.size8 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size8.size9,\n.katex .sizing.reset-size8.size9 {\n  font-size: 1.19653179em;\n}\n.katex .fontsize-ensurer.reset-size8.size10,\n.katex .sizing.reset-size8.size10 {\n  font-size: 1.43930636em;\n}\n.katex .fontsize-ensurer.reset-size9.size1,\n.katex .sizing.reset-size9.size1 {\n  font-size: .24154589em;\n}\n.katex .fontsize-ensurer.reset-size9.size2,\n.katex .sizing.reset-size9.size2 {\n  font-size: .33816425em;\n}\n.katex .fontsize-ensurer.reset-size9.size3,\n.katex .sizing.reset-size9.size3 {\n  font-size: .38647343em;\n}\n.katex .fontsize-ensurer.reset-size9.size4,\n.katex .sizing.reset-size9.size4 {\n  font-size: .43478261em;\n}\n.katex .fontsize-ensurer.reset-size9.size5,\n.katex .sizing.reset-size9.size5 {\n  font-size: .48309179em;\n}\n.katex .fontsize-ensurer.reset-size9.size6,\n.katex .sizing.reset-size9.size6 {\n  font-size: .57971014em;\n}\n.katex .fontsize-ensurer.reset-size9.size7,\n.katex .sizing.reset-size9.size7 {\n  font-size: .69565217em;\n}\n.katex .fontsize-ensurer.reset-size9.size8,\n.katex .sizing.reset-size9.size8 {\n  font-size: .83574879em;\n}\n.katex .fontsize-ensurer.reset-size9.size9,\n.katex .sizing.reset-size9.size9 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size9.size10,\n.katex .sizing.reset-size9.size10 {\n  font-size: 1.20289855em;\n}\n.katex .fontsize-ensurer.reset-size10.size1,\n.katex .sizing.reset-size10.size1 {\n  font-size: .20080321em;\n}\n.katex .fontsize-ensurer.reset-size10.size2,\n.katex .sizing.reset-size10.size2 {\n  font-size: .2811245em;\n}\n.katex .fontsize-ensurer.reset-size10.size3,\n.katex .sizing.reset-size10.size3 {\n  font-size: .32128514em;\n}\n.katex .fontsize-ensurer.reset-size10.size4,\n.katex .sizing.reset-size10.size4 {\n  font-size: .36144578em;\n}\n.katex .fontsize-ensurer.reset-size10.size5,\n.katex .sizing.reset-size10.size5 {\n  font-size: .40160643em;\n}\n.katex .fontsize-ensurer.reset-size10.size6,\n.katex .sizing.reset-size10.size6 {\n  font-size: .48192771em;\n}\n.katex .fontsize-ensurer.reset-size10.size7,\n.katex .sizing.reset-size10.size7 {\n  font-size: .57831325em;\n}\n.katex .fontsize-ensurer.reset-size10.size8,\n.katex .sizing.reset-size10.size8 {\n  font-size: .69477912em;\n}\n.katex .fontsize-ensurer.reset-size10.size9,\n.katex .sizing.reset-size10.size9 {\n  font-size: .8313253em;\n}\n.katex .fontsize-ensurer.reset-size10.size10,\n.katex .sizing.reset-size10.size10 {\n  font-size: 1em;\n}\n.katex .delimsizing.size1 {\n  font-family: KaTeX_Size1;\n}\n.katex .delimsizing.size2 {\n  font-family: KaTeX_Size2;\n}\n.katex .delimsizing.size3 {\n  font-family: KaTeX_Size3;\n}\n.katex .delimsizing.size4 {\n  font-family: KaTeX_Size4;\n}\n.katex .delimsizing.mult .delim-size1>span {\n  font-family: KaTeX_Size1;\n}\n.katex .delimsizing.mult .delim-size4>span {\n  font-family: KaTeX_Size4;\n}\n.katex .nulldelimiter {\n  display: inline-block;\n  width: .12em;\n}\n.katex .op-symbol {\n  position: relative;\n}\n.katex .op-symbol.small-op {\n  font-family: KaTeX_Size1;\n}\n.katex .op-symbol.large-op {\n  font-family: KaTeX_Size2;\n}\n.katex .accent>.vlist>span,\n.katex .op-limits>.vlist>span {\n  text-align: center;\n}\n.katex .accent .accent-body>span {\n  width: 0;\n}\n.katex .accent .accent-body.accent-vec>span {\n  position: relative;\n  left: .326em;\n}\n.katex .mtable .vertical-separator {\n  display: inline-block;\n  margin: 0 -.025em;\n  border-right: .05em solid #000;\n}\n.katex .mtable .arraycolsep {\n  display: inline-block;\n}\n.katex .mtable .col-align-c>.vlist {\n  text-align: center;\n}\n.katex .mtable .col-align-l>.vlist {\n  text-align: left;\n}\n.katex .mtable .col-align-r>.vlist {\n  text-align: right;\n}\n";e("browserify-css").createStyle(h,{href:"katex.min.css"}),t.exports=h},{"browserify-css":3}],2:[function(e,t,i){var h=e("katex"),a=function(e,t){try{return h.renderToString(e,{displayMode:t})}catch(i){console.log('Katex error trying to parse: "'+e+'". Description: '+i)}};t.exports=function(t,i){var h="undefined"!=typeof i?"separateSelector":"spanIsInline";return t=arguments.length>0?t:".math",function(s){var r,l=!1;switch(h){case"separateSelector":r=s.parent.querySelectorAll(t),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,!1),l=!0}),r=s.parent.querySelectorAll(i),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,!0),l=!0});break;case"spanIsInline":r=s.parent.querySelectorAll(t),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,"span"!==e.tagName.toLowerCase()),l=!0})}if(l)try{e("../katex/katex.min.css")}catch(n){console.log("It was not possible to load the CSS from KaTeX. Details: "+n)}}}},{"../katex/katex.min.css":1,katex:4}],3:[function(e,t,i){"use strict";t.exports={createLink:function(e,t){var i=document.head||document.getElementsByTagName("head")[0],h=document.createElement("link");h.href=e,h.rel="stylesheet";for(var a in t)if(t.hasOwnProperty(a)){var s=t[a];h.setAttribute("data-"+a,s)}i.appendChild(h)},createStyle:function(e,t){var i=document.head||document.getElementsByTagName("head")[0],h=document.createElement("style");h.type="text/css";for(var a in t)if(t.hasOwnProperty(a)){var s=t[a];h.setAttribute("data-"+a,s)}h.sheet?(h.innerHTML=e,h.sheet.cssText=e,i.appendChild(h)):h.styleSheet?(i.appendChild(h),h.styleSheet.cssText=e):(h.appendChild(document.createTextNode(e)),i.appendChild(h))}}},{}],4:[function(e,t,i){var h=e("./src/ParseError"),a=e("./src/Settings"),s=e("./src/buildTree"),r=e("./src/parseTree"),l=e("./src/utils"),n=function(e,t,i){l.clearNode(t);var h=new a(i),n=r(e,h),p=s(n,e,h).toNode();t.appendChild(p)};"undefined"!=typeof document&&"CSS1Compat"!==document.compatMode&&("undefined"!=typeof console&&console.warn("Warning: KaTeX doesn't work in quirks mode. Make sure your website has a suitable doctype."),n=function(){throw new h("KaTeX doesn't work in quirks mode.")});var p=function(e,t){var i=new a(t),h=r(e,i);return s(h,e,i).toMarkup()},o=function(e,t){var i=new a(t);return r(e,i)};t.exports={render:n,renderToString:p,__parse:o,ParseError:h}},{"./src/ParseError":7,"./src/Settings":9,"./src/buildTree":14,"./src/parseTree":23,"./src/utils":25}],5:[function(e,t,i){function h(e){this._input=e}function a(e,t,i){this.text=e,this.data=t,this.position=i}var s=e("match-at"),r=e("./ParseError"),l=[/[\/|@.""`0-9a-zA-Z]/,/[*+-]/,/[=<>:]/,/[,;]/,/['\^_{}]/,/[(\[]/,/[)\]?!]/,/~/,/&/,/\\\\/],n=[/[a-zA-Z0-9`!@*()-=+\[\]'";:?\/.,]/,/[{}]/,/~/,/&/,/\\\\/],p=/\s*/,o=/ +|\\  +/,c=/\\(?:[a-zA-Z]+|.)/;h.prototype._innerLex=function(e,t,i){var h,l=this._input;if(i)h=s(p,l,e)[0],e+=h.length;else if(h=s(o,l,e),null!==h)return new a(" ",null,e+h[0].length);if(e===l.length)return new a("EOF",null,e);var n;if(n=s(c,l,e))return new a(n[0],null,e+n[0].length);for(var g=0;g<t.length;g++){var d=t[g];if(n=s(d,l,e))return new a(n[0],null,e+n[0].length)}throw new r("Unexpected character: '"+l[e]+"'",this,e)};var g=/#[a-z0-9]+|[a-z]+/i;h.prototype._innerLexColor=function(e){var t=this._input,i=s(p,t,e)[0];e+=i.length;var h;if(h=s(g,t,e))return new a(h[0],null,e+h[0].length);throw new r("Invalid color",this,e)};var d=/(-?)\s*(\d+(?:\.\d*)?|\.\d+)\s*([a-z]{2})/;h.prototype._innerLexSize=function(e){var t=this._input,i=s(p,t,e)[0];e+=i.length;var h;if(h=s(d,t,e)){var l=h[3];if("em"!==l&&"ex"!==l)throw new r("Invalid unit: '"+l+"'",this,e);return new a(h[0],{number:+(h[1]+h[2]),unit:l},e+h[0].length)}throw new r("Invalid size",this,e)},h.prototype._innerLexWhitespace=function(e){
+var t=this._input,i=s(p,t,e)[0];return e+=i.length,new a(i[0],null,e)},h.prototype.lex=function(e,t){return"math"===t?this._innerLex(e,l,!0):"text"===t?this._innerLex(e,n,!1):"color"===t?this._innerLexColor(e):"size"===t?this._innerLexSize(e):"whitespace"===t?this._innerLexWhitespace(e):void 0},t.exports=h},{"./ParseError":7,"match-at":26}],6:[function(e,t,i){function h(e){this.style=e.style,this.color=e.color,this.size=e.size,this.phantom=e.phantom,this.font=e.font,void 0===e.parentStyle?this.parentStyle=e.style:this.parentStyle=e.parentStyle,void 0===e.parentSize?this.parentSize=e.size:this.parentSize=e.parentSize}h.prototype.extend=function(e){var t={style:this.style,size:this.size,color:this.color,parentStyle:this.style,parentSize:this.size,phantom:this.phantom,font:this.font};for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i]);return new h(t)},h.prototype.withStyle=function(e){return this.extend({style:e})},h.prototype.withSize=function(e){return this.extend({size:e})},h.prototype.withColor=function(e){return this.extend({color:e})},h.prototype.withPhantom=function(){return this.extend({phantom:!0})},h.prototype.withFont=function(e){return this.extend({font:e})},h.prototype.reset=function(){return this.extend({})};var a={"katex-blue":"#6495ed","katex-orange":"#ffa500","katex-pink":"#ff00af","katex-red":"#df0030","katex-green":"#28ae7b","katex-gray":"gray","katex-purple":"#9d38bd","katex-blueA":"#c7e9f1","katex-blueB":"#9cdceb","katex-blueC":"#58c4dd","katex-blueD":"#29abca","katex-blueE":"#1c758a","katex-tealA":"#acead7","katex-tealB":"#76ddc0","katex-tealC":"#5cd0b3","katex-tealD":"#55c1a7","katex-tealE":"#49a88f","katex-greenA":"#c9e2ae","katex-greenB":"#a6cf8c","katex-greenC":"#83c167","katex-greenD":"#77b05d","katex-greenE":"#699c52","katex-goldA":"#f7c797","katex-goldB":"#f9b775","katex-goldC":"#f0ac5f","katex-goldD":"#e1a158","katex-goldE":"#c78d46","katex-redA":"#f7a1a3","katex-redB":"#ff8080","katex-redC":"#fc6255","katex-redD":"#e65a4c","katex-redE":"#cf5044","katex-maroonA":"#ecabc1","katex-maroonB":"#ec92ab","katex-maroonC":"#c55f73","katex-maroonD":"#a24d61","katex-maroonE":"#94424f","katex-purpleA":"#caa3e8","katex-purpleB":"#b189c6","katex-purpleC":"#9a72ac","katex-purpleD":"#715582","katex-purpleE":"#644172","katex-mintA":"#f5f9e8","katex-mintB":"#edf2df","katex-mintC":"#e0e5cc","katex-grayA":"#fdfdfd","katex-grayB":"#f7f7f7","katex-grayC":"#eeeeee","katex-grayD":"#dddddd","katex-grayE":"#cccccc","katex-grayF":"#aaaaaa","katex-grayG":"#999999","katex-grayH":"#555555","katex-grayI":"#333333","katex-kaBlue":"#314453","katex-kaGreen":"#639b24"};h.prototype.getColor=function(){return this.phantom?"transparent":a[this.color]||this.color},t.exports=h},{}],7:[function(e,t,i){function h(e,t,i){var a="KaTeX parse error: "+e;if(void 0!==t&&void 0!==i){a+=" at position "+i+": ";var s=t._input;s=s.slice(0,i)+"̲"+s.slice(i);var r=Math.max(0,i-15),l=i+15;a+=s.slice(r,l)}var n=new Error(a);return n.name="ParseError",n.__proto__=h.prototype,n.position=i,n}h.prototype.__proto__=Error.prototype,t.exports=h},{}],8:[function(e,t,i){function h(e,t){this.lexer=new l(e),this.settings=t}function a(e,t){this.result=e,this.isFunction=t}var s=e("./functions"),r=e("./environments"),l=e("./Lexer"),n=e("./symbols"),p=e("./utils"),o=e("./parseData"),c=e("./ParseError"),g=o.ParseNode,d=o.ParseResult;h.prototype.expect=function(e,t){if(e.text!==t)throw new c("Expected '"+t+"', got '"+e.text+"'",this.lexer,e.position)},h.prototype.parse=function(e){var t=this.parseInput(0,"math");return t.result},h.prototype.parseInput=function(e,t){var i=this.parseExpression(e,t,!1);return this.expect(i.peek,"EOF"),i};var u=["}","\\end","\\right","&","\\\\","\\cr"];h.prototype.parseExpression=function(e,t,i,h){for(var a=[],s=null;;){if(s=this.lexer.lex(e,t),-1!==u.indexOf(s.text))break;if(h&&s.text===h)break;var r=this.parseAtom(e,t);if(!r){if(!this.settings.throwOnError&&"\\"===s.text[0]){var l=this.handleUnsupportedCmd(s.text,t);a.push(l),e=s.position;continue}break}if(i&&"infix"===r.result.type)break;a.push(r.result),e=r.position}var n=new d(this.handleInfixNodes(a,t),e);return n.peek=s,n},h.prototype.handleInfixNodes=function(e,t){for(var i,h,a=-1,r=0;r<e.length;r++){var l=e[r];if("infix"===l.type){if(-1!==a)throw new c("only one infix operator per group",this.lexer,-1);a=r,h=l.value.replaceWith,i=s.funcs[h]}}if(-1!==a){var n,p,o=e.slice(0,a),d=e.slice(a+1);n=1===o.length&&"ordgroup"===o[0].type?o[0]:new g("ordgroup",o,t),p=1===d.length&&"ordgroup"===d[0].type?d[0]:new g("ordgroup",d,t);var u=i.handler(h,n,p);return[new g(u.type,u,t)]}return e};var k=1;h.prototype.handleSupSubscript=function(e,t,i,h){var a=this.parseGroup(e,t);if(a){if(a.isFunction){var r=s.funcs[a.result.result].greediness;if(r>k)return this.parseFunction(e,t);throw new c("Got function '"+a.result.result+"' with no arguments as "+h,this.lexer,e)}return a.result}var l=this.lexer.lex(e,t);if(this.settings.throwOnError||"\\"!==l.text[0])throw new c("Expected group after '"+i+"'",this.lexer,e);return new d(this.handleUnsupportedCmd(l.text,t),l.position)},h.prototype.handleUnsupportedCmd=function(e,t){for(var i=[],h=0;h<e.length;h++)i.push(new g("textord",e[h],"text"));var a=new g("text",{body:i,type:"text"},t),s=new g("color",{color:this.settings.errorColor,value:[a],type:"color"},t);return s},h.prototype.parseAtom=function(e,t){var i=this.parseImplicitGroup(e,t);if("text"===t)return i;var h;i?h=i.position:(h=e,i=void 0);for(var a,s,r;;){var l=this.lexer.lex(h,t);if("\\limits"===l.text||"\\nolimits"===l.text){if(!i||"op"!==i.result.type)throw new c("Limit controls must follow a math operator",this.lexer,h);var n="\\limits"===l.text;i.result.value.limits=n,i.result.value.alwaysHandleSupSub=!0,h=l.position}else if("^"===l.text){if(a)throw new c("Double superscript",this.lexer,h);r=this.handleSupSubscript(l.position,t,l.text,"superscript"),h=r.position,a=r.result}else if("_"===l.text){if(s)throw new c("Double subscript",this.lexer,h);r=this.handleSupSubscript(l.position,t,l.text,"subscript"),h=r.position,s=r.result}else{if("'"!==l.text)break;var p=new g("textord","\\prime",t),o=[p];for(h=l.position;"'"===(l=this.lexer.lex(h,t)).text;)o.push(p),h=l.position;a=new g("ordgroup",o,t)}}return a||s?new d(new g("supsub",{base:i&&i.result,sup:a,sub:s},t),h):i};var w=["\\tiny","\\scriptsize","\\footnotesize","\\small","\\normalsize","\\large","\\Large","\\LARGE","\\huge","\\Huge"],f=["\\displaystyle","\\textstyle","\\scriptstyle","\\scriptscriptstyle"];h.prototype.parseImplicitGroup=function(e,t){var i=this.parseSymbol(e,t);if(!i||!i.result)return this.parseFunction(e,t);var h,a=i.result.result;if("\\left"===a){var s=this.parseFunction(e,t);h=this.parseExpression(s.position,t,!1),this.expect(h.peek,"\\right");var l=this.parseFunction(h.position,t);return new d(new g("leftright",{body:h.result,left:s.result.value.value,right:l.result.value.value},t),l.position)}if("\\begin"===a){var n=this.parseFunction(e,t),o=n.result.value.name;if(!r.hasOwnProperty(o))throw new c("No such environment: "+o,this.lexer,n.result.value.namepos);var u=r[o],k=[null,t,o],m=this.parseArguments(n.position,t,"\\begin{"+o+"}",u,k);k[0]=m;var z=u.handler.apply(this,k),x=this.lexer.lex(z.position,t);this.expect(x,"\\end");var y=this.parseFunction(z.position,t);if(y.result.value.name!==o)throw new c("Mismatch: \\begin{"+o+"} matched by \\end{"+y.result.value.name+"}",this.lexer,y.namepos);return z.position=y.position,z}return p.contains(w,a)?(h=this.parseExpression(i.result.position,t,!1),new d(new g("sizing",{size:"size"+(p.indexOf(w,a)+1),value:h.result},t),h.position)):p.contains(f,a)?(h=this.parseExpression(i.result.position,t,!0),new d(new g("styling",{style:a.slice(1,a.length-5),value:h.result},t),h.position)):this.parseFunction(e,t)},h.prototype.parseFunction=function(e,t){var i=this.parseGroup(e,t);if(i){if(i.isFunction){var h=i.result.result,a=s.funcs[h];if("text"===t&&!a.allowedInText)throw new c("Can't use function '"+h+"' in text mode",this.lexer,i.position);var r=[h],l=this.parseArguments(i.result.position,t,h,a,r),n=s.funcs[h].handler.apply(this,r);return new d(new g(n.type,n,t),l)}return i.result}return null},h.prototype.parseArguments=function(e,t,i,h,r){var l=h.numArgs+h.numOptionalArgs;if(0===l)return e;for(var n=e,p=h.greediness,o=[n],g=0;l>g;g++){var u,k=h.argTypes&&h.argTypes[g];if(g<h.numOptionalArgs){if(u=k?this.parseSpecialGroup(n,k,t,!0):this.parseOptionalGroup(n,t),!u){r.push(null),o.push(n);continue}}else if(u=k?this.parseSpecialGroup(n,k,t):this.parseGroup(n,t),!u){var w=this.lexer.lex(n,t);if(this.settings.throwOnError||"\\"!==w.text[0])throw new c("Expected group after '"+i+"'",this.lexer,e);u=new a(new d(this.handleUnsupportedCmd(w.text,t),w.position),!1)}var f;if(u.isFunction){var m=s.funcs[u.result.result].greediness;if(!(m>p))throw new c("Got function '"+u.result.result+"' as argument to '"+i+"'",this.lexer,u.result.position-1);f=this.parseFunction(n,t)}else f=u.result;r.push(f.result),o.push(f.position),n=f.position}return r.push(o),n},h.prototype.parseSpecialGroup=function(e,t,i,h){if("original"===t&&(t=i),"color"===t||"size"===t){var s=this.lexer.lex(e,i);if(h&&"["!==s.text)return null;this.expect(s,h?"[":"{");var r,l=this.lexer.lex(s.position,t);r="color"===t?l.text:l.data;var n=this.lexer.lex(l.position,i);return this.expect(n,h?"]":"}"),new a(new d(new g(t,r,i),n.position),!1)}if("text"===t){var p=this.lexer.lex(e,"whitespace");e=p.position}return h?this.parseOptionalGroup(e,t):this.parseGroup(e,t)},h.prototype.parseGroup=function(e,t){var i=this.lexer.lex(e,t);if("{"===i.text){var h=this.parseExpression(i.position,t,!1),s=this.lexer.lex(h.position,t);return this.expect(s,"}"),new a(new d(new g("ordgroup",h.result,t),s.position),!1)}return this.parseSymbol(e,t)},h.prototype.parseOptionalGroup=function(e,t){var i=this.lexer.lex(e,t);if("["===i.text){var h=this.parseExpression(i.position,t,!1,"]"),s=this.lexer.lex(h.position,t);return this.expect(s,"]"),new a(new d(new g("ordgroup",h.result,t),s.position),!1)}return null},h.prototype.parseSymbol=function(e,t){var i=this.lexer.lex(e,t);return s.funcs[i.text]?new a(new d(i.text,i.position),!0):n[t][i.text]?new a(new d(new g(n[t][i.text].group,i.text,t),i.position),!1):null},h.prototype.ParseNode=g,t.exports=h},{"./Lexer":5,"./ParseError":7,"./environments":17,"./functions":20,"./parseData":22,"./symbols":24,"./utils":25}],9:[function(e,t,i){function h(e,t){return void 0===e?t:e}function a(e){e=e||{},this.displayMode=h(e.displayMode,!1),this.throwOnError=h(e.throwOnError,!0),this.errorColor=h(e.errorColor,"#cc0000")}t.exports=a},{}],10:[function(e,t,i){function h(e,t,i,h){this.id=e,this.size=t,this.cramped=h,this.sizeMultiplier=i}h.prototype.sup=function(){return u[k[this.id]]},h.prototype.sub=function(){return u[w[this.id]]},h.prototype.fracNum=function(){return u[f[this.id]]},h.prototype.fracDen=function(){return u[m[this.id]]},h.prototype.cramp=function(){return u[z[this.id]]},h.prototype.cls=function(){return g[this.size]+(this.cramped?" cramped":" uncramped")},h.prototype.reset=function(){return d[this.size]};var a=0,s=1,r=2,l=3,n=4,p=5,o=6,c=7,g=["displaystyle textstyle","textstyle","scriptstyle","scriptscriptstyle"],d=["reset-textstyle","reset-textstyle","reset-scriptstyle","reset-scriptscriptstyle"],u=[new h(a,0,1,!1),new h(s,0,1,!0),new h(r,1,1,!1),new h(l,1,1,!0),new h(n,2,.7,!1),new h(p,2,.7,!0),new h(o,3,.5,!1),new h(c,3,.5,!0)],k=[n,p,n,p,o,c,o,c],w=[p,p,p,p,c,c,c,c],f=[r,l,n,p,o,c,o,c],m=[l,l,p,p,c,c,c,c],z=[s,s,l,l,p,p,c,c];t.exports={DISPLAY:u[a],TEXT:u[r],SCRIPT:u[n],SCRIPTSCRIPT:u[o]}},{}],11:[function(e,t,i){var h=e("./domTree"),a=e("./fontMetrics"),s=e("./symbols"),r=e("./utils"),l=["\\Gamma","\\Delta","\\Theta","\\Lambda","\\Xi","\\Pi","\\Sigma","\\Upsilon","\\Phi","\\Psi","\\Omega"],n=["ı","ȷ"],p=function(e,t,i,r,l){s[i][e]&&s[i][e].replace&&(e=s[i][e].replace);var n,p=a.getCharacterMetrics(e,t);return p?n=new h.symbolNode(e,p.height,p.depth,p.italic,p.skew,l):("undefined"!=typeof console&&console.warn("No character metrics for '"+e+"' in style '"+t+"'"),n=new h.symbolNode(e,0,0,0,0,l)),r&&(n.style.color=r),n},o=function(e,t,i,h){return"\\"===e||"main"===s[t][e].font?p(e,"Main-Regular",t,i,h):p(e,"AMS-Regular",t,i,h.concat(["amsrm"]))},c=function(e,t,i,h,a){if("mathord"===a)return g(e,t,i,h);if("textord"===a)return p(e,"Main-Regular",t,i,h.concat(["mathrm"]));throw new Error("unexpected type: "+a+" in mathDefault")},g=function(e,t,i,h){return/[0-9]/.test(e.charAt(0))||r.contains(n,e)||r.contains(l,e)?p(e,"Main-Italic",t,i,h.concat(["mainit"])):p(e,"Math-Italic",t,i,h.concat(["mathit"]))},d=function(e,t,i){var h=e.mode,l=e.value;s[h][l]&&s[h][l].replace&&(l=s[h][l].replace);var o=["mord"],d=t.getColor(),u=t.font;if(u){if("mathit"===u||r.contains(n,l))return g(l,h,d,o);var k=y[u].fontName;return a.getCharacterMetrics(l,k)?p(l,k,h,d,o.concat([u])):c(l,h,d,o,i)}return c(l,h,d,o,i)},u=function(e){var t=0,i=0,h=0;if(e.children)for(var a=0;a<e.children.length;a++)e.children[a].height>t&&(t=e.children[a].height),e.children[a].depth>i&&(i=e.children[a].depth),e.children[a].maxFontSize>h&&(h=e.children[a].maxFontSize);e.height=t,e.depth=i,e.maxFontSize=h},k=function(e,t,i){var a=new h.span(e,t);return u(a),i&&(a.style.color=i),a},w=function(e){var t=new h.documentFragment(e);return u(t),t},f=function(e,t){var i=k([],[new h.symbolNode("​")]);i.style.fontSize=t/e.style.sizeMultiplier+"em";var a=k(["fontsize-ensurer","reset-"+e.size,"size5"],[i]);return a},m=function(e,t,i,a){var s,r,l;if("individualShift"===t){var n=e;for(e=[n[0]],s=-n[0].shift-n[0].elem.depth,r=s,l=1;l<n.length;l++){var p=-n[l].shift-r-n[l].elem.depth,o=p-(n[l-1].elem.height+n[l-1].elem.depth);r+=p,e.push({type:"kern",size:o}),e.push(n[l])}}else if("top"===t){var c=i;for(l=0;l<e.length;l++)c-="kern"===e[l].type?e[l].size:e[l].elem.height+e[l].elem.depth;s=c}else s="bottom"===t?-i:"shift"===t?-e[0].elem.depth-i:"firstBaseline"===t?-e[0].elem.depth:0;var g=0;for(l=0;l<e.length;l++)"elem"===e[l].type&&(g=Math.max(g,e[l].elem.maxFontSize));var d=f(a,g),u=[];for(r=s,l=0;l<e.length;l++)if("kern"===e[l].type)r+=e[l].size;else{var w=e[l].elem,m=-w.depth-r;r+=w.height+w.depth;var z=k([],[d,w]);z.height-=m,z.depth+=m,z.style.top=m+"em",u.push(z)}var x=k(["baseline-fix"],[d,new h.symbolNode("​")]);u.push(x);var y=k(["vlist"],u);return y.height=Math.max(r,y.height),y.depth=Math.max(-s,y.depth),y},z={size1:.5,size2:.7,size3:.8,size4:.9,size5:1,size6:1.2,size7:1.44,size8:1.73,size9:2.07,size10:2.49},x={"\\qquad":{size:"2em",className:"qquad"},"\\quad":{size:"1em",className:"quad"},"\\enspace":{size:"0.5em",className:"enspace"},"\\;":{size:"0.277778em",className:"thickspace"},"\\:":{size:"0.22222em",className:"mediumspace"},"\\,":{size:"0.16667em",className:"thinspace"},"\\!":{size:"-0.16667em",className:"negativethinspace"}},y={mathbf:{variant:"bold",fontName:"Main-Bold"},mathrm:{variant:"normal",fontName:"Main-Regular"},mathbb:{variant:"double-struck",fontName:"AMS-Regular"},mathcal:{variant:"script",fontName:"Caligraphic-Regular"},mathfrak:{variant:"fraktur",fontName:"Fraktur-Regular"},mathscr:{variant:"script",fontName:"Script-Regular"},mathsf:{variant:"sans-serif",fontName:"SansSerif-Regular"},mathtt:{variant:"monospace",fontName:"Typewriter-Regular"}};t.exports={fontMap:y,makeSymbol:p,mathsym:o,makeSpan:k,makeFragment:w,makeVList:m,makeOrd:d,sizingMultiplier:z,spacingFunctions:x}},{"./domTree":16,"./fontMetrics":18,"./symbols":24,"./utils":25}],12:[function(e,t,i){var h=e("./ParseError"),a=e("./Style"),s=e("./buildCommon"),r=e("./delimiter"),l=e("./domTree"),n=e("./fontMetrics"),p=e("./utils"),o=s.makeSpan,c=function(e,t,i){for(var h=[],a=0;a<e.length;a++){var s=e[a];h.push(z(s,t,i)),i=s}return h},g={mathord:"mord",textord:"mord",bin:"mbin",rel:"mrel",text:"mord",open:"mopen",close:"mclose",inner:"minner",genfrac:"mord",array:"mord",spacing:"mord",punct:"mpunct",ordgroup:"mord",op:"mop",katex:"mord",overline:"mord",rule:"mord",leftright:"minner",sqrt:"mord",accent:"mord"},d=function(e){return null==e?g.mathord:"supsub"===e.type?d(e.value.base):"llap"===e.type||"rlap"===e.type?d(e.value):"color"===e.type?d(e.value.value):"sizing"===e.type?d(e.value.value):"styling"===e.type?d(e.value.value):"delimsizing"===e.type?g[e.value.delimType]:g[e.type]},u=function(e,t){return e?"op"===e.type?e.value.limits&&(t.style.size===a.DISPLAY.size||e.value.alwaysHandleSupSub):"accent"===e.type?w(e.value.base):null:!1},k=function(e){return e?"ordgroup"===e.type?1===e.value.length?k(e.value[0]):e:"color"===e.type&&1===e.value.value.length?k(e.value.value[0]):e:!1},w=function(e){var t=k(e);return"mathord"===t.type||"textord"===t.type||"bin"===t.type||"rel"===t.type||"inner"===t.type||"open"===t.type||"close"===t.type||"punct"===t.type},f=function(e){return o(["sizing","reset-"+e.size,"size5",e.style.reset(),a.TEXT.cls(),"nulldelimiter"])},m={mathord:function(e,t,i){return s.makeOrd(e,t,"mathord")},textord:function(e,t,i){return s.makeOrd(e,t,"textord")},bin:function(e,t,i){for(var h="mbin",a=i;a&&"color"===a.type;){var r=a.value.value;a=r[r.length-1]}return i&&!p.contains(["mbin","mopen","mrel","mop","mpunct"],d(a))||(e.type="textord",h="mord"),s.mathsym(e.value,e.mode,t.getColor(),[h])},rel:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["mrel"])},open:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["mopen"])},close:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["mclose"])},inner:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["minner"])},punct:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["mpunct"])},ordgroup:function(e,t,i){return o(["mord",t.style.cls()],c(e.value,t.reset()))},text:function(e,t,i){return o(["text","mord",t.style.cls()],c(e.value.body,t.reset()))},color:function(e,t,i){var h=c(e.value.value,t.withColor(e.value.color),i);return new s.makeFragment(h)},supsub:function(e,t,i){if(u(e.value.base,t))return m[e.value.base.type](e,t,i);var h,r,p,c,g=z(e.value.base,t.reset());e.value.sup&&(p=z(e.value.sup,t.withStyle(t.style.sup())),h=o([t.style.reset(),t.style.sup().cls()],[p])),e.value.sub&&(c=z(e.value.sub,t.withStyle(t.style.sub())),r=o([t.style.reset(),t.style.sub().cls()],[c]));var k,f;w(e.value.base)?(k=0,f=0):(k=g.height-n.metrics.supDrop,f=g.depth+n.metrics.subDrop);var x;x=t.style===a.DISPLAY?n.metrics.sup1:t.style.cramped?n.metrics.sup3:n.metrics.sup2;var y,v=a.TEXT.sizeMultiplier*t.style.sizeMultiplier,b=.5/n.metrics.ptPerEm/v+"em";if(e.value.sup)if(e.value.sub){k=Math.max(k,x,p.depth+.25*n.metrics.xHeight),f=Math.max(f,n.metrics.sub2);var T=n.metrics.defaultRuleThickness;if(k-p.depth-(c.height-f)<4*T){f=4*T-(k-p.depth)+c.height;var S=.8*n.metrics.xHeight-(k-p.depth);S>0&&(k+=S,f-=S)}y=s.makeVList([{type:"elem",elem:r,shift:f},{type:"elem",elem:h,shift:-k}],"individualShift",null,t),g instanceof l.symbolNode&&(y.children[0].style.marginLeft=-g.italic+"em"),y.children[0].style.marginRight=b,y.children[1].style.marginRight=b}else k=Math.max(k,x,p.depth+.25*n.metrics.xHeight),y=s.makeVList([{type:"elem",elem:h}],"shift",-k,t),y.children[0].style.marginRight=b;else f=Math.max(f,n.metrics.sub1,c.height-.8*n.metrics.xHeight),y=s.makeVList([{type:"elem",elem:r}],"shift",f,t),y.children[0].style.marginRight=b,g instanceof l.symbolNode&&(y.children[0].style.marginLeft=-g.italic+"em");return o([d(e.value.base)],[g,y])},genfrac:function(e,t,i){var h=t.style;"display"===e.value.size?h=a.DISPLAY:"text"===e.value.size&&(h=a.TEXT);var l,p=h.fracNum(),c=h.fracDen(),g=z(e.value.numer,t.withStyle(p)),d=o([h.reset(),p.cls()],[g]),u=z(e.value.denom,t.withStyle(c)),k=o([h.reset(),c.cls()],[u]);l=e.value.hasBarLine?n.metrics.defaultRuleThickness/t.style.sizeMultiplier:0;var w,m,x;h.size===a.DISPLAY.size?(w=n.metrics.num1,m=l>0?3*l:7*n.metrics.defaultRuleThickness,x=n.metrics.denom1):(l>0?(w=n.metrics.num2,m=l):(w=n.metrics.num3,m=3*n.metrics.defaultRuleThickness),x=n.metrics.denom2);var y;if(0===l){var v=w-g.depth-(u.height-x);m>v&&(w+=.5*(m-v),x+=.5*(m-v)),y=s.makeVList([{type:"elem",elem:k,shift:x},{type:"elem",elem:d,shift:-w}],"individualShift",null,t)}else{var b=n.metrics.axisHeight;w-g.depth-(b+.5*l)<m&&(w+=m-(w-g.depth-(b+.5*l))),b-.5*l-(u.height-x)<m&&(x+=m-(b-.5*l-(u.height-x)));var T=o([t.style.reset(),a.TEXT.cls(),"frac-line"]);T.height=l;var S=-(b-.5*l);y=s.makeVList([{type:"elem",elem:k,shift:x},{type:"elem",elem:T,shift:S},{type:"elem",elem:d,shift:-w}],"individualShift",null,t)}y.height*=h.sizeMultiplier/t.style.sizeMultiplier,y.depth*=h.sizeMultiplier/t.style.sizeMultiplier;var M;M=h.size===a.DISPLAY.size?n.metrics.delim1:n.metrics.getDelim2(h);var X,K;return X=null==e.value.leftDelim?f(t):r.customSizedDelim(e.value.leftDelim,M,!0,t.withStyle(h),e.mode),K=null==e.value.rightDelim?f(t):r.customSizedDelim(e.value.rightDelim,M,!0,t.withStyle(h),e.mode),o(["mord",t.style.reset(),h.cls()],[X,o(["mfrac"],[y]),K],t.getColor())},array:function(e,t,i){var a,r,l=e.value.body.length,c=0,g=new Array(l),d=1/n.metrics.ptPerEm,u=5*d,k=12*d,w=p.deflt(e.value.arraystretch,1),f=w*k,m=.7*f,x=.3*f,y=0;for(a=0;a<e.value.body.length;++a){var v=e.value.body[a],b=m,T=x;c<v.length&&(c=v.length);var S=new Array(v.length);for(r=0;r<v.length;++r){var M=z(v[r],t);T<M.depth&&(T=M.depth),b<M.height&&(b=M.height),S[r]=M}var X=0;if(e.value.rowGaps[a]){switch(X=e.value.rowGaps[a].value,X.unit){case"em":X=X.number;break;case"ex":X=X.number*n.metrics.emPerEx;break;default:console.error("Can't handle unit "+X.unit),X=0}X>0&&(X+=x,X>T&&(T=X),X=0)}S.height=b,S.depth=T,y+=b,S.pos=y,y+=T+X,g[a]=S}var K,R,_=y/2+n.metrics.axisHeight,q=e.value.cols||[],A=[];for(r=0,R=0;c>r||R<q.length;++r,++R){for(var j=q[R]||{},C=!0;"separator"===j.type;){if(C||(K=o(["arraycolsep"],[]),K.style.width=n.metrics.doubleRuleSep+"em",A.push(K)),"|"!==j.separator)throw new h("Invalid separator type: "+j.separator);var N=o(["vertical-separator"],[]);N.style.height=y+"em",N.style.verticalAlign=-(y-_)+"em",A.push(N),R++,j=q[R]||{},C=!1}if(!(r>=c)){var E;(r>0||e.value.hskipBeforeAndAfter)&&(E=p.deflt(j.pregap,u),0!==E&&(K=o(["arraycolsep"],[]),K.style.width=E+"em",A.push(K)));var P=[];for(a=0;l>a;++a){var D=g[a],I=D[r];if(I){var L=D.pos-_;I.depth=D.depth,I.height=D.height,P.push({type:"elem",elem:I,shift:L})}}P=s.makeVList(P,"individualShift",null,t),P=o(["col-align-"+(j.align||"c")],[P]),A.push(P),(c-1>r||e.value.hskipBeforeAndAfter)&&(E=p.deflt(j.postgap,u),0!==E&&(K=o(["arraycolsep"],[]),K.style.width=E+"em",A.push(K)))}}return g=o(["mtable"],A),o(["mord"],[g],t.getColor())},spacing:function(e,t,i){return"\\ "===e.value||"\\space"===e.value||" "===e.value||"~"===e.value?o(["mord","mspace"],[s.mathsym(e.value,e.mode)]):o(["mord","mspace",s.spacingFunctions[e.value].className])},llap:function(e,t,i){var h=o(["inner"],[z(e.value.body,t.reset())]),a=o(["fix"],[]);return o(["llap",t.style.cls()],[h,a])},rlap:function(e,t,i){var h=o(["inner"],[z(e.value.body,t.reset())]),a=o(["fix"],[]);return o(["rlap",t.style.cls()],[h,a])},op:function(e,t,i){var h,r,l=!1;"supsub"===e.type&&(h=e.value.sup,r=e.value.sub,e=e.value.base,l=!0);var c=["\\smallint"],g=!1;t.style.size===a.DISPLAY.size&&e.value.symbol&&!p.contains(c,e.value.body)&&(g=!0);var d,u=0,k=0;if(e.value.symbol){var w=g?"Size2-Regular":"Size1-Regular";d=s.makeSymbol(e.value.body,w,"math",t.getColor(),["op-symbol",g?"large-op":"small-op","mop"]),u=(d.height-d.depth)/2-n.metrics.axisHeight*t.style.sizeMultiplier,k=d.italic}else{for(var f=[],m=1;m<e.value.body.length;m++)f.push(s.mathsym(e.value.body[m],e.mode));d=o(["mop"],f,t.getColor())}if(l){d=o([],[d]);var x,y,v,b;if(h){var T=z(h,t.withStyle(t.style.sup()));x=o([t.style.reset(),t.style.sup().cls()],[T]),y=Math.max(n.metrics.bigOpSpacing1,n.metrics.bigOpSpacing3-T.depth)}if(r){var S=z(r,t.withStyle(t.style.sub()));v=o([t.style.reset(),t.style.sub().cls()],[S]),b=Math.max(n.metrics.bigOpSpacing2,n.metrics.bigOpSpacing4-S.height)}var M,X,K;if(h)if(r){if(!h&&!r)return d;K=n.metrics.bigOpSpacing5+v.height+v.depth+b+d.depth+u,M=s.makeVList([{type:"kern",size:n.metrics.bigOpSpacing5},{type:"elem",elem:v},{type:"kern",size:b},{type:"elem",elem:d},{type:"kern",size:y},{type:"elem",elem:x},{type:"kern",size:n.metrics.bigOpSpacing5}],"bottom",K,t),M.children[0].style.marginLeft=-k+"em",M.children[2].style.marginLeft=k+"em"}else K=d.depth+u,M=s.makeVList([{type:"elem",elem:d},{type:"kern",size:y},{type:"elem",elem:x},{type:"kern",size:n.metrics.bigOpSpacing5}],"bottom",K,t),M.children[1].style.marginLeft=k+"em";else X=d.height-u,M=s.makeVList([{type:"kern",size:n.metrics.bigOpSpacing5},{type:"elem",elem:v},{type:"kern",size:b},{type:"elem",elem:d}],"top",X,t),M.children[0].style.marginLeft=-k+"em";return o(["mop","op-limits"],[M])}return e.value.symbol&&(d.style.top=u+"em"),d},katex:function(e,t,i){var h=o(["k"],[s.mathsym("K",e.mode)]),a=o(["a"],[s.mathsym("A",e.mode)]);a.height=.75*(a.height+.2),a.depth=.75*(a.height-.2);var r=o(["t"],[s.mathsym("T",e.mode)]),l=o(["e"],[s.mathsym("E",e.mode)]);l.height=l.height-.2155,l.depth=l.depth+.2155;var n=o(["x"],[s.mathsym("X",e.mode)]);return o(["katex-logo","mord"],[h,a,r,l,n],t.getColor())},overline:function(e,t,i){var h=z(e.value.body,t.withStyle(t.style.cramp())),r=n.metrics.defaultRuleThickness/t.style.sizeMultiplier,l=o([t.style.reset(),a.TEXT.cls(),"overline-line"]);l.height=r,l.maxFontSize=1;var p=s.makeVList([{type:"elem",elem:h},{type:"kern",size:3*r},{type:"elem",elem:l},{type:"kern",size:r}],"firstBaseline",null,t);return o(["overline","mord"],[p],t.getColor())},sqrt:function(e,t,i){var h=z(e.value.body,t.withStyle(t.style.cramp())),l=n.metrics.defaultRuleThickness/t.style.sizeMultiplier,p=o([t.style.reset(),a.TEXT.cls(),"sqrt-line"],[],t.getColor());p.height=l,p.maxFontSize=1;var c=l;t.style.id<a.TEXT.id&&(c=n.metrics.xHeight);var g=l+c/4,d=(h.height+h.depth)*t.style.sizeMultiplier,u=d+g+l,k=o(["sqrt-sign"],[r.customSizedDelim("\\surd",u,!1,t,e.mode)],t.getColor()),w=k.height+k.depth-l;w>h.height+h.depth+g&&(g=(g+w-h.height-h.depth)/2);var f=-(h.height+g+l)+k.height;k.style.top=f+"em",k.height-=f,k.depth+=f;var m;if(m=0===h.height&&0===h.depth?o():s.makeVList([{type:"elem",elem:h},{type:"kern",size:g},{type:"elem",elem:p},{type:"kern",size:l}],"firstBaseline",null,t),e.value.index){var x=z(e.value.index,t.withStyle(a.SCRIPTSCRIPT)),y=o([t.style.reset(),a.SCRIPTSCRIPT.cls()],[x]),v=Math.max(k.height,m.height),b=Math.max(k.depth,m.depth),T=.6*(v-b),S=s.makeVList([{type:"elem",elem:y}],"shift",-T,t),M=o(["root"],[S]);return o(["sqrt","mord"],[M,k,m])}return o(["sqrt","mord"],[k,m])},sizing:function(e,t,i){var h=c(e.value.value,t.withSize(e.value.size),i),a=o(["mord"],[o(["sizing","reset-"+t.size,e.value.size,t.style.cls()],h)]),r=s.sizingMultiplier[e.value.size];return a.maxFontSize=r*t.style.sizeMultiplier,a},styling:function(e,t,i){var h={display:a.DISPLAY,text:a.TEXT,script:a.SCRIPT,scriptscript:a.SCRIPTSCRIPT},s=h[e.value.style],r=c(e.value.value,t.withStyle(s),i);return o([t.style.reset(),s.cls()],r)},font:function(e,t,i){var h=e.value.font;return z(e.value.body,t.withFont(h),i)},delimsizing:function(e,t,i){var h=e.value.value;return"."===h?o([g[e.value.delimType]]):o([g[e.value.delimType]],[r.sizedDelim(h,e.value.size,t,e.mode)])},leftright:function(e,t,i){for(var h=c(e.value.body,t.reset()),a=0,s=0,l=0;l<h.length;l++)a=Math.max(h[l].height,a),s=Math.max(h[l].depth,s);a*=t.style.sizeMultiplier,s*=t.style.sizeMultiplier;var n;n="."===e.value.left?f(t):r.leftRightDelim(e.value.left,a,s,t,e.mode),h.unshift(n);var p;return p="."===e.value.right?f(t):r.leftRightDelim(e.value.right,a,s,t,e.mode),h.push(p),o(["minner",t.style.cls()],h,t.getColor())},rule:function(e,t,i){var h=o(["mord","rule"],[],t.getColor()),a=0;e.value.shift&&(a=e.value.shift.number,"ex"===e.value.shift.unit&&(a*=n.metrics.xHeight));var s=e.value.width.number;"ex"===e.value.width.unit&&(s*=n.metrics.xHeight);var r=e.value.height.number;return"ex"===e.value.height.unit&&(r*=n.metrics.xHeight),a/=t.style.sizeMultiplier,s/=t.style.sizeMultiplier,r/=t.style.sizeMultiplier,h.style.borderRightWidth=s+"em",h.style.borderTopWidth=r+"em",h.style.bottom=a+"em",h.width=s,h.height=r+a,h.depth=-a,h},accent:function(e,t,i){var h,a=e.value.base;if("supsub"===e.type){var r=e;e=r.value.base,a=e.value.base,r.value.base=a,h=z(r,t.reset(),i)}var l,p=z(a,t.withStyle(t.style.cramp()));if(w(a)){var c=k(a),g=z(c,t.withStyle(t.style.cramp()));l=g.skew}else l=0;var d=Math.min(p.height,n.metrics.xHeight),u=s.makeSymbol(e.value.accent,"Main-Regular","math",t.getColor());u.italic=0;var f="\\vec"===e.value.accent?"accent-vec":null,m=o(["accent-body",f],[o([],[u])]);m=s.makeVList([{type:"elem",elem:p},{type:"kern",size:-d},{type:"elem",elem:m}],"firstBaseline",null,t),m.children[1].style.marginLeft=2*l+"em";var x=o(["mord","accent"],[m]);return h?(h.children[0]=x,h.height=Math.max(x.height,h.height),h.classes[0]="mord",h):x},phantom:function(e,t,i){var h=c(e.value.value,t.withPhantom(),i);return new s.makeFragment(h)}},z=function(e,t,i){if(!e)return o();if(m[e.type]){var a,r=m[e.type](e,t,i);return t.style!==t.parentStyle&&(a=t.style.sizeMultiplier/t.parentStyle.sizeMultiplier,r.height*=a,r.depth*=a),t.size!==t.parentSize&&(a=s.sizingMultiplier[t.size]/s.sizingMultiplier[t.parentSize],r.height*=a,r.depth*=a),r}throw new h("Got group of unknown type: '"+e.type+"'")},x=function(e,t){e=JSON.parse(JSON.stringify(e));var i=c(e,t),h=o(["base",t.style.cls()],i),a=o(["strut"]),s=o(["strut","bottom"]);a.style.height=h.height+"em",s.style.height=h.height+h.depth+"em",s.style.verticalAlign=-h.depth+"em";var r=o(["katex-html"],[a,s,h]);return r.setAttribute("aria-hidden","true"),r};t.exports=x},{"./ParseError":7,"./Style":10,"./buildCommon":11,"./delimiter":15,"./domTree":16,"./fontMetrics":18,"./utils":25}],13:[function(e,t,i){var h=e("./buildCommon"),a=e("./fontMetrics"),s=e("./mathMLTree"),r=e("./ParseError"),l=e("./symbols"),n=e("./utils"),p=h.makeSpan,o=h.fontMap,c=function(e,t){return l[t][e]&&l[t][e].replace&&(e=l[t][e].replace),new s.TextNode(e)},g=function(e,t){var i=t.font;if(!i)return null;var h=e.mode;if("mathit"===i)return"italic";var s=e.value;if(n.contains(["\\imath","\\jmath"],s))return null;l[h][s]&&l[h][s].replace&&(s=l[h][s].replace);var r=o[i].fontName;return a.getCharacterMetrics(s,r)?o[t.font].variant:null},d={mathord:function(e,t){var i=new s.MathNode("mi",[c(e.value,e.mode)]),h=g(e,t);return h&&i.setAttribute("mathvariant",h),i},textord:function(e,t){var i,h=c(e.value,e.mode),a=g(e,t)||"normal";return/[0-9]/.test(e.value)?(i=new s.MathNode("mn",[h]),t.font&&i.setAttribute("mathvariant",a)):(i=new s.MathNode("mi",[h]),i.setAttribute("mathvariant",a)),i},bin:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},rel:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},open:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},close:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},inner:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},punct:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t.setAttribute("separator","true"),t},ordgroup:function(e,t){var i=u(e.value,t),h=new s.MathNode("mrow",i);return h},text:function(e,t){var i=u(e.value.body,t),h=new s.MathNode("mtext",i);return h},color:function(e,t){var i=u(e.value.value,t),h=new s.MathNode("mstyle",i);return h.setAttribute("mathcolor",e.value.color),h},supsub:function(e,t){var i=[k(e.value.base,t)];e.value.sub&&i.push(k(e.value.sub,t)),e.value.sup&&i.push(k(e.value.sup,t));var h;h=e.value.sub?e.value.sup?"msubsup":"msub":"msup";var a=new s.MathNode(h,i);return a},genfrac:function(e,t){var i=new s.MathNode("mfrac",[k(e.value.numer,t),k(e.value.denom,t)]);if(e.value.hasBarLine||i.setAttribute("linethickness","0px"),null!=e.value.leftDelim||null!=e.value.rightDelim){var h=[];if(null!=e.value.leftDelim){var a=new s.MathNode("mo",[new s.TextNode(e.value.leftDelim)]);a.setAttribute("fence","true"),h.push(a);
+}if(h.push(i),null!=e.value.rightDelim){var r=new s.MathNode("mo",[new s.TextNode(e.value.rightDelim)]);r.setAttribute("fence","true"),h.push(r)}var l=new s.MathNode("mrow",h);return l}return i},array:function(e,t){return new s.MathNode("mtable",e.value.body.map(function(e){return new s.MathNode("mtr",e.map(function(e){return new s.MathNode("mtd",[k(e,t)])}))}))},sqrt:function(e,t){var i;return i=e.value.index?new s.MathNode("mroot",[k(e.value.body,t),k(e.value.index,t)]):new s.MathNode("msqrt",[k(e.value.body,t)])},leftright:function(e,t){var i=u(e.value.body,t);if("."!==e.value.left){var h=new s.MathNode("mo",[c(e.value.left,e.mode)]);h.setAttribute("fence","true"),i.unshift(h)}if("."!==e.value.right){var a=new s.MathNode("mo",[c(e.value.right,e.mode)]);a.setAttribute("fence","true"),i.push(a)}var r=new s.MathNode("mrow",i);return r},accent:function(e,t){var i=new s.MathNode("mo",[c(e.value.accent,e.mode)]),h=new s.MathNode("mover",[k(e.value.base,t),i]);return h.setAttribute("accent","true"),h},spacing:function(e){var t;return"\\ "===e.value||"\\space"===e.value||" "===e.value||"~"===e.value?t=new s.MathNode("mtext",[new s.TextNode(" ")]):(t=new s.MathNode("mspace"),t.setAttribute("width",h.spacingFunctions[e.value].size)),t},op:function(e){var t;return t=e.value.symbol?new s.MathNode("mo",[c(e.value.body,e.mode)]):new s.MathNode("mi",[new s.TextNode(e.value.body.slice(1))])},katex:function(e){var t=new s.MathNode("mtext",[new s.TextNode("KaTeX")]);return t},font:function(e,t){var i=e.value.font;return k(e.value.body,t.withFont(i))},delimsizing:function(e){var t=[];"."!==e.value.value&&t.push(c(e.value.value,e.mode));var i=new s.MathNode("mo",t);return"open"===e.value.delimType||"close"===e.value.delimType?i.setAttribute("fence","true"):i.setAttribute("fence","false"),i},styling:function(e,t){var i=u(e.value.value,t),h=new s.MathNode("mstyle",i),a={display:["0","true"],text:["0","false"],script:["1","false"],scriptscript:["2","false"]},r=a[e.value.style];return h.setAttribute("scriptlevel",r[0]),h.setAttribute("displaystyle",r[1]),h},sizing:function(e,t){var i=u(e.value.value,t),a=new s.MathNode("mstyle",i);return a.setAttribute("mathsize",h.sizingMultiplier[e.value.size]+"em"),a},overline:function(e,t){var i=new s.MathNode("mo",[new s.TextNode("‾")]);i.setAttribute("stretchy","true");var h=new s.MathNode("mover",[k(e.value.body,t),i]);return h.setAttribute("accent","true"),h},rule:function(e){var t=new s.MathNode("mrow");return t},llap:function(e,t){var i=new s.MathNode("mpadded",[k(e.value.body,t)]);return i.setAttribute("lspace","-1width"),i.setAttribute("width","0px"),i},rlap:function(e,t){var i=new s.MathNode("mpadded",[k(e.value.body,t)]);return i.setAttribute("width","0px"),i},phantom:function(e,t,i){var h=u(e.value.value,t);return new s.MathNode("mphantom",h)}},u=function(e,t){for(var i=[],h=0;h<e.length;h++){var a=e[h];i.push(k(a,t))}return i},k=function(e,t){if(!e)return new s.MathNode("mrow");if(d[e.type])return d[e.type](e,t);throw new r("Got group of unknown type: '"+e.type+"'")},w=function(e,t,i){var h=u(e,i),a=new s.MathNode("mrow",h),r=new s.MathNode("annotation",[new s.TextNode(t)]);r.setAttribute("encoding","application/x-tex");var l=new s.MathNode("semantics",[a,r]),n=new s.MathNode("math",[l]);return p(["katex-mathml"],[n])};t.exports=w},{"./ParseError":7,"./buildCommon":11,"./fontMetrics":18,"./mathMLTree":21,"./symbols":24,"./utils":25}],14:[function(e,t,i){var h=e("./buildHTML"),a=e("./buildMathML"),s=e("./buildCommon"),r=e("./Options"),l=e("./Settings"),n=e("./Style"),p=s.makeSpan,o=function(e,t,i){i=i||new l({});var s=n.TEXT;i.displayMode&&(s=n.DISPLAY);var o=new r({style:s,size:"size5"}),c=a(e,t,o),g=h(e,o),d=p(["katex"],[c,g]);return i.displayMode?p(["katex-display"],[d]):d};t.exports=o},{"./Options":6,"./Settings":9,"./Style":10,"./buildCommon":11,"./buildHTML":12,"./buildMathML":13}],15:[function(e,t,i){var h=e("./ParseError"),a=e("./Style"),s=e("./buildCommon"),r=e("./fontMetrics"),l=e("./symbols"),n=e("./utils"),p=s.makeSpan,o=function(e,t){return l.math[e]&&l.math[e].replace?r.getCharacterMetrics(l.math[e].replace,t):r.getCharacterMetrics(e,t)},c=function(e,t,i){return s.makeSymbol(e,"Size"+t+"-Regular",i)},g=function(e,t,i){var h=p(["style-wrap",i.style.reset(),t.cls()],[e]),a=t.sizeMultiplier/i.style.sizeMultiplier;return h.height*=a,h.depth*=a,h.maxFontSize=t.sizeMultiplier,h},d=function(e,t,i,h,a){var l=s.makeSymbol(e,"Main-Regular",a),n=g(l,t,h);if(i){var p=(1-h.style.sizeMultiplier/t.sizeMultiplier)*r.metrics.axisHeight;n.style.top=p+"em",n.height-=p,n.depth+=p}return n},u=function(e,t,i,h,s){var l=c(e,t,s),n=g(p(["delimsizing","size"+t],[l],h.getColor()),a.TEXT,h);if(i){var o=(1-h.style.sizeMultiplier)*r.metrics.axisHeight;n.style.top=o+"em",n.height-=o,n.depth+=o}return n},k=function(e,t,i){var h;"Size1-Regular"===t?h="delim-size1":"Size4-Regular"===t&&(h="delim-size4");var a=p(["delimsizinginner",h],[p([],[s.makeSymbol(e,t,i)])]);return{type:"elem",elem:a}},w=function(e,t,i,h,l){var n,c,d,u;n=d=u=e,c=null;var w="Size1-Regular";"\\uparrow"===e?d=u="⏐":"\\Uparrow"===e?d=u="‖":"\\downarrow"===e?n=d="⏐":"\\Downarrow"===e?n=d="‖":"\\updownarrow"===e?(n="\\uparrow",d="⏐",u="\\downarrow"):"\\Updownarrow"===e?(n="\\Uparrow",d="‖",u="\\Downarrow"):"["===e||"\\lbrack"===e?(n="⎡",d="⎢",u="⎣",w="Size4-Regular"):"]"===e||"\\rbrack"===e?(n="⎤",d="⎥",u="⎦",w="Size4-Regular"):"\\lfloor"===e?(d=n="⎢",u="⎣",w="Size4-Regular"):"\\lceil"===e?(n="⎡",d=u="⎢",w="Size4-Regular"):"\\rfloor"===e?(d=n="⎥",u="⎦",w="Size4-Regular"):"\\rceil"===e?(n="⎤",d=u="⎥",w="Size4-Regular"):"("===e?(n="⎛",d="⎜",u="⎝",w="Size4-Regular"):")"===e?(n="⎞",d="⎟",u="⎠",w="Size4-Regular"):"\\{"===e||"\\lbrace"===e?(n="⎧",c="⎨",u="⎩",d="⎪",w="Size4-Regular"):"\\}"===e||"\\rbrace"===e?(n="⎫",c="⎬",u="⎭",d="⎪",w="Size4-Regular"):"\\lgroup"===e?(n="⎧",u="⎩",d="⎪",w="Size4-Regular"):"\\rgroup"===e?(n="⎫",u="⎭",d="⎪",w="Size4-Regular"):"\\lmoustache"===e?(n="⎧",u="⎭",d="⎪",w="Size4-Regular"):"\\rmoustache"===e?(n="⎫",u="⎩",d="⎪",w="Size4-Regular"):"\\surd"===e&&(n="",u="⎷",d="",w="Size4-Regular");var f=o(n,w),m=f.height+f.depth,z=o(d,w),x=z.height+z.depth,y=o(u,w),v=y.height+y.depth,b=0,T=1;if(null!==c){var S=o(c,w);b=S.height+S.depth,T=2}var M=m+v+b,X=Math.ceil((t-M)/(T*x)),K=M+X*T*x,R=r.metrics.axisHeight;i&&(R*=h.style.sizeMultiplier);var _=K/2-R,q=[];q.push(k(u,w,l));var A;if(null===c)for(A=0;X>A;A++)q.push(k(d,w,l));else{for(A=0;X>A;A++)q.push(k(d,w,l));for(q.push(k(c,w,l)),A=0;X>A;A++)q.push(k(d,w,l))}q.push(k(n,w,l));var j=s.makeVList(q,"bottom",_,h);return g(p(["delimsizing","mult"],[j],h.getColor()),a.TEXT,h)},f=["(",")","[","\\lbrack","]","\\rbrack","\\{","\\lbrace","\\}","\\rbrace","\\lfloor","\\rfloor","\\lceil","\\rceil","\\surd"],m=["\\uparrow","\\downarrow","\\updownarrow","\\Uparrow","\\Downarrow","\\Updownarrow","|","\\|","\\vert","\\Vert","\\lvert","\\rvert","\\lVert","\\rVert","\\lgroup","\\rgroup","\\lmoustache","\\rmoustache"],z=["<",">","\\langle","\\rangle","/","\\backslash"],x=[0,1.2,1.8,2.4,3],y=function(e,t,i,a){if("<"===e?e="\\langle":">"===e&&(e="\\rangle"),n.contains(f,e)||n.contains(z,e))return u(e,t,!1,i,a);if(n.contains(m,e))return w(e,x[t],!1,i,a);throw new h("Illegal delimiter: '"+e+"'")},v=[{type:"small",style:a.SCRIPTSCRIPT},{type:"small",style:a.SCRIPT},{type:"small",style:a.TEXT},{type:"large",size:1},{type:"large",size:2},{type:"large",size:3},{type:"large",size:4}],b=[{type:"small",style:a.SCRIPTSCRIPT},{type:"small",style:a.SCRIPT},{type:"small",style:a.TEXT},{type:"stack"}],T=[{type:"small",style:a.SCRIPTSCRIPT},{type:"small",style:a.SCRIPT},{type:"small",style:a.TEXT},{type:"large",size:1},{type:"large",size:2},{type:"large",size:3},{type:"large",size:4},{type:"stack"}],S=function(e){return"small"===e.type?"Main-Regular":"large"===e.type?"Size"+e.size+"-Regular":"stack"===e.type?"Size4-Regular":void 0},M=function(e,t,i,h){for(var a=Math.min(2,3-h.style.size),s=a;s<i.length&&"stack"!==i[s].type;s++){var r=o(e,S(i[s])),l=r.height+r.depth;if("small"===i[s].type&&(l*=i[s].style.sizeMultiplier),l>t)return i[s]}return i[i.length-1]},X=function(e,t,i,h,a){"<"===e?e="\\langle":">"===e&&(e="\\rangle");var s;s=n.contains(z,e)?v:n.contains(f,e)?T:b;var r=M(e,t,s,h);return"small"===r.type?d(e,r.style,i,h,a):"large"===r.type?u(e,r.size,i,h,a):"stack"===r.type?w(e,t,i,h,a):void 0},K=function(e,t,i,h,a){var s=r.metrics.axisHeight*h.style.sizeMultiplier,l=901,n=5/r.metrics.ptPerEm,p=Math.max(t-s,i+s),o=Math.max(p/500*l,2*p-n);return X(e,o,!0,h,a)};t.exports={sizedDelim:y,customSizedDelim:X,leftRightDelim:K}},{"./ParseError":7,"./Style":10,"./buildCommon":11,"./fontMetrics":18,"./symbols":24,"./utils":25}],16:[function(e,t,i){function h(e,t,i,h,a,s){this.classes=e||[],this.children=t||[],this.height=i||0,this.depth=h||0,this.maxFontSize=a||0,this.style=s||{},this.attributes={}}function a(e,t,i,h){this.children=e||[],this.height=t||0,this.depth=i||0,this.maxFontSize=h||0}function s(e,t,i,h,a,s,r){this.value=e||"",this.height=t||0,this.depth=i||0,this.italic=h||0,this.skew=a||0,this.classes=s||[],this.style=r||{},this.maxFontSize=0}var r=e("./utils"),l=function(e){e=e.slice();for(var t=e.length-1;t>=0;t--)e[t]||e.splice(t,1);return e.join(" ")};h.prototype.setAttribute=function(e,t){this.attributes[e]=t},h.prototype.toNode=function(){var e=document.createElement("span");e.className=l(this.classes);for(var t in this.style)Object.prototype.hasOwnProperty.call(this.style,t)&&(e.style[t]=this.style[t]);for(var i in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,i)&&e.setAttribute(i,this.attributes[i]);for(var h=0;h<this.children.length;h++)e.appendChild(this.children[h].toNode());return e},h.prototype.toMarkup=function(){var e="<span";this.classes.length&&(e+=' class="',e+=r.escape(l(this.classes)),e+='"');var t="";for(var i in this.style)this.style.hasOwnProperty(i)&&(t+=r.hyphenate(i)+":"+this.style[i]+";");t&&(e+=' style="'+r.escape(t)+'"');for(var h in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,h)&&(e+=" "+h+'="',e+=r.escape(this.attributes[h]),e+='"');e+=">";for(var a=0;a<this.children.length;a++)e+=this.children[a].toMarkup();return e+="</span>"},a.prototype.toNode=function(){for(var e=document.createDocumentFragment(),t=0;t<this.children.length;t++)e.appendChild(this.children[t].toNode());return e},a.prototype.toMarkup=function(){for(var e="",t=0;t<this.children.length;t++)e+=this.children[t].toMarkup();return e},s.prototype.toNode=function(){var e=document.createTextNode(this.value),t=null;this.italic>0&&(t=document.createElement("span"),t.style.marginRight=this.italic+"em"),this.classes.length>0&&(t=t||document.createElement("span"),t.className=l(this.classes));for(var i in this.style)this.style.hasOwnProperty(i)&&(t=t||document.createElement("span"),t.style[i]=this.style[i]);return t?(t.appendChild(e),t):e},s.prototype.toMarkup=function(){var e=!1,t="<span";this.classes.length&&(e=!0,t+=' class="',t+=r.escape(l(this.classes)),t+='"');var i="";this.italic>0&&(i+="margin-right:"+this.italic+"em;");for(var h in this.style)this.style.hasOwnProperty(h)&&(i+=r.hyphenate(h)+":"+this.style[h]+";");i&&(e=!0,t+=' style="'+r.escape(i)+'"');var a=r.escape(this.value);return e?(t+=">",t+=a,t+="</span>"):a},t.exports={span:h,documentFragment:a,symbolNode:s}},{"./utils":25}],17:[function(e,t,i){function h(e,t,i,h){for(var a=[],s=[a],p=[];;){var o=e.parseExpression(t,i,!1,null);a.push(new l("ordgroup",o.result,i)),t=o.position;var c=o.peek.text;if("&"===c)t=o.peek.position;else{if("\\end"===c)break;if("\\\\"!==c&&"\\cr"!==c)throw new r("Expected & or \\\\ or \\end",e.lexer,o.peek.position);var g=e.parseFunction(t,i);p.push(g.result.value.size),t=g.position,a=[],s.push(a)}}return h.body=s,h.rowGaps=p,new n(new l(h.type,h,i),t)}var a=e("./fontMetrics"),s=e("./parseData"),r=e("./ParseError"),l=s.ParseNode,n=s.ParseResult,p=[{names:["array"],numArgs:1,handler:function(e,t,i,a,s){var l=this;a=a.value.map?a.value:[a];var n=a.map(function(e){var t=e.value;if(-1!=="lcr".indexOf(t))return{type:"align",align:t};if("|"===t)return{type:"separator",separator:"|"};throw new r("Unknown column alignment: "+e.value,l.lexer,s[1])}),p={type:"array",cols:n,hskipBeforeAndAfter:!0};return p=h(l,e,t,p)}},{names:["matrix","pmatrix","bmatrix","Bmatrix","vmatrix","Vmatrix"],handler:function(e,t,i){var a={matrix:null,pmatrix:["(",")"],bmatrix:["[","]"],Bmatrix:["\\{","\\}"],vmatrix:["|","|"],Vmatrix:["\\Vert","\\Vert"]}[i],s={type:"array",hskipBeforeAndAfter:!1};return s=h(this,e,t,s),a&&(s.result=new l("leftright",{body:[s.result],left:a[0],right:a[1]},t)),s}},{names:["cases"],handler:function(e,t,i){var s={type:"array",arraystretch:1.2,cols:[{type:"align",align:"l",pregap:0,postgap:a.metrics.quad},{type:"align",align:"l",pregap:0,postgap:0}]};return s=h(this,e,t,s),s.result=new l("leftright",{body:[s.result],left:"\\{",right:"."},t),s}}];t.exports=function(){for(var e={},t=0;t<p.length;++t){var i=p[t];i.greediness=1,i.allowedInText=!!i.allowedInText,i.numArgs=i.numArgs||0,i.numOptionalArgs=i.numOptionalArgs||0;for(var h=0;h<i.names.length;++h)e[i.names[h]]=i}return e}()},{"./ParseError":7,"./fontMetrics":18,"./parseData":22}],18:[function(e,t,i){var h=e("./Style"),a=.431,s=1,r=.677,l=.394,n=.444,p=.686,o=.345,c=.413,g=.363,d=.289,u=.15,k=.247,w=.386,f=.05,m=2.39,z=1.01,x=.81,y=.71,v=.25,b=.04,T=.111,S=.166,M=.2,X=.6,K=.1,R=10,_=2/R,q={xHeight:a,quad:s,num1:r,num2:l,num3:n,denom1:p,denom2:o,sup1:c,sup2:g,sup3:d,sub1:u,sub2:k,supDrop:w,subDrop:f,axisHeight:v,defaultRuleThickness:b,bigOpSpacing1:T,bigOpSpacing2:S,bigOpSpacing3:M,bigOpSpacing4:X,bigOpSpacing5:K,ptPerEm:R,emPerEx:a/s,doubleRuleSep:_,delim1:m,getDelim2:function(e){if(e.size===h.TEXT.size)return z;if(e.size===h.SCRIPT.size)return x;if(e.size===h.SCRIPTSCRIPT.size)return y;throw new Error("Unexpected style size: "+e.size)}},A=e("./fontMetricsData"),j=function(e,t){return A[t][e.charCodeAt(0)]};t.exports={metrics:q,getCharacterMetrics:j}},{"./Style":10,"./fontMetricsData":19}],19:[function(e,t,i){t.exports={"AMS-Regular":{65:{depth:0,height:.68889,italic:0,skew:0},66:{depth:0,height:.68889,italic:0,skew:0},67:{depth:0,height:.68889,italic:0,skew:0},68:{depth:0,height:.68889,italic:0,skew:0},69:{depth:0,height:.68889,italic:0,skew:0},70:{depth:0,height:.68889,italic:0,skew:0},71:{depth:0,height:.68889,italic:0,skew:0},72:{depth:0,height:.68889,italic:0,skew:0},73:{depth:0,height:.68889,italic:0,skew:0},74:{depth:.16667,height:.68889,italic:0,skew:0},75:{depth:0,height:.68889,italic:0,skew:0},76:{depth:0,height:.68889,italic:0,skew:0},77:{depth:0,height:.68889,italic:0,skew:0},78:{depth:0,height:.68889,italic:0,skew:0},79:{depth:.16667,height:.68889,italic:0,skew:0},80:{depth:0,height:.68889,italic:0,skew:0},81:{depth:.16667,height:.68889,italic:0,skew:0},82:{depth:0,height:.68889,italic:0,skew:0},83:{depth:0,height:.68889,italic:0,skew:0},84:{depth:0,height:.68889,italic:0,skew:0},85:{depth:0,height:.68889,italic:0,skew:0},86:{depth:0,height:.68889,italic:0,skew:0},87:{depth:0,height:.68889,italic:0,skew:0},88:{depth:0,height:.68889,italic:0,skew:0},89:{depth:0,height:.68889,italic:0,skew:0},90:{depth:0,height:.68889,italic:0,skew:0},107:{depth:0,height:.68889,italic:0,skew:0},165:{depth:0,height:.675,italic:.025,skew:0},174:{depth:.15559,height:.69224,italic:0,skew:0},240:{depth:0,height:.68889,italic:0,skew:0},295:{depth:0,height:.68889,italic:0,skew:0},710:{depth:0,height:.825,italic:0,skew:0},732:{depth:0,height:.9,italic:0,skew:0},770:{depth:0,height:.825,italic:0,skew:0},771:{depth:0,height:.9,italic:0,skew:0},989:{depth:.08167,height:.58167,italic:0,skew:0},1008:{depth:0,height:.43056,italic:.04028,skew:0},8245:{depth:0,height:.54986,italic:0,skew:0},8463:{depth:0,height:.68889,italic:0,skew:0},8487:{depth:0,height:.68889,italic:0,skew:0},8498:{depth:0,height:.68889,italic:0,skew:0},8502:{depth:0,height:.68889,italic:0,skew:0},8503:{depth:0,height:.68889,italic:0,skew:0},8504:{depth:0,height:.68889,italic:0,skew:0},8513:{depth:0,height:.68889,italic:0,skew:0},8592:{depth:-.03598,height:.46402,italic:0,skew:0},8594:{depth:-.03598,height:.46402,italic:0,skew:0},8602:{depth:-.13313,height:.36687,italic:0,skew:0},8603:{depth:-.13313,height:.36687,italic:0,skew:0},8606:{depth:.01354,height:.52239,italic:0,skew:0},8608:{depth:.01354,height:.52239,italic:0,skew:0},8610:{depth:.01354,height:.52239,italic:0,skew:0},8611:{depth:.01354,height:.52239,italic:0,skew:0},8619:{depth:0,height:.54986,italic:0,skew:0},8620:{depth:0,height:.54986,italic:0,skew:0},8621:{depth:-.13313,height:.37788,italic:0,skew:0},8622:{depth:-.13313,height:.36687,italic:0,skew:0},8624:{depth:0,height:.69224,italic:0,skew:0},8625:{depth:0,height:.69224,italic:0,skew:0},8630:{depth:0,height:.43056,italic:0,skew:0},8631:{depth:0,height:.43056,italic:0,skew:0},8634:{depth:.08198,height:.58198,italic:0,skew:0},8635:{depth:.08198,height:.58198,italic:0,skew:0},8638:{depth:.19444,height:.69224,italic:0,skew:0},8639:{depth:.19444,height:.69224,italic:0,skew:0},8642:{depth:.19444,height:.69224,italic:0,skew:0},8643:{depth:.19444,height:.69224,italic:0,skew:0},8644:{depth:.1808,height:.675,italic:0,skew:0},8646:{depth:.1808,height:.675,italic:0,skew:0},8647:{depth:.1808,height:.675,italic:0,skew:0},8648:{depth:.19444,height:.69224,italic:0,skew:0},8649:{depth:.1808,height:.675,italic:0,skew:0},8650:{depth:.19444,height:.69224,italic:0,skew:0},8651:{depth:.01354,height:.52239,italic:0,skew:0},8652:{depth:.01354,height:.52239,italic:0,skew:0},8653:{depth:-.13313,height:.36687,italic:0,skew:0},8654:{depth:-.13313,height:.36687,italic:0,skew:0},8655:{depth:-.13313,height:.36687,italic:0,skew:0},8666:{depth:.13667,height:.63667,italic:0,skew:0},8667:{depth:.13667,height:.63667,italic:0,skew:0},8669:{depth:-.13313,height:.37788,italic:0,skew:0},8672:{depth:-.064,height:.437,italic:0,skew:0},8674:{depth:-.064,height:.437,italic:0,skew:0},8705:{depth:0,height:.825,italic:0,skew:0},8708:{depth:0,height:.68889,italic:0,skew:0},8709:{depth:.08167,height:.58167,italic:0,skew:0},8717:{depth:0,height:.43056,italic:0,skew:0},8722:{depth:-.03598,height:.46402,italic:0,skew:0},8724:{depth:.08198,height:.69224,italic:0,skew:0},8726:{depth:.08167,height:.58167,italic:0,skew:0},8733:{depth:0,height:.69224,italic:0,skew:0},8736:{depth:0,height:.69224,italic:0,skew:0},8737:{depth:0,height:.69224,italic:0,skew:0},8738:{depth:.03517,height:.52239,italic:0,skew:0},8739:{depth:.08167,height:.58167,italic:0,skew:0},8740:{depth:.25142,height:.74111,italic:0,skew:0},8741:{depth:.08167,height:.58167,italic:0,skew:0},8742:{depth:.25142,height:.74111,italic:0,skew:0},8756:{depth:0,height:.69224,italic:0,skew:0},8757:{depth:0,height:.69224,italic:0,skew:0},8764:{depth:-.13313,height:.36687,italic:0,skew:0},8765:{depth:-.13313,height:.37788,italic:0,skew:0},8769:{depth:-.13313,height:.36687,italic:0,skew:0},8770:{depth:-.03625,height:.46375,italic:0,skew:0},8774:{depth:.30274,height:.79383,italic:0,skew:0},8776:{depth:-.01688,height:.48312,italic:0,skew:0},8778:{depth:.08167,height:.58167,italic:0,skew:0},8782:{depth:.06062,height:.54986,italic:0,skew:0},8783:{depth:.06062,height:.54986,italic:0,skew:0},8785:{depth:.08198,height:.58198,italic:0,skew:0},8786:{depth:.08198,height:.58198,italic:0,skew:0},8787:{depth:.08198,height:.58198,italic:0,skew:0},8790:{depth:0,height:.69224,italic:0,skew:0},8791:{depth:.22958,height:.72958,italic:0,skew:0},8796:{depth:.08198,height:.91667,italic:0,skew:0},8806:{depth:.25583,height:.75583,italic:0,skew:0},8807:{depth:.25583,height:.75583,italic:0,skew:0},8808:{depth:.25142,height:.75726,italic:0,skew:0},8809:{depth:.25142,height:.75726,italic:0,skew:0},8812:{depth:.25583,height:.75583,italic:0,skew:0},8814:{depth:.20576,height:.70576,italic:0,skew:0},8815:{depth:.20576,height:.70576,italic:0,skew:0},8816:{depth:.30274,height:.79383,italic:0,skew:0},8817:{depth:.30274,height:.79383,italic:0,skew:0},8818:{depth:.22958,height:.72958,italic:0,skew:0},8819:{depth:.22958,height:.72958,italic:0,skew:0},8822:{depth:.1808,height:.675,italic:0,skew:0},8823:{depth:.1808,height:.675,italic:0,skew:0},8828:{depth:.13667,height:.63667,italic:0,skew:0},8829:{depth:.13667,height:.63667,italic:0,skew:0},8830:{depth:.22958,height:.72958,italic:0,skew:0},8831:{depth:.22958,height:.72958,italic:0,skew:0},8832:{depth:.20576,height:.70576,italic:0,skew:0},8833:{depth:.20576,height:.70576,italic:0,skew:0},8840:{depth:.30274,height:.79383,italic:0,skew:0},8841:{depth:.30274,height:.79383,italic:0,skew:0},8842:{depth:.13597,height:.63597,italic:0,skew:0},8843:{depth:.13597,height:.63597,italic:0,skew:0},8847:{depth:.03517,height:.54986,italic:0,skew:0},8848:{depth:.03517,height:.54986,italic:0,skew:0},8858:{depth:.08198,height:.58198,italic:0,skew:0},8859:{depth:.08198,height:.58198,italic:0,skew:0},8861:{depth:.08198,height:.58198,italic:0,skew:0},8862:{depth:0,height:.675,italic:0,skew:0},8863:{depth:0,height:.675,italic:0,skew:0},8864:{depth:0,height:.675,italic:0,skew:0},8865:{depth:0,height:.675,italic:0,skew:0},8872:{depth:0,height:.69224,italic:0,skew:0},8873:{depth:0,height:.69224,italic:0,skew:0},8874:{depth:0,height:.69224,italic:0,skew:0},8876:{depth:0,height:.68889,italic:0,skew:0},8877:{depth:0,height:.68889,italic:0,skew:0},8878:{depth:0,height:.68889,italic:0,skew:0},8879:{depth:0,height:.68889,italic:0,skew:0},8882:{depth:.03517,height:.54986,italic:0,skew:0},8883:{depth:.03517,height:.54986,italic:0,skew:0},8884:{depth:.13667,height:.63667,italic:0,skew:0},8885:{depth:.13667,height:.63667,italic:0,skew:0},8888:{depth:0,height:.54986,italic:0,skew:0},8890:{depth:.19444,height:.43056,italic:0,skew:0},8891:{depth:.19444,height:.69224,italic:0,skew:0},8892:{depth:.19444,height:.69224,italic:0,skew:0},8901:{depth:0,height:.54986,italic:0,skew:0},8903:{depth:.08167,height:.58167,italic:0,skew:0},8905:{depth:.08167,height:.58167,italic:0,skew:0},8906:{depth:.08167,height:.58167,italic:0,skew:0},8907:{depth:0,height:.69224,italic:0,skew:0},8908:{depth:0,height:.69224,italic:0,skew:0},8909:{depth:-.03598,height:.46402,italic:0,skew:0},8910:{depth:0,height:.54986,italic:0,skew:0},8911:{depth:0,height:.54986,italic:0,skew:0},8912:{depth:.03517,height:.54986,italic:0,skew:0},8913:{depth:.03517,height:.54986,italic:0,skew:0},8914:{depth:0,height:.54986,italic:0,skew:0},8915:{depth:0,height:.54986,italic:0,skew:0},8916:{depth:0,height:.69224,italic:0,skew:0},8918:{depth:.0391,height:.5391,italic:0,skew:0},8919:{depth:.0391,height:.5391,italic:0,skew:0},8920:{depth:.03517,height:.54986,italic:0,skew:0},8921:{depth:.03517,height:.54986,italic:0,skew:0},8922:{depth:.38569,height:.88569,italic:0,skew:0},8923:{depth:.38569,height:.88569,italic:0,skew:0},8926:{depth:.13667,height:.63667,italic:0,skew:0},8927:{depth:.13667,height:.63667,italic:0,skew:0},8928:{depth:.30274,height:.79383,italic:0,skew:0},8929:{depth:.30274,height:.79383,italic:0,skew:0},8934:{depth:.23222,height:.74111,italic:0,skew:0},8935:{depth:.23222,height:.74111,italic:0,skew:0},8936:{depth:.23222,height:.74111,italic:0,skew:0},8937:{depth:.23222,height:.74111,italic:0,skew:0},8938:{depth:.20576,height:.70576,italic:0,skew:0},8939:{depth:.20576,height:.70576,italic:0,skew:0},8940:{depth:.30274,height:.79383,italic:0,skew:0},8941:{depth:.30274,height:.79383,italic:0,skew:0},8994:{depth:.19444,height:.69224,italic:0,skew:0},8995:{depth:.19444,height:.69224,italic:0,skew:0},9416:{depth:.15559,height:.69224,italic:0,skew:0},9484:{depth:0,height:.69224,italic:0,skew:0},9488:{depth:0,height:.69224,italic:0,skew:0},9492:{depth:0,height:.37788,italic:0,skew:0},9496:{depth:0,height:.37788,italic:0,skew:0},9585:{depth:.19444,height:.68889,italic:0,skew:0},9586:{depth:.19444,height:.74111,italic:0,skew:0},9632:{depth:0,height:.675,italic:0,skew:0},9633:{depth:0,height:.675,italic:0,skew:0},9650:{depth:0,height:.54986,italic:0,skew:0},9651:{depth:0,height:.54986,italic:0,skew:0},9654:{depth:.03517,height:.54986,italic:0,skew:0},9660:{depth:0,height:.54986,italic:0,skew:0},9661:{depth:0,height:.54986,italic:0,skew:0},9664:{depth:.03517,height:.54986,italic:0,skew:0},9674:{depth:.11111,height:.69224,italic:0,skew:0},9733:{depth:.19444,height:.69224,italic:0,skew:0},10003:{depth:0,height:.69224,italic:0,skew:0},10016:{depth:0,height:.69224,italic:0,skew:0},10731:{depth:.11111,height:.69224,italic:0,skew:0},10846:{depth:.19444,height:.75583,italic:0,skew:0},10877:{depth:.13667,height:.63667,italic:0,skew:0},10878:{depth:.13667,height:.63667,italic:0,skew:0},10885:{depth:.25583,height:.75583,italic:0,skew:0},10886:{depth:.25583,height:.75583,italic:0,skew:0},10887:{depth:.13597,height:.63597,italic:0,skew:0},10888:{depth:.13597,height:.63597,italic:0,skew:0},10889:{depth:.26167,height:.75726,italic:0,skew:0},10890:{depth:.26167,height:.75726,italic:0,skew:0},10891:{depth:.48256,height:.98256,italic:0,skew:0},10892:{depth:.48256,height:.98256,italic:0,skew:0},10901:{depth:.13667,height:.63667,italic:0,skew:0},10902:{depth:.13667,height:.63667,italic:0,skew:0},10933:{depth:.25142,height:.75726,italic:0,skew:0},10934:{depth:.25142,height:.75726,italic:0,skew:0},10935:{depth:.26167,height:.75726,italic:0,skew:0},10936:{depth:.26167,height:.75726,italic:0,skew:0},10937:{depth:.26167,height:.75726,italic:0,skew:0},10938:{depth:.26167,height:.75726,italic:0,skew:0},10949:{depth:.25583,height:.75583,italic:0,skew:0},10950:{depth:.25583,height:.75583,italic:0,skew:0},10955:{depth:.28481,height:.79383,italic:0,skew:0},10956:{depth:.28481,height:.79383,italic:0,skew:0},57350:{depth:.08167,height:.58167,italic:0,skew:0},57351:{depth:.08167,height:.58167,italic:0,skew:0},57352:{depth:.08167,height:.58167,italic:0,skew:0},57353:{depth:0,height:.43056,italic:.04028,skew:0},57356:{depth:.25142,height:.75726,italic:0,skew:0},57357:{depth:.25142,height:.75726,italic:0,skew:0},57358:{depth:.41951,height:.91951,italic:0,skew:0},57359:{depth:.30274,height:.79383,italic:0,skew:0},57360:{depth:.30274,height:.79383,italic:0,skew:0},57361:{depth:.41951,height:.91951,italic:0,skew:0},57366:{depth:.25142,height:.75726,italic:0,skew:0},57367:{depth:.25142,height:.75726,italic:0,skew:0},57368:{depth:.25142,height:.75726,italic:0,skew:0},57369:{depth:.25142,height:.75726,italic:0,skew:0},57370:{depth:.13597,height:.63597,italic:0,skew:0},57371:{depth:.13597,height:.63597,italic:0,skew:0}},"Caligraphic-Regular":{48:{depth:0,height:.43056,italic:0,skew:0},49:{depth:0,height:.43056,italic:0,skew:0},50:{depth:0,height:.43056,italic:0,skew:0},51:{depth:.19444,height:.43056,italic:0,skew:0},52:{depth:.19444,height:.43056,italic:0,skew:0},53:{depth:.19444,height:.43056,italic:0,skew:0},54:{depth:0,height:.64444,italic:0,skew:0},55:{depth:.19444,height:.43056,italic:0,skew:0},56:{depth:0,height:.64444,italic:0,skew:0},57:{depth:.19444,height:.43056,italic:0,skew:0},65:{depth:0,height:.68333,italic:0,skew:.19445},66:{depth:0,height:.68333,italic:.03041,skew:.13889},67:{depth:0,height:.68333,italic:.05834,skew:.13889},68:{depth:0,height:.68333,italic:.02778,skew:.08334},69:{depth:0,height:.68333,italic:.08944,skew:.11111},70:{depth:0,height:.68333,italic:.09931,skew:.11111},71:{depth:.09722,height:.68333,italic:.0593,skew:.11111},72:{depth:0,height:.68333,italic:.00965,skew:.11111},73:{depth:0,height:.68333,italic:.07382,skew:0},74:{depth:.09722,height:.68333,italic:.18472,skew:.16667},75:{depth:0,height:.68333,italic:.01445,skew:.05556},76:{depth:0,height:.68333,italic:0,skew:.13889},77:{depth:0,height:.68333,italic:0,skew:.13889},78:{depth:0,height:.68333,italic:.14736,skew:.08334},79:{depth:0,height:.68333,italic:.02778,skew:.11111},80:{depth:0,height:.68333,italic:.08222,skew:.08334},81:{depth:.09722,height:.68333,italic:0,skew:.11111},82:{depth:0,height:.68333,italic:0,skew:.08334},83:{depth:0,height:.68333,italic:.075,skew:.13889},84:{depth:0,height:.68333,italic:.25417,skew:0},85:{depth:0,height:.68333,italic:.09931,skew:.08334},86:{depth:0,height:.68333,italic:.08222,skew:0},87:{depth:0,height:.68333,italic:.08222,skew:.08334},88:{depth:0,height:.68333,italic:.14643,skew:.13889},89:{depth:.09722,height:.68333,italic:.08222,skew:.08334},90:{depth:0,height:.68333,italic:.07944,skew:.13889}},"Fraktur-Regular":{33:{depth:0,height:.69141,italic:0,skew:0},34:{depth:0,height:.69141,italic:0,skew:0},38:{depth:0,height:.69141,italic:0,skew:0},39:{depth:0,height:.69141,italic:0,skew:0},40:{depth:.24982,height:.74947,italic:0,skew:0},41:{depth:.24982,height:.74947,italic:0,skew:0},42:{depth:0,height:.62119,italic:0,skew:0},43:{depth:.08319,height:.58283,italic:0,skew:0},44:{depth:0,height:.10803,italic:0,skew:0},45:{depth:.08319,height:.58283,italic:0,skew:0},46:{depth:0,height:.10803,italic:0,skew:0},47:{depth:.24982,height:.74947,italic:0,skew:0},48:{depth:0,height:.47534,italic:0,skew:0},49:{depth:0,height:.47534,italic:0,skew:0},50:{depth:0,height:.47534,italic:0,skew:0},51:{depth:.18906,height:.47534,italic:0,skew:0},52:{depth:.18906,height:.47534,italic:0,skew:0},53:{depth:.18906,height:.47534,italic:0,skew:0},54:{depth:0,height:.69141,italic:0,skew:0},55:{depth:.18906,height:.47534,italic:0,skew:0},56:{depth:0,height:.69141,italic:0,skew:0},57:{depth:.18906,height:.47534,italic:0,skew:0},58:{depth:0,height:.47534,italic:0,skew:0},59:{depth:.12604,height:.47534,italic:0,skew:0},61:{depth:-.13099,height:.36866,italic:0,skew:0},63:{depth:0,height:.69141,italic:0,skew:0},65:{depth:0,height:.69141,italic:0,skew:0},66:{depth:0,height:.69141,italic:0,skew:0},67:{depth:0,height:.69141,italic:0,skew:0},68:{depth:0,height:.69141,italic:0,skew:0},69:{depth:0,height:.69141,italic:0,skew:0},70:{depth:.12604,height:.69141,italic:0,skew:0},71:{depth:0,height:.69141,italic:0,skew:0},72:{depth:.06302,height:.69141,italic:0,skew:0},73:{depth:0,height:.69141,italic:0,skew:0},74:{depth:.12604,height:.69141,italic:0,skew:0},75:{depth:0,height:.69141,italic:0,skew:0},76:{depth:0,height:.69141,italic:0,skew:0},77:{depth:0,height:.69141,italic:0,skew:0},78:{depth:0,height:.69141,italic:0,skew:0},79:{depth:0,height:.69141,italic:0,skew:0},80:{depth:.18906,height:.69141,italic:0,skew:0},81:{depth:.03781,height:.69141,italic:0,skew:0},82:{depth:0,height:.69141,italic:0,skew:0},83:{depth:0,height:.69141,italic:0,skew:0},84:{depth:0,height:.69141,italic:0,skew:0},85:{depth:0,height:.69141,italic:0,skew:0},86:{depth:0,height:.69141,italic:0,skew:0},87:{depth:0,height:.69141,italic:0,skew:0},88:{depth:0,height:.69141,italic:0,skew:0},89:{depth:.18906,height:.69141,italic:0,skew:0},90:{depth:.12604,height:.69141,italic:0,skew:0},91:{depth:.24982,height:.74947,italic:0,skew:0},93:{depth:.24982,height:.74947,italic:0,skew:0},94:{depth:0,height:.69141,italic:0,skew:0},97:{depth:0,height:.47534,italic:0,skew:0},98:{depth:0,height:.69141,italic:0,skew:0},99:{depth:0,height:.47534,italic:0,skew:0},100:{depth:0,height:.62119,italic:0,skew:0},101:{depth:0,height:.47534,italic:0,skew:0},102:{depth:.18906,height:.69141,italic:0,skew:0},103:{depth:.18906,height:.47534,italic:0,skew:0},104:{depth:.18906,height:.69141,italic:0,skew:0},105:{depth:0,height:.69141,italic:0,skew:0},106:{depth:0,height:.69141,italic:0,skew:0},107:{depth:0,height:.69141,italic:0,skew:0},108:{depth:0,height:.69141,italic:0,skew:0},109:{depth:0,height:.47534,italic:0,skew:0},110:{depth:0,height:.47534,italic:0,skew:0},111:{depth:0,height:.47534,italic:0,skew:0},112:{depth:.18906,height:.52396,italic:0,skew:0},113:{depth:.18906,height:.47534,italic:0,skew:0},114:{depth:0,height:.47534,italic:0,skew:0},115:{depth:0,height:.47534,italic:0,skew:0},116:{depth:0,height:.62119,italic:0,skew:0},117:{depth:0,height:.47534,italic:0,skew:0},118:{depth:0,height:.52396,italic:0,skew:0},119:{depth:0,height:.52396,italic:0,skew:0},120:{depth:.18906,height:.47534,italic:0,skew:0},121:{depth:.18906,height:.47534,italic:0,skew:0},122:{depth:.18906,height:.47534,italic:0,skew:0},8216:{depth:0,height:.69141,italic:0,skew:0},8217:{depth:0,height:.69141,italic:0,skew:0},58112:{depth:0,height:.62119,italic:0,skew:0},58113:{depth:0,height:.62119,
+italic:0,skew:0},58114:{depth:.18906,height:.69141,italic:0,skew:0},58115:{depth:.18906,height:.69141,italic:0,skew:0},58116:{depth:.18906,height:.47534,italic:0,skew:0},58117:{depth:0,height:.69141,italic:0,skew:0},58118:{depth:0,height:.62119,italic:0,skew:0},58119:{depth:0,height:.47534,italic:0,skew:0}},"Main-Bold":{33:{depth:0,height:.69444,italic:0,skew:0},34:{depth:0,height:.69444,italic:0,skew:0},35:{depth:.19444,height:.69444,italic:0,skew:0},36:{depth:.05556,height:.75,italic:0,skew:0},37:{depth:.05556,height:.75,italic:0,skew:0},38:{depth:0,height:.69444,italic:0,skew:0},39:{depth:0,height:.69444,italic:0,skew:0},40:{depth:.25,height:.75,italic:0,skew:0},41:{depth:.25,height:.75,italic:0,skew:0},42:{depth:0,height:.75,italic:0,skew:0},43:{depth:.13333,height:.63333,italic:0,skew:0},44:{depth:.19444,height:.15556,italic:0,skew:0},45:{depth:0,height:.44444,italic:0,skew:0},46:{depth:0,height:.15556,italic:0,skew:0},47:{depth:.25,height:.75,italic:0,skew:0},48:{depth:0,height:.64444,italic:0,skew:0},49:{depth:0,height:.64444,italic:0,skew:0},50:{depth:0,height:.64444,italic:0,skew:0},51:{depth:0,height:.64444,italic:0,skew:0},52:{depth:0,height:.64444,italic:0,skew:0},53:{depth:0,height:.64444,italic:0,skew:0},54:{depth:0,height:.64444,italic:0,skew:0},55:{depth:0,height:.64444,italic:0,skew:0},56:{depth:0,height:.64444,italic:0,skew:0},57:{depth:0,height:.64444,italic:0,skew:0},58:{depth:0,height:.44444,italic:0,skew:0},59:{depth:.19444,height:.44444,italic:0,skew:0},60:{depth:.08556,height:.58556,italic:0,skew:0},61:{depth:-.10889,height:.39111,italic:0,skew:0},62:{depth:.08556,height:.58556,italic:0,skew:0},63:{depth:0,height:.69444,italic:0,skew:0},64:{depth:0,height:.69444,italic:0,skew:0},65:{depth:0,height:.68611,italic:0,skew:0},66:{depth:0,height:.68611,italic:0,skew:0},67:{depth:0,height:.68611,italic:0,skew:0},68:{depth:0,height:.68611,italic:0,skew:0},69:{depth:0,height:.68611,italic:0,skew:0},70:{depth:0,height:.68611,italic:0,skew:0},71:{depth:0,height:.68611,italic:0,skew:0},72:{depth:0,height:.68611,italic:0,skew:0},73:{depth:0,height:.68611,italic:0,skew:0},74:{depth:0,height:.68611,italic:0,skew:0},75:{depth:0,height:.68611,italic:0,skew:0},76:{depth:0,height:.68611,italic:0,skew:0},77:{depth:0,height:.68611,italic:0,skew:0},78:{depth:0,height:.68611,italic:0,skew:0},79:{depth:0,height:.68611,italic:0,skew:0},80:{depth:0,height:.68611,italic:0,skew:0},81:{depth:.19444,height:.68611,italic:0,skew:0},82:{depth:0,height:.68611,italic:0,skew:0},83:{depth:0,height:.68611,italic:0,skew:0},84:{depth:0,height:.68611,italic:0,skew:0},85:{depth:0,height:.68611,italic:0,skew:0},86:{depth:0,height:.68611,italic:.01597,skew:0},87:{depth:0,height:.68611,italic:.01597,skew:0},88:{depth:0,height:.68611,italic:0,skew:0},89:{depth:0,height:.68611,italic:.02875,skew:0},90:{depth:0,height:.68611,italic:0,skew:0},91:{depth:.25,height:.75,italic:0,skew:0},92:{depth:.25,height:.75,italic:0,skew:0},93:{depth:.25,height:.75,italic:0,skew:0},94:{depth:0,height:.69444,italic:0,skew:0},95:{depth:.31,height:.13444,italic:.03194,skew:0},96:{depth:0,height:.69444,italic:0,skew:0},97:{depth:0,height:.44444,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.44444,italic:0,skew:0},100:{depth:0,height:.69444,italic:0,skew:0},101:{depth:0,height:.44444,italic:0,skew:0},102:{depth:0,height:.69444,italic:.10903,skew:0},103:{depth:.19444,height:.44444,italic:.01597,skew:0},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.69444,italic:0,skew:0},106:{depth:.19444,height:.69444,italic:0,skew:0},107:{depth:0,height:.69444,italic:0,skew:0},108:{depth:0,height:.69444,italic:0,skew:0},109:{depth:0,height:.44444,italic:0,skew:0},110:{depth:0,height:.44444,italic:0,skew:0},111:{depth:0,height:.44444,italic:0,skew:0},112:{depth:.19444,height:.44444,italic:0,skew:0},113:{depth:.19444,height:.44444,italic:0,skew:0},114:{depth:0,height:.44444,italic:0,skew:0},115:{depth:0,height:.44444,italic:0,skew:0},116:{depth:0,height:.63492,italic:0,skew:0},117:{depth:0,height:.44444,italic:0,skew:0},118:{depth:0,height:.44444,italic:.01597,skew:0},119:{depth:0,height:.44444,italic:.01597,skew:0},120:{depth:0,height:.44444,italic:0,skew:0},121:{depth:.19444,height:.44444,italic:.01597,skew:0},122:{depth:0,height:.44444,italic:0,skew:0},123:{depth:.25,height:.75,italic:0,skew:0},124:{depth:.25,height:.75,italic:0,skew:0},125:{depth:.25,height:.75,italic:0,skew:0},126:{depth:.35,height:.34444,italic:0,skew:0},168:{depth:0,height:.69444,italic:0,skew:0},172:{depth:0,height:.44444,italic:0,skew:0},175:{depth:0,height:.59611,italic:0,skew:0},176:{depth:0,height:.69444,italic:0,skew:0},177:{depth:.13333,height:.63333,italic:0,skew:0},180:{depth:0,height:.69444,italic:0,skew:0},215:{depth:.13333,height:.63333,italic:0,skew:0},247:{depth:.13333,height:.63333,italic:0,skew:0},305:{depth:0,height:.44444,italic:0,skew:0},567:{depth:.19444,height:.44444,italic:0,skew:0},710:{depth:0,height:.69444,italic:0,skew:0},711:{depth:0,height:.63194,italic:0,skew:0},713:{depth:0,height:.59611,italic:0,skew:0},714:{depth:0,height:.69444,italic:0,skew:0},715:{depth:0,height:.69444,italic:0,skew:0},728:{depth:0,height:.69444,italic:0,skew:0},729:{depth:0,height:.69444,italic:0,skew:0},730:{depth:0,height:.69444,italic:0,skew:0},732:{depth:0,height:.69444,italic:0,skew:0},768:{depth:0,height:.69444,italic:0,skew:0},769:{depth:0,height:.69444,italic:0,skew:0},770:{depth:0,height:.69444,italic:0,skew:0},771:{depth:0,height:.69444,italic:0,skew:0},772:{depth:0,height:.59611,italic:0,skew:0},774:{depth:0,height:.69444,italic:0,skew:0},775:{depth:0,height:.69444,italic:0,skew:0},776:{depth:0,height:.69444,italic:0,skew:0},778:{depth:0,height:.69444,italic:0,skew:0},779:{depth:0,height:.69444,italic:0,skew:0},780:{depth:0,height:.63194,italic:0,skew:0},824:{depth:.19444,height:.69444,italic:0,skew:0},915:{depth:0,height:.68611,italic:0,skew:0},916:{depth:0,height:.68611,italic:0,skew:0},920:{depth:0,height:.68611,italic:0,skew:0},923:{depth:0,height:.68611,italic:0,skew:0},926:{depth:0,height:.68611,italic:0,skew:0},928:{depth:0,height:.68611,italic:0,skew:0},931:{depth:0,height:.68611,italic:0,skew:0},933:{depth:0,height:.68611,italic:0,skew:0},934:{depth:0,height:.68611,italic:0,skew:0},936:{depth:0,height:.68611,italic:0,skew:0},937:{depth:0,height:.68611,italic:0,skew:0},8211:{depth:0,height:.44444,italic:.03194,skew:0},8212:{depth:0,height:.44444,italic:.03194,skew:0},8216:{depth:0,height:.69444,italic:0,skew:0},8217:{depth:0,height:.69444,italic:0,skew:0},8220:{depth:0,height:.69444,italic:0,skew:0},8221:{depth:0,height:.69444,italic:0,skew:0},8224:{depth:.19444,height:.69444,italic:0,skew:0},8225:{depth:.19444,height:.69444,italic:0,skew:0},8242:{depth:0,height:.55556,italic:0,skew:0},8407:{depth:0,height:.72444,italic:.15486,skew:0},8463:{depth:0,height:.69444,italic:0,skew:0},8465:{depth:0,height:.69444,italic:0,skew:0},8467:{depth:0,height:.69444,italic:0,skew:0},8472:{depth:.19444,height:.44444,italic:0,skew:0},8476:{depth:0,height:.69444,italic:0,skew:0},8501:{depth:0,height:.69444,italic:0,skew:0},8592:{depth:-.10889,height:.39111,italic:0,skew:0},8593:{depth:.19444,height:.69444,italic:0,skew:0},8594:{depth:-.10889,height:.39111,italic:0,skew:0},8595:{depth:.19444,height:.69444,italic:0,skew:0},8596:{depth:-.10889,height:.39111,italic:0,skew:0},8597:{depth:.25,height:.75,italic:0,skew:0},8598:{depth:.19444,height:.69444,italic:0,skew:0},8599:{depth:.19444,height:.69444,italic:0,skew:0},8600:{depth:.19444,height:.69444,italic:0,skew:0},8601:{depth:.19444,height:.69444,italic:0,skew:0},8636:{depth:-.10889,height:.39111,italic:0,skew:0},8637:{depth:-.10889,height:.39111,italic:0,skew:0},8640:{depth:-.10889,height:.39111,italic:0,skew:0},8641:{depth:-.10889,height:.39111,italic:0,skew:0},8656:{depth:-.10889,height:.39111,italic:0,skew:0},8657:{depth:.19444,height:.69444,italic:0,skew:0},8658:{depth:-.10889,height:.39111,italic:0,skew:0},8659:{depth:.19444,height:.69444,italic:0,skew:0},8660:{depth:-.10889,height:.39111,italic:0,skew:0},8661:{depth:.25,height:.75,italic:0,skew:0},8704:{depth:0,height:.69444,italic:0,skew:0},8706:{depth:0,height:.69444,italic:.06389,skew:0},8707:{depth:0,height:.69444,italic:0,skew:0},8709:{depth:.05556,height:.75,italic:0,skew:0},8711:{depth:0,height:.68611,italic:0,skew:0},8712:{depth:.08556,height:.58556,italic:0,skew:0},8715:{depth:.08556,height:.58556,italic:0,skew:0},8722:{depth:.13333,height:.63333,italic:0,skew:0},8723:{depth:.13333,height:.63333,italic:0,skew:0},8725:{depth:.25,height:.75,italic:0,skew:0},8726:{depth:.25,height:.75,italic:0,skew:0},8727:{depth:-.02778,height:.47222,italic:0,skew:0},8728:{depth:-.02639,height:.47361,italic:0,skew:0},8729:{depth:-.02639,height:.47361,italic:0,skew:0},8730:{depth:.18,height:.82,italic:0,skew:0},8733:{depth:0,height:.44444,italic:0,skew:0},8734:{depth:0,height:.44444,italic:0,skew:0},8736:{depth:0,height:.69224,italic:0,skew:0},8739:{depth:.25,height:.75,italic:0,skew:0},8741:{depth:.25,height:.75,italic:0,skew:0},8743:{depth:0,height:.55556,italic:0,skew:0},8744:{depth:0,height:.55556,italic:0,skew:0},8745:{depth:0,height:.55556,italic:0,skew:0},8746:{depth:0,height:.55556,italic:0,skew:0},8747:{depth:.19444,height:.69444,italic:.12778,skew:0},8764:{depth:-.10889,height:.39111,italic:0,skew:0},8768:{depth:.19444,height:.69444,italic:0,skew:0},8771:{depth:.00222,height:.50222,italic:0,skew:0},8776:{depth:.02444,height:.52444,italic:0,skew:0},8781:{depth:.00222,height:.50222,italic:0,skew:0},8801:{depth:.00222,height:.50222,italic:0,skew:0},8804:{depth:.19667,height:.69667,italic:0,skew:0},8805:{depth:.19667,height:.69667,italic:0,skew:0},8810:{depth:.08556,height:.58556,italic:0,skew:0},8811:{depth:.08556,height:.58556,italic:0,skew:0},8826:{depth:.08556,height:.58556,italic:0,skew:0},8827:{depth:.08556,height:.58556,italic:0,skew:0},8834:{depth:.08556,height:.58556,italic:0,skew:0},8835:{depth:.08556,height:.58556,italic:0,skew:0},8838:{depth:.19667,height:.69667,italic:0,skew:0},8839:{depth:.19667,height:.69667,italic:0,skew:0},8846:{depth:0,height:.55556,italic:0,skew:0},8849:{depth:.19667,height:.69667,italic:0,skew:0},8850:{depth:.19667,height:.69667,italic:0,skew:0},8851:{depth:0,height:.55556,italic:0,skew:0},8852:{depth:0,height:.55556,italic:0,skew:0},8853:{depth:.13333,height:.63333,italic:0,skew:0},8854:{depth:.13333,height:.63333,italic:0,skew:0},8855:{depth:.13333,height:.63333,italic:0,skew:0},8856:{depth:.13333,height:.63333,italic:0,skew:0},8857:{depth:.13333,height:.63333,italic:0,skew:0},8866:{depth:0,height:.69444,italic:0,skew:0},8867:{depth:0,height:.69444,italic:0,skew:0},8868:{depth:0,height:.69444,italic:0,skew:0},8869:{depth:0,height:.69444,italic:0,skew:0},8900:{depth:-.02639,height:.47361,italic:0,skew:0},8901:{depth:-.02639,height:.47361,italic:0,skew:0},8902:{depth:-.02778,height:.47222,italic:0,skew:0},8968:{depth:.25,height:.75,italic:0,skew:0},8969:{depth:.25,height:.75,italic:0,skew:0},8970:{depth:.25,height:.75,italic:0,skew:0},8971:{depth:.25,height:.75,italic:0,skew:0},8994:{depth:-.13889,height:.36111,italic:0,skew:0},8995:{depth:-.13889,height:.36111,italic:0,skew:0},9651:{depth:.19444,height:.69444,italic:0,skew:0},9657:{depth:-.02778,height:.47222,italic:0,skew:0},9661:{depth:.19444,height:.69444,italic:0,skew:0},9667:{depth:-.02778,height:.47222,italic:0,skew:0},9711:{depth:.19444,height:.69444,italic:0,skew:0},9824:{depth:.12963,height:.69444,italic:0,skew:0},9825:{depth:.12963,height:.69444,italic:0,skew:0},9826:{depth:.12963,height:.69444,italic:0,skew:0},9827:{depth:.12963,height:.69444,italic:0,skew:0},9837:{depth:0,height:.75,italic:0,skew:0},9838:{depth:.19444,height:.69444,italic:0,skew:0},9839:{depth:.19444,height:.69444,italic:0,skew:0},10216:{depth:.25,height:.75,italic:0,skew:0},10217:{depth:.25,height:.75,italic:0,skew:0},10815:{depth:0,height:.68611,italic:0,skew:0},10927:{depth:.19667,height:.69667,italic:0,skew:0},10928:{depth:.19667,height:.69667,italic:0,skew:0}},"Main-Italic":{33:{depth:0,height:.69444,italic:.12417,skew:0},34:{depth:0,height:.69444,italic:.06961,skew:0},35:{depth:.19444,height:.69444,italic:.06616,skew:0},37:{depth:.05556,height:.75,italic:.13639,skew:0},38:{depth:0,height:.69444,italic:.09694,skew:0},39:{depth:0,height:.69444,italic:.12417,skew:0},40:{depth:.25,height:.75,italic:.16194,skew:0},41:{depth:.25,height:.75,italic:.03694,skew:0},42:{depth:0,height:.75,italic:.14917,skew:0},43:{depth:.05667,height:.56167,italic:.03694,skew:0},44:{depth:.19444,height:.10556,italic:0,skew:0},45:{depth:0,height:.43056,italic:.02826,skew:0},46:{depth:0,height:.10556,italic:0,skew:0},47:{depth:.25,height:.75,italic:.16194,skew:0},48:{depth:0,height:.64444,italic:.13556,skew:0},49:{depth:0,height:.64444,italic:.13556,skew:0},50:{depth:0,height:.64444,italic:.13556,skew:0},51:{depth:0,height:.64444,italic:.13556,skew:0},52:{depth:.19444,height:.64444,italic:.13556,skew:0},53:{depth:0,height:.64444,italic:.13556,skew:0},54:{depth:0,height:.64444,italic:.13556,skew:0},55:{depth:.19444,height:.64444,italic:.13556,skew:0},56:{depth:0,height:.64444,italic:.13556,skew:0},57:{depth:0,height:.64444,italic:.13556,skew:0},58:{depth:0,height:.43056,italic:.0582,skew:0},59:{depth:.19444,height:.43056,italic:.0582,skew:0},61:{depth:-.13313,height:.36687,italic:.06616,skew:0},63:{depth:0,height:.69444,italic:.1225,skew:0},64:{depth:0,height:.69444,italic:.09597,skew:0},65:{depth:0,height:.68333,italic:0,skew:0},66:{depth:0,height:.68333,italic:.10257,skew:0},67:{depth:0,height:.68333,italic:.14528,skew:0},68:{depth:0,height:.68333,italic:.09403,skew:0},69:{depth:0,height:.68333,italic:.12028,skew:0},70:{depth:0,height:.68333,italic:.13305,skew:0},71:{depth:0,height:.68333,italic:.08722,skew:0},72:{depth:0,height:.68333,italic:.16389,skew:0},73:{depth:0,height:.68333,italic:.15806,skew:0},74:{depth:0,height:.68333,italic:.14028,skew:0},75:{depth:0,height:.68333,italic:.14528,skew:0},76:{depth:0,height:.68333,italic:0,skew:0},77:{depth:0,height:.68333,italic:.16389,skew:0},78:{depth:0,height:.68333,italic:.16389,skew:0},79:{depth:0,height:.68333,italic:.09403,skew:0},80:{depth:0,height:.68333,italic:.10257,skew:0},81:{depth:.19444,height:.68333,italic:.09403,skew:0},82:{depth:0,height:.68333,italic:.03868,skew:0},83:{depth:0,height:.68333,italic:.11972,skew:0},84:{depth:0,height:.68333,italic:.13305,skew:0},85:{depth:0,height:.68333,italic:.16389,skew:0},86:{depth:0,height:.68333,italic:.18361,skew:0},87:{depth:0,height:.68333,italic:.18361,skew:0},88:{depth:0,height:.68333,italic:.15806,skew:0},89:{depth:0,height:.68333,italic:.19383,skew:0},90:{depth:0,height:.68333,italic:.14528,skew:0},91:{depth:.25,height:.75,italic:.1875,skew:0},93:{depth:.25,height:.75,italic:.10528,skew:0},94:{depth:0,height:.69444,italic:.06646,skew:0},95:{depth:.31,height:.12056,italic:.09208,skew:0},97:{depth:0,height:.43056,italic:.07671,skew:0},98:{depth:0,height:.69444,italic:.06312,skew:0},99:{depth:0,height:.43056,italic:.05653,skew:0},100:{depth:0,height:.69444,italic:.10333,skew:0},101:{depth:0,height:.43056,italic:.07514,skew:0},102:{depth:.19444,height:.69444,italic:.21194,skew:0},103:{depth:.19444,height:.43056,italic:.08847,skew:0},104:{depth:0,height:.69444,italic:.07671,skew:0},105:{depth:0,height:.65536,italic:.1019,skew:0},106:{depth:.19444,height:.65536,italic:.14467,skew:0},107:{depth:0,height:.69444,italic:.10764,skew:0},108:{depth:0,height:.69444,italic:.10333,skew:0},109:{depth:0,height:.43056,italic:.07671,skew:0},110:{depth:0,height:.43056,italic:.07671,skew:0},111:{depth:0,height:.43056,italic:.06312,skew:0},112:{depth:.19444,height:.43056,italic:.06312,skew:0},113:{depth:.19444,height:.43056,italic:.08847,skew:0},114:{depth:0,height:.43056,italic:.10764,skew:0},115:{depth:0,height:.43056,italic:.08208,skew:0},116:{depth:0,height:.61508,italic:.09486,skew:0},117:{depth:0,height:.43056,italic:.07671,skew:0},118:{depth:0,height:.43056,italic:.10764,skew:0},119:{depth:0,height:.43056,italic:.10764,skew:0},120:{depth:0,height:.43056,italic:.12042,skew:0},121:{depth:.19444,height:.43056,italic:.08847,skew:0},122:{depth:0,height:.43056,italic:.12292,skew:0},126:{depth:.35,height:.31786,italic:.11585,skew:0},163:{depth:0,height:.69444,italic:0,skew:0},305:{depth:0,height:.43056,italic:0,skew:.02778},567:{depth:.19444,height:.43056,italic:0,skew:.08334},768:{depth:0,height:.69444,italic:0,skew:0},769:{depth:0,height:.69444,italic:.09694,skew:0},770:{depth:0,height:.69444,italic:.06646,skew:0},771:{depth:0,height:.66786,italic:.11585,skew:0},772:{depth:0,height:.56167,italic:.10333,skew:0},774:{depth:0,height:.69444,italic:.10806,skew:0},775:{depth:0,height:.66786,italic:.11752,skew:0},776:{depth:0,height:.66786,italic:.10474,skew:0},778:{depth:0,height:.69444,italic:0,skew:0},779:{depth:0,height:.69444,italic:.1225,skew:0},780:{depth:0,height:.62847,italic:.08295,skew:0},915:{depth:0,height:.68333,italic:.13305,skew:0},916:{depth:0,height:.68333,italic:0,skew:0},920:{depth:0,height:.68333,italic:.09403,skew:0},923:{depth:0,height:.68333,italic:0,skew:0},926:{depth:0,height:.68333,italic:.15294,skew:0},928:{depth:0,height:.68333,italic:.16389,skew:0},931:{depth:0,height:.68333,italic:.12028,skew:0},933:{depth:0,height:.68333,italic:.11111,skew:0},934:{depth:0,height:.68333,italic:.05986,skew:0},936:{depth:0,height:.68333,italic:.11111,skew:0},937:{depth:0,height:.68333,italic:.10257,skew:0},8211:{depth:0,height:.43056,italic:.09208,skew:0},8212:{depth:0,height:.43056,italic:.09208,skew:0},8216:{depth:0,height:.69444,italic:.12417,skew:0},8217:{depth:0,height:.69444,italic:.12417,skew:0},8220:{depth:0,height:.69444,italic:.1685,skew:0},8221:{depth:0,height:.69444,italic:.06961,skew:0},8463:{depth:0,height:.68889,italic:0,skew:0}},"Main-Regular":{32:{depth:0,height:0,italic:0,skew:0},33:{depth:0,height:.69444,italic:0,skew:0},34:{depth:0,height:.69444,italic:0,skew:0},35:{depth:.19444,height:.69444,italic:0,skew:0},36:{depth:.05556,height:.75,italic:0,skew:0},37:{depth:.05556,height:.75,italic:0,skew:0},38:{depth:0,height:.69444,italic:0,skew:0},39:{depth:0,height:.69444,italic:0,skew:0},40:{depth:.25,height:.75,italic:0,skew:0},41:{depth:.25,height:.75,italic:0,skew:0},42:{depth:0,height:.75,italic:0,skew:0},43:{depth:.08333,height:.58333,italic:0,skew:0},44:{depth:.19444,height:.10556,italic:0,skew:0},45:{depth:0,height:.43056,italic:0,skew:0},46:{depth:0,height:.10556,italic:0,skew:0},47:{depth:.25,height:.75,italic:0,skew:0},48:{depth:0,height:.64444,italic:0,skew:0},49:{depth:0,height:.64444,italic:0,skew:0},50:{depth:0,height:.64444,italic:0,skew:0},51:{depth:0,height:.64444,italic:0,skew:0},52:{depth:0,height:.64444,italic:0,skew:0},53:{depth:0,height:.64444,italic:0,skew:0},54:{depth:0,height:.64444,italic:0,skew:0},55:{depth:0,height:.64444,italic:0,skew:0},56:{depth:0,height:.64444,italic:0,skew:0},57:{depth:0,height:.64444,italic:0,skew:0},58:{depth:0,height:.43056,italic:0,skew:0},59:{depth:.19444,height:.43056,italic:0,skew:0},60:{depth:.0391,height:.5391,italic:0,skew:0},61:{depth:-.13313,height:.36687,italic:0,skew:0},62:{depth:.0391,height:.5391,italic:0,skew:0},63:{depth:0,height:.69444,italic:0,skew:0},64:{depth:0,height:.69444,italic:0,skew:0},65:{depth:0,height:.68333,italic:0,skew:0},66:{depth:0,height:.68333,italic:0,skew:0},67:{depth:0,height:.68333,italic:0,skew:0},68:{depth:0,height:.68333,italic:0,skew:0},69:{depth:0,height:.68333,italic:0,skew:0},70:{depth:0,height:.68333,italic:0,skew:0},71:{depth:0,height:.68333,italic:0,skew:0},72:{depth:0,height:.68333,italic:0,skew:0},73:{depth:0,height:.68333,italic:0,skew:0},74:{depth:0,height:.68333,italic:0,skew:0},75:{depth:0,height:.68333,italic:0,skew:0},76:{depth:0,height:.68333,italic:0,skew:0},77:{depth:0,height:.68333,italic:0,skew:0},78:{depth:0,height:.68333,italic:0,skew:0},79:{depth:0,height:.68333,italic:0,skew:0},80:{depth:0,height:.68333,italic:0,skew:0},81:{depth:.19444,height:.68333,italic:0,skew:0},82:{depth:0,height:.68333,italic:0,skew:0},83:{depth:0,height:.68333,italic:0,skew:0},84:{depth:0,height:.68333,italic:0,skew:0},85:{depth:0,height:.68333,italic:0,skew:0},86:{depth:0,height:.68333,italic:.01389,skew:0},87:{depth:0,height:.68333,italic:.01389,skew:0},88:{depth:0,height:.68333,italic:0,skew:0},89:{depth:0,height:.68333,italic:.025,skew:0},90:{depth:0,height:.68333,italic:0,skew:0},91:{depth:.25,height:.75,italic:0,skew:0},92:{depth:.25,height:.75,italic:0,skew:0},93:{depth:.25,height:.75,italic:0,skew:0},94:{depth:0,height:.69444,italic:0,skew:0},95:{depth:.31,height:.12056,italic:.02778,skew:0},96:{depth:0,height:.69444,italic:0,skew:0},97:{depth:0,height:.43056,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.43056,italic:0,skew:0},100:{depth:0,height:.69444,italic:0,skew:0},101:{depth:0,height:.43056,italic:0,skew:0},102:{depth:0,height:.69444,italic:.07778,skew:0},103:{depth:.19444,height:.43056,italic:.01389,skew:0},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.66786,italic:0,skew:0},106:{depth:.19444,height:.66786,italic:0,skew:0},107:{depth:0,height:.69444,italic:0,skew:0},108:{depth:0,height:.69444,italic:0,skew:0},109:{depth:0,height:.43056,italic:0,skew:0},110:{depth:0,height:.43056,italic:0,skew:0},111:{depth:0,height:.43056,italic:0,skew:0},112:{depth:.19444,height:.43056,italic:0,skew:0},113:{depth:.19444,height:.43056,italic:0,skew:0},114:{depth:0,height:.43056,italic:0,skew:0},115:{depth:0,height:.43056,italic:0,skew:0},116:{depth:0,height:.61508,italic:0,skew:0},117:{depth:0,height:.43056,italic:0,skew:0},118:{depth:0,height:.43056,italic:.01389,skew:0},119:{depth:0,height:.43056,italic:.01389,skew:0},120:{depth:0,height:.43056,italic:0,skew:0},121:{depth:.19444,height:.43056,italic:.01389,skew:0},122:{depth:0,height:.43056,italic:0,skew:0},123:{depth:.25,height:.75,italic:0,skew:0},124:{depth:.25,height:.75,italic:0,skew:0},125:{depth:.25,height:.75,italic:0,skew:0},126:{depth:.35,height:.31786,italic:0,skew:0},160:{depth:0,height:0,italic:0,skew:0},168:{depth:0,height:.66786,italic:0,skew:0},172:{depth:0,height:.43056,italic:0,skew:0},175:{depth:0,height:.56778,italic:0,skew:0},176:{depth:0,height:.69444,italic:0,skew:0},177:{depth:.08333,height:.58333,italic:0,skew:0},180:{depth:0,height:.69444,italic:0,skew:0},215:{depth:.08333,height:.58333,italic:0,skew:0},247:{depth:.08333,height:.58333,italic:0,skew:0},305:{depth:0,height:.43056,italic:0,skew:0},567:{depth:.19444,height:.43056,italic:0,skew:0},710:{depth:0,height:.69444,italic:0,skew:0},711:{depth:0,height:.62847,italic:0,skew:0},713:{depth:0,height:.56778,italic:0,skew:0},714:{depth:0,height:.69444,italic:0,skew:0},715:{depth:0,height:.69444,italic:0,skew:0},728:{depth:0,height:.69444,italic:0,skew:0},729:{depth:0,height:.66786,italic:0,skew:0},730:{depth:0,height:.69444,italic:0,skew:0},732:{depth:0,height:.66786,italic:0,skew:0},768:{depth:0,height:.69444,italic:0,skew:0},769:{depth:0,height:.69444,italic:0,skew:0},770:{depth:0,height:.69444,italic:0,skew:0},771:{depth:0,height:.66786,italic:0,skew:0},772:{depth:0,height:.56778,italic:0,skew:0},774:{depth:0,height:.69444,italic:0,skew:0},775:{depth:0,height:.66786,italic:0,skew:0},776:{depth:0,height:.66786,italic:0,skew:0},778:{depth:0,height:.69444,italic:0,skew:0},779:{depth:0,height:.69444,italic:0,skew:0},780:{depth:0,height:.62847,italic:0,skew:0},824:{depth:.19444,height:.69444,italic:0,skew:0},915:{depth:0,height:.68333,italic:0,skew:0},916:{depth:0,height:.68333,italic:0,skew:0},920:{depth:0,height:.68333,italic:0,skew:0},923:{depth:0,height:.68333,italic:0,skew:0},926:{depth:0,height:.68333,italic:0,skew:0},928:{depth:0,height:.68333,italic:0,skew:0},931:{depth:0,height:.68333,italic:0,skew:0},933:{depth:0,height:.68333,italic:0,skew:0},934:{depth:0,height:.68333,italic:0,skew:0},936:{depth:0,height:.68333,italic:0,skew:0},937:{depth:0,height:.68333,italic:0,skew:0},8211:{depth:0,height:.43056,italic:.02778,skew:0},8212:{depth:0,height:.43056,italic:.02778,skew:0},8216:{depth:0,height:.69444,italic:0,skew:0},8217:{depth:0,height:.69444,italic:0,skew:0},8220:{depth:0,height:.69444,italic:0,skew:0},8221:{depth:0,height:.69444,italic:0,skew:0},8224:{depth:.19444,height:.69444,italic:0,skew:0},8225:{depth:.19444,height:.69444,italic:0,skew:0},8230:{depth:0,height:.12,italic:0,skew:0},8242:{depth:0,height:.55556,italic:0,skew:0},8407:{depth:0,height:.71444,italic:.15382,skew:0},8463:{depth:0,height:.68889,italic:0,skew:0},8465:{depth:0,height:.69444,italic:0,skew:0},8467:{depth:0,height:.69444,italic:0,skew:.11111},8472:{depth:.19444,height:.43056,italic:0,skew:.11111},8476:{depth:0,height:.69444,italic:0,skew:0},8501:{depth:0,height:.69444,italic:0,skew:0},8592:{depth:-.13313,height:.36687,italic:0,skew:0},8593:{depth:.19444,height:.69444,italic:0,skew:0},8594:{depth:-.13313,height:.36687,italic:0,skew:0},8595:{depth:.19444,height:.69444,italic:0,skew:0},8596:{depth:-.13313,height:.36687,italic:0,skew:0},8597:{depth:.25,height:.75,italic:0,skew:0},8598:{depth:.19444,height:.69444,italic:0,skew:0},8599:{depth:.19444,height:.69444,italic:0,skew:0},8600:{depth:.19444,height:.69444,italic:0,skew:0},8601:{depth:.19444,height:.69444,italic:0,skew:0},8614:{depth:.011,height:.511,italic:0,skew:0},8617:{depth:.011,height:.511,italic:0,skew:0},8618:{depth:.011,height:.511,italic:0,skew:0},8636:{depth:-.13313,height:.36687,italic:0,skew:0},8637:{depth:-.13313,height:.36687,italic:0,skew:0},8640:{depth:-.13313,height:.36687,italic:0,skew:0},8641:{depth:-.13313,height:.36687,italic:0,skew:0},8652:{depth:.011,height:.671,italic:0,skew:0},8656:{depth:-.13313,height:.36687,italic:0,skew:0},8657:{depth:.19444,height:.69444,italic:0,skew:0},8658:{depth:-.13313,height:.36687,italic:0,skew:0},8659:{depth:.19444,height:.69444,italic:0,skew:0},8660:{depth:-.13313,height:.36687,italic:0,skew:0},8661:{depth:.25,height:.75,italic:0,skew:0},8704:{depth:0,height:.69444,italic:0,skew:0},8706:{depth:0,height:.69444,italic:.05556,skew:.08334},8707:{depth:0,height:.69444,italic:0,skew:0},8709:{depth:.05556,height:.75,italic:0,skew:0},8711:{depth:0,height:.68333,italic:0,skew:0},8712:{depth:.0391,height:.5391,italic:0,skew:0},8715:{depth:.0391,height:.5391,italic:0,skew:0},8722:{depth:.08333,height:.58333,italic:0,skew:0},8723:{depth:.08333,height:.58333,italic:0,skew:0},8725:{depth:.25,height:.75,italic:0,skew:0},8726:{depth:.25,height:.75,italic:0,skew:0},8727:{depth:-.03472,height:.46528,italic:0,skew:0},8728:{depth:-.05555,height:.44445,italic:0,skew:0},8729:{depth:-.05555,height:.44445,italic:0,skew:0},8730:{depth:.2,height:.8,italic:0,skew:0},8733:{depth:0,height:.43056,italic:0,skew:0},8734:{depth:0,height:.43056,italic:0,skew:0},8736:{depth:0,height:.69224,italic:0,skew:0},8739:{depth:.25,height:.75,italic:0,skew:0},8741:{depth:.25,height:.75,italic:0,skew:0},8743:{depth:0,height:.55556,italic:0,skew:0},8744:{depth:0,height:.55556,italic:0,skew:0},8745:{depth:0,height:.55556,italic:0,skew:0},8746:{depth:0,height:.55556,italic:0,skew:0},8747:{depth:.19444,height:.69444,italic:.11111,skew:0},8764:{depth:-.13313,height:.36687,italic:0,skew:0},8768:{depth:.19444,height:.69444,italic:0,skew:0},8771:{depth:-.03625,height:.46375,italic:0,skew:0},8773:{depth:-.022,height:.589,italic:0,skew:0},8776:{depth:-.01688,height:.48312,italic:0,skew:0},8781:{depth:-.03625,height:.46375,italic:0,skew:0},8784:{depth:-.133,height:.67,italic:0,skew:0},8800:{depth:.215,height:.716,italic:0,skew:0},8801:{depth:-.03625,height:.46375,italic:0,skew:0},8804:{depth:.13597,height:.63597,italic:0,skew:0},8805:{depth:.13597,height:.63597,italic:0,skew:0},8810:{depth:.0391,height:.5391,italic:0,skew:0},8811:{depth:.0391,height:.5391,italic:0,skew:0},8826:{depth:.0391,height:.5391,italic:0,skew:0},8827:{depth:.0391,height:.5391,italic:0,skew:0},8834:{depth:.0391,height:.5391,italic:0,skew:0},8835:{depth:.0391,height:.5391,italic:0,skew:0},8838:{depth:.13597,height:.63597,italic:0,skew:0},8839:{depth:.13597,height:.63597,italic:0,skew:0},8846:{depth:0,height:.55556,italic:0,skew:0},8849:{depth:.13597,height:.63597,italic:0,skew:0},8850:{depth:.13597,height:.63597,italic:0,skew:0},8851:{depth:0,height:.55556,italic:0,skew:0},8852:{depth:0,height:.55556,italic:0,skew:0},8853:{depth:.08333,height:.58333,italic:0,skew:0},8854:{depth:.08333,height:.58333,italic:0,skew:0},8855:{depth:.08333,height:.58333,italic:0,skew:0},8856:{depth:.08333,height:.58333,italic:0,skew:0},8857:{depth:.08333,height:.58333,italic:0,skew:0},8866:{depth:0,height:.69444,italic:0,skew:0},8867:{depth:0,height:.69444,italic:0,skew:0},8868:{depth:0,height:.69444,italic:0,skew:0},8869:{depth:0,height:.69444,italic:0,skew:0},8872:{depth:.249,height:.75,italic:0,skew:0},8900:{depth:-.05555,height:.44445,italic:0,skew:0},8901:{depth:-.05555,height:.44445,italic:0,skew:0},8902:{depth:-.03472,height:.46528,italic:0,skew:0},8904:{depth:.005,height:.505,italic:0,skew:0},8942:{depth:.03,height:.9,italic:0,skew:0},8943:{depth:-.19,height:.31,italic:0,skew:0},8945:{depth:-.1,height:.82,italic:0,skew:0},8968:{depth:.25,height:.75,italic:0,skew:0},8969:{depth:.25,height:.75,italic:0,skew:0},8970:{depth:.25,height:.75,italic:0,skew:0},8971:{depth:.25,height:.75,italic:0,skew:0},8994:{depth:-.14236,height:.35764,italic:0,skew:0},8995:{depth:-.14236,height:.35764,italic:0,skew:0},9136:{depth:.244,height:.744,italic:0,skew:0},9137:{depth:.244,height:.744,italic:0,skew:0},9651:{depth:.19444,height:.69444,italic:0,skew:0},9657:{depth:-.03472,height:.46528,italic:0,skew:0},9661:{depth:.19444,height:.69444,italic:0,skew:0},9667:{depth:-.03472,height:.46528,italic:0,skew:0},9711:{depth:.19444,height:.69444,italic:0,skew:0},9824:{depth:.12963,height:.69444,italic:0,skew:0},9825:{depth:.12963,height:.69444,italic:0,skew:0},9826:{depth:.12963,height:.69444,italic:0,skew:0},9827:{depth:.12963,height:.69444,italic:0,skew:0},9837:{depth:0,height:.75,italic:0,skew:0},9838:{depth:.19444,height:.69444,italic:0,skew:0},9839:{depth:.19444,height:.69444,italic:0,skew:0},10216:{depth:.25,height:.75,italic:0,skew:0},10217:{depth:.25,height:.75,italic:0,skew:0},10222:{depth:.244,height:.744,italic:0,skew:0},10223:{depth:.244,height:.744,italic:0,skew:0},10229:{depth:.011,height:.511,italic:0,skew:0},10230:{depth:.011,height:.511,italic:0,skew:0},10231:{depth:.011,height:.511,italic:0,skew:0},10232:{depth:.024,height:.525,italic:0,skew:0},10233:{depth:.024,height:.525,italic:0,skew:0},10234:{depth:.024,height:.525,italic:0,skew:0},10236:{depth:.011,height:.511,italic:0,skew:0},10815:{depth:0,height:.68333,italic:0,skew:0},10927:{depth:.13597,height:.63597,italic:0,skew:0},10928:{depth:.13597,height:.63597,italic:0,skew:0}},"Math-BoldItalic":{47:{depth:.19444,height:.69444,italic:0,skew:0},65:{depth:0,height:.68611,italic:0,skew:0},66:{depth:0,height:.68611,italic:.04835,skew:0},67:{depth:0,height:.68611,italic:.06979,skew:0},68:{depth:0,height:.68611,italic:.03194,skew:0},69:{depth:0,height:.68611,italic:.05451,skew:0},70:{depth:0,height:.68611,italic:.15972,skew:0},71:{depth:0,height:.68611,italic:0,skew:0},72:{depth:0,height:.68611,italic:.08229,skew:0},73:{depth:0,height:.68611,italic:.07778,skew:0},74:{depth:0,height:.68611,italic:.10069,skew:0},75:{depth:0,height:.68611,italic:.06979,skew:0},76:{depth:0,height:.68611,italic:0,skew:0},77:{depth:0,height:.68611,italic:.11424,skew:0},78:{depth:0,height:.68611,italic:.11424,skew:0},79:{depth:0,height:.68611,italic:.03194,skew:0},80:{depth:0,height:.68611,italic:.15972,skew:0},81:{depth:.19444,height:.68611,italic:0,skew:0},82:{depth:0,height:.68611,italic:.00421,skew:0},83:{depth:0,height:.68611,italic:.05382,skew:0},84:{depth:0,height:.68611,italic:.15972,skew:0},85:{depth:0,height:.68611,italic:.11424,skew:0},86:{depth:0,height:.68611,italic:.25555,skew:0},87:{depth:0,height:.68611,italic:.15972,skew:0},88:{depth:0,height:.68611,italic:.07778,skew:0},89:{depth:0,height:.68611,italic:.25555,skew:0},90:{depth:0,height:.68611,italic:.06979,skew:0},97:{depth:0,height:.44444,
+italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.44444,italic:0,skew:0},100:{depth:0,height:.69444,italic:0,skew:0},101:{depth:0,height:.44444,italic:0,skew:0},102:{depth:.19444,height:.69444,italic:.11042,skew:0},103:{depth:.19444,height:.44444,italic:.03704,skew:0},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.69326,italic:0,skew:0},106:{depth:.19444,height:.69326,italic:.0622,skew:0},107:{depth:0,height:.69444,italic:.01852,skew:0},108:{depth:0,height:.69444,italic:.0088,skew:0},109:{depth:0,height:.44444,italic:0,skew:0},110:{depth:0,height:.44444,italic:0,skew:0},111:{depth:0,height:.44444,italic:0,skew:0},112:{depth:.19444,height:.44444,italic:0,skew:0},113:{depth:.19444,height:.44444,italic:.03704,skew:0},114:{depth:0,height:.44444,italic:.03194,skew:0},115:{depth:0,height:.44444,italic:0,skew:0},116:{depth:0,height:.63492,italic:0,skew:0},117:{depth:0,height:.44444,italic:0,skew:0},118:{depth:0,height:.44444,italic:.03704,skew:0},119:{depth:0,height:.44444,italic:.02778,skew:0},120:{depth:0,height:.44444,italic:0,skew:0},121:{depth:.19444,height:.44444,italic:.03704,skew:0},122:{depth:0,height:.44444,italic:.04213,skew:0},915:{depth:0,height:.68611,italic:.15972,skew:0},916:{depth:0,height:.68611,italic:0,skew:0},920:{depth:0,height:.68611,italic:.03194,skew:0},923:{depth:0,height:.68611,italic:0,skew:0},926:{depth:0,height:.68611,italic:.07458,skew:0},928:{depth:0,height:.68611,italic:.08229,skew:0},931:{depth:0,height:.68611,italic:.05451,skew:0},933:{depth:0,height:.68611,italic:.15972,skew:0},934:{depth:0,height:.68611,italic:0,skew:0},936:{depth:0,height:.68611,italic:.11653,skew:0},937:{depth:0,height:.68611,italic:.04835,skew:0},945:{depth:0,height:.44444,italic:0,skew:0},946:{depth:.19444,height:.69444,italic:.03403,skew:0},947:{depth:.19444,height:.44444,italic:.06389,skew:0},948:{depth:0,height:.69444,italic:.03819,skew:0},949:{depth:0,height:.44444,italic:0,skew:0},950:{depth:.19444,height:.69444,italic:.06215,skew:0},951:{depth:.19444,height:.44444,italic:.03704,skew:0},952:{depth:0,height:.69444,italic:.03194,skew:0},953:{depth:0,height:.44444,italic:0,skew:0},954:{depth:0,height:.44444,italic:0,skew:0},955:{depth:0,height:.69444,italic:0,skew:0},956:{depth:.19444,height:.44444,italic:0,skew:0},957:{depth:0,height:.44444,italic:.06898,skew:0},958:{depth:.19444,height:.69444,italic:.03021,skew:0},959:{depth:0,height:.44444,italic:0,skew:0},960:{depth:0,height:.44444,italic:.03704,skew:0},961:{depth:.19444,height:.44444,italic:0,skew:0},962:{depth:.09722,height:.44444,italic:.07917,skew:0},963:{depth:0,height:.44444,italic:.03704,skew:0},964:{depth:0,height:.44444,italic:.13472,skew:0},965:{depth:0,height:.44444,italic:.03704,skew:0},966:{depth:.19444,height:.44444,italic:0,skew:0},967:{depth:.19444,height:.44444,italic:0,skew:0},968:{depth:.19444,height:.69444,italic:.03704,skew:0},969:{depth:0,height:.44444,italic:.03704,skew:0},977:{depth:0,height:.69444,italic:0,skew:0},981:{depth:.19444,height:.69444,italic:0,skew:0},982:{depth:0,height:.44444,italic:.03194,skew:0},1009:{depth:.19444,height:.44444,italic:0,skew:0},1013:{depth:0,height:.44444,italic:0,skew:0}},"Math-Italic":{47:{depth:.19444,height:.69444,italic:0,skew:0},65:{depth:0,height:.68333,italic:0,skew:.13889},66:{depth:0,height:.68333,italic:.05017,skew:.08334},67:{depth:0,height:.68333,italic:.07153,skew:.08334},68:{depth:0,height:.68333,italic:.02778,skew:.05556},69:{depth:0,height:.68333,italic:.05764,skew:.08334},70:{depth:0,height:.68333,italic:.13889,skew:.08334},71:{depth:0,height:.68333,italic:0,skew:.08334},72:{depth:0,height:.68333,italic:.08125,skew:.05556},73:{depth:0,height:.68333,italic:.07847,skew:.11111},74:{depth:0,height:.68333,italic:.09618,skew:.16667},75:{depth:0,height:.68333,italic:.07153,skew:.05556},76:{depth:0,height:.68333,italic:0,skew:.02778},77:{depth:0,height:.68333,italic:.10903,skew:.08334},78:{depth:0,height:.68333,italic:.10903,skew:.08334},79:{depth:0,height:.68333,italic:.02778,skew:.08334},80:{depth:0,height:.68333,italic:.13889,skew:.08334},81:{depth:.19444,height:.68333,italic:0,skew:.08334},82:{depth:0,height:.68333,italic:.00773,skew:.08334},83:{depth:0,height:.68333,italic:.05764,skew:.08334},84:{depth:0,height:.68333,italic:.13889,skew:.08334},85:{depth:0,height:.68333,italic:.10903,skew:.02778},86:{depth:0,height:.68333,italic:.22222,skew:0},87:{depth:0,height:.68333,italic:.13889,skew:0},88:{depth:0,height:.68333,italic:.07847,skew:.08334},89:{depth:0,height:.68333,italic:.22222,skew:0},90:{depth:0,height:.68333,italic:.07153,skew:.08334},97:{depth:0,height:.43056,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.43056,italic:0,skew:.05556},100:{depth:0,height:.69444,italic:0,skew:.16667},101:{depth:0,height:.43056,italic:0,skew:.05556},102:{depth:.19444,height:.69444,italic:.10764,skew:.16667},103:{depth:.19444,height:.43056,italic:.03588,skew:.02778},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.65952,italic:0,skew:0},106:{depth:.19444,height:.65952,italic:.05724,skew:0},107:{depth:0,height:.69444,italic:.03148,skew:0},108:{depth:0,height:.69444,italic:.01968,skew:.08334},109:{depth:0,height:.43056,italic:0,skew:0},110:{depth:0,height:.43056,italic:0,skew:0},111:{depth:0,height:.43056,italic:0,skew:.05556},112:{depth:.19444,height:.43056,italic:0,skew:.08334},113:{depth:.19444,height:.43056,italic:.03588,skew:.08334},114:{depth:0,height:.43056,italic:.02778,skew:.05556},115:{depth:0,height:.43056,italic:0,skew:.05556},116:{depth:0,height:.61508,italic:0,skew:.08334},117:{depth:0,height:.43056,italic:0,skew:.02778},118:{depth:0,height:.43056,italic:.03588,skew:.02778},119:{depth:0,height:.43056,italic:.02691,skew:.08334},120:{depth:0,height:.43056,italic:0,skew:.02778},121:{depth:.19444,height:.43056,italic:.03588,skew:.05556},122:{depth:0,height:.43056,italic:.04398,skew:.05556},915:{depth:0,height:.68333,italic:.13889,skew:.08334},916:{depth:0,height:.68333,italic:0,skew:.16667},920:{depth:0,height:.68333,italic:.02778,skew:.08334},923:{depth:0,height:.68333,italic:0,skew:.16667},926:{depth:0,height:.68333,italic:.07569,skew:.08334},928:{depth:0,height:.68333,italic:.08125,skew:.05556},931:{depth:0,height:.68333,italic:.05764,skew:.08334},933:{depth:0,height:.68333,italic:.13889,skew:.05556},934:{depth:0,height:.68333,italic:0,skew:.08334},936:{depth:0,height:.68333,italic:.11,skew:.05556},937:{depth:0,height:.68333,italic:.05017,skew:.08334},945:{depth:0,height:.43056,italic:.0037,skew:.02778},946:{depth:.19444,height:.69444,italic:.05278,skew:.08334},947:{depth:.19444,height:.43056,italic:.05556,skew:0},948:{depth:0,height:.69444,italic:.03785,skew:.05556},949:{depth:0,height:.43056,italic:0,skew:.08334},950:{depth:.19444,height:.69444,italic:.07378,skew:.08334},951:{depth:.19444,height:.43056,italic:.03588,skew:.05556},952:{depth:0,height:.69444,italic:.02778,skew:.08334},953:{depth:0,height:.43056,italic:0,skew:.05556},954:{depth:0,height:.43056,italic:0,skew:0},955:{depth:0,height:.69444,italic:0,skew:0},956:{depth:.19444,height:.43056,italic:0,skew:.02778},957:{depth:0,height:.43056,italic:.06366,skew:.02778},958:{depth:.19444,height:.69444,italic:.04601,skew:.11111},959:{depth:0,height:.43056,italic:0,skew:.05556},960:{depth:0,height:.43056,italic:.03588,skew:0},961:{depth:.19444,height:.43056,italic:0,skew:.08334},962:{depth:.09722,height:.43056,italic:.07986,skew:.08334},963:{depth:0,height:.43056,italic:.03588,skew:0},964:{depth:0,height:.43056,italic:.1132,skew:.02778},965:{depth:0,height:.43056,italic:.03588,skew:.02778},966:{depth:.19444,height:.43056,italic:0,skew:.08334},967:{depth:.19444,height:.43056,italic:0,skew:.05556},968:{depth:.19444,height:.69444,italic:.03588,skew:.11111},969:{depth:0,height:.43056,italic:.03588,skew:0},977:{depth:0,height:.69444,italic:0,skew:.08334},981:{depth:.19444,height:.69444,italic:0,skew:.08334},982:{depth:0,height:.43056,italic:.02778,skew:0},1009:{depth:.19444,height:.43056,italic:0,skew:.08334},1013:{depth:0,height:.43056,italic:0,skew:.05556}},"Math-Regular":{65:{depth:0,height:.68333,italic:0,skew:.13889},66:{depth:0,height:.68333,italic:.05017,skew:.08334},67:{depth:0,height:.68333,italic:.07153,skew:.08334},68:{depth:0,height:.68333,italic:.02778,skew:.05556},69:{depth:0,height:.68333,italic:.05764,skew:.08334},70:{depth:0,height:.68333,italic:.13889,skew:.08334},71:{depth:0,height:.68333,italic:0,skew:.08334},72:{depth:0,height:.68333,italic:.08125,skew:.05556},73:{depth:0,height:.68333,italic:.07847,skew:.11111},74:{depth:0,height:.68333,italic:.09618,skew:.16667},75:{depth:0,height:.68333,italic:.07153,skew:.05556},76:{depth:0,height:.68333,italic:0,skew:.02778},77:{depth:0,height:.68333,italic:.10903,skew:.08334},78:{depth:0,height:.68333,italic:.10903,skew:.08334},79:{depth:0,height:.68333,italic:.02778,skew:.08334},80:{depth:0,height:.68333,italic:.13889,skew:.08334},81:{depth:.19444,height:.68333,italic:0,skew:.08334},82:{depth:0,height:.68333,italic:.00773,skew:.08334},83:{depth:0,height:.68333,italic:.05764,skew:.08334},84:{depth:0,height:.68333,italic:.13889,skew:.08334},85:{depth:0,height:.68333,italic:.10903,skew:.02778},86:{depth:0,height:.68333,italic:.22222,skew:0},87:{depth:0,height:.68333,italic:.13889,skew:0},88:{depth:0,height:.68333,italic:.07847,skew:.08334},89:{depth:0,height:.68333,italic:.22222,skew:0},90:{depth:0,height:.68333,italic:.07153,skew:.08334},97:{depth:0,height:.43056,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.43056,italic:0,skew:.05556},100:{depth:0,height:.69444,italic:0,skew:.16667},101:{depth:0,height:.43056,italic:0,skew:.05556},102:{depth:.19444,height:.69444,italic:.10764,skew:.16667},103:{depth:.19444,height:.43056,italic:.03588,skew:.02778},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.65952,italic:0,skew:0},106:{depth:.19444,height:.65952,italic:.05724,skew:0},107:{depth:0,height:.69444,italic:.03148,skew:0},108:{depth:0,height:.69444,italic:.01968,skew:.08334},109:{depth:0,height:.43056,italic:0,skew:0},110:{depth:0,height:.43056,italic:0,skew:0},111:{depth:0,height:.43056,italic:0,skew:.05556},112:{depth:.19444,height:.43056,italic:0,skew:.08334},113:{depth:.19444,height:.43056,italic:.03588,skew:.08334},114:{depth:0,height:.43056,italic:.02778,skew:.05556},115:{depth:0,height:.43056,italic:0,skew:.05556},116:{depth:0,height:.61508,italic:0,skew:.08334},117:{depth:0,height:.43056,italic:0,skew:.02778},118:{depth:0,height:.43056,italic:.03588,skew:.02778},119:{depth:0,height:.43056,italic:.02691,skew:.08334},120:{depth:0,height:.43056,italic:0,skew:.02778},121:{depth:.19444,height:.43056,italic:.03588,skew:.05556},122:{depth:0,height:.43056,italic:.04398,skew:.05556},915:{depth:0,height:.68333,italic:.13889,skew:.08334},916:{depth:0,height:.68333,italic:0,skew:.16667},920:{depth:0,height:.68333,italic:.02778,skew:.08334},923:{depth:0,height:.68333,italic:0,skew:.16667},926:{depth:0,height:.68333,italic:.07569,skew:.08334},928:{depth:0,height:.68333,italic:.08125,skew:.05556},931:{depth:0,height:.68333,italic:.05764,skew:.08334},933:{depth:0,height:.68333,italic:.13889,skew:.05556},934:{depth:0,height:.68333,italic:0,skew:.08334},936:{depth:0,height:.68333,italic:.11,skew:.05556},937:{depth:0,height:.68333,italic:.05017,skew:.08334},945:{depth:0,height:.43056,italic:.0037,skew:.02778},946:{depth:.19444,height:.69444,italic:.05278,skew:.08334},947:{depth:.19444,height:.43056,italic:.05556,skew:0},948:{depth:0,height:.69444,italic:.03785,skew:.05556},949:{depth:0,height:.43056,italic:0,skew:.08334},950:{depth:.19444,height:.69444,italic:.07378,skew:.08334},951:{depth:.19444,height:.43056,italic:.03588,skew:.05556},952:{depth:0,height:.69444,italic:.02778,skew:.08334},953:{depth:0,height:.43056,italic:0,skew:.05556},954:{depth:0,height:.43056,italic:0,skew:0},955:{depth:0,height:.69444,italic:0,skew:0},956:{depth:.19444,height:.43056,italic:0,skew:.02778},957:{depth:0,height:.43056,italic:.06366,skew:.02778},958:{depth:.19444,height:.69444,italic:.04601,skew:.11111},959:{depth:0,height:.43056,italic:0,skew:.05556},960:{depth:0,height:.43056,italic:.03588,skew:0},961:{depth:.19444,height:.43056,italic:0,skew:.08334},962:{depth:.09722,height:.43056,italic:.07986,skew:.08334},963:{depth:0,height:.43056,italic:.03588,skew:0},964:{depth:0,height:.43056,italic:.1132,skew:.02778},965:{depth:0,height:.43056,italic:.03588,skew:.02778},966:{depth:.19444,height:.43056,italic:0,skew:.08334},967:{depth:.19444,height:.43056,italic:0,skew:.05556},968:{depth:.19444,height:.69444,italic:.03588,skew:.11111},969:{depth:0,height:.43056,italic:.03588,skew:0},977:{depth:0,height:.69444,italic:0,skew:.08334},981:{depth:.19444,height:.69444,italic:0,skew:.08334},982:{depth:0,height:.43056,italic:.02778,skew:0},1009:{depth:.19444,height:.43056,italic:0,skew:.08334},1013:{depth:0,height:.43056,italic:0,skew:.05556}},"SansSerif-Regular":{33:{depth:0,height:.69444,italic:0,skew:0},34:{depth:0,height:.69444,italic:0,skew:0},35:{depth:.19444,height:.69444,italic:0,skew:0},36:{depth:.05556,height:.75,italic:0,skew:0},37:{depth:.05556,height:.75,italic:0,skew:0},38:{depth:0,height:.69444,italic:0,skew:0},39:{depth:0,height:.69444,italic:0,skew:0},40:{depth:.25,height:.75,italic:0,skew:0},41:{depth:.25,height:.75,italic:0,skew:0},42:{depth:0,height:.75,italic:0,skew:0},43:{depth:.08333,height:.58333,italic:0,skew:0},44:{depth:.125,height:.08333,italic:0,skew:0},45:{depth:0,height:.44444,italic:0,skew:0},46:{depth:0,height:.08333,italic:0,skew:0},47:{depth:.25,height:.75,italic:0,skew:0},48:{depth:0,height:.65556,italic:0,skew:0},49:{depth:0,height:.65556,italic:0,skew:0},50:{depth:0,height:.65556,italic:0,skew:0},51:{depth:0,height:.65556,italic:0,skew:0},52:{depth:0,height:.65556,italic:0,skew:0},53:{depth:0,height:.65556,italic:0,skew:0},54:{depth:0,height:.65556,italic:0,skew:0},55:{depth:0,height:.65556,italic:0,skew:0},56:{depth:0,height:.65556,italic:0,skew:0},57:{depth:0,height:.65556,italic:0,skew:0},58:{depth:0,height:.44444,italic:0,skew:0},59:{depth:.125,height:.44444,italic:0,skew:0},61:{depth:-.13,height:.37,italic:0,skew:0},63:{depth:0,height:.69444,italic:0,skew:0},64:{depth:0,height:.69444,italic:0,skew:0},65:{depth:0,height:.69444,italic:0,skew:0},66:{depth:0,height:.69444,italic:0,skew:0},67:{depth:0,height:.69444,italic:0,skew:0},68:{depth:0,height:.69444,italic:0,skew:0},69:{depth:0,height:.69444,italic:0,skew:0},70:{depth:0,height:.69444,italic:0,skew:0},71:{depth:0,height:.69444,italic:0,skew:0},72:{depth:0,height:.69444,italic:0,skew:0},73:{depth:0,height:.69444,italic:0,skew:0},74:{depth:0,height:.69444,italic:0,skew:0},75:{depth:0,height:.69444,italic:0,skew:0},76:{depth:0,height:.69444,italic:0,skew:0},77:{depth:0,height:.69444,italic:0,skew:0},78:{depth:0,height:.69444,italic:0,skew:0},79:{depth:0,height:.69444,italic:0,skew:0},80:{depth:0,height:.69444,italic:0,skew:0},81:{depth:.125,height:.69444,italic:0,skew:0},82:{depth:0,height:.69444,italic:0,skew:0},83:{depth:0,height:.69444,italic:0,skew:0},84:{depth:0,height:.69444,italic:0,skew:0},85:{depth:0,height:.69444,italic:0,skew:0},86:{depth:0,height:.69444,italic:.01389,skew:0},87:{depth:0,height:.69444,italic:.01389,skew:0},88:{depth:0,height:.69444,italic:0,skew:0},89:{depth:0,height:.69444,italic:.025,skew:0},90:{depth:0,height:.69444,italic:0,skew:0},91:{depth:.25,height:.75,italic:0,skew:0},93:{depth:.25,height:.75,italic:0,skew:0},94:{depth:0,height:.69444,italic:0,skew:0},95:{depth:.35,height:.09444,italic:.02778,skew:0},97:{depth:0,height:.44444,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.44444,italic:0,skew:0},100:{depth:0,height:.69444,italic:0,skew:0},101:{depth:0,height:.44444,italic:0,skew:0},102:{depth:0,height:.69444,italic:.06944,skew:0},103:{depth:.19444,height:.44444,italic:.01389,skew:0},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.67937,italic:0,skew:0},106:{depth:.19444,height:.67937,italic:0,skew:0},107:{depth:0,height:.69444,italic:0,skew:0},108:{depth:0,height:.69444,italic:0,skew:0},109:{depth:0,height:.44444,italic:0,skew:0},110:{depth:0,height:.44444,italic:0,skew:0},111:{depth:0,height:.44444,italic:0,skew:0},112:{depth:.19444,height:.44444,italic:0,skew:0},113:{depth:.19444,height:.44444,italic:0,skew:0},114:{depth:0,height:.44444,italic:.01389,skew:0},115:{depth:0,height:.44444,italic:0,skew:0},116:{depth:0,height:.57143,italic:0,skew:0},117:{depth:0,height:.44444,italic:0,skew:0},118:{depth:0,height:.44444,italic:.01389,skew:0},119:{depth:0,height:.44444,italic:.01389,skew:0},120:{depth:0,height:.44444,italic:0,skew:0},121:{depth:.19444,height:.44444,italic:.01389,skew:0},122:{depth:0,height:.44444,italic:0,skew:0},126:{depth:.35,height:.32659,italic:0,skew:0},305:{depth:0,height:.44444,italic:0,skew:0},567:{depth:.19444,height:.44444,italic:0,skew:0},768:{depth:0,height:.69444,italic:0,skew:0},769:{depth:0,height:.69444,italic:0,skew:0},770:{depth:0,height:.69444,italic:0,skew:0},771:{depth:0,height:.67659,italic:0,skew:0},772:{depth:0,height:.60889,italic:0,skew:0},774:{depth:0,height:.69444,italic:0,skew:0},775:{depth:0,height:.67937,italic:0,skew:0},776:{depth:0,height:.67937,italic:0,skew:0},778:{depth:0,height:.69444,italic:0,skew:0},779:{depth:0,height:.69444,italic:0,skew:0},780:{depth:0,height:.63194,italic:0,skew:0},915:{depth:0,height:.69444,italic:0,skew:0},916:{depth:0,height:.69444,italic:0,skew:0},920:{depth:0,height:.69444,italic:0,skew:0},923:{depth:0,height:.69444,italic:0,skew:0},926:{depth:0,height:.69444,italic:0,skew:0},928:{depth:0,height:.69444,italic:0,skew:0},931:{depth:0,height:.69444,italic:0,skew:0},933:{depth:0,height:.69444,italic:0,skew:0},934:{depth:0,height:.69444,italic:0,skew:0},936:{depth:0,height:.69444,italic:0,skew:0},937:{depth:0,height:.69444,italic:0,skew:0},8211:{depth:0,height:.44444,italic:.02778,skew:0},8212:{depth:0,height:.44444,italic:.02778,skew:0},8216:{depth:0,height:.69444,italic:0,skew:0},8217:{depth:0,height:.69444,italic:0,skew:0},8220:{depth:0,height:.69444,italic:0,skew:0},8221:{depth:0,height:.69444,italic:0,skew:0}},"Script-Regular":{65:{depth:0,height:.7,italic:.22925,skew:0},66:{depth:0,height:.7,italic:.04087,skew:0},67:{depth:0,height:.7,italic:.1689,skew:0},68:{depth:0,height:.7,italic:.09371,skew:0},69:{depth:0,height:.7,italic:.18583,skew:0},70:{depth:0,height:.7,italic:.13634,skew:0},71:{depth:0,height:.7,italic:.17322,skew:0},72:{depth:0,height:.7,italic:.29694,skew:0},73:{depth:0,height:.7,italic:.19189,skew:0},74:{depth:.27778,height:.7,italic:.19189,skew:0},75:{depth:0,height:.7,italic:.31259,skew:0},76:{depth:0,height:.7,italic:.19189,skew:0},77:{depth:0,height:.7,italic:.15981,skew:0},78:{depth:0,height:.7,italic:.3525,skew:0},79:{depth:0,height:.7,italic:.08078,skew:0},80:{depth:0,height:.7,italic:.08078,skew:0},81:{depth:0,height:.7,italic:.03305,skew:0},82:{depth:0,height:.7,italic:.06259,skew:0},83:{depth:0,height:.7,italic:.19189,skew:0},84:{depth:0,height:.7,italic:.29087,skew:0},85:{depth:0,height:.7,italic:.25815,skew:0},86:{depth:0,height:.7,italic:.27523,skew:0},87:{depth:0,height:.7,italic:.27523,skew:0},88:{depth:0,height:.7,italic:.26006,skew:0},89:{depth:0,height:.7,italic:.2939,skew:0},90:{depth:0,height:.7,italic:.24037,skew:0}},"Size1-Regular":{40:{depth:.35001,height:.85,italic:0,skew:0},41:{depth:.35001,height:.85,italic:0,skew:0},47:{depth:.35001,height:.85,italic:0,skew:0},91:{depth:.35001,height:.85,italic:0,skew:0},92:{depth:.35001,height:.85,italic:0,skew:0},93:{depth:.35001,height:.85,italic:0,skew:0},123:{depth:.35001,height:.85,italic:0,skew:0},125:{depth:.35001,height:.85,italic:0,skew:0},710:{depth:0,height:.72222,italic:0,skew:0},732:{depth:0,height:.72222,italic:0,skew:0},770:{depth:0,height:.72222,italic:0,skew:0},771:{depth:0,height:.72222,italic:0,skew:0},8214:{depth:-99e-5,height:.601,italic:0,skew:0},8593:{depth:1e-5,height:.6,italic:0,skew:0},8595:{depth:1e-5,height:.6,italic:0,skew:0},8657:{depth:1e-5,height:.6,italic:0,skew:0},8659:{depth:1e-5,height:.6,italic:0,skew:0},8719:{depth:.25001,height:.75,italic:0,skew:0},8720:{depth:.25001,height:.75,italic:0,skew:0},8721:{depth:.25001,height:.75,italic:0,skew:0},8730:{depth:.35001,height:.85,italic:0,skew:0},8739:{depth:-.00599,height:.606,italic:0,skew:0},8741:{depth:-.00599,height:.606,italic:0,skew:0},8747:{depth:.30612,height:.805,italic:.19445,skew:0},8748:{depth:.306,height:.805,italic:.19445,skew:0},8749:{depth:.306,height:.805,italic:.19445,skew:0},8750:{depth:.30612,height:.805,italic:.19445,skew:0},8896:{depth:.25001,height:.75,italic:0,skew:0},8897:{depth:.25001,height:.75,italic:0,skew:0},8898:{depth:.25001,height:.75,italic:0,skew:0},8899:{depth:.25001,height:.75,italic:0,skew:0},8968:{depth:.35001,height:.85,italic:0,skew:0},8969:{depth:.35001,height:.85,italic:0,skew:0},8970:{depth:.35001,height:.85,italic:0,skew:0},8971:{depth:.35001,height:.85,italic:0,skew:0},9168:{depth:-99e-5,height:.601,italic:0,skew:0},10216:{depth:.35001,height:.85,italic:0,skew:0},10217:{depth:.35001,height:.85,italic:0,skew:0},10752:{depth:.25001,height:.75,italic:0,skew:0},10753:{depth:.25001,height:.75,italic:0,skew:0},10754:{depth:.25001,height:.75,italic:0,skew:0},10756:{depth:.25001,height:.75,italic:0,skew:0},10758:{depth:.25001,height:.75,italic:0,skew:0}},"Size2-Regular":{40:{depth:.65002,height:1.15,italic:0,skew:0},41:{depth:.65002,height:1.15,italic:0,skew:0},47:{depth:.65002,height:1.15,italic:0,skew:0},91:{depth:.65002,height:1.15,italic:0,skew:0},92:{depth:.65002,height:1.15,italic:0,skew:0},93:{depth:.65002,height:1.15,italic:0,skew:0},123:{depth:.65002,height:1.15,italic:0,skew:0},125:{depth:.65002,height:1.15,italic:0,skew:0},710:{depth:0,height:.75,italic:0,skew:0},732:{depth:0,height:.75,italic:0,skew:0},770:{depth:0,height:.75,italic:0,skew:0},771:{depth:0,height:.75,italic:0,skew:0},8719:{depth:.55001,height:1.05,italic:0,skew:0},8720:{depth:.55001,height:1.05,italic:0,skew:0},8721:{depth:.55001,height:1.05,italic:0,skew:0},8730:{depth:.65002,height:1.15,italic:0,skew:0},8747:{depth:.86225,height:1.36,italic:.44445,skew:0},8748:{depth:.862,height:1.36,italic:.44445,skew:0},8749:{depth:.862,height:1.36,italic:.44445,skew:0},8750:{depth:.86225,height:1.36,italic:.44445,skew:0},8896:{depth:.55001,height:1.05,italic:0,skew:0},8897:{depth:.55001,height:1.05,italic:0,skew:0},8898:{depth:.55001,height:1.05,italic:0,skew:0},8899:{depth:.55001,height:1.05,italic:0,skew:0},8968:{depth:.65002,height:1.15,italic:0,skew:0},8969:{depth:.65002,height:1.15,italic:0,skew:0},8970:{depth:.65002,height:1.15,italic:0,skew:0},8971:{depth:.65002,height:1.15,italic:0,skew:0},10216:{depth:.65002,height:1.15,italic:0,skew:0},10217:{depth:.65002,height:1.15,italic:0,skew:0},10752:{depth:.55001,height:1.05,italic:0,skew:0},10753:{depth:.55001,height:1.05,italic:0,skew:0},10754:{depth:.55001,height:1.05,italic:0,skew:0},10756:{depth:.55001,height:1.05,italic:0,skew:0},10758:{depth:.55001,height:1.05,italic:0,skew:0}},"Size3-Regular":{40:{depth:.95003,height:1.45,italic:0,skew:0},41:{depth:.95003,height:1.45,italic:0,skew:0},47:{depth:.95003,height:1.45,italic:0,skew:0},91:{depth:.95003,height:1.45,italic:0,skew:0},92:{depth:.95003,height:1.45,italic:0,skew:0},93:{depth:.95003,height:1.45,italic:0,skew:0},123:{depth:.95003,height:1.45,italic:0,skew:0},125:{depth:.95003,height:1.45,italic:0,skew:0},710:{depth:0,height:.75,italic:0,skew:0},732:{depth:0,height:.75,italic:0,skew:0},770:{depth:0,height:.75,italic:0,skew:0},771:{depth:0,height:.75,italic:0,skew:0},8730:{depth:.95003,height:1.45,italic:0,skew:0},8968:{depth:.95003,height:1.45,italic:0,skew:0},8969:{depth:.95003,height:1.45,italic:0,skew:0},8970:{depth:.95003,height:1.45,italic:0,skew:0},8971:{depth:.95003,height:1.45,italic:0,skew:0},10216:{depth:.95003,height:1.45,italic:0,skew:0},10217:{depth:.95003,height:1.45,italic:0,skew:0}},"Size4-Regular":{40:{depth:1.25003,height:1.75,italic:0,skew:0},41:{depth:1.25003,height:1.75,italic:0,skew:0},47:{depth:1.25003,height:1.75,italic:0,skew:0},91:{depth:1.25003,height:1.75,italic:0,skew:0},92:{depth:1.25003,height:1.75,italic:0,skew:0},93:{depth:1.25003,height:1.75,italic:0,skew:0},123:{depth:1.25003,height:1.75,italic:0,skew:0},125:{depth:1.25003,height:1.75,italic:0,skew:0},710:{depth:0,height:.825,italic:0,skew:0},732:{depth:0,height:.825,italic:0,skew:0},770:{depth:0,height:.825,italic:0,skew:0},771:{depth:0,height:.825,italic:0,skew:0},8730:{depth:1.25003,height:1.75,italic:0,skew:0},8968:{depth:1.25003,height:1.75,italic:0,skew:0},8969:{depth:1.25003,height:1.75,italic:0,skew:0},8970:{depth:1.25003,height:1.75,italic:0,skew:0},8971:{depth:1.25003,height:1.75,italic:0,skew:0},9115:{depth:.64502,height:1.155,italic:0,skew:0},9116:{depth:1e-5,height:.6,italic:0,skew:0},9117:{depth:.64502,height:1.155,italic:0,skew:0},9118:{depth:.64502,height:1.155,italic:0,skew:0},9119:{depth:1e-5,height:.6,italic:0,skew:0},9120:{depth:.64502,height:1.155,italic:0,skew:0},9121:{depth:.64502,height:1.155,italic:0,skew:0},9122:{depth:-99e-5,height:.601,italic:0,skew:0},9123:{depth:.64502,height:1.155,italic:0,skew:0},9124:{depth:.64502,height:1.155,italic:0,skew:0},9125:{depth:-99e-5,height:.601,italic:0,skew:0},9126:{depth:.64502,height:1.155,italic:0,skew:0},9127:{depth:1e-5,height:.9,italic:0,skew:0},9128:{depth:.65002,height:1.15,italic:0,skew:0},9129:{depth:.90001,height:0,italic:0,skew:0},9130:{depth:0,height:.3,italic:0,skew:0},9131:{depth:1e-5,height:.9,italic:0,skew:0},9132:{depth:.65002,height:1.15,italic:0,skew:0},9133:{depth:.90001,height:0,italic:0,skew:0},9143:{depth:.88502,height:.915,italic:0,skew:0},10216:{depth:1.25003,height:1.75,italic:0,skew:0},10217:{depth:1.25003,height:1.75,italic:0,skew:0},57344:{depth:-.00499,height:.605,italic:0,skew:0},57345:{depth:-.00499,height:.605,italic:0,skew:0},57680:{depth:0,height:.12,italic:0,skew:0},57681:{depth:0,height:.12,italic:0,skew:0},57682:{depth:0,height:.12,italic:0,skew:0},57683:{depth:0,height:.12,italic:0,skew:0}},"Typewriter-Regular":{33:{depth:0,height:.61111,italic:0,skew:0},34:{depth:0,height:.61111,italic:0,skew:0},35:{depth:0,height:.61111,italic:0,skew:0},36:{depth:.08333,height:.69444,italic:0,skew:0},37:{depth:.08333,height:.69444,italic:0,skew:0},38:{depth:0,height:.61111,italic:0,skew:0},39:{depth:0,height:.61111,italic:0,skew:0},40:{depth:.08333,height:.69444,italic:0,skew:0},41:{depth:.08333,height:.69444,italic:0,skew:0},42:{depth:0,height:.52083,italic:0,skew:0},43:{depth:-.08056,height:.53055,italic:0,skew:0},44:{depth:.13889,height:.125,italic:0,skew:0},45:{depth:-.08056,height:.53055,italic:0,skew:0},46:{depth:0,height:.125,italic:0,skew:0},47:{depth:.08333,height:.69444,italic:0,skew:0},48:{depth:0,height:.61111,italic:0,skew:0},49:{depth:0,height:.61111,italic:0,skew:0},50:{depth:0,height:.61111,italic:0,skew:0},51:{depth:0,height:.61111,italic:0,skew:0},52:{depth:0,height:.61111,italic:0,skew:0},53:{depth:0,height:.61111,italic:0,skew:0},54:{depth:0,height:.61111,italic:0,skew:0},55:{depth:0,height:.61111,italic:0,skew:0},56:{depth:0,height:.61111,italic:0,skew:0},57:{depth:0,height:.61111,italic:0,skew:0},58:{depth:0,height:.43056,italic:0,skew:0},59:{depth:.13889,height:.43056,italic:0,skew:0},60:{depth:-.05556,height:.55556,italic:0,skew:0},61:{depth:-.19549,height:.41562,italic:0,skew:0},62:{depth:-.05556,height:.55556,italic:0,skew:0},63:{depth:0,height:.61111,italic:0,skew:0},64:{depth:0,height:.61111,italic:0,skew:0},65:{depth:0,height:.61111,italic:0,skew:0},66:{depth:0,height:.61111,italic:0,skew:0},67:{depth:0,height:.61111,italic:0,skew:0},68:{depth:0,height:.61111,italic:0,skew:0},69:{depth:0,height:.61111,italic:0,skew:0},70:{depth:0,height:.61111,italic:0,skew:0},71:{depth:0,height:.61111,italic:0,skew:0},72:{depth:0,height:.61111,italic:0,skew:0},73:{depth:0,height:.61111,italic:0,skew:0},74:{depth:0,height:.61111,italic:0,skew:0},75:{depth:0,height:.61111,italic:0,skew:0},76:{depth:0,height:.61111,italic:0,skew:0},77:{depth:0,height:.61111,italic:0,skew:0},78:{depth:0,height:.61111,italic:0,skew:0},79:{depth:0,height:.61111,italic:0,skew:0},80:{depth:0,height:.61111,italic:0,skew:0},81:{depth:.13889,height:.61111,italic:0,skew:0},82:{depth:0,height:.61111,italic:0,skew:0},83:{depth:0,height:.61111,italic:0,skew:0},84:{depth:0,height:.61111,italic:0,skew:0},85:{depth:0,height:.61111,italic:0,skew:0},86:{depth:0,height:.61111,italic:0,skew:0},87:{depth:0,height:.61111,italic:0,skew:0},88:{depth:0,height:.61111,italic:0,skew:0},89:{depth:0,height:.61111,italic:0,skew:0},90:{depth:0,height:.61111,italic:0,skew:0},91:{depth:.08333,height:.69444,italic:0,skew:0},92:{depth:.08333,height:.69444,italic:0,skew:0},93:{depth:.08333,height:.69444,italic:0,skew:0},94:{depth:0,height:.61111,italic:0,skew:0},95:{depth:.09514,height:0,italic:0,skew:0},96:{depth:0,height:.61111,italic:0,skew:0},97:{depth:0,height:.43056,italic:0,skew:0},98:{depth:0,height:.61111,italic:0,skew:0},99:{depth:0,height:.43056,italic:0,skew:0},100:{depth:0,height:.61111,italic:0,skew:0},101:{depth:0,height:.43056,italic:0,skew:0},102:{depth:0,height:.61111,italic:0,skew:0},103:{depth:.22222,height:.43056,italic:0,skew:0},104:{depth:0,height:.61111,italic:0,skew:0},105:{depth:0,height:.61111,italic:0,skew:0},106:{depth:.22222,height:.61111,italic:0,skew:0},107:{depth:0,height:.61111,italic:0,skew:0},108:{depth:0,height:.61111,italic:0,skew:0},109:{depth:0,height:.43056,italic:0,skew:0},110:{depth:0,height:.43056,italic:0,skew:0},111:{depth:0,height:.43056,italic:0,skew:0},112:{depth:.22222,height:.43056,italic:0,skew:0},113:{depth:.22222,height:.43056,italic:0,skew:0},114:{depth:0,height:.43056,italic:0,skew:0},115:{depth:0,height:.43056,italic:0,skew:0},116:{depth:0,height:.55358,italic:0,skew:0},117:{depth:0,height:.43056,italic:0,skew:0},118:{depth:0,height:.43056,italic:0,skew:0},119:{depth:0,height:.43056,italic:0,skew:0},120:{depth:0,height:.43056,italic:0,skew:0},121:{depth:.22222,height:.43056,italic:0,skew:0},122:{depth:0,height:.43056,italic:0,skew:0},123:{depth:.08333,height:.69444,italic:0,skew:0},124:{depth:.08333,height:.69444,italic:0,skew:0},125:{depth:.08333,height:.69444,italic:0,skew:0},126:{depth:0,height:.61111,italic:0,skew:0},127:{depth:0,height:.61111,italic:0,skew:0},305:{depth:0,height:.43056,italic:0,skew:0},567:{depth:.22222,height:.43056,italic:0,skew:0},768:{depth:0,height:.61111,italic:0,skew:0},769:{depth:0,height:.61111,italic:0,skew:0},770:{depth:0,height:.61111,italic:0,skew:0},771:{depth:0,height:.61111,italic:0,skew:0},772:{depth:0,height:.56555,italic:0,skew:0},774:{depth:0,height:.61111,italic:0,skew:0},776:{depth:0,height:.61111,italic:0,skew:0},778:{depth:0,height:.61111,italic:0,skew:0},780:{depth:0,height:.56597,italic:0,skew:0},915:{depth:0,height:.61111,italic:0,skew:0},916:{depth:0,height:.61111,italic:0,skew:0},920:{depth:0,height:.61111,italic:0,skew:0},923:{depth:0,height:.61111,italic:0,skew:0},926:{depth:0,height:.61111,italic:0,skew:0},928:{depth:0,height:.61111,italic:0,skew:0},931:{depth:0,height:.61111,italic:0,skew:0},933:{depth:0,height:.61111,italic:0,skew:0},934:{depth:0,height:.61111,italic:0,skew:0},936:{depth:0,height:.61111,italic:0,skew:0},937:{depth:0,height:.61111,italic:0,skew:0},2018:{depth:0,height:.61111,italic:0,skew:0},2019:{depth:0,height:.61111,italic:0,skew:0},8242:{depth:0,height:.61111,italic:0,skew:0}}}},{}],20:[function(e,t,i){for(var h=e("./utils"),a=e("./ParseError"),s={"\\sqrt":{numArgs:1,numOptionalArgs:1,handler:function(e,t,i,h){return{type:"sqrt",body:i,index:t}}},"\\text":{numArgs:1,argTypes:["text"],greediness:2,handler:function(e,t){var i;return i="ordgroup"===t.type?t.value:[t],{type:"text",body:i}}},"\\color":{numArgs:2,allowedInText:!0,greediness:3,argTypes:["color","original"],handler:function(e,t,i){var h;return h="ordgroup"===i.type?i.value:[i],{type:"color",color:t.value,value:h}}},"\\overline":{numArgs:1,handler:function(e,t){return{type:"overline",body:t}}},"\\rule":{numArgs:2,numOptionalArgs:1,
+argTypes:["size","size","size"],handler:function(e,t,i,h){return{type:"rule",shift:t&&t.value,width:i.value,height:h.value}}},"\\KaTeX":{numArgs:0,handler:function(e){return{type:"katex"}}},"\\phantom":{numArgs:1,handler:function(e,t){var i;return i="ordgroup"===t.type?t.value:[t],{type:"phantom",value:i}}}},r={"\\bigl":{type:"open",size:1},"\\Bigl":{type:"open",size:2},"\\biggl":{type:"open",size:3},"\\Biggl":{type:"open",size:4},"\\bigr":{type:"close",size:1},"\\Bigr":{type:"close",size:2},"\\biggr":{type:"close",size:3},"\\Biggr":{type:"close",size:4},"\\bigm":{type:"rel",size:1},"\\Bigm":{type:"rel",size:2},"\\biggm":{type:"rel",size:3},"\\Biggm":{type:"rel",size:4},"\\big":{type:"textord",size:1},"\\Big":{type:"textord",size:2},"\\bigg":{type:"textord",size:3},"\\Bigg":{type:"textord",size:4}},l=["(",")","[","\\lbrack","]","\\rbrack","\\{","\\lbrace","\\}","\\rbrace","\\lfloor","\\rfloor","\\lceil","\\rceil","<",">","\\langle","\\rangle","\\lvert","\\rvert","\\lVert","\\rVert","\\lgroup","\\rgroup","\\lmoustache","\\rmoustache","/","\\backslash","|","\\vert","\\|","\\Vert","\\uparrow","\\Uparrow","\\downarrow","\\Downarrow","\\updownarrow","\\Updownarrow","."],n={"\\Bbb":"\\mathbb","\\bold":"\\mathbf","\\frak":"\\mathfrak"},p=([{funcs:["\\blue","\\orange","\\pink","\\red","\\green","\\gray","\\purple","\\blueA","\\blueB","\\blueC","\\blueD","\\blueE","\\tealA","\\tealB","\\tealC","\\tealD","\\tealE","\\greenA","\\greenB","\\greenC","\\greenD","\\greenE","\\goldA","\\goldB","\\goldC","\\goldD","\\goldE","\\redA","\\redB","\\redC","\\redD","\\redE","\\maroonA","\\maroonB","\\maroonC","\\maroonD","\\maroonE","\\purpleA","\\purpleB","\\purpleC","\\purpleD","\\purpleE","\\mintA","\\mintB","\\mintC","\\grayA","\\grayB","\\grayC","\\grayD","\\grayE","\\grayF","\\grayG","\\grayH","\\grayI","\\kaBlue","\\kaGreen"],data:{numArgs:1,allowedInText:!0,greediness:3,handler:function(e,t){var i;return i="ordgroup"===t.type?t.value:[t],{type:"color",color:"katex-"+e.slice(1),value:i}}}},{funcs:["\\arcsin","\\arccos","\\arctan","\\arg","\\cos","\\cosh","\\cot","\\coth","\\csc","\\deg","\\dim","\\exp","\\hom","\\ker","\\lg","\\ln","\\log","\\sec","\\sin","\\sinh","\\tan","\\tanh"],data:{numArgs:0,handler:function(e){return{type:"op",limits:!1,symbol:!1,body:e}}}},{funcs:["\\det","\\gcd","\\inf","\\lim","\\liminf","\\limsup","\\max","\\min","\\Pr","\\sup"],data:{numArgs:0,handler:function(e){return{type:"op",limits:!0,symbol:!1,body:e}}}},{funcs:["\\int","\\iint","\\iiint","\\oint"],data:{numArgs:0,handler:function(e){return{type:"op",limits:!1,symbol:!0,body:e}}}},{funcs:["\\coprod","\\bigvee","\\bigwedge","\\biguplus","\\bigcap","\\bigcup","\\intop","\\prod","\\sum","\\bigotimes","\\bigoplus","\\bigodot","\\bigsqcup","\\smallint"],data:{numArgs:0,handler:function(e){return{type:"op",limits:!0,symbol:!0,body:e}}}},{funcs:["\\dfrac","\\frac","\\tfrac","\\dbinom","\\binom","\\tbinom"],data:{numArgs:2,greediness:2,handler:function(e,t,i){var h,a=null,s=null,r="auto";switch(e){case"\\dfrac":case"\\frac":case"\\tfrac":h=!0;break;case"\\dbinom":case"\\binom":case"\\tbinom":h=!1,a="(",s=")";break;default:throw new Error("Unrecognized genfrac command")}switch(e){case"\\dfrac":case"\\dbinom":r="display";break;case"\\tfrac":case"\\tbinom":r="text"}return{type:"genfrac",numer:t,denom:i,hasBarLine:h,leftDelim:a,rightDelim:s,size:r}}}},{funcs:["\\llap","\\rlap"],data:{numArgs:1,allowedInText:!0,handler:function(e,t){return{type:e.slice(1),body:t}}}},{funcs:["\\bigl","\\Bigl","\\biggl","\\Biggl","\\bigr","\\Bigr","\\biggr","\\Biggr","\\bigm","\\Bigm","\\biggm","\\Biggm","\\big","\\Big","\\bigg","\\Bigg","\\left","\\right"],data:{numArgs:1,handler:function(e,t,i){if(!h.contains(l,t.value))throw new a("Invalid delimiter: '"+t.value+"' after '"+e+"'",this.lexer,i[1]);return"\\left"===e||"\\right"===e?{type:"leftright",value:t.value}:{type:"delimsizing",size:r[e].size,delimType:r[e].type,value:t.value}}}},{funcs:["\\tiny","\\scriptsize","\\footnotesize","\\small","\\normalsize","\\large","\\Large","\\LARGE","\\huge","\\Huge"],data:{numArgs:0}},{funcs:["\\displaystyle","\\textstyle","\\scriptstyle","\\scriptscriptstyle"],data:{numArgs:0}},{funcs:["\\mathrm","\\mathit","\\mathbf","\\mathbb","\\mathcal","\\mathfrak","\\mathscr","\\mathsf","\\mathtt","\\Bbb","\\bold","\\frak"],data:{numArgs:1,handler:function(e,t){return e in n&&(e=n[e]),{type:"font",font:e.slice(1),body:t}}}},{funcs:["\\acute","\\grave","\\ddot","\\tilde","\\bar","\\breve","\\check","\\hat","\\vec","\\dot"],data:{numArgs:1,handler:function(e,t){return{type:"accent",accent:e,base:t}}}},{funcs:["\\over","\\choose"],data:{numArgs:0,handler:function(e){var t;switch(e){case"\\over":t="\\frac";break;case"\\choose":t="\\binom";break;default:throw new Error("Unrecognized infix genfrac command")}return{type:"infix",replaceWith:t}}}},{funcs:["\\\\","\\cr"],data:{numArgs:0,numOptionalArgs:1,argTypes:["size"],handler:function(e,t){return{type:"cr",size:t}}}},{funcs:["\\begin","\\end"],data:{numArgs:1,argTypes:["text"],handler:function(e,t,i){if("ordgroup"!==t.type)throw new a("Invalid environment name",this.lexer,i[1]);for(var h="",s=0;s<t.value.length;++s)h+=t.value[s].value;return{type:"environment",name:h,namepos:i[1]}}}}]),o=function(e,t){for(var i=0;i<e.length;i++)s[e[i]]=t},c=0;c<p.length;c++)o(p[c].funcs,p[c].data);for(var g in s)if(s.hasOwnProperty(g)){var d=s[g];s[g]={numArgs:d.numArgs,argTypes:d.argTypes,greediness:void 0===d.greediness?1:d.greediness,allowedInText:d.allowedInText?d.allowedInText:!1,numOptionalArgs:void 0===d.numOptionalArgs?0:d.numOptionalArgs,handler:d.handler}}t.exports={funcs:s}},{"./ParseError":7,"./utils":25}],21:[function(e,t,i){function h(e,t){this.type=e,this.attributes={},this.children=t||[]}function a(e){this.text=e}var s=e("./utils");h.prototype.setAttribute=function(e,t){this.attributes[e]=t},h.prototype.toNode=function(){var e=document.createElementNS("http://www.w3.org/1998/Math/MathML",this.type);for(var t in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,t)&&e.setAttribute(t,this.attributes[t]);for(var i=0;i<this.children.length;i++)e.appendChild(this.children[i].toNode());return e},h.prototype.toMarkup=function(){var e="<"+this.type;for(var t in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,t)&&(e+=" "+t+'="',e+=s.escape(this.attributes[t]),e+='"');e+=">";for(var i=0;i<this.children.length;i++)e+=this.children[i].toMarkup();return e+="</"+this.type+">"},a.prototype.toNode=function(){return document.createTextNode(this.text)},a.prototype.toMarkup=function(){return s.escape(this.text)},t.exports={MathNode:h,TextNode:a}},{"./utils":25}],22:[function(e,t,i){function h(e,t,i){this.type=e,this.value=t,this.mode=i}function a(e,t,i){this.result=e,this.position=t}t.exports={ParseNode:h,ParseResult:a}},{}],23:[function(e,t,i){var h=e("./Parser"),a=function(e,t){var i=new h(e,t);return i.parse()};t.exports=a},{"./Parser":8}],24:[function(e,t,i){for(var h={math:{"\\equiv":{font:"main",group:"rel",replace:"≡"},"\\prec":{font:"main",group:"rel",replace:"≺"},"\\succ":{font:"main",group:"rel",replace:"≻"},"\\sim":{font:"main",group:"rel",replace:"∼"},"\\perp":{font:"main",group:"rel",replace:"⊥"},"\\preceq":{font:"main",group:"rel",replace:"⪯"},"\\succeq":{font:"main",group:"rel",replace:"⪰"},"\\simeq":{font:"main",group:"rel",replace:"≃"},"\\mid":{font:"main",group:"rel",replace:"∣"},"\\ll":{font:"main",group:"rel",replace:"≪"},"\\gg":{font:"main",group:"rel",replace:"≫"},"\\asymp":{font:"main",group:"rel",replace:"≍"},"\\parallel":{font:"main",group:"rel",replace:"∥"},"\\bowtie":{font:"main",group:"rel",replace:"⋈"},"\\smile":{font:"main",group:"rel",replace:"⌣"},"\\sqsubseteq":{font:"main",group:"rel",replace:"⊑"},"\\sqsupseteq":{font:"main",group:"rel",replace:"⊒"},"\\doteq":{font:"main",group:"rel",replace:"≐"},"\\frown":{font:"main",group:"rel",replace:"⌢"},"\\ni":{font:"main",group:"rel",replace:"∋"},"\\propto":{font:"main",group:"rel",replace:"∝"},"\\vdash":{font:"main",group:"rel",replace:"⊢"},"\\dashv":{font:"main",group:"rel",replace:"⊣"},"\\owns":{font:"main",group:"rel",replace:"∋"},"\\ldotp":{font:"main",group:"punct",replace:"."},"\\cdotp":{font:"main",group:"punct",replace:"⋅"},"\\#":{font:"main",group:"textord",replace:"#"},"\\&":{font:"main",group:"textord",replace:"&"},"\\aleph":{font:"main",group:"textord",replace:"ℵ"},"\\forall":{font:"main",group:"textord",replace:"∀"},"\\hbar":{font:"main",group:"textord",replace:"ℏ"},"\\exists":{font:"main",group:"textord",replace:"∃"},"\\nabla":{font:"main",group:"textord",replace:"∇"},"\\flat":{font:"main",group:"textord",replace:"♭"},"\\ell":{font:"main",group:"textord",replace:"ℓ"},"\\natural":{font:"main",group:"textord",replace:"♮"},"\\clubsuit":{font:"main",group:"textord",replace:"♣"},"\\wp":{font:"main",group:"textord",replace:"℘"},"\\sharp":{font:"main",group:"textord",replace:"♯"},"\\diamondsuit":{font:"main",group:"textord",replace:"♢"},"\\Re":{font:"main",group:"textord",replace:"ℜ"},"\\heartsuit":{font:"main",group:"textord",replace:"♡"},"\\Im":{font:"main",group:"textord",replace:"ℑ"},"\\spadesuit":{font:"main",group:"textord",replace:"♠"},"\\dag":{font:"main",group:"textord",replace:"†"},"\\ddag":{font:"main",group:"textord",replace:"‡"},"\\rmoustache":{font:"main",group:"close",replace:"⎱"},"\\lmoustache":{font:"main",group:"open",replace:"⎰"},"\\rgroup":{font:"main",group:"close",replace:"⟯"},"\\lgroup":{font:"main",group:"open",replace:"⟮"},"\\mp":{font:"main",group:"bin",replace:"∓"},"\\ominus":{font:"main",group:"bin",replace:"⊖"},"\\uplus":{font:"main",group:"bin",replace:"⊎"},"\\sqcap":{font:"main",group:"bin",replace:"⊓"},"\\ast":{font:"main",group:"bin",replace:"∗"},"\\sqcup":{font:"main",group:"bin",replace:"⊔"},"\\bigcirc":{font:"main",group:"bin",replace:"◯"},"\\bullet":{font:"main",group:"bin",replace:"∙"},"\\ddagger":{font:"main",group:"bin",replace:"‡"},"\\wr":{font:"main",group:"bin",replace:"≀"},"\\amalg":{font:"main",group:"bin",replace:"⨿"},"\\longleftarrow":{font:"main",group:"rel",replace:"⟵"},"\\Leftarrow":{font:"main",group:"rel",replace:"⇐"},"\\Longleftarrow":{font:"main",group:"rel",replace:"⟸"},"\\longrightarrow":{font:"main",group:"rel",replace:"⟶"},"\\Rightarrow":{font:"main",group:"rel",replace:"⇒"},"\\Longrightarrow":{font:"main",group:"rel",replace:"⟹"},"\\leftrightarrow":{font:"main",group:"rel",replace:"↔"},"\\longleftrightarrow":{font:"main",group:"rel",replace:"⟷"},"\\Leftrightarrow":{font:"main",group:"rel",replace:"⇔"},"\\Longleftrightarrow":{font:"main",group:"rel",replace:"⟺"},"\\mapsto":{font:"main",group:"rel",replace:"↦"},"\\longmapsto":{font:"main",group:"rel",replace:"⟼"},"\\nearrow":{font:"main",group:"rel",replace:"↗"},"\\hookleftarrow":{font:"main",group:"rel",replace:"↩"},"\\hookrightarrow":{font:"main",group:"rel",replace:"↪"},"\\searrow":{font:"main",group:"rel",replace:"↘"},"\\leftharpoonup":{font:"main",group:"rel",replace:"↼"},"\\rightharpoonup":{font:"main",group:"rel",replace:"⇀"},"\\swarrow":{font:"main",group:"rel",replace:"↙"},"\\leftharpoondown":{font:"main",group:"rel",replace:"↽"},"\\rightharpoondown":{font:"main",group:"rel",replace:"⇁"},"\\nwarrow":{font:"main",group:"rel",replace:"↖"},"\\rightleftharpoons":{font:"main",group:"rel",replace:"⇌"},"\\nless":{font:"ams",group:"rel",replace:"≮"},"\\nleqslant":{font:"ams",group:"rel",replace:""},"\\nleqq":{font:"ams",group:"rel",replace:""},"\\lneq":{font:"ams",group:"rel",replace:"⪇"},"\\lneqq":{font:"ams",group:"rel",replace:"≨"},"\\lvertneqq":{font:"ams",group:"rel",replace:""},"\\lnsim":{font:"ams",group:"rel",replace:"⋦"},"\\lnapprox":{font:"ams",group:"rel",replace:"⪉"},"\\nprec":{font:"ams",group:"rel",replace:"⊀"},"\\npreceq":{font:"ams",group:"rel",replace:"⋠"},"\\precnsim":{font:"ams",group:"rel",replace:"⋨"},"\\precnapprox":{font:"ams",group:"rel",replace:"⪹"},"\\nsim":{font:"ams",group:"rel",replace:"≁"},"\\nshortmid":{font:"ams",group:"rel",replace:""},"\\nmid":{font:"ams",group:"rel",replace:"∤"},"\\nvdash":{font:"ams",group:"rel",replace:"⊬"},"\\nvDash":{font:"ams",group:"rel",replace:"⊭"},"\\ntriangleleft":{font:"ams",group:"rel",replace:"⋪"},"\\ntrianglelefteq":{font:"ams",group:"rel",replace:"⋬"},"\\subsetneq":{font:"ams",group:"rel",replace:"⊊"},"\\varsubsetneq":{font:"ams",group:"rel",replace:""},"\\subsetneqq":{font:"ams",group:"rel",replace:"⫋"},"\\varsubsetneqq":{font:"ams",group:"rel",replace:""},"\\ngtr":{font:"ams",group:"rel",replace:"≯"},"\\ngeqslant":{font:"ams",group:"rel",replace:""},"\\ngeqq":{font:"ams",group:"rel",replace:""},"\\gneq":{font:"ams",group:"rel",replace:"⪈"},"\\gneqq":{font:"ams",group:"rel",replace:"≩"},"\\gvertneqq":{font:"ams",group:"rel",replace:""},"\\gnsim":{font:"ams",group:"rel",replace:"⋧"},"\\gnapprox":{font:"ams",group:"rel",replace:"⪊"},"\\nsucc":{font:"ams",group:"rel",replace:"⊁"},"\\nsucceq":{font:"ams",group:"rel",replace:"⋡"},"\\succnsim":{font:"ams",group:"rel",replace:"⋩"},"\\succnapprox":{font:"ams",group:"rel",replace:"⪺"},"\\ncong":{font:"ams",group:"rel",replace:"≆"},"\\nshortparallel":{font:"ams",group:"rel",replace:""},"\\nparallel":{font:"ams",group:"rel",replace:"∦"},"\\nVDash":{font:"ams",group:"rel",replace:"⊯"},"\\ntriangleright":{font:"ams",group:"rel",replace:"⋫"},"\\ntrianglerighteq":{font:"ams",group:"rel",replace:"⋭"},"\\nsupseteqq":{font:"ams",group:"rel",replace:""},"\\supsetneq":{font:"ams",group:"rel",replace:"⊋"},"\\varsupsetneq":{font:"ams",group:"rel",replace:""},"\\supsetneqq":{font:"ams",group:"rel",replace:"⫌"},"\\varsupsetneqq":{font:"ams",group:"rel",replace:""},"\\nVdash":{font:"ams",group:"rel",replace:"⊮"},"\\precneqq":{font:"ams",group:"rel",replace:"⪵"},"\\succneqq":{font:"ams",group:"rel",replace:"⪶"},"\\nsubseteqq":{font:"ams",group:"rel",replace:""},"\\unlhd":{font:"ams",group:"bin",replace:"⊴"},"\\unrhd":{font:"ams",group:"bin",replace:"⊵"},"\\nleftarrow":{font:"ams",group:"rel",replace:"↚"},"\\nrightarrow":{font:"ams",group:"rel",replace:"↛"},"\\nLeftarrow":{font:"ams",group:"rel",replace:"⇍"},"\\nRightarrow":{font:"ams",group:"rel",replace:"⇏"},"\\nleftrightarrow":{font:"ams",group:"rel",replace:"↮"},"\\nLeftrightarrow":{font:"ams",group:"rel",replace:"⇎"},"\\vartriangle":{font:"ams",group:"rel",replace:"△"},"\\hslash":{font:"ams",group:"textord",replace:"ℏ"},"\\triangledown":{font:"ams",group:"textord",replace:"▽"},"\\lozenge":{font:"ams",group:"textord",replace:"◊"},"\\circledS":{font:"ams",group:"textord",replace:"Ⓢ"},"\\circledR":{font:"ams",group:"textord",replace:"®"},"\\measuredangle":{font:"ams",group:"textord",replace:"∡"},"\\nexists":{font:"ams",group:"textord",replace:"∄"},"\\mho":{font:"ams",group:"textord",replace:"℧"},"\\Finv":{font:"ams",group:"textord",replace:"Ⅎ"},"\\Game":{font:"ams",group:"textord",replace:"⅁"},"\\Bbbk":{font:"ams",group:"textord",replace:"k"},"\\backprime":{font:"ams",group:"textord",replace:"‵"},"\\blacktriangle":{font:"ams",group:"textord",replace:"▲"},"\\blacktriangledown":{font:"ams",group:"textord",replace:"▼"},"\\blacksquare":{font:"ams",group:"textord",replace:"■"},"\\blacklozenge":{font:"ams",group:"textord",replace:"⧫"},"\\bigstar":{font:"ams",group:"textord",replace:"★"},"\\sphericalangle":{font:"ams",group:"textord",replace:"∢"},"\\complement":{font:"ams",group:"textord",replace:"∁"},"\\eth":{font:"ams",group:"textord",replace:"ð"},"\\diagup":{font:"ams",group:"textord",replace:"╱"},"\\diagdown":{font:"ams",group:"textord",replace:"╲"},"\\square":{font:"ams",group:"textord",replace:"□"},"\\Box":{font:"ams",group:"textord",replace:"□"},"\\Diamond":{font:"ams",group:"textord",replace:"◊"},"\\yen":{font:"ams",group:"textord",replace:"¥"},"\\checkmark":{font:"ams",group:"textord",replace:"✓"},"\\beth":{font:"ams",group:"textord",replace:"ℶ"},"\\daleth":{font:"ams",group:"textord",replace:"ℸ"},"\\gimel":{font:"ams",group:"textord",replace:"ℷ"},"\\digamma":{font:"ams",group:"textord",replace:"ϝ"},"\\varkappa":{font:"ams",group:"textord",replace:"ϰ"},"\\ulcorner":{font:"ams",group:"open",replace:"┌"},"\\urcorner":{font:"ams",group:"close",replace:"┐"},"\\llcorner":{font:"ams",group:"open",replace:"└"},"\\lrcorner":{font:"ams",group:"close",replace:"┘"},"\\leqq":{font:"ams",group:"rel",replace:"≦"},"\\leqslant":{font:"ams",group:"rel",replace:"⩽"},"\\eqslantless":{font:"ams",group:"rel",replace:"⪕"},"\\lesssim":{font:"ams",group:"rel",replace:"≲"},"\\lessapprox":{font:"ams",group:"rel",replace:"⪅"},"\\approxeq":{font:"ams",group:"rel",replace:"≊"},"\\lessdot":{font:"ams",group:"bin",replace:"⋖"},"\\lll":{font:"ams",group:"rel",replace:"⋘"},"\\lessgtr":{font:"ams",group:"rel",replace:"≶"},"\\lesseqgtr":{font:"ams",group:"rel",replace:"⋚"},"\\lesseqqgtr":{font:"ams",group:"rel",replace:"⪋"},"\\doteqdot":{font:"ams",group:"rel",replace:"≑"},"\\risingdotseq":{font:"ams",group:"rel",replace:"≓"},"\\fallingdotseq":{font:"ams",group:"rel",replace:"≒"},"\\backsim":{font:"ams",group:"rel",replace:"∽"},"\\backsimeq":{font:"ams",group:"rel",replace:"⋍"},"\\subseteqq":{font:"ams",group:"rel",replace:"⫅"},"\\Subset":{font:"ams",group:"rel",replace:"⋐"},"\\sqsubset":{font:"ams",group:"rel",replace:"⊏"},"\\preccurlyeq":{font:"ams",group:"rel",replace:"≼"},"\\curlyeqprec":{font:"ams",group:"rel",replace:"⋞"},"\\precsim":{font:"ams",group:"rel",replace:"≾"},"\\precapprox":{font:"ams",group:"rel",replace:"⪷"},"\\vartriangleleft":{font:"ams",group:"rel",replace:"⊲"},"\\trianglelefteq":{font:"ams",group:"rel",replace:"⊴"},"\\vDash":{font:"ams",group:"rel",replace:"⊨"},"\\Vvdash":{font:"ams",group:"rel",replace:"⊪"},"\\smallsmile":{font:"ams",group:"rel",replace:"⌣"},"\\smallfrown":{font:"ams",group:"rel",replace:"⌢"},"\\bumpeq":{font:"ams",group:"rel",replace:"≏"},"\\Bumpeq":{font:"ams",group:"rel",replace:"≎"},"\\geqq":{font:"ams",group:"rel",replace:"≧"},"\\geqslant":{font:"ams",group:"rel",replace:"⩾"},"\\eqslantgtr":{font:"ams",group:"rel",replace:"⪖"},"\\gtrsim":{font:"ams",group:"rel",replace:"≳"},"\\gtrapprox":{font:"ams",group:"rel",replace:"⪆"},"\\gtrdot":{font:"ams",group:"bin",replace:"⋗"},"\\ggg":{font:"ams",group:"rel",replace:"⋙"},"\\gtrless":{font:"ams",group:"rel",replace:"≷"},"\\gtreqless":{font:"ams",group:"rel",replace:"⋛"},"\\gtreqqless":{font:"ams",group:"rel",replace:"⪌"},"\\eqcirc":{font:"ams",group:"rel",replace:"≖"},"\\circeq":{font:"ams",group:"rel",replace:"≗"},"\\triangleq":{font:"ams",group:"rel",replace:"≜"},"\\thicksim":{font:"ams",group:"rel",replace:"∼"},"\\thickapprox":{font:"ams",group:"rel",replace:"≈"},"\\supseteqq":{font:"ams",group:"rel",replace:"⫆"},"\\Supset":{font:"ams",group:"rel",replace:"⋑"},"\\sqsupset":{font:"ams",group:"rel",replace:"⊐"},"\\succcurlyeq":{font:"ams",group:"rel",replace:"≽"},"\\curlyeqsucc":{font:"ams",group:"rel",replace:"⋟"},"\\succsim":{font:"ams",group:"rel",replace:"≿"},"\\succapprox":{font:"ams",group:"rel",replace:"⪸"},"\\vartriangleright":{font:"ams",group:"rel",replace:"⊳"},"\\trianglerighteq":{font:"ams",group:"rel",replace:"⊵"},"\\Vdash":{font:"ams",group:"rel",replace:"⊩"},"\\shortmid":{font:"ams",group:"rel",replace:"∣"},"\\shortparallel":{font:"ams",group:"rel",replace:"∥"},"\\between":{font:"ams",group:"rel",replace:"≬"},"\\pitchfork":{font:"ams",group:"rel",replace:"⋔"},"\\varpropto":{font:"ams",group:"rel",replace:"∝"},"\\blacktriangleleft":{font:"ams",group:"rel",replace:"◀"},"\\therefore":{font:"ams",group:"rel",replace:"∴"},"\\backepsilon":{font:"ams",group:"rel",replace:"∍"},"\\blacktriangleright":{font:"ams",group:"rel",replace:"▶"},"\\because":{font:"ams",group:"rel",replace:"∵"},"\\llless":{font:"ams",group:"rel",replace:"⋘"},"\\gggtr":{font:"ams",group:"rel",replace:"⋙"},"\\lhd":{font:"ams",group:"bin",replace:"⊲"},"\\rhd":{font:"ams",group:"bin",replace:"⊳"},"\\eqsim":{font:"ams",group:"rel",replace:"≂"},"\\Join":{font:"main",group:"rel",replace:"⋈"},"\\Doteq":{font:"ams",group:"rel",replace:"≑"},"\\dotplus":{font:"ams",group:"bin",replace:"∔"},"\\smallsetminus":{font:"ams",group:"bin",replace:"∖"},"\\Cap":{font:"ams",group:"bin",replace:"⋒"},"\\Cup":{font:"ams",group:"bin",replace:"⋓"},"\\doublebarwedge":{font:"ams",group:"bin",replace:"⩞"},"\\boxminus":{font:"ams",group:"bin",replace:"⊟"},"\\boxplus":{font:"ams",group:"bin",replace:"⊞"},"\\divideontimes":{font:"ams",group:"bin",replace:"⋇"},"\\ltimes":{font:"ams",group:"bin",replace:"⋉"},"\\rtimes":{font:"ams",group:"bin",replace:"⋊"},"\\leftthreetimes":{font:"ams",group:"bin",replace:"⋋"},"\\rightthreetimes":{font:"ams",group:"bin",replace:"⋌"},"\\curlywedge":{font:"ams",group:"bin",replace:"⋏"},"\\curlyvee":{font:"ams",group:"bin",replace:"⋎"},"\\circleddash":{font:"ams",group:"bin",replace:"⊝"},"\\circledast":{font:"ams",group:"bin",replace:"⊛"},"\\centerdot":{font:"ams",group:"bin",replace:"⋅"},"\\intercal":{font:"ams",group:"bin",replace:"⊺"},"\\doublecap":{font:"ams",group:"bin",replace:"⋒"},"\\doublecup":{font:"ams",group:"bin",replace:"⋓"},"\\boxtimes":{font:"ams",group:"bin",replace:"⊠"},"\\dashrightarrow":{font:"ams",group:"rel",replace:"⇢"},"\\dashleftarrow":{font:"ams",group:"rel",replace:"⇠"},"\\leftleftarrows":{font:"ams",group:"rel",replace:"⇇"},"\\leftrightarrows":{font:"ams",group:"rel",replace:"⇆"},"\\Lleftarrow":{font:"ams",group:"rel",replace:"⇚"},"\\twoheadleftarrow":{font:"ams",group:"rel",replace:"↞"},"\\leftarrowtail":{font:"ams",group:"rel",replace:"↢"},"\\looparrowleft":{font:"ams",group:"rel",replace:"↫"},"\\leftrightharpoons":{font:"ams",group:"rel",replace:"⇋"},"\\curvearrowleft":{font:"ams",group:"rel",replace:"↶"},"\\circlearrowleft":{font:"ams",group:"rel",replace:"↺"},"\\Lsh":{font:"ams",group:"rel",replace:"↰"},"\\upuparrows":{font:"ams",group:"rel",replace:"⇈"},"\\upharpoonleft":{font:"ams",group:"rel",replace:"↿"},"\\downharpoonleft":{font:"ams",group:"rel",replace:"⇃"},"\\multimap":{font:"ams",group:"rel",replace:"⊸"},"\\leftrightsquigarrow":{font:"ams",group:"rel",replace:"↭"},"\\rightrightarrows":{font:"ams",group:"rel",replace:"⇉"},"\\rightleftarrows":{font:"ams",group:"rel",replace:"⇄"},"\\twoheadrightarrow":{font:"ams",group:"rel",replace:"↠"},"\\rightarrowtail":{font:"ams",group:"rel",replace:"↣"},"\\looparrowright":{font:"ams",group:"rel",replace:"↬"},"\\curvearrowright":{font:"ams",group:"rel",replace:"↷"},"\\circlearrowright":{font:"ams",group:"rel",replace:"↻"},"\\Rsh":{font:"ams",group:"rel",replace:"↱"},"\\downdownarrows":{font:"ams",group:"rel",replace:"⇊"},"\\upharpoonright":{font:"ams",group:"rel",replace:"↾"},"\\downharpoonright":{font:"ams",group:"rel",replace:"⇂"},"\\rightsquigarrow":{font:"ams",group:"rel",replace:"⇝"},"\\leadsto":{font:"ams",group:"rel",replace:"⇝"},"\\Rrightarrow":{font:"ams",group:"rel",replace:"⇛"},"\\restriction":{font:"ams",group:"rel",replace:"↾"},"`":{font:"main",group:"textord",replace:"‘"},"\\$":{font:"main",group:"textord",replace:"$"},"\\%":{font:"main",group:"textord",replace:"%"},"\\_":{font:"main",group:"textord",replace:"_"},"\\angle":{font:"main",group:"textord",replace:"∠"},"\\infty":{font:"main",group:"textord",replace:"∞"},"\\prime":{font:"main",group:"textord",replace:"′"},"\\triangle":{font:"main",group:"textord",replace:"△"},"\\Gamma":{font:"main",group:"textord",replace:"Γ"},"\\Delta":{font:"main",group:"textord",replace:"Δ"},"\\Theta":{font:"main",group:"textord",replace:"Θ"},"\\Lambda":{font:"main",group:"textord",replace:"Λ"},"\\Xi":{font:"main",group:"textord",replace:"Ξ"},"\\Pi":{font:"main",group:"textord",replace:"Π"},"\\Sigma":{font:"main",group:"textord",replace:"Σ"},"\\Upsilon":{font:"main",group:"textord",replace:"Υ"},"\\Phi":{font:"main",group:"textord",replace:"Φ"},"\\Psi":{font:"main",group:"textord",replace:"Ψ"},"\\Omega":{font:"main",group:"textord",replace:"Ω"},"\\neg":{font:"main",group:"textord",replace:"¬"},"\\lnot":{font:"main",group:"textord",replace:"¬"},"\\top":{font:"main",group:"textord",replace:"⊤"},"\\bot":{font:"main",group:"textord",replace:"⊥"},"\\emptyset":{font:"main",group:"textord",replace:"∅"},"\\varnothing":{font:"ams",group:"textord",replace:"∅"},"\\alpha":{font:"main",group:"mathord",replace:"α"},"\\beta":{font:"main",group:"mathord",replace:"β"},"\\gamma":{font:"main",group:"mathord",replace:"γ"},"\\delta":{font:"main",group:"mathord",replace:"δ"},"\\epsilon":{font:"main",group:"mathord",replace:"ϵ"},"\\zeta":{font:"main",group:"mathord",replace:"ζ"},"\\eta":{font:"main",group:"mathord",replace:"η"},"\\theta":{font:"main",group:"mathord",replace:"θ"},"\\iota":{font:"main",group:"mathord",replace:"ι"},"\\kappa":{font:"main",group:"mathord",replace:"κ"},"\\lambda":{font:"main",group:"mathord",replace:"λ"},"\\mu":{font:"main",group:"mathord",replace:"μ"},"\\nu":{font:"main",group:"mathord",replace:"ν"},"\\xi":{font:"main",group:"mathord",replace:"ξ"},"\\omicron":{font:"main",group:"mathord",replace:"o"},"\\pi":{font:"main",group:"mathord",replace:"π"},"\\rho":{font:"main",group:"mathord",replace:"ρ"},"\\sigma":{font:"main",group:"mathord",replace:"σ"},"\\tau":{font:"main",group:"mathord",replace:"τ"},"\\upsilon":{font:"main",group:"mathord",replace:"υ"},"\\phi":{font:"main",group:"mathord",replace:"ϕ"},"\\chi":{font:"main",group:"mathord",replace:"χ"},"\\psi":{font:"main",group:"mathord",replace:"ψ"},"\\omega":{font:"main",group:"mathord",replace:"ω"},"\\varepsilon":{font:"main",group:"mathord",replace:"ε"},"\\vartheta":{font:"main",group:"mathord",replace:"ϑ"},"\\varpi":{font:"main",group:"mathord",replace:"ϖ"},"\\varrho":{font:"main",group:"mathord",replace:"ϱ"},"\\varsigma":{font:"main",group:"mathord",replace:"ς"},"\\varphi":{font:"main",group:"mathord",replace:"φ"},"*":{font:"main",group:"bin",replace:"∗"},"+":{font:"main",group:"bin"},"-":{font:"main",group:"bin",replace:"−"},"\\cdot":{font:"main",group:"bin",replace:"⋅"},"\\circ":{font:"main",group:"bin",replace:"∘"},"\\div":{font:"main",group:"bin",replace:"÷"},"\\pm":{font:"main",group:"bin",replace:"±"},"\\times":{font:"main",group:"bin",replace:"×"},"\\cap":{font:"main",group:"bin",replace:"∩"},"\\cup":{font:"main",group:"bin",replace:"∪"},"\\setminus":{font:"main",group:"bin",replace:"∖"},"\\land":{font:"main",group:"bin",replace:"∧"},"\\lor":{font:"main",group:"bin",replace:"∨"},"\\wedge":{font:"main",group:"bin",replace:"∧"},"\\vee":{font:"main",group:"bin",replace:"∨"},"\\surd":{font:"main",group:"textord",replace:"√"},"(":{font:"main",group:"open"},"[":{font:"main",group:"open"},"\\langle":{font:"main",group:"open",replace:"⟨"},"\\lvert":{font:"main",group:"open",replace:"∣"},"\\lVert":{font:"main",group:"open",replace:"∥"},")":{font:"main",group:"close"},"]":{font:"main",group:"close"},"?":{font:"main",group:"close"},"!":{font:"main",group:"close"},"\\rangle":{font:"main",group:"close",replace:"⟩"},"\\rvert":{font:"main",group:"close",replace:"∣"},"\\rVert":{font:"main",group:"close",replace:"∥"},"=":{font:"main",group:"rel"},"<":{font:"main",group:"rel"},">":{font:"main",group:"rel"},":":{font:"main",group:"rel"},"\\approx":{font:"main",group:"rel",replace:"≈"},"\\cong":{font:"main",group:"rel",replace:"≅"},"\\ge":{font:"main",group:"rel",replace:"≥"},"\\geq":{font:"main",group:"rel",replace:"≥"},"\\gets":{font:"main",group:"rel",replace:"←"},"\\in":{font:"main",group:"rel",replace:"∈"},"\\notin":{font:"main",group:"rel",replace:"∉"},"\\subset":{font:"main",group:"rel",replace:"⊂"},"\\supset":{font:"main",group:"rel",replace:"⊃"},"\\subseteq":{font:"main",group:"rel",replace:"⊆"},"\\supseteq":{font:"main",group:"rel",replace:"⊇"},"\\nsubseteq":{font:"ams",group:"rel",replace:"⊈"},"\\nsupseteq":{font:"ams",group:"rel",replace:"⊉"},"\\models":{font:"main",group:"rel",replace:"⊨"},"\\leftarrow":{font:"main",group:"rel",replace:"←"},"\\le":{font:"main",group:"rel",replace:"≤"},"\\leq":{font:"main",group:"rel",replace:"≤"},"\\ne":{font:"main",group:"rel",replace:"≠"},"\\neq":{font:"main",group:"rel",replace:"≠"},"\\rightarrow":{font:"main",group:"rel",replace:"→"},"\\to":{font:"main",group:"rel",replace:"→"},"\\ngeq":{font:"ams",group:"rel",replace:"≱"},"\\nleq":{font:"ams",group:"rel",replace:"≰"},"\\!":{font:"main",group:"spacing"},"\\ ":{font:"main",group:"spacing",replace:" "},"~":{font:"main",group:"spacing",replace:" "},"\\,":{font:"main",group:"spacing"},"\\:":{font:"main",group:"spacing"},"\\;":{font:"main",group:"spacing"},"\\enspace":{font:"main",group:"spacing"},"\\qquad":{font:"main",group:"spacing"},"\\quad":{font:"main",group:"spacing"},"\\space":{font:"main",group:"spacing",replace:" "},",":{font:"main",group:"punct"},";":{font:"main",group:"punct"},"\\colon":{font:"main",group:"punct",replace:":"},"\\barwedge":{font:"ams",group:"bin",replace:"⊼"},"\\veebar":{font:"ams",group:"bin",replace:"⊻"},"\\odot":{font:"main",group:"bin",replace:"⊙"},"\\oplus":{font:"main",group:"bin",replace:"⊕"},"\\otimes":{font:"main",group:"bin",replace:"⊗"},"\\partial":{font:"main",group:"textord",replace:"∂"},"\\oslash":{font:"main",group:"bin",replace:"⊘"},"\\circledcirc":{font:"ams",group:"bin",replace:"⊚"},"\\boxdot":{font:"ams",group:"bin",replace:"⊡"},"\\bigtriangleup":{font:"main",group:"bin",replace:"△"},"\\bigtriangledown":{font:"main",group:"bin",replace:"▽"},"\\dagger":{font:"main",group:"bin",replace:"†"},"\\diamond":{font:"main",group:"bin",replace:"⋄"},"\\star":{font:"main",group:"bin",replace:"⋆"},"\\triangleleft":{font:"main",group:"bin",replace:"◃"},"\\triangleright":{font:"main",group:"bin",replace:"▹"},"\\{":{font:"main",group:"open",replace:"{"},"\\}":{font:"main",group:"close",replace:"}"},"\\lbrace":{font:"main",group:"open",replace:"{"},"\\rbrace":{font:"main",group:"close",replace:"}"},"\\lbrack":{font:"main",group:"open",replace:"["},"\\rbrack":{font:"main",group:"close",replace:"]"},"\\lfloor":{font:"main",group:"open",replace:"⌊"},"\\rfloor":{font:"main",group:"close",replace:"⌋"},"\\lceil":{font:"main",group:"open",replace:"⌈"},"\\rceil":{font:"main",group:"close",replace:"⌉"},"\\backslash":{font:"main",group:"textord",replace:"\\"},"|":{font:"main",group:"textord",replace:"∣"},"\\vert":{font:"main",group:"textord",replace:"∣"},"\\|":{font:"main",group:"textord",replace:"∥"},"\\Vert":{font:"main",group:"textord",replace:"∥"},"\\uparrow":{font:"main",group:"rel",replace:"↑"},"\\Uparrow":{font:"main",group:"rel",replace:"⇑"},"\\downarrow":{font:"main",group:"rel",replace:"↓"},"\\Downarrow":{font:"main",group:"rel",replace:"⇓"},"\\updownarrow":{font:"main",group:"rel",replace:"↕"},"\\Updownarrow":{font:"main",group:"rel",replace:"⇕"},"\\coprod":{font:"math",group:"op",replace:"∐"},"\\bigvee":{font:"math",group:"op",replace:"⋁"},"\\bigwedge":{font:"math",group:"op",replace:"⋀"},"\\biguplus":{font:"math",group:"op",replace:"⨄"},"\\bigcap":{font:"math",group:"op",replace:"⋂"},"\\bigcup":{font:"math",group:"op",replace:"⋃"},"\\int":{font:"math",group:"op",replace:"∫"},"\\intop":{font:"math",group:"op",replace:"∫"},"\\iint":{font:"math",group:"op",replace:"∬"},"\\iiint":{font:"math",group:"op",replace:"∭"},"\\prod":{font:"math",group:"op",replace:"∏"},"\\sum":{font:"math",group:"op",replace:"∑"},"\\bigotimes":{font:"math",group:"op",replace:"⨂"},"\\bigoplus":{font:"math",group:"op",replace:"⨁"},"\\bigodot":{font:"math",group:"op",replace:"⨀"},"\\oint":{font:"math",group:"op",replace:"∮"},"\\bigsqcup":{font:"math",group:"op",replace:"⨆"},"\\smallint":{font:"math",group:"op",replace:"∫"},"\\ldots":{font:"main",group:"inner",replace:"…"},"\\cdots":{font:"main",group:"inner",replace:"⋯"},"\\ddots":{font:"main",group:"inner",replace:"⋱"},"\\vdots":{font:"main",group:"textord",replace:"⋮"},"\\acute":{font:"main",group:"accent",replace:"´"},"\\grave":{font:"main",group:"accent",replace:"`"},"\\ddot":{font:"main",group:"accent",replace:"¨"},"\\tilde":{font:"main",group:"accent",replace:"~"},"\\bar":{font:"main",group:"accent",replace:"¯"},"\\breve":{font:"main",group:"accent",replace:"˘"},"\\check":{font:"main",group:"accent",replace:"ˇ"},"\\hat":{font:"main",group:"accent",replace:"^"},"\\vec":{font:"main",group:"accent",replace:"⃗"},"\\dot":{font:"main",group:"accent",replace:"˙"},"\\imath":{font:"main",group:"mathord",replace:"ı"},
+"\\jmath":{font:"main",group:"mathord",replace:"ȷ"}},text:{"\\ ":{font:"main",group:"spacing",replace:" "}," ":{font:"main",group:"spacing",replace:" "},"~":{font:"main",group:"spacing",replace:" "}}},a='0123456789/@."',s=0;s<a.length;s++){var r=a.charAt(s);h.math[r]={font:"main",group:"textord"}}for(var l="0123456789`!@*()-=+[]'\";:?/.,",s=0;s<l.length;s++){var r=l.charAt(s);h.text[r]={font:"main",group:"textord"}}for(var n="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",s=0;s<n.length;s++){var r=n.charAt(s);h.math[r]={font:"main",group:"mathord"},h.text[r]={font:"main",group:"textord"}}t.exports=h},{}],25:[function(e,t,i){function h(e){return d[e]}function a(e){return(""+e).replace(u,h)}function s(e){r(e,"")}var r,l=Array.prototype.indexOf,n=function(e,t){if(null==e)return-1;if(l&&e.indexOf===l)return e.indexOf(t);for(var i=0,h=e.length;h>i;i++)if(e[i]===t)return i;return-1},p=function(e,t){return-1!==n(e,t)},o=function(e,t){return void 0===e?t:e},c=/([A-Z])/g,g=function(e){return e.replace(c,"-$1").toLowerCase()},d={"&":"&amp;",">":"&gt;","<":"&lt;",'"':"&quot;","'":"&#x27;"},u=/[&><"']/g;if("undefined"!=typeof document){var k=document.createElement("span");r="textContent"in k?function(e,t){e.textContent=t}:function(e,t){e.innerText=t}}t.exports={contains:p,deflt:o,escape:a,hyphenate:g,indexOf:n,setTextContent:r,clearNode:s}},{}],26:[function(e,t,i){"use strict";function h(e){if(!e.__matchAtRelocatable){var t=e.source+"|()",i="g"+(e.ignoreCase?"i":"")+(e.multiline?"m":"")+(e.unicode?"u":"");e.__matchAtRelocatable=new RegExp(t,i)}return e.__matchAtRelocatable}function a(e,t,i){if(e.global||e.sticky)throw new Error("matchAt(...): Only non-global regexes are supported");var a=h(e);a.lastIndex=i;var s=a.exec(t);return null==s[s.length-1]?(s.length=s.length-1,s):null}t.exports=a},{}]},{},[2])(2)});
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{}],2:[function(require,module,exports){
 module.exports = function() {
   return function(deck) {
     var backdrops;
@@ -51,7 +63,7 @@ module.exports = function() {
   };
 };
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 module.exports = function(options) {
   return function(deck) {
     var activeSlideIndex,
@@ -136,7 +148,7 @@ module.exports = function(options) {
   };
 };
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 module.exports = function() {
   return function(deck) {
     var parseHash = function() {
@@ -176,7 +188,7 @@ module.exports = function() {
   };
 };
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = function(options) {
   return function(deck) {
     var isHorizontal = options !== 'vertical';
@@ -197,7 +209,7 @@ module.exports = function(options) {
   };
 };
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var marked = require('marked'),
     hljs = require('highlight.js'),
     hljsRenderer = new marked.Renderer();
@@ -374,19 +386,7 @@ module.exports = function() {
   };
 };
 
-},{"highlight.js":17,"marked":186}],6:[function(require,module,exports){
-(function (global){
-/*! bespoke-math v1.2.0 © 2016 Flávio, MIT License */
-!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,t=t.bespoke||(t.bespoke={}),t=t.plugins||(t.plugins={}),t.math=e()}}(function(){return function e(t,i,h){function a(r,l){if(!i[r]){if(!t[r]){var n="function"==typeof require&&require;if(!l&&n)return n(r,!0);if(s)return s(r,!0);var p=new Error("Cannot find module '"+r+"'");throw p.code="MODULE_NOT_FOUND",p}var o=i[r]={exports:{}};t[r][0].call(o.exports,function(e){var i=t[r][1][e];return a(i?i:e)},o,o.exports,e,t,i,h)}return i[r].exports}for(var s="function"==typeof require&&require,r=0;r<h.length;r++)a(h[r]);return a}({1:[function(e,t,i){var h="@font-face {\n  font-family: KaTeX_AMS;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.eot);\n  src: url(fonts/KaTeX_AMS-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Caligraphic;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.eot);\n  src: url(fonts/KaTeX_Caligraphic-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Caligraphic;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.eot);\n  src: url(fonts/KaTeX_Caligraphic-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Fraktur;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.eot);\n  src: url(fonts/KaTeX_Fraktur-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Fraktur;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.eot);\n  src: url(fonts/KaTeX_Fraktur-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.eot);\n  src: url(fonts/KaTeX_Main-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.eot);\n  src: url(fonts/KaTeX_Main-Italic.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.ttf) format('ttf');\n  font-weight: 400;\n  font-style: italic;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.eot);\n  src: url(fonts/KaTeX_Main-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Math;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.eot);\n  src: url(fonts/KaTeX_Math-Italic.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.ttf) format('ttf');\n  font-weight: 400;\n  font-style: italic;\n}\n@font-face {\n  font-family: KaTeX_SansSerif;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.eot);\n  src: url(fonts/KaTeX_SansSerif-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Script;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.eot);\n  src: url(fonts/KaTeX_Script-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size1;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.eot);\n  src: url(fonts/KaTeX_Size1-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size2;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.eot);\n  src: url(fonts/KaTeX_Size2-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size3;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.eot);\n  src: url(fonts/KaTeX_Size3-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size4;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.eot);\n  src: url(fonts/KaTeX_Size4-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Typewriter;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.eot);\n  src: url(fonts/KaTeX_Typewriter-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n.katex-display {\n  display: block;\n  margin: 1em 0;\n  text-align: center;\n}\n.katex-display>.katex {\n  display: inline-block;\n}\n.katex {\n  font: 400 1.21em KaTeX_Main;\n  line-height: 1.2;\n  white-space: nowrap;\n  text-indent: 0;\n}\n.katex .katex-html {\n  display: inline-block;\n}\n.katex .katex-mathml {\n  position: absolute;\n  clip: rect(1px,1px,1px,1px);\n  padding: 0;\n  border: 0;\n  height: 1px;\n  width: 1px;\n  overflow: hidden;\n}\n.katex .base,\n.katex .strut {\n  display: inline-block;\n}\n.katex .mathit {\n  font-family: KaTeX_Math;\n  font-style: italic;\n}\n.katex .mathbf {\n  font-family: KaTeX_Main;\n  font-weight: 700;\n}\n.katex .amsrm,\n.katex .mathbb {\n  font-family: KaTeX_AMS;\n}\n.katex .mathcal {\n  font-family: KaTeX_Caligraphic;\n}\n.katex .mathfrak {\n  font-family: KaTeX_Fraktur;\n}\n.katex .mathtt {\n  font-family: KaTeX_Typewriter;\n}\n.katex .mathscr {\n  font-family: KaTeX_Script;\n}\n.katex .mathsf {\n  font-family: KaTeX_SansSerif;\n}\n.katex .mainit {\n  font-family: KaTeX_Main;\n  font-style: italic;\n}\n.katex .textstyle>.mord+.mop {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mord+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mord+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mop+.mop,\n.katex .textstyle>.mop+.mord,\n.katex .textstyle>.mord+.minner {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mop+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mop+.minner {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mbin+.minner,\n.katex .textstyle>.mbin+.mop,\n.katex .textstyle>.mbin+.mopen,\n.katex .textstyle>.mbin+.mord {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mrel+.minner,\n.katex .textstyle>.mrel+.mop,\n.katex .textstyle>.mrel+.mopen,\n.katex .textstyle>.mrel+.mord {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mclose+.mop {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mclose+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mclose+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mclose+.minner,\n.katex .textstyle>.minner+.mop,\n.katex .textstyle>.minner+.mord,\n.katex .textstyle>.mpunct+.mclose,\n.katex .textstyle>.mpunct+.minner,\n.katex .textstyle>.mpunct+.mop,\n.katex .textstyle>.mpunct+.mopen,\n.katex .textstyle>.mpunct+.mord,\n.katex .textstyle>.mpunct+.mpunct,\n.katex .textstyle>.mpunct+.mrel {\n  margin-left: .16667em;\n}\n.katex .textstyle>.minner+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.minner+.mrel {\n  margin-left: .27778em;\n}\n.katex .mclose+.mop,\n.katex .minner+.mop,\n.katex .mop+.mop,\n.katex .mop+.mord,\n.katex .mord+.mop,\n.katex .textstyle>.minner+.minner,\n.katex .textstyle>.minner+.mopen,\n.katex .textstyle>.minner+.mpunct {\n  margin-left: .16667em;\n}\n.katex .reset-textstyle.textstyle {\n  font-size: 1em;\n}\n.katex .reset-textstyle.scriptstyle {\n  font-size: .7em;\n}\n.katex .reset-textstyle.scriptscriptstyle {\n  font-size: .5em;\n}\n.katex .reset-scriptstyle.textstyle {\n  font-size: 1.42857em;\n}\n.katex .reset-scriptstyle.scriptstyle {\n  font-size: 1em;\n}\n.katex .reset-scriptstyle.scriptscriptstyle {\n  font-size: .71429em;\n}\n.katex .reset-scriptscriptstyle.textstyle {\n  font-size: 2em;\n}\n.katex .reset-scriptscriptstyle.scriptstyle {\n  font-size: 1.4em;\n}\n.katex .reset-scriptscriptstyle.scriptscriptstyle {\n  font-size: 1em;\n}\n.katex .style-wrap {\n  position: relative;\n}\n.katex .vlist {\n  display: inline-block;\n}\n.katex .vlist>span {\n  display: block;\n  height: 0;\n  position: relative;\n}\n.katex .vlist>span>span {\n  display: inline-block;\n}\n.katex .vlist .baseline-fix {\n  display: inline-table;\n  table-layout: fixed;\n}\n.katex .msupsub {\n  text-align: left;\n}\n.katex .mfrac>span>span {\n  text-align: center;\n}\n.katex .mfrac .frac-line {\n  width: 100%;\n}\n.katex .mfrac .frac-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .mfrac .frac-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .mspace {\n  display: inline-block;\n}\n.katex .mspace.negativethinspace {\n  margin-left: -.16667em;\n}\n.katex .mspace.thinspace {\n  width: .16667em;\n}\n.katex .mspace.mediumspace {\n  width: .22222em;\n}\n.katex .mspace.thickspace {\n  width: .27778em;\n}\n.katex .mspace.enspace {\n  width: .5em;\n}\n.katex .mspace.quad {\n  width: 1em;\n}\n.katex .mspace.qquad {\n  width: 2em;\n}\n.katex .llap,\n.katex .rlap {\n  width: 0;\n  position: relative;\n}\n.katex .llap>.inner,\n.katex .rlap>.inner {\n  position: absolute;\n}\n.katex .llap>.fix,\n.katex .rlap>.fix {\n  display: inline-block;\n}\n.katex .llap>.inner {\n  right: 0;\n}\n.katex .rlap>.inner {\n  left: 0;\n}\n.katex .katex-logo .a {\n  font-size: .75em;\n  margin-left: -.32em;\n  position: relative;\n  top: -.2em;\n}\n.katex .katex-logo .t {\n  margin-left: -.23em;\n}\n.katex .katex-logo .e {\n  margin-left: -.1667em;\n  position: relative;\n  top: .2155em;\n}\n.katex .katex-logo .x {\n  margin-left: -.125em;\n}\n.katex .rule {\n  display: inline-block;\n  border-style: solid;\n  position: relative;\n}\n.katex .overline .overline-line {\n  width: 100%;\n}\n.katex .overline .overline-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .overline .overline-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .sqrt>.sqrt-sign {\n  position: relative;\n}\n.katex .sqrt .sqrt-line {\n  width: 100%;\n}\n.katex .sqrt .sqrt-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .sqrt .sqrt-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .sqrt>.root {\n  margin-left: .27777778em;\n  margin-right: -.55555556em;\n}\n.katex .fontsize-ensurer,\n.katex .sizing {\n  display: inline-block;\n}\n.katex .fontsize-ensurer.reset-size1.size1,\n.katex .sizing.reset-size1.size1 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size1.size2,\n.katex .sizing.reset-size1.size2 {\n  font-size: 1.4em;\n}\n.katex .fontsize-ensurer.reset-size1.size3,\n.katex .sizing.reset-size1.size3 {\n  font-size: 1.6em;\n}\n.katex .fontsize-ensurer.reset-size1.size4,\n.katex .sizing.reset-size1.size4 {\n  font-size: 1.8em;\n}\n.katex .fontsize-ensurer.reset-size1.size5,\n.katex .sizing.reset-size1.size5 {\n  font-size: 2em;\n}\n.katex .fontsize-ensurer.reset-size1.size6,\n.katex .sizing.reset-size1.size6 {\n  font-size: 2.4em;\n}\n.katex .fontsize-ensurer.reset-size1.size7,\n.katex .sizing.reset-size1.size7 {\n  font-size: 2.88em;\n}\n.katex .fontsize-ensurer.reset-size1.size8,\n.katex .sizing.reset-size1.size8 {\n  font-size: 3.46em;\n}\n.katex .fontsize-ensurer.reset-size1.size9,\n.katex .sizing.reset-size1.size9 {\n  font-size: 4.14em;\n}\n.katex .fontsize-ensurer.reset-size1.size10,\n.katex .sizing.reset-size1.size10 {\n  font-size: 4.98em;\n}\n.katex .fontsize-ensurer.reset-size2.size1,\n.katex .sizing.reset-size2.size1 {\n  font-size: .71428571em;\n}\n.katex .fontsize-ensurer.reset-size2.size2,\n.katex .sizing.reset-size2.size2 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size2.size3,\n.katex .sizing.reset-size2.size3 {\n  font-size: 1.14285714em;\n}\n.katex .fontsize-ensurer.reset-size2.size4,\n.katex .sizing.reset-size2.size4 {\n  font-size: 1.28571429em;\n}\n.katex .fontsize-ensurer.reset-size2.size5,\n.katex .sizing.reset-size2.size5 {\n  font-size: 1.42857143em;\n}\n.katex .fontsize-ensurer.reset-size2.size6,\n.katex .sizing.reset-size2.size6 {\n  font-size: 1.71428571em;\n}\n.katex .fontsize-ensurer.reset-size2.size7,\n.katex .sizing.reset-size2.size7 {\n  font-size: 2.05714286em;\n}\n.katex .fontsize-ensurer.reset-size2.size8,\n.katex .sizing.reset-size2.size8 {\n  font-size: 2.47142857em;\n}\n.katex .fontsize-ensurer.reset-size2.size9,\n.katex .sizing.reset-size2.size9 {\n  font-size: 2.95714286em;\n}\n.katex .fontsize-ensurer.reset-size2.size10,\n.katex .sizing.reset-size2.size10 {\n  font-size: 3.55714286em;\n}\n.katex .fontsize-ensurer.reset-size3.size1,\n.katex .sizing.reset-size3.size1 {\n  font-size: .625em;\n}\n.katex .fontsize-ensurer.reset-size3.size2,\n.katex .sizing.reset-size3.size2 {\n  font-size: .875em;\n}\n.katex .fontsize-ensurer.reset-size3.size3,\n.katex .sizing.reset-size3.size3 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size3.size4,\n.katex .sizing.reset-size3.size4 {\n  font-size: 1.125em;\n}\n.katex .fontsize-ensurer.reset-size3.size5,\n.katex .sizing.reset-size3.size5 {\n  font-size: 1.25em;\n}\n.katex .fontsize-ensurer.reset-size3.size6,\n.katex .sizing.reset-size3.size6 {\n  font-size: 1.5em;\n}\n.katex .fontsize-ensurer.reset-size3.size7,\n.katex .sizing.reset-size3.size7 {\n  font-size: 1.8em;\n}\n.katex .fontsize-ensurer.reset-size3.size8,\n.katex .sizing.reset-size3.size8 {\n  font-size: 2.1625em;\n}\n.katex .fontsize-ensurer.reset-size3.size9,\n.katex .sizing.reset-size3.size9 {\n  font-size: 2.5875em;\n}\n.katex .fontsize-ensurer.reset-size3.size10,\n.katex .sizing.reset-size3.size10 {\n  font-size: 3.1125em;\n}\n.katex .fontsize-ensurer.reset-size4.size1,\n.katex .sizing.reset-size4.size1 {\n  font-size: .55555556em;\n}\n.katex .fontsize-ensurer.reset-size4.size2,\n.katex .sizing.reset-size4.size2 {\n  font-size: .77777778em;\n}\n.katex .fontsize-ensurer.reset-size4.size3,\n.katex .sizing.reset-size4.size3 {\n  font-size: .88888889em;\n}\n.katex .fontsize-ensurer.reset-size4.size4,\n.katex .sizing.reset-size4.size4 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size4.size5,\n.katex .sizing.reset-size4.size5 {\n  font-size: 1.11111111em;\n}\n.katex .fontsize-ensurer.reset-size4.size6,\n.katex .sizing.reset-size4.size6 {\n  font-size: 1.33333333em;\n}\n.katex .fontsize-ensurer.reset-size4.size7,\n.katex .sizing.reset-size4.size7 {\n  font-size: 1.6em;\n}\n.katex .fontsize-ensurer.reset-size4.size8,\n.katex .sizing.reset-size4.size8 {\n  font-size: 1.92222222em;\n}\n.katex .fontsize-ensurer.reset-size4.size9,\n.katex .sizing.reset-size4.size9 {\n  font-size: 2.3em;\n}\n.katex .fontsize-ensurer.reset-size4.size10,\n.katex .sizing.reset-size4.size10 {\n  font-size: 2.76666667em;\n}\n.katex .fontsize-ensurer.reset-size5.size1,\n.katex .sizing.reset-size5.size1 {\n  font-size: .5em;\n}\n.katex .fontsize-ensurer.reset-size5.size2,\n.katex .sizing.reset-size5.size2 {\n  font-size: .7em;\n}\n.katex .fontsize-ensurer.reset-size5.size3,\n.katex .sizing.reset-size5.size3 {\n  font-size: .8em;\n}\n.katex .fontsize-ensurer.reset-size5.size4,\n.katex .sizing.reset-size5.size4 {\n  font-size: .9em;\n}\n.katex .fontsize-ensurer.reset-size5.size5,\n.katex .sizing.reset-size5.size5 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size5.size6,\n.katex .sizing.reset-size5.size6 {\n  font-size: 1.2em;\n}\n.katex .fontsize-ensurer.reset-size5.size7,\n.katex .sizing.reset-size5.size7 {\n  font-size: 1.44em;\n}\n.katex .fontsize-ensurer.reset-size5.size8,\n.katex .sizing.reset-size5.size8 {\n  font-size: 1.73em;\n}\n.katex .fontsize-ensurer.reset-size5.size9,\n.katex .sizing.reset-size5.size9 {\n  font-size: 2.07em;\n}\n.katex .fontsize-ensurer.reset-size5.size10,\n.katex .sizing.reset-size5.size10 {\n  font-size: 2.49em;\n}\n.katex .fontsize-ensurer.reset-size6.size1,\n.katex .sizing.reset-size6.size1 {\n  font-size: .41666667em;\n}\n.katex .fontsize-ensurer.reset-size6.size2,\n.katex .sizing.reset-size6.size2 {\n  font-size: .58333333em;\n}\n.katex .fontsize-ensurer.reset-size6.size3,\n.katex .sizing.reset-size6.size3 {\n  font-size: .66666667em;\n}\n.katex .fontsize-ensurer.reset-size6.size4,\n.katex .sizing.reset-size6.size4 {\n  font-size: .75em;\n}\n.katex .fontsize-ensurer.reset-size6.size5,\n.katex .sizing.reset-size6.size5 {\n  font-size: .83333333em;\n}\n.katex .fontsize-ensurer.reset-size6.size6,\n.katex .sizing.reset-size6.size6 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size6.size7,\n.katex .sizing.reset-size6.size7 {\n  font-size: 1.2em;\n}\n.katex .fontsize-ensurer.reset-size6.size8,\n.katex .sizing.reset-size6.size8 {\n  font-size: 1.44166667em;\n}\n.katex .fontsize-ensurer.reset-size6.size9,\n.katex .sizing.reset-size6.size9 {\n  font-size: 1.725em;\n}\n.katex .fontsize-ensurer.reset-size6.size10,\n.katex .sizing.reset-size6.size10 {\n  font-size: 2.075em;\n}\n.katex .fontsize-ensurer.reset-size7.size1,\n.katex .sizing.reset-size7.size1 {\n  font-size: .34722222em;\n}\n.katex .fontsize-ensurer.reset-size7.size2,\n.katex .sizing.reset-size7.size2 {\n  font-size: .48611111em;\n}\n.katex .fontsize-ensurer.reset-size7.size3,\n.katex .sizing.reset-size7.size3 {\n  font-size: .55555556em;\n}\n.katex .fontsize-ensurer.reset-size7.size4,\n.katex .sizing.reset-size7.size4 {\n  font-size: .625em;\n}\n.katex .fontsize-ensurer.reset-size7.size5,\n.katex .sizing.reset-size7.size5 {\n  font-size: .69444444em;\n}\n.katex .fontsize-ensurer.reset-size7.size6,\n.katex .sizing.reset-size7.size6 {\n  font-size: .83333333em;\n}\n.katex .fontsize-ensurer.reset-size7.size7,\n.katex .sizing.reset-size7.size7 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size7.size8,\n.katex .sizing.reset-size7.size8 {\n  font-size: 1.20138889em;\n}\n.katex .fontsize-ensurer.reset-size7.size9,\n.katex .sizing.reset-size7.size9 {\n  font-size: 1.4375em;\n}\n.katex .fontsize-ensurer.reset-size7.size10,\n.katex .sizing.reset-size7.size10 {\n  font-size: 1.72916667em;\n}\n.katex .fontsize-ensurer.reset-size8.size1,\n.katex .sizing.reset-size8.size1 {\n  font-size: .28901734em;\n}\n.katex .fontsize-ensurer.reset-size8.size2,\n.katex .sizing.reset-size8.size2 {\n  font-size: .40462428em;\n}\n.katex .fontsize-ensurer.reset-size8.size3,\n.katex .sizing.reset-size8.size3 {\n  font-size: .46242775em;\n}\n.katex .fontsize-ensurer.reset-size8.size4,\n.katex .sizing.reset-size8.size4 {\n  font-size: .52023121em;\n}\n.katex .fontsize-ensurer.reset-size8.size5,\n.katex .sizing.reset-size8.size5 {\n  font-size: .57803468em;\n}\n.katex .fontsize-ensurer.reset-size8.size6,\n.katex .sizing.reset-size8.size6 {\n  font-size: .69364162em;\n}\n.katex .fontsize-ensurer.reset-size8.size7,\n.katex .sizing.reset-size8.size7 {\n  font-size: .83236994em;\n}\n.katex .fontsize-ensurer.reset-size8.size8,\n.katex .sizing.reset-size8.size8 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size8.size9,\n.katex .sizing.reset-size8.size9 {\n  font-size: 1.19653179em;\n}\n.katex .fontsize-ensurer.reset-size8.size10,\n.katex .sizing.reset-size8.size10 {\n  font-size: 1.43930636em;\n}\n.katex .fontsize-ensurer.reset-size9.size1,\n.katex .sizing.reset-size9.size1 {\n  font-size: .24154589em;\n}\n.katex .fontsize-ensurer.reset-size9.size2,\n.katex .sizing.reset-size9.size2 {\n  font-size: .33816425em;\n}\n.katex .fontsize-ensurer.reset-size9.size3,\n.katex .sizing.reset-size9.size3 {\n  font-size: .38647343em;\n}\n.katex .fontsize-ensurer.reset-size9.size4,\n.katex .sizing.reset-size9.size4 {\n  font-size: .43478261em;\n}\n.katex .fontsize-ensurer.reset-size9.size5,\n.katex .sizing.reset-size9.size5 {\n  font-size: .48309179em;\n}\n.katex .fontsize-ensurer.reset-size9.size6,\n.katex .sizing.reset-size9.size6 {\n  font-size: .57971014em;\n}\n.katex .fontsize-ensurer.reset-size9.size7,\n.katex .sizing.reset-size9.size7 {\n  font-size: .69565217em;\n}\n.katex .fontsize-ensurer.reset-size9.size8,\n.katex .sizing.reset-size9.size8 {\n  font-size: .83574879em;\n}\n.katex .fontsize-ensurer.reset-size9.size9,\n.katex .sizing.reset-size9.size9 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size9.size10,\n.katex .sizing.reset-size9.size10 {\n  font-size: 1.20289855em;\n}\n.katex .fontsize-ensurer.reset-size10.size1,\n.katex .sizing.reset-size10.size1 {\n  font-size: .20080321em;\n}\n.katex .fontsize-ensurer.reset-size10.size2,\n.katex .sizing.reset-size10.size2 {\n  font-size: .2811245em;\n}\n.katex .fontsize-ensurer.reset-size10.size3,\n.katex .sizing.reset-size10.size3 {\n  font-size: .32128514em;\n}\n.katex .fontsize-ensurer.reset-size10.size4,\n.katex .sizing.reset-size10.size4 {\n  font-size: .36144578em;\n}\n.katex .fontsize-ensurer.reset-size10.size5,\n.katex .sizing.reset-size10.size5 {\n  font-size: .40160643em;\n}\n.katex .fontsize-ensurer.reset-size10.size6,\n.katex .sizing.reset-size10.size6 {\n  font-size: .48192771em;\n}\n.katex .fontsize-ensurer.reset-size10.size7,\n.katex .sizing.reset-size10.size7 {\n  font-size: .57831325em;\n}\n.katex .fontsize-ensurer.reset-size10.size8,\n.katex .sizing.reset-size10.size8 {\n  font-size: .69477912em;\n}\n.katex .fontsize-ensurer.reset-size10.size9,\n.katex .sizing.reset-size10.size9 {\n  font-size: .8313253em;\n}\n.katex .fontsize-ensurer.reset-size10.size10,\n.katex .sizing.reset-size10.size10 {\n  font-size: 1em;\n}\n.katex .delimsizing.size1 {\n  font-family: KaTeX_Size1;\n}\n.katex .delimsizing.size2 {\n  font-family: KaTeX_Size2;\n}\n.katex .delimsizing.size3 {\n  font-family: KaTeX_Size3;\n}\n.katex .delimsizing.size4 {\n  font-family: KaTeX_Size4;\n}\n.katex .delimsizing.mult .delim-size1>span {\n  font-family: KaTeX_Size1;\n}\n.katex .delimsizing.mult .delim-size4>span {\n  font-family: KaTeX_Size4;\n}\n.katex .nulldelimiter {\n  display: inline-block;\n  width: .12em;\n}\n.katex .op-symbol {\n  position: relative;\n}\n.katex .op-symbol.small-op {\n  font-family: KaTeX_Size1;\n}\n.katex .op-symbol.large-op {\n  font-family: KaTeX_Size2;\n}\n.katex .accent>.vlist>span,\n.katex .op-limits>.vlist>span {\n  text-align: center;\n}\n.katex .accent .accent-body>span {\n  width: 0;\n}\n.katex .accent .accent-body.accent-vec>span {\n  position: relative;\n  left: .326em;\n}\n.katex .mtable .vertical-separator {\n  display: inline-block;\n  margin: 0 -.025em;\n  border-right: .05em solid #000;\n}\n.katex .mtable .arraycolsep {\n  display: inline-block;\n}\n.katex .mtable .col-align-c>.vlist {\n  text-align: center;\n}\n.katex .mtable .col-align-l>.vlist {\n  text-align: left;\n}\n.katex .mtable .col-align-r>.vlist {\n  text-align: right;\n}\n";e("browserify-css").createStyle(h,{href:"katex.min.css"}),t.exports=h},{"browserify-css":3}],2:[function(e,t,i){var h=e("katex"),a=function(e,t){try{return h.renderToString(e,{displayMode:t})}catch(i){console.log('Katex error trying to parse: "'+e+'". Description: '+i)}};t.exports=function(t,i){var h="undefined"!=typeof i?"separateSelector":"spanIsInline";return t=arguments.length>0?t:".math",function(s){var r,l=!1;switch(h){case"separateSelector":r=s.parent.querySelectorAll(t),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,!1),l=!0}),r=s.parent.querySelectorAll(i),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,!0),l=!0});break;case"spanIsInline":r=s.parent.querySelectorAll(t),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,"span"!==e.tagName.toLowerCase()),l=!0})}if(l)try{e("../katex/katex.min.css")}catch(n){console.log("It was not possible to load the CSS from KaTeX. Details: "+n)}}}},{"../katex/katex.min.css":1,katex:4}],3:[function(e,t,i){"use strict";t.exports={createLink:function(e,t){var i=document.head||document.getElementsByTagName("head")[0],h=document.createElement("link");h.href=e,h.rel="stylesheet";for(var a in t)if(t.hasOwnProperty(a)){var s=t[a];h.setAttribute("data-"+a,s)}i.appendChild(h)},createStyle:function(e,t){var i=document.head||document.getElementsByTagName("head")[0],h=document.createElement("style");h.type="text/css";for(var a in t)if(t.hasOwnProperty(a)){var s=t[a];h.setAttribute("data-"+a,s)}h.sheet?(h.innerHTML=e,h.sheet.cssText=e,i.appendChild(h)):h.styleSheet?(i.appendChild(h),h.styleSheet.cssText=e):(h.appendChild(document.createTextNode(e)),i.appendChild(h))}}},{}],4:[function(e,t,i){var h=e("./src/ParseError"),a=e("./src/Settings"),s=e("./src/buildTree"),r=e("./src/parseTree"),l=e("./src/utils"),n=function(e,t,i){l.clearNode(t);var h=new a(i),n=r(e,h),p=s(n,e,h).toNode();t.appendChild(p)};"undefined"!=typeof document&&"CSS1Compat"!==document.compatMode&&("undefined"!=typeof console&&console.warn("Warning: KaTeX doesn't work in quirks mode. Make sure your website has a suitable doctype."),n=function(){throw new h("KaTeX doesn't work in quirks mode.")});var p=function(e,t){var i=new a(t),h=r(e,i);return s(h,e,i).toMarkup()},o=function(e,t){var i=new a(t);return r(e,i)};t.exports={render:n,renderToString:p,__parse:o,ParseError:h}},{"./src/ParseError":7,"./src/Settings":9,"./src/buildTree":14,"./src/parseTree":23,"./src/utils":25}],5:[function(e,t,i){function h(e){this._input=e}function a(e,t,i){this.text=e,this.data=t,this.position=i}var s=e("match-at"),r=e("./ParseError"),l=[/[\/|@.""`0-9a-zA-Z]/,/[*+-]/,/[=<>:]/,/[,;]/,/['\^_{}]/,/[(\[]/,/[)\]?!]/,/~/,/&/,/\\\\/],n=[/[a-zA-Z0-9`!@*()-=+\[\]'";:?\/.,]/,/[{}]/,/~/,/&/,/\\\\/],p=/\s*/,o=/ +|\\  +/,c=/\\(?:[a-zA-Z]+|.)/;h.prototype._innerLex=function(e,t,i){var h,l=this._input;if(i)h=s(p,l,e)[0],e+=h.length;else if(h=s(o,l,e),null!==h)return new a(" ",null,e+h[0].length);if(e===l.length)return new a("EOF",null,e);var n;if(n=s(c,l,e))return new a(n[0],null,e+n[0].length);for(var g=0;g<t.length;g++){var d=t[g];if(n=s(d,l,e))return new a(n[0],null,e+n[0].length)}throw new r("Unexpected character: '"+l[e]+"'",this,e)};var g=/#[a-z0-9]+|[a-z]+/i;h.prototype._innerLexColor=function(e){var t=this._input,i=s(p,t,e)[0];e+=i.length;var h;if(h=s(g,t,e))return new a(h[0],null,e+h[0].length);throw new r("Invalid color",this,e)};var d=/(-?)\s*(\d+(?:\.\d*)?|\.\d+)\s*([a-z]{2})/;h.prototype._innerLexSize=function(e){var t=this._input,i=s(p,t,e)[0];e+=i.length;var h;if(h=s(d,t,e)){var l=h[3];if("em"!==l&&"ex"!==l)throw new r("Invalid unit: '"+l+"'",this,e);return new a(h[0],{number:+(h[1]+h[2]),unit:l},e+h[0].length)}throw new r("Invalid size",this,e)},h.prototype._innerLexWhitespace=function(e){
-var t=this._input,i=s(p,t,e)[0];return e+=i.length,new a(i[0],null,e)},h.prototype.lex=function(e,t){return"math"===t?this._innerLex(e,l,!0):"text"===t?this._innerLex(e,n,!1):"color"===t?this._innerLexColor(e):"size"===t?this._innerLexSize(e):"whitespace"===t?this._innerLexWhitespace(e):void 0},t.exports=h},{"./ParseError":7,"match-at":26}],6:[function(e,t,i){function h(e){this.style=e.style,this.color=e.color,this.size=e.size,this.phantom=e.phantom,this.font=e.font,void 0===e.parentStyle?this.parentStyle=e.style:this.parentStyle=e.parentStyle,void 0===e.parentSize?this.parentSize=e.size:this.parentSize=e.parentSize}h.prototype.extend=function(e){var t={style:this.style,size:this.size,color:this.color,parentStyle:this.style,parentSize:this.size,phantom:this.phantom,font:this.font};for(var i in e)e.hasOwnProperty(i)&&(t[i]=e[i]);return new h(t)},h.prototype.withStyle=function(e){return this.extend({style:e})},h.prototype.withSize=function(e){return this.extend({size:e})},h.prototype.withColor=function(e){return this.extend({color:e})},h.prototype.withPhantom=function(){return this.extend({phantom:!0})},h.prototype.withFont=function(e){return this.extend({font:e})},h.prototype.reset=function(){return this.extend({})};var a={"katex-blue":"#6495ed","katex-orange":"#ffa500","katex-pink":"#ff00af","katex-red":"#df0030","katex-green":"#28ae7b","katex-gray":"gray","katex-purple":"#9d38bd","katex-blueA":"#c7e9f1","katex-blueB":"#9cdceb","katex-blueC":"#58c4dd","katex-blueD":"#29abca","katex-blueE":"#1c758a","katex-tealA":"#acead7","katex-tealB":"#76ddc0","katex-tealC":"#5cd0b3","katex-tealD":"#55c1a7","katex-tealE":"#49a88f","katex-greenA":"#c9e2ae","katex-greenB":"#a6cf8c","katex-greenC":"#83c167","katex-greenD":"#77b05d","katex-greenE":"#699c52","katex-goldA":"#f7c797","katex-goldB":"#f9b775","katex-goldC":"#f0ac5f","katex-goldD":"#e1a158","katex-goldE":"#c78d46","katex-redA":"#f7a1a3","katex-redB":"#ff8080","katex-redC":"#fc6255","katex-redD":"#e65a4c","katex-redE":"#cf5044","katex-maroonA":"#ecabc1","katex-maroonB":"#ec92ab","katex-maroonC":"#c55f73","katex-maroonD":"#a24d61","katex-maroonE":"#94424f","katex-purpleA":"#caa3e8","katex-purpleB":"#b189c6","katex-purpleC":"#9a72ac","katex-purpleD":"#715582","katex-purpleE":"#644172","katex-mintA":"#f5f9e8","katex-mintB":"#edf2df","katex-mintC":"#e0e5cc","katex-grayA":"#fdfdfd","katex-grayB":"#f7f7f7","katex-grayC":"#eeeeee","katex-grayD":"#dddddd","katex-grayE":"#cccccc","katex-grayF":"#aaaaaa","katex-grayG":"#999999","katex-grayH":"#555555","katex-grayI":"#333333","katex-kaBlue":"#314453","katex-kaGreen":"#639b24"};h.prototype.getColor=function(){return this.phantom?"transparent":a[this.color]||this.color},t.exports=h},{}],7:[function(e,t,i){function h(e,t,i){var a="KaTeX parse error: "+e;if(void 0!==t&&void 0!==i){a+=" at position "+i+": ";var s=t._input;s=s.slice(0,i)+"̲"+s.slice(i);var r=Math.max(0,i-15),l=i+15;a+=s.slice(r,l)}var n=new Error(a);return n.name="ParseError",n.__proto__=h.prototype,n.position=i,n}h.prototype.__proto__=Error.prototype,t.exports=h},{}],8:[function(e,t,i){function h(e,t){this.lexer=new l(e),this.settings=t}function a(e,t){this.result=e,this.isFunction=t}var s=e("./functions"),r=e("./environments"),l=e("./Lexer"),n=e("./symbols"),p=e("./utils"),o=e("./parseData"),c=e("./ParseError"),g=o.ParseNode,d=o.ParseResult;h.prototype.expect=function(e,t){if(e.text!==t)throw new c("Expected '"+t+"', got '"+e.text+"'",this.lexer,e.position)},h.prototype.parse=function(e){var t=this.parseInput(0,"math");return t.result},h.prototype.parseInput=function(e,t){var i=this.parseExpression(e,t,!1);return this.expect(i.peek,"EOF"),i};var u=["}","\\end","\\right","&","\\\\","\\cr"];h.prototype.parseExpression=function(e,t,i,h){for(var a=[],s=null;;){if(s=this.lexer.lex(e,t),-1!==u.indexOf(s.text))break;if(h&&s.text===h)break;var r=this.parseAtom(e,t);if(!r){if(!this.settings.throwOnError&&"\\"===s.text[0]){var l=this.handleUnsupportedCmd(s.text,t);a.push(l),e=s.position;continue}break}if(i&&"infix"===r.result.type)break;a.push(r.result),e=r.position}var n=new d(this.handleInfixNodes(a,t),e);return n.peek=s,n},h.prototype.handleInfixNodes=function(e,t){for(var i,h,a=-1,r=0;r<e.length;r++){var l=e[r];if("infix"===l.type){if(-1!==a)throw new c("only one infix operator per group",this.lexer,-1);a=r,h=l.value.replaceWith,i=s.funcs[h]}}if(-1!==a){var n,p,o=e.slice(0,a),d=e.slice(a+1);n=1===o.length&&"ordgroup"===o[0].type?o[0]:new g("ordgroup",o,t),p=1===d.length&&"ordgroup"===d[0].type?d[0]:new g("ordgroup",d,t);var u=i.handler(h,n,p);return[new g(u.type,u,t)]}return e};var k=1;h.prototype.handleSupSubscript=function(e,t,i,h){var a=this.parseGroup(e,t);if(a){if(a.isFunction){var r=s.funcs[a.result.result].greediness;if(r>k)return this.parseFunction(e,t);throw new c("Got function '"+a.result.result+"' with no arguments as "+h,this.lexer,e)}return a.result}var l=this.lexer.lex(e,t);if(this.settings.throwOnError||"\\"!==l.text[0])throw new c("Expected group after '"+i+"'",this.lexer,e);return new d(this.handleUnsupportedCmd(l.text,t),l.position)},h.prototype.handleUnsupportedCmd=function(e,t){for(var i=[],h=0;h<e.length;h++)i.push(new g("textord",e[h],"text"));var a=new g("text",{body:i,type:"text"},t),s=new g("color",{color:this.settings.errorColor,value:[a],type:"color"},t);return s},h.prototype.parseAtom=function(e,t){var i=this.parseImplicitGroup(e,t);if("text"===t)return i;var h;i?h=i.position:(h=e,i=void 0);for(var a,s,r;;){var l=this.lexer.lex(h,t);if("\\limits"===l.text||"\\nolimits"===l.text){if(!i||"op"!==i.result.type)throw new c("Limit controls must follow a math operator",this.lexer,h);var n="\\limits"===l.text;i.result.value.limits=n,i.result.value.alwaysHandleSupSub=!0,h=l.position}else if("^"===l.text){if(a)throw new c("Double superscript",this.lexer,h);r=this.handleSupSubscript(l.position,t,l.text,"superscript"),h=r.position,a=r.result}else if("_"===l.text){if(s)throw new c("Double subscript",this.lexer,h);r=this.handleSupSubscript(l.position,t,l.text,"subscript"),h=r.position,s=r.result}else{if("'"!==l.text)break;var p=new g("textord","\\prime",t),o=[p];for(h=l.position;"'"===(l=this.lexer.lex(h,t)).text;)o.push(p),h=l.position;a=new g("ordgroup",o,t)}}return a||s?new d(new g("supsub",{base:i&&i.result,sup:a,sub:s},t),h):i};var w=["\\tiny","\\scriptsize","\\footnotesize","\\small","\\normalsize","\\large","\\Large","\\LARGE","\\huge","\\Huge"],f=["\\displaystyle","\\textstyle","\\scriptstyle","\\scriptscriptstyle"];h.prototype.parseImplicitGroup=function(e,t){var i=this.parseSymbol(e,t);if(!i||!i.result)return this.parseFunction(e,t);var h,a=i.result.result;if("\\left"===a){var s=this.parseFunction(e,t);h=this.parseExpression(s.position,t,!1),this.expect(h.peek,"\\right");var l=this.parseFunction(h.position,t);return new d(new g("leftright",{body:h.result,left:s.result.value.value,right:l.result.value.value},t),l.position)}if("\\begin"===a){var n=this.parseFunction(e,t),o=n.result.value.name;if(!r.hasOwnProperty(o))throw new c("No such environment: "+o,this.lexer,n.result.value.namepos);var u=r[o],k=[null,t,o],m=this.parseArguments(n.position,t,"\\begin{"+o+"}",u,k);k[0]=m;var z=u.handler.apply(this,k),x=this.lexer.lex(z.position,t);this.expect(x,"\\end");var y=this.parseFunction(z.position,t);if(y.result.value.name!==o)throw new c("Mismatch: \\begin{"+o+"} matched by \\end{"+y.result.value.name+"}",this.lexer,y.namepos);return z.position=y.position,z}return p.contains(w,a)?(h=this.parseExpression(i.result.position,t,!1),new d(new g("sizing",{size:"size"+(p.indexOf(w,a)+1),value:h.result},t),h.position)):p.contains(f,a)?(h=this.parseExpression(i.result.position,t,!0),new d(new g("styling",{style:a.slice(1,a.length-5),value:h.result},t),h.position)):this.parseFunction(e,t)},h.prototype.parseFunction=function(e,t){var i=this.parseGroup(e,t);if(i){if(i.isFunction){var h=i.result.result,a=s.funcs[h];if("text"===t&&!a.allowedInText)throw new c("Can't use function '"+h+"' in text mode",this.lexer,i.position);var r=[h],l=this.parseArguments(i.result.position,t,h,a,r),n=s.funcs[h].handler.apply(this,r);return new d(new g(n.type,n,t),l)}return i.result}return null},h.prototype.parseArguments=function(e,t,i,h,r){var l=h.numArgs+h.numOptionalArgs;if(0===l)return e;for(var n=e,p=h.greediness,o=[n],g=0;l>g;g++){var u,k=h.argTypes&&h.argTypes[g];if(g<h.numOptionalArgs){if(u=k?this.parseSpecialGroup(n,k,t,!0):this.parseOptionalGroup(n,t),!u){r.push(null),o.push(n);continue}}else if(u=k?this.parseSpecialGroup(n,k,t):this.parseGroup(n,t),!u){var w=this.lexer.lex(n,t);if(this.settings.throwOnError||"\\"!==w.text[0])throw new c("Expected group after '"+i+"'",this.lexer,e);u=new a(new d(this.handleUnsupportedCmd(w.text,t),w.position),!1)}var f;if(u.isFunction){var m=s.funcs[u.result.result].greediness;if(!(m>p))throw new c("Got function '"+u.result.result+"' as argument to '"+i+"'",this.lexer,u.result.position-1);f=this.parseFunction(n,t)}else f=u.result;r.push(f.result),o.push(f.position),n=f.position}return r.push(o),n},h.prototype.parseSpecialGroup=function(e,t,i,h){if("original"===t&&(t=i),"color"===t||"size"===t){var s=this.lexer.lex(e,i);if(h&&"["!==s.text)return null;this.expect(s,h?"[":"{");var r,l=this.lexer.lex(s.position,t);r="color"===t?l.text:l.data;var n=this.lexer.lex(l.position,i);return this.expect(n,h?"]":"}"),new a(new d(new g(t,r,i),n.position),!1)}if("text"===t){var p=this.lexer.lex(e,"whitespace");e=p.position}return h?this.parseOptionalGroup(e,t):this.parseGroup(e,t)},h.prototype.parseGroup=function(e,t){var i=this.lexer.lex(e,t);if("{"===i.text){var h=this.parseExpression(i.position,t,!1),s=this.lexer.lex(h.position,t);return this.expect(s,"}"),new a(new d(new g("ordgroup",h.result,t),s.position),!1)}return this.parseSymbol(e,t)},h.prototype.parseOptionalGroup=function(e,t){var i=this.lexer.lex(e,t);if("["===i.text){var h=this.parseExpression(i.position,t,!1,"]"),s=this.lexer.lex(h.position,t);return this.expect(s,"]"),new a(new d(new g("ordgroup",h.result,t),s.position),!1)}return null},h.prototype.parseSymbol=function(e,t){var i=this.lexer.lex(e,t);return s.funcs[i.text]?new a(new d(i.text,i.position),!0):n[t][i.text]?new a(new d(new g(n[t][i.text].group,i.text,t),i.position),!1):null},h.prototype.ParseNode=g,t.exports=h},{"./Lexer":5,"./ParseError":7,"./environments":17,"./functions":20,"./parseData":22,"./symbols":24,"./utils":25}],9:[function(e,t,i){function h(e,t){return void 0===e?t:e}function a(e){e=e||{},this.displayMode=h(e.displayMode,!1),this.throwOnError=h(e.throwOnError,!0),this.errorColor=h(e.errorColor,"#cc0000")}t.exports=a},{}],10:[function(e,t,i){function h(e,t,i,h){this.id=e,this.size=t,this.cramped=h,this.sizeMultiplier=i}h.prototype.sup=function(){return u[k[this.id]]},h.prototype.sub=function(){return u[w[this.id]]},h.prototype.fracNum=function(){return u[f[this.id]]},h.prototype.fracDen=function(){return u[m[this.id]]},h.prototype.cramp=function(){return u[z[this.id]]},h.prototype.cls=function(){return g[this.size]+(this.cramped?" cramped":" uncramped")},h.prototype.reset=function(){return d[this.size]};var a=0,s=1,r=2,l=3,n=4,p=5,o=6,c=7,g=["displaystyle textstyle","textstyle","scriptstyle","scriptscriptstyle"],d=["reset-textstyle","reset-textstyle","reset-scriptstyle","reset-scriptscriptstyle"],u=[new h(a,0,1,!1),new h(s,0,1,!0),new h(r,1,1,!1),new h(l,1,1,!0),new h(n,2,.7,!1),new h(p,2,.7,!0),new h(o,3,.5,!1),new h(c,3,.5,!0)],k=[n,p,n,p,o,c,o,c],w=[p,p,p,p,c,c,c,c],f=[r,l,n,p,o,c,o,c],m=[l,l,p,p,c,c,c,c],z=[s,s,l,l,p,p,c,c];t.exports={DISPLAY:u[a],TEXT:u[r],SCRIPT:u[n],SCRIPTSCRIPT:u[o]}},{}],11:[function(e,t,i){var h=e("./domTree"),a=e("./fontMetrics"),s=e("./symbols"),r=e("./utils"),l=["\\Gamma","\\Delta","\\Theta","\\Lambda","\\Xi","\\Pi","\\Sigma","\\Upsilon","\\Phi","\\Psi","\\Omega"],n=["ı","ȷ"],p=function(e,t,i,r,l){s[i][e]&&s[i][e].replace&&(e=s[i][e].replace);var n,p=a.getCharacterMetrics(e,t);return p?n=new h.symbolNode(e,p.height,p.depth,p.italic,p.skew,l):("undefined"!=typeof console&&console.warn("No character metrics for '"+e+"' in style '"+t+"'"),n=new h.symbolNode(e,0,0,0,0,l)),r&&(n.style.color=r),n},o=function(e,t,i,h){return"\\"===e||"main"===s[t][e].font?p(e,"Main-Regular",t,i,h):p(e,"AMS-Regular",t,i,h.concat(["amsrm"]))},c=function(e,t,i,h,a){if("mathord"===a)return g(e,t,i,h);if("textord"===a)return p(e,"Main-Regular",t,i,h.concat(["mathrm"]));throw new Error("unexpected type: "+a+" in mathDefault")},g=function(e,t,i,h){return/[0-9]/.test(e.charAt(0))||r.contains(n,e)||r.contains(l,e)?p(e,"Main-Italic",t,i,h.concat(["mainit"])):p(e,"Math-Italic",t,i,h.concat(["mathit"]))},d=function(e,t,i){var h=e.mode,l=e.value;s[h][l]&&s[h][l].replace&&(l=s[h][l].replace);var o=["mord"],d=t.getColor(),u=t.font;if(u){if("mathit"===u||r.contains(n,l))return g(l,h,d,o);var k=y[u].fontName;return a.getCharacterMetrics(l,k)?p(l,k,h,d,o.concat([u])):c(l,h,d,o,i)}return c(l,h,d,o,i)},u=function(e){var t=0,i=0,h=0;if(e.children)for(var a=0;a<e.children.length;a++)e.children[a].height>t&&(t=e.children[a].height),e.children[a].depth>i&&(i=e.children[a].depth),e.children[a].maxFontSize>h&&(h=e.children[a].maxFontSize);e.height=t,e.depth=i,e.maxFontSize=h},k=function(e,t,i){var a=new h.span(e,t);return u(a),i&&(a.style.color=i),a},w=function(e){var t=new h.documentFragment(e);return u(t),t},f=function(e,t){var i=k([],[new h.symbolNode("​")]);i.style.fontSize=t/e.style.sizeMultiplier+"em";var a=k(["fontsize-ensurer","reset-"+e.size,"size5"],[i]);return a},m=function(e,t,i,a){var s,r,l;if("individualShift"===t){var n=e;for(e=[n[0]],s=-n[0].shift-n[0].elem.depth,r=s,l=1;l<n.length;l++){var p=-n[l].shift-r-n[l].elem.depth,o=p-(n[l-1].elem.height+n[l-1].elem.depth);r+=p,e.push({type:"kern",size:o}),e.push(n[l])}}else if("top"===t){var c=i;for(l=0;l<e.length;l++)c-="kern"===e[l].type?e[l].size:e[l].elem.height+e[l].elem.depth;s=c}else s="bottom"===t?-i:"shift"===t?-e[0].elem.depth-i:"firstBaseline"===t?-e[0].elem.depth:0;var g=0;for(l=0;l<e.length;l++)"elem"===e[l].type&&(g=Math.max(g,e[l].elem.maxFontSize));var d=f(a,g),u=[];for(r=s,l=0;l<e.length;l++)if("kern"===e[l].type)r+=e[l].size;else{var w=e[l].elem,m=-w.depth-r;r+=w.height+w.depth;var z=k([],[d,w]);z.height-=m,z.depth+=m,z.style.top=m+"em",u.push(z)}var x=k(["baseline-fix"],[d,new h.symbolNode("​")]);u.push(x);var y=k(["vlist"],u);return y.height=Math.max(r,y.height),y.depth=Math.max(-s,y.depth),y},z={size1:.5,size2:.7,size3:.8,size4:.9,size5:1,size6:1.2,size7:1.44,size8:1.73,size9:2.07,size10:2.49},x={"\\qquad":{size:"2em",className:"qquad"},"\\quad":{size:"1em",className:"quad"},"\\enspace":{size:"0.5em",className:"enspace"},"\\;":{size:"0.277778em",className:"thickspace"},"\\:":{size:"0.22222em",className:"mediumspace"},"\\,":{size:"0.16667em",className:"thinspace"},"\\!":{size:"-0.16667em",className:"negativethinspace"}},y={mathbf:{variant:"bold",fontName:"Main-Bold"},mathrm:{variant:"normal",fontName:"Main-Regular"},mathbb:{variant:"double-struck",fontName:"AMS-Regular"},mathcal:{variant:"script",fontName:"Caligraphic-Regular"},mathfrak:{variant:"fraktur",fontName:"Fraktur-Regular"},mathscr:{variant:"script",fontName:"Script-Regular"},mathsf:{variant:"sans-serif",fontName:"SansSerif-Regular"},mathtt:{variant:"monospace",fontName:"Typewriter-Regular"}};t.exports={fontMap:y,makeSymbol:p,mathsym:o,makeSpan:k,makeFragment:w,makeVList:m,makeOrd:d,sizingMultiplier:z,spacingFunctions:x}},{"./domTree":16,"./fontMetrics":18,"./symbols":24,"./utils":25}],12:[function(e,t,i){var h=e("./ParseError"),a=e("./Style"),s=e("./buildCommon"),r=e("./delimiter"),l=e("./domTree"),n=e("./fontMetrics"),p=e("./utils"),o=s.makeSpan,c=function(e,t,i){for(var h=[],a=0;a<e.length;a++){var s=e[a];h.push(z(s,t,i)),i=s}return h},g={mathord:"mord",textord:"mord",bin:"mbin",rel:"mrel",text:"mord",open:"mopen",close:"mclose",inner:"minner",genfrac:"mord",array:"mord",spacing:"mord",punct:"mpunct",ordgroup:"mord",op:"mop",katex:"mord",overline:"mord",rule:"mord",leftright:"minner",sqrt:"mord",accent:"mord"},d=function(e){return null==e?g.mathord:"supsub"===e.type?d(e.value.base):"llap"===e.type||"rlap"===e.type?d(e.value):"color"===e.type?d(e.value.value):"sizing"===e.type?d(e.value.value):"styling"===e.type?d(e.value.value):"delimsizing"===e.type?g[e.value.delimType]:g[e.type]},u=function(e,t){return e?"op"===e.type?e.value.limits&&(t.style.size===a.DISPLAY.size||e.value.alwaysHandleSupSub):"accent"===e.type?w(e.value.base):null:!1},k=function(e){return e?"ordgroup"===e.type?1===e.value.length?k(e.value[0]):e:"color"===e.type&&1===e.value.value.length?k(e.value.value[0]):e:!1},w=function(e){var t=k(e);return"mathord"===t.type||"textord"===t.type||"bin"===t.type||"rel"===t.type||"inner"===t.type||"open"===t.type||"close"===t.type||"punct"===t.type},f=function(e){return o(["sizing","reset-"+e.size,"size5",e.style.reset(),a.TEXT.cls(),"nulldelimiter"])},m={mathord:function(e,t,i){return s.makeOrd(e,t,"mathord")},textord:function(e,t,i){return s.makeOrd(e,t,"textord")},bin:function(e,t,i){for(var h="mbin",a=i;a&&"color"===a.type;){var r=a.value.value;a=r[r.length-1]}return i&&!p.contains(["mbin","mopen","mrel","mop","mpunct"],d(a))||(e.type="textord",h="mord"),s.mathsym(e.value,e.mode,t.getColor(),[h])},rel:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["mrel"])},open:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["mopen"])},close:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["mclose"])},inner:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["minner"])},punct:function(e,t,i){return s.mathsym(e.value,e.mode,t.getColor(),["mpunct"])},ordgroup:function(e,t,i){return o(["mord",t.style.cls()],c(e.value,t.reset()))},text:function(e,t,i){return o(["text","mord",t.style.cls()],c(e.value.body,t.reset()))},color:function(e,t,i){var h=c(e.value.value,t.withColor(e.value.color),i);return new s.makeFragment(h)},supsub:function(e,t,i){if(u(e.value.base,t))return m[e.value.base.type](e,t,i);var h,r,p,c,g=z(e.value.base,t.reset());e.value.sup&&(p=z(e.value.sup,t.withStyle(t.style.sup())),h=o([t.style.reset(),t.style.sup().cls()],[p])),e.value.sub&&(c=z(e.value.sub,t.withStyle(t.style.sub())),r=o([t.style.reset(),t.style.sub().cls()],[c]));var k,f;w(e.value.base)?(k=0,f=0):(k=g.height-n.metrics.supDrop,f=g.depth+n.metrics.subDrop);var x;x=t.style===a.DISPLAY?n.metrics.sup1:t.style.cramped?n.metrics.sup3:n.metrics.sup2;var y,v=a.TEXT.sizeMultiplier*t.style.sizeMultiplier,b=.5/n.metrics.ptPerEm/v+"em";if(e.value.sup)if(e.value.sub){k=Math.max(k,x,p.depth+.25*n.metrics.xHeight),f=Math.max(f,n.metrics.sub2);var T=n.metrics.defaultRuleThickness;if(k-p.depth-(c.height-f)<4*T){f=4*T-(k-p.depth)+c.height;var S=.8*n.metrics.xHeight-(k-p.depth);S>0&&(k+=S,f-=S)}y=s.makeVList([{type:"elem",elem:r,shift:f},{type:"elem",elem:h,shift:-k}],"individualShift",null,t),g instanceof l.symbolNode&&(y.children[0].style.marginLeft=-g.italic+"em"),y.children[0].style.marginRight=b,y.children[1].style.marginRight=b}else k=Math.max(k,x,p.depth+.25*n.metrics.xHeight),y=s.makeVList([{type:"elem",elem:h}],"shift",-k,t),y.children[0].style.marginRight=b;else f=Math.max(f,n.metrics.sub1,c.height-.8*n.metrics.xHeight),y=s.makeVList([{type:"elem",elem:r}],"shift",f,t),y.children[0].style.marginRight=b,g instanceof l.symbolNode&&(y.children[0].style.marginLeft=-g.italic+"em");return o([d(e.value.base)],[g,y])},genfrac:function(e,t,i){var h=t.style;"display"===e.value.size?h=a.DISPLAY:"text"===e.value.size&&(h=a.TEXT);var l,p=h.fracNum(),c=h.fracDen(),g=z(e.value.numer,t.withStyle(p)),d=o([h.reset(),p.cls()],[g]),u=z(e.value.denom,t.withStyle(c)),k=o([h.reset(),c.cls()],[u]);l=e.value.hasBarLine?n.metrics.defaultRuleThickness/t.style.sizeMultiplier:0;var w,m,x;h.size===a.DISPLAY.size?(w=n.metrics.num1,m=l>0?3*l:7*n.metrics.defaultRuleThickness,x=n.metrics.denom1):(l>0?(w=n.metrics.num2,m=l):(w=n.metrics.num3,m=3*n.metrics.defaultRuleThickness),x=n.metrics.denom2);var y;if(0===l){var v=w-g.depth-(u.height-x);m>v&&(w+=.5*(m-v),x+=.5*(m-v)),y=s.makeVList([{type:"elem",elem:k,shift:x},{type:"elem",elem:d,shift:-w}],"individualShift",null,t)}else{var b=n.metrics.axisHeight;w-g.depth-(b+.5*l)<m&&(w+=m-(w-g.depth-(b+.5*l))),b-.5*l-(u.height-x)<m&&(x+=m-(b-.5*l-(u.height-x)));var T=o([t.style.reset(),a.TEXT.cls(),"frac-line"]);T.height=l;var S=-(b-.5*l);y=s.makeVList([{type:"elem",elem:k,shift:x},{type:"elem",elem:T,shift:S},{type:"elem",elem:d,shift:-w}],"individualShift",null,t)}y.height*=h.sizeMultiplier/t.style.sizeMultiplier,y.depth*=h.sizeMultiplier/t.style.sizeMultiplier;var M;M=h.size===a.DISPLAY.size?n.metrics.delim1:n.metrics.getDelim2(h);var X,K;return X=null==e.value.leftDelim?f(t):r.customSizedDelim(e.value.leftDelim,M,!0,t.withStyle(h),e.mode),K=null==e.value.rightDelim?f(t):r.customSizedDelim(e.value.rightDelim,M,!0,t.withStyle(h),e.mode),o(["mord",t.style.reset(),h.cls()],[X,o(["mfrac"],[y]),K],t.getColor())},array:function(e,t,i){var a,r,l=e.value.body.length,c=0,g=new Array(l),d=1/n.metrics.ptPerEm,u=5*d,k=12*d,w=p.deflt(e.value.arraystretch,1),f=w*k,m=.7*f,x=.3*f,y=0;for(a=0;a<e.value.body.length;++a){var v=e.value.body[a],b=m,T=x;c<v.length&&(c=v.length);var S=new Array(v.length);for(r=0;r<v.length;++r){var M=z(v[r],t);T<M.depth&&(T=M.depth),b<M.height&&(b=M.height),S[r]=M}var X=0;if(e.value.rowGaps[a]){switch(X=e.value.rowGaps[a].value,X.unit){case"em":X=X.number;break;case"ex":X=X.number*n.metrics.emPerEx;break;default:console.error("Can't handle unit "+X.unit),X=0}X>0&&(X+=x,X>T&&(T=X),X=0)}S.height=b,S.depth=T,y+=b,S.pos=y,y+=T+X,g[a]=S}var K,R,_=y/2+n.metrics.axisHeight,q=e.value.cols||[],A=[];for(r=0,R=0;c>r||R<q.length;++r,++R){for(var j=q[R]||{},C=!0;"separator"===j.type;){if(C||(K=o(["arraycolsep"],[]),K.style.width=n.metrics.doubleRuleSep+"em",A.push(K)),"|"!==j.separator)throw new h("Invalid separator type: "+j.separator);var N=o(["vertical-separator"],[]);N.style.height=y+"em",N.style.verticalAlign=-(y-_)+"em",A.push(N),R++,j=q[R]||{},C=!1}if(!(r>=c)){var E;(r>0||e.value.hskipBeforeAndAfter)&&(E=p.deflt(j.pregap,u),0!==E&&(K=o(["arraycolsep"],[]),K.style.width=E+"em",A.push(K)));var P=[];for(a=0;l>a;++a){var D=g[a],I=D[r];if(I){var L=D.pos-_;I.depth=D.depth,I.height=D.height,P.push({type:"elem",elem:I,shift:L})}}P=s.makeVList(P,"individualShift",null,t),P=o(["col-align-"+(j.align||"c")],[P]),A.push(P),(c-1>r||e.value.hskipBeforeAndAfter)&&(E=p.deflt(j.postgap,u),0!==E&&(K=o(["arraycolsep"],[]),K.style.width=E+"em",A.push(K)))}}return g=o(["mtable"],A),o(["mord"],[g],t.getColor())},spacing:function(e,t,i){return"\\ "===e.value||"\\space"===e.value||" "===e.value||"~"===e.value?o(["mord","mspace"],[s.mathsym(e.value,e.mode)]):o(["mord","mspace",s.spacingFunctions[e.value].className])},llap:function(e,t,i){var h=o(["inner"],[z(e.value.body,t.reset())]),a=o(["fix"],[]);return o(["llap",t.style.cls()],[h,a])},rlap:function(e,t,i){var h=o(["inner"],[z(e.value.body,t.reset())]),a=o(["fix"],[]);return o(["rlap",t.style.cls()],[h,a])},op:function(e,t,i){var h,r,l=!1;"supsub"===e.type&&(h=e.value.sup,r=e.value.sub,e=e.value.base,l=!0);var c=["\\smallint"],g=!1;t.style.size===a.DISPLAY.size&&e.value.symbol&&!p.contains(c,e.value.body)&&(g=!0);var d,u=0,k=0;if(e.value.symbol){var w=g?"Size2-Regular":"Size1-Regular";d=s.makeSymbol(e.value.body,w,"math",t.getColor(),["op-symbol",g?"large-op":"small-op","mop"]),u=(d.height-d.depth)/2-n.metrics.axisHeight*t.style.sizeMultiplier,k=d.italic}else{for(var f=[],m=1;m<e.value.body.length;m++)f.push(s.mathsym(e.value.body[m],e.mode));d=o(["mop"],f,t.getColor())}if(l){d=o([],[d]);var x,y,v,b;if(h){var T=z(h,t.withStyle(t.style.sup()));x=o([t.style.reset(),t.style.sup().cls()],[T]),y=Math.max(n.metrics.bigOpSpacing1,n.metrics.bigOpSpacing3-T.depth)}if(r){var S=z(r,t.withStyle(t.style.sub()));v=o([t.style.reset(),t.style.sub().cls()],[S]),b=Math.max(n.metrics.bigOpSpacing2,n.metrics.bigOpSpacing4-S.height)}var M,X,K;if(h)if(r){if(!h&&!r)return d;K=n.metrics.bigOpSpacing5+v.height+v.depth+b+d.depth+u,M=s.makeVList([{type:"kern",size:n.metrics.bigOpSpacing5},{type:"elem",elem:v},{type:"kern",size:b},{type:"elem",elem:d},{type:"kern",size:y},{type:"elem",elem:x},{type:"kern",size:n.metrics.bigOpSpacing5}],"bottom",K,t),M.children[0].style.marginLeft=-k+"em",M.children[2].style.marginLeft=k+"em"}else K=d.depth+u,M=s.makeVList([{type:"elem",elem:d},{type:"kern",size:y},{type:"elem",elem:x},{type:"kern",size:n.metrics.bigOpSpacing5}],"bottom",K,t),M.children[1].style.marginLeft=k+"em";else X=d.height-u,M=s.makeVList([{type:"kern",size:n.metrics.bigOpSpacing5},{type:"elem",elem:v},{type:"kern",size:b},{type:"elem",elem:d}],"top",X,t),M.children[0].style.marginLeft=-k+"em";return o(["mop","op-limits"],[M])}return e.value.symbol&&(d.style.top=u+"em"),d},katex:function(e,t,i){var h=o(["k"],[s.mathsym("K",e.mode)]),a=o(["a"],[s.mathsym("A",e.mode)]);a.height=.75*(a.height+.2),a.depth=.75*(a.height-.2);var r=o(["t"],[s.mathsym("T",e.mode)]),l=o(["e"],[s.mathsym("E",e.mode)]);l.height=l.height-.2155,l.depth=l.depth+.2155;var n=o(["x"],[s.mathsym("X",e.mode)]);return o(["katex-logo","mord"],[h,a,r,l,n],t.getColor())},overline:function(e,t,i){var h=z(e.value.body,t.withStyle(t.style.cramp())),r=n.metrics.defaultRuleThickness/t.style.sizeMultiplier,l=o([t.style.reset(),a.TEXT.cls(),"overline-line"]);l.height=r,l.maxFontSize=1;var p=s.makeVList([{type:"elem",elem:h},{type:"kern",size:3*r},{type:"elem",elem:l},{type:"kern",size:r}],"firstBaseline",null,t);return o(["overline","mord"],[p],t.getColor())},sqrt:function(e,t,i){var h=z(e.value.body,t.withStyle(t.style.cramp())),l=n.metrics.defaultRuleThickness/t.style.sizeMultiplier,p=o([t.style.reset(),a.TEXT.cls(),"sqrt-line"],[],t.getColor());p.height=l,p.maxFontSize=1;var c=l;t.style.id<a.TEXT.id&&(c=n.metrics.xHeight);var g=l+c/4,d=(h.height+h.depth)*t.style.sizeMultiplier,u=d+g+l,k=o(["sqrt-sign"],[r.customSizedDelim("\\surd",u,!1,t,e.mode)],t.getColor()),w=k.height+k.depth-l;w>h.height+h.depth+g&&(g=(g+w-h.height-h.depth)/2);var f=-(h.height+g+l)+k.height;k.style.top=f+"em",k.height-=f,k.depth+=f;var m;if(m=0===h.height&&0===h.depth?o():s.makeVList([{type:"elem",elem:h},{type:"kern",size:g},{type:"elem",elem:p},{type:"kern",size:l}],"firstBaseline",null,t),e.value.index){var x=z(e.value.index,t.withStyle(a.SCRIPTSCRIPT)),y=o([t.style.reset(),a.SCRIPTSCRIPT.cls()],[x]),v=Math.max(k.height,m.height),b=Math.max(k.depth,m.depth),T=.6*(v-b),S=s.makeVList([{type:"elem",elem:y}],"shift",-T,t),M=o(["root"],[S]);return o(["sqrt","mord"],[M,k,m])}return o(["sqrt","mord"],[k,m])},sizing:function(e,t,i){var h=c(e.value.value,t.withSize(e.value.size),i),a=o(["mord"],[o(["sizing","reset-"+t.size,e.value.size,t.style.cls()],h)]),r=s.sizingMultiplier[e.value.size];return a.maxFontSize=r*t.style.sizeMultiplier,a},styling:function(e,t,i){var h={display:a.DISPLAY,text:a.TEXT,script:a.SCRIPT,scriptscript:a.SCRIPTSCRIPT},s=h[e.value.style],r=c(e.value.value,t.withStyle(s),i);return o([t.style.reset(),s.cls()],r)},font:function(e,t,i){var h=e.value.font;return z(e.value.body,t.withFont(h),i)},delimsizing:function(e,t,i){var h=e.value.value;return"."===h?o([g[e.value.delimType]]):o([g[e.value.delimType]],[r.sizedDelim(h,e.value.size,t,e.mode)])},leftright:function(e,t,i){for(var h=c(e.value.body,t.reset()),a=0,s=0,l=0;l<h.length;l++)a=Math.max(h[l].height,a),s=Math.max(h[l].depth,s);a*=t.style.sizeMultiplier,s*=t.style.sizeMultiplier;var n;n="."===e.value.left?f(t):r.leftRightDelim(e.value.left,a,s,t,e.mode),h.unshift(n);var p;return p="."===e.value.right?f(t):r.leftRightDelim(e.value.right,a,s,t,e.mode),h.push(p),o(["minner",t.style.cls()],h,t.getColor())},rule:function(e,t,i){var h=o(["mord","rule"],[],t.getColor()),a=0;e.value.shift&&(a=e.value.shift.number,"ex"===e.value.shift.unit&&(a*=n.metrics.xHeight));var s=e.value.width.number;"ex"===e.value.width.unit&&(s*=n.metrics.xHeight);var r=e.value.height.number;return"ex"===e.value.height.unit&&(r*=n.metrics.xHeight),a/=t.style.sizeMultiplier,s/=t.style.sizeMultiplier,r/=t.style.sizeMultiplier,h.style.borderRightWidth=s+"em",h.style.borderTopWidth=r+"em",h.style.bottom=a+"em",h.width=s,h.height=r+a,h.depth=-a,h},accent:function(e,t,i){var h,a=e.value.base;if("supsub"===e.type){var r=e;e=r.value.base,a=e.value.base,r.value.base=a,h=z(r,t.reset(),i)}var l,p=z(a,t.withStyle(t.style.cramp()));if(w(a)){var c=k(a),g=z(c,t.withStyle(t.style.cramp()));l=g.skew}else l=0;var d=Math.min(p.height,n.metrics.xHeight),u=s.makeSymbol(e.value.accent,"Main-Regular","math",t.getColor());u.italic=0;var f="\\vec"===e.value.accent?"accent-vec":null,m=o(["accent-body",f],[o([],[u])]);m=s.makeVList([{type:"elem",elem:p},{type:"kern",size:-d},{type:"elem",elem:m}],"firstBaseline",null,t),m.children[1].style.marginLeft=2*l+"em";var x=o(["mord","accent"],[m]);return h?(h.children[0]=x,h.height=Math.max(x.height,h.height),h.classes[0]="mord",h):x},phantom:function(e,t,i){var h=c(e.value.value,t.withPhantom(),i);return new s.makeFragment(h)}},z=function(e,t,i){if(!e)return o();if(m[e.type]){var a,r=m[e.type](e,t,i);return t.style!==t.parentStyle&&(a=t.style.sizeMultiplier/t.parentStyle.sizeMultiplier,r.height*=a,r.depth*=a),t.size!==t.parentSize&&(a=s.sizingMultiplier[t.size]/s.sizingMultiplier[t.parentSize],r.height*=a,r.depth*=a),r}throw new h("Got group of unknown type: '"+e.type+"'")},x=function(e,t){e=JSON.parse(JSON.stringify(e));var i=c(e,t),h=o(["base",t.style.cls()],i),a=o(["strut"]),s=o(["strut","bottom"]);a.style.height=h.height+"em",s.style.height=h.height+h.depth+"em",s.style.verticalAlign=-h.depth+"em";var r=o(["katex-html"],[a,s,h]);return r.setAttribute("aria-hidden","true"),r};t.exports=x},{"./ParseError":7,"./Style":10,"./buildCommon":11,"./delimiter":15,"./domTree":16,"./fontMetrics":18,"./utils":25}],13:[function(e,t,i){var h=e("./buildCommon"),a=e("./fontMetrics"),s=e("./mathMLTree"),r=e("./ParseError"),l=e("./symbols"),n=e("./utils"),p=h.makeSpan,o=h.fontMap,c=function(e,t){return l[t][e]&&l[t][e].replace&&(e=l[t][e].replace),new s.TextNode(e)},g=function(e,t){var i=t.font;if(!i)return null;var h=e.mode;if("mathit"===i)return"italic";var s=e.value;if(n.contains(["\\imath","\\jmath"],s))return null;l[h][s]&&l[h][s].replace&&(s=l[h][s].replace);var r=o[i].fontName;return a.getCharacterMetrics(s,r)?o[t.font].variant:null},d={mathord:function(e,t){var i=new s.MathNode("mi",[c(e.value,e.mode)]),h=g(e,t);return h&&i.setAttribute("mathvariant",h),i},textord:function(e,t){var i,h=c(e.value,e.mode),a=g(e,t)||"normal";return/[0-9]/.test(e.value)?(i=new s.MathNode("mn",[h]),t.font&&i.setAttribute("mathvariant",a)):(i=new s.MathNode("mi",[h]),i.setAttribute("mathvariant",a)),i},bin:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},rel:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},open:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},close:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},inner:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t},punct:function(e){var t=new s.MathNode("mo",[c(e.value,e.mode)]);return t.setAttribute("separator","true"),t},ordgroup:function(e,t){var i=u(e.value,t),h=new s.MathNode("mrow",i);return h},text:function(e,t){var i=u(e.value.body,t),h=new s.MathNode("mtext",i);return h},color:function(e,t){var i=u(e.value.value,t),h=new s.MathNode("mstyle",i);return h.setAttribute("mathcolor",e.value.color),h},supsub:function(e,t){var i=[k(e.value.base,t)];e.value.sub&&i.push(k(e.value.sub,t)),e.value.sup&&i.push(k(e.value.sup,t));var h;h=e.value.sub?e.value.sup?"msubsup":"msub":"msup";var a=new s.MathNode(h,i);return a},genfrac:function(e,t){var i=new s.MathNode("mfrac",[k(e.value.numer,t),k(e.value.denom,t)]);if(e.value.hasBarLine||i.setAttribute("linethickness","0px"),null!=e.value.leftDelim||null!=e.value.rightDelim){var h=[];if(null!=e.value.leftDelim){var a=new s.MathNode("mo",[new s.TextNode(e.value.leftDelim)]);a.setAttribute("fence","true"),h.push(a);
-}if(h.push(i),null!=e.value.rightDelim){var r=new s.MathNode("mo",[new s.TextNode(e.value.rightDelim)]);r.setAttribute("fence","true"),h.push(r)}var l=new s.MathNode("mrow",h);return l}return i},array:function(e,t){return new s.MathNode("mtable",e.value.body.map(function(e){return new s.MathNode("mtr",e.map(function(e){return new s.MathNode("mtd",[k(e,t)])}))}))},sqrt:function(e,t){var i;return i=e.value.index?new s.MathNode("mroot",[k(e.value.body,t),k(e.value.index,t)]):new s.MathNode("msqrt",[k(e.value.body,t)])},leftright:function(e,t){var i=u(e.value.body,t);if("."!==e.value.left){var h=new s.MathNode("mo",[c(e.value.left,e.mode)]);h.setAttribute("fence","true"),i.unshift(h)}if("."!==e.value.right){var a=new s.MathNode("mo",[c(e.value.right,e.mode)]);a.setAttribute("fence","true"),i.push(a)}var r=new s.MathNode("mrow",i);return r},accent:function(e,t){var i=new s.MathNode("mo",[c(e.value.accent,e.mode)]),h=new s.MathNode("mover",[k(e.value.base,t),i]);return h.setAttribute("accent","true"),h},spacing:function(e){var t;return"\\ "===e.value||"\\space"===e.value||" "===e.value||"~"===e.value?t=new s.MathNode("mtext",[new s.TextNode(" ")]):(t=new s.MathNode("mspace"),t.setAttribute("width",h.spacingFunctions[e.value].size)),t},op:function(e){var t;return t=e.value.symbol?new s.MathNode("mo",[c(e.value.body,e.mode)]):new s.MathNode("mi",[new s.TextNode(e.value.body.slice(1))])},katex:function(e){var t=new s.MathNode("mtext",[new s.TextNode("KaTeX")]);return t},font:function(e,t){var i=e.value.font;return k(e.value.body,t.withFont(i))},delimsizing:function(e){var t=[];"."!==e.value.value&&t.push(c(e.value.value,e.mode));var i=new s.MathNode("mo",t);return"open"===e.value.delimType||"close"===e.value.delimType?i.setAttribute("fence","true"):i.setAttribute("fence","false"),i},styling:function(e,t){var i=u(e.value.value,t),h=new s.MathNode("mstyle",i),a={display:["0","true"],text:["0","false"],script:["1","false"],scriptscript:["2","false"]},r=a[e.value.style];return h.setAttribute("scriptlevel",r[0]),h.setAttribute("displaystyle",r[1]),h},sizing:function(e,t){var i=u(e.value.value,t),a=new s.MathNode("mstyle",i);return a.setAttribute("mathsize",h.sizingMultiplier[e.value.size]+"em"),a},overline:function(e,t){var i=new s.MathNode("mo",[new s.TextNode("‾")]);i.setAttribute("stretchy","true");var h=new s.MathNode("mover",[k(e.value.body,t),i]);return h.setAttribute("accent","true"),h},rule:function(e){var t=new s.MathNode("mrow");return t},llap:function(e,t){var i=new s.MathNode("mpadded",[k(e.value.body,t)]);return i.setAttribute("lspace","-1width"),i.setAttribute("width","0px"),i},rlap:function(e,t){var i=new s.MathNode("mpadded",[k(e.value.body,t)]);return i.setAttribute("width","0px"),i},phantom:function(e,t,i){var h=u(e.value.value,t);return new s.MathNode("mphantom",h)}},u=function(e,t){for(var i=[],h=0;h<e.length;h++){var a=e[h];i.push(k(a,t))}return i},k=function(e,t){if(!e)return new s.MathNode("mrow");if(d[e.type])return d[e.type](e,t);throw new r("Got group of unknown type: '"+e.type+"'")},w=function(e,t,i){var h=u(e,i),a=new s.MathNode("mrow",h),r=new s.MathNode("annotation",[new s.TextNode(t)]);r.setAttribute("encoding","application/x-tex");var l=new s.MathNode("semantics",[a,r]),n=new s.MathNode("math",[l]);return p(["katex-mathml"],[n])};t.exports=w},{"./ParseError":7,"./buildCommon":11,"./fontMetrics":18,"./mathMLTree":21,"./symbols":24,"./utils":25}],14:[function(e,t,i){var h=e("./buildHTML"),a=e("./buildMathML"),s=e("./buildCommon"),r=e("./Options"),l=e("./Settings"),n=e("./Style"),p=s.makeSpan,o=function(e,t,i){i=i||new l({});var s=n.TEXT;i.displayMode&&(s=n.DISPLAY);var o=new r({style:s,size:"size5"}),c=a(e,t,o),g=h(e,o),d=p(["katex"],[c,g]);return i.displayMode?p(["katex-display"],[d]):d};t.exports=o},{"./Options":6,"./Settings":9,"./Style":10,"./buildCommon":11,"./buildHTML":12,"./buildMathML":13}],15:[function(e,t,i){var h=e("./ParseError"),a=e("./Style"),s=e("./buildCommon"),r=e("./fontMetrics"),l=e("./symbols"),n=e("./utils"),p=s.makeSpan,o=function(e,t){return l.math[e]&&l.math[e].replace?r.getCharacterMetrics(l.math[e].replace,t):r.getCharacterMetrics(e,t)},c=function(e,t,i){return s.makeSymbol(e,"Size"+t+"-Regular",i)},g=function(e,t,i){var h=p(["style-wrap",i.style.reset(),t.cls()],[e]),a=t.sizeMultiplier/i.style.sizeMultiplier;return h.height*=a,h.depth*=a,h.maxFontSize=t.sizeMultiplier,h},d=function(e,t,i,h,a){var l=s.makeSymbol(e,"Main-Regular",a),n=g(l,t,h);if(i){var p=(1-h.style.sizeMultiplier/t.sizeMultiplier)*r.metrics.axisHeight;n.style.top=p+"em",n.height-=p,n.depth+=p}return n},u=function(e,t,i,h,s){var l=c(e,t,s),n=g(p(["delimsizing","size"+t],[l],h.getColor()),a.TEXT,h);if(i){var o=(1-h.style.sizeMultiplier)*r.metrics.axisHeight;n.style.top=o+"em",n.height-=o,n.depth+=o}return n},k=function(e,t,i){var h;"Size1-Regular"===t?h="delim-size1":"Size4-Regular"===t&&(h="delim-size4");var a=p(["delimsizinginner",h],[p([],[s.makeSymbol(e,t,i)])]);return{type:"elem",elem:a}},w=function(e,t,i,h,l){var n,c,d,u;n=d=u=e,c=null;var w="Size1-Regular";"\\uparrow"===e?d=u="⏐":"\\Uparrow"===e?d=u="‖":"\\downarrow"===e?n=d="⏐":"\\Downarrow"===e?n=d="‖":"\\updownarrow"===e?(n="\\uparrow",d="⏐",u="\\downarrow"):"\\Updownarrow"===e?(n="\\Uparrow",d="‖",u="\\Downarrow"):"["===e||"\\lbrack"===e?(n="⎡",d="⎢",u="⎣",w="Size4-Regular"):"]"===e||"\\rbrack"===e?(n="⎤",d="⎥",u="⎦",w="Size4-Regular"):"\\lfloor"===e?(d=n="⎢",u="⎣",w="Size4-Regular"):"\\lceil"===e?(n="⎡",d=u="⎢",w="Size4-Regular"):"\\rfloor"===e?(d=n="⎥",u="⎦",w="Size4-Regular"):"\\rceil"===e?(n="⎤",d=u="⎥",w="Size4-Regular"):"("===e?(n="⎛",d="⎜",u="⎝",w="Size4-Regular"):")"===e?(n="⎞",d="⎟",u="⎠",w="Size4-Regular"):"\\{"===e||"\\lbrace"===e?(n="⎧",c="⎨",u="⎩",d="⎪",w="Size4-Regular"):"\\}"===e||"\\rbrace"===e?(n="⎫",c="⎬",u="⎭",d="⎪",w="Size4-Regular"):"\\lgroup"===e?(n="⎧",u="⎩",d="⎪",w="Size4-Regular"):"\\rgroup"===e?(n="⎫",u="⎭",d="⎪",w="Size4-Regular"):"\\lmoustache"===e?(n="⎧",u="⎭",d="⎪",w="Size4-Regular"):"\\rmoustache"===e?(n="⎫",u="⎩",d="⎪",w="Size4-Regular"):"\\surd"===e&&(n="",u="⎷",d="",w="Size4-Regular");var f=o(n,w),m=f.height+f.depth,z=o(d,w),x=z.height+z.depth,y=o(u,w),v=y.height+y.depth,b=0,T=1;if(null!==c){var S=o(c,w);b=S.height+S.depth,T=2}var M=m+v+b,X=Math.ceil((t-M)/(T*x)),K=M+X*T*x,R=r.metrics.axisHeight;i&&(R*=h.style.sizeMultiplier);var _=K/2-R,q=[];q.push(k(u,w,l));var A;if(null===c)for(A=0;X>A;A++)q.push(k(d,w,l));else{for(A=0;X>A;A++)q.push(k(d,w,l));for(q.push(k(c,w,l)),A=0;X>A;A++)q.push(k(d,w,l))}q.push(k(n,w,l));var j=s.makeVList(q,"bottom",_,h);return g(p(["delimsizing","mult"],[j],h.getColor()),a.TEXT,h)},f=["(",")","[","\\lbrack","]","\\rbrack","\\{","\\lbrace","\\}","\\rbrace","\\lfloor","\\rfloor","\\lceil","\\rceil","\\surd"],m=["\\uparrow","\\downarrow","\\updownarrow","\\Uparrow","\\Downarrow","\\Updownarrow","|","\\|","\\vert","\\Vert","\\lvert","\\rvert","\\lVert","\\rVert","\\lgroup","\\rgroup","\\lmoustache","\\rmoustache"],z=["<",">","\\langle","\\rangle","/","\\backslash"],x=[0,1.2,1.8,2.4,3],y=function(e,t,i,a){if("<"===e?e="\\langle":">"===e&&(e="\\rangle"),n.contains(f,e)||n.contains(z,e))return u(e,t,!1,i,a);if(n.contains(m,e))return w(e,x[t],!1,i,a);throw new h("Illegal delimiter: '"+e+"'")},v=[{type:"small",style:a.SCRIPTSCRIPT},{type:"small",style:a.SCRIPT},{type:"small",style:a.TEXT},{type:"large",size:1},{type:"large",size:2},{type:"large",size:3},{type:"large",size:4}],b=[{type:"small",style:a.SCRIPTSCRIPT},{type:"small",style:a.SCRIPT},{type:"small",style:a.TEXT},{type:"stack"}],T=[{type:"small",style:a.SCRIPTSCRIPT},{type:"small",style:a.SCRIPT},{type:"small",style:a.TEXT},{type:"large",size:1},{type:"large",size:2},{type:"large",size:3},{type:"large",size:4},{type:"stack"}],S=function(e){return"small"===e.type?"Main-Regular":"large"===e.type?"Size"+e.size+"-Regular":"stack"===e.type?"Size4-Regular":void 0},M=function(e,t,i,h){for(var a=Math.min(2,3-h.style.size),s=a;s<i.length&&"stack"!==i[s].type;s++){var r=o(e,S(i[s])),l=r.height+r.depth;if("small"===i[s].type&&(l*=i[s].style.sizeMultiplier),l>t)return i[s]}return i[i.length-1]},X=function(e,t,i,h,a){"<"===e?e="\\langle":">"===e&&(e="\\rangle");var s;s=n.contains(z,e)?v:n.contains(f,e)?T:b;var r=M(e,t,s,h);return"small"===r.type?d(e,r.style,i,h,a):"large"===r.type?u(e,r.size,i,h,a):"stack"===r.type?w(e,t,i,h,a):void 0},K=function(e,t,i,h,a){var s=r.metrics.axisHeight*h.style.sizeMultiplier,l=901,n=5/r.metrics.ptPerEm,p=Math.max(t-s,i+s),o=Math.max(p/500*l,2*p-n);return X(e,o,!0,h,a)};t.exports={sizedDelim:y,customSizedDelim:X,leftRightDelim:K}},{"./ParseError":7,"./Style":10,"./buildCommon":11,"./fontMetrics":18,"./symbols":24,"./utils":25}],16:[function(e,t,i){function h(e,t,i,h,a,s){this.classes=e||[],this.children=t||[],this.height=i||0,this.depth=h||0,this.maxFontSize=a||0,this.style=s||{},this.attributes={}}function a(e,t,i,h){this.children=e||[],this.height=t||0,this.depth=i||0,this.maxFontSize=h||0}function s(e,t,i,h,a,s,r){this.value=e||"",this.height=t||0,this.depth=i||0,this.italic=h||0,this.skew=a||0,this.classes=s||[],this.style=r||{},this.maxFontSize=0}var r=e("./utils"),l=function(e){e=e.slice();for(var t=e.length-1;t>=0;t--)e[t]||e.splice(t,1);return e.join(" ")};h.prototype.setAttribute=function(e,t){this.attributes[e]=t},h.prototype.toNode=function(){var e=document.createElement("span");e.className=l(this.classes);for(var t in this.style)Object.prototype.hasOwnProperty.call(this.style,t)&&(e.style[t]=this.style[t]);for(var i in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,i)&&e.setAttribute(i,this.attributes[i]);for(var h=0;h<this.children.length;h++)e.appendChild(this.children[h].toNode());return e},h.prototype.toMarkup=function(){var e="<span";this.classes.length&&(e+=' class="',e+=r.escape(l(this.classes)),e+='"');var t="";for(var i in this.style)this.style.hasOwnProperty(i)&&(t+=r.hyphenate(i)+":"+this.style[i]+";");t&&(e+=' style="'+r.escape(t)+'"');for(var h in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,h)&&(e+=" "+h+'="',e+=r.escape(this.attributes[h]),e+='"');e+=">";for(var a=0;a<this.children.length;a++)e+=this.children[a].toMarkup();return e+="</span>"},a.prototype.toNode=function(){for(var e=document.createDocumentFragment(),t=0;t<this.children.length;t++)e.appendChild(this.children[t].toNode());return e},a.prototype.toMarkup=function(){for(var e="",t=0;t<this.children.length;t++)e+=this.children[t].toMarkup();return e},s.prototype.toNode=function(){var e=document.createTextNode(this.value),t=null;this.italic>0&&(t=document.createElement("span"),t.style.marginRight=this.italic+"em"),this.classes.length>0&&(t=t||document.createElement("span"),t.className=l(this.classes));for(var i in this.style)this.style.hasOwnProperty(i)&&(t=t||document.createElement("span"),t.style[i]=this.style[i]);return t?(t.appendChild(e),t):e},s.prototype.toMarkup=function(){var e=!1,t="<span";this.classes.length&&(e=!0,t+=' class="',t+=r.escape(l(this.classes)),t+='"');var i="";this.italic>0&&(i+="margin-right:"+this.italic+"em;");for(var h in this.style)this.style.hasOwnProperty(h)&&(i+=r.hyphenate(h)+":"+this.style[h]+";");i&&(e=!0,t+=' style="'+r.escape(i)+'"');var a=r.escape(this.value);return e?(t+=">",t+=a,t+="</span>"):a},t.exports={span:h,documentFragment:a,symbolNode:s}},{"./utils":25}],17:[function(e,t,i){function h(e,t,i,h){for(var a=[],s=[a],p=[];;){var o=e.parseExpression(t,i,!1,null);a.push(new l("ordgroup",o.result,i)),t=o.position;var c=o.peek.text;if("&"===c)t=o.peek.position;else{if("\\end"===c)break;if("\\\\"!==c&&"\\cr"!==c)throw new r("Expected & or \\\\ or \\end",e.lexer,o.peek.position);var g=e.parseFunction(t,i);p.push(g.result.value.size),t=g.position,a=[],s.push(a)}}return h.body=s,h.rowGaps=p,new n(new l(h.type,h,i),t)}var a=e("./fontMetrics"),s=e("./parseData"),r=e("./ParseError"),l=s.ParseNode,n=s.ParseResult,p=[{names:["array"],numArgs:1,handler:function(e,t,i,a,s){var l=this;a=a.value.map?a.value:[a];var n=a.map(function(e){var t=e.value;if(-1!=="lcr".indexOf(t))return{type:"align",align:t};if("|"===t)return{type:"separator",separator:"|"};throw new r("Unknown column alignment: "+e.value,l.lexer,s[1])}),p={type:"array",cols:n,hskipBeforeAndAfter:!0};return p=h(l,e,t,p)}},{names:["matrix","pmatrix","bmatrix","Bmatrix","vmatrix","Vmatrix"],handler:function(e,t,i){var a={matrix:null,pmatrix:["(",")"],bmatrix:["[","]"],Bmatrix:["\\{","\\}"],vmatrix:["|","|"],Vmatrix:["\\Vert","\\Vert"]}[i],s={type:"array",hskipBeforeAndAfter:!1};return s=h(this,e,t,s),a&&(s.result=new l("leftright",{body:[s.result],left:a[0],right:a[1]},t)),s}},{names:["cases"],handler:function(e,t,i){var s={type:"array",arraystretch:1.2,cols:[{type:"align",align:"l",pregap:0,postgap:a.metrics.quad},{type:"align",align:"l",pregap:0,postgap:0}]};return s=h(this,e,t,s),s.result=new l("leftright",{body:[s.result],left:"\\{",right:"."},t),s}}];t.exports=function(){for(var e={},t=0;t<p.length;++t){var i=p[t];i.greediness=1,i.allowedInText=!!i.allowedInText,i.numArgs=i.numArgs||0,i.numOptionalArgs=i.numOptionalArgs||0;for(var h=0;h<i.names.length;++h)e[i.names[h]]=i}return e}()},{"./ParseError":7,"./fontMetrics":18,"./parseData":22}],18:[function(e,t,i){var h=e("./Style"),a=.431,s=1,r=.677,l=.394,n=.444,p=.686,o=.345,c=.413,g=.363,d=.289,u=.15,k=.247,w=.386,f=.05,m=2.39,z=1.01,x=.81,y=.71,v=.25,b=.04,T=.111,S=.166,M=.2,X=.6,K=.1,R=10,_=2/R,q={xHeight:a,quad:s,num1:r,num2:l,num3:n,denom1:p,denom2:o,sup1:c,sup2:g,sup3:d,sub1:u,sub2:k,supDrop:w,subDrop:f,axisHeight:v,defaultRuleThickness:b,bigOpSpacing1:T,bigOpSpacing2:S,bigOpSpacing3:M,bigOpSpacing4:X,bigOpSpacing5:K,ptPerEm:R,emPerEx:a/s,doubleRuleSep:_,delim1:m,getDelim2:function(e){if(e.size===h.TEXT.size)return z;if(e.size===h.SCRIPT.size)return x;if(e.size===h.SCRIPTSCRIPT.size)return y;throw new Error("Unexpected style size: "+e.size)}},A=e("./fontMetricsData"),j=function(e,t){return A[t][e.charCodeAt(0)]};t.exports={metrics:q,getCharacterMetrics:j}},{"./Style":10,"./fontMetricsData":19}],19:[function(e,t,i){t.exports={"AMS-Regular":{65:{depth:0,height:.68889,italic:0,skew:0},66:{depth:0,height:.68889,italic:0,skew:0},67:{depth:0,height:.68889,italic:0,skew:0},68:{depth:0,height:.68889,italic:0,skew:0},69:{depth:0,height:.68889,italic:0,skew:0},70:{depth:0,height:.68889,italic:0,skew:0},71:{depth:0,height:.68889,italic:0,skew:0},72:{depth:0,height:.68889,italic:0,skew:0},73:{depth:0,height:.68889,italic:0,skew:0},74:{depth:.16667,height:.68889,italic:0,skew:0},75:{depth:0,height:.68889,italic:0,skew:0},76:{depth:0,height:.68889,italic:0,skew:0},77:{depth:0,height:.68889,italic:0,skew:0},78:{depth:0,height:.68889,italic:0,skew:0},79:{depth:.16667,height:.68889,italic:0,skew:0},80:{depth:0,height:.68889,italic:0,skew:0},81:{depth:.16667,height:.68889,italic:0,skew:0},82:{depth:0,height:.68889,italic:0,skew:0},83:{depth:0,height:.68889,italic:0,skew:0},84:{depth:0,height:.68889,italic:0,skew:0},85:{depth:0,height:.68889,italic:0,skew:0},86:{depth:0,height:.68889,italic:0,skew:0},87:{depth:0,height:.68889,italic:0,skew:0},88:{depth:0,height:.68889,italic:0,skew:0},89:{depth:0,height:.68889,italic:0,skew:0},90:{depth:0,height:.68889,italic:0,skew:0},107:{depth:0,height:.68889,italic:0,skew:0},165:{depth:0,height:.675,italic:.025,skew:0},174:{depth:.15559,height:.69224,italic:0,skew:0},240:{depth:0,height:.68889,italic:0,skew:0},295:{depth:0,height:.68889,italic:0,skew:0},710:{depth:0,height:.825,italic:0,skew:0},732:{depth:0,height:.9,italic:0,skew:0},770:{depth:0,height:.825,italic:0,skew:0},771:{depth:0,height:.9,italic:0,skew:0},989:{depth:.08167,height:.58167,italic:0,skew:0},1008:{depth:0,height:.43056,italic:.04028,skew:0},8245:{depth:0,height:.54986,italic:0,skew:0},8463:{depth:0,height:.68889,italic:0,skew:0},8487:{depth:0,height:.68889,italic:0,skew:0},8498:{depth:0,height:.68889,italic:0,skew:0},8502:{depth:0,height:.68889,italic:0,skew:0},8503:{depth:0,height:.68889,italic:0,skew:0},8504:{depth:0,height:.68889,italic:0,skew:0},8513:{depth:0,height:.68889,italic:0,skew:0},8592:{depth:-.03598,height:.46402,italic:0,skew:0},8594:{depth:-.03598,height:.46402,italic:0,skew:0},8602:{depth:-.13313,height:.36687,italic:0,skew:0},8603:{depth:-.13313,height:.36687,italic:0,skew:0},8606:{depth:.01354,height:.52239,italic:0,skew:0},8608:{depth:.01354,height:.52239,italic:0,skew:0},8610:{depth:.01354,height:.52239,italic:0,skew:0},8611:{depth:.01354,height:.52239,italic:0,skew:0},8619:{depth:0,height:.54986,italic:0,skew:0},8620:{depth:0,height:.54986,italic:0,skew:0},8621:{depth:-.13313,height:.37788,italic:0,skew:0},8622:{depth:-.13313,height:.36687,italic:0,skew:0},8624:{depth:0,height:.69224,italic:0,skew:0},8625:{depth:0,height:.69224,italic:0,skew:0},8630:{depth:0,height:.43056,italic:0,skew:0},8631:{depth:0,height:.43056,italic:0,skew:0},8634:{depth:.08198,height:.58198,italic:0,skew:0},8635:{depth:.08198,height:.58198,italic:0,skew:0},8638:{depth:.19444,height:.69224,italic:0,skew:0},8639:{depth:.19444,height:.69224,italic:0,skew:0},8642:{depth:.19444,height:.69224,italic:0,skew:0},8643:{depth:.19444,height:.69224,italic:0,skew:0},8644:{depth:.1808,height:.675,italic:0,skew:0},8646:{depth:.1808,height:.675,italic:0,skew:0},8647:{depth:.1808,height:.675,italic:0,skew:0},8648:{depth:.19444,height:.69224,italic:0,skew:0},8649:{depth:.1808,height:.675,italic:0,skew:0},8650:{depth:.19444,height:.69224,italic:0,skew:0},8651:{depth:.01354,height:.52239,italic:0,skew:0},8652:{depth:.01354,height:.52239,italic:0,skew:0},8653:{depth:-.13313,height:.36687,italic:0,skew:0},8654:{depth:-.13313,height:.36687,italic:0,skew:0},8655:{depth:-.13313,height:.36687,italic:0,skew:0},8666:{depth:.13667,height:.63667,italic:0,skew:0},8667:{depth:.13667,height:.63667,italic:0,skew:0},8669:{depth:-.13313,height:.37788,italic:0,skew:0},8672:{depth:-.064,height:.437,italic:0,skew:0},8674:{depth:-.064,height:.437,italic:0,skew:0},8705:{depth:0,height:.825,italic:0,skew:0},8708:{depth:0,height:.68889,italic:0,skew:0},8709:{depth:.08167,height:.58167,italic:0,skew:0},8717:{depth:0,height:.43056,italic:0,skew:0},8722:{depth:-.03598,height:.46402,italic:0,skew:0},8724:{depth:.08198,height:.69224,italic:0,skew:0},8726:{depth:.08167,height:.58167,italic:0,skew:0},8733:{depth:0,height:.69224,italic:0,skew:0},8736:{depth:0,height:.69224,italic:0,skew:0},8737:{depth:0,height:.69224,italic:0,skew:0},8738:{depth:.03517,height:.52239,italic:0,skew:0},8739:{depth:.08167,height:.58167,italic:0,skew:0},8740:{depth:.25142,height:.74111,italic:0,skew:0},8741:{depth:.08167,height:.58167,italic:0,skew:0},8742:{depth:.25142,height:.74111,italic:0,skew:0},8756:{depth:0,height:.69224,italic:0,skew:0},8757:{depth:0,height:.69224,italic:0,skew:0},8764:{depth:-.13313,height:.36687,italic:0,skew:0},8765:{depth:-.13313,height:.37788,italic:0,skew:0},8769:{depth:-.13313,height:.36687,italic:0,skew:0},8770:{depth:-.03625,height:.46375,italic:0,skew:0},8774:{depth:.30274,height:.79383,italic:0,skew:0},8776:{depth:-.01688,height:.48312,italic:0,skew:0},8778:{depth:.08167,height:.58167,italic:0,skew:0},8782:{depth:.06062,height:.54986,italic:0,skew:0},8783:{depth:.06062,height:.54986,italic:0,skew:0},8785:{depth:.08198,height:.58198,italic:0,skew:0},8786:{depth:.08198,height:.58198,italic:0,skew:0},8787:{depth:.08198,height:.58198,italic:0,skew:0},8790:{depth:0,height:.69224,italic:0,skew:0},8791:{depth:.22958,height:.72958,italic:0,skew:0},8796:{depth:.08198,height:.91667,italic:0,skew:0},8806:{depth:.25583,height:.75583,italic:0,skew:0},8807:{depth:.25583,height:.75583,italic:0,skew:0},8808:{depth:.25142,height:.75726,italic:0,skew:0},8809:{depth:.25142,height:.75726,italic:0,skew:0},8812:{depth:.25583,height:.75583,italic:0,skew:0},8814:{depth:.20576,height:.70576,italic:0,skew:0},8815:{depth:.20576,height:.70576,italic:0,skew:0},8816:{depth:.30274,height:.79383,italic:0,skew:0},8817:{depth:.30274,height:.79383,italic:0,skew:0},8818:{depth:.22958,height:.72958,italic:0,skew:0},8819:{depth:.22958,height:.72958,italic:0,skew:0},8822:{depth:.1808,height:.675,italic:0,skew:0},8823:{depth:.1808,height:.675,italic:0,skew:0},8828:{depth:.13667,height:.63667,italic:0,skew:0},8829:{depth:.13667,height:.63667,italic:0,skew:0},8830:{depth:.22958,height:.72958,italic:0,skew:0},8831:{depth:.22958,height:.72958,italic:0,skew:0},8832:{depth:.20576,height:.70576,italic:0,skew:0},8833:{depth:.20576,height:.70576,italic:0,skew:0},8840:{depth:.30274,height:.79383,italic:0,skew:0},8841:{depth:.30274,height:.79383,italic:0,skew:0},8842:{depth:.13597,height:.63597,italic:0,skew:0},8843:{depth:.13597,height:.63597,italic:0,skew:0},8847:{depth:.03517,height:.54986,italic:0,skew:0},8848:{depth:.03517,height:.54986,italic:0,skew:0},8858:{depth:.08198,height:.58198,italic:0,skew:0},8859:{depth:.08198,height:.58198,italic:0,skew:0},8861:{depth:.08198,height:.58198,italic:0,skew:0},8862:{depth:0,height:.675,italic:0,skew:0},8863:{depth:0,height:.675,italic:0,skew:0},8864:{depth:0,height:.675,italic:0,skew:0},8865:{depth:0,height:.675,italic:0,skew:0},8872:{depth:0,height:.69224,italic:0,skew:0},8873:{depth:0,height:.69224,italic:0,skew:0},8874:{depth:0,height:.69224,italic:0,skew:0},8876:{depth:0,height:.68889,italic:0,skew:0},8877:{depth:0,height:.68889,italic:0,skew:0},8878:{depth:0,height:.68889,italic:0,skew:0},8879:{depth:0,height:.68889,italic:0,skew:0},8882:{depth:.03517,height:.54986,italic:0,skew:0},8883:{depth:.03517,height:.54986,italic:0,skew:0},8884:{depth:.13667,height:.63667,italic:0,skew:0},8885:{depth:.13667,height:.63667,italic:0,skew:0},8888:{depth:0,height:.54986,italic:0,skew:0},8890:{depth:.19444,height:.43056,italic:0,skew:0},8891:{depth:.19444,height:.69224,italic:0,skew:0},8892:{depth:.19444,height:.69224,italic:0,skew:0},8901:{depth:0,height:.54986,italic:0,skew:0},8903:{depth:.08167,height:.58167,italic:0,skew:0},8905:{depth:.08167,height:.58167,italic:0,skew:0},8906:{depth:.08167,height:.58167,italic:0,skew:0},8907:{depth:0,height:.69224,italic:0,skew:0},8908:{depth:0,height:.69224,italic:0,skew:0},8909:{depth:-.03598,height:.46402,italic:0,skew:0},8910:{depth:0,height:.54986,italic:0,skew:0},8911:{depth:0,height:.54986,italic:0,skew:0},8912:{depth:.03517,height:.54986,italic:0,skew:0},8913:{depth:.03517,height:.54986,italic:0,skew:0},8914:{depth:0,height:.54986,italic:0,skew:0},8915:{depth:0,height:.54986,italic:0,skew:0},8916:{depth:0,height:.69224,italic:0,skew:0},8918:{depth:.0391,height:.5391,italic:0,skew:0},8919:{depth:.0391,height:.5391,italic:0,skew:0},8920:{depth:.03517,height:.54986,italic:0,skew:0},8921:{depth:.03517,height:.54986,italic:0,skew:0},8922:{depth:.38569,height:.88569,italic:0,skew:0},8923:{depth:.38569,height:.88569,italic:0,skew:0},8926:{depth:.13667,height:.63667,italic:0,skew:0},8927:{depth:.13667,height:.63667,italic:0,skew:0},8928:{depth:.30274,height:.79383,italic:0,skew:0},8929:{depth:.30274,height:.79383,italic:0,skew:0},8934:{depth:.23222,height:.74111,italic:0,skew:0},8935:{depth:.23222,height:.74111,italic:0,skew:0},8936:{depth:.23222,height:.74111,italic:0,skew:0},8937:{depth:.23222,height:.74111,italic:0,skew:0},8938:{depth:.20576,height:.70576,italic:0,skew:0},8939:{depth:.20576,height:.70576,italic:0,skew:0},8940:{depth:.30274,height:.79383,italic:0,skew:0},8941:{depth:.30274,height:.79383,italic:0,skew:0},8994:{depth:.19444,height:.69224,italic:0,skew:0},8995:{depth:.19444,height:.69224,italic:0,skew:0},9416:{depth:.15559,height:.69224,italic:0,skew:0},9484:{depth:0,height:.69224,italic:0,skew:0},9488:{depth:0,height:.69224,italic:0,skew:0},9492:{depth:0,height:.37788,italic:0,skew:0},9496:{depth:0,height:.37788,italic:0,skew:0},9585:{depth:.19444,height:.68889,italic:0,skew:0},9586:{depth:.19444,height:.74111,italic:0,skew:0},9632:{depth:0,height:.675,italic:0,skew:0},9633:{depth:0,height:.675,italic:0,skew:0},9650:{depth:0,height:.54986,italic:0,skew:0},9651:{depth:0,height:.54986,italic:0,skew:0},9654:{depth:.03517,height:.54986,italic:0,skew:0},9660:{depth:0,height:.54986,italic:0,skew:0},9661:{depth:0,height:.54986,italic:0,skew:0},9664:{depth:.03517,height:.54986,italic:0,skew:0},9674:{depth:.11111,height:.69224,italic:0,skew:0},9733:{depth:.19444,height:.69224,italic:0,skew:0},10003:{depth:0,height:.69224,italic:0,skew:0},10016:{depth:0,height:.69224,italic:0,skew:0},10731:{depth:.11111,height:.69224,italic:0,skew:0},10846:{depth:.19444,height:.75583,italic:0,skew:0},10877:{depth:.13667,height:.63667,italic:0,skew:0},10878:{depth:.13667,height:.63667,italic:0,skew:0},10885:{depth:.25583,height:.75583,italic:0,skew:0},10886:{depth:.25583,height:.75583,italic:0,skew:0},10887:{depth:.13597,height:.63597,italic:0,skew:0},10888:{depth:.13597,height:.63597,italic:0,skew:0},10889:{depth:.26167,height:.75726,italic:0,skew:0},10890:{depth:.26167,height:.75726,italic:0,skew:0},10891:{depth:.48256,height:.98256,italic:0,skew:0},10892:{depth:.48256,height:.98256,italic:0,skew:0},10901:{depth:.13667,height:.63667,italic:0,skew:0},10902:{depth:.13667,height:.63667,italic:0,skew:0},10933:{depth:.25142,height:.75726,italic:0,skew:0},10934:{depth:.25142,height:.75726,italic:0,skew:0},10935:{depth:.26167,height:.75726,italic:0,skew:0},10936:{depth:.26167,height:.75726,italic:0,skew:0},10937:{depth:.26167,height:.75726,italic:0,skew:0},10938:{depth:.26167,height:.75726,italic:0,skew:0},10949:{depth:.25583,height:.75583,italic:0,skew:0},10950:{depth:.25583,height:.75583,italic:0,skew:0},10955:{depth:.28481,height:.79383,italic:0,skew:0},10956:{depth:.28481,height:.79383,italic:0,skew:0},57350:{depth:.08167,height:.58167,italic:0,skew:0},57351:{depth:.08167,height:.58167,italic:0,skew:0},57352:{depth:.08167,height:.58167,italic:0,skew:0},57353:{depth:0,height:.43056,italic:.04028,skew:0},57356:{depth:.25142,height:.75726,italic:0,skew:0},57357:{depth:.25142,height:.75726,italic:0,skew:0},57358:{depth:.41951,height:.91951,italic:0,skew:0},57359:{depth:.30274,height:.79383,italic:0,skew:0},57360:{depth:.30274,height:.79383,italic:0,skew:0},57361:{depth:.41951,height:.91951,italic:0,skew:0},57366:{depth:.25142,height:.75726,italic:0,skew:0},57367:{depth:.25142,height:.75726,italic:0,skew:0},57368:{depth:.25142,height:.75726,italic:0,skew:0},57369:{depth:.25142,height:.75726,italic:0,skew:0},57370:{depth:.13597,height:.63597,italic:0,skew:0},57371:{depth:.13597,height:.63597,italic:0,skew:0}},"Caligraphic-Regular":{48:{depth:0,height:.43056,italic:0,skew:0},49:{depth:0,height:.43056,italic:0,skew:0},50:{depth:0,height:.43056,italic:0,skew:0},51:{depth:.19444,height:.43056,italic:0,skew:0},52:{depth:.19444,height:.43056,italic:0,skew:0},53:{depth:.19444,height:.43056,italic:0,skew:0},54:{depth:0,height:.64444,italic:0,skew:0},55:{depth:.19444,height:.43056,italic:0,skew:0},56:{depth:0,height:.64444,italic:0,skew:0},57:{depth:.19444,height:.43056,italic:0,skew:0},65:{depth:0,height:.68333,italic:0,skew:.19445},66:{depth:0,height:.68333,italic:.03041,skew:.13889},67:{depth:0,height:.68333,italic:.05834,skew:.13889},68:{depth:0,height:.68333,italic:.02778,skew:.08334},69:{depth:0,height:.68333,italic:.08944,skew:.11111},70:{depth:0,height:.68333,italic:.09931,skew:.11111},71:{depth:.09722,height:.68333,italic:.0593,skew:.11111},72:{depth:0,height:.68333,italic:.00965,skew:.11111},73:{depth:0,height:.68333,italic:.07382,skew:0},74:{depth:.09722,height:.68333,italic:.18472,skew:.16667},75:{depth:0,height:.68333,italic:.01445,skew:.05556},76:{depth:0,height:.68333,italic:0,skew:.13889},77:{depth:0,height:.68333,italic:0,skew:.13889},78:{depth:0,height:.68333,italic:.14736,skew:.08334},79:{depth:0,height:.68333,italic:.02778,skew:.11111},80:{depth:0,height:.68333,italic:.08222,skew:.08334},81:{depth:.09722,height:.68333,italic:0,skew:.11111},82:{depth:0,height:.68333,italic:0,skew:.08334},83:{depth:0,height:.68333,italic:.075,skew:.13889},84:{depth:0,height:.68333,italic:.25417,skew:0},85:{depth:0,height:.68333,italic:.09931,skew:.08334},86:{depth:0,height:.68333,italic:.08222,skew:0},87:{depth:0,height:.68333,italic:.08222,skew:.08334},88:{depth:0,height:.68333,italic:.14643,skew:.13889},89:{depth:.09722,height:.68333,italic:.08222,skew:.08334},90:{depth:0,height:.68333,italic:.07944,skew:.13889}},"Fraktur-Regular":{33:{depth:0,height:.69141,italic:0,skew:0},34:{depth:0,height:.69141,italic:0,skew:0},38:{depth:0,height:.69141,italic:0,skew:0},39:{depth:0,height:.69141,italic:0,skew:0},40:{depth:.24982,height:.74947,italic:0,skew:0},41:{depth:.24982,height:.74947,italic:0,skew:0},42:{depth:0,height:.62119,italic:0,skew:0},43:{depth:.08319,height:.58283,italic:0,skew:0},44:{depth:0,height:.10803,italic:0,skew:0},45:{depth:.08319,height:.58283,italic:0,skew:0},46:{depth:0,height:.10803,italic:0,skew:0},47:{depth:.24982,height:.74947,italic:0,skew:0},48:{depth:0,height:.47534,italic:0,skew:0},49:{depth:0,height:.47534,italic:0,skew:0},50:{depth:0,height:.47534,italic:0,skew:0},51:{depth:.18906,height:.47534,italic:0,skew:0},52:{depth:.18906,height:.47534,italic:0,skew:0},53:{depth:.18906,height:.47534,italic:0,skew:0},54:{depth:0,height:.69141,italic:0,skew:0},55:{depth:.18906,height:.47534,italic:0,skew:0},56:{depth:0,height:.69141,italic:0,skew:0},57:{depth:.18906,height:.47534,italic:0,skew:0},58:{depth:0,height:.47534,italic:0,skew:0},59:{depth:.12604,height:.47534,italic:0,skew:0},61:{depth:-.13099,height:.36866,italic:0,skew:0},63:{depth:0,height:.69141,italic:0,skew:0},65:{depth:0,height:.69141,italic:0,skew:0},66:{depth:0,height:.69141,italic:0,skew:0},67:{depth:0,height:.69141,italic:0,skew:0},68:{depth:0,height:.69141,italic:0,skew:0},69:{depth:0,height:.69141,italic:0,skew:0},70:{depth:.12604,height:.69141,italic:0,skew:0},71:{depth:0,height:.69141,italic:0,skew:0},72:{depth:.06302,height:.69141,italic:0,skew:0},73:{depth:0,height:.69141,italic:0,skew:0},74:{depth:.12604,height:.69141,italic:0,skew:0},75:{depth:0,height:.69141,italic:0,skew:0},76:{depth:0,height:.69141,italic:0,skew:0},77:{depth:0,height:.69141,italic:0,skew:0},78:{depth:0,height:.69141,italic:0,skew:0},79:{depth:0,height:.69141,italic:0,skew:0},80:{depth:.18906,height:.69141,italic:0,skew:0},81:{depth:.03781,height:.69141,italic:0,skew:0},82:{depth:0,height:.69141,italic:0,skew:0},83:{depth:0,height:.69141,italic:0,skew:0},84:{depth:0,height:.69141,italic:0,skew:0},85:{depth:0,height:.69141,italic:0,skew:0},86:{depth:0,height:.69141,italic:0,skew:0},87:{depth:0,height:.69141,italic:0,skew:0},88:{depth:0,height:.69141,italic:0,skew:0},89:{depth:.18906,height:.69141,italic:0,skew:0},90:{depth:.12604,height:.69141,italic:0,skew:0},91:{depth:.24982,height:.74947,italic:0,skew:0},93:{depth:.24982,height:.74947,italic:0,skew:0},94:{depth:0,height:.69141,italic:0,skew:0},97:{depth:0,height:.47534,italic:0,skew:0},98:{depth:0,height:.69141,italic:0,skew:0},99:{depth:0,height:.47534,italic:0,skew:0},100:{depth:0,height:.62119,italic:0,skew:0},101:{depth:0,height:.47534,italic:0,skew:0},102:{depth:.18906,height:.69141,italic:0,skew:0},103:{depth:.18906,height:.47534,italic:0,skew:0},104:{depth:.18906,height:.69141,italic:0,skew:0},105:{depth:0,height:.69141,italic:0,skew:0},106:{depth:0,height:.69141,italic:0,skew:0},107:{depth:0,height:.69141,italic:0,skew:0},108:{depth:0,height:.69141,italic:0,skew:0},109:{depth:0,height:.47534,italic:0,skew:0},110:{depth:0,height:.47534,italic:0,skew:0},111:{depth:0,height:.47534,italic:0,skew:0},112:{depth:.18906,height:.52396,italic:0,skew:0},113:{depth:.18906,height:.47534,italic:0,skew:0},114:{depth:0,height:.47534,italic:0,skew:0},115:{depth:0,height:.47534,italic:0,skew:0},116:{depth:0,height:.62119,italic:0,skew:0},117:{depth:0,height:.47534,italic:0,skew:0},118:{depth:0,height:.52396,italic:0,skew:0},119:{depth:0,height:.52396,italic:0,skew:0},120:{depth:.18906,height:.47534,italic:0,skew:0},121:{depth:.18906,height:.47534,italic:0,skew:0},122:{depth:.18906,height:.47534,italic:0,skew:0},8216:{depth:0,height:.69141,italic:0,skew:0},8217:{depth:0,height:.69141,italic:0,skew:0},58112:{depth:0,height:.62119,italic:0,skew:0},58113:{depth:0,height:.62119,
-italic:0,skew:0},58114:{depth:.18906,height:.69141,italic:0,skew:0},58115:{depth:.18906,height:.69141,italic:0,skew:0},58116:{depth:.18906,height:.47534,italic:0,skew:0},58117:{depth:0,height:.69141,italic:0,skew:0},58118:{depth:0,height:.62119,italic:0,skew:0},58119:{depth:0,height:.47534,italic:0,skew:0}},"Main-Bold":{33:{depth:0,height:.69444,italic:0,skew:0},34:{depth:0,height:.69444,italic:0,skew:0},35:{depth:.19444,height:.69444,italic:0,skew:0},36:{depth:.05556,height:.75,italic:0,skew:0},37:{depth:.05556,height:.75,italic:0,skew:0},38:{depth:0,height:.69444,italic:0,skew:0},39:{depth:0,height:.69444,italic:0,skew:0},40:{depth:.25,height:.75,italic:0,skew:0},41:{depth:.25,height:.75,italic:0,skew:0},42:{depth:0,height:.75,italic:0,skew:0},43:{depth:.13333,height:.63333,italic:0,skew:0},44:{depth:.19444,height:.15556,italic:0,skew:0},45:{depth:0,height:.44444,italic:0,skew:0},46:{depth:0,height:.15556,italic:0,skew:0},47:{depth:.25,height:.75,italic:0,skew:0},48:{depth:0,height:.64444,italic:0,skew:0},49:{depth:0,height:.64444,italic:0,skew:0},50:{depth:0,height:.64444,italic:0,skew:0},51:{depth:0,height:.64444,italic:0,skew:0},52:{depth:0,height:.64444,italic:0,skew:0},53:{depth:0,height:.64444,italic:0,skew:0},54:{depth:0,height:.64444,italic:0,skew:0},55:{depth:0,height:.64444,italic:0,skew:0},56:{depth:0,height:.64444,italic:0,skew:0},57:{depth:0,height:.64444,italic:0,skew:0},58:{depth:0,height:.44444,italic:0,skew:0},59:{depth:.19444,height:.44444,italic:0,skew:0},60:{depth:.08556,height:.58556,italic:0,skew:0},61:{depth:-.10889,height:.39111,italic:0,skew:0},62:{depth:.08556,height:.58556,italic:0,skew:0},63:{depth:0,height:.69444,italic:0,skew:0},64:{depth:0,height:.69444,italic:0,skew:0},65:{depth:0,height:.68611,italic:0,skew:0},66:{depth:0,height:.68611,italic:0,skew:0},67:{depth:0,height:.68611,italic:0,skew:0},68:{depth:0,height:.68611,italic:0,skew:0},69:{depth:0,height:.68611,italic:0,skew:0},70:{depth:0,height:.68611,italic:0,skew:0},71:{depth:0,height:.68611,italic:0,skew:0},72:{depth:0,height:.68611,italic:0,skew:0},73:{depth:0,height:.68611,italic:0,skew:0},74:{depth:0,height:.68611,italic:0,skew:0},75:{depth:0,height:.68611,italic:0,skew:0},76:{depth:0,height:.68611,italic:0,skew:0},77:{depth:0,height:.68611,italic:0,skew:0},78:{depth:0,height:.68611,italic:0,skew:0},79:{depth:0,height:.68611,italic:0,skew:0},80:{depth:0,height:.68611,italic:0,skew:0},81:{depth:.19444,height:.68611,italic:0,skew:0},82:{depth:0,height:.68611,italic:0,skew:0},83:{depth:0,height:.68611,italic:0,skew:0},84:{depth:0,height:.68611,italic:0,skew:0},85:{depth:0,height:.68611,italic:0,skew:0},86:{depth:0,height:.68611,italic:.01597,skew:0},87:{depth:0,height:.68611,italic:.01597,skew:0},88:{depth:0,height:.68611,italic:0,skew:0},89:{depth:0,height:.68611,italic:.02875,skew:0},90:{depth:0,height:.68611,italic:0,skew:0},91:{depth:.25,height:.75,italic:0,skew:0},92:{depth:.25,height:.75,italic:0,skew:0},93:{depth:.25,height:.75,italic:0,skew:0},94:{depth:0,height:.69444,italic:0,skew:0},95:{depth:.31,height:.13444,italic:.03194,skew:0},96:{depth:0,height:.69444,italic:0,skew:0},97:{depth:0,height:.44444,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.44444,italic:0,skew:0},100:{depth:0,height:.69444,italic:0,skew:0},101:{depth:0,height:.44444,italic:0,skew:0},102:{depth:0,height:.69444,italic:.10903,skew:0},103:{depth:.19444,height:.44444,italic:.01597,skew:0},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.69444,italic:0,skew:0},106:{depth:.19444,height:.69444,italic:0,skew:0},107:{depth:0,height:.69444,italic:0,skew:0},108:{depth:0,height:.69444,italic:0,skew:0},109:{depth:0,height:.44444,italic:0,skew:0},110:{depth:0,height:.44444,italic:0,skew:0},111:{depth:0,height:.44444,italic:0,skew:0},112:{depth:.19444,height:.44444,italic:0,skew:0},113:{depth:.19444,height:.44444,italic:0,skew:0},114:{depth:0,height:.44444,italic:0,skew:0},115:{depth:0,height:.44444,italic:0,skew:0},116:{depth:0,height:.63492,italic:0,skew:0},117:{depth:0,height:.44444,italic:0,skew:0},118:{depth:0,height:.44444,italic:.01597,skew:0},119:{depth:0,height:.44444,italic:.01597,skew:0},120:{depth:0,height:.44444,italic:0,skew:0},121:{depth:.19444,height:.44444,italic:.01597,skew:0},122:{depth:0,height:.44444,italic:0,skew:0},123:{depth:.25,height:.75,italic:0,skew:0},124:{depth:.25,height:.75,italic:0,skew:0},125:{depth:.25,height:.75,italic:0,skew:0},126:{depth:.35,height:.34444,italic:0,skew:0},168:{depth:0,height:.69444,italic:0,skew:0},172:{depth:0,height:.44444,italic:0,skew:0},175:{depth:0,height:.59611,italic:0,skew:0},176:{depth:0,height:.69444,italic:0,skew:0},177:{depth:.13333,height:.63333,italic:0,skew:0},180:{depth:0,height:.69444,italic:0,skew:0},215:{depth:.13333,height:.63333,italic:0,skew:0},247:{depth:.13333,height:.63333,italic:0,skew:0},305:{depth:0,height:.44444,italic:0,skew:0},567:{depth:.19444,height:.44444,italic:0,skew:0},710:{depth:0,height:.69444,italic:0,skew:0},711:{depth:0,height:.63194,italic:0,skew:0},713:{depth:0,height:.59611,italic:0,skew:0},714:{depth:0,height:.69444,italic:0,skew:0},715:{depth:0,height:.69444,italic:0,skew:0},728:{depth:0,height:.69444,italic:0,skew:0},729:{depth:0,height:.69444,italic:0,skew:0},730:{depth:0,height:.69444,italic:0,skew:0},732:{depth:0,height:.69444,italic:0,skew:0},768:{depth:0,height:.69444,italic:0,skew:0},769:{depth:0,height:.69444,italic:0,skew:0},770:{depth:0,height:.69444,italic:0,skew:0},771:{depth:0,height:.69444,italic:0,skew:0},772:{depth:0,height:.59611,italic:0,skew:0},774:{depth:0,height:.69444,italic:0,skew:0},775:{depth:0,height:.69444,italic:0,skew:0},776:{depth:0,height:.69444,italic:0,skew:0},778:{depth:0,height:.69444,italic:0,skew:0},779:{depth:0,height:.69444,italic:0,skew:0},780:{depth:0,height:.63194,italic:0,skew:0},824:{depth:.19444,height:.69444,italic:0,skew:0},915:{depth:0,height:.68611,italic:0,skew:0},916:{depth:0,height:.68611,italic:0,skew:0},920:{depth:0,height:.68611,italic:0,skew:0},923:{depth:0,height:.68611,italic:0,skew:0},926:{depth:0,height:.68611,italic:0,skew:0},928:{depth:0,height:.68611,italic:0,skew:0},931:{depth:0,height:.68611,italic:0,skew:0},933:{depth:0,height:.68611,italic:0,skew:0},934:{depth:0,height:.68611,italic:0,skew:0},936:{depth:0,height:.68611,italic:0,skew:0},937:{depth:0,height:.68611,italic:0,skew:0},8211:{depth:0,height:.44444,italic:.03194,skew:0},8212:{depth:0,height:.44444,italic:.03194,skew:0},8216:{depth:0,height:.69444,italic:0,skew:0},8217:{depth:0,height:.69444,italic:0,skew:0},8220:{depth:0,height:.69444,italic:0,skew:0},8221:{depth:0,height:.69444,italic:0,skew:0},8224:{depth:.19444,height:.69444,italic:0,skew:0},8225:{depth:.19444,height:.69444,italic:0,skew:0},8242:{depth:0,height:.55556,italic:0,skew:0},8407:{depth:0,height:.72444,italic:.15486,skew:0},8463:{depth:0,height:.69444,italic:0,skew:0},8465:{depth:0,height:.69444,italic:0,skew:0},8467:{depth:0,height:.69444,italic:0,skew:0},8472:{depth:.19444,height:.44444,italic:0,skew:0},8476:{depth:0,height:.69444,italic:0,skew:0},8501:{depth:0,height:.69444,italic:0,skew:0},8592:{depth:-.10889,height:.39111,italic:0,skew:0},8593:{depth:.19444,height:.69444,italic:0,skew:0},8594:{depth:-.10889,height:.39111,italic:0,skew:0},8595:{depth:.19444,height:.69444,italic:0,skew:0},8596:{depth:-.10889,height:.39111,italic:0,skew:0},8597:{depth:.25,height:.75,italic:0,skew:0},8598:{depth:.19444,height:.69444,italic:0,skew:0},8599:{depth:.19444,height:.69444,italic:0,skew:0},8600:{depth:.19444,height:.69444,italic:0,skew:0},8601:{depth:.19444,height:.69444,italic:0,skew:0},8636:{depth:-.10889,height:.39111,italic:0,skew:0},8637:{depth:-.10889,height:.39111,italic:0,skew:0},8640:{depth:-.10889,height:.39111,italic:0,skew:0},8641:{depth:-.10889,height:.39111,italic:0,skew:0},8656:{depth:-.10889,height:.39111,italic:0,skew:0},8657:{depth:.19444,height:.69444,italic:0,skew:0},8658:{depth:-.10889,height:.39111,italic:0,skew:0},8659:{depth:.19444,height:.69444,italic:0,skew:0},8660:{depth:-.10889,height:.39111,italic:0,skew:0},8661:{depth:.25,height:.75,italic:0,skew:0},8704:{depth:0,height:.69444,italic:0,skew:0},8706:{depth:0,height:.69444,italic:.06389,skew:0},8707:{depth:0,height:.69444,italic:0,skew:0},8709:{depth:.05556,height:.75,italic:0,skew:0},8711:{depth:0,height:.68611,italic:0,skew:0},8712:{depth:.08556,height:.58556,italic:0,skew:0},8715:{depth:.08556,height:.58556,italic:0,skew:0},8722:{depth:.13333,height:.63333,italic:0,skew:0},8723:{depth:.13333,height:.63333,italic:0,skew:0},8725:{depth:.25,height:.75,italic:0,skew:0},8726:{depth:.25,height:.75,italic:0,skew:0},8727:{depth:-.02778,height:.47222,italic:0,skew:0},8728:{depth:-.02639,height:.47361,italic:0,skew:0},8729:{depth:-.02639,height:.47361,italic:0,skew:0},8730:{depth:.18,height:.82,italic:0,skew:0},8733:{depth:0,height:.44444,italic:0,skew:0},8734:{depth:0,height:.44444,italic:0,skew:0},8736:{depth:0,height:.69224,italic:0,skew:0},8739:{depth:.25,height:.75,italic:0,skew:0},8741:{depth:.25,height:.75,italic:0,skew:0},8743:{depth:0,height:.55556,italic:0,skew:0},8744:{depth:0,height:.55556,italic:0,skew:0},8745:{depth:0,height:.55556,italic:0,skew:0},8746:{depth:0,height:.55556,italic:0,skew:0},8747:{depth:.19444,height:.69444,italic:.12778,skew:0},8764:{depth:-.10889,height:.39111,italic:0,skew:0},8768:{depth:.19444,height:.69444,italic:0,skew:0},8771:{depth:.00222,height:.50222,italic:0,skew:0},8776:{depth:.02444,height:.52444,italic:0,skew:0},8781:{depth:.00222,height:.50222,italic:0,skew:0},8801:{depth:.00222,height:.50222,italic:0,skew:0},8804:{depth:.19667,height:.69667,italic:0,skew:0},8805:{depth:.19667,height:.69667,italic:0,skew:0},8810:{depth:.08556,height:.58556,italic:0,skew:0},8811:{depth:.08556,height:.58556,italic:0,skew:0},8826:{depth:.08556,height:.58556,italic:0,skew:0},8827:{depth:.08556,height:.58556,italic:0,skew:0},8834:{depth:.08556,height:.58556,italic:0,skew:0},8835:{depth:.08556,height:.58556,italic:0,skew:0},8838:{depth:.19667,height:.69667,italic:0,skew:0},8839:{depth:.19667,height:.69667,italic:0,skew:0},8846:{depth:0,height:.55556,italic:0,skew:0},8849:{depth:.19667,height:.69667,italic:0,skew:0},8850:{depth:.19667,height:.69667,italic:0,skew:0},8851:{depth:0,height:.55556,italic:0,skew:0},8852:{depth:0,height:.55556,italic:0,skew:0},8853:{depth:.13333,height:.63333,italic:0,skew:0},8854:{depth:.13333,height:.63333,italic:0,skew:0},8855:{depth:.13333,height:.63333,italic:0,skew:0},8856:{depth:.13333,height:.63333,italic:0,skew:0},8857:{depth:.13333,height:.63333,italic:0,skew:0},8866:{depth:0,height:.69444,italic:0,skew:0},8867:{depth:0,height:.69444,italic:0,skew:0},8868:{depth:0,height:.69444,italic:0,skew:0},8869:{depth:0,height:.69444,italic:0,skew:0},8900:{depth:-.02639,height:.47361,italic:0,skew:0},8901:{depth:-.02639,height:.47361,italic:0,skew:0},8902:{depth:-.02778,height:.47222,italic:0,skew:0},8968:{depth:.25,height:.75,italic:0,skew:0},8969:{depth:.25,height:.75,italic:0,skew:0},8970:{depth:.25,height:.75,italic:0,skew:0},8971:{depth:.25,height:.75,italic:0,skew:0},8994:{depth:-.13889,height:.36111,italic:0,skew:0},8995:{depth:-.13889,height:.36111,italic:0,skew:0},9651:{depth:.19444,height:.69444,italic:0,skew:0},9657:{depth:-.02778,height:.47222,italic:0,skew:0},9661:{depth:.19444,height:.69444,italic:0,skew:0},9667:{depth:-.02778,height:.47222,italic:0,skew:0},9711:{depth:.19444,height:.69444,italic:0,skew:0},9824:{depth:.12963,height:.69444,italic:0,skew:0},9825:{depth:.12963,height:.69444,italic:0,skew:0},9826:{depth:.12963,height:.69444,italic:0,skew:0},9827:{depth:.12963,height:.69444,italic:0,skew:0},9837:{depth:0,height:.75,italic:0,skew:0},9838:{depth:.19444,height:.69444,italic:0,skew:0},9839:{depth:.19444,height:.69444,italic:0,skew:0},10216:{depth:.25,height:.75,italic:0,skew:0},10217:{depth:.25,height:.75,italic:0,skew:0},10815:{depth:0,height:.68611,italic:0,skew:0},10927:{depth:.19667,height:.69667,italic:0,skew:0},10928:{depth:.19667,height:.69667,italic:0,skew:0}},"Main-Italic":{33:{depth:0,height:.69444,italic:.12417,skew:0},34:{depth:0,height:.69444,italic:.06961,skew:0},35:{depth:.19444,height:.69444,italic:.06616,skew:0},37:{depth:.05556,height:.75,italic:.13639,skew:0},38:{depth:0,height:.69444,italic:.09694,skew:0},39:{depth:0,height:.69444,italic:.12417,skew:0},40:{depth:.25,height:.75,italic:.16194,skew:0},41:{depth:.25,height:.75,italic:.03694,skew:0},42:{depth:0,height:.75,italic:.14917,skew:0},43:{depth:.05667,height:.56167,italic:.03694,skew:0},44:{depth:.19444,height:.10556,italic:0,skew:0},45:{depth:0,height:.43056,italic:.02826,skew:0},46:{depth:0,height:.10556,italic:0,skew:0},47:{depth:.25,height:.75,italic:.16194,skew:0},48:{depth:0,height:.64444,italic:.13556,skew:0},49:{depth:0,height:.64444,italic:.13556,skew:0},50:{depth:0,height:.64444,italic:.13556,skew:0},51:{depth:0,height:.64444,italic:.13556,skew:0},52:{depth:.19444,height:.64444,italic:.13556,skew:0},53:{depth:0,height:.64444,italic:.13556,skew:0},54:{depth:0,height:.64444,italic:.13556,skew:0},55:{depth:.19444,height:.64444,italic:.13556,skew:0},56:{depth:0,height:.64444,italic:.13556,skew:0},57:{depth:0,height:.64444,italic:.13556,skew:0},58:{depth:0,height:.43056,italic:.0582,skew:0},59:{depth:.19444,height:.43056,italic:.0582,skew:0},61:{depth:-.13313,height:.36687,italic:.06616,skew:0},63:{depth:0,height:.69444,italic:.1225,skew:0},64:{depth:0,height:.69444,italic:.09597,skew:0},65:{depth:0,height:.68333,italic:0,skew:0},66:{depth:0,height:.68333,italic:.10257,skew:0},67:{depth:0,height:.68333,italic:.14528,skew:0},68:{depth:0,height:.68333,italic:.09403,skew:0},69:{depth:0,height:.68333,italic:.12028,skew:0},70:{depth:0,height:.68333,italic:.13305,skew:0},71:{depth:0,height:.68333,italic:.08722,skew:0},72:{depth:0,height:.68333,italic:.16389,skew:0},73:{depth:0,height:.68333,italic:.15806,skew:0},74:{depth:0,height:.68333,italic:.14028,skew:0},75:{depth:0,height:.68333,italic:.14528,skew:0},76:{depth:0,height:.68333,italic:0,skew:0},77:{depth:0,height:.68333,italic:.16389,skew:0},78:{depth:0,height:.68333,italic:.16389,skew:0},79:{depth:0,height:.68333,italic:.09403,skew:0},80:{depth:0,height:.68333,italic:.10257,skew:0},81:{depth:.19444,height:.68333,italic:.09403,skew:0},82:{depth:0,height:.68333,italic:.03868,skew:0},83:{depth:0,height:.68333,italic:.11972,skew:0},84:{depth:0,height:.68333,italic:.13305,skew:0},85:{depth:0,height:.68333,italic:.16389,skew:0},86:{depth:0,height:.68333,italic:.18361,skew:0},87:{depth:0,height:.68333,italic:.18361,skew:0},88:{depth:0,height:.68333,italic:.15806,skew:0},89:{depth:0,height:.68333,italic:.19383,skew:0},90:{depth:0,height:.68333,italic:.14528,skew:0},91:{depth:.25,height:.75,italic:.1875,skew:0},93:{depth:.25,height:.75,italic:.10528,skew:0},94:{depth:0,height:.69444,italic:.06646,skew:0},95:{depth:.31,height:.12056,italic:.09208,skew:0},97:{depth:0,height:.43056,italic:.07671,skew:0},98:{depth:0,height:.69444,italic:.06312,skew:0},99:{depth:0,height:.43056,italic:.05653,skew:0},100:{depth:0,height:.69444,italic:.10333,skew:0},101:{depth:0,height:.43056,italic:.07514,skew:0},102:{depth:.19444,height:.69444,italic:.21194,skew:0},103:{depth:.19444,height:.43056,italic:.08847,skew:0},104:{depth:0,height:.69444,italic:.07671,skew:0},105:{depth:0,height:.65536,italic:.1019,skew:0},106:{depth:.19444,height:.65536,italic:.14467,skew:0},107:{depth:0,height:.69444,italic:.10764,skew:0},108:{depth:0,height:.69444,italic:.10333,skew:0},109:{depth:0,height:.43056,italic:.07671,skew:0},110:{depth:0,height:.43056,italic:.07671,skew:0},111:{depth:0,height:.43056,italic:.06312,skew:0},112:{depth:.19444,height:.43056,italic:.06312,skew:0},113:{depth:.19444,height:.43056,italic:.08847,skew:0},114:{depth:0,height:.43056,italic:.10764,skew:0},115:{depth:0,height:.43056,italic:.08208,skew:0},116:{depth:0,height:.61508,italic:.09486,skew:0},117:{depth:0,height:.43056,italic:.07671,skew:0},118:{depth:0,height:.43056,italic:.10764,skew:0},119:{depth:0,height:.43056,italic:.10764,skew:0},120:{depth:0,height:.43056,italic:.12042,skew:0},121:{depth:.19444,height:.43056,italic:.08847,skew:0},122:{depth:0,height:.43056,italic:.12292,skew:0},126:{depth:.35,height:.31786,italic:.11585,skew:0},163:{depth:0,height:.69444,italic:0,skew:0},305:{depth:0,height:.43056,italic:0,skew:.02778},567:{depth:.19444,height:.43056,italic:0,skew:.08334},768:{depth:0,height:.69444,italic:0,skew:0},769:{depth:0,height:.69444,italic:.09694,skew:0},770:{depth:0,height:.69444,italic:.06646,skew:0},771:{depth:0,height:.66786,italic:.11585,skew:0},772:{depth:0,height:.56167,italic:.10333,skew:0},774:{depth:0,height:.69444,italic:.10806,skew:0},775:{depth:0,height:.66786,italic:.11752,skew:0},776:{depth:0,height:.66786,italic:.10474,skew:0},778:{depth:0,height:.69444,italic:0,skew:0},779:{depth:0,height:.69444,italic:.1225,skew:0},780:{depth:0,height:.62847,italic:.08295,skew:0},915:{depth:0,height:.68333,italic:.13305,skew:0},916:{depth:0,height:.68333,italic:0,skew:0},920:{depth:0,height:.68333,italic:.09403,skew:0},923:{depth:0,height:.68333,italic:0,skew:0},926:{depth:0,height:.68333,italic:.15294,skew:0},928:{depth:0,height:.68333,italic:.16389,skew:0},931:{depth:0,height:.68333,italic:.12028,skew:0},933:{depth:0,height:.68333,italic:.11111,skew:0},934:{depth:0,height:.68333,italic:.05986,skew:0},936:{depth:0,height:.68333,italic:.11111,skew:0},937:{depth:0,height:.68333,italic:.10257,skew:0},8211:{depth:0,height:.43056,italic:.09208,skew:0},8212:{depth:0,height:.43056,italic:.09208,skew:0},8216:{depth:0,height:.69444,italic:.12417,skew:0},8217:{depth:0,height:.69444,italic:.12417,skew:0},8220:{depth:0,height:.69444,italic:.1685,skew:0},8221:{depth:0,height:.69444,italic:.06961,skew:0},8463:{depth:0,height:.68889,italic:0,skew:0}},"Main-Regular":{32:{depth:0,height:0,italic:0,skew:0},33:{depth:0,height:.69444,italic:0,skew:0},34:{depth:0,height:.69444,italic:0,skew:0},35:{depth:.19444,height:.69444,italic:0,skew:0},36:{depth:.05556,height:.75,italic:0,skew:0},37:{depth:.05556,height:.75,italic:0,skew:0},38:{depth:0,height:.69444,italic:0,skew:0},39:{depth:0,height:.69444,italic:0,skew:0},40:{depth:.25,height:.75,italic:0,skew:0},41:{depth:.25,height:.75,italic:0,skew:0},42:{depth:0,height:.75,italic:0,skew:0},43:{depth:.08333,height:.58333,italic:0,skew:0},44:{depth:.19444,height:.10556,italic:0,skew:0},45:{depth:0,height:.43056,italic:0,skew:0},46:{depth:0,height:.10556,italic:0,skew:0},47:{depth:.25,height:.75,italic:0,skew:0},48:{depth:0,height:.64444,italic:0,skew:0},49:{depth:0,height:.64444,italic:0,skew:0},50:{depth:0,height:.64444,italic:0,skew:0},51:{depth:0,height:.64444,italic:0,skew:0},52:{depth:0,height:.64444,italic:0,skew:0},53:{depth:0,height:.64444,italic:0,skew:0},54:{depth:0,height:.64444,italic:0,skew:0},55:{depth:0,height:.64444,italic:0,skew:0},56:{depth:0,height:.64444,italic:0,skew:0},57:{depth:0,height:.64444,italic:0,skew:0},58:{depth:0,height:.43056,italic:0,skew:0},59:{depth:.19444,height:.43056,italic:0,skew:0},60:{depth:.0391,height:.5391,italic:0,skew:0},61:{depth:-.13313,height:.36687,italic:0,skew:0},62:{depth:.0391,height:.5391,italic:0,skew:0},63:{depth:0,height:.69444,italic:0,skew:0},64:{depth:0,height:.69444,italic:0,skew:0},65:{depth:0,height:.68333,italic:0,skew:0},66:{depth:0,height:.68333,italic:0,skew:0},67:{depth:0,height:.68333,italic:0,skew:0},68:{depth:0,height:.68333,italic:0,skew:0},69:{depth:0,height:.68333,italic:0,skew:0},70:{depth:0,height:.68333,italic:0,skew:0},71:{depth:0,height:.68333,italic:0,skew:0},72:{depth:0,height:.68333,italic:0,skew:0},73:{depth:0,height:.68333,italic:0,skew:0},74:{depth:0,height:.68333,italic:0,skew:0},75:{depth:0,height:.68333,italic:0,skew:0},76:{depth:0,height:.68333,italic:0,skew:0},77:{depth:0,height:.68333,italic:0,skew:0},78:{depth:0,height:.68333,italic:0,skew:0},79:{depth:0,height:.68333,italic:0,skew:0},80:{depth:0,height:.68333,italic:0,skew:0},81:{depth:.19444,height:.68333,italic:0,skew:0},82:{depth:0,height:.68333,italic:0,skew:0},83:{depth:0,height:.68333,italic:0,skew:0},84:{depth:0,height:.68333,italic:0,skew:0},85:{depth:0,height:.68333,italic:0,skew:0},86:{depth:0,height:.68333,italic:.01389,skew:0},87:{depth:0,height:.68333,italic:.01389,skew:0},88:{depth:0,height:.68333,italic:0,skew:0},89:{depth:0,height:.68333,italic:.025,skew:0},90:{depth:0,height:.68333,italic:0,skew:0},91:{depth:.25,height:.75,italic:0,skew:0},92:{depth:.25,height:.75,italic:0,skew:0},93:{depth:.25,height:.75,italic:0,skew:0},94:{depth:0,height:.69444,italic:0,skew:0},95:{depth:.31,height:.12056,italic:.02778,skew:0},96:{depth:0,height:.69444,italic:0,skew:0},97:{depth:0,height:.43056,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.43056,italic:0,skew:0},100:{depth:0,height:.69444,italic:0,skew:0},101:{depth:0,height:.43056,italic:0,skew:0},102:{depth:0,height:.69444,italic:.07778,skew:0},103:{depth:.19444,height:.43056,italic:.01389,skew:0},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.66786,italic:0,skew:0},106:{depth:.19444,height:.66786,italic:0,skew:0},107:{depth:0,height:.69444,italic:0,skew:0},108:{depth:0,height:.69444,italic:0,skew:0},109:{depth:0,height:.43056,italic:0,skew:0},110:{depth:0,height:.43056,italic:0,skew:0},111:{depth:0,height:.43056,italic:0,skew:0},112:{depth:.19444,height:.43056,italic:0,skew:0},113:{depth:.19444,height:.43056,italic:0,skew:0},114:{depth:0,height:.43056,italic:0,skew:0},115:{depth:0,height:.43056,italic:0,skew:0},116:{depth:0,height:.61508,italic:0,skew:0},117:{depth:0,height:.43056,italic:0,skew:0},118:{depth:0,height:.43056,italic:.01389,skew:0},119:{depth:0,height:.43056,italic:.01389,skew:0},120:{depth:0,height:.43056,italic:0,skew:0},121:{depth:.19444,height:.43056,italic:.01389,skew:0},122:{depth:0,height:.43056,italic:0,skew:0},123:{depth:.25,height:.75,italic:0,skew:0},124:{depth:.25,height:.75,italic:0,skew:0},125:{depth:.25,height:.75,italic:0,skew:0},126:{depth:.35,height:.31786,italic:0,skew:0},160:{depth:0,height:0,italic:0,skew:0},168:{depth:0,height:.66786,italic:0,skew:0},172:{depth:0,height:.43056,italic:0,skew:0},175:{depth:0,height:.56778,italic:0,skew:0},176:{depth:0,height:.69444,italic:0,skew:0},177:{depth:.08333,height:.58333,italic:0,skew:0},180:{depth:0,height:.69444,italic:0,skew:0},215:{depth:.08333,height:.58333,italic:0,skew:0},247:{depth:.08333,height:.58333,italic:0,skew:0},305:{depth:0,height:.43056,italic:0,skew:0},567:{depth:.19444,height:.43056,italic:0,skew:0},710:{depth:0,height:.69444,italic:0,skew:0},711:{depth:0,height:.62847,italic:0,skew:0},713:{depth:0,height:.56778,italic:0,skew:0},714:{depth:0,height:.69444,italic:0,skew:0},715:{depth:0,height:.69444,italic:0,skew:0},728:{depth:0,height:.69444,italic:0,skew:0},729:{depth:0,height:.66786,italic:0,skew:0},730:{depth:0,height:.69444,italic:0,skew:0},732:{depth:0,height:.66786,italic:0,skew:0},768:{depth:0,height:.69444,italic:0,skew:0},769:{depth:0,height:.69444,italic:0,skew:0},770:{depth:0,height:.69444,italic:0,skew:0},771:{depth:0,height:.66786,italic:0,skew:0},772:{depth:0,height:.56778,italic:0,skew:0},774:{depth:0,height:.69444,italic:0,skew:0},775:{depth:0,height:.66786,italic:0,skew:0},776:{depth:0,height:.66786,italic:0,skew:0},778:{depth:0,height:.69444,italic:0,skew:0},779:{depth:0,height:.69444,italic:0,skew:0},780:{depth:0,height:.62847,italic:0,skew:0},824:{depth:.19444,height:.69444,italic:0,skew:0},915:{depth:0,height:.68333,italic:0,skew:0},916:{depth:0,height:.68333,italic:0,skew:0},920:{depth:0,height:.68333,italic:0,skew:0},923:{depth:0,height:.68333,italic:0,skew:0},926:{depth:0,height:.68333,italic:0,skew:0},928:{depth:0,height:.68333,italic:0,skew:0},931:{depth:0,height:.68333,italic:0,skew:0},933:{depth:0,height:.68333,italic:0,skew:0},934:{depth:0,height:.68333,italic:0,skew:0},936:{depth:0,height:.68333,italic:0,skew:0},937:{depth:0,height:.68333,italic:0,skew:0},8211:{depth:0,height:.43056,italic:.02778,skew:0},8212:{depth:0,height:.43056,italic:.02778,skew:0},8216:{depth:0,height:.69444,italic:0,skew:0},8217:{depth:0,height:.69444,italic:0,skew:0},8220:{depth:0,height:.69444,italic:0,skew:0},8221:{depth:0,height:.69444,italic:0,skew:0},8224:{depth:.19444,height:.69444,italic:0,skew:0},8225:{depth:.19444,height:.69444,italic:0,skew:0},8230:{depth:0,height:.12,italic:0,skew:0},8242:{depth:0,height:.55556,italic:0,skew:0},8407:{depth:0,height:.71444,italic:.15382,skew:0},8463:{depth:0,height:.68889,italic:0,skew:0},8465:{depth:0,height:.69444,italic:0,skew:0},8467:{depth:0,height:.69444,italic:0,skew:.11111},8472:{depth:.19444,height:.43056,italic:0,skew:.11111},8476:{depth:0,height:.69444,italic:0,skew:0},8501:{depth:0,height:.69444,italic:0,skew:0},8592:{depth:-.13313,height:.36687,italic:0,skew:0},8593:{depth:.19444,height:.69444,italic:0,skew:0},8594:{depth:-.13313,height:.36687,italic:0,skew:0},8595:{depth:.19444,height:.69444,italic:0,skew:0},8596:{depth:-.13313,height:.36687,italic:0,skew:0},8597:{depth:.25,height:.75,italic:0,skew:0},8598:{depth:.19444,height:.69444,italic:0,skew:0},8599:{depth:.19444,height:.69444,italic:0,skew:0},8600:{depth:.19444,height:.69444,italic:0,skew:0},8601:{depth:.19444,height:.69444,italic:0,skew:0},8614:{depth:.011,height:.511,italic:0,skew:0},8617:{depth:.011,height:.511,italic:0,skew:0},8618:{depth:.011,height:.511,italic:0,skew:0},8636:{depth:-.13313,height:.36687,italic:0,skew:0},8637:{depth:-.13313,height:.36687,italic:0,skew:0},8640:{depth:-.13313,height:.36687,italic:0,skew:0},8641:{depth:-.13313,height:.36687,italic:0,skew:0},8652:{depth:.011,height:.671,italic:0,skew:0},8656:{depth:-.13313,height:.36687,italic:0,skew:0},8657:{depth:.19444,height:.69444,italic:0,skew:0},8658:{depth:-.13313,height:.36687,italic:0,skew:0},8659:{depth:.19444,height:.69444,italic:0,skew:0},8660:{depth:-.13313,height:.36687,italic:0,skew:0},8661:{depth:.25,height:.75,italic:0,skew:0},8704:{depth:0,height:.69444,italic:0,skew:0},8706:{depth:0,height:.69444,italic:.05556,skew:.08334},8707:{depth:0,height:.69444,italic:0,skew:0},8709:{depth:.05556,height:.75,italic:0,skew:0},8711:{depth:0,height:.68333,italic:0,skew:0},8712:{depth:.0391,height:.5391,italic:0,skew:0},8715:{depth:.0391,height:.5391,italic:0,skew:0},8722:{depth:.08333,height:.58333,italic:0,skew:0},8723:{depth:.08333,height:.58333,italic:0,skew:0},8725:{depth:.25,height:.75,italic:0,skew:0},8726:{depth:.25,height:.75,italic:0,skew:0},8727:{depth:-.03472,height:.46528,italic:0,skew:0},8728:{depth:-.05555,height:.44445,italic:0,skew:0},8729:{depth:-.05555,height:.44445,italic:0,skew:0},8730:{depth:.2,height:.8,italic:0,skew:0},8733:{depth:0,height:.43056,italic:0,skew:0},8734:{depth:0,height:.43056,italic:0,skew:0},8736:{depth:0,height:.69224,italic:0,skew:0},8739:{depth:.25,height:.75,italic:0,skew:0},8741:{depth:.25,height:.75,italic:0,skew:0},8743:{depth:0,height:.55556,italic:0,skew:0},8744:{depth:0,height:.55556,italic:0,skew:0},8745:{depth:0,height:.55556,italic:0,skew:0},8746:{depth:0,height:.55556,italic:0,skew:0},8747:{depth:.19444,height:.69444,italic:.11111,skew:0},8764:{depth:-.13313,height:.36687,italic:0,skew:0},8768:{depth:.19444,height:.69444,italic:0,skew:0},8771:{depth:-.03625,height:.46375,italic:0,skew:0},8773:{depth:-.022,height:.589,italic:0,skew:0},8776:{depth:-.01688,height:.48312,italic:0,skew:0},8781:{depth:-.03625,height:.46375,italic:0,skew:0},8784:{depth:-.133,height:.67,italic:0,skew:0},8800:{depth:.215,height:.716,italic:0,skew:0},8801:{depth:-.03625,height:.46375,italic:0,skew:0},8804:{depth:.13597,height:.63597,italic:0,skew:0},8805:{depth:.13597,height:.63597,italic:0,skew:0},8810:{depth:.0391,height:.5391,italic:0,skew:0},8811:{depth:.0391,height:.5391,italic:0,skew:0},8826:{depth:.0391,height:.5391,italic:0,skew:0},8827:{depth:.0391,height:.5391,italic:0,skew:0},8834:{depth:.0391,height:.5391,italic:0,skew:0},8835:{depth:.0391,height:.5391,italic:0,skew:0},8838:{depth:.13597,height:.63597,italic:0,skew:0},8839:{depth:.13597,height:.63597,italic:0,skew:0},8846:{depth:0,height:.55556,italic:0,skew:0},8849:{depth:.13597,height:.63597,italic:0,skew:0},8850:{depth:.13597,height:.63597,italic:0,skew:0},8851:{depth:0,height:.55556,italic:0,skew:0},8852:{depth:0,height:.55556,italic:0,skew:0},8853:{depth:.08333,height:.58333,italic:0,skew:0},8854:{depth:.08333,height:.58333,italic:0,skew:0},8855:{depth:.08333,height:.58333,italic:0,skew:0},8856:{depth:.08333,height:.58333,italic:0,skew:0},8857:{depth:.08333,height:.58333,italic:0,skew:0},8866:{depth:0,height:.69444,italic:0,skew:0},8867:{depth:0,height:.69444,italic:0,skew:0},8868:{depth:0,height:.69444,italic:0,skew:0},8869:{depth:0,height:.69444,italic:0,skew:0},8872:{depth:.249,height:.75,italic:0,skew:0},8900:{depth:-.05555,height:.44445,italic:0,skew:0},8901:{depth:-.05555,height:.44445,italic:0,skew:0},8902:{depth:-.03472,height:.46528,italic:0,skew:0},8904:{depth:.005,height:.505,italic:0,skew:0},8942:{depth:.03,height:.9,italic:0,skew:0},8943:{depth:-.19,height:.31,italic:0,skew:0},8945:{depth:-.1,height:.82,italic:0,skew:0},8968:{depth:.25,height:.75,italic:0,skew:0},8969:{depth:.25,height:.75,italic:0,skew:0},8970:{depth:.25,height:.75,italic:0,skew:0},8971:{depth:.25,height:.75,italic:0,skew:0},8994:{depth:-.14236,height:.35764,italic:0,skew:0},8995:{depth:-.14236,height:.35764,italic:0,skew:0},9136:{depth:.244,height:.744,italic:0,skew:0},9137:{depth:.244,height:.744,italic:0,skew:0},9651:{depth:.19444,height:.69444,italic:0,skew:0},9657:{depth:-.03472,height:.46528,italic:0,skew:0},9661:{depth:.19444,height:.69444,italic:0,skew:0},9667:{depth:-.03472,height:.46528,italic:0,skew:0},9711:{depth:.19444,height:.69444,italic:0,skew:0},9824:{depth:.12963,height:.69444,italic:0,skew:0},9825:{depth:.12963,height:.69444,italic:0,skew:0},9826:{depth:.12963,height:.69444,italic:0,skew:0},9827:{depth:.12963,height:.69444,italic:0,skew:0},9837:{depth:0,height:.75,italic:0,skew:0},9838:{depth:.19444,height:.69444,italic:0,skew:0},9839:{depth:.19444,height:.69444,italic:0,skew:0},10216:{depth:.25,height:.75,italic:0,skew:0},10217:{depth:.25,height:.75,italic:0,skew:0},10222:{depth:.244,height:.744,italic:0,skew:0},10223:{depth:.244,height:.744,italic:0,skew:0},10229:{depth:.011,height:.511,italic:0,skew:0},10230:{depth:.011,height:.511,italic:0,skew:0},10231:{depth:.011,height:.511,italic:0,skew:0},10232:{depth:.024,height:.525,italic:0,skew:0},10233:{depth:.024,height:.525,italic:0,skew:0},10234:{depth:.024,height:.525,italic:0,skew:0},10236:{depth:.011,height:.511,italic:0,skew:0},10815:{depth:0,height:.68333,italic:0,skew:0},10927:{depth:.13597,height:.63597,italic:0,skew:0},10928:{depth:.13597,height:.63597,italic:0,skew:0}},"Math-BoldItalic":{47:{depth:.19444,height:.69444,italic:0,skew:0},65:{depth:0,height:.68611,italic:0,skew:0},66:{depth:0,height:.68611,italic:.04835,skew:0},67:{depth:0,height:.68611,italic:.06979,skew:0},68:{depth:0,height:.68611,italic:.03194,skew:0},69:{depth:0,height:.68611,italic:.05451,skew:0},70:{depth:0,height:.68611,italic:.15972,skew:0},71:{depth:0,height:.68611,italic:0,skew:0},72:{depth:0,height:.68611,italic:.08229,skew:0},73:{depth:0,height:.68611,italic:.07778,skew:0},74:{depth:0,height:.68611,italic:.10069,skew:0},75:{depth:0,height:.68611,italic:.06979,skew:0},76:{depth:0,height:.68611,italic:0,skew:0},77:{depth:0,height:.68611,italic:.11424,skew:0},78:{depth:0,height:.68611,italic:.11424,skew:0},79:{depth:0,height:.68611,italic:.03194,skew:0},80:{depth:0,height:.68611,italic:.15972,skew:0},81:{depth:.19444,height:.68611,italic:0,skew:0},82:{depth:0,height:.68611,italic:.00421,skew:0},83:{depth:0,height:.68611,italic:.05382,skew:0},84:{depth:0,height:.68611,italic:.15972,skew:0},85:{depth:0,height:.68611,italic:.11424,skew:0},86:{depth:0,height:.68611,italic:.25555,skew:0},87:{depth:0,height:.68611,italic:.15972,skew:0},88:{depth:0,height:.68611,italic:.07778,skew:0},89:{depth:0,height:.68611,italic:.25555,skew:0},90:{depth:0,height:.68611,italic:.06979,skew:0},97:{depth:0,height:.44444,
-italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.44444,italic:0,skew:0},100:{depth:0,height:.69444,italic:0,skew:0},101:{depth:0,height:.44444,italic:0,skew:0},102:{depth:.19444,height:.69444,italic:.11042,skew:0},103:{depth:.19444,height:.44444,italic:.03704,skew:0},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.69326,italic:0,skew:0},106:{depth:.19444,height:.69326,italic:.0622,skew:0},107:{depth:0,height:.69444,italic:.01852,skew:0},108:{depth:0,height:.69444,italic:.0088,skew:0},109:{depth:0,height:.44444,italic:0,skew:0},110:{depth:0,height:.44444,italic:0,skew:0},111:{depth:0,height:.44444,italic:0,skew:0},112:{depth:.19444,height:.44444,italic:0,skew:0},113:{depth:.19444,height:.44444,italic:.03704,skew:0},114:{depth:0,height:.44444,italic:.03194,skew:0},115:{depth:0,height:.44444,italic:0,skew:0},116:{depth:0,height:.63492,italic:0,skew:0},117:{depth:0,height:.44444,italic:0,skew:0},118:{depth:0,height:.44444,italic:.03704,skew:0},119:{depth:0,height:.44444,italic:.02778,skew:0},120:{depth:0,height:.44444,italic:0,skew:0},121:{depth:.19444,height:.44444,italic:.03704,skew:0},122:{depth:0,height:.44444,italic:.04213,skew:0},915:{depth:0,height:.68611,italic:.15972,skew:0},916:{depth:0,height:.68611,italic:0,skew:0},920:{depth:0,height:.68611,italic:.03194,skew:0},923:{depth:0,height:.68611,italic:0,skew:0},926:{depth:0,height:.68611,italic:.07458,skew:0},928:{depth:0,height:.68611,italic:.08229,skew:0},931:{depth:0,height:.68611,italic:.05451,skew:0},933:{depth:0,height:.68611,italic:.15972,skew:0},934:{depth:0,height:.68611,italic:0,skew:0},936:{depth:0,height:.68611,italic:.11653,skew:0},937:{depth:0,height:.68611,italic:.04835,skew:0},945:{depth:0,height:.44444,italic:0,skew:0},946:{depth:.19444,height:.69444,italic:.03403,skew:0},947:{depth:.19444,height:.44444,italic:.06389,skew:0},948:{depth:0,height:.69444,italic:.03819,skew:0},949:{depth:0,height:.44444,italic:0,skew:0},950:{depth:.19444,height:.69444,italic:.06215,skew:0},951:{depth:.19444,height:.44444,italic:.03704,skew:0},952:{depth:0,height:.69444,italic:.03194,skew:0},953:{depth:0,height:.44444,italic:0,skew:0},954:{depth:0,height:.44444,italic:0,skew:0},955:{depth:0,height:.69444,italic:0,skew:0},956:{depth:.19444,height:.44444,italic:0,skew:0},957:{depth:0,height:.44444,italic:.06898,skew:0},958:{depth:.19444,height:.69444,italic:.03021,skew:0},959:{depth:0,height:.44444,italic:0,skew:0},960:{depth:0,height:.44444,italic:.03704,skew:0},961:{depth:.19444,height:.44444,italic:0,skew:0},962:{depth:.09722,height:.44444,italic:.07917,skew:0},963:{depth:0,height:.44444,italic:.03704,skew:0},964:{depth:0,height:.44444,italic:.13472,skew:0},965:{depth:0,height:.44444,italic:.03704,skew:0},966:{depth:.19444,height:.44444,italic:0,skew:0},967:{depth:.19444,height:.44444,italic:0,skew:0},968:{depth:.19444,height:.69444,italic:.03704,skew:0},969:{depth:0,height:.44444,italic:.03704,skew:0},977:{depth:0,height:.69444,italic:0,skew:0},981:{depth:.19444,height:.69444,italic:0,skew:0},982:{depth:0,height:.44444,italic:.03194,skew:0},1009:{depth:.19444,height:.44444,italic:0,skew:0},1013:{depth:0,height:.44444,italic:0,skew:0}},"Math-Italic":{47:{depth:.19444,height:.69444,italic:0,skew:0},65:{depth:0,height:.68333,italic:0,skew:.13889},66:{depth:0,height:.68333,italic:.05017,skew:.08334},67:{depth:0,height:.68333,italic:.07153,skew:.08334},68:{depth:0,height:.68333,italic:.02778,skew:.05556},69:{depth:0,height:.68333,italic:.05764,skew:.08334},70:{depth:0,height:.68333,italic:.13889,skew:.08334},71:{depth:0,height:.68333,italic:0,skew:.08334},72:{depth:0,height:.68333,italic:.08125,skew:.05556},73:{depth:0,height:.68333,italic:.07847,skew:.11111},74:{depth:0,height:.68333,italic:.09618,skew:.16667},75:{depth:0,height:.68333,italic:.07153,skew:.05556},76:{depth:0,height:.68333,italic:0,skew:.02778},77:{depth:0,height:.68333,italic:.10903,skew:.08334},78:{depth:0,height:.68333,italic:.10903,skew:.08334},79:{depth:0,height:.68333,italic:.02778,skew:.08334},80:{depth:0,height:.68333,italic:.13889,skew:.08334},81:{depth:.19444,height:.68333,italic:0,skew:.08334},82:{depth:0,height:.68333,italic:.00773,skew:.08334},83:{depth:0,height:.68333,italic:.05764,skew:.08334},84:{depth:0,height:.68333,italic:.13889,skew:.08334},85:{depth:0,height:.68333,italic:.10903,skew:.02778},86:{depth:0,height:.68333,italic:.22222,skew:0},87:{depth:0,height:.68333,italic:.13889,skew:0},88:{depth:0,height:.68333,italic:.07847,skew:.08334},89:{depth:0,height:.68333,italic:.22222,skew:0},90:{depth:0,height:.68333,italic:.07153,skew:.08334},97:{depth:0,height:.43056,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.43056,italic:0,skew:.05556},100:{depth:0,height:.69444,italic:0,skew:.16667},101:{depth:0,height:.43056,italic:0,skew:.05556},102:{depth:.19444,height:.69444,italic:.10764,skew:.16667},103:{depth:.19444,height:.43056,italic:.03588,skew:.02778},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.65952,italic:0,skew:0},106:{depth:.19444,height:.65952,italic:.05724,skew:0},107:{depth:0,height:.69444,italic:.03148,skew:0},108:{depth:0,height:.69444,italic:.01968,skew:.08334},109:{depth:0,height:.43056,italic:0,skew:0},110:{depth:0,height:.43056,italic:0,skew:0},111:{depth:0,height:.43056,italic:0,skew:.05556},112:{depth:.19444,height:.43056,italic:0,skew:.08334},113:{depth:.19444,height:.43056,italic:.03588,skew:.08334},114:{depth:0,height:.43056,italic:.02778,skew:.05556},115:{depth:0,height:.43056,italic:0,skew:.05556},116:{depth:0,height:.61508,italic:0,skew:.08334},117:{depth:0,height:.43056,italic:0,skew:.02778},118:{depth:0,height:.43056,italic:.03588,skew:.02778},119:{depth:0,height:.43056,italic:.02691,skew:.08334},120:{depth:0,height:.43056,italic:0,skew:.02778},121:{depth:.19444,height:.43056,italic:.03588,skew:.05556},122:{depth:0,height:.43056,italic:.04398,skew:.05556},915:{depth:0,height:.68333,italic:.13889,skew:.08334},916:{depth:0,height:.68333,italic:0,skew:.16667},920:{depth:0,height:.68333,italic:.02778,skew:.08334},923:{depth:0,height:.68333,italic:0,skew:.16667},926:{depth:0,height:.68333,italic:.07569,skew:.08334},928:{depth:0,height:.68333,italic:.08125,skew:.05556},931:{depth:0,height:.68333,italic:.05764,skew:.08334},933:{depth:0,height:.68333,italic:.13889,skew:.05556},934:{depth:0,height:.68333,italic:0,skew:.08334},936:{depth:0,height:.68333,italic:.11,skew:.05556},937:{depth:0,height:.68333,italic:.05017,skew:.08334},945:{depth:0,height:.43056,italic:.0037,skew:.02778},946:{depth:.19444,height:.69444,italic:.05278,skew:.08334},947:{depth:.19444,height:.43056,italic:.05556,skew:0},948:{depth:0,height:.69444,italic:.03785,skew:.05556},949:{depth:0,height:.43056,italic:0,skew:.08334},950:{depth:.19444,height:.69444,italic:.07378,skew:.08334},951:{depth:.19444,height:.43056,italic:.03588,skew:.05556},952:{depth:0,height:.69444,italic:.02778,skew:.08334},953:{depth:0,height:.43056,italic:0,skew:.05556},954:{depth:0,height:.43056,italic:0,skew:0},955:{depth:0,height:.69444,italic:0,skew:0},956:{depth:.19444,height:.43056,italic:0,skew:.02778},957:{depth:0,height:.43056,italic:.06366,skew:.02778},958:{depth:.19444,height:.69444,italic:.04601,skew:.11111},959:{depth:0,height:.43056,italic:0,skew:.05556},960:{depth:0,height:.43056,italic:.03588,skew:0},961:{depth:.19444,height:.43056,italic:0,skew:.08334},962:{depth:.09722,height:.43056,italic:.07986,skew:.08334},963:{depth:0,height:.43056,italic:.03588,skew:0},964:{depth:0,height:.43056,italic:.1132,skew:.02778},965:{depth:0,height:.43056,italic:.03588,skew:.02778},966:{depth:.19444,height:.43056,italic:0,skew:.08334},967:{depth:.19444,height:.43056,italic:0,skew:.05556},968:{depth:.19444,height:.69444,italic:.03588,skew:.11111},969:{depth:0,height:.43056,italic:.03588,skew:0},977:{depth:0,height:.69444,italic:0,skew:.08334},981:{depth:.19444,height:.69444,italic:0,skew:.08334},982:{depth:0,height:.43056,italic:.02778,skew:0},1009:{depth:.19444,height:.43056,italic:0,skew:.08334},1013:{depth:0,height:.43056,italic:0,skew:.05556}},"Math-Regular":{65:{depth:0,height:.68333,italic:0,skew:.13889},66:{depth:0,height:.68333,italic:.05017,skew:.08334},67:{depth:0,height:.68333,italic:.07153,skew:.08334},68:{depth:0,height:.68333,italic:.02778,skew:.05556},69:{depth:0,height:.68333,italic:.05764,skew:.08334},70:{depth:0,height:.68333,italic:.13889,skew:.08334},71:{depth:0,height:.68333,italic:0,skew:.08334},72:{depth:0,height:.68333,italic:.08125,skew:.05556},73:{depth:0,height:.68333,italic:.07847,skew:.11111},74:{depth:0,height:.68333,italic:.09618,skew:.16667},75:{depth:0,height:.68333,italic:.07153,skew:.05556},76:{depth:0,height:.68333,italic:0,skew:.02778},77:{depth:0,height:.68333,italic:.10903,skew:.08334},78:{depth:0,height:.68333,italic:.10903,skew:.08334},79:{depth:0,height:.68333,italic:.02778,skew:.08334},80:{depth:0,height:.68333,italic:.13889,skew:.08334},81:{depth:.19444,height:.68333,italic:0,skew:.08334},82:{depth:0,height:.68333,italic:.00773,skew:.08334},83:{depth:0,height:.68333,italic:.05764,skew:.08334},84:{depth:0,height:.68333,italic:.13889,skew:.08334},85:{depth:0,height:.68333,italic:.10903,skew:.02778},86:{depth:0,height:.68333,italic:.22222,skew:0},87:{depth:0,height:.68333,italic:.13889,skew:0},88:{depth:0,height:.68333,italic:.07847,skew:.08334},89:{depth:0,height:.68333,italic:.22222,skew:0},90:{depth:0,height:.68333,italic:.07153,skew:.08334},97:{depth:0,height:.43056,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.43056,italic:0,skew:.05556},100:{depth:0,height:.69444,italic:0,skew:.16667},101:{depth:0,height:.43056,italic:0,skew:.05556},102:{depth:.19444,height:.69444,italic:.10764,skew:.16667},103:{depth:.19444,height:.43056,italic:.03588,skew:.02778},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.65952,italic:0,skew:0},106:{depth:.19444,height:.65952,italic:.05724,skew:0},107:{depth:0,height:.69444,italic:.03148,skew:0},108:{depth:0,height:.69444,italic:.01968,skew:.08334},109:{depth:0,height:.43056,italic:0,skew:0},110:{depth:0,height:.43056,italic:0,skew:0},111:{depth:0,height:.43056,italic:0,skew:.05556},112:{depth:.19444,height:.43056,italic:0,skew:.08334},113:{depth:.19444,height:.43056,italic:.03588,skew:.08334},114:{depth:0,height:.43056,italic:.02778,skew:.05556},115:{depth:0,height:.43056,italic:0,skew:.05556},116:{depth:0,height:.61508,italic:0,skew:.08334},117:{depth:0,height:.43056,italic:0,skew:.02778},118:{depth:0,height:.43056,italic:.03588,skew:.02778},119:{depth:0,height:.43056,italic:.02691,skew:.08334},120:{depth:0,height:.43056,italic:0,skew:.02778},121:{depth:.19444,height:.43056,italic:.03588,skew:.05556},122:{depth:0,height:.43056,italic:.04398,skew:.05556},915:{depth:0,height:.68333,italic:.13889,skew:.08334},916:{depth:0,height:.68333,italic:0,skew:.16667},920:{depth:0,height:.68333,italic:.02778,skew:.08334},923:{depth:0,height:.68333,italic:0,skew:.16667},926:{depth:0,height:.68333,italic:.07569,skew:.08334},928:{depth:0,height:.68333,italic:.08125,skew:.05556},931:{depth:0,height:.68333,italic:.05764,skew:.08334},933:{depth:0,height:.68333,italic:.13889,skew:.05556},934:{depth:0,height:.68333,italic:0,skew:.08334},936:{depth:0,height:.68333,italic:.11,skew:.05556},937:{depth:0,height:.68333,italic:.05017,skew:.08334},945:{depth:0,height:.43056,italic:.0037,skew:.02778},946:{depth:.19444,height:.69444,italic:.05278,skew:.08334},947:{depth:.19444,height:.43056,italic:.05556,skew:0},948:{depth:0,height:.69444,italic:.03785,skew:.05556},949:{depth:0,height:.43056,italic:0,skew:.08334},950:{depth:.19444,height:.69444,italic:.07378,skew:.08334},951:{depth:.19444,height:.43056,italic:.03588,skew:.05556},952:{depth:0,height:.69444,italic:.02778,skew:.08334},953:{depth:0,height:.43056,italic:0,skew:.05556},954:{depth:0,height:.43056,italic:0,skew:0},955:{depth:0,height:.69444,italic:0,skew:0},956:{depth:.19444,height:.43056,italic:0,skew:.02778},957:{depth:0,height:.43056,italic:.06366,skew:.02778},958:{depth:.19444,height:.69444,italic:.04601,skew:.11111},959:{depth:0,height:.43056,italic:0,skew:.05556},960:{depth:0,height:.43056,italic:.03588,skew:0},961:{depth:.19444,height:.43056,italic:0,skew:.08334},962:{depth:.09722,height:.43056,italic:.07986,skew:.08334},963:{depth:0,height:.43056,italic:.03588,skew:0},964:{depth:0,height:.43056,italic:.1132,skew:.02778},965:{depth:0,height:.43056,italic:.03588,skew:.02778},966:{depth:.19444,height:.43056,italic:0,skew:.08334},967:{depth:.19444,height:.43056,italic:0,skew:.05556},968:{depth:.19444,height:.69444,italic:.03588,skew:.11111},969:{depth:0,height:.43056,italic:.03588,skew:0},977:{depth:0,height:.69444,italic:0,skew:.08334},981:{depth:.19444,height:.69444,italic:0,skew:.08334},982:{depth:0,height:.43056,italic:.02778,skew:0},1009:{depth:.19444,height:.43056,italic:0,skew:.08334},1013:{depth:0,height:.43056,italic:0,skew:.05556}},"SansSerif-Regular":{33:{depth:0,height:.69444,italic:0,skew:0},34:{depth:0,height:.69444,italic:0,skew:0},35:{depth:.19444,height:.69444,italic:0,skew:0},36:{depth:.05556,height:.75,italic:0,skew:0},37:{depth:.05556,height:.75,italic:0,skew:0},38:{depth:0,height:.69444,italic:0,skew:0},39:{depth:0,height:.69444,italic:0,skew:0},40:{depth:.25,height:.75,italic:0,skew:0},41:{depth:.25,height:.75,italic:0,skew:0},42:{depth:0,height:.75,italic:0,skew:0},43:{depth:.08333,height:.58333,italic:0,skew:0},44:{depth:.125,height:.08333,italic:0,skew:0},45:{depth:0,height:.44444,italic:0,skew:0},46:{depth:0,height:.08333,italic:0,skew:0},47:{depth:.25,height:.75,italic:0,skew:0},48:{depth:0,height:.65556,italic:0,skew:0},49:{depth:0,height:.65556,italic:0,skew:0},50:{depth:0,height:.65556,italic:0,skew:0},51:{depth:0,height:.65556,italic:0,skew:0},52:{depth:0,height:.65556,italic:0,skew:0},53:{depth:0,height:.65556,italic:0,skew:0},54:{depth:0,height:.65556,italic:0,skew:0},55:{depth:0,height:.65556,italic:0,skew:0},56:{depth:0,height:.65556,italic:0,skew:0},57:{depth:0,height:.65556,italic:0,skew:0},58:{depth:0,height:.44444,italic:0,skew:0},59:{depth:.125,height:.44444,italic:0,skew:0},61:{depth:-.13,height:.37,italic:0,skew:0},63:{depth:0,height:.69444,italic:0,skew:0},64:{depth:0,height:.69444,italic:0,skew:0},65:{depth:0,height:.69444,italic:0,skew:0},66:{depth:0,height:.69444,italic:0,skew:0},67:{depth:0,height:.69444,italic:0,skew:0},68:{depth:0,height:.69444,italic:0,skew:0},69:{depth:0,height:.69444,italic:0,skew:0},70:{depth:0,height:.69444,italic:0,skew:0},71:{depth:0,height:.69444,italic:0,skew:0},72:{depth:0,height:.69444,italic:0,skew:0},73:{depth:0,height:.69444,italic:0,skew:0},74:{depth:0,height:.69444,italic:0,skew:0},75:{depth:0,height:.69444,italic:0,skew:0},76:{depth:0,height:.69444,italic:0,skew:0},77:{depth:0,height:.69444,italic:0,skew:0},78:{depth:0,height:.69444,italic:0,skew:0},79:{depth:0,height:.69444,italic:0,skew:0},80:{depth:0,height:.69444,italic:0,skew:0},81:{depth:.125,height:.69444,italic:0,skew:0},82:{depth:0,height:.69444,italic:0,skew:0},83:{depth:0,height:.69444,italic:0,skew:0},84:{depth:0,height:.69444,italic:0,skew:0},85:{depth:0,height:.69444,italic:0,skew:0},86:{depth:0,height:.69444,italic:.01389,skew:0},87:{depth:0,height:.69444,italic:.01389,skew:0},88:{depth:0,height:.69444,italic:0,skew:0},89:{depth:0,height:.69444,italic:.025,skew:0},90:{depth:0,height:.69444,italic:0,skew:0},91:{depth:.25,height:.75,italic:0,skew:0},93:{depth:.25,height:.75,italic:0,skew:0},94:{depth:0,height:.69444,italic:0,skew:0},95:{depth:.35,height:.09444,italic:.02778,skew:0},97:{depth:0,height:.44444,italic:0,skew:0},98:{depth:0,height:.69444,italic:0,skew:0},99:{depth:0,height:.44444,italic:0,skew:0},100:{depth:0,height:.69444,italic:0,skew:0},101:{depth:0,height:.44444,italic:0,skew:0},102:{depth:0,height:.69444,italic:.06944,skew:0},103:{depth:.19444,height:.44444,italic:.01389,skew:0},104:{depth:0,height:.69444,italic:0,skew:0},105:{depth:0,height:.67937,italic:0,skew:0},106:{depth:.19444,height:.67937,italic:0,skew:0},107:{depth:0,height:.69444,italic:0,skew:0},108:{depth:0,height:.69444,italic:0,skew:0},109:{depth:0,height:.44444,italic:0,skew:0},110:{depth:0,height:.44444,italic:0,skew:0},111:{depth:0,height:.44444,italic:0,skew:0},112:{depth:.19444,height:.44444,italic:0,skew:0},113:{depth:.19444,height:.44444,italic:0,skew:0},114:{depth:0,height:.44444,italic:.01389,skew:0},115:{depth:0,height:.44444,italic:0,skew:0},116:{depth:0,height:.57143,italic:0,skew:0},117:{depth:0,height:.44444,italic:0,skew:0},118:{depth:0,height:.44444,italic:.01389,skew:0},119:{depth:0,height:.44444,italic:.01389,skew:0},120:{depth:0,height:.44444,italic:0,skew:0},121:{depth:.19444,height:.44444,italic:.01389,skew:0},122:{depth:0,height:.44444,italic:0,skew:0},126:{depth:.35,height:.32659,italic:0,skew:0},305:{depth:0,height:.44444,italic:0,skew:0},567:{depth:.19444,height:.44444,italic:0,skew:0},768:{depth:0,height:.69444,italic:0,skew:0},769:{depth:0,height:.69444,italic:0,skew:0},770:{depth:0,height:.69444,italic:0,skew:0},771:{depth:0,height:.67659,italic:0,skew:0},772:{depth:0,height:.60889,italic:0,skew:0},774:{depth:0,height:.69444,italic:0,skew:0},775:{depth:0,height:.67937,italic:0,skew:0},776:{depth:0,height:.67937,italic:0,skew:0},778:{depth:0,height:.69444,italic:0,skew:0},779:{depth:0,height:.69444,italic:0,skew:0},780:{depth:0,height:.63194,italic:0,skew:0},915:{depth:0,height:.69444,italic:0,skew:0},916:{depth:0,height:.69444,italic:0,skew:0},920:{depth:0,height:.69444,italic:0,skew:0},923:{depth:0,height:.69444,italic:0,skew:0},926:{depth:0,height:.69444,italic:0,skew:0},928:{depth:0,height:.69444,italic:0,skew:0},931:{depth:0,height:.69444,italic:0,skew:0},933:{depth:0,height:.69444,italic:0,skew:0},934:{depth:0,height:.69444,italic:0,skew:0},936:{depth:0,height:.69444,italic:0,skew:0},937:{depth:0,height:.69444,italic:0,skew:0},8211:{depth:0,height:.44444,italic:.02778,skew:0},8212:{depth:0,height:.44444,italic:.02778,skew:0},8216:{depth:0,height:.69444,italic:0,skew:0},8217:{depth:0,height:.69444,italic:0,skew:0},8220:{depth:0,height:.69444,italic:0,skew:0},8221:{depth:0,height:.69444,italic:0,skew:0}},"Script-Regular":{65:{depth:0,height:.7,italic:.22925,skew:0},66:{depth:0,height:.7,italic:.04087,skew:0},67:{depth:0,height:.7,italic:.1689,skew:0},68:{depth:0,height:.7,italic:.09371,skew:0},69:{depth:0,height:.7,italic:.18583,skew:0},70:{depth:0,height:.7,italic:.13634,skew:0},71:{depth:0,height:.7,italic:.17322,skew:0},72:{depth:0,height:.7,italic:.29694,skew:0},73:{depth:0,height:.7,italic:.19189,skew:0},74:{depth:.27778,height:.7,italic:.19189,skew:0},75:{depth:0,height:.7,italic:.31259,skew:0},76:{depth:0,height:.7,italic:.19189,skew:0},77:{depth:0,height:.7,italic:.15981,skew:0},78:{depth:0,height:.7,italic:.3525,skew:0},79:{depth:0,height:.7,italic:.08078,skew:0},80:{depth:0,height:.7,italic:.08078,skew:0},81:{depth:0,height:.7,italic:.03305,skew:0},82:{depth:0,height:.7,italic:.06259,skew:0},83:{depth:0,height:.7,italic:.19189,skew:0},84:{depth:0,height:.7,italic:.29087,skew:0},85:{depth:0,height:.7,italic:.25815,skew:0},86:{depth:0,height:.7,italic:.27523,skew:0},87:{depth:0,height:.7,italic:.27523,skew:0},88:{depth:0,height:.7,italic:.26006,skew:0},89:{depth:0,height:.7,italic:.2939,skew:0},90:{depth:0,height:.7,italic:.24037,skew:0}},"Size1-Regular":{40:{depth:.35001,height:.85,italic:0,skew:0},41:{depth:.35001,height:.85,italic:0,skew:0},47:{depth:.35001,height:.85,italic:0,skew:0},91:{depth:.35001,height:.85,italic:0,skew:0},92:{depth:.35001,height:.85,italic:0,skew:0},93:{depth:.35001,height:.85,italic:0,skew:0},123:{depth:.35001,height:.85,italic:0,skew:0},125:{depth:.35001,height:.85,italic:0,skew:0},710:{depth:0,height:.72222,italic:0,skew:0},732:{depth:0,height:.72222,italic:0,skew:0},770:{depth:0,height:.72222,italic:0,skew:0},771:{depth:0,height:.72222,italic:0,skew:0},8214:{depth:-99e-5,height:.601,italic:0,skew:0},8593:{depth:1e-5,height:.6,italic:0,skew:0},8595:{depth:1e-5,height:.6,italic:0,skew:0},8657:{depth:1e-5,height:.6,italic:0,skew:0},8659:{depth:1e-5,height:.6,italic:0,skew:0},8719:{depth:.25001,height:.75,italic:0,skew:0},8720:{depth:.25001,height:.75,italic:0,skew:0},8721:{depth:.25001,height:.75,italic:0,skew:0},8730:{depth:.35001,height:.85,italic:0,skew:0},8739:{depth:-.00599,height:.606,italic:0,skew:0},8741:{depth:-.00599,height:.606,italic:0,skew:0},8747:{depth:.30612,height:.805,italic:.19445,skew:0},8748:{depth:.306,height:.805,italic:.19445,skew:0},8749:{depth:.306,height:.805,italic:.19445,skew:0},8750:{depth:.30612,height:.805,italic:.19445,skew:0},8896:{depth:.25001,height:.75,italic:0,skew:0},8897:{depth:.25001,height:.75,italic:0,skew:0},8898:{depth:.25001,height:.75,italic:0,skew:0},8899:{depth:.25001,height:.75,italic:0,skew:0},8968:{depth:.35001,height:.85,italic:0,skew:0},8969:{depth:.35001,height:.85,italic:0,skew:0},8970:{depth:.35001,height:.85,italic:0,skew:0},8971:{depth:.35001,height:.85,italic:0,skew:0},9168:{depth:-99e-5,height:.601,italic:0,skew:0},10216:{depth:.35001,height:.85,italic:0,skew:0},10217:{depth:.35001,height:.85,italic:0,skew:0},10752:{depth:.25001,height:.75,italic:0,skew:0},10753:{depth:.25001,height:.75,italic:0,skew:0},10754:{depth:.25001,height:.75,italic:0,skew:0},10756:{depth:.25001,height:.75,italic:0,skew:0},10758:{depth:.25001,height:.75,italic:0,skew:0}},"Size2-Regular":{40:{depth:.65002,height:1.15,italic:0,skew:0},41:{depth:.65002,height:1.15,italic:0,skew:0},47:{depth:.65002,height:1.15,italic:0,skew:0},91:{depth:.65002,height:1.15,italic:0,skew:0},92:{depth:.65002,height:1.15,italic:0,skew:0},93:{depth:.65002,height:1.15,italic:0,skew:0},123:{depth:.65002,height:1.15,italic:0,skew:0},125:{depth:.65002,height:1.15,italic:0,skew:0},710:{depth:0,height:.75,italic:0,skew:0},732:{depth:0,height:.75,italic:0,skew:0},770:{depth:0,height:.75,italic:0,skew:0},771:{depth:0,height:.75,italic:0,skew:0},8719:{depth:.55001,height:1.05,italic:0,skew:0},8720:{depth:.55001,height:1.05,italic:0,skew:0},8721:{depth:.55001,height:1.05,italic:0,skew:0},8730:{depth:.65002,height:1.15,italic:0,skew:0},8747:{depth:.86225,height:1.36,italic:.44445,skew:0},8748:{depth:.862,height:1.36,italic:.44445,skew:0},8749:{depth:.862,height:1.36,italic:.44445,skew:0},8750:{depth:.86225,height:1.36,italic:.44445,skew:0},8896:{depth:.55001,height:1.05,italic:0,skew:0},8897:{depth:.55001,height:1.05,italic:0,skew:0},8898:{depth:.55001,height:1.05,italic:0,skew:0},8899:{depth:.55001,height:1.05,italic:0,skew:0},8968:{depth:.65002,height:1.15,italic:0,skew:0},8969:{depth:.65002,height:1.15,italic:0,skew:0},8970:{depth:.65002,height:1.15,italic:0,skew:0},8971:{depth:.65002,height:1.15,italic:0,skew:0},10216:{depth:.65002,height:1.15,italic:0,skew:0},10217:{depth:.65002,height:1.15,italic:0,skew:0},10752:{depth:.55001,height:1.05,italic:0,skew:0},10753:{depth:.55001,height:1.05,italic:0,skew:0},10754:{depth:.55001,height:1.05,italic:0,skew:0},10756:{depth:.55001,height:1.05,italic:0,skew:0},10758:{depth:.55001,height:1.05,italic:0,skew:0}},"Size3-Regular":{40:{depth:.95003,height:1.45,italic:0,skew:0},41:{depth:.95003,height:1.45,italic:0,skew:0},47:{depth:.95003,height:1.45,italic:0,skew:0},91:{depth:.95003,height:1.45,italic:0,skew:0},92:{depth:.95003,height:1.45,italic:0,skew:0},93:{depth:.95003,height:1.45,italic:0,skew:0},123:{depth:.95003,height:1.45,italic:0,skew:0},125:{depth:.95003,height:1.45,italic:0,skew:0},710:{depth:0,height:.75,italic:0,skew:0},732:{depth:0,height:.75,italic:0,skew:0},770:{depth:0,height:.75,italic:0,skew:0},771:{depth:0,height:.75,italic:0,skew:0},8730:{depth:.95003,height:1.45,italic:0,skew:0},8968:{depth:.95003,height:1.45,italic:0,skew:0},8969:{depth:.95003,height:1.45,italic:0,skew:0},8970:{depth:.95003,height:1.45,italic:0,skew:0},8971:{depth:.95003,height:1.45,italic:0,skew:0},10216:{depth:.95003,height:1.45,italic:0,skew:0},10217:{depth:.95003,height:1.45,italic:0,skew:0}},"Size4-Regular":{40:{depth:1.25003,height:1.75,italic:0,skew:0},41:{depth:1.25003,height:1.75,italic:0,skew:0},47:{depth:1.25003,height:1.75,italic:0,skew:0},91:{depth:1.25003,height:1.75,italic:0,skew:0},92:{depth:1.25003,height:1.75,italic:0,skew:0},93:{depth:1.25003,height:1.75,italic:0,skew:0},123:{depth:1.25003,height:1.75,italic:0,skew:0},125:{depth:1.25003,height:1.75,italic:0,skew:0},710:{depth:0,height:.825,italic:0,skew:0},732:{depth:0,height:.825,italic:0,skew:0},770:{depth:0,height:.825,italic:0,skew:0},771:{depth:0,height:.825,italic:0,skew:0},8730:{depth:1.25003,height:1.75,italic:0,skew:0},8968:{depth:1.25003,height:1.75,italic:0,skew:0},8969:{depth:1.25003,height:1.75,italic:0,skew:0},8970:{depth:1.25003,height:1.75,italic:0,skew:0},8971:{depth:1.25003,height:1.75,italic:0,skew:0},9115:{depth:.64502,height:1.155,italic:0,skew:0},9116:{depth:1e-5,height:.6,italic:0,skew:0},9117:{depth:.64502,height:1.155,italic:0,skew:0},9118:{depth:.64502,height:1.155,italic:0,skew:0},9119:{depth:1e-5,height:.6,italic:0,skew:0},9120:{depth:.64502,height:1.155,italic:0,skew:0},9121:{depth:.64502,height:1.155,italic:0,skew:0},9122:{depth:-99e-5,height:.601,italic:0,skew:0},9123:{depth:.64502,height:1.155,italic:0,skew:0},9124:{depth:.64502,height:1.155,italic:0,skew:0},9125:{depth:-99e-5,height:.601,italic:0,skew:0},9126:{depth:.64502,height:1.155,italic:0,skew:0},9127:{depth:1e-5,height:.9,italic:0,skew:0},9128:{depth:.65002,height:1.15,italic:0,skew:0},9129:{depth:.90001,height:0,italic:0,skew:0},9130:{depth:0,height:.3,italic:0,skew:0},9131:{depth:1e-5,height:.9,italic:0,skew:0},9132:{depth:.65002,height:1.15,italic:0,skew:0},9133:{depth:.90001,height:0,italic:0,skew:0},9143:{depth:.88502,height:.915,italic:0,skew:0},10216:{depth:1.25003,height:1.75,italic:0,skew:0},10217:{depth:1.25003,height:1.75,italic:0,skew:0},57344:{depth:-.00499,height:.605,italic:0,skew:0},57345:{depth:-.00499,height:.605,italic:0,skew:0},57680:{depth:0,height:.12,italic:0,skew:0},57681:{depth:0,height:.12,italic:0,skew:0},57682:{depth:0,height:.12,italic:0,skew:0},57683:{depth:0,height:.12,italic:0,skew:0}},"Typewriter-Regular":{33:{depth:0,height:.61111,italic:0,skew:0},34:{depth:0,height:.61111,italic:0,skew:0},35:{depth:0,height:.61111,italic:0,skew:0},36:{depth:.08333,height:.69444,italic:0,skew:0},37:{depth:.08333,height:.69444,italic:0,skew:0},38:{depth:0,height:.61111,italic:0,skew:0},39:{depth:0,height:.61111,italic:0,skew:0},40:{depth:.08333,height:.69444,italic:0,skew:0},41:{depth:.08333,height:.69444,italic:0,skew:0},42:{depth:0,height:.52083,italic:0,skew:0},43:{depth:-.08056,height:.53055,italic:0,skew:0},44:{depth:.13889,height:.125,italic:0,skew:0},45:{depth:-.08056,height:.53055,italic:0,skew:0},46:{depth:0,height:.125,italic:0,skew:0},47:{depth:.08333,height:.69444,italic:0,skew:0},48:{depth:0,height:.61111,italic:0,skew:0},49:{depth:0,height:.61111,italic:0,skew:0},50:{depth:0,height:.61111,italic:0,skew:0},51:{depth:0,height:.61111,italic:0,skew:0},52:{depth:0,height:.61111,italic:0,skew:0},53:{depth:0,height:.61111,italic:0,skew:0},54:{depth:0,height:.61111,italic:0,skew:0},55:{depth:0,height:.61111,italic:0,skew:0},56:{depth:0,height:.61111,italic:0,skew:0},57:{depth:0,height:.61111,italic:0,skew:0},58:{depth:0,height:.43056,italic:0,skew:0},59:{depth:.13889,height:.43056,italic:0,skew:0},60:{depth:-.05556,height:.55556,italic:0,skew:0},61:{depth:-.19549,height:.41562,italic:0,skew:0},62:{depth:-.05556,height:.55556,italic:0,skew:0},63:{depth:0,height:.61111,italic:0,skew:0},64:{depth:0,height:.61111,italic:0,skew:0},65:{depth:0,height:.61111,italic:0,skew:0},66:{depth:0,height:.61111,italic:0,skew:0},67:{depth:0,height:.61111,italic:0,skew:0},68:{depth:0,height:.61111,italic:0,skew:0},69:{depth:0,height:.61111,italic:0,skew:0},70:{depth:0,height:.61111,italic:0,skew:0},71:{depth:0,height:.61111,italic:0,skew:0},72:{depth:0,height:.61111,italic:0,skew:0},73:{depth:0,height:.61111,italic:0,skew:0},74:{depth:0,height:.61111,italic:0,skew:0},75:{depth:0,height:.61111,italic:0,skew:0},76:{depth:0,height:.61111,italic:0,skew:0},77:{depth:0,height:.61111,italic:0,skew:0},78:{depth:0,height:.61111,italic:0,skew:0},79:{depth:0,height:.61111,italic:0,skew:0},80:{depth:0,height:.61111,italic:0,skew:0},81:{depth:.13889,height:.61111,italic:0,skew:0},82:{depth:0,height:.61111,italic:0,skew:0},83:{depth:0,height:.61111,italic:0,skew:0},84:{depth:0,height:.61111,italic:0,skew:0},85:{depth:0,height:.61111,italic:0,skew:0},86:{depth:0,height:.61111,italic:0,skew:0},87:{depth:0,height:.61111,italic:0,skew:0},88:{depth:0,height:.61111,italic:0,skew:0},89:{depth:0,height:.61111,italic:0,skew:0},90:{depth:0,height:.61111,italic:0,skew:0},91:{depth:.08333,height:.69444,italic:0,skew:0},92:{depth:.08333,height:.69444,italic:0,skew:0},93:{depth:.08333,height:.69444,italic:0,skew:0},94:{depth:0,height:.61111,italic:0,skew:0},95:{depth:.09514,height:0,italic:0,skew:0},96:{depth:0,height:.61111,italic:0,skew:0},97:{depth:0,height:.43056,italic:0,skew:0},98:{depth:0,height:.61111,italic:0,skew:0},99:{depth:0,height:.43056,italic:0,skew:0},100:{depth:0,height:.61111,italic:0,skew:0},101:{depth:0,height:.43056,italic:0,skew:0},102:{depth:0,height:.61111,italic:0,skew:0},103:{depth:.22222,height:.43056,italic:0,skew:0},104:{depth:0,height:.61111,italic:0,skew:0},105:{depth:0,height:.61111,italic:0,skew:0},106:{depth:.22222,height:.61111,italic:0,skew:0},107:{depth:0,height:.61111,italic:0,skew:0},108:{depth:0,height:.61111,italic:0,skew:0},109:{depth:0,height:.43056,italic:0,skew:0},110:{depth:0,height:.43056,italic:0,skew:0},111:{depth:0,height:.43056,italic:0,skew:0},112:{depth:.22222,height:.43056,italic:0,skew:0},113:{depth:.22222,height:.43056,italic:0,skew:0},114:{depth:0,height:.43056,italic:0,skew:0},115:{depth:0,height:.43056,italic:0,skew:0},116:{depth:0,height:.55358,italic:0,skew:0},117:{depth:0,height:.43056,italic:0,skew:0},118:{depth:0,height:.43056,italic:0,skew:0},119:{depth:0,height:.43056,italic:0,skew:0},120:{depth:0,height:.43056,italic:0,skew:0},121:{depth:.22222,height:.43056,italic:0,skew:0},122:{depth:0,height:.43056,italic:0,skew:0},123:{depth:.08333,height:.69444,italic:0,skew:0},124:{depth:.08333,height:.69444,italic:0,skew:0},125:{depth:.08333,height:.69444,italic:0,skew:0},126:{depth:0,height:.61111,italic:0,skew:0},127:{depth:0,height:.61111,italic:0,skew:0},305:{depth:0,height:.43056,italic:0,skew:0},567:{depth:.22222,height:.43056,italic:0,skew:0},768:{depth:0,height:.61111,italic:0,skew:0},769:{depth:0,height:.61111,italic:0,skew:0},770:{depth:0,height:.61111,italic:0,skew:0},771:{depth:0,height:.61111,italic:0,skew:0},772:{depth:0,height:.56555,italic:0,skew:0},774:{depth:0,height:.61111,italic:0,skew:0},776:{depth:0,height:.61111,italic:0,skew:0},778:{depth:0,height:.61111,italic:0,skew:0},780:{depth:0,height:.56597,italic:0,skew:0},915:{depth:0,height:.61111,italic:0,skew:0},916:{depth:0,height:.61111,italic:0,skew:0},920:{depth:0,height:.61111,italic:0,skew:0},923:{depth:0,height:.61111,italic:0,skew:0},926:{depth:0,height:.61111,italic:0,skew:0},928:{depth:0,height:.61111,italic:0,skew:0},931:{depth:0,height:.61111,italic:0,skew:0},933:{depth:0,height:.61111,italic:0,skew:0},934:{depth:0,height:.61111,italic:0,skew:0},936:{depth:0,height:.61111,italic:0,skew:0},937:{depth:0,height:.61111,italic:0,skew:0},2018:{depth:0,height:.61111,italic:0,skew:0},2019:{depth:0,height:.61111,italic:0,skew:0},8242:{depth:0,height:.61111,italic:0,skew:0}}}},{}],20:[function(e,t,i){for(var h=e("./utils"),a=e("./ParseError"),s={"\\sqrt":{numArgs:1,numOptionalArgs:1,handler:function(e,t,i,h){return{type:"sqrt",body:i,index:t}}},"\\text":{numArgs:1,argTypes:["text"],greediness:2,handler:function(e,t){var i;return i="ordgroup"===t.type?t.value:[t],{type:"text",body:i}}},"\\color":{numArgs:2,allowedInText:!0,greediness:3,argTypes:["color","original"],handler:function(e,t,i){var h;return h="ordgroup"===i.type?i.value:[i],{type:"color",color:t.value,value:h}}},"\\overline":{numArgs:1,handler:function(e,t){return{type:"overline",body:t}}},"\\rule":{numArgs:2,numOptionalArgs:1,
-argTypes:["size","size","size"],handler:function(e,t,i,h){return{type:"rule",shift:t&&t.value,width:i.value,height:h.value}}},"\\KaTeX":{numArgs:0,handler:function(e){return{type:"katex"}}},"\\phantom":{numArgs:1,handler:function(e,t){var i;return i="ordgroup"===t.type?t.value:[t],{type:"phantom",value:i}}}},r={"\\bigl":{type:"open",size:1},"\\Bigl":{type:"open",size:2},"\\biggl":{type:"open",size:3},"\\Biggl":{type:"open",size:4},"\\bigr":{type:"close",size:1},"\\Bigr":{type:"close",size:2},"\\biggr":{type:"close",size:3},"\\Biggr":{type:"close",size:4},"\\bigm":{type:"rel",size:1},"\\Bigm":{type:"rel",size:2},"\\biggm":{type:"rel",size:3},"\\Biggm":{type:"rel",size:4},"\\big":{type:"textord",size:1},"\\Big":{type:"textord",size:2},"\\bigg":{type:"textord",size:3},"\\Bigg":{type:"textord",size:4}},l=["(",")","[","\\lbrack","]","\\rbrack","\\{","\\lbrace","\\}","\\rbrace","\\lfloor","\\rfloor","\\lceil","\\rceil","<",">","\\langle","\\rangle","\\lvert","\\rvert","\\lVert","\\rVert","\\lgroup","\\rgroup","\\lmoustache","\\rmoustache","/","\\backslash","|","\\vert","\\|","\\Vert","\\uparrow","\\Uparrow","\\downarrow","\\Downarrow","\\updownarrow","\\Updownarrow","."],n={"\\Bbb":"\\mathbb","\\bold":"\\mathbf","\\frak":"\\mathfrak"},p=([{funcs:["\\blue","\\orange","\\pink","\\red","\\green","\\gray","\\purple","\\blueA","\\blueB","\\blueC","\\blueD","\\blueE","\\tealA","\\tealB","\\tealC","\\tealD","\\tealE","\\greenA","\\greenB","\\greenC","\\greenD","\\greenE","\\goldA","\\goldB","\\goldC","\\goldD","\\goldE","\\redA","\\redB","\\redC","\\redD","\\redE","\\maroonA","\\maroonB","\\maroonC","\\maroonD","\\maroonE","\\purpleA","\\purpleB","\\purpleC","\\purpleD","\\purpleE","\\mintA","\\mintB","\\mintC","\\grayA","\\grayB","\\grayC","\\grayD","\\grayE","\\grayF","\\grayG","\\grayH","\\grayI","\\kaBlue","\\kaGreen"],data:{numArgs:1,allowedInText:!0,greediness:3,handler:function(e,t){var i;return i="ordgroup"===t.type?t.value:[t],{type:"color",color:"katex-"+e.slice(1),value:i}}}},{funcs:["\\arcsin","\\arccos","\\arctan","\\arg","\\cos","\\cosh","\\cot","\\coth","\\csc","\\deg","\\dim","\\exp","\\hom","\\ker","\\lg","\\ln","\\log","\\sec","\\sin","\\sinh","\\tan","\\tanh"],data:{numArgs:0,handler:function(e){return{type:"op",limits:!1,symbol:!1,body:e}}}},{funcs:["\\det","\\gcd","\\inf","\\lim","\\liminf","\\limsup","\\max","\\min","\\Pr","\\sup"],data:{numArgs:0,handler:function(e){return{type:"op",limits:!0,symbol:!1,body:e}}}},{funcs:["\\int","\\iint","\\iiint","\\oint"],data:{numArgs:0,handler:function(e){return{type:"op",limits:!1,symbol:!0,body:e}}}},{funcs:["\\coprod","\\bigvee","\\bigwedge","\\biguplus","\\bigcap","\\bigcup","\\intop","\\prod","\\sum","\\bigotimes","\\bigoplus","\\bigodot","\\bigsqcup","\\smallint"],data:{numArgs:0,handler:function(e){return{type:"op",limits:!0,symbol:!0,body:e}}}},{funcs:["\\dfrac","\\frac","\\tfrac","\\dbinom","\\binom","\\tbinom"],data:{numArgs:2,greediness:2,handler:function(e,t,i){var h,a=null,s=null,r="auto";switch(e){case"\\dfrac":case"\\frac":case"\\tfrac":h=!0;break;case"\\dbinom":case"\\binom":case"\\tbinom":h=!1,a="(",s=")";break;default:throw new Error("Unrecognized genfrac command")}switch(e){case"\\dfrac":case"\\dbinom":r="display";break;case"\\tfrac":case"\\tbinom":r="text"}return{type:"genfrac",numer:t,denom:i,hasBarLine:h,leftDelim:a,rightDelim:s,size:r}}}},{funcs:["\\llap","\\rlap"],data:{numArgs:1,allowedInText:!0,handler:function(e,t){return{type:e.slice(1),body:t}}}},{funcs:["\\bigl","\\Bigl","\\biggl","\\Biggl","\\bigr","\\Bigr","\\biggr","\\Biggr","\\bigm","\\Bigm","\\biggm","\\Biggm","\\big","\\Big","\\bigg","\\Bigg","\\left","\\right"],data:{numArgs:1,handler:function(e,t,i){if(!h.contains(l,t.value))throw new a("Invalid delimiter: '"+t.value+"' after '"+e+"'",this.lexer,i[1]);return"\\left"===e||"\\right"===e?{type:"leftright",value:t.value}:{type:"delimsizing",size:r[e].size,delimType:r[e].type,value:t.value}}}},{funcs:["\\tiny","\\scriptsize","\\footnotesize","\\small","\\normalsize","\\large","\\Large","\\LARGE","\\huge","\\Huge"],data:{numArgs:0}},{funcs:["\\displaystyle","\\textstyle","\\scriptstyle","\\scriptscriptstyle"],data:{numArgs:0}},{funcs:["\\mathrm","\\mathit","\\mathbf","\\mathbb","\\mathcal","\\mathfrak","\\mathscr","\\mathsf","\\mathtt","\\Bbb","\\bold","\\frak"],data:{numArgs:1,handler:function(e,t){return e in n&&(e=n[e]),{type:"font",font:e.slice(1),body:t}}}},{funcs:["\\acute","\\grave","\\ddot","\\tilde","\\bar","\\breve","\\check","\\hat","\\vec","\\dot"],data:{numArgs:1,handler:function(e,t){return{type:"accent",accent:e,base:t}}}},{funcs:["\\over","\\choose"],data:{numArgs:0,handler:function(e){var t;switch(e){case"\\over":t="\\frac";break;case"\\choose":t="\\binom";break;default:throw new Error("Unrecognized infix genfrac command")}return{type:"infix",replaceWith:t}}}},{funcs:["\\\\","\\cr"],data:{numArgs:0,numOptionalArgs:1,argTypes:["size"],handler:function(e,t){return{type:"cr",size:t}}}},{funcs:["\\begin","\\end"],data:{numArgs:1,argTypes:["text"],handler:function(e,t,i){if("ordgroup"!==t.type)throw new a("Invalid environment name",this.lexer,i[1]);for(var h="",s=0;s<t.value.length;++s)h+=t.value[s].value;return{type:"environment",name:h,namepos:i[1]}}}}]),o=function(e,t){for(var i=0;i<e.length;i++)s[e[i]]=t},c=0;c<p.length;c++)o(p[c].funcs,p[c].data);for(var g in s)if(s.hasOwnProperty(g)){var d=s[g];s[g]={numArgs:d.numArgs,argTypes:d.argTypes,greediness:void 0===d.greediness?1:d.greediness,allowedInText:d.allowedInText?d.allowedInText:!1,numOptionalArgs:void 0===d.numOptionalArgs?0:d.numOptionalArgs,handler:d.handler}}t.exports={funcs:s}},{"./ParseError":7,"./utils":25}],21:[function(e,t,i){function h(e,t){this.type=e,this.attributes={},this.children=t||[]}function a(e){this.text=e}var s=e("./utils");h.prototype.setAttribute=function(e,t){this.attributes[e]=t},h.prototype.toNode=function(){var e=document.createElementNS("http://www.w3.org/1998/Math/MathML",this.type);for(var t in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,t)&&e.setAttribute(t,this.attributes[t]);for(var i=0;i<this.children.length;i++)e.appendChild(this.children[i].toNode());return e},h.prototype.toMarkup=function(){var e="<"+this.type;for(var t in this.attributes)Object.prototype.hasOwnProperty.call(this.attributes,t)&&(e+=" "+t+'="',e+=s.escape(this.attributes[t]),e+='"');e+=">";for(var i=0;i<this.children.length;i++)e+=this.children[i].toMarkup();return e+="</"+this.type+">"},a.prototype.toNode=function(){return document.createTextNode(this.text)},a.prototype.toMarkup=function(){return s.escape(this.text)},t.exports={MathNode:h,TextNode:a}},{"./utils":25}],22:[function(e,t,i){function h(e,t,i){this.type=e,this.value=t,this.mode=i}function a(e,t,i){this.result=e,this.position=t}t.exports={ParseNode:h,ParseResult:a}},{}],23:[function(e,t,i){var h=e("./Parser"),a=function(e,t){var i=new h(e,t);return i.parse()};t.exports=a},{"./Parser":8}],24:[function(e,t,i){for(var h={math:{"\\equiv":{font:"main",group:"rel",replace:"≡"},"\\prec":{font:"main",group:"rel",replace:"≺"},"\\succ":{font:"main",group:"rel",replace:"≻"},"\\sim":{font:"main",group:"rel",replace:"∼"},"\\perp":{font:"main",group:"rel",replace:"⊥"},"\\preceq":{font:"main",group:"rel",replace:"⪯"},"\\succeq":{font:"main",group:"rel",replace:"⪰"},"\\simeq":{font:"main",group:"rel",replace:"≃"},"\\mid":{font:"main",group:"rel",replace:"∣"},"\\ll":{font:"main",group:"rel",replace:"≪"},"\\gg":{font:"main",group:"rel",replace:"≫"},"\\asymp":{font:"main",group:"rel",replace:"≍"},"\\parallel":{font:"main",group:"rel",replace:"∥"},"\\bowtie":{font:"main",group:"rel",replace:"⋈"},"\\smile":{font:"main",group:"rel",replace:"⌣"},"\\sqsubseteq":{font:"main",group:"rel",replace:"⊑"},"\\sqsupseteq":{font:"main",group:"rel",replace:"⊒"},"\\doteq":{font:"main",group:"rel",replace:"≐"},"\\frown":{font:"main",group:"rel",replace:"⌢"},"\\ni":{font:"main",group:"rel",replace:"∋"},"\\propto":{font:"main",group:"rel",replace:"∝"},"\\vdash":{font:"main",group:"rel",replace:"⊢"},"\\dashv":{font:"main",group:"rel",replace:"⊣"},"\\owns":{font:"main",group:"rel",replace:"∋"},"\\ldotp":{font:"main",group:"punct",replace:"."},"\\cdotp":{font:"main",group:"punct",replace:"⋅"},"\\#":{font:"main",group:"textord",replace:"#"},"\\&":{font:"main",group:"textord",replace:"&"},"\\aleph":{font:"main",group:"textord",replace:"ℵ"},"\\forall":{font:"main",group:"textord",replace:"∀"},"\\hbar":{font:"main",group:"textord",replace:"ℏ"},"\\exists":{font:"main",group:"textord",replace:"∃"},"\\nabla":{font:"main",group:"textord",replace:"∇"},"\\flat":{font:"main",group:"textord",replace:"♭"},"\\ell":{font:"main",group:"textord",replace:"ℓ"},"\\natural":{font:"main",group:"textord",replace:"♮"},"\\clubsuit":{font:"main",group:"textord",replace:"♣"},"\\wp":{font:"main",group:"textord",replace:"℘"},"\\sharp":{font:"main",group:"textord",replace:"♯"},"\\diamondsuit":{font:"main",group:"textord",replace:"♢"},"\\Re":{font:"main",group:"textord",replace:"ℜ"},"\\heartsuit":{font:"main",group:"textord",replace:"♡"},"\\Im":{font:"main",group:"textord",replace:"ℑ"},"\\spadesuit":{font:"main",group:"textord",replace:"♠"},"\\dag":{font:"main",group:"textord",replace:"†"},"\\ddag":{font:"main",group:"textord",replace:"‡"},"\\rmoustache":{font:"main",group:"close",replace:"⎱"},"\\lmoustache":{font:"main",group:"open",replace:"⎰"},"\\rgroup":{font:"main",group:"close",replace:"⟯"},"\\lgroup":{font:"main",group:"open",replace:"⟮"},"\\mp":{font:"main",group:"bin",replace:"∓"},"\\ominus":{font:"main",group:"bin",replace:"⊖"},"\\uplus":{font:"main",group:"bin",replace:"⊎"},"\\sqcap":{font:"main",group:"bin",replace:"⊓"},"\\ast":{font:"main",group:"bin",replace:"∗"},"\\sqcup":{font:"main",group:"bin",replace:"⊔"},"\\bigcirc":{font:"main",group:"bin",replace:"◯"},"\\bullet":{font:"main",group:"bin",replace:"∙"},"\\ddagger":{font:"main",group:"bin",replace:"‡"},"\\wr":{font:"main",group:"bin",replace:"≀"},"\\amalg":{font:"main",group:"bin",replace:"⨿"},"\\longleftarrow":{font:"main",group:"rel",replace:"⟵"},"\\Leftarrow":{font:"main",group:"rel",replace:"⇐"},"\\Longleftarrow":{font:"main",group:"rel",replace:"⟸"},"\\longrightarrow":{font:"main",group:"rel",replace:"⟶"},"\\Rightarrow":{font:"main",group:"rel",replace:"⇒"},"\\Longrightarrow":{font:"main",group:"rel",replace:"⟹"},"\\leftrightarrow":{font:"main",group:"rel",replace:"↔"},"\\longleftrightarrow":{font:"main",group:"rel",replace:"⟷"},"\\Leftrightarrow":{font:"main",group:"rel",replace:"⇔"},"\\Longleftrightarrow":{font:"main",group:"rel",replace:"⟺"},"\\mapsto":{font:"main",group:"rel",replace:"↦"},"\\longmapsto":{font:"main",group:"rel",replace:"⟼"},"\\nearrow":{font:"main",group:"rel",replace:"↗"},"\\hookleftarrow":{font:"main",group:"rel",replace:"↩"},"\\hookrightarrow":{font:"main",group:"rel",replace:"↪"},"\\searrow":{font:"main",group:"rel",replace:"↘"},"\\leftharpoonup":{font:"main",group:"rel",replace:"↼"},"\\rightharpoonup":{font:"main",group:"rel",replace:"⇀"},"\\swarrow":{font:"main",group:"rel",replace:"↙"},"\\leftharpoondown":{font:"main",group:"rel",replace:"↽"},"\\rightharpoondown":{font:"main",group:"rel",replace:"⇁"},"\\nwarrow":{font:"main",group:"rel",replace:"↖"},"\\rightleftharpoons":{font:"main",group:"rel",replace:"⇌"},"\\nless":{font:"ams",group:"rel",replace:"≮"},"\\nleqslant":{font:"ams",group:"rel",replace:""},"\\nleqq":{font:"ams",group:"rel",replace:""},"\\lneq":{font:"ams",group:"rel",replace:"⪇"},"\\lneqq":{font:"ams",group:"rel",replace:"≨"},"\\lvertneqq":{font:"ams",group:"rel",replace:""},"\\lnsim":{font:"ams",group:"rel",replace:"⋦"},"\\lnapprox":{font:"ams",group:"rel",replace:"⪉"},"\\nprec":{font:"ams",group:"rel",replace:"⊀"},"\\npreceq":{font:"ams",group:"rel",replace:"⋠"},"\\precnsim":{font:"ams",group:"rel",replace:"⋨"},"\\precnapprox":{font:"ams",group:"rel",replace:"⪹"},"\\nsim":{font:"ams",group:"rel",replace:"≁"},"\\nshortmid":{font:"ams",group:"rel",replace:""},"\\nmid":{font:"ams",group:"rel",replace:"∤"},"\\nvdash":{font:"ams",group:"rel",replace:"⊬"},"\\nvDash":{font:"ams",group:"rel",replace:"⊭"},"\\ntriangleleft":{font:"ams",group:"rel",replace:"⋪"},"\\ntrianglelefteq":{font:"ams",group:"rel",replace:"⋬"},"\\subsetneq":{font:"ams",group:"rel",replace:"⊊"},"\\varsubsetneq":{font:"ams",group:"rel",replace:""},"\\subsetneqq":{font:"ams",group:"rel",replace:"⫋"},"\\varsubsetneqq":{font:"ams",group:"rel",replace:""},"\\ngtr":{font:"ams",group:"rel",replace:"≯"},"\\ngeqslant":{font:"ams",group:"rel",replace:""},"\\ngeqq":{font:"ams",group:"rel",replace:""},"\\gneq":{font:"ams",group:"rel",replace:"⪈"},"\\gneqq":{font:"ams",group:"rel",replace:"≩"},"\\gvertneqq":{font:"ams",group:"rel",replace:""},"\\gnsim":{font:"ams",group:"rel",replace:"⋧"},"\\gnapprox":{font:"ams",group:"rel",replace:"⪊"},"\\nsucc":{font:"ams",group:"rel",replace:"⊁"},"\\nsucceq":{font:"ams",group:"rel",replace:"⋡"},"\\succnsim":{font:"ams",group:"rel",replace:"⋩"},"\\succnapprox":{font:"ams",group:"rel",replace:"⪺"},"\\ncong":{font:"ams",group:"rel",replace:"≆"},"\\nshortparallel":{font:"ams",group:"rel",replace:""},"\\nparallel":{font:"ams",group:"rel",replace:"∦"},"\\nVDash":{font:"ams",group:"rel",replace:"⊯"},"\\ntriangleright":{font:"ams",group:"rel",replace:"⋫"},"\\ntrianglerighteq":{font:"ams",group:"rel",replace:"⋭"},"\\nsupseteqq":{font:"ams",group:"rel",replace:""},"\\supsetneq":{font:"ams",group:"rel",replace:"⊋"},"\\varsupsetneq":{font:"ams",group:"rel",replace:""},"\\supsetneqq":{font:"ams",group:"rel",replace:"⫌"},"\\varsupsetneqq":{font:"ams",group:"rel",replace:""},"\\nVdash":{font:"ams",group:"rel",replace:"⊮"},"\\precneqq":{font:"ams",group:"rel",replace:"⪵"},"\\succneqq":{font:"ams",group:"rel",replace:"⪶"},"\\nsubseteqq":{font:"ams",group:"rel",replace:""},"\\unlhd":{font:"ams",group:"bin",replace:"⊴"},"\\unrhd":{font:"ams",group:"bin",replace:"⊵"},"\\nleftarrow":{font:"ams",group:"rel",replace:"↚"},"\\nrightarrow":{font:"ams",group:"rel",replace:"↛"},"\\nLeftarrow":{font:"ams",group:"rel",replace:"⇍"},"\\nRightarrow":{font:"ams",group:"rel",replace:"⇏"},"\\nleftrightarrow":{font:"ams",group:"rel",replace:"↮"},"\\nLeftrightarrow":{font:"ams",group:"rel",replace:"⇎"},"\\vartriangle":{font:"ams",group:"rel",replace:"△"},"\\hslash":{font:"ams",group:"textord",replace:"ℏ"},"\\triangledown":{font:"ams",group:"textord",replace:"▽"},"\\lozenge":{font:"ams",group:"textord",replace:"◊"},"\\circledS":{font:"ams",group:"textord",replace:"Ⓢ"},"\\circledR":{font:"ams",group:"textord",replace:"®"},"\\measuredangle":{font:"ams",group:"textord",replace:"∡"},"\\nexists":{font:"ams",group:"textord",replace:"∄"},"\\mho":{font:"ams",group:"textord",replace:"℧"},"\\Finv":{font:"ams",group:"textord",replace:"Ⅎ"},"\\Game":{font:"ams",group:"textord",replace:"⅁"},"\\Bbbk":{font:"ams",group:"textord",replace:"k"},"\\backprime":{font:"ams",group:"textord",replace:"‵"},"\\blacktriangle":{font:"ams",group:"textord",replace:"▲"},"\\blacktriangledown":{font:"ams",group:"textord",replace:"▼"},"\\blacksquare":{font:"ams",group:"textord",replace:"■"},"\\blacklozenge":{font:"ams",group:"textord",replace:"⧫"},"\\bigstar":{font:"ams",group:"textord",replace:"★"},"\\sphericalangle":{font:"ams",group:"textord",replace:"∢"},"\\complement":{font:"ams",group:"textord",replace:"∁"},"\\eth":{font:"ams",group:"textord",replace:"ð"},"\\diagup":{font:"ams",group:"textord",replace:"╱"},"\\diagdown":{font:"ams",group:"textord",replace:"╲"},"\\square":{font:"ams",group:"textord",replace:"□"},"\\Box":{font:"ams",group:"textord",replace:"□"},"\\Diamond":{font:"ams",group:"textord",replace:"◊"},"\\yen":{font:"ams",group:"textord",replace:"¥"},"\\checkmark":{font:"ams",group:"textord",replace:"✓"},"\\beth":{font:"ams",group:"textord",replace:"ℶ"},"\\daleth":{font:"ams",group:"textord",replace:"ℸ"},"\\gimel":{font:"ams",group:"textord",replace:"ℷ"},"\\digamma":{font:"ams",group:"textord",replace:"ϝ"},"\\varkappa":{font:"ams",group:"textord",replace:"ϰ"},"\\ulcorner":{font:"ams",group:"open",replace:"┌"},"\\urcorner":{font:"ams",group:"close",replace:"┐"},"\\llcorner":{font:"ams",group:"open",replace:"└"},"\\lrcorner":{font:"ams",group:"close",replace:"┘"},"\\leqq":{font:"ams",group:"rel",replace:"≦"},"\\leqslant":{font:"ams",group:"rel",replace:"⩽"},"\\eqslantless":{font:"ams",group:"rel",replace:"⪕"},"\\lesssim":{font:"ams",group:"rel",replace:"≲"},"\\lessapprox":{font:"ams",group:"rel",replace:"⪅"},"\\approxeq":{font:"ams",group:"rel",replace:"≊"},"\\lessdot":{font:"ams",group:"bin",replace:"⋖"},"\\lll":{font:"ams",group:"rel",replace:"⋘"},"\\lessgtr":{font:"ams",group:"rel",replace:"≶"},"\\lesseqgtr":{font:"ams",group:"rel",replace:"⋚"},"\\lesseqqgtr":{font:"ams",group:"rel",replace:"⪋"},"\\doteqdot":{font:"ams",group:"rel",replace:"≑"},"\\risingdotseq":{font:"ams",group:"rel",replace:"≓"},"\\fallingdotseq":{font:"ams",group:"rel",replace:"≒"},"\\backsim":{font:"ams",group:"rel",replace:"∽"},"\\backsimeq":{font:"ams",group:"rel",replace:"⋍"},"\\subseteqq":{font:"ams",group:"rel",replace:"⫅"},"\\Subset":{font:"ams",group:"rel",replace:"⋐"},"\\sqsubset":{font:"ams",group:"rel",replace:"⊏"},"\\preccurlyeq":{font:"ams",group:"rel",replace:"≼"},"\\curlyeqprec":{font:"ams",group:"rel",replace:"⋞"},"\\precsim":{font:"ams",group:"rel",replace:"≾"},"\\precapprox":{font:"ams",group:"rel",replace:"⪷"},"\\vartriangleleft":{font:"ams",group:"rel",replace:"⊲"},"\\trianglelefteq":{font:"ams",group:"rel",replace:"⊴"},"\\vDash":{font:"ams",group:"rel",replace:"⊨"},"\\Vvdash":{font:"ams",group:"rel",replace:"⊪"},"\\smallsmile":{font:"ams",group:"rel",replace:"⌣"},"\\smallfrown":{font:"ams",group:"rel",replace:"⌢"},"\\bumpeq":{font:"ams",group:"rel",replace:"≏"},"\\Bumpeq":{font:"ams",group:"rel",replace:"≎"},"\\geqq":{font:"ams",group:"rel",replace:"≧"},"\\geqslant":{font:"ams",group:"rel",replace:"⩾"},"\\eqslantgtr":{font:"ams",group:"rel",replace:"⪖"},"\\gtrsim":{font:"ams",group:"rel",replace:"≳"},"\\gtrapprox":{font:"ams",group:"rel",replace:"⪆"},"\\gtrdot":{font:"ams",group:"bin",replace:"⋗"},"\\ggg":{font:"ams",group:"rel",replace:"⋙"},"\\gtrless":{font:"ams",group:"rel",replace:"≷"},"\\gtreqless":{font:"ams",group:"rel",replace:"⋛"},"\\gtreqqless":{font:"ams",group:"rel",replace:"⪌"},"\\eqcirc":{font:"ams",group:"rel",replace:"≖"},"\\circeq":{font:"ams",group:"rel",replace:"≗"},"\\triangleq":{font:"ams",group:"rel",replace:"≜"},"\\thicksim":{font:"ams",group:"rel",replace:"∼"},"\\thickapprox":{font:"ams",group:"rel",replace:"≈"},"\\supseteqq":{font:"ams",group:"rel",replace:"⫆"},"\\Supset":{font:"ams",group:"rel",replace:"⋑"},"\\sqsupset":{font:"ams",group:"rel",replace:"⊐"},"\\succcurlyeq":{font:"ams",group:"rel",replace:"≽"},"\\curlyeqsucc":{font:"ams",group:"rel",replace:"⋟"},"\\succsim":{font:"ams",group:"rel",replace:"≿"},"\\succapprox":{font:"ams",group:"rel",replace:"⪸"},"\\vartriangleright":{font:"ams",group:"rel",replace:"⊳"},"\\trianglerighteq":{font:"ams",group:"rel",replace:"⊵"},"\\Vdash":{font:"ams",group:"rel",replace:"⊩"},"\\shortmid":{font:"ams",group:"rel",replace:"∣"},"\\shortparallel":{font:"ams",group:"rel",replace:"∥"},"\\between":{font:"ams",group:"rel",replace:"≬"},"\\pitchfork":{font:"ams",group:"rel",replace:"⋔"},"\\varpropto":{font:"ams",group:"rel",replace:"∝"},"\\blacktriangleleft":{font:"ams",group:"rel",replace:"◀"},"\\therefore":{font:"ams",group:"rel",replace:"∴"},"\\backepsilon":{font:"ams",group:"rel",replace:"∍"},"\\blacktriangleright":{font:"ams",group:"rel",replace:"▶"},"\\because":{font:"ams",group:"rel",replace:"∵"},"\\llless":{font:"ams",group:"rel",replace:"⋘"},"\\gggtr":{font:"ams",group:"rel",replace:"⋙"},"\\lhd":{font:"ams",group:"bin",replace:"⊲"},"\\rhd":{font:"ams",group:"bin",replace:"⊳"},"\\eqsim":{font:"ams",group:"rel",replace:"≂"},"\\Join":{font:"main",group:"rel",replace:"⋈"},"\\Doteq":{font:"ams",group:"rel",replace:"≑"},"\\dotplus":{font:"ams",group:"bin",replace:"∔"},"\\smallsetminus":{font:"ams",group:"bin",replace:"∖"},"\\Cap":{font:"ams",group:"bin",replace:"⋒"},"\\Cup":{font:"ams",group:"bin",replace:"⋓"},"\\doublebarwedge":{font:"ams",group:"bin",replace:"⩞"},"\\boxminus":{font:"ams",group:"bin",replace:"⊟"},"\\boxplus":{font:"ams",group:"bin",replace:"⊞"},"\\divideontimes":{font:"ams",group:"bin",replace:"⋇"},"\\ltimes":{font:"ams",group:"bin",replace:"⋉"},"\\rtimes":{font:"ams",group:"bin",replace:"⋊"},"\\leftthreetimes":{font:"ams",group:"bin",replace:"⋋"},"\\rightthreetimes":{font:"ams",group:"bin",replace:"⋌"},"\\curlywedge":{font:"ams",group:"bin",replace:"⋏"},"\\curlyvee":{font:"ams",group:"bin",replace:"⋎"},"\\circleddash":{font:"ams",group:"bin",replace:"⊝"},"\\circledast":{font:"ams",group:"bin",replace:"⊛"},"\\centerdot":{font:"ams",group:"bin",replace:"⋅"},"\\intercal":{font:"ams",group:"bin",replace:"⊺"},"\\doublecap":{font:"ams",group:"bin",replace:"⋒"},"\\doublecup":{font:"ams",group:"bin",replace:"⋓"},"\\boxtimes":{font:"ams",group:"bin",replace:"⊠"},"\\dashrightarrow":{font:"ams",group:"rel",replace:"⇢"},"\\dashleftarrow":{font:"ams",group:"rel",replace:"⇠"},"\\leftleftarrows":{font:"ams",group:"rel",replace:"⇇"},"\\leftrightarrows":{font:"ams",group:"rel",replace:"⇆"},"\\Lleftarrow":{font:"ams",group:"rel",replace:"⇚"},"\\twoheadleftarrow":{font:"ams",group:"rel",replace:"↞"},"\\leftarrowtail":{font:"ams",group:"rel",replace:"↢"},"\\looparrowleft":{font:"ams",group:"rel",replace:"↫"},"\\leftrightharpoons":{font:"ams",group:"rel",replace:"⇋"},"\\curvearrowleft":{font:"ams",group:"rel",replace:"↶"},"\\circlearrowleft":{font:"ams",group:"rel",replace:"↺"},"\\Lsh":{font:"ams",group:"rel",replace:"↰"},"\\upuparrows":{font:"ams",group:"rel",replace:"⇈"},"\\upharpoonleft":{font:"ams",group:"rel",replace:"↿"},"\\downharpoonleft":{font:"ams",group:"rel",replace:"⇃"},"\\multimap":{font:"ams",group:"rel",replace:"⊸"},"\\leftrightsquigarrow":{font:"ams",group:"rel",replace:"↭"},"\\rightrightarrows":{font:"ams",group:"rel",replace:"⇉"},"\\rightleftarrows":{font:"ams",group:"rel",replace:"⇄"},"\\twoheadrightarrow":{font:"ams",group:"rel",replace:"↠"},"\\rightarrowtail":{font:"ams",group:"rel",replace:"↣"},"\\looparrowright":{font:"ams",group:"rel",replace:"↬"},"\\curvearrowright":{font:"ams",group:"rel",replace:"↷"},"\\circlearrowright":{font:"ams",group:"rel",replace:"↻"},"\\Rsh":{font:"ams",group:"rel",replace:"↱"},"\\downdownarrows":{font:"ams",group:"rel",replace:"⇊"},"\\upharpoonright":{font:"ams",group:"rel",replace:"↾"},"\\downharpoonright":{font:"ams",group:"rel",replace:"⇂"},"\\rightsquigarrow":{font:"ams",group:"rel",replace:"⇝"},"\\leadsto":{font:"ams",group:"rel",replace:"⇝"},"\\Rrightarrow":{font:"ams",group:"rel",replace:"⇛"},"\\restriction":{font:"ams",group:"rel",replace:"↾"},"`":{font:"main",group:"textord",replace:"‘"},"\\$":{font:"main",group:"textord",replace:"$"},"\\%":{font:"main",group:"textord",replace:"%"},"\\_":{font:"main",group:"textord",replace:"_"},"\\angle":{font:"main",group:"textord",replace:"∠"},"\\infty":{font:"main",group:"textord",replace:"∞"},"\\prime":{font:"main",group:"textord",replace:"′"},"\\triangle":{font:"main",group:"textord",replace:"△"},"\\Gamma":{font:"main",group:"textord",replace:"Γ"},"\\Delta":{font:"main",group:"textord",replace:"Δ"},"\\Theta":{font:"main",group:"textord",replace:"Θ"},"\\Lambda":{font:"main",group:"textord",replace:"Λ"},"\\Xi":{font:"main",group:"textord",replace:"Ξ"},"\\Pi":{font:"main",group:"textord",replace:"Π"},"\\Sigma":{font:"main",group:"textord",replace:"Σ"},"\\Upsilon":{font:"main",group:"textord",replace:"Υ"},"\\Phi":{font:"main",group:"textord",replace:"Φ"},"\\Psi":{font:"main",group:"textord",replace:"Ψ"},"\\Omega":{font:"main",group:"textord",replace:"Ω"},"\\neg":{font:"main",group:"textord",replace:"¬"},"\\lnot":{font:"main",group:"textord",replace:"¬"},"\\top":{font:"main",group:"textord",replace:"⊤"},"\\bot":{font:"main",group:"textord",replace:"⊥"},"\\emptyset":{font:"main",group:"textord",replace:"∅"},"\\varnothing":{font:"ams",group:"textord",replace:"∅"},"\\alpha":{font:"main",group:"mathord",replace:"α"},"\\beta":{font:"main",group:"mathord",replace:"β"},"\\gamma":{font:"main",group:"mathord",replace:"γ"},"\\delta":{font:"main",group:"mathord",replace:"δ"},"\\epsilon":{font:"main",group:"mathord",replace:"ϵ"},"\\zeta":{font:"main",group:"mathord",replace:"ζ"},"\\eta":{font:"main",group:"mathord",replace:"η"},"\\theta":{font:"main",group:"mathord",replace:"θ"},"\\iota":{font:"main",group:"mathord",replace:"ι"},"\\kappa":{font:"main",group:"mathord",replace:"κ"},"\\lambda":{font:"main",group:"mathord",replace:"λ"},"\\mu":{font:"main",group:"mathord",replace:"μ"},"\\nu":{font:"main",group:"mathord",replace:"ν"},"\\xi":{font:"main",group:"mathord",replace:"ξ"},"\\omicron":{font:"main",group:"mathord",replace:"o"},"\\pi":{font:"main",group:"mathord",replace:"π"},"\\rho":{font:"main",group:"mathord",replace:"ρ"},"\\sigma":{font:"main",group:"mathord",replace:"σ"},"\\tau":{font:"main",group:"mathord",replace:"τ"},"\\upsilon":{font:"main",group:"mathord",replace:"υ"},"\\phi":{font:"main",group:"mathord",replace:"ϕ"},"\\chi":{font:"main",group:"mathord",replace:"χ"},"\\psi":{font:"main",group:"mathord",replace:"ψ"},"\\omega":{font:"main",group:"mathord",replace:"ω"},"\\varepsilon":{font:"main",group:"mathord",replace:"ε"},"\\vartheta":{font:"main",group:"mathord",replace:"ϑ"},"\\varpi":{font:"main",group:"mathord",replace:"ϖ"},"\\varrho":{font:"main",group:"mathord",replace:"ϱ"},"\\varsigma":{font:"main",group:"mathord",replace:"ς"},"\\varphi":{font:"main",group:"mathord",replace:"φ"},"*":{font:"main",group:"bin",replace:"∗"},"+":{font:"main",group:"bin"},"-":{font:"main",group:"bin",replace:"−"},"\\cdot":{font:"main",group:"bin",replace:"⋅"},"\\circ":{font:"main",group:"bin",replace:"∘"},"\\div":{font:"main",group:"bin",replace:"÷"},"\\pm":{font:"main",group:"bin",replace:"±"},"\\times":{font:"main",group:"bin",replace:"×"},"\\cap":{font:"main",group:"bin",replace:"∩"},"\\cup":{font:"main",group:"bin",replace:"∪"},"\\setminus":{font:"main",group:"bin",replace:"∖"},"\\land":{font:"main",group:"bin",replace:"∧"},"\\lor":{font:"main",group:"bin",replace:"∨"},"\\wedge":{font:"main",group:"bin",replace:"∧"},"\\vee":{font:"main",group:"bin",replace:"∨"},"\\surd":{font:"main",group:"textord",replace:"√"},"(":{font:"main",group:"open"},"[":{font:"main",group:"open"},"\\langle":{font:"main",group:"open",replace:"⟨"},"\\lvert":{font:"main",group:"open",replace:"∣"},"\\lVert":{font:"main",group:"open",replace:"∥"},")":{font:"main",group:"close"},"]":{font:"main",group:"close"},"?":{font:"main",group:"close"},"!":{font:"main",group:"close"},"\\rangle":{font:"main",group:"close",replace:"⟩"},"\\rvert":{font:"main",group:"close",replace:"∣"},"\\rVert":{font:"main",group:"close",replace:"∥"},"=":{font:"main",group:"rel"},"<":{font:"main",group:"rel"},">":{font:"main",group:"rel"},":":{font:"main",group:"rel"},"\\approx":{font:"main",group:"rel",replace:"≈"},"\\cong":{font:"main",group:"rel",replace:"≅"},"\\ge":{font:"main",group:"rel",replace:"≥"},"\\geq":{font:"main",group:"rel",replace:"≥"},"\\gets":{font:"main",group:"rel",replace:"←"},"\\in":{font:"main",group:"rel",replace:"∈"},"\\notin":{font:"main",group:"rel",replace:"∉"},"\\subset":{font:"main",group:"rel",replace:"⊂"},"\\supset":{font:"main",group:"rel",replace:"⊃"},"\\subseteq":{font:"main",group:"rel",replace:"⊆"},"\\supseteq":{font:"main",group:"rel",replace:"⊇"},"\\nsubseteq":{font:"ams",group:"rel",replace:"⊈"},"\\nsupseteq":{font:"ams",group:"rel",replace:"⊉"},"\\models":{font:"main",group:"rel",replace:"⊨"},"\\leftarrow":{font:"main",group:"rel",replace:"←"},"\\le":{font:"main",group:"rel",replace:"≤"},"\\leq":{font:"main",group:"rel",replace:"≤"},"\\ne":{font:"main",group:"rel",replace:"≠"},"\\neq":{font:"main",group:"rel",replace:"≠"},"\\rightarrow":{font:"main",group:"rel",replace:"→"},"\\to":{font:"main",group:"rel",replace:"→"},"\\ngeq":{font:"ams",group:"rel",replace:"≱"},"\\nleq":{font:"ams",group:"rel",replace:"≰"},"\\!":{font:"main",group:"spacing"},"\\ ":{font:"main",group:"spacing",replace:" "},"~":{font:"main",group:"spacing",replace:" "},"\\,":{font:"main",group:"spacing"},"\\:":{font:"main",group:"spacing"},"\\;":{font:"main",group:"spacing"},"\\enspace":{font:"main",group:"spacing"},"\\qquad":{font:"main",group:"spacing"},"\\quad":{font:"main",group:"spacing"},"\\space":{font:"main",group:"spacing",replace:" "},",":{font:"main",group:"punct"},";":{font:"main",group:"punct"},"\\colon":{font:"main",group:"punct",replace:":"},"\\barwedge":{font:"ams",group:"bin",replace:"⊼"},"\\veebar":{font:"ams",group:"bin",replace:"⊻"},"\\odot":{font:"main",group:"bin",replace:"⊙"},"\\oplus":{font:"main",group:"bin",replace:"⊕"},"\\otimes":{font:"main",group:"bin",replace:"⊗"},"\\partial":{font:"main",group:"textord",replace:"∂"},"\\oslash":{font:"main",group:"bin",replace:"⊘"},"\\circledcirc":{font:"ams",group:"bin",replace:"⊚"},"\\boxdot":{font:"ams",group:"bin",replace:"⊡"},"\\bigtriangleup":{font:"main",group:"bin",replace:"△"},"\\bigtriangledown":{font:"main",group:"bin",replace:"▽"},"\\dagger":{font:"main",group:"bin",replace:"†"},"\\diamond":{font:"main",group:"bin",replace:"⋄"},"\\star":{font:"main",group:"bin",replace:"⋆"},"\\triangleleft":{font:"main",group:"bin",replace:"◃"},"\\triangleright":{font:"main",group:"bin",replace:"▹"},"\\{":{font:"main",group:"open",replace:"{"},"\\}":{font:"main",group:"close",replace:"}"},"\\lbrace":{font:"main",group:"open",replace:"{"},"\\rbrace":{font:"main",group:"close",replace:"}"},"\\lbrack":{font:"main",group:"open",replace:"["},"\\rbrack":{font:"main",group:"close",replace:"]"},"\\lfloor":{font:"main",group:"open",replace:"⌊"},"\\rfloor":{font:"main",group:"close",replace:"⌋"},"\\lceil":{font:"main",group:"open",replace:"⌈"},"\\rceil":{font:"main",group:"close",replace:"⌉"},"\\backslash":{font:"main",group:"textord",replace:"\\"},"|":{font:"main",group:"textord",replace:"∣"},"\\vert":{font:"main",group:"textord",replace:"∣"},"\\|":{font:"main",group:"textord",replace:"∥"},"\\Vert":{font:"main",group:"textord",replace:"∥"},"\\uparrow":{font:"main",group:"rel",replace:"↑"},"\\Uparrow":{font:"main",group:"rel",replace:"⇑"},"\\downarrow":{font:"main",group:"rel",replace:"↓"},"\\Downarrow":{font:"main",group:"rel",replace:"⇓"},"\\updownarrow":{font:"main",group:"rel",replace:"↕"},"\\Updownarrow":{font:"main",group:"rel",replace:"⇕"},"\\coprod":{font:"math",group:"op",replace:"∐"},"\\bigvee":{font:"math",group:"op",replace:"⋁"},"\\bigwedge":{font:"math",group:"op",replace:"⋀"},"\\biguplus":{font:"math",group:"op",replace:"⨄"},"\\bigcap":{font:"math",group:"op",replace:"⋂"},"\\bigcup":{font:"math",group:"op",replace:"⋃"},"\\int":{font:"math",group:"op",replace:"∫"},"\\intop":{font:"math",group:"op",replace:"∫"},"\\iint":{font:"math",group:"op",replace:"∬"},"\\iiint":{font:"math",group:"op",replace:"∭"},"\\prod":{font:"math",group:"op",replace:"∏"},"\\sum":{font:"math",group:"op",replace:"∑"},"\\bigotimes":{font:"math",group:"op",replace:"⨂"},"\\bigoplus":{font:"math",group:"op",replace:"⨁"},"\\bigodot":{font:"math",group:"op",replace:"⨀"},"\\oint":{font:"math",group:"op",replace:"∮"},"\\bigsqcup":{font:"math",group:"op",replace:"⨆"},"\\smallint":{font:"math",group:"op",replace:"∫"},"\\ldots":{font:"main",group:"inner",replace:"…"},"\\cdots":{font:"main",group:"inner",replace:"⋯"},"\\ddots":{font:"main",group:"inner",replace:"⋱"},"\\vdots":{font:"main",group:"textord",replace:"⋮"},"\\acute":{font:"main",group:"accent",replace:"´"},"\\grave":{font:"main",group:"accent",replace:"`"},"\\ddot":{font:"main",group:"accent",replace:"¨"},"\\tilde":{font:"main",group:"accent",replace:"~"},"\\bar":{font:"main",group:"accent",replace:"¯"},"\\breve":{font:"main",group:"accent",replace:"˘"},"\\check":{font:"main",group:"accent",replace:"ˇ"},"\\hat":{font:"main",group:"accent",replace:"^"},"\\vec":{font:"main",group:"accent",replace:"⃗"},"\\dot":{font:"main",group:"accent",replace:"˙"},"\\imath":{font:"main",group:"mathord",replace:"ı"},
-"\\jmath":{font:"main",group:"mathord",replace:"ȷ"}},text:{"\\ ":{font:"main",group:"spacing",replace:" "}," ":{font:"main",group:"spacing",replace:" "},"~":{font:"main",group:"spacing",replace:" "}}},a='0123456789/@."',s=0;s<a.length;s++){var r=a.charAt(s);h.math[r]={font:"main",group:"textord"}}for(var l="0123456789`!@*()-=+[]'\";:?/.,",s=0;s<l.length;s++){var r=l.charAt(s);h.text[r]={font:"main",group:"textord"}}for(var n="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",s=0;s<n.length;s++){var r=n.charAt(s);h.math[r]={font:"main",group:"mathord"},h.text[r]={font:"main",group:"textord"}}t.exports=h},{}],25:[function(e,t,i){function h(e){return d[e]}function a(e){return(""+e).replace(u,h)}function s(e){r(e,"")}var r,l=Array.prototype.indexOf,n=function(e,t){if(null==e)return-1;if(l&&e.indexOf===l)return e.indexOf(t);for(var i=0,h=e.length;h>i;i++)if(e[i]===t)return i;return-1},p=function(e,t){return-1!==n(e,t)},o=function(e,t){return void 0===e?t:e},c=/([A-Z])/g,g=function(e){return e.replace(c,"-$1").toLowerCase()},d={"&":"&amp;",">":"&gt;","<":"&lt;",'"':"&quot;","'":"&#x27;"},u=/[&><"']/g;if("undefined"!=typeof document){var k=document.createElement("span");r="textContent"in k?function(e,t){e.textContent=t}:function(e,t){e.innerText=t}}t.exports={contains:p,deflt:o,escape:a,hyphenate:g,indexOf:n,setTextContent:r,clearNode:s}},{}],26:[function(e,t,i){"use strict";function h(e){if(!e.__matchAtRelocatable){var t=e.source+"|()",i="g"+(e.ignoreCase?"i":"")+(e.multiline?"m":"")+(e.unicode?"u":"");e.__matchAtRelocatable=new RegExp(t,i)}return e.__matchAtRelocatable}function a(e,t,i){if(e.global||e.sticky)throw new Error("matchAt(...): Only non-global regexes are supported");var a=h(e);a.lastIndex=i;var s=a.exec(t);return null==s[s.length-1]?(s.length=s.length-1,s):null}t.exports=a},{}]},{},[2])(2)});
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-
-},{}],7:[function(require,module,exports){
+},{"highlight.js":18,"marked":189}],7:[function(require,module,exports){
 var markdown = require('bespoke-markdown');
 var yaml = require('js-yaml');
 var defaults = {
@@ -429,7 +429,7 @@ module.exports = function(config) {
   };
 };
 
-},{"bespoke-markdown":5,"js-yaml":156}],8:[function(require,module,exports){
+},{"bespoke-markdown":6,"js-yaml":159}],8:[function(require,module,exports){
 module.exports = function(options) {
   return function (deck) {
     var progressParent = document.createElement('div'),
@@ -597,6 +597,5749 @@ module.exports = {
 },{}],15:[function(require,module,exports){
 
 },{}],16:[function(require,module,exports){
+/*
+  Copyright (c) jQuery Foundation, Inc. and Contributors, All Rights Reserved.
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+  (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+  LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+  ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+(function (root, factory) {
+    'use strict';
+
+    // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js,
+    // Rhino, and plain browser loading.
+
+    /* istanbul ignore next */
+    if (typeof define === 'function' && define.amd) {
+        define(['exports'], factory);
+    } else if (typeof exports !== 'undefined') {
+        factory(exports);
+    } else {
+        factory((root.esprima = {}));
+    }
+}(this, function (exports) {
+    'use strict';
+
+    var Token,
+        TokenName,
+        FnExprTokens,
+        Syntax,
+        PlaceHolders,
+        Messages,
+        Regex,
+        source,
+        strict,
+        index,
+        lineNumber,
+        lineStart,
+        hasLineTerminator,
+        lastIndex,
+        lastLineNumber,
+        lastLineStart,
+        startIndex,
+        startLineNumber,
+        startLineStart,
+        scanning,
+        length,
+        lookahead,
+        state,
+        extra,
+        isBindingElement,
+        isAssignmentTarget,
+        firstCoverInitializedNameError;
+
+    Token = {
+        BooleanLiteral: 1,
+        EOF: 2,
+        Identifier: 3,
+        Keyword: 4,
+        NullLiteral: 5,
+        NumericLiteral: 6,
+        Punctuator: 7,
+        StringLiteral: 8,
+        RegularExpression: 9,
+        Template: 10
+    };
+
+    TokenName = {};
+    TokenName[Token.BooleanLiteral] = 'Boolean';
+    TokenName[Token.EOF] = '<end>';
+    TokenName[Token.Identifier] = 'Identifier';
+    TokenName[Token.Keyword] = 'Keyword';
+    TokenName[Token.NullLiteral] = 'Null';
+    TokenName[Token.NumericLiteral] = 'Numeric';
+    TokenName[Token.Punctuator] = 'Punctuator';
+    TokenName[Token.StringLiteral] = 'String';
+    TokenName[Token.RegularExpression] = 'RegularExpression';
+    TokenName[Token.Template] = 'Template';
+
+    // A function following one of those tokens is an expression.
+    FnExprTokens = ['(', '{', '[', 'in', 'typeof', 'instanceof', 'new',
+                    'return', 'case', 'delete', 'throw', 'void',
+                    // assignment operators
+                    '=', '+=', '-=', '*=', '/=', '%=', '<<=', '>>=', '>>>=',
+                    '&=', '|=', '^=', ',',
+                    // binary/unary operators
+                    '+', '-', '*', '/', '%', '++', '--', '<<', '>>', '>>>', '&',
+                    '|', '^', '!', '~', '&&', '||', '?', ':', '===', '==', '>=',
+                    '<=', '<', '>', '!=', '!=='];
+
+    Syntax = {
+        AssignmentExpression: 'AssignmentExpression',
+        AssignmentPattern: 'AssignmentPattern',
+        ArrayExpression: 'ArrayExpression',
+        ArrayPattern: 'ArrayPattern',
+        ArrowFunctionExpression: 'ArrowFunctionExpression',
+        BlockStatement: 'BlockStatement',
+        BinaryExpression: 'BinaryExpression',
+        BreakStatement: 'BreakStatement',
+        CallExpression: 'CallExpression',
+        CatchClause: 'CatchClause',
+        ClassBody: 'ClassBody',
+        ClassDeclaration: 'ClassDeclaration',
+        ClassExpression: 'ClassExpression',
+        ConditionalExpression: 'ConditionalExpression',
+        ContinueStatement: 'ContinueStatement',
+        DoWhileStatement: 'DoWhileStatement',
+        DebuggerStatement: 'DebuggerStatement',
+        EmptyStatement: 'EmptyStatement',
+        ExportAllDeclaration: 'ExportAllDeclaration',
+        ExportDefaultDeclaration: 'ExportDefaultDeclaration',
+        ExportNamedDeclaration: 'ExportNamedDeclaration',
+        ExportSpecifier: 'ExportSpecifier',
+        ExpressionStatement: 'ExpressionStatement',
+        ForStatement: 'ForStatement',
+        ForOfStatement: 'ForOfStatement',
+        ForInStatement: 'ForInStatement',
+        FunctionDeclaration: 'FunctionDeclaration',
+        FunctionExpression: 'FunctionExpression',
+        Identifier: 'Identifier',
+        IfStatement: 'IfStatement',
+        ImportDeclaration: 'ImportDeclaration',
+        ImportDefaultSpecifier: 'ImportDefaultSpecifier',
+        ImportNamespaceSpecifier: 'ImportNamespaceSpecifier',
+        ImportSpecifier: 'ImportSpecifier',
+        Literal: 'Literal',
+        LabeledStatement: 'LabeledStatement',
+        LogicalExpression: 'LogicalExpression',
+        MemberExpression: 'MemberExpression',
+        MetaProperty: 'MetaProperty',
+        MethodDefinition: 'MethodDefinition',
+        NewExpression: 'NewExpression',
+        ObjectExpression: 'ObjectExpression',
+        ObjectPattern: 'ObjectPattern',
+        Program: 'Program',
+        Property: 'Property',
+        RestElement: 'RestElement',
+        ReturnStatement: 'ReturnStatement',
+        SequenceExpression: 'SequenceExpression',
+        SpreadElement: 'SpreadElement',
+        Super: 'Super',
+        SwitchCase: 'SwitchCase',
+        SwitchStatement: 'SwitchStatement',
+        TaggedTemplateExpression: 'TaggedTemplateExpression',
+        TemplateElement: 'TemplateElement',
+        TemplateLiteral: 'TemplateLiteral',
+        ThisExpression: 'ThisExpression',
+        ThrowStatement: 'ThrowStatement',
+        TryStatement: 'TryStatement',
+        UnaryExpression: 'UnaryExpression',
+        UpdateExpression: 'UpdateExpression',
+        VariableDeclaration: 'VariableDeclaration',
+        VariableDeclarator: 'VariableDeclarator',
+        WhileStatement: 'WhileStatement',
+        WithStatement: 'WithStatement',
+        YieldExpression: 'YieldExpression'
+    };
+
+    PlaceHolders = {
+        ArrowParameterPlaceHolder: 'ArrowParameterPlaceHolder'
+    };
+
+    // Error messages should be identical to V8.
+    Messages = {
+        UnexpectedToken: 'Unexpected token %0',
+        UnexpectedNumber: 'Unexpected number',
+        UnexpectedString: 'Unexpected string',
+        UnexpectedIdentifier: 'Unexpected identifier',
+        UnexpectedReserved: 'Unexpected reserved word',
+        UnexpectedTemplate: 'Unexpected quasi %0',
+        UnexpectedEOS: 'Unexpected end of input',
+        NewlineAfterThrow: 'Illegal newline after throw',
+        InvalidRegExp: 'Invalid regular expression',
+        UnterminatedRegExp: 'Invalid regular expression: missing /',
+        InvalidLHSInAssignment: 'Invalid left-hand side in assignment',
+        InvalidLHSInForIn: 'Invalid left-hand side in for-in',
+        InvalidLHSInForLoop: 'Invalid left-hand side in for-loop',
+        MultipleDefaultsInSwitch: 'More than one default clause in switch statement',
+        NoCatchOrFinally: 'Missing catch or finally after try',
+        UnknownLabel: 'Undefined label \'%0\'',
+        Redeclaration: '%0 \'%1\' has already been declared',
+        IllegalContinue: 'Illegal continue statement',
+        IllegalBreak: 'Illegal break statement',
+        IllegalReturn: 'Illegal return statement',
+        StrictModeWith: 'Strict mode code may not include a with statement',
+        StrictCatchVariable: 'Catch variable may not be eval or arguments in strict mode',
+        StrictVarName: 'Variable name may not be eval or arguments in strict mode',
+        StrictParamName: 'Parameter name eval or arguments is not allowed in strict mode',
+        StrictParamDupe: 'Strict mode function may not have duplicate parameter names',
+        StrictFunctionName: 'Function name may not be eval or arguments in strict mode',
+        StrictOctalLiteral: 'Octal literals are not allowed in strict mode.',
+        StrictDelete: 'Delete of an unqualified identifier in strict mode.',
+        StrictLHSAssignment: 'Assignment to eval or arguments is not allowed in strict mode',
+        StrictLHSPostfix: 'Postfix increment/decrement may not have eval or arguments operand in strict mode',
+        StrictLHSPrefix: 'Prefix increment/decrement may not have eval or arguments operand in strict mode',
+        StrictReservedWord: 'Use of future reserved word in strict mode',
+        TemplateOctalLiteral: 'Octal literals are not allowed in template strings.',
+        ParameterAfterRestParameter: 'Rest parameter must be last formal parameter',
+        DefaultRestParameter: 'Unexpected token =',
+        ObjectPatternAsRestParameter: 'Unexpected token {',
+        DuplicateProtoProperty: 'Duplicate __proto__ fields are not allowed in object literals',
+        ConstructorSpecialMethod: 'Class constructor may not be an accessor',
+        DuplicateConstructor: 'A class may only have one constructor',
+        StaticPrototype: 'Classes may not have static property named prototype',
+        MissingFromClause: 'Unexpected token',
+        NoAsAfterImportNamespace: 'Unexpected token',
+        InvalidModuleSpecifier: 'Unexpected token',
+        IllegalImportDeclaration: 'Unexpected token',
+        IllegalExportDeclaration: 'Unexpected token',
+        DuplicateBinding: 'Duplicate binding %0'
+    };
+
+    // See also tools/generate-unicode-regex.js.
+    Regex = {
+        // ECMAScript 6/Unicode v7.0.0 NonAsciiIdentifierStart:
+        NonAsciiIdentifierStart: /[\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0-\u08B2\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA7AD\uA7B0\uA7B1\uA7F7-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB5F\uAB64\uAB65\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDD40-\uDD74\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF30-\uDF4A\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF\uDFD1-\uDFD5]|\uD801[\uDC00-\uDC9D\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48]|\uD804[\uDC03-\uDC37\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDE00-\uDE11\uDE13-\uDE2B\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF5D-\uDF61]|\uD805[\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDE00-\uDE2F\uDE44\uDE80-\uDEAA]|\uD806[\uDCA0-\uDCDF\uDCFF\uDEC0-\uDEF8]|\uD808[\uDC00-\uDF98]|\uD809[\uDC00-\uDC6E]|[\uD80C\uD840-\uD868\uD86A-\uD86C][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50\uDF93-\uDF9F]|\uD82C[\uDC00\uDC01]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD83A[\uDC00-\uDCC4]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D]|\uD87E[\uDC00-\uDE1D]/,
+
+        // ECMAScript 6/Unicode v7.0.0 NonAsciiIdentifierPart:
+        NonAsciiIdentifierPart: /[\xAA\xB5\xB7\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0300-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u0483-\u0487\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u05D0-\u05EA\u05F0-\u05F2\u0610-\u061A\u0620-\u0669\u066E-\u06D3\u06D5-\u06DC\u06DF-\u06E8\u06EA-\u06FC\u06FF\u0710-\u074A\u074D-\u07B1\u07C0-\u07F5\u07FA\u0800-\u082D\u0840-\u085B\u08A0-\u08B2\u08E4-\u0963\u0966-\u096F\u0971-\u0983\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BC-\u09C4\u09C7\u09C8\u09CB-\u09CE\u09D7\u09DC\u09DD\u09DF-\u09E3\u09E6-\u09F1\u0A01-\u0A03\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A59-\u0A5C\u0A5E\u0A66-\u0A75\u0A81-\u0A83\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABC-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AD0\u0AE0-\u0AE3\u0AE6-\u0AEF\u0B01-\u0B03\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3C-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B56\u0B57\u0B5C\u0B5D\u0B5F-\u0B63\u0B66-\u0B6F\u0B71\u0B82\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD0\u0BD7\u0BE6-\u0BEF\u0C00-\u0C03\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C58\u0C59\u0C60-\u0C63\u0C66-\u0C6F\u0C81-\u0C83\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBC-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CDE\u0CE0-\u0CE3\u0CE6-\u0CEF\u0CF1\u0CF2\u0D01-\u0D03\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D-\u0D44\u0D46-\u0D48\u0D4A-\u0D4E\u0D57\u0D60-\u0D63\u0D66-\u0D6F\u0D7A-\u0D7F\u0D82\u0D83\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E01-\u0E3A\u0E40-\u0E4E\u0E50-\u0E59\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB9\u0EBB-\u0EBD\u0EC0-\u0EC4\u0EC6\u0EC8-\u0ECD\u0ED0-\u0ED9\u0EDC-\u0EDF\u0F00\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E-\u0F47\u0F49-\u0F6C\u0F71-\u0F84\u0F86-\u0F97\u0F99-\u0FBC\u0FC6\u1000-\u1049\u1050-\u109D\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u135D-\u135F\u1369-\u1371\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1714\u1720-\u1734\u1740-\u1753\u1760-\u176C\u176E-\u1770\u1772\u1773\u1780-\u17D3\u17D7\u17DC\u17DD\u17E0-\u17E9\u180B-\u180D\u1810-\u1819\u1820-\u1877\u1880-\u18AA\u18B0-\u18F5\u1900-\u191E\u1920-\u192B\u1930-\u193B\u1946-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u19D0-\u19DA\u1A00-\u1A1B\u1A20-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AA7\u1AB0-\u1ABD\u1B00-\u1B4B\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1BF3\u1C00-\u1C37\u1C40-\u1C49\u1C4D-\u1C7D\u1CD0-\u1CD2\u1CD4-\u1CF6\u1CF8\u1CF9\u1D00-\u1DF5\u1DFC-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u200C\u200D\u203F\u2040\u2054\u2071\u207F\u2090-\u209C\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D7F-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2DE0-\u2DFF\u3005-\u3007\u3021-\u302F\u3031-\u3035\u3038-\u303C\u3041-\u3096\u3099-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA62B\uA640-\uA66F\uA674-\uA67D\uA67F-\uA69D\uA69F-\uA6F1\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA7AD\uA7B0\uA7B1\uA7F7-\uA827\uA840-\uA873\uA880-\uA8C4\uA8D0-\uA8D9\uA8E0-\uA8F7\uA8FB\uA900-\uA92D\uA930-\uA953\uA960-\uA97C\uA980-\uA9C0\uA9CF-\uA9D9\uA9E0-\uA9FE\uAA00-\uAA36\uAA40-\uAA4D\uAA50-\uAA59\uAA60-\uAA76\uAA7A-\uAAC2\uAADB-\uAADD\uAAE0-\uAAEF\uAAF2-\uAAF6\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB5F\uAB64\uAB65\uABC0-\uABEA\uABEC\uABED\uABF0-\uABF9\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE00-\uFE0F\uFE20-\uFE2D\uFE33\uFE34\uFE4D-\uFE4F\uFE70-\uFE74\uFE76-\uFEFC\uFF10-\uFF19\uFF21-\uFF3A\uFF3F\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDD40-\uDD74\uDDFD\uDE80-\uDE9C\uDEA0-\uDED0\uDEE0\uDF00-\uDF1F\uDF30-\uDF4A\uDF50-\uDF7A\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF\uDFD1-\uDFD5]|\uD801[\uDC00-\uDC9D\uDCA0-\uDCA9\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00-\uDE03\uDE05\uDE06\uDE0C-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE38-\uDE3A\uDE3F\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE6\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48]|\uD804[\uDC00-\uDC46\uDC66-\uDC6F\uDC7F-\uDCBA\uDCD0-\uDCE8\uDCF0-\uDCF9\uDD00-\uDD34\uDD36-\uDD3F\uDD50-\uDD73\uDD76\uDD80-\uDDC4\uDDD0-\uDDDA\uDE00-\uDE11\uDE13-\uDE37\uDEB0-\uDEEA\uDEF0-\uDEF9\uDF01-\uDF03\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3C-\uDF44\uDF47\uDF48\uDF4B-\uDF4D\uDF57\uDF5D-\uDF63\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC80-\uDCC5\uDCC7\uDCD0-\uDCD9\uDD80-\uDDB5\uDDB8-\uDDC0\uDE00-\uDE40\uDE44\uDE50-\uDE59\uDE80-\uDEB7\uDEC0-\uDEC9]|\uD806[\uDCA0-\uDCE9\uDCFF\uDEC0-\uDEF8]|\uD808[\uDC00-\uDF98]|\uD809[\uDC00-\uDC6E]|[\uD80C\uD840-\uD868\uD86A-\uD86C][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDE60-\uDE69\uDED0-\uDEED\uDEF0-\uDEF4\uDF00-\uDF36\uDF40-\uDF43\uDF50-\uDF59\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50-\uDF7E\uDF8F-\uDF9F]|\uD82C[\uDC00\uDC01]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99\uDC9D\uDC9E]|\uD834[\uDD65-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD\uDE42-\uDE44]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB\uDFCE-\uDFFF]|\uD83A[\uDC00-\uDCC4\uDCD0-\uDCD6]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D]|\uD87E[\uDC00-\uDE1D]|\uDB40[\uDD00-\uDDEF]/
+    };
+
+    // Ensure the condition is true, otherwise throw an error.
+    // This is only to have a better contract semantic, i.e. another safety net
+    // to catch a logic error. The condition shall be fulfilled in normal case.
+    // Do NOT use this to enforce a certain condition on any user input.
+
+    function assert(condition, message) {
+        /* istanbul ignore if */
+        if (!condition) {
+            throw new Error('ASSERT: ' + message);
+        }
+    }
+
+    function isDecimalDigit(ch) {
+        return (ch >= 0x30 && ch <= 0x39);   // 0..9
+    }
+
+    function isHexDigit(ch) {
+        return '0123456789abcdefABCDEF'.indexOf(ch) >= 0;
+    }
+
+    function isOctalDigit(ch) {
+        return '01234567'.indexOf(ch) >= 0;
+    }
+
+    function octalToDecimal(ch) {
+        // \0 is not octal escape sequence
+        var octal = (ch !== '0'), code = '01234567'.indexOf(ch);
+
+        if (index < length && isOctalDigit(source[index])) {
+            octal = true;
+            code = code * 8 + '01234567'.indexOf(source[index++]);
+
+            // 3 digits are only allowed when string starts
+            // with 0, 1, 2, 3
+            if ('0123'.indexOf(ch) >= 0 &&
+                    index < length &&
+                    isOctalDigit(source[index])) {
+                code = code * 8 + '01234567'.indexOf(source[index++]);
+            }
+        }
+
+        return {
+            code: code,
+            octal: octal
+        };
+    }
+
+    // ECMA-262 11.2 White Space
+
+    function isWhiteSpace(ch) {
+        return (ch === 0x20) || (ch === 0x09) || (ch === 0x0B) || (ch === 0x0C) || (ch === 0xA0) ||
+            (ch >= 0x1680 && [0x1680, 0x180E, 0x2000, 0x2001, 0x2002, 0x2003, 0x2004, 0x2005, 0x2006, 0x2007, 0x2008, 0x2009, 0x200A, 0x202F, 0x205F, 0x3000, 0xFEFF].indexOf(ch) >= 0);
+    }
+
+    // ECMA-262 11.3 Line Terminators
+
+    function isLineTerminator(ch) {
+        return (ch === 0x0A) || (ch === 0x0D) || (ch === 0x2028) || (ch === 0x2029);
+    }
+
+    // ECMA-262 11.6 Identifier Names and Identifiers
+
+    function fromCodePoint(cp) {
+        return (cp < 0x10000) ? String.fromCharCode(cp) :
+            String.fromCharCode(0xD800 + ((cp - 0x10000) >> 10)) +
+            String.fromCharCode(0xDC00 + ((cp - 0x10000) & 1023));
+    }
+
+    function isIdentifierStart(ch) {
+        return (ch === 0x24) || (ch === 0x5F) ||  // $ (dollar) and _ (underscore)
+            (ch >= 0x41 && ch <= 0x5A) ||         // A..Z
+            (ch >= 0x61 && ch <= 0x7A) ||         // a..z
+            (ch === 0x5C) ||                      // \ (backslash)
+            ((ch >= 0x80) && Regex.NonAsciiIdentifierStart.test(fromCodePoint(ch)));
+    }
+
+    function isIdentifierPart(ch) {
+        return (ch === 0x24) || (ch === 0x5F) ||  // $ (dollar) and _ (underscore)
+            (ch >= 0x41 && ch <= 0x5A) ||         // A..Z
+            (ch >= 0x61 && ch <= 0x7A) ||         // a..z
+            (ch >= 0x30 && ch <= 0x39) ||         // 0..9
+            (ch === 0x5C) ||                      // \ (backslash)
+            ((ch >= 0x80) && Regex.NonAsciiIdentifierPart.test(fromCodePoint(ch)));
+    }
+
+    // ECMA-262 11.6.2.2 Future Reserved Words
+
+    function isFutureReservedWord(id) {
+        switch (id) {
+        case 'enum':
+        case 'export':
+        case 'import':
+        case 'super':
+            return true;
+        default:
+            return false;
+        }
+    }
+
+    function isStrictModeReservedWord(id) {
+        switch (id) {
+        case 'implements':
+        case 'interface':
+        case 'package':
+        case 'private':
+        case 'protected':
+        case 'public':
+        case 'static':
+        case 'yield':
+        case 'let':
+            return true;
+        default:
+            return false;
+        }
+    }
+
+    function isRestrictedWord(id) {
+        return id === 'eval' || id === 'arguments';
+    }
+
+    // ECMA-262 11.6.2.1 Keywords
+
+    function isKeyword(id) {
+        switch (id.length) {
+        case 2:
+            return (id === 'if') || (id === 'in') || (id === 'do');
+        case 3:
+            return (id === 'var') || (id === 'for') || (id === 'new') ||
+                (id === 'try') || (id === 'let');
+        case 4:
+            return (id === 'this') || (id === 'else') || (id === 'case') ||
+                (id === 'void') || (id === 'with') || (id === 'enum');
+        case 5:
+            return (id === 'while') || (id === 'break') || (id === 'catch') ||
+                (id === 'throw') || (id === 'const') || (id === 'yield') ||
+                (id === 'class') || (id === 'super');
+        case 6:
+            return (id === 'return') || (id === 'typeof') || (id === 'delete') ||
+                (id === 'switch') || (id === 'export') || (id === 'import');
+        case 7:
+            return (id === 'default') || (id === 'finally') || (id === 'extends');
+        case 8:
+            return (id === 'function') || (id === 'continue') || (id === 'debugger');
+        case 10:
+            return (id === 'instanceof');
+        default:
+            return false;
+        }
+    }
+
+    // ECMA-262 11.4 Comments
+
+    function addComment(type, value, start, end, loc) {
+        var comment;
+
+        assert(typeof start === 'number', 'Comment must have valid position');
+
+        state.lastCommentStart = start;
+
+        comment = {
+            type: type,
+            value: value
+        };
+        if (extra.range) {
+            comment.range = [start, end];
+        }
+        if (extra.loc) {
+            comment.loc = loc;
+        }
+        extra.comments.push(comment);
+        if (extra.attachComment) {
+            extra.leadingComments.push(comment);
+            extra.trailingComments.push(comment);
+        }
+        if (extra.tokenize) {
+            comment.type = comment.type + 'Comment';
+            if (extra.delegate) {
+                comment = extra.delegate(comment);
+            }
+            extra.tokens.push(comment);
+        }
+    }
+
+    function skipSingleLineComment(offset) {
+        var start, loc, ch, comment;
+
+        start = index - offset;
+        loc = {
+            start: {
+                line: lineNumber,
+                column: index - lineStart - offset
+            }
+        };
+
+        while (index < length) {
+            ch = source.charCodeAt(index);
+            ++index;
+            if (isLineTerminator(ch)) {
+                hasLineTerminator = true;
+                if (extra.comments) {
+                    comment = source.slice(start + offset, index - 1);
+                    loc.end = {
+                        line: lineNumber,
+                        column: index - lineStart - 1
+                    };
+                    addComment('Line', comment, start, index - 1, loc);
+                }
+                if (ch === 13 && source.charCodeAt(index) === 10) {
+                    ++index;
+                }
+                ++lineNumber;
+                lineStart = index;
+                return;
+            }
+        }
+
+        if (extra.comments) {
+            comment = source.slice(start + offset, index);
+            loc.end = {
+                line: lineNumber,
+                column: index - lineStart
+            };
+            addComment('Line', comment, start, index, loc);
+        }
+    }
+
+    function skipMultiLineComment() {
+        var start, loc, ch, comment;
+
+        if (extra.comments) {
+            start = index - 2;
+            loc = {
+                start: {
+                    line: lineNumber,
+                    column: index - lineStart - 2
+                }
+            };
+        }
+
+        while (index < length) {
+            ch = source.charCodeAt(index);
+            if (isLineTerminator(ch)) {
+                if (ch === 0x0D && source.charCodeAt(index + 1) === 0x0A) {
+                    ++index;
+                }
+                hasLineTerminator = true;
+                ++lineNumber;
+                ++index;
+                lineStart = index;
+            } else if (ch === 0x2A) {
+                // Block comment ends with '*/'.
+                if (source.charCodeAt(index + 1) === 0x2F) {
+                    ++index;
+                    ++index;
+                    if (extra.comments) {
+                        comment = source.slice(start + 2, index - 2);
+                        loc.end = {
+                            line: lineNumber,
+                            column: index - lineStart
+                        };
+                        addComment('Block', comment, start, index, loc);
+                    }
+                    return;
+                }
+                ++index;
+            } else {
+                ++index;
+            }
+        }
+
+        // Ran off the end of the file - the whole thing is a comment
+        if (extra.comments) {
+            loc.end = {
+                line: lineNumber,
+                column: index - lineStart
+            };
+            comment = source.slice(start + 2, index);
+            addComment('Block', comment, start, index, loc);
+        }
+        tolerateUnexpectedToken();
+    }
+
+    function skipComment() {
+        var ch, start;
+        hasLineTerminator = false;
+
+        start = (index === 0);
+        while (index < length) {
+            ch = source.charCodeAt(index);
+
+            if (isWhiteSpace(ch)) {
+                ++index;
+            } else if (isLineTerminator(ch)) {
+                hasLineTerminator = true;
+                ++index;
+                if (ch === 0x0D && source.charCodeAt(index) === 0x0A) {
+                    ++index;
+                }
+                ++lineNumber;
+                lineStart = index;
+                start = true;
+            } else if (ch === 0x2F) { // U+002F is '/'
+                ch = source.charCodeAt(index + 1);
+                if (ch === 0x2F) {
+                    ++index;
+                    ++index;
+                    skipSingleLineComment(2);
+                    start = true;
+                } else if (ch === 0x2A) {  // U+002A is '*'
+                    ++index;
+                    ++index;
+                    skipMultiLineComment();
+                } else {
+                    break;
+                }
+            } else if (start && ch === 0x2D) { // U+002D is '-'
+                // U+003E is '>'
+                if ((source.charCodeAt(index + 1) === 0x2D) && (source.charCodeAt(index + 2) === 0x3E)) {
+                    // '-->' is a single-line comment
+                    index += 3;
+                    skipSingleLineComment(3);
+                } else {
+                    break;
+                }
+            } else if (ch === 0x3C) { // U+003C is '<'
+                if (source.slice(index + 1, index + 4) === '!--') {
+                    ++index; // `<`
+                    ++index; // `!`
+                    ++index; // `-`
+                    ++index; // `-`
+                    skipSingleLineComment(4);
+                } else {
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+    }
+
+    function scanHexEscape(prefix) {
+        var i, len, ch, code = 0;
+
+        len = (prefix === 'u') ? 4 : 2;
+        for (i = 0; i < len; ++i) {
+            if (index < length && isHexDigit(source[index])) {
+                ch = source[index++];
+                code = code * 16 + '0123456789abcdef'.indexOf(ch.toLowerCase());
+            } else {
+                return '';
+            }
+        }
+        return String.fromCharCode(code);
+    }
+
+    function scanUnicodeCodePointEscape() {
+        var ch, code;
+
+        ch = source[index];
+        code = 0;
+
+        // At least, one hex digit is required.
+        if (ch === '}') {
+            throwUnexpectedToken();
+        }
+
+        while (index < length) {
+            ch = source[index++];
+            if (!isHexDigit(ch)) {
+                break;
+            }
+            code = code * 16 + '0123456789abcdef'.indexOf(ch.toLowerCase());
+        }
+
+        if (code > 0x10FFFF || ch !== '}') {
+            throwUnexpectedToken();
+        }
+
+        return fromCodePoint(code);
+    }
+
+    function codePointAt(i) {
+        var cp, first, second;
+
+        cp = source.charCodeAt(i);
+        if (cp >= 0xD800 && cp <= 0xDBFF) {
+            second = source.charCodeAt(i + 1);
+            if (second >= 0xDC00 && second <= 0xDFFF) {
+                first = cp;
+                cp = (first - 0xD800) * 0x400 + second - 0xDC00 + 0x10000;
+            }
+        }
+
+        return cp;
+    }
+
+    function getComplexIdentifier() {
+        var cp, ch, id;
+
+        cp = codePointAt(index);
+        id = fromCodePoint(cp);
+        index += id.length;
+
+        // '\u' (U+005C, U+0075) denotes an escaped character.
+        if (cp === 0x5C) {
+            if (source.charCodeAt(index) !== 0x75) {
+                throwUnexpectedToken();
+            }
+            ++index;
+            if (source[index] === '{') {
+                ++index;
+                ch = scanUnicodeCodePointEscape();
+            } else {
+                ch = scanHexEscape('u');
+                cp = ch.charCodeAt(0);
+                if (!ch || ch === '\\' || !isIdentifierStart(cp)) {
+                    throwUnexpectedToken();
+                }
+            }
+            id = ch;
+        }
+
+        while (index < length) {
+            cp = codePointAt(index);
+            if (!isIdentifierPart(cp)) {
+                break;
+            }
+            ch = fromCodePoint(cp);
+            id += ch;
+            index += ch.length;
+
+            // '\u' (U+005C, U+0075) denotes an escaped character.
+            if (cp === 0x5C) {
+                id = id.substr(0, id.length - 1);
+                if (source.charCodeAt(index) !== 0x75) {
+                    throwUnexpectedToken();
+                }
+                ++index;
+                if (source[index] === '{') {
+                    ++index;
+                    ch = scanUnicodeCodePointEscape();
+                } else {
+                    ch = scanHexEscape('u');
+                    cp = ch.charCodeAt(0);
+                    if (!ch || ch === '\\' || !isIdentifierPart(cp)) {
+                        throwUnexpectedToken();
+                    }
+                }
+                id += ch;
+            }
+        }
+
+        return id;
+    }
+
+    function getIdentifier() {
+        var start, ch;
+
+        start = index++;
+        while (index < length) {
+            ch = source.charCodeAt(index);
+            if (ch === 0x5C) {
+                // Blackslash (U+005C) marks Unicode escape sequence.
+                index = start;
+                return getComplexIdentifier();
+            } else if (ch >= 0xD800 && ch < 0xDFFF) {
+                // Need to handle surrogate pairs.
+                index = start;
+                return getComplexIdentifier();
+            }
+            if (isIdentifierPart(ch)) {
+                ++index;
+            } else {
+                break;
+            }
+        }
+
+        return source.slice(start, index);
+    }
+
+    function scanIdentifier() {
+        var start, id, type;
+
+        start = index;
+
+        // Backslash (U+005C) starts an escaped character.
+        id = (source.charCodeAt(index) === 0x5C) ? getComplexIdentifier() : getIdentifier();
+
+        // There is no keyword or literal with only one character.
+        // Thus, it must be an identifier.
+        if (id.length === 1) {
+            type = Token.Identifier;
+        } else if (isKeyword(id)) {
+            type = Token.Keyword;
+        } else if (id === 'null') {
+            type = Token.NullLiteral;
+        } else if (id === 'true' || id === 'false') {
+            type = Token.BooleanLiteral;
+        } else {
+            type = Token.Identifier;
+        }
+
+        return {
+            type: type,
+            value: id,
+            lineNumber: lineNumber,
+            lineStart: lineStart,
+            start: start,
+            end: index
+        };
+    }
+
+
+    // ECMA-262 11.7 Punctuators
+
+    function scanPunctuator() {
+        var token, str;
+
+        token = {
+            type: Token.Punctuator,
+            value: '',
+            lineNumber: lineNumber,
+            lineStart: lineStart,
+            start: index,
+            end: index
+        };
+
+        // Check for most common single-character punctuators.
+        str = source[index];
+        switch (str) {
+
+        case '(':
+            if (extra.tokenize) {
+                extra.openParenToken = extra.tokenValues.length;
+            }
+            ++index;
+            break;
+
+        case '{':
+            if (extra.tokenize) {
+                extra.openCurlyToken = extra.tokenValues.length;
+            }
+            state.curlyStack.push('{');
+            ++index;
+            break;
+
+        case '.':
+            ++index;
+            if (source[index] === '.' && source[index + 1] === '.') {
+                // Spread operator: ...
+                index += 2;
+                str = '...';
+            }
+            break;
+
+        case '}':
+            ++index;
+            state.curlyStack.pop();
+            break;
+        case ')':
+        case ';':
+        case ',':
+        case '[':
+        case ']':
+        case ':':
+        case '?':
+        case '~':
+            ++index;
+            break;
+
+        default:
+            // 4-character punctuator.
+            str = source.substr(index, 4);
+            if (str === '>>>=') {
+                index += 4;
+            } else {
+
+                // 3-character punctuators.
+                str = str.substr(0, 3);
+                if (str === '===' || str === '!==' || str === '>>>' ||
+                    str === '<<=' || str === '>>=') {
+                    index += 3;
+                } else {
+
+                    // 2-character punctuators.
+                    str = str.substr(0, 2);
+                    if (str === '&&' || str === '||' || str === '==' || str === '!=' ||
+                        str === '+=' || str === '-=' || str === '*=' || str === '/=' ||
+                        str === '++' || str === '--' || str === '<<' || str === '>>' ||
+                        str === '&=' || str === '|=' || str === '^=' || str === '%=' ||
+                        str === '<=' || str === '>=' || str === '=>') {
+                        index += 2;
+                    } else {
+
+                        // 1-character punctuators.
+                        str = source[index];
+                        if ('<>=!+-*%&|^/'.indexOf(str) >= 0) {
+                            ++index;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (index === token.start) {
+            throwUnexpectedToken();
+        }
+
+        token.end = index;
+        token.value = str;
+        return token;
+    }
+
+    // ECMA-262 11.8.3 Numeric Literals
+
+    function scanHexLiteral(start) {
+        var number = '';
+
+        while (index < length) {
+            if (!isHexDigit(source[index])) {
+                break;
+            }
+            number += source[index++];
+        }
+
+        if (number.length === 0) {
+            throwUnexpectedToken();
+        }
+
+        if (isIdentifierStart(source.charCodeAt(index))) {
+            throwUnexpectedToken();
+        }
+
+        return {
+            type: Token.NumericLiteral,
+            value: parseInt('0x' + number, 16),
+            lineNumber: lineNumber,
+            lineStart: lineStart,
+            start: start,
+            end: index
+        };
+    }
+
+    function scanBinaryLiteral(start) {
+        var ch, number;
+
+        number = '';
+
+        while (index < length) {
+            ch = source[index];
+            if (ch !== '0' && ch !== '1') {
+                break;
+            }
+            number += source[index++];
+        }
+
+        if (number.length === 0) {
+            // only 0b or 0B
+            throwUnexpectedToken();
+        }
+
+        if (index < length) {
+            ch = source.charCodeAt(index);
+            /* istanbul ignore else */
+            if (isIdentifierStart(ch) || isDecimalDigit(ch)) {
+                throwUnexpectedToken();
+            }
+        }
+
+        return {
+            type: Token.NumericLiteral,
+            value: parseInt(number, 2),
+            lineNumber: lineNumber,
+            lineStart: lineStart,
+            start: start,
+            end: index
+        };
+    }
+
+    function scanOctalLiteral(prefix, start) {
+        var number, octal;
+
+        if (isOctalDigit(prefix)) {
+            octal = true;
+            number = '0' + source[index++];
+        } else {
+            octal = false;
+            ++index;
+            number = '';
+        }
+
+        while (index < length) {
+            if (!isOctalDigit(source[index])) {
+                break;
+            }
+            number += source[index++];
+        }
+
+        if (!octal && number.length === 0) {
+            // only 0o or 0O
+            throwUnexpectedToken();
+        }
+
+        if (isIdentifierStart(source.charCodeAt(index)) || isDecimalDigit(source.charCodeAt(index))) {
+            throwUnexpectedToken();
+        }
+
+        return {
+            type: Token.NumericLiteral,
+            value: parseInt(number, 8),
+            octal: octal,
+            lineNumber: lineNumber,
+            lineStart: lineStart,
+            start: start,
+            end: index
+        };
+    }
+
+    function isImplicitOctalLiteral() {
+        var i, ch;
+
+        // Implicit octal, unless there is a non-octal digit.
+        // (Annex B.1.1 on Numeric Literals)
+        for (i = index + 1; i < length; ++i) {
+            ch = source[i];
+            if (ch === '8' || ch === '9') {
+                return false;
+            }
+            if (!isOctalDigit(ch)) {
+                return true;
+            }
+        }
+
+        return true;
+    }
+
+    function scanNumericLiteral() {
+        var number, start, ch;
+
+        ch = source[index];
+        assert(isDecimalDigit(ch.charCodeAt(0)) || (ch === '.'),
+            'Numeric literal must start with a decimal digit or a decimal point');
+
+        start = index;
+        number = '';
+        if (ch !== '.') {
+            number = source[index++];
+            ch = source[index];
+
+            // Hex number starts with '0x'.
+            // Octal number starts with '0'.
+            // Octal number in ES6 starts with '0o'.
+            // Binary number in ES6 starts with '0b'.
+            if (number === '0') {
+                if (ch === 'x' || ch === 'X') {
+                    ++index;
+                    return scanHexLiteral(start);
+                }
+                if (ch === 'b' || ch === 'B') {
+                    ++index;
+                    return scanBinaryLiteral(start);
+                }
+                if (ch === 'o' || ch === 'O') {
+                    return scanOctalLiteral(ch, start);
+                }
+
+                if (isOctalDigit(ch)) {
+                    if (isImplicitOctalLiteral()) {
+                        return scanOctalLiteral(ch, start);
+                    }
+                }
+            }
+
+            while (isDecimalDigit(source.charCodeAt(index))) {
+                number += source[index++];
+            }
+            ch = source[index];
+        }
+
+        if (ch === '.') {
+            number += source[index++];
+            while (isDecimalDigit(source.charCodeAt(index))) {
+                number += source[index++];
+            }
+            ch = source[index];
+        }
+
+        if (ch === 'e' || ch === 'E') {
+            number += source[index++];
+
+            ch = source[index];
+            if (ch === '+' || ch === '-') {
+                number += source[index++];
+            }
+            if (isDecimalDigit(source.charCodeAt(index))) {
+                while (isDecimalDigit(source.charCodeAt(index))) {
+                    number += source[index++];
+                }
+            } else {
+                throwUnexpectedToken();
+            }
+        }
+
+        if (isIdentifierStart(source.charCodeAt(index))) {
+            throwUnexpectedToken();
+        }
+
+        return {
+            type: Token.NumericLiteral,
+            value: parseFloat(number),
+            lineNumber: lineNumber,
+            lineStart: lineStart,
+            start: start,
+            end: index
+        };
+    }
+
+    // ECMA-262 11.8.4 String Literals
+
+    function scanStringLiteral() {
+        var str = '', quote, start, ch, unescaped, octToDec, octal = false;
+
+        quote = source[index];
+        assert((quote === '\'' || quote === '"'),
+            'String literal must starts with a quote');
+
+        start = index;
+        ++index;
+
+        while (index < length) {
+            ch = source[index++];
+
+            if (ch === quote) {
+                quote = '';
+                break;
+            } else if (ch === '\\') {
+                ch = source[index++];
+                if (!ch || !isLineTerminator(ch.charCodeAt(0))) {
+                    switch (ch) {
+                    case 'u':
+                    case 'x':
+                        if (source[index] === '{') {
+                            ++index;
+                            str += scanUnicodeCodePointEscape();
+                        } else {
+                            unescaped = scanHexEscape(ch);
+                            if (!unescaped) {
+                                throw throwUnexpectedToken();
+                            }
+                            str += unescaped;
+                        }
+                        break;
+                    case 'n':
+                        str += '\n';
+                        break;
+                    case 'r':
+                        str += '\r';
+                        break;
+                    case 't':
+                        str += '\t';
+                        break;
+                    case 'b':
+                        str += '\b';
+                        break;
+                    case 'f':
+                        str += '\f';
+                        break;
+                    case 'v':
+                        str += '\x0B';
+                        break;
+                    case '8':
+                    case '9':
+                        str += ch;
+                        tolerateUnexpectedToken();
+                        break;
+
+                    default:
+                        if (isOctalDigit(ch)) {
+                            octToDec = octalToDecimal(ch);
+
+                            octal = octToDec.octal || octal;
+                            str += String.fromCharCode(octToDec.code);
+                        } else {
+                            str += ch;
+                        }
+                        break;
+                    }
+                } else {
+                    ++lineNumber;
+                    if (ch === '\r' && source[index] === '\n') {
+                        ++index;
+                    }
+                    lineStart = index;
+                }
+            } else if (isLineTerminator(ch.charCodeAt(0))) {
+                break;
+            } else {
+                str += ch;
+            }
+        }
+
+        if (quote !== '') {
+            throwUnexpectedToken();
+        }
+
+        return {
+            type: Token.StringLiteral,
+            value: str,
+            octal: octal,
+            lineNumber: startLineNumber,
+            lineStart: startLineStart,
+            start: start,
+            end: index
+        };
+    }
+
+    // ECMA-262 11.8.6 Template Literal Lexical Components
+
+    function scanTemplate() {
+        var cooked = '', ch, start, rawOffset, terminated, head, tail, restore, unescaped;
+
+        terminated = false;
+        tail = false;
+        start = index;
+        head = (source[index] === '`');
+        rawOffset = 2;
+
+        ++index;
+
+        while (index < length) {
+            ch = source[index++];
+            if (ch === '`') {
+                rawOffset = 1;
+                tail = true;
+                terminated = true;
+                break;
+            } else if (ch === '$') {
+                if (source[index] === '{') {
+                    state.curlyStack.push('${');
+                    ++index;
+                    terminated = true;
+                    break;
+                }
+                cooked += ch;
+            } else if (ch === '\\') {
+                ch = source[index++];
+                if (!isLineTerminator(ch.charCodeAt(0))) {
+                    switch (ch) {
+                    case 'n':
+                        cooked += '\n';
+                        break;
+                    case 'r':
+                        cooked += '\r';
+                        break;
+                    case 't':
+                        cooked += '\t';
+                        break;
+                    case 'u':
+                    case 'x':
+                        if (source[index] === '{') {
+                            ++index;
+                            cooked += scanUnicodeCodePointEscape();
+                        } else {
+                            restore = index;
+                            unescaped = scanHexEscape(ch);
+                            if (unescaped) {
+                                cooked += unescaped;
+                            } else {
+                                index = restore;
+                                cooked += ch;
+                            }
+                        }
+                        break;
+                    case 'b':
+                        cooked += '\b';
+                        break;
+                    case 'f':
+                        cooked += '\f';
+                        break;
+                    case 'v':
+                        cooked += '\v';
+                        break;
+
+                    default:
+                        if (ch === '0') {
+                            if (isDecimalDigit(source.charCodeAt(index))) {
+                                // Illegal: \01 \02 and so on
+                                throwError(Messages.TemplateOctalLiteral);
+                            }
+                            cooked += '\0';
+                        } else if (isOctalDigit(ch)) {
+                            // Illegal: \1 \2
+                            throwError(Messages.TemplateOctalLiteral);
+                        } else {
+                            cooked += ch;
+                        }
+                        break;
+                    }
+                } else {
+                    ++lineNumber;
+                    if (ch === '\r' && source[index] === '\n') {
+                        ++index;
+                    }
+                    lineStart = index;
+                }
+            } else if (isLineTerminator(ch.charCodeAt(0))) {
+                ++lineNumber;
+                if (ch === '\r' && source[index] === '\n') {
+                    ++index;
+                }
+                lineStart = index;
+                cooked += '\n';
+            } else {
+                cooked += ch;
+            }
+        }
+
+        if (!terminated) {
+            throwUnexpectedToken();
+        }
+
+        if (!head) {
+            state.curlyStack.pop();
+        }
+
+        return {
+            type: Token.Template,
+            value: {
+                cooked: cooked,
+                raw: source.slice(start + 1, index - rawOffset)
+            },
+            head: head,
+            tail: tail,
+            lineNumber: lineNumber,
+            lineStart: lineStart,
+            start: start,
+            end: index
+        };
+    }
+
+    // ECMA-262 11.8.5 Regular Expression Literals
+
+    function testRegExp(pattern, flags) {
+        // The BMP character to use as a replacement for astral symbols when
+        // translating an ES6 "u"-flagged pattern to an ES5-compatible
+        // approximation.
+        // Note: replacing with '\uFFFF' enables false positives in unlikely
+        // scenarios. For example, `[\u{1044f}-\u{10440}]` is an invalid
+        // pattern that would not be detected by this substitution.
+        var astralSubstitute = '\uFFFF',
+            tmp = pattern;
+
+        if (flags.indexOf('u') >= 0) {
+            tmp = tmp
+                // Replace every Unicode escape sequence with the equivalent
+                // BMP character or a constant ASCII code point in the case of
+                // astral symbols. (See the above note on `astralSubstitute`
+                // for more information.)
+                .replace(/\\u\{([0-9a-fA-F]+)\}|\\u([a-fA-F0-9]{4})/g, function ($0, $1, $2) {
+                    var codePoint = parseInt($1 || $2, 16);
+                    if (codePoint > 0x10FFFF) {
+                        throwUnexpectedToken(null, Messages.InvalidRegExp);
+                    }
+                    if (codePoint <= 0xFFFF) {
+                        return String.fromCharCode(codePoint);
+                    }
+                    return astralSubstitute;
+                })
+                // Replace each paired surrogate with a single ASCII symbol to
+                // avoid throwing on regular expressions that are only valid in
+                // combination with the "u" flag.
+                .replace(
+                    /[\uD800-\uDBFF][\uDC00-\uDFFF]/g,
+                    astralSubstitute
+                );
+        }
+
+        // First, detect invalid regular expressions.
+        try {
+            RegExp(tmp);
+        } catch (e) {
+            throwUnexpectedToken(null, Messages.InvalidRegExp);
+        }
+
+        // Return a regular expression object for this pattern-flag pair, or
+        // `null` in case the current environment doesn't support the flags it
+        // uses.
+        try {
+            return new RegExp(pattern, flags);
+        } catch (exception) {
+            return null;
+        }
+    }
+
+    function scanRegExpBody() {
+        var ch, str, classMarker, terminated, body;
+
+        ch = source[index];
+        assert(ch === '/', 'Regular expression literal must start with a slash');
+        str = source[index++];
+
+        classMarker = false;
+        terminated = false;
+        while (index < length) {
+            ch = source[index++];
+            str += ch;
+            if (ch === '\\') {
+                ch = source[index++];
+                // ECMA-262 7.8.5
+                if (isLineTerminator(ch.charCodeAt(0))) {
+                    throwUnexpectedToken(null, Messages.UnterminatedRegExp);
+                }
+                str += ch;
+            } else if (isLineTerminator(ch.charCodeAt(0))) {
+                throwUnexpectedToken(null, Messages.UnterminatedRegExp);
+            } else if (classMarker) {
+                if (ch === ']') {
+                    classMarker = false;
+                }
+            } else {
+                if (ch === '/') {
+                    terminated = true;
+                    break;
+                } else if (ch === '[') {
+                    classMarker = true;
+                }
+            }
+        }
+
+        if (!terminated) {
+            throwUnexpectedToken(null, Messages.UnterminatedRegExp);
+        }
+
+        // Exclude leading and trailing slash.
+        body = str.substr(1, str.length - 2);
+        return {
+            value: body,
+            literal: str
+        };
+    }
+
+    function scanRegExpFlags() {
+        var ch, str, flags, restore;
+
+        str = '';
+        flags = '';
+        while (index < length) {
+            ch = source[index];
+            if (!isIdentifierPart(ch.charCodeAt(0))) {
+                break;
+            }
+
+            ++index;
+            if (ch === '\\' && index < length) {
+                ch = source[index];
+                if (ch === 'u') {
+                    ++index;
+                    restore = index;
+                    ch = scanHexEscape('u');
+                    if (ch) {
+                        flags += ch;
+                        for (str += '\\u'; restore < index; ++restore) {
+                            str += source[restore];
+                        }
+                    } else {
+                        index = restore;
+                        flags += 'u';
+                        str += '\\u';
+                    }
+                    tolerateUnexpectedToken();
+                } else {
+                    str += '\\';
+                    tolerateUnexpectedToken();
+                }
+            } else {
+                flags += ch;
+                str += ch;
+            }
+        }
+
+        return {
+            value: flags,
+            literal: str
+        };
+    }
+
+    function scanRegExp() {
+        var start, body, flags, value;
+        scanning = true;
+
+        lookahead = null;
+        skipComment();
+        start = index;
+
+        body = scanRegExpBody();
+        flags = scanRegExpFlags();
+        value = testRegExp(body.value, flags.value);
+        scanning = false;
+        if (extra.tokenize) {
+            return {
+                type: Token.RegularExpression,
+                value: value,
+                regex: {
+                    pattern: body.value,
+                    flags: flags.value
+                },
+                lineNumber: lineNumber,
+                lineStart: lineStart,
+                start: start,
+                end: index
+            };
+        }
+
+        return {
+            literal: body.literal + flags.literal,
+            value: value,
+            regex: {
+                pattern: body.value,
+                flags: flags.value
+            },
+            start: start,
+            end: index
+        };
+    }
+
+    function collectRegex() {
+        var pos, loc, regex, token;
+
+        skipComment();
+
+        pos = index;
+        loc = {
+            start: {
+                line: lineNumber,
+                column: index - lineStart
+            }
+        };
+
+        regex = scanRegExp();
+
+        loc.end = {
+            line: lineNumber,
+            column: index - lineStart
+        };
+
+        /* istanbul ignore next */
+        if (!extra.tokenize) {
+            // Pop the previous token, which is likely '/' or '/='
+            if (extra.tokens.length > 0) {
+                token = extra.tokens[extra.tokens.length - 1];
+                if (token.range[0] === pos && token.type === 'Punctuator') {
+                    if (token.value === '/' || token.value === '/=') {
+                        extra.tokens.pop();
+                    }
+                }
+            }
+
+            extra.tokens.push({
+                type: 'RegularExpression',
+                value: regex.literal,
+                regex: regex.regex,
+                range: [pos, index],
+                loc: loc
+            });
+        }
+
+        return regex;
+    }
+
+    function isIdentifierName(token) {
+        return token.type === Token.Identifier ||
+            token.type === Token.Keyword ||
+            token.type === Token.BooleanLiteral ||
+            token.type === Token.NullLiteral;
+    }
+
+    // Using the following algorithm:
+    // https://github.com/mozilla/sweet.js/wiki/design
+
+    function advanceSlash() {
+        var regex, previous, check;
+
+        function testKeyword(value) {
+            return value && (value.length > 1) && (value[0] >= 'a') && (value[0] <= 'z');
+        }
+
+        previous = extra.tokenValues[extra.tokens.length - 1];
+        regex = (previous !== null);
+
+        switch (previous) {
+        case 'this':
+        case ']':
+            regex = false;
+            break;
+
+        case ')':
+            check = extra.tokenValues[extra.openParenToken - 1];
+            regex = (check === 'if' || check === 'while' || check === 'for' || check === 'with');
+            break;
+
+        case '}':
+            // Dividing a function by anything makes little sense,
+            // but we have to check for that.
+            regex = false;
+            if (testKeyword(extra.tokenValues[extra.openCurlyToken - 3])) {
+                // Anonymous function, e.g. function(){} /42
+                check = extra.tokenValues[extra.openCurlyToken - 4];
+                regex = check ? (FnExprTokens.indexOf(check) < 0) : false;
+            } else if (testKeyword(extra.tokenValues[extra.openCurlyToken - 4])) {
+                // Named function, e.g. function f(){} /42/
+                check = extra.tokenValues[extra.openCurlyToken - 5];
+                regex = check ? (FnExprTokens.indexOf(check) < 0) : true;
+            }
+        }
+
+        return regex ? collectRegex() : scanPunctuator();
+    }
+
+    function advance() {
+        var cp, token;
+
+        if (index >= length) {
+            return {
+                type: Token.EOF,
+                lineNumber: lineNumber,
+                lineStart: lineStart,
+                start: index,
+                end: index
+            };
+        }
+
+        cp = source.charCodeAt(index);
+
+        if (isIdentifierStart(cp)) {
+            token = scanIdentifier();
+            if (strict && isStrictModeReservedWord(token.value)) {
+                token.type = Token.Keyword;
+            }
+            return token;
+        }
+
+        // Very common: ( and ) and ;
+        if (cp === 0x28 || cp === 0x29 || cp === 0x3B) {
+            return scanPunctuator();
+        }
+
+        // String literal starts with single quote (U+0027) or double quote (U+0022).
+        if (cp === 0x27 || cp === 0x22) {
+            return scanStringLiteral();
+        }
+
+        // Dot (.) U+002E can also start a floating-point number, hence the need
+        // to check the next character.
+        if (cp === 0x2E) {
+            if (isDecimalDigit(source.charCodeAt(index + 1))) {
+                return scanNumericLiteral();
+            }
+            return scanPunctuator();
+        }
+
+        if (isDecimalDigit(cp)) {
+            return scanNumericLiteral();
+        }
+
+        // Slash (/) U+002F can also start a regex.
+        if (extra.tokenize && cp === 0x2F) {
+            return advanceSlash();
+        }
+
+        // Template literals start with ` (U+0060) for template head
+        // or } (U+007D) for template middle or template tail.
+        if (cp === 0x60 || (cp === 0x7D && state.curlyStack[state.curlyStack.length - 1] === '${')) {
+            return scanTemplate();
+        }
+
+        // Possible identifier start in a surrogate pair.
+        if (cp >= 0xD800 && cp < 0xDFFF) {
+            cp = codePointAt(index);
+            if (isIdentifierStart(cp)) {
+                return scanIdentifier();
+            }
+        }
+
+        return scanPunctuator();
+    }
+
+    function collectToken() {
+        var loc, token, value, entry;
+
+        loc = {
+            start: {
+                line: lineNumber,
+                column: index - lineStart
+            }
+        };
+
+        token = advance();
+        loc.end = {
+            line: lineNumber,
+            column: index - lineStart
+        };
+
+        if (token.type !== Token.EOF) {
+            value = source.slice(token.start, token.end);
+            entry = {
+                type: TokenName[token.type],
+                value: value,
+                range: [token.start, token.end],
+                loc: loc
+            };
+            if (token.regex) {
+                entry.regex = {
+                    pattern: token.regex.pattern,
+                    flags: token.regex.flags
+                };
+            }
+            if (extra.tokenValues) {
+                extra.tokenValues.push((entry.type === 'Punctuator' || entry.type === 'Keyword') ? entry.value : null);
+            }
+            if (extra.tokenize) {
+                if (!extra.range) {
+                    delete entry.range;
+                }
+                if (!extra.loc) {
+                    delete entry.loc;
+                }
+                if (extra.delegate) {
+                    entry = extra.delegate(entry);
+                }
+            }
+            extra.tokens.push(entry);
+        }
+
+        return token;
+    }
+
+    function lex() {
+        var token;
+        scanning = true;
+
+        lastIndex = index;
+        lastLineNumber = lineNumber;
+        lastLineStart = lineStart;
+
+        skipComment();
+
+        token = lookahead;
+
+        startIndex = index;
+        startLineNumber = lineNumber;
+        startLineStart = lineStart;
+
+        lookahead = (typeof extra.tokens !== 'undefined') ? collectToken() : advance();
+        scanning = false;
+        return token;
+    }
+
+    function peek() {
+        scanning = true;
+
+        skipComment();
+
+        lastIndex = index;
+        lastLineNumber = lineNumber;
+        lastLineStart = lineStart;
+
+        startIndex = index;
+        startLineNumber = lineNumber;
+        startLineStart = lineStart;
+
+        lookahead = (typeof extra.tokens !== 'undefined') ? collectToken() : advance();
+        scanning = false;
+    }
+
+    function Position() {
+        this.line = startLineNumber;
+        this.column = startIndex - startLineStart;
+    }
+
+    function SourceLocation() {
+        this.start = new Position();
+        this.end = null;
+    }
+
+    function WrappingSourceLocation(startToken) {
+        this.start = {
+            line: startToken.lineNumber,
+            column: startToken.start - startToken.lineStart
+        };
+        this.end = null;
+    }
+
+    function Node() {
+        if (extra.range) {
+            this.range = [startIndex, 0];
+        }
+        if (extra.loc) {
+            this.loc = new SourceLocation();
+        }
+    }
+
+    function WrappingNode(startToken) {
+        if (extra.range) {
+            this.range = [startToken.start, 0];
+        }
+        if (extra.loc) {
+            this.loc = new WrappingSourceLocation(startToken);
+        }
+    }
+
+    WrappingNode.prototype = Node.prototype = {
+
+        processComment: function () {
+            var lastChild,
+                innerComments,
+                leadingComments,
+                trailingComments,
+                bottomRight = extra.bottomRightStack,
+                i,
+                comment,
+                last = bottomRight[bottomRight.length - 1];
+
+            if (this.type === Syntax.Program) {
+                if (this.body.length > 0) {
+                    return;
+                }
+            }
+            /**
+             * patch innnerComments for properties empty block
+             * `function a() {/** comments **\/}`
+             */
+
+            if (this.type === Syntax.BlockStatement && this.body.length === 0) {
+                innerComments = [];
+                for (i = extra.leadingComments.length - 1; i >= 0; --i) {
+                    comment = extra.leadingComments[i];
+                    if (this.range[1] >= comment.range[1]) {
+                        innerComments.unshift(comment);
+                        extra.leadingComments.splice(i, 1);
+                        extra.trailingComments.splice(i, 1);
+                    }
+                }
+                if (innerComments.length) {
+                    this.innerComments = innerComments;
+                    //bottomRight.push(this);
+                    return;
+                }
+            }
+
+            if (extra.trailingComments.length > 0) {
+                trailingComments = [];
+                for (i = extra.trailingComments.length - 1; i >= 0; --i) {
+                    comment = extra.trailingComments[i];
+                    if (comment.range[0] >= this.range[1]) {
+                        trailingComments.unshift(comment);
+                        extra.trailingComments.splice(i, 1);
+                    }
+                }
+                extra.trailingComments = [];
+            } else {
+                if (last && last.trailingComments && last.trailingComments[0].range[0] >= this.range[1]) {
+                    trailingComments = last.trailingComments;
+                    delete last.trailingComments;
+                }
+            }
+
+            // Eating the stack.
+            while (last && last.range[0] >= this.range[0]) {
+                lastChild = bottomRight.pop();
+                last = bottomRight[bottomRight.length - 1];
+            }
+
+            if (lastChild) {
+                if (lastChild.leadingComments) {
+                    leadingComments = [];
+                    for (i = lastChild.leadingComments.length - 1; i >= 0; --i) {
+                        comment = lastChild.leadingComments[i];
+                        if (comment.range[1] <= this.range[0]) {
+                            leadingComments.unshift(comment);
+                            lastChild.leadingComments.splice(i, 1);
+                        }
+                    }
+
+                    if (!lastChild.leadingComments.length) {
+                        lastChild.leadingComments = undefined;
+                    }
+                }
+            } else if (extra.leadingComments.length > 0) {
+                leadingComments = [];
+                for (i = extra.leadingComments.length - 1; i >= 0; --i) {
+                    comment = extra.leadingComments[i];
+                    if (comment.range[1] <= this.range[0]) {
+                        leadingComments.unshift(comment);
+                        extra.leadingComments.splice(i, 1);
+                    }
+                }
+            }
+
+
+            if (leadingComments && leadingComments.length > 0) {
+                this.leadingComments = leadingComments;
+            }
+            if (trailingComments && trailingComments.length > 0) {
+                this.trailingComments = trailingComments;
+            }
+
+            bottomRight.push(this);
+        },
+
+        finish: function () {
+            if (extra.range) {
+                this.range[1] = lastIndex;
+            }
+            if (extra.loc) {
+                this.loc.end = {
+                    line: lastLineNumber,
+                    column: lastIndex - lastLineStart
+                };
+                if (extra.source) {
+                    this.loc.source = extra.source;
+                }
+            }
+
+            if (extra.attachComment) {
+                this.processComment();
+            }
+        },
+
+        finishArrayExpression: function (elements) {
+            this.type = Syntax.ArrayExpression;
+            this.elements = elements;
+            this.finish();
+            return this;
+        },
+
+        finishArrayPattern: function (elements) {
+            this.type = Syntax.ArrayPattern;
+            this.elements = elements;
+            this.finish();
+            return this;
+        },
+
+        finishArrowFunctionExpression: function (params, defaults, body, expression) {
+            this.type = Syntax.ArrowFunctionExpression;
+            this.id = null;
+            this.params = params;
+            this.defaults = defaults;
+            this.body = body;
+            this.generator = false;
+            this.expression = expression;
+            this.finish();
+            return this;
+        },
+
+        finishAssignmentExpression: function (operator, left, right) {
+            this.type = Syntax.AssignmentExpression;
+            this.operator = operator;
+            this.left = left;
+            this.right = right;
+            this.finish();
+            return this;
+        },
+
+        finishAssignmentPattern: function (left, right) {
+            this.type = Syntax.AssignmentPattern;
+            this.left = left;
+            this.right = right;
+            this.finish();
+            return this;
+        },
+
+        finishBinaryExpression: function (operator, left, right) {
+            this.type = (operator === '||' || operator === '&&') ? Syntax.LogicalExpression : Syntax.BinaryExpression;
+            this.operator = operator;
+            this.left = left;
+            this.right = right;
+            this.finish();
+            return this;
+        },
+
+        finishBlockStatement: function (body) {
+            this.type = Syntax.BlockStatement;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishBreakStatement: function (label) {
+            this.type = Syntax.BreakStatement;
+            this.label = label;
+            this.finish();
+            return this;
+        },
+
+        finishCallExpression: function (callee, args) {
+            this.type = Syntax.CallExpression;
+            this.callee = callee;
+            this.arguments = args;
+            this.finish();
+            return this;
+        },
+
+        finishCatchClause: function (param, body) {
+            this.type = Syntax.CatchClause;
+            this.param = param;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishClassBody: function (body) {
+            this.type = Syntax.ClassBody;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishClassDeclaration: function (id, superClass, body) {
+            this.type = Syntax.ClassDeclaration;
+            this.id = id;
+            this.superClass = superClass;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishClassExpression: function (id, superClass, body) {
+            this.type = Syntax.ClassExpression;
+            this.id = id;
+            this.superClass = superClass;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishConditionalExpression: function (test, consequent, alternate) {
+            this.type = Syntax.ConditionalExpression;
+            this.test = test;
+            this.consequent = consequent;
+            this.alternate = alternate;
+            this.finish();
+            return this;
+        },
+
+        finishContinueStatement: function (label) {
+            this.type = Syntax.ContinueStatement;
+            this.label = label;
+            this.finish();
+            return this;
+        },
+
+        finishDebuggerStatement: function () {
+            this.type = Syntax.DebuggerStatement;
+            this.finish();
+            return this;
+        },
+
+        finishDoWhileStatement: function (body, test) {
+            this.type = Syntax.DoWhileStatement;
+            this.body = body;
+            this.test = test;
+            this.finish();
+            return this;
+        },
+
+        finishEmptyStatement: function () {
+            this.type = Syntax.EmptyStatement;
+            this.finish();
+            return this;
+        },
+
+        finishExpressionStatement: function (expression) {
+            this.type = Syntax.ExpressionStatement;
+            this.expression = expression;
+            this.finish();
+            return this;
+        },
+
+        finishForStatement: function (init, test, update, body) {
+            this.type = Syntax.ForStatement;
+            this.init = init;
+            this.test = test;
+            this.update = update;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishForOfStatement: function (left, right, body) {
+            this.type = Syntax.ForOfStatement;
+            this.left = left;
+            this.right = right;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishForInStatement: function (left, right, body) {
+            this.type = Syntax.ForInStatement;
+            this.left = left;
+            this.right = right;
+            this.body = body;
+            this.each = false;
+            this.finish();
+            return this;
+        },
+
+        finishFunctionDeclaration: function (id, params, defaults, body, generator) {
+            this.type = Syntax.FunctionDeclaration;
+            this.id = id;
+            this.params = params;
+            this.defaults = defaults;
+            this.body = body;
+            this.generator = generator;
+            this.expression = false;
+            this.finish();
+            return this;
+        },
+
+        finishFunctionExpression: function (id, params, defaults, body, generator) {
+            this.type = Syntax.FunctionExpression;
+            this.id = id;
+            this.params = params;
+            this.defaults = defaults;
+            this.body = body;
+            this.generator = generator;
+            this.expression = false;
+            this.finish();
+            return this;
+        },
+
+        finishIdentifier: function (name) {
+            this.type = Syntax.Identifier;
+            this.name = name;
+            this.finish();
+            return this;
+        },
+
+        finishIfStatement: function (test, consequent, alternate) {
+            this.type = Syntax.IfStatement;
+            this.test = test;
+            this.consequent = consequent;
+            this.alternate = alternate;
+            this.finish();
+            return this;
+        },
+
+        finishLabeledStatement: function (label, body) {
+            this.type = Syntax.LabeledStatement;
+            this.label = label;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishLiteral: function (token) {
+            this.type = Syntax.Literal;
+            this.value = token.value;
+            this.raw = source.slice(token.start, token.end);
+            if (token.regex) {
+                this.regex = token.regex;
+            }
+            this.finish();
+            return this;
+        },
+
+        finishMemberExpression: function (accessor, object, property) {
+            this.type = Syntax.MemberExpression;
+            this.computed = accessor === '[';
+            this.object = object;
+            this.property = property;
+            this.finish();
+            return this;
+        },
+
+        finishMetaProperty: function (meta, property) {
+            this.type = Syntax.MetaProperty;
+            this.meta = meta;
+            this.property = property;
+            this.finish();
+            return this;
+        },
+
+        finishNewExpression: function (callee, args) {
+            this.type = Syntax.NewExpression;
+            this.callee = callee;
+            this.arguments = args;
+            this.finish();
+            return this;
+        },
+
+        finishObjectExpression: function (properties) {
+            this.type = Syntax.ObjectExpression;
+            this.properties = properties;
+            this.finish();
+            return this;
+        },
+
+        finishObjectPattern: function (properties) {
+            this.type = Syntax.ObjectPattern;
+            this.properties = properties;
+            this.finish();
+            return this;
+        },
+
+        finishPostfixExpression: function (operator, argument) {
+            this.type = Syntax.UpdateExpression;
+            this.operator = operator;
+            this.argument = argument;
+            this.prefix = false;
+            this.finish();
+            return this;
+        },
+
+        finishProgram: function (body, sourceType) {
+            this.type = Syntax.Program;
+            this.body = body;
+            this.sourceType = sourceType;
+            this.finish();
+            return this;
+        },
+
+        finishProperty: function (kind, key, computed, value, method, shorthand) {
+            this.type = Syntax.Property;
+            this.key = key;
+            this.computed = computed;
+            this.value = value;
+            this.kind = kind;
+            this.method = method;
+            this.shorthand = shorthand;
+            this.finish();
+            return this;
+        },
+
+        finishRestElement: function (argument) {
+            this.type = Syntax.RestElement;
+            this.argument = argument;
+            this.finish();
+            return this;
+        },
+
+        finishReturnStatement: function (argument) {
+            this.type = Syntax.ReturnStatement;
+            this.argument = argument;
+            this.finish();
+            return this;
+        },
+
+        finishSequenceExpression: function (expressions) {
+            this.type = Syntax.SequenceExpression;
+            this.expressions = expressions;
+            this.finish();
+            return this;
+        },
+
+        finishSpreadElement: function (argument) {
+            this.type = Syntax.SpreadElement;
+            this.argument = argument;
+            this.finish();
+            return this;
+        },
+
+        finishSwitchCase: function (test, consequent) {
+            this.type = Syntax.SwitchCase;
+            this.test = test;
+            this.consequent = consequent;
+            this.finish();
+            return this;
+        },
+
+        finishSuper: function () {
+            this.type = Syntax.Super;
+            this.finish();
+            return this;
+        },
+
+        finishSwitchStatement: function (discriminant, cases) {
+            this.type = Syntax.SwitchStatement;
+            this.discriminant = discriminant;
+            this.cases = cases;
+            this.finish();
+            return this;
+        },
+
+        finishTaggedTemplateExpression: function (tag, quasi) {
+            this.type = Syntax.TaggedTemplateExpression;
+            this.tag = tag;
+            this.quasi = quasi;
+            this.finish();
+            return this;
+        },
+
+        finishTemplateElement: function (value, tail) {
+            this.type = Syntax.TemplateElement;
+            this.value = value;
+            this.tail = tail;
+            this.finish();
+            return this;
+        },
+
+        finishTemplateLiteral: function (quasis, expressions) {
+            this.type = Syntax.TemplateLiteral;
+            this.quasis = quasis;
+            this.expressions = expressions;
+            this.finish();
+            return this;
+        },
+
+        finishThisExpression: function () {
+            this.type = Syntax.ThisExpression;
+            this.finish();
+            return this;
+        },
+
+        finishThrowStatement: function (argument) {
+            this.type = Syntax.ThrowStatement;
+            this.argument = argument;
+            this.finish();
+            return this;
+        },
+
+        finishTryStatement: function (block, handler, finalizer) {
+            this.type = Syntax.TryStatement;
+            this.block = block;
+            this.guardedHandlers = [];
+            this.handlers = handler ? [handler] : [];
+            this.handler = handler;
+            this.finalizer = finalizer;
+            this.finish();
+            return this;
+        },
+
+        finishUnaryExpression: function (operator, argument) {
+            this.type = (operator === '++' || operator === '--') ? Syntax.UpdateExpression : Syntax.UnaryExpression;
+            this.operator = operator;
+            this.argument = argument;
+            this.prefix = true;
+            this.finish();
+            return this;
+        },
+
+        finishVariableDeclaration: function (declarations) {
+            this.type = Syntax.VariableDeclaration;
+            this.declarations = declarations;
+            this.kind = 'var';
+            this.finish();
+            return this;
+        },
+
+        finishLexicalDeclaration: function (declarations, kind) {
+            this.type = Syntax.VariableDeclaration;
+            this.declarations = declarations;
+            this.kind = kind;
+            this.finish();
+            return this;
+        },
+
+        finishVariableDeclarator: function (id, init) {
+            this.type = Syntax.VariableDeclarator;
+            this.id = id;
+            this.init = init;
+            this.finish();
+            return this;
+        },
+
+        finishWhileStatement: function (test, body) {
+            this.type = Syntax.WhileStatement;
+            this.test = test;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishWithStatement: function (object, body) {
+            this.type = Syntax.WithStatement;
+            this.object = object;
+            this.body = body;
+            this.finish();
+            return this;
+        },
+
+        finishExportSpecifier: function (local, exported) {
+            this.type = Syntax.ExportSpecifier;
+            this.exported = exported || local;
+            this.local = local;
+            this.finish();
+            return this;
+        },
+
+        finishImportDefaultSpecifier: function (local) {
+            this.type = Syntax.ImportDefaultSpecifier;
+            this.local = local;
+            this.finish();
+            return this;
+        },
+
+        finishImportNamespaceSpecifier: function (local) {
+            this.type = Syntax.ImportNamespaceSpecifier;
+            this.local = local;
+            this.finish();
+            return this;
+        },
+
+        finishExportNamedDeclaration: function (declaration, specifiers, src) {
+            this.type = Syntax.ExportNamedDeclaration;
+            this.declaration = declaration;
+            this.specifiers = specifiers;
+            this.source = src;
+            this.finish();
+            return this;
+        },
+
+        finishExportDefaultDeclaration: function (declaration) {
+            this.type = Syntax.ExportDefaultDeclaration;
+            this.declaration = declaration;
+            this.finish();
+            return this;
+        },
+
+        finishExportAllDeclaration: function (src) {
+            this.type = Syntax.ExportAllDeclaration;
+            this.source = src;
+            this.finish();
+            return this;
+        },
+
+        finishImportSpecifier: function (local, imported) {
+            this.type = Syntax.ImportSpecifier;
+            this.local = local || imported;
+            this.imported = imported;
+            this.finish();
+            return this;
+        },
+
+        finishImportDeclaration: function (specifiers, src) {
+            this.type = Syntax.ImportDeclaration;
+            this.specifiers = specifiers;
+            this.source = src;
+            this.finish();
+            return this;
+        },
+
+        finishYieldExpression: function (argument, delegate) {
+            this.type = Syntax.YieldExpression;
+            this.argument = argument;
+            this.delegate = delegate;
+            this.finish();
+            return this;
+        }
+    };
+
+
+    function recordError(error) {
+        var e, existing;
+
+        for (e = 0; e < extra.errors.length; e++) {
+            existing = extra.errors[e];
+            // Prevent duplicated error.
+            /* istanbul ignore next */
+            if (existing.index === error.index && existing.message === error.message) {
+                return;
+            }
+        }
+
+        extra.errors.push(error);
+    }
+
+    function constructError(msg, column) {
+        var error = new Error(msg);
+        try {
+            throw error;
+        } catch (base) {
+            /* istanbul ignore else */
+            if (Object.create && Object.defineProperty) {
+                error = Object.create(base);
+                Object.defineProperty(error, 'column', { value: column });
+            }
+        } finally {
+            return error;
+        }
+    }
+
+    function createError(line, pos, description) {
+        var msg, column, error;
+
+        msg = 'Line ' + line + ': ' + description;
+        column = pos - (scanning ? lineStart : lastLineStart) + 1;
+        error = constructError(msg, column);
+        error.lineNumber = line;
+        error.description = description;
+        error.index = pos;
+        return error;
+    }
+
+    // Throw an exception
+
+    function throwError(messageFormat) {
+        var args, msg;
+
+        args = Array.prototype.slice.call(arguments, 1);
+        msg = messageFormat.replace(/%(\d)/g,
+            function (whole, idx) {
+                assert(idx < args.length, 'Message reference must be in range');
+                return args[idx];
+            }
+        );
+
+        throw createError(lastLineNumber, lastIndex, msg);
+    }
+
+    function tolerateError(messageFormat) {
+        var args, msg, error;
+
+        args = Array.prototype.slice.call(arguments, 1);
+        /* istanbul ignore next */
+        msg = messageFormat.replace(/%(\d)/g,
+            function (whole, idx) {
+                assert(idx < args.length, 'Message reference must be in range');
+                return args[idx];
+            }
+        );
+
+        error = createError(lineNumber, lastIndex, msg);
+        if (extra.errors) {
+            recordError(error);
+        } else {
+            throw error;
+        }
+    }
+
+    // Throw an exception because of the token.
+
+    function unexpectedTokenError(token, message) {
+        var value, msg = message || Messages.UnexpectedToken;
+
+        if (token) {
+            if (!message) {
+                msg = (token.type === Token.EOF) ? Messages.UnexpectedEOS :
+                    (token.type === Token.Identifier) ? Messages.UnexpectedIdentifier :
+                    (token.type === Token.NumericLiteral) ? Messages.UnexpectedNumber :
+                    (token.type === Token.StringLiteral) ? Messages.UnexpectedString :
+                    (token.type === Token.Template) ? Messages.UnexpectedTemplate :
+                    Messages.UnexpectedToken;
+
+                if (token.type === Token.Keyword) {
+                    if (isFutureReservedWord(token.value)) {
+                        msg = Messages.UnexpectedReserved;
+                    } else if (strict && isStrictModeReservedWord(token.value)) {
+                        msg = Messages.StrictReservedWord;
+                    }
+                }
+            }
+
+            value = (token.type === Token.Template) ? token.value.raw : token.value;
+        } else {
+            value = 'ILLEGAL';
+        }
+
+        msg = msg.replace('%0', value);
+
+        return (token && typeof token.lineNumber === 'number') ?
+            createError(token.lineNumber, token.start, msg) :
+            createError(scanning ? lineNumber : lastLineNumber, scanning ? index : lastIndex, msg);
+    }
+
+    function throwUnexpectedToken(token, message) {
+        throw unexpectedTokenError(token, message);
+    }
+
+    function tolerateUnexpectedToken(token, message) {
+        var error = unexpectedTokenError(token, message);
+        if (extra.errors) {
+            recordError(error);
+        } else {
+            throw error;
+        }
+    }
+
+    // Expect the next token to match the specified punctuator.
+    // If not, an exception will be thrown.
+
+    function expect(value) {
+        var token = lex();
+        if (token.type !== Token.Punctuator || token.value !== value) {
+            throwUnexpectedToken(token);
+        }
+    }
+
+    /**
+     * @name expectCommaSeparator
+     * @description Quietly expect a comma when in tolerant mode, otherwise delegates
+     * to <code>expect(value)</code>
+     * @since 2.0
+     */
+    function expectCommaSeparator() {
+        var token;
+
+        if (extra.errors) {
+            token = lookahead;
+            if (token.type === Token.Punctuator && token.value === ',') {
+                lex();
+            } else if (token.type === Token.Punctuator && token.value === ';') {
+                lex();
+                tolerateUnexpectedToken(token);
+            } else {
+                tolerateUnexpectedToken(token, Messages.UnexpectedToken);
+            }
+        } else {
+            expect(',');
+        }
+    }
+
+    // Expect the next token to match the specified keyword.
+    // If not, an exception will be thrown.
+
+    function expectKeyword(keyword) {
+        var token = lex();
+        if (token.type !== Token.Keyword || token.value !== keyword) {
+            throwUnexpectedToken(token);
+        }
+    }
+
+    // Return true if the next token matches the specified punctuator.
+
+    function match(value) {
+        return lookahead.type === Token.Punctuator && lookahead.value === value;
+    }
+
+    // Return true if the next token matches the specified keyword
+
+    function matchKeyword(keyword) {
+        return lookahead.type === Token.Keyword && lookahead.value === keyword;
+    }
+
+    // Return true if the next token matches the specified contextual keyword
+    // (where an identifier is sometimes a keyword depending on the context)
+
+    function matchContextualKeyword(keyword) {
+        return lookahead.type === Token.Identifier && lookahead.value === keyword;
+    }
+
+    // Return true if the next token is an assignment operator
+
+    function matchAssign() {
+        var op;
+
+        if (lookahead.type !== Token.Punctuator) {
+            return false;
+        }
+        op = lookahead.value;
+        return op === '=' ||
+            op === '*=' ||
+            op === '/=' ||
+            op === '%=' ||
+            op === '+=' ||
+            op === '-=' ||
+            op === '<<=' ||
+            op === '>>=' ||
+            op === '>>>=' ||
+            op === '&=' ||
+            op === '^=' ||
+            op === '|=';
+    }
+
+    function consumeSemicolon() {
+        // Catch the very common case first: immediately a semicolon (U+003B).
+        if (source.charCodeAt(startIndex) === 0x3B || match(';')) {
+            lex();
+            return;
+        }
+
+        if (hasLineTerminator) {
+            return;
+        }
+
+        // FIXME(ikarienator): this is seemingly an issue in the previous location info convention.
+        lastIndex = startIndex;
+        lastLineNumber = startLineNumber;
+        lastLineStart = startLineStart;
+
+        if (lookahead.type !== Token.EOF && !match('}')) {
+            throwUnexpectedToken(lookahead);
+        }
+    }
+
+    // Cover grammar support.
+    //
+    // When an assignment expression position starts with an left parenthesis, the determination of the type
+    // of the syntax is to be deferred arbitrarily long until the end of the parentheses pair (plus a lookahead)
+    // or the first comma. This situation also defers the determination of all the expressions nested in the pair.
+    //
+    // There are three productions that can be parsed in a parentheses pair that needs to be determined
+    // after the outermost pair is closed. They are:
+    //
+    //   1. AssignmentExpression
+    //   2. BindingElements
+    //   3. AssignmentTargets
+    //
+    // In order to avoid exponential backtracking, we use two flags to denote if the production can be
+    // binding element or assignment target.
+    //
+    // The three productions have the relationship:
+    //
+    //   BindingElements ⊆ AssignmentTargets ⊆ AssignmentExpression
+    //
+    // with a single exception that CoverInitializedName when used directly in an Expression, generates
+    // an early error. Therefore, we need the third state, firstCoverInitializedNameError, to track the
+    // first usage of CoverInitializedName and report it when we reached the end of the parentheses pair.
+    //
+    // isolateCoverGrammar function runs the given parser function with a new cover grammar context, and it does not
+    // effect the current flags. This means the production the parser parses is only used as an expression. Therefore
+    // the CoverInitializedName check is conducted.
+    //
+    // inheritCoverGrammar function runs the given parse function with a new cover grammar context, and it propagates
+    // the flags outside of the parser. This means the production the parser parses is used as a part of a potential
+    // pattern. The CoverInitializedName check is deferred.
+    function isolateCoverGrammar(parser) {
+        var oldIsBindingElement = isBindingElement,
+            oldIsAssignmentTarget = isAssignmentTarget,
+            oldFirstCoverInitializedNameError = firstCoverInitializedNameError,
+            result;
+        isBindingElement = true;
+        isAssignmentTarget = true;
+        firstCoverInitializedNameError = null;
+        result = parser();
+        if (firstCoverInitializedNameError !== null) {
+            throwUnexpectedToken(firstCoverInitializedNameError);
+        }
+        isBindingElement = oldIsBindingElement;
+        isAssignmentTarget = oldIsAssignmentTarget;
+        firstCoverInitializedNameError = oldFirstCoverInitializedNameError;
+        return result;
+    }
+
+    function inheritCoverGrammar(parser) {
+        var oldIsBindingElement = isBindingElement,
+            oldIsAssignmentTarget = isAssignmentTarget,
+            oldFirstCoverInitializedNameError = firstCoverInitializedNameError,
+            result;
+        isBindingElement = true;
+        isAssignmentTarget = true;
+        firstCoverInitializedNameError = null;
+        result = parser();
+        isBindingElement = isBindingElement && oldIsBindingElement;
+        isAssignmentTarget = isAssignmentTarget && oldIsAssignmentTarget;
+        firstCoverInitializedNameError = oldFirstCoverInitializedNameError || firstCoverInitializedNameError;
+        return result;
+    }
+
+    // ECMA-262 13.3.3 Destructuring Binding Patterns
+
+    function parseArrayPattern(params, kind) {
+        var node = new Node(), elements = [], rest, restNode;
+        expect('[');
+
+        while (!match(']')) {
+            if (match(',')) {
+                lex();
+                elements.push(null);
+            } else {
+                if (match('...')) {
+                    restNode = new Node();
+                    lex();
+                    params.push(lookahead);
+                    rest = parseVariableIdentifier(kind);
+                    elements.push(restNode.finishRestElement(rest));
+                    break;
+                } else {
+                    elements.push(parsePatternWithDefault(params, kind));
+                }
+                if (!match(']')) {
+                    expect(',');
+                }
+            }
+
+        }
+
+        expect(']');
+
+        return node.finishArrayPattern(elements);
+    }
+
+    function parsePropertyPattern(params, kind) {
+        var node = new Node(), key, keyToken, computed = match('['), init;
+        if (lookahead.type === Token.Identifier) {
+            keyToken = lookahead;
+            key = parseVariableIdentifier();
+            if (match('=')) {
+                params.push(keyToken);
+                lex();
+                init = parseAssignmentExpression();
+
+                return node.finishProperty(
+                    'init', key, false,
+                    new WrappingNode(keyToken).finishAssignmentPattern(key, init), false, false);
+            } else if (!match(':')) {
+                params.push(keyToken);
+                return node.finishProperty('init', key, false, key, false, true);
+            }
+        } else {
+            key = parseObjectPropertyKey();
+        }
+        expect(':');
+        init = parsePatternWithDefault(params, kind);
+        return node.finishProperty('init', key, computed, init, false, false);
+    }
+
+    function parseObjectPattern(params, kind) {
+        var node = new Node(), properties = [];
+
+        expect('{');
+
+        while (!match('}')) {
+            properties.push(parsePropertyPattern(params, kind));
+            if (!match('}')) {
+                expect(',');
+            }
+        }
+
+        lex();
+
+        return node.finishObjectPattern(properties);
+    }
+
+    function parsePattern(params, kind) {
+        if (match('[')) {
+            return parseArrayPattern(params, kind);
+        } else if (match('{')) {
+            return parseObjectPattern(params, kind);
+        } else if (matchKeyword('let')) {
+            if (kind === 'const' || kind === 'let') {
+                tolerateUnexpectedToken(lookahead, Messages.UnexpectedToken);
+            }
+        }
+
+        params.push(lookahead);
+        return parseVariableIdentifier(kind);
+    }
+
+    function parsePatternWithDefault(params, kind) {
+        var startToken = lookahead, pattern, previousAllowYield, right;
+        pattern = parsePattern(params, kind);
+        if (match('=')) {
+            lex();
+            previousAllowYield = state.allowYield;
+            state.allowYield = true;
+            right = isolateCoverGrammar(parseAssignmentExpression);
+            state.allowYield = previousAllowYield;
+            pattern = new WrappingNode(startToken).finishAssignmentPattern(pattern, right);
+        }
+        return pattern;
+    }
+
+    // ECMA-262 12.2.5 Array Initializer
+
+    function parseArrayInitializer() {
+        var elements = [], node = new Node(), restSpread;
+
+        expect('[');
+
+        while (!match(']')) {
+            if (match(',')) {
+                lex();
+                elements.push(null);
+            } else if (match('...')) {
+                restSpread = new Node();
+                lex();
+                restSpread.finishSpreadElement(inheritCoverGrammar(parseAssignmentExpression));
+
+                if (!match(']')) {
+                    isAssignmentTarget = isBindingElement = false;
+                    expect(',');
+                }
+                elements.push(restSpread);
+            } else {
+                elements.push(inheritCoverGrammar(parseAssignmentExpression));
+
+                if (!match(']')) {
+                    expect(',');
+                }
+            }
+        }
+
+        lex();
+
+        return node.finishArrayExpression(elements);
+    }
+
+    // ECMA-262 12.2.6 Object Initializer
+
+    function parsePropertyFunction(node, paramInfo, isGenerator) {
+        var previousStrict, body;
+
+        isAssignmentTarget = isBindingElement = false;
+
+        previousStrict = strict;
+        body = isolateCoverGrammar(parseFunctionSourceElements);
+
+        if (strict && paramInfo.firstRestricted) {
+            tolerateUnexpectedToken(paramInfo.firstRestricted, paramInfo.message);
+        }
+        if (strict && paramInfo.stricted) {
+            tolerateUnexpectedToken(paramInfo.stricted, paramInfo.message);
+        }
+
+        strict = previousStrict;
+        return node.finishFunctionExpression(null, paramInfo.params, paramInfo.defaults, body, isGenerator);
+    }
+
+    function parsePropertyMethodFunction() {
+        var params, method, node = new Node(),
+            previousAllowYield = state.allowYield;
+
+        state.allowYield = false;
+        params = parseParams();
+        state.allowYield = previousAllowYield;
+
+        state.allowYield = false;
+        method = parsePropertyFunction(node, params, false);
+        state.allowYield = previousAllowYield;
+
+        return method;
+    }
+
+    function parseObjectPropertyKey() {
+        var token, node = new Node(), expr;
+
+        token = lex();
+
+        // Note: This function is called only from parseObjectProperty(), where
+        // EOF and Punctuator tokens are already filtered out.
+
+        switch (token.type) {
+        case Token.StringLiteral:
+        case Token.NumericLiteral:
+            if (strict && token.octal) {
+                tolerateUnexpectedToken(token, Messages.StrictOctalLiteral);
+            }
+            return node.finishLiteral(token);
+        case Token.Identifier:
+        case Token.BooleanLiteral:
+        case Token.NullLiteral:
+        case Token.Keyword:
+            return node.finishIdentifier(token.value);
+        case Token.Punctuator:
+            if (token.value === '[') {
+                expr = isolateCoverGrammar(parseAssignmentExpression);
+                expect(']');
+                return expr;
+            }
+            break;
+        }
+        throwUnexpectedToken(token);
+    }
+
+    function lookaheadPropertyName() {
+        switch (lookahead.type) {
+        case Token.Identifier:
+        case Token.StringLiteral:
+        case Token.BooleanLiteral:
+        case Token.NullLiteral:
+        case Token.NumericLiteral:
+        case Token.Keyword:
+            return true;
+        case Token.Punctuator:
+            return lookahead.value === '[';
+        }
+        return false;
+    }
+
+    // This function is to try to parse a MethodDefinition as defined in 14.3. But in the case of object literals,
+    // it might be called at a position where there is in fact a short hand identifier pattern or a data property.
+    // This can only be determined after we consumed up to the left parentheses.
+    //
+    // In order to avoid back tracking, it returns `null` if the position is not a MethodDefinition and the caller
+    // is responsible to visit other options.
+    function tryParseMethodDefinition(token, key, computed, node) {
+        var value, options, methodNode, params,
+            previousAllowYield = state.allowYield;
+
+        if (token.type === Token.Identifier) {
+            // check for `get` and `set`;
+
+            if (token.value === 'get' && lookaheadPropertyName()) {
+                computed = match('[');
+                key = parseObjectPropertyKey();
+                methodNode = new Node();
+                expect('(');
+                expect(')');
+
+                state.allowYield = false;
+                value = parsePropertyFunction(methodNode, {
+                    params: [],
+                    defaults: [],
+                    stricted: null,
+                    firstRestricted: null,
+                    message: null
+                }, false);
+                state.allowYield = previousAllowYield;
+
+                return node.finishProperty('get', key, computed, value, false, false);
+            } else if (token.value === 'set' && lookaheadPropertyName()) {
+                computed = match('[');
+                key = parseObjectPropertyKey();
+                methodNode = new Node();
+                expect('(');
+
+                options = {
+                    params: [],
+                    defaultCount: 0,
+                    defaults: [],
+                    firstRestricted: null,
+                    paramSet: {}
+                };
+                if (match(')')) {
+                    tolerateUnexpectedToken(lookahead);
+                } else {
+                    state.allowYield = false;
+                    parseParam(options);
+                    state.allowYield = previousAllowYield;
+                    if (options.defaultCount === 0) {
+                        options.defaults = [];
+                    }
+                }
+                expect(')');
+
+                state.allowYield = false;
+                value = parsePropertyFunction(methodNode, options, false);
+                state.allowYield = previousAllowYield;
+
+                return node.finishProperty('set', key, computed, value, false, false);
+            }
+        } else if (token.type === Token.Punctuator && token.value === '*' && lookaheadPropertyName()) {
+            computed = match('[');
+            key = parseObjectPropertyKey();
+            methodNode = new Node();
+
+            state.allowYield = true;
+            params = parseParams();
+            state.allowYield = previousAllowYield;
+
+            state.allowYield = false;
+            value = parsePropertyFunction(methodNode, params, true);
+            state.allowYield = previousAllowYield;
+
+            return node.finishProperty('init', key, computed, value, true, false);
+        }
+
+        if (key && match('(')) {
+            value = parsePropertyMethodFunction();
+            return node.finishProperty('init', key, computed, value, true, false);
+        }
+
+        // Not a MethodDefinition.
+        return null;
+    }
+
+    function parseObjectProperty(hasProto) {
+        var token = lookahead, node = new Node(), computed, key, maybeMethod, proto, value;
+
+        computed = match('[');
+        if (match('*')) {
+            lex();
+        } else {
+            key = parseObjectPropertyKey();
+        }
+        maybeMethod = tryParseMethodDefinition(token, key, computed, node);
+        if (maybeMethod) {
+            return maybeMethod;
+        }
+
+        if (!key) {
+            throwUnexpectedToken(lookahead);
+        }
+
+        // Check for duplicated __proto__
+        if (!computed) {
+            proto = (key.type === Syntax.Identifier && key.name === '__proto__') ||
+                (key.type === Syntax.Literal && key.value === '__proto__');
+            if (hasProto.value && proto) {
+                tolerateError(Messages.DuplicateProtoProperty);
+            }
+            hasProto.value |= proto;
+        }
+
+        if (match(':')) {
+            lex();
+            value = inheritCoverGrammar(parseAssignmentExpression);
+            return node.finishProperty('init', key, computed, value, false, false);
+        }
+
+        if (token.type === Token.Identifier) {
+            if (match('=')) {
+                firstCoverInitializedNameError = lookahead;
+                lex();
+                value = isolateCoverGrammar(parseAssignmentExpression);
+                return node.finishProperty('init', key, computed,
+                    new WrappingNode(token).finishAssignmentPattern(key, value), false, true);
+            }
+            return node.finishProperty('init', key, computed, key, false, true);
+        }
+
+        throwUnexpectedToken(lookahead);
+    }
+
+    function parseObjectInitializer() {
+        var properties = [], hasProto = {value: false}, node = new Node();
+
+        expect('{');
+
+        while (!match('}')) {
+            properties.push(parseObjectProperty(hasProto));
+
+            if (!match('}')) {
+                expectCommaSeparator();
+            }
+        }
+
+        expect('}');
+
+        return node.finishObjectExpression(properties);
+    }
+
+    function reinterpretExpressionAsPattern(expr) {
+        var i;
+        switch (expr.type) {
+        case Syntax.Identifier:
+        case Syntax.MemberExpression:
+        case Syntax.RestElement:
+        case Syntax.AssignmentPattern:
+            break;
+        case Syntax.SpreadElement:
+            expr.type = Syntax.RestElement;
+            reinterpretExpressionAsPattern(expr.argument);
+            break;
+        case Syntax.ArrayExpression:
+            expr.type = Syntax.ArrayPattern;
+            for (i = 0; i < expr.elements.length; i++) {
+                if (expr.elements[i] !== null) {
+                    reinterpretExpressionAsPattern(expr.elements[i]);
+                }
+            }
+            break;
+        case Syntax.ObjectExpression:
+            expr.type = Syntax.ObjectPattern;
+            for (i = 0; i < expr.properties.length; i++) {
+                reinterpretExpressionAsPattern(expr.properties[i].value);
+            }
+            break;
+        case Syntax.AssignmentExpression:
+            expr.type = Syntax.AssignmentPattern;
+            reinterpretExpressionAsPattern(expr.left);
+            break;
+        default:
+            // Allow other node type for tolerant parsing.
+            break;
+        }
+    }
+
+    // ECMA-262 12.2.9 Template Literals
+
+    function parseTemplateElement(option) {
+        var node, token;
+
+        if (lookahead.type !== Token.Template || (option.head && !lookahead.head)) {
+            throwUnexpectedToken();
+        }
+
+        node = new Node();
+        token = lex();
+
+        return node.finishTemplateElement({ raw: token.value.raw, cooked: token.value.cooked }, token.tail);
+    }
+
+    function parseTemplateLiteral() {
+        var quasi, quasis, expressions, node = new Node();
+
+        quasi = parseTemplateElement({ head: true });
+        quasis = [quasi];
+        expressions = [];
+
+        while (!quasi.tail) {
+            expressions.push(parseExpression());
+            quasi = parseTemplateElement({ head: false });
+            quasis.push(quasi);
+        }
+
+        return node.finishTemplateLiteral(quasis, expressions);
+    }
+
+    // ECMA-262 12.2.10 The Grouping Operator
+
+    function parseGroupExpression() {
+        var expr, expressions, startToken, i, params = [];
+
+        expect('(');
+
+        if (match(')')) {
+            lex();
+            if (!match('=>')) {
+                expect('=>');
+            }
+            return {
+                type: PlaceHolders.ArrowParameterPlaceHolder,
+                params: [],
+                rawParams: []
+            };
+        }
+
+        startToken = lookahead;
+        if (match('...')) {
+            expr = parseRestElement(params);
+            expect(')');
+            if (!match('=>')) {
+                expect('=>');
+            }
+            return {
+                type: PlaceHolders.ArrowParameterPlaceHolder,
+                params: [expr]
+            };
+        }
+
+        isBindingElement = true;
+        expr = inheritCoverGrammar(parseAssignmentExpression);
+
+        if (match(',')) {
+            isAssignmentTarget = false;
+            expressions = [expr];
+
+            while (startIndex < length) {
+                if (!match(',')) {
+                    break;
+                }
+                lex();
+
+                if (match('...')) {
+                    if (!isBindingElement) {
+                        throwUnexpectedToken(lookahead);
+                    }
+                    expressions.push(parseRestElement(params));
+                    expect(')');
+                    if (!match('=>')) {
+                        expect('=>');
+                    }
+                    isBindingElement = false;
+                    for (i = 0; i < expressions.length; i++) {
+                        reinterpretExpressionAsPattern(expressions[i]);
+                    }
+                    return {
+                        type: PlaceHolders.ArrowParameterPlaceHolder,
+                        params: expressions
+                    };
+                }
+
+                expressions.push(inheritCoverGrammar(parseAssignmentExpression));
+            }
+
+            expr = new WrappingNode(startToken).finishSequenceExpression(expressions);
+        }
+
+
+        expect(')');
+
+        if (match('=>')) {
+            if (expr.type === Syntax.Identifier && expr.name === 'yield') {
+                return {
+                    type: PlaceHolders.ArrowParameterPlaceHolder,
+                    params: [expr]
+                };
+            }
+
+            if (!isBindingElement) {
+                throwUnexpectedToken(lookahead);
+            }
+
+            if (expr.type === Syntax.SequenceExpression) {
+                for (i = 0; i < expr.expressions.length; i++) {
+                    reinterpretExpressionAsPattern(expr.expressions[i]);
+                }
+            } else {
+                reinterpretExpressionAsPattern(expr);
+            }
+
+            expr = {
+                type: PlaceHolders.ArrowParameterPlaceHolder,
+                params: expr.type === Syntax.SequenceExpression ? expr.expressions : [expr]
+            };
+        }
+        isBindingElement = false;
+        return expr;
+    }
+
+
+    // ECMA-262 12.2 Primary Expressions
+
+    function parsePrimaryExpression() {
+        var type, token, expr, node;
+
+        if (match('(')) {
+            isBindingElement = false;
+            return inheritCoverGrammar(parseGroupExpression);
+        }
+
+        if (match('[')) {
+            return inheritCoverGrammar(parseArrayInitializer);
+        }
+
+        if (match('{')) {
+            return inheritCoverGrammar(parseObjectInitializer);
+        }
+
+        type = lookahead.type;
+        node = new Node();
+
+        if (type === Token.Identifier) {
+            if (state.sourceType === 'module' && lookahead.value === 'await') {
+                tolerateUnexpectedToken(lookahead);
+            }
+            expr = node.finishIdentifier(lex().value);
+        } else if (type === Token.StringLiteral || type === Token.NumericLiteral) {
+            isAssignmentTarget = isBindingElement = false;
+            if (strict && lookahead.octal) {
+                tolerateUnexpectedToken(lookahead, Messages.StrictOctalLiteral);
+            }
+            expr = node.finishLiteral(lex());
+        } else if (type === Token.Keyword) {
+            if (!strict && state.allowYield && matchKeyword('yield')) {
+                return parseNonComputedProperty();
+            }
+            if (!strict && matchKeyword('let')) {
+                return node.finishIdentifier(lex().value);
+            }
+            isAssignmentTarget = isBindingElement = false;
+            if (matchKeyword('function')) {
+                return parseFunctionExpression();
+            }
+            if (matchKeyword('this')) {
+                lex();
+                return node.finishThisExpression();
+            }
+            if (matchKeyword('class')) {
+                return parseClassExpression();
+            }
+            throwUnexpectedToken(lex());
+        } else if (type === Token.BooleanLiteral) {
+            isAssignmentTarget = isBindingElement = false;
+            token = lex();
+            token.value = (token.value === 'true');
+            expr = node.finishLiteral(token);
+        } else if (type === Token.NullLiteral) {
+            isAssignmentTarget = isBindingElement = false;
+            token = lex();
+            token.value = null;
+            expr = node.finishLiteral(token);
+        } else if (match('/') || match('/=')) {
+            isAssignmentTarget = isBindingElement = false;
+            index = startIndex;
+
+            if (typeof extra.tokens !== 'undefined') {
+                token = collectRegex();
+            } else {
+                token = scanRegExp();
+            }
+            lex();
+            expr = node.finishLiteral(token);
+        } else if (type === Token.Template) {
+            expr = parseTemplateLiteral();
+        } else {
+            throwUnexpectedToken(lex());
+        }
+
+        return expr;
+    }
+
+    // ECMA-262 12.3 Left-Hand-Side Expressions
+
+    function parseArguments() {
+        var args = [], expr;
+
+        expect('(');
+
+        if (!match(')')) {
+            while (startIndex < length) {
+                if (match('...')) {
+                    expr = new Node();
+                    lex();
+                    expr.finishSpreadElement(isolateCoverGrammar(parseAssignmentExpression));
+                } else {
+                    expr = isolateCoverGrammar(parseAssignmentExpression);
+                }
+                args.push(expr);
+                if (match(')')) {
+                    break;
+                }
+                expectCommaSeparator();
+            }
+        }
+
+        expect(')');
+
+        return args;
+    }
+
+    function parseNonComputedProperty() {
+        var token, node = new Node();
+
+        token = lex();
+
+        if (!isIdentifierName(token)) {
+            throwUnexpectedToken(token);
+        }
+
+        return node.finishIdentifier(token.value);
+    }
+
+    function parseNonComputedMember() {
+        expect('.');
+
+        return parseNonComputedProperty();
+    }
+
+    function parseComputedMember() {
+        var expr;
+
+        expect('[');
+
+        expr = isolateCoverGrammar(parseExpression);
+
+        expect(']');
+
+        return expr;
+    }
+
+    // ECMA-262 12.3.3 The new Operator
+
+    function parseNewExpression() {
+        var callee, args, node = new Node();
+
+        expectKeyword('new');
+
+        if (match('.')) {
+            lex();
+            if (lookahead.type === Token.Identifier && lookahead.value === 'target') {
+                if (state.inFunctionBody) {
+                    lex();
+                    return node.finishMetaProperty('new', 'target');
+                }
+            }
+            throwUnexpectedToken(lookahead);
+        }
+
+        callee = isolateCoverGrammar(parseLeftHandSideExpression);
+        args = match('(') ? parseArguments() : [];
+
+        isAssignmentTarget = isBindingElement = false;
+
+        return node.finishNewExpression(callee, args);
+    }
+
+    // ECMA-262 12.3.4 Function Calls
+
+    function parseLeftHandSideExpressionAllowCall() {
+        var quasi, expr, args, property, startToken, previousAllowIn = state.allowIn;
+
+        startToken = lookahead;
+        state.allowIn = true;
+
+        if (matchKeyword('super') && state.inFunctionBody) {
+            expr = new Node();
+            lex();
+            expr = expr.finishSuper();
+            if (!match('(') && !match('.') && !match('[')) {
+                throwUnexpectedToken(lookahead);
+            }
+        } else {
+            expr = inheritCoverGrammar(matchKeyword('new') ? parseNewExpression : parsePrimaryExpression);
+        }
+
+        for (;;) {
+            if (match('.')) {
+                isBindingElement = false;
+                isAssignmentTarget = true;
+                property = parseNonComputedMember();
+                expr = new WrappingNode(startToken).finishMemberExpression('.', expr, property);
+            } else if (match('(')) {
+                isBindingElement = false;
+                isAssignmentTarget = false;
+                args = parseArguments();
+                expr = new WrappingNode(startToken).finishCallExpression(expr, args);
+            } else if (match('[')) {
+                isBindingElement = false;
+                isAssignmentTarget = true;
+                property = parseComputedMember();
+                expr = new WrappingNode(startToken).finishMemberExpression('[', expr, property);
+            } else if (lookahead.type === Token.Template && lookahead.head) {
+                quasi = parseTemplateLiteral();
+                expr = new WrappingNode(startToken).finishTaggedTemplateExpression(expr, quasi);
+            } else {
+                break;
+            }
+        }
+        state.allowIn = previousAllowIn;
+
+        return expr;
+    }
+
+    // ECMA-262 12.3 Left-Hand-Side Expressions
+
+    function parseLeftHandSideExpression() {
+        var quasi, expr, property, startToken;
+        assert(state.allowIn, 'callee of new expression always allow in keyword.');
+
+        startToken = lookahead;
+
+        if (matchKeyword('super') && state.inFunctionBody) {
+            expr = new Node();
+            lex();
+            expr = expr.finishSuper();
+            if (!match('[') && !match('.')) {
+                throwUnexpectedToken(lookahead);
+            }
+        } else {
+            expr = inheritCoverGrammar(matchKeyword('new') ? parseNewExpression : parsePrimaryExpression);
+        }
+
+        for (;;) {
+            if (match('[')) {
+                isBindingElement = false;
+                isAssignmentTarget = true;
+                property = parseComputedMember();
+                expr = new WrappingNode(startToken).finishMemberExpression('[', expr, property);
+            } else if (match('.')) {
+                isBindingElement = false;
+                isAssignmentTarget = true;
+                property = parseNonComputedMember();
+                expr = new WrappingNode(startToken).finishMemberExpression('.', expr, property);
+            } else if (lookahead.type === Token.Template && lookahead.head) {
+                quasi = parseTemplateLiteral();
+                expr = new WrappingNode(startToken).finishTaggedTemplateExpression(expr, quasi);
+            } else {
+                break;
+            }
+        }
+        return expr;
+    }
+
+    // ECMA-262 12.4 Postfix Expressions
+
+    function parsePostfixExpression() {
+        var expr, token, startToken = lookahead;
+
+        expr = inheritCoverGrammar(parseLeftHandSideExpressionAllowCall);
+
+        if (!hasLineTerminator && lookahead.type === Token.Punctuator) {
+            if (match('++') || match('--')) {
+                // ECMA-262 11.3.1, 11.3.2
+                if (strict && expr.type === Syntax.Identifier && isRestrictedWord(expr.name)) {
+                    tolerateError(Messages.StrictLHSPostfix);
+                }
+
+                if (!isAssignmentTarget) {
+                    tolerateError(Messages.InvalidLHSInAssignment);
+                }
+
+                isAssignmentTarget = isBindingElement = false;
+
+                token = lex();
+                expr = new WrappingNode(startToken).finishPostfixExpression(token.value, expr);
+            }
+        }
+
+        return expr;
+    }
+
+    // ECMA-262 12.5 Unary Operators
+
+    function parseUnaryExpression() {
+        var token, expr, startToken;
+
+        if (lookahead.type !== Token.Punctuator && lookahead.type !== Token.Keyword) {
+            expr = parsePostfixExpression();
+        } else if (match('++') || match('--')) {
+            startToken = lookahead;
+            token = lex();
+            expr = inheritCoverGrammar(parseUnaryExpression);
+            // ECMA-262 11.4.4, 11.4.5
+            if (strict && expr.type === Syntax.Identifier && isRestrictedWord(expr.name)) {
+                tolerateError(Messages.StrictLHSPrefix);
+            }
+
+            if (!isAssignmentTarget) {
+                tolerateError(Messages.InvalidLHSInAssignment);
+            }
+            expr = new WrappingNode(startToken).finishUnaryExpression(token.value, expr);
+            isAssignmentTarget = isBindingElement = false;
+        } else if (match('+') || match('-') || match('~') || match('!')) {
+            startToken = lookahead;
+            token = lex();
+            expr = inheritCoverGrammar(parseUnaryExpression);
+            expr = new WrappingNode(startToken).finishUnaryExpression(token.value, expr);
+            isAssignmentTarget = isBindingElement = false;
+        } else if (matchKeyword('delete') || matchKeyword('void') || matchKeyword('typeof')) {
+            startToken = lookahead;
+            token = lex();
+            expr = inheritCoverGrammar(parseUnaryExpression);
+            expr = new WrappingNode(startToken).finishUnaryExpression(token.value, expr);
+            if (strict && expr.operator === 'delete' && expr.argument.type === Syntax.Identifier) {
+                tolerateError(Messages.StrictDelete);
+            }
+            isAssignmentTarget = isBindingElement = false;
+        } else {
+            expr = parsePostfixExpression();
+        }
+
+        return expr;
+    }
+
+    function binaryPrecedence(token, allowIn) {
+        var prec = 0;
+
+        if (token.type !== Token.Punctuator && token.type !== Token.Keyword) {
+            return 0;
+        }
+
+        switch (token.value) {
+        case '||':
+            prec = 1;
+            break;
+
+        case '&&':
+            prec = 2;
+            break;
+
+        case '|':
+            prec = 3;
+            break;
+
+        case '^':
+            prec = 4;
+            break;
+
+        case '&':
+            prec = 5;
+            break;
+
+        case '==':
+        case '!=':
+        case '===':
+        case '!==':
+            prec = 6;
+            break;
+
+        case '<':
+        case '>':
+        case '<=':
+        case '>=':
+        case 'instanceof':
+            prec = 7;
+            break;
+
+        case 'in':
+            prec = allowIn ? 7 : 0;
+            break;
+
+        case '<<':
+        case '>>':
+        case '>>>':
+            prec = 8;
+            break;
+
+        case '+':
+        case '-':
+            prec = 9;
+            break;
+
+        case '*':
+        case '/':
+        case '%':
+            prec = 11;
+            break;
+
+        default:
+            break;
+        }
+
+        return prec;
+    }
+
+    // ECMA-262 12.6 Multiplicative Operators
+    // ECMA-262 12.7 Additive Operators
+    // ECMA-262 12.8 Bitwise Shift Operators
+    // ECMA-262 12.9 Relational Operators
+    // ECMA-262 12.10 Equality Operators
+    // ECMA-262 12.11 Binary Bitwise Operators
+    // ECMA-262 12.12 Binary Logical Operators
+
+    function parseBinaryExpression() {
+        var marker, markers, expr, token, prec, stack, right, operator, left, i;
+
+        marker = lookahead;
+        left = inheritCoverGrammar(parseUnaryExpression);
+
+        token = lookahead;
+        prec = binaryPrecedence(token, state.allowIn);
+        if (prec === 0) {
+            return left;
+        }
+        isAssignmentTarget = isBindingElement = false;
+        token.prec = prec;
+        lex();
+
+        markers = [marker, lookahead];
+        right = isolateCoverGrammar(parseUnaryExpression);
+
+        stack = [left, token, right];
+
+        while ((prec = binaryPrecedence(lookahead, state.allowIn)) > 0) {
+
+            // Reduce: make a binary expression from the three topmost entries.
+            while ((stack.length > 2) && (prec <= stack[stack.length - 2].prec)) {
+                right = stack.pop();
+                operator = stack.pop().value;
+                left = stack.pop();
+                markers.pop();
+                expr = new WrappingNode(markers[markers.length - 1]).finishBinaryExpression(operator, left, right);
+                stack.push(expr);
+            }
+
+            // Shift.
+            token = lex();
+            token.prec = prec;
+            stack.push(token);
+            markers.push(lookahead);
+            expr = isolateCoverGrammar(parseUnaryExpression);
+            stack.push(expr);
+        }
+
+        // Final reduce to clean-up the stack.
+        i = stack.length - 1;
+        expr = stack[i];
+        markers.pop();
+        while (i > 1) {
+            expr = new WrappingNode(markers.pop()).finishBinaryExpression(stack[i - 1].value, stack[i - 2], expr);
+            i -= 2;
+        }
+
+        return expr;
+    }
+
+
+    // ECMA-262 12.13 Conditional Operator
+
+    function parseConditionalExpression() {
+        var expr, previousAllowIn, consequent, alternate, startToken;
+
+        startToken = lookahead;
+
+        expr = inheritCoverGrammar(parseBinaryExpression);
+        if (match('?')) {
+            lex();
+            previousAllowIn = state.allowIn;
+            state.allowIn = true;
+            consequent = isolateCoverGrammar(parseAssignmentExpression);
+            state.allowIn = previousAllowIn;
+            expect(':');
+            alternate = isolateCoverGrammar(parseAssignmentExpression);
+
+            expr = new WrappingNode(startToken).finishConditionalExpression(expr, consequent, alternate);
+            isAssignmentTarget = isBindingElement = false;
+        }
+
+        return expr;
+    }
+
+    // ECMA-262 14.2 Arrow Function Definitions
+
+    function parseConciseBody() {
+        if (match('{')) {
+            return parseFunctionSourceElements();
+        }
+        return isolateCoverGrammar(parseAssignmentExpression);
+    }
+
+    function checkPatternParam(options, param) {
+        var i;
+        switch (param.type) {
+        case Syntax.Identifier:
+            validateParam(options, param, param.name);
+            break;
+        case Syntax.RestElement:
+            checkPatternParam(options, param.argument);
+            break;
+        case Syntax.AssignmentPattern:
+            checkPatternParam(options, param.left);
+            break;
+        case Syntax.ArrayPattern:
+            for (i = 0; i < param.elements.length; i++) {
+                if (param.elements[i] !== null) {
+                    checkPatternParam(options, param.elements[i]);
+                }
+            }
+            break;
+        case Syntax.YieldExpression:
+            break;
+        default:
+            assert(param.type === Syntax.ObjectPattern, 'Invalid type');
+            for (i = 0; i < param.properties.length; i++) {
+                checkPatternParam(options, param.properties[i].value);
+            }
+            break;
+        }
+    }
+    function reinterpretAsCoverFormalsList(expr) {
+        var i, len, param, params, defaults, defaultCount, options, token;
+
+        defaults = [];
+        defaultCount = 0;
+        params = [expr];
+
+        switch (expr.type) {
+        case Syntax.Identifier:
+            break;
+        case PlaceHolders.ArrowParameterPlaceHolder:
+            params = expr.params;
+            break;
+        default:
+            return null;
+        }
+
+        options = {
+            paramSet: {}
+        };
+
+        for (i = 0, len = params.length; i < len; i += 1) {
+            param = params[i];
+            switch (param.type) {
+            case Syntax.AssignmentPattern:
+                params[i] = param.left;
+                if (param.right.type === Syntax.YieldExpression) {
+                    if (param.right.argument) {
+                        throwUnexpectedToken(lookahead);
+                    }
+                    param.right.type = Syntax.Identifier;
+                    param.right.name = 'yield';
+                    delete param.right.argument;
+                    delete param.right.delegate;
+                }
+                defaults.push(param.right);
+                ++defaultCount;
+                checkPatternParam(options, param.left);
+                break;
+            default:
+                checkPatternParam(options, param);
+                params[i] = param;
+                defaults.push(null);
+                break;
+            }
+        }
+
+        if (strict || !state.allowYield) {
+            for (i = 0, len = params.length; i < len; i += 1) {
+                param = params[i];
+                if (param.type === Syntax.YieldExpression) {
+                    throwUnexpectedToken(lookahead);
+                }
+            }
+        }
+
+        if (options.message === Messages.StrictParamDupe) {
+            token = strict ? options.stricted : options.firstRestricted;
+            throwUnexpectedToken(token, options.message);
+        }
+
+        if (defaultCount === 0) {
+            defaults = [];
+        }
+
+        return {
+            params: params,
+            defaults: defaults,
+            stricted: options.stricted,
+            firstRestricted: options.firstRestricted,
+            message: options.message
+        };
+    }
+
+    function parseArrowFunctionExpression(options, node) {
+        var previousStrict, previousAllowYield, body;
+
+        if (hasLineTerminator) {
+            tolerateUnexpectedToken(lookahead);
+        }
+        expect('=>');
+
+        previousStrict = strict;
+        previousAllowYield = state.allowYield;
+        state.allowYield = true;
+
+        body = parseConciseBody();
+
+        if (strict && options.firstRestricted) {
+            throwUnexpectedToken(options.firstRestricted, options.message);
+        }
+        if (strict && options.stricted) {
+            tolerateUnexpectedToken(options.stricted, options.message);
+        }
+
+        strict = previousStrict;
+        state.allowYield = previousAllowYield;
+
+        return node.finishArrowFunctionExpression(options.params, options.defaults, body, body.type !== Syntax.BlockStatement);
+    }
+
+    // ECMA-262 14.4 Yield expression
+
+    function parseYieldExpression() {
+        var argument, expr, delegate, previousAllowYield;
+
+        argument = null;
+        expr = new Node();
+        delegate = false;
+
+        expectKeyword('yield');
+
+        if (!hasLineTerminator) {
+            previousAllowYield = state.allowYield;
+            state.allowYield = false;
+            delegate = match('*');
+            if (delegate) {
+                lex();
+                argument = parseAssignmentExpression();
+            } else {
+                if (!match(';') && !match('}') && !match(')') && lookahead.type !== Token.EOF) {
+                    argument = parseAssignmentExpression();
+                }
+            }
+            state.allowYield = previousAllowYield;
+        }
+
+        return expr.finishYieldExpression(argument, delegate);
+    }
+
+    // ECMA-262 12.14 Assignment Operators
+
+    function parseAssignmentExpression() {
+        var token, expr, right, list, startToken;
+
+        startToken = lookahead;
+        token = lookahead;
+
+        if (!state.allowYield && matchKeyword('yield')) {
+            return parseYieldExpression();
+        }
+
+        expr = parseConditionalExpression();
+
+        if (expr.type === PlaceHolders.ArrowParameterPlaceHolder || match('=>')) {
+            isAssignmentTarget = isBindingElement = false;
+            list = reinterpretAsCoverFormalsList(expr);
+
+            if (list) {
+                firstCoverInitializedNameError = null;
+                return parseArrowFunctionExpression(list, new WrappingNode(startToken));
+            }
+
+            return expr;
+        }
+
+        if (matchAssign()) {
+            if (!isAssignmentTarget) {
+                tolerateError(Messages.InvalidLHSInAssignment);
+            }
+
+            // ECMA-262 12.1.1
+            if (strict && expr.type === Syntax.Identifier) {
+                if (isRestrictedWord(expr.name)) {
+                    tolerateUnexpectedToken(token, Messages.StrictLHSAssignment);
+                }
+                if (isStrictModeReservedWord(expr.name)) {
+                    tolerateUnexpectedToken(token, Messages.StrictReservedWord);
+                }
+            }
+
+            if (!match('=')) {
+                isAssignmentTarget = isBindingElement = false;
+            } else {
+                reinterpretExpressionAsPattern(expr);
+            }
+
+            token = lex();
+            right = isolateCoverGrammar(parseAssignmentExpression);
+            expr = new WrappingNode(startToken).finishAssignmentExpression(token.value, expr, right);
+            firstCoverInitializedNameError = null;
+        }
+
+        return expr;
+    }
+
+    // ECMA-262 12.15 Comma Operator
+
+    function parseExpression() {
+        var expr, startToken = lookahead, expressions;
+
+        expr = isolateCoverGrammar(parseAssignmentExpression);
+
+        if (match(',')) {
+            expressions = [expr];
+
+            while (startIndex < length) {
+                if (!match(',')) {
+                    break;
+                }
+                lex();
+                expressions.push(isolateCoverGrammar(parseAssignmentExpression));
+            }
+
+            expr = new WrappingNode(startToken).finishSequenceExpression(expressions);
+        }
+
+        return expr;
+    }
+
+    // ECMA-262 13.2 Block
+
+    function parseStatementListItem() {
+        if (lookahead.type === Token.Keyword) {
+            switch (lookahead.value) {
+            case 'export':
+                if (state.sourceType !== 'module') {
+                    tolerateUnexpectedToken(lookahead, Messages.IllegalExportDeclaration);
+                }
+                return parseExportDeclaration();
+            case 'import':
+                if (state.sourceType !== 'module') {
+                    tolerateUnexpectedToken(lookahead, Messages.IllegalImportDeclaration);
+                }
+                return parseImportDeclaration();
+            case 'const':
+                return parseLexicalDeclaration({inFor: false});
+            case 'function':
+                return parseFunctionDeclaration(new Node());
+            case 'class':
+                return parseClassDeclaration();
+            }
+        }
+
+        if (matchKeyword('let') && isLexicalDeclaration()) {
+            return parseLexicalDeclaration({inFor: false});
+        }
+
+        return parseStatement();
+    }
+
+    function parseStatementList() {
+        var list = [];
+        while (startIndex < length) {
+            if (match('}')) {
+                break;
+            }
+            list.push(parseStatementListItem());
+        }
+
+        return list;
+    }
+
+    function parseBlock() {
+        var block, node = new Node();
+
+        expect('{');
+
+        block = parseStatementList();
+
+        expect('}');
+
+        return node.finishBlockStatement(block);
+    }
+
+    // ECMA-262 13.3.2 Variable Statement
+
+    function parseVariableIdentifier(kind) {
+        var token, node = new Node();
+
+        token = lex();
+
+        if (token.type === Token.Keyword && token.value === 'yield') {
+            if (strict) {
+                tolerateUnexpectedToken(token, Messages.StrictReservedWord);
+            } if (!state.allowYield) {
+                throwUnexpectedToken(token);
+            }
+        } else if (token.type !== Token.Identifier) {
+            if (strict && token.type === Token.Keyword && isStrictModeReservedWord(token.value)) {
+                tolerateUnexpectedToken(token, Messages.StrictReservedWord);
+            } else {
+                if (strict || token.value !== 'let' || kind !== 'var') {
+                    throwUnexpectedToken(token);
+                }
+            }
+        } else if (state.sourceType === 'module' && token.type === Token.Identifier && token.value === 'await') {
+            tolerateUnexpectedToken(token);
+        }
+
+        return node.finishIdentifier(token.value);
+    }
+
+    function parseVariableDeclaration(options) {
+        var init = null, id, node = new Node(), params = [];
+
+        id = parsePattern(params, 'var');
+
+        // ECMA-262 12.2.1
+        if (strict && isRestrictedWord(id.name)) {
+            tolerateError(Messages.StrictVarName);
+        }
+
+        if (match('=')) {
+            lex();
+            init = isolateCoverGrammar(parseAssignmentExpression);
+        } else if (id.type !== Syntax.Identifier && !options.inFor) {
+            expect('=');
+        }
+
+        return node.finishVariableDeclarator(id, init);
+    }
+
+    function parseVariableDeclarationList(options) {
+        var opt, list;
+
+        opt = { inFor: options.inFor };
+        list = [parseVariableDeclaration(opt)];
+
+        while (match(',')) {
+            lex();
+            list.push(parseVariableDeclaration(opt));
+        }
+
+        return list;
+    }
+
+    function parseVariableStatement(node) {
+        var declarations;
+
+        expectKeyword('var');
+
+        declarations = parseVariableDeclarationList({ inFor: false });
+
+        consumeSemicolon();
+
+        return node.finishVariableDeclaration(declarations);
+    }
+
+    // ECMA-262 13.3.1 Let and Const Declarations
+
+    function parseLexicalBinding(kind, options) {
+        var init = null, id, node = new Node(), params = [];
+
+        id = parsePattern(params, kind);
+
+        // ECMA-262 12.2.1
+        if (strict && id.type === Syntax.Identifier && isRestrictedWord(id.name)) {
+            tolerateError(Messages.StrictVarName);
+        }
+
+        if (kind === 'const') {
+            if (!matchKeyword('in') && !matchContextualKeyword('of')) {
+                expect('=');
+                init = isolateCoverGrammar(parseAssignmentExpression);
+            }
+        } else if ((!options.inFor && id.type !== Syntax.Identifier) || match('=')) {
+            expect('=');
+            init = isolateCoverGrammar(parseAssignmentExpression);
+        }
+
+        return node.finishVariableDeclarator(id, init);
+    }
+
+    function parseBindingList(kind, options) {
+        var list = [parseLexicalBinding(kind, options)];
+
+        while (match(',')) {
+            lex();
+            list.push(parseLexicalBinding(kind, options));
+        }
+
+        return list;
+    }
+
+
+    function tokenizerState() {
+        return {
+            index: index,
+            lineNumber: lineNumber,
+            lineStart: lineStart,
+            hasLineTerminator: hasLineTerminator,
+            lastIndex: lastIndex,
+            lastLineNumber: lastLineNumber,
+            lastLineStart: lastLineStart,
+            startIndex: startIndex,
+            startLineNumber: startLineNumber,
+            startLineStart: startLineStart,
+            lookahead: lookahead,
+            tokenCount: extra.tokens ? extra.tokens.length : 0
+        };
+    }
+
+    function resetTokenizerState(ts) {
+        index = ts.index;
+        lineNumber = ts.lineNumber;
+        lineStart = ts.lineStart;
+        hasLineTerminator = ts.hasLineTerminator;
+        lastIndex = ts.lastIndex;
+        lastLineNumber = ts.lastLineNumber;
+        lastLineStart = ts.lastLineStart;
+        startIndex = ts.startIndex;
+        startLineNumber = ts.startLineNumber;
+        startLineStart = ts.startLineStart;
+        lookahead = ts.lookahead;
+        if (extra.tokens) {
+            extra.tokens.splice(ts.tokenCount, extra.tokens.length);
+        }
+    }
+
+    function isLexicalDeclaration() {
+        var lexical, ts;
+
+        ts = tokenizerState();
+
+        lex();
+        lexical = (lookahead.type === Token.Identifier) || match('[') || match('{') ||
+            matchKeyword('let') || matchKeyword('yield');
+
+        resetTokenizerState(ts);
+
+        return lexical;
+    }
+
+    function parseLexicalDeclaration(options) {
+        var kind, declarations, node = new Node();
+
+        kind = lex().value;
+        assert(kind === 'let' || kind === 'const', 'Lexical declaration must be either let or const');
+
+        declarations = parseBindingList(kind, options);
+
+        consumeSemicolon();
+
+        return node.finishLexicalDeclaration(declarations, kind);
+    }
+
+    function parseRestElement(params) {
+        var param, node = new Node();
+
+        lex();
+
+        if (match('{')) {
+            throwError(Messages.ObjectPatternAsRestParameter);
+        }
+
+        params.push(lookahead);
+
+        param = parseVariableIdentifier();
+
+        if (match('=')) {
+            throwError(Messages.DefaultRestParameter);
+        }
+
+        if (!match(')')) {
+            throwError(Messages.ParameterAfterRestParameter);
+        }
+
+        return node.finishRestElement(param);
+    }
+
+    // ECMA-262 13.4 Empty Statement
+
+    function parseEmptyStatement(node) {
+        expect(';');
+        return node.finishEmptyStatement();
+    }
+
+    // ECMA-262 12.4 Expression Statement
+
+    function parseExpressionStatement(node) {
+        var expr = parseExpression();
+        consumeSemicolon();
+        return node.finishExpressionStatement(expr);
+    }
+
+    // ECMA-262 13.6 If statement
+
+    function parseIfStatement(node) {
+        var test, consequent, alternate;
+
+        expectKeyword('if');
+
+        expect('(');
+
+        test = parseExpression();
+
+        expect(')');
+
+        consequent = parseStatement();
+
+        if (matchKeyword('else')) {
+            lex();
+            alternate = parseStatement();
+        } else {
+            alternate = null;
+        }
+
+        return node.finishIfStatement(test, consequent, alternate);
+    }
+
+    // ECMA-262 13.7 Iteration Statements
+
+    function parseDoWhileStatement(node) {
+        var body, test, oldInIteration;
+
+        expectKeyword('do');
+
+        oldInIteration = state.inIteration;
+        state.inIteration = true;
+
+        body = parseStatement();
+
+        state.inIteration = oldInIteration;
+
+        expectKeyword('while');
+
+        expect('(');
+
+        test = parseExpression();
+
+        expect(')');
+
+        if (match(';')) {
+            lex();
+        }
+
+        return node.finishDoWhileStatement(body, test);
+    }
+
+    function parseWhileStatement(node) {
+        var test, body, oldInIteration;
+
+        expectKeyword('while');
+
+        expect('(');
+
+        test = parseExpression();
+
+        expect(')');
+
+        oldInIteration = state.inIteration;
+        state.inIteration = true;
+
+        body = parseStatement();
+
+        state.inIteration = oldInIteration;
+
+        return node.finishWhileStatement(test, body);
+    }
+
+    function parseForStatement(node) {
+        var init, forIn, initSeq, initStartToken, test, update, left, right, kind, declarations,
+            body, oldInIteration, previousAllowIn = state.allowIn;
+
+        init = test = update = null;
+        forIn = true;
+
+        expectKeyword('for');
+
+        expect('(');
+
+        if (match(';')) {
+            lex();
+        } else {
+            if (matchKeyword('var')) {
+                init = new Node();
+                lex();
+
+                state.allowIn = false;
+                declarations = parseVariableDeclarationList({ inFor: true });
+                state.allowIn = previousAllowIn;
+
+                if (declarations.length === 1 && matchKeyword('in')) {
+                    init = init.finishVariableDeclaration(declarations);
+                    lex();
+                    left = init;
+                    right = parseExpression();
+                    init = null;
+                } else if (declarations.length === 1 && declarations[0].init === null && matchContextualKeyword('of')) {
+                    init = init.finishVariableDeclaration(declarations);
+                    lex();
+                    left = init;
+                    right = parseAssignmentExpression();
+                    init = null;
+                    forIn = false;
+                } else {
+                    init = init.finishVariableDeclaration(declarations);
+                    expect(';');
+                }
+            } else if (matchKeyword('const') || matchKeyword('let')) {
+                init = new Node();
+                kind = lex().value;
+
+                if (!strict && lookahead.value === 'in') {
+                    init = init.finishIdentifier(kind);
+                    lex();
+                    left = init;
+                    right = parseExpression();
+                    init = null;
+                } else {
+                    state.allowIn = false;
+                    declarations = parseBindingList(kind, {inFor: true});
+                    state.allowIn = previousAllowIn;
+
+                    if (declarations.length === 1 && declarations[0].init === null && matchKeyword('in')) {
+                        init = init.finishLexicalDeclaration(declarations, kind);
+                        lex();
+                        left = init;
+                        right = parseExpression();
+                        init = null;
+                    } else if (declarations.length === 1 && declarations[0].init === null && matchContextualKeyword('of')) {
+                        init = init.finishLexicalDeclaration(declarations, kind);
+                        lex();
+                        left = init;
+                        right = parseAssignmentExpression();
+                        init = null;
+                        forIn = false;
+                    } else {
+                        consumeSemicolon();
+                        init = init.finishLexicalDeclaration(declarations, kind);
+                    }
+                }
+            } else {
+                initStartToken = lookahead;
+                state.allowIn = false;
+                init = inheritCoverGrammar(parseAssignmentExpression);
+                state.allowIn = previousAllowIn;
+
+                if (matchKeyword('in')) {
+                    if (!isAssignmentTarget) {
+                        tolerateError(Messages.InvalidLHSInForIn);
+                    }
+
+                    lex();
+                    reinterpretExpressionAsPattern(init);
+                    left = init;
+                    right = parseExpression();
+                    init = null;
+                } else if (matchContextualKeyword('of')) {
+                    if (!isAssignmentTarget) {
+                        tolerateError(Messages.InvalidLHSInForLoop);
+                    }
+
+                    lex();
+                    reinterpretExpressionAsPattern(init);
+                    left = init;
+                    right = parseAssignmentExpression();
+                    init = null;
+                    forIn = false;
+                } else {
+                    if (match(',')) {
+                        initSeq = [init];
+                        while (match(',')) {
+                            lex();
+                            initSeq.push(isolateCoverGrammar(parseAssignmentExpression));
+                        }
+                        init = new WrappingNode(initStartToken).finishSequenceExpression(initSeq);
+                    }
+                    expect(';');
+                }
+            }
+        }
+
+        if (typeof left === 'undefined') {
+
+            if (!match(';')) {
+                test = parseExpression();
+            }
+            expect(';');
+
+            if (!match(')')) {
+                update = parseExpression();
+            }
+        }
+
+        expect(')');
+
+        oldInIteration = state.inIteration;
+        state.inIteration = true;
+
+        body = isolateCoverGrammar(parseStatement);
+
+        state.inIteration = oldInIteration;
+
+        return (typeof left === 'undefined') ?
+                node.finishForStatement(init, test, update, body) :
+                forIn ? node.finishForInStatement(left, right, body) :
+                    node.finishForOfStatement(left, right, body);
+    }
+
+    // ECMA-262 13.8 The continue statement
+
+    function parseContinueStatement(node) {
+        var label = null, key;
+
+        expectKeyword('continue');
+
+        // Optimize the most common form: 'continue;'.
+        if (source.charCodeAt(startIndex) === 0x3B) {
+            lex();
+
+            if (!state.inIteration) {
+                throwError(Messages.IllegalContinue);
+            }
+
+            return node.finishContinueStatement(null);
+        }
+
+        if (hasLineTerminator) {
+            if (!state.inIteration) {
+                throwError(Messages.IllegalContinue);
+            }
+
+            return node.finishContinueStatement(null);
+        }
+
+        if (lookahead.type === Token.Identifier) {
+            label = parseVariableIdentifier();
+
+            key = '$' + label.name;
+            if (!Object.prototype.hasOwnProperty.call(state.labelSet, key)) {
+                throwError(Messages.UnknownLabel, label.name);
+            }
+        }
+
+        consumeSemicolon();
+
+        if (label === null && !state.inIteration) {
+            throwError(Messages.IllegalContinue);
+        }
+
+        return node.finishContinueStatement(label);
+    }
+
+    // ECMA-262 13.9 The break statement
+
+    function parseBreakStatement(node) {
+        var label = null, key;
+
+        expectKeyword('break');
+
+        // Catch the very common case first: immediately a semicolon (U+003B).
+        if (source.charCodeAt(lastIndex) === 0x3B) {
+            lex();
+
+            if (!(state.inIteration || state.inSwitch)) {
+                throwError(Messages.IllegalBreak);
+            }
+
+            return node.finishBreakStatement(null);
+        }
+
+        if (hasLineTerminator) {
+            if (!(state.inIteration || state.inSwitch)) {
+                throwError(Messages.IllegalBreak);
+            }
+        } else if (lookahead.type === Token.Identifier) {
+            label = parseVariableIdentifier();
+
+            key = '$' + label.name;
+            if (!Object.prototype.hasOwnProperty.call(state.labelSet, key)) {
+                throwError(Messages.UnknownLabel, label.name);
+            }
+        }
+
+        consumeSemicolon();
+
+        if (label === null && !(state.inIteration || state.inSwitch)) {
+            throwError(Messages.IllegalBreak);
+        }
+
+        return node.finishBreakStatement(label);
+    }
+
+    // ECMA-262 13.10 The return statement
+
+    function parseReturnStatement(node) {
+        var argument = null;
+
+        expectKeyword('return');
+
+        if (!state.inFunctionBody) {
+            tolerateError(Messages.IllegalReturn);
+        }
+
+        // 'return' followed by a space and an identifier is very common.
+        if (source.charCodeAt(lastIndex) === 0x20) {
+            if (isIdentifierStart(source.charCodeAt(lastIndex + 1))) {
+                argument = parseExpression();
+                consumeSemicolon();
+                return node.finishReturnStatement(argument);
+            }
+        }
+
+        if (hasLineTerminator) {
+            // HACK
+            return node.finishReturnStatement(null);
+        }
+
+        if (!match(';')) {
+            if (!match('}') && lookahead.type !== Token.EOF) {
+                argument = parseExpression();
+            }
+        }
+
+        consumeSemicolon();
+
+        return node.finishReturnStatement(argument);
+    }
+
+    // ECMA-262 13.11 The with statement
+
+    function parseWithStatement(node) {
+        var object, body;
+
+        if (strict) {
+            tolerateError(Messages.StrictModeWith);
+        }
+
+        expectKeyword('with');
+
+        expect('(');
+
+        object = parseExpression();
+
+        expect(')');
+
+        body = parseStatement();
+
+        return node.finishWithStatement(object, body);
+    }
+
+    // ECMA-262 13.12 The switch statement
+
+    function parseSwitchCase() {
+        var test, consequent = [], statement, node = new Node();
+
+        if (matchKeyword('default')) {
+            lex();
+            test = null;
+        } else {
+            expectKeyword('case');
+            test = parseExpression();
+        }
+        expect(':');
+
+        while (startIndex < length) {
+            if (match('}') || matchKeyword('default') || matchKeyword('case')) {
+                break;
+            }
+            statement = parseStatementListItem();
+            consequent.push(statement);
+        }
+
+        return node.finishSwitchCase(test, consequent);
+    }
+
+    function parseSwitchStatement(node) {
+        var discriminant, cases, clause, oldInSwitch, defaultFound;
+
+        expectKeyword('switch');
+
+        expect('(');
+
+        discriminant = parseExpression();
+
+        expect(')');
+
+        expect('{');
+
+        cases = [];
+
+        if (match('}')) {
+            lex();
+            return node.finishSwitchStatement(discriminant, cases);
+        }
+
+        oldInSwitch = state.inSwitch;
+        state.inSwitch = true;
+        defaultFound = false;
+
+        while (startIndex < length) {
+            if (match('}')) {
+                break;
+            }
+            clause = parseSwitchCase();
+            if (clause.test === null) {
+                if (defaultFound) {
+                    throwError(Messages.MultipleDefaultsInSwitch);
+                }
+                defaultFound = true;
+            }
+            cases.push(clause);
+        }
+
+        state.inSwitch = oldInSwitch;
+
+        expect('}');
+
+        return node.finishSwitchStatement(discriminant, cases);
+    }
+
+    // ECMA-262 13.14 The throw statement
+
+    function parseThrowStatement(node) {
+        var argument;
+
+        expectKeyword('throw');
+
+        if (hasLineTerminator) {
+            throwError(Messages.NewlineAfterThrow);
+        }
+
+        argument = parseExpression();
+
+        consumeSemicolon();
+
+        return node.finishThrowStatement(argument);
+    }
+
+    // ECMA-262 13.15 The try statement
+
+    function parseCatchClause() {
+        var param, params = [], paramMap = {}, key, i, body, node = new Node();
+
+        expectKeyword('catch');
+
+        expect('(');
+        if (match(')')) {
+            throwUnexpectedToken(lookahead);
+        }
+
+        param = parsePattern(params);
+        for (i = 0; i < params.length; i++) {
+            key = '$' + params[i].value;
+            if (Object.prototype.hasOwnProperty.call(paramMap, key)) {
+                tolerateError(Messages.DuplicateBinding, params[i].value);
+            }
+            paramMap[key] = true;
+        }
+
+        // ECMA-262 12.14.1
+        if (strict && isRestrictedWord(param.name)) {
+            tolerateError(Messages.StrictCatchVariable);
+        }
+
+        expect(')');
+        body = parseBlock();
+        return node.finishCatchClause(param, body);
+    }
+
+    function parseTryStatement(node) {
+        var block, handler = null, finalizer = null;
+
+        expectKeyword('try');
+
+        block = parseBlock();
+
+        if (matchKeyword('catch')) {
+            handler = parseCatchClause();
+        }
+
+        if (matchKeyword('finally')) {
+            lex();
+            finalizer = parseBlock();
+        }
+
+        if (!handler && !finalizer) {
+            throwError(Messages.NoCatchOrFinally);
+        }
+
+        return node.finishTryStatement(block, handler, finalizer);
+    }
+
+    // ECMA-262 13.16 The debugger statement
+
+    function parseDebuggerStatement(node) {
+        expectKeyword('debugger');
+
+        consumeSemicolon();
+
+        return node.finishDebuggerStatement();
+    }
+
+    // 13 Statements
+
+    function parseStatement() {
+        var type = lookahead.type,
+            expr,
+            labeledBody,
+            key,
+            node;
+
+        if (type === Token.EOF) {
+            throwUnexpectedToken(lookahead);
+        }
+
+        if (type === Token.Punctuator && lookahead.value === '{') {
+            return parseBlock();
+        }
+        isAssignmentTarget = isBindingElement = true;
+        node = new Node();
+
+        if (type === Token.Punctuator) {
+            switch (lookahead.value) {
+            case ';':
+                return parseEmptyStatement(node);
+            case '(':
+                return parseExpressionStatement(node);
+            default:
+                break;
+            }
+        } else if (type === Token.Keyword) {
+            switch (lookahead.value) {
+            case 'break':
+                return parseBreakStatement(node);
+            case 'continue':
+                return parseContinueStatement(node);
+            case 'debugger':
+                return parseDebuggerStatement(node);
+            case 'do':
+                return parseDoWhileStatement(node);
+            case 'for':
+                return parseForStatement(node);
+            case 'function':
+                return parseFunctionDeclaration(node);
+            case 'if':
+                return parseIfStatement(node);
+            case 'return':
+                return parseReturnStatement(node);
+            case 'switch':
+                return parseSwitchStatement(node);
+            case 'throw':
+                return parseThrowStatement(node);
+            case 'try':
+                return parseTryStatement(node);
+            case 'var':
+                return parseVariableStatement(node);
+            case 'while':
+                return parseWhileStatement(node);
+            case 'with':
+                return parseWithStatement(node);
+            default:
+                break;
+            }
+        }
+
+        expr = parseExpression();
+
+        // ECMA-262 12.12 Labelled Statements
+        if ((expr.type === Syntax.Identifier) && match(':')) {
+            lex();
+
+            key = '$' + expr.name;
+            if (Object.prototype.hasOwnProperty.call(state.labelSet, key)) {
+                throwError(Messages.Redeclaration, 'Label', expr.name);
+            }
+
+            state.labelSet[key] = true;
+            labeledBody = parseStatement();
+            delete state.labelSet[key];
+            return node.finishLabeledStatement(expr, labeledBody);
+        }
+
+        consumeSemicolon();
+
+        return node.finishExpressionStatement(expr);
+    }
+
+    // ECMA-262 14.1 Function Definition
+
+    function parseFunctionSourceElements() {
+        var statement, body = [], token, directive, firstRestricted,
+            oldLabelSet, oldInIteration, oldInSwitch, oldInFunctionBody, oldParenthesisCount,
+            node = new Node();
+
+        expect('{');
+
+        while (startIndex < length) {
+            if (lookahead.type !== Token.StringLiteral) {
+                break;
+            }
+            token = lookahead;
+
+            statement = parseStatementListItem();
+            body.push(statement);
+            if (statement.expression.type !== Syntax.Literal) {
+                // this is not directive
+                break;
+            }
+            directive = source.slice(token.start + 1, token.end - 1);
+            if (directive === 'use strict') {
+                strict = true;
+                if (firstRestricted) {
+                    tolerateUnexpectedToken(firstRestricted, Messages.StrictOctalLiteral);
+                }
+            } else {
+                if (!firstRestricted && token.octal) {
+                    firstRestricted = token;
+                }
+            }
+        }
+
+        oldLabelSet = state.labelSet;
+        oldInIteration = state.inIteration;
+        oldInSwitch = state.inSwitch;
+        oldInFunctionBody = state.inFunctionBody;
+        oldParenthesisCount = state.parenthesizedCount;
+
+        state.labelSet = {};
+        state.inIteration = false;
+        state.inSwitch = false;
+        state.inFunctionBody = true;
+        state.parenthesizedCount = 0;
+
+        while (startIndex < length) {
+            if (match('}')) {
+                break;
+            }
+            body.push(parseStatementListItem());
+        }
+
+        expect('}');
+
+        state.labelSet = oldLabelSet;
+        state.inIteration = oldInIteration;
+        state.inSwitch = oldInSwitch;
+        state.inFunctionBody = oldInFunctionBody;
+        state.parenthesizedCount = oldParenthesisCount;
+
+        return node.finishBlockStatement(body);
+    }
+
+    function validateParam(options, param, name) {
+        var key = '$' + name;
+        if (strict) {
+            if (isRestrictedWord(name)) {
+                options.stricted = param;
+                options.message = Messages.StrictParamName;
+            }
+            if (Object.prototype.hasOwnProperty.call(options.paramSet, key)) {
+                options.stricted = param;
+                options.message = Messages.StrictParamDupe;
+            }
+        } else if (!options.firstRestricted) {
+            if (isRestrictedWord(name)) {
+                options.firstRestricted = param;
+                options.message = Messages.StrictParamName;
+            } else if (isStrictModeReservedWord(name)) {
+                options.firstRestricted = param;
+                options.message = Messages.StrictReservedWord;
+            } else if (Object.prototype.hasOwnProperty.call(options.paramSet, key)) {
+                options.stricted = param;
+                options.message = Messages.StrictParamDupe;
+            }
+        }
+        options.paramSet[key] = true;
+    }
+
+    function parseParam(options) {
+        var token, param, params = [], i, def;
+
+        token = lookahead;
+        if (token.value === '...') {
+            param = parseRestElement(params);
+            validateParam(options, param.argument, param.argument.name);
+            options.params.push(param);
+            options.defaults.push(null);
+            return false;
+        }
+
+        param = parsePatternWithDefault(params);
+        for (i = 0; i < params.length; i++) {
+            validateParam(options, params[i], params[i].value);
+        }
+
+        if (param.type === Syntax.AssignmentPattern) {
+            def = param.right;
+            param = param.left;
+            ++options.defaultCount;
+        }
+
+        options.params.push(param);
+        options.defaults.push(def);
+
+        return !match(')');
+    }
+
+    function parseParams(firstRestricted) {
+        var options;
+
+        options = {
+            params: [],
+            defaultCount: 0,
+            defaults: [],
+            firstRestricted: firstRestricted
+        };
+
+        expect('(');
+
+        if (!match(')')) {
+            options.paramSet = {};
+            while (startIndex < length) {
+                if (!parseParam(options)) {
+                    break;
+                }
+                expect(',');
+            }
+        }
+
+        expect(')');
+
+        if (options.defaultCount === 0) {
+            options.defaults = [];
+        }
+
+        return {
+            params: options.params,
+            defaults: options.defaults,
+            stricted: options.stricted,
+            firstRestricted: options.firstRestricted,
+            message: options.message
+        };
+    }
+
+    function parseFunctionDeclaration(node, identifierIsOptional) {
+        var id = null, params = [], defaults = [], body, token, stricted, tmp, firstRestricted, message, previousStrict,
+            isGenerator, previousAllowYield;
+
+        previousAllowYield = state.allowYield;
+
+        expectKeyword('function');
+
+        isGenerator = match('*');
+        if (isGenerator) {
+            lex();
+        }
+
+        if (!identifierIsOptional || !match('(')) {
+            token = lookahead;
+            id = parseVariableIdentifier();
+            if (strict) {
+                if (isRestrictedWord(token.value)) {
+                    tolerateUnexpectedToken(token, Messages.StrictFunctionName);
+                }
+            } else {
+                if (isRestrictedWord(token.value)) {
+                    firstRestricted = token;
+                    message = Messages.StrictFunctionName;
+                } else if (isStrictModeReservedWord(token.value)) {
+                    firstRestricted = token;
+                    message = Messages.StrictReservedWord;
+                }
+            }
+        }
+
+        state.allowYield = !isGenerator;
+        tmp = parseParams(firstRestricted);
+        params = tmp.params;
+        defaults = tmp.defaults;
+        stricted = tmp.stricted;
+        firstRestricted = tmp.firstRestricted;
+        if (tmp.message) {
+            message = tmp.message;
+        }
+
+
+        previousStrict = strict;
+        body = parseFunctionSourceElements();
+        if (strict && firstRestricted) {
+            throwUnexpectedToken(firstRestricted, message);
+        }
+        if (strict && stricted) {
+            tolerateUnexpectedToken(stricted, message);
+        }
+
+        strict = previousStrict;
+        state.allowYield = previousAllowYield;
+
+        return node.finishFunctionDeclaration(id, params, defaults, body, isGenerator);
+    }
+
+    function parseFunctionExpression() {
+        var token, id = null, stricted, firstRestricted, message, tmp,
+            params = [], defaults = [], body, previousStrict, node = new Node(),
+            isGenerator, previousAllowYield;
+
+        previousAllowYield = state.allowYield;
+
+        expectKeyword('function');
+
+        isGenerator = match('*');
+        if (isGenerator) {
+            lex();
+        }
+
+        state.allowYield = !isGenerator;
+        if (!match('(')) {
+            token = lookahead;
+            id = (!strict && !isGenerator && matchKeyword('yield')) ? parseNonComputedProperty() : parseVariableIdentifier();
+            if (strict) {
+                if (isRestrictedWord(token.value)) {
+                    tolerateUnexpectedToken(token, Messages.StrictFunctionName);
+                }
+            } else {
+                if (isRestrictedWord(token.value)) {
+                    firstRestricted = token;
+                    message = Messages.StrictFunctionName;
+                } else if (isStrictModeReservedWord(token.value)) {
+                    firstRestricted = token;
+                    message = Messages.StrictReservedWord;
+                }
+            }
+        }
+
+        tmp = parseParams(firstRestricted);
+        params = tmp.params;
+        defaults = tmp.defaults;
+        stricted = tmp.stricted;
+        firstRestricted = tmp.firstRestricted;
+        if (tmp.message) {
+            message = tmp.message;
+        }
+
+        previousStrict = strict;
+        body = parseFunctionSourceElements();
+        if (strict && firstRestricted) {
+            throwUnexpectedToken(firstRestricted, message);
+        }
+        if (strict && stricted) {
+            tolerateUnexpectedToken(stricted, message);
+        }
+        strict = previousStrict;
+        state.allowYield = previousAllowYield;
+
+        return node.finishFunctionExpression(id, params, defaults, body, isGenerator);
+    }
+
+    // ECMA-262 14.5 Class Definitions
+
+    function parseClassBody() {
+        var classBody, token, isStatic, hasConstructor = false, body, method, computed, key;
+
+        classBody = new Node();
+
+        expect('{');
+        body = [];
+        while (!match('}')) {
+            if (match(';')) {
+                lex();
+            } else {
+                method = new Node();
+                token = lookahead;
+                isStatic = false;
+                computed = match('[');
+                if (match('*')) {
+                    lex();
+                } else {
+                    key = parseObjectPropertyKey();
+                    if (key.name === 'static' && (lookaheadPropertyName() || match('*'))) {
+                        token = lookahead;
+                        isStatic = true;
+                        computed = match('[');
+                        if (match('*')) {
+                            lex();
+                        } else {
+                            key = parseObjectPropertyKey();
+                        }
+                    }
+                }
+                method = tryParseMethodDefinition(token, key, computed, method);
+                if (method) {
+                    method['static'] = isStatic; // jscs:ignore requireDotNotation
+                    if (method.kind === 'init') {
+                        method.kind = 'method';
+                    }
+                    if (!isStatic) {
+                        if (!method.computed && (method.key.name || method.key.value.toString()) === 'constructor') {
+                            if (method.kind !== 'method' || !method.method || method.value.generator) {
+                                throwUnexpectedToken(token, Messages.ConstructorSpecialMethod);
+                            }
+                            if (hasConstructor) {
+                                throwUnexpectedToken(token, Messages.DuplicateConstructor);
+                            } else {
+                                hasConstructor = true;
+                            }
+                            method.kind = 'constructor';
+                        }
+                    } else {
+                        if (!method.computed && (method.key.name || method.key.value.toString()) === 'prototype') {
+                            throwUnexpectedToken(token, Messages.StaticPrototype);
+                        }
+                    }
+                    method.type = Syntax.MethodDefinition;
+                    delete method.method;
+                    delete method.shorthand;
+                    body.push(method);
+                } else {
+                    throwUnexpectedToken(lookahead);
+                }
+            }
+        }
+        lex();
+        return classBody.finishClassBody(body);
+    }
+
+    function parseClassDeclaration(identifierIsOptional) {
+        var id = null, superClass = null, classNode = new Node(), classBody, previousStrict = strict;
+        strict = true;
+
+        expectKeyword('class');
+
+        if (!identifierIsOptional || lookahead.type === Token.Identifier) {
+            id = parseVariableIdentifier();
+        }
+
+        if (matchKeyword('extends')) {
+            lex();
+            superClass = isolateCoverGrammar(parseLeftHandSideExpressionAllowCall);
+        }
+        classBody = parseClassBody();
+        strict = previousStrict;
+
+        return classNode.finishClassDeclaration(id, superClass, classBody);
+    }
+
+    function parseClassExpression() {
+        var id = null, superClass = null, classNode = new Node(), classBody, previousStrict = strict;
+        strict = true;
+
+        expectKeyword('class');
+
+        if (lookahead.type === Token.Identifier) {
+            id = parseVariableIdentifier();
+        }
+
+        if (matchKeyword('extends')) {
+            lex();
+            superClass = isolateCoverGrammar(parseLeftHandSideExpressionAllowCall);
+        }
+        classBody = parseClassBody();
+        strict = previousStrict;
+
+        return classNode.finishClassExpression(id, superClass, classBody);
+    }
+
+    // ECMA-262 15.2 Modules
+
+    function parseModuleSpecifier() {
+        var node = new Node();
+
+        if (lookahead.type !== Token.StringLiteral) {
+            throwError(Messages.InvalidModuleSpecifier);
+        }
+        return node.finishLiteral(lex());
+    }
+
+    // ECMA-262 15.2.3 Exports
+
+    function parseExportSpecifier() {
+        var exported, local, node = new Node(), def;
+        if (matchKeyword('default')) {
+            // export {default} from 'something';
+            def = new Node();
+            lex();
+            local = def.finishIdentifier('default');
+        } else {
+            local = parseVariableIdentifier();
+        }
+        if (matchContextualKeyword('as')) {
+            lex();
+            exported = parseNonComputedProperty();
+        }
+        return node.finishExportSpecifier(local, exported);
+    }
+
+    function parseExportNamedDeclaration(node) {
+        var declaration = null,
+            isExportFromIdentifier,
+            src = null, specifiers = [];
+
+        // non-default export
+        if (lookahead.type === Token.Keyword) {
+            // covers:
+            // export var f = 1;
+            switch (lookahead.value) {
+                case 'let':
+                case 'const':
+                    declaration = parseLexicalDeclaration({inFor: false});
+                    return node.finishExportNamedDeclaration(declaration, specifiers, null);
+                case 'var':
+                case 'class':
+                case 'function':
+                    declaration = parseStatementListItem();
+                    return node.finishExportNamedDeclaration(declaration, specifiers, null);
+            }
+        }
+
+        expect('{');
+        while (!match('}')) {
+            isExportFromIdentifier = isExportFromIdentifier || matchKeyword('default');
+            specifiers.push(parseExportSpecifier());
+            if (!match('}')) {
+                expect(',');
+                if (match('}')) {
+                    break;
+                }
+            }
+        }
+        expect('}');
+
+        if (matchContextualKeyword('from')) {
+            // covering:
+            // export {default} from 'foo';
+            // export {foo} from 'foo';
+            lex();
+            src = parseModuleSpecifier();
+            consumeSemicolon();
+        } else if (isExportFromIdentifier) {
+            // covering:
+            // export {default}; // missing fromClause
+            throwError(lookahead.value ?
+                    Messages.UnexpectedToken : Messages.MissingFromClause, lookahead.value);
+        } else {
+            // cover
+            // export {foo};
+            consumeSemicolon();
+        }
+        return node.finishExportNamedDeclaration(declaration, specifiers, src);
+    }
+
+    function parseExportDefaultDeclaration(node) {
+        var declaration = null,
+            expression = null;
+
+        // covers:
+        // export default ...
+        expectKeyword('default');
+
+        if (matchKeyword('function')) {
+            // covers:
+            // export default function foo () {}
+            // export default function () {}
+            declaration = parseFunctionDeclaration(new Node(), true);
+            return node.finishExportDefaultDeclaration(declaration);
+        }
+        if (matchKeyword('class')) {
+            declaration = parseClassDeclaration(true);
+            return node.finishExportDefaultDeclaration(declaration);
+        }
+
+        if (matchContextualKeyword('from')) {
+            throwError(Messages.UnexpectedToken, lookahead.value);
+        }
+
+        // covers:
+        // export default {};
+        // export default [];
+        // export default (1 + 2);
+        if (match('{')) {
+            expression = parseObjectInitializer();
+        } else if (match('[')) {
+            expression = parseArrayInitializer();
+        } else {
+            expression = parseAssignmentExpression();
+        }
+        consumeSemicolon();
+        return node.finishExportDefaultDeclaration(expression);
+    }
+
+    function parseExportAllDeclaration(node) {
+        var src;
+
+        // covers:
+        // export * from 'foo';
+        expect('*');
+        if (!matchContextualKeyword('from')) {
+            throwError(lookahead.value ?
+                    Messages.UnexpectedToken : Messages.MissingFromClause, lookahead.value);
+        }
+        lex();
+        src = parseModuleSpecifier();
+        consumeSemicolon();
+
+        return node.finishExportAllDeclaration(src);
+    }
+
+    function parseExportDeclaration() {
+        var node = new Node();
+        if (state.inFunctionBody) {
+            throwError(Messages.IllegalExportDeclaration);
+        }
+
+        expectKeyword('export');
+
+        if (matchKeyword('default')) {
+            return parseExportDefaultDeclaration(node);
+        }
+        if (match('*')) {
+            return parseExportAllDeclaration(node);
+        }
+        return parseExportNamedDeclaration(node);
+    }
+
+    // ECMA-262 15.2.2 Imports
+
+    function parseImportSpecifier() {
+        // import {<foo as bar>} ...;
+        var local, imported, node = new Node();
+
+        imported = parseNonComputedProperty();
+        if (matchContextualKeyword('as')) {
+            lex();
+            local = parseVariableIdentifier();
+        }
+
+        return node.finishImportSpecifier(local, imported);
+    }
+
+    function parseNamedImports() {
+        var specifiers = [];
+        // {foo, bar as bas}
+        expect('{');
+        while (!match('}')) {
+            specifiers.push(parseImportSpecifier());
+            if (!match('}')) {
+                expect(',');
+                if (match('}')) {
+                    break;
+                }
+            }
+        }
+        expect('}');
+        return specifiers;
+    }
+
+    function parseImportDefaultSpecifier() {
+        // import <foo> ...;
+        var local, node = new Node();
+
+        local = parseNonComputedProperty();
+
+        return node.finishImportDefaultSpecifier(local);
+    }
+
+    function parseImportNamespaceSpecifier() {
+        // import <* as foo> ...;
+        var local, node = new Node();
+
+        expect('*');
+        if (!matchContextualKeyword('as')) {
+            throwError(Messages.NoAsAfterImportNamespace);
+        }
+        lex();
+        local = parseNonComputedProperty();
+
+        return node.finishImportNamespaceSpecifier(local);
+    }
+
+    function parseImportDeclaration() {
+        var specifiers = [], src, node = new Node();
+
+        if (state.inFunctionBody) {
+            throwError(Messages.IllegalImportDeclaration);
+        }
+
+        expectKeyword('import');
+
+        if (lookahead.type === Token.StringLiteral) {
+            // import 'foo';
+            src = parseModuleSpecifier();
+        } else {
+
+            if (match('{')) {
+                // import {bar}
+                specifiers = specifiers.concat(parseNamedImports());
+            } else if (match('*')) {
+                // import * as foo
+                specifiers.push(parseImportNamespaceSpecifier());
+            } else if (isIdentifierName(lookahead) && !matchKeyword('default')) {
+                // import foo
+                specifiers.push(parseImportDefaultSpecifier());
+                if (match(',')) {
+                    lex();
+                    if (match('*')) {
+                        // import foo, * as foo
+                        specifiers.push(parseImportNamespaceSpecifier());
+                    } else if (match('{')) {
+                        // import foo, {bar}
+                        specifiers = specifiers.concat(parseNamedImports());
+                    } else {
+                        throwUnexpectedToken(lookahead);
+                    }
+                }
+            } else {
+                throwUnexpectedToken(lex());
+            }
+
+            if (!matchContextualKeyword('from')) {
+                throwError(lookahead.value ?
+                        Messages.UnexpectedToken : Messages.MissingFromClause, lookahead.value);
+            }
+            lex();
+            src = parseModuleSpecifier();
+        }
+
+        consumeSemicolon();
+        return node.finishImportDeclaration(specifiers, src);
+    }
+
+    // ECMA-262 15.1 Scripts
+
+    function parseScriptBody() {
+        var statement, body = [], token, directive, firstRestricted;
+
+        while (startIndex < length) {
+            token = lookahead;
+            if (token.type !== Token.StringLiteral) {
+                break;
+            }
+
+            statement = parseStatementListItem();
+            body.push(statement);
+            if (statement.expression.type !== Syntax.Literal) {
+                // this is not directive
+                break;
+            }
+            directive = source.slice(token.start + 1, token.end - 1);
+            if (directive === 'use strict') {
+                strict = true;
+                if (firstRestricted) {
+                    tolerateUnexpectedToken(firstRestricted, Messages.StrictOctalLiteral);
+                }
+            } else {
+                if (!firstRestricted && token.octal) {
+                    firstRestricted = token;
+                }
+            }
+        }
+
+        while (startIndex < length) {
+            statement = parseStatementListItem();
+            /* istanbul ignore if */
+            if (typeof statement === 'undefined') {
+                break;
+            }
+            body.push(statement);
+        }
+        return body;
+    }
+
+    function parseProgram() {
+        var body, node;
+
+        peek();
+        node = new Node();
+
+        body = parseScriptBody();
+        return node.finishProgram(body, state.sourceType);
+    }
+
+    function filterTokenLocation() {
+        var i, entry, token, tokens = [];
+
+        for (i = 0; i < extra.tokens.length; ++i) {
+            entry = extra.tokens[i];
+            token = {
+                type: entry.type,
+                value: entry.value
+            };
+            if (entry.regex) {
+                token.regex = {
+                    pattern: entry.regex.pattern,
+                    flags: entry.regex.flags
+                };
+            }
+            if (extra.range) {
+                token.range = entry.range;
+            }
+            if (extra.loc) {
+                token.loc = entry.loc;
+            }
+            tokens.push(token);
+        }
+
+        extra.tokens = tokens;
+    }
+
+    function tokenize(code, options, delegate) {
+        var toString,
+            tokens;
+
+        toString = String;
+        if (typeof code !== 'string' && !(code instanceof String)) {
+            code = toString(code);
+        }
+
+        source = code;
+        index = 0;
+        lineNumber = (source.length > 0) ? 1 : 0;
+        lineStart = 0;
+        startIndex = index;
+        startLineNumber = lineNumber;
+        startLineStart = lineStart;
+        length = source.length;
+        lookahead = null;
+        state = {
+            allowIn: true,
+            allowYield: true,
+            labelSet: {},
+            inFunctionBody: false,
+            inIteration: false,
+            inSwitch: false,
+            lastCommentStart: -1,
+            curlyStack: []
+        };
+
+        extra = {};
+
+        // Options matching.
+        options = options || {};
+
+        // Of course we collect tokens here.
+        options.tokens = true;
+        extra.tokens = [];
+        extra.tokenValues = [];
+        extra.tokenize = true;
+        extra.delegate = delegate;
+
+        // The following two fields are necessary to compute the Regex tokens.
+        extra.openParenToken = -1;
+        extra.openCurlyToken = -1;
+
+        extra.range = (typeof options.range === 'boolean') && options.range;
+        extra.loc = (typeof options.loc === 'boolean') && options.loc;
+
+        if (typeof options.comment === 'boolean' && options.comment) {
+            extra.comments = [];
+        }
+        if (typeof options.tolerant === 'boolean' && options.tolerant) {
+            extra.errors = [];
+        }
+
+        try {
+            peek();
+            if (lookahead.type === Token.EOF) {
+                return extra.tokens;
+            }
+
+            lex();
+            while (lookahead.type !== Token.EOF) {
+                try {
+                    lex();
+                } catch (lexError) {
+                    if (extra.errors) {
+                        recordError(lexError);
+                        // We have to break on the first error
+                        // to avoid infinite loops.
+                        break;
+                    } else {
+                        throw lexError;
+                    }
+                }
+            }
+
+            tokens = extra.tokens;
+            if (typeof extra.errors !== 'undefined') {
+                tokens.errors = extra.errors;
+            }
+        } catch (e) {
+            throw e;
+        } finally {
+            extra = {};
+        }
+        return tokens;
+    }
+
+    function parse(code, options) {
+        var program, toString;
+
+        toString = String;
+        if (typeof code !== 'string' && !(code instanceof String)) {
+            code = toString(code);
+        }
+
+        source = code;
+        index = 0;
+        lineNumber = (source.length > 0) ? 1 : 0;
+        lineStart = 0;
+        startIndex = index;
+        startLineNumber = lineNumber;
+        startLineStart = lineStart;
+        length = source.length;
+        lookahead = null;
+        state = {
+            allowIn: true,
+            allowYield: true,
+            labelSet: {},
+            inFunctionBody: false,
+            inIteration: false,
+            inSwitch: false,
+            lastCommentStart: -1,
+            curlyStack: [],
+            sourceType: 'script'
+        };
+        strict = false;
+
+        extra = {};
+        if (typeof options !== 'undefined') {
+            extra.range = (typeof options.range === 'boolean') && options.range;
+            extra.loc = (typeof options.loc === 'boolean') && options.loc;
+            extra.attachComment = (typeof options.attachComment === 'boolean') && options.attachComment;
+
+            if (extra.loc && options.source !== null && options.source !== undefined) {
+                extra.source = toString(options.source);
+            }
+
+            if (typeof options.tokens === 'boolean' && options.tokens) {
+                extra.tokens = [];
+            }
+            if (typeof options.comment === 'boolean' && options.comment) {
+                extra.comments = [];
+            }
+            if (typeof options.tolerant === 'boolean' && options.tolerant) {
+                extra.errors = [];
+            }
+            if (extra.attachComment) {
+                extra.range = true;
+                extra.comments = [];
+                extra.bottomRightStack = [];
+                extra.trailingComments = [];
+                extra.leadingComments = [];
+            }
+            if (options.sourceType === 'module') {
+                // very restrictive condition for now
+                state.sourceType = options.sourceType;
+                strict = true;
+            }
+        }
+
+        try {
+            program = parseProgram();
+            if (typeof extra.comments !== 'undefined') {
+                program.comments = extra.comments;
+            }
+            if (typeof extra.tokens !== 'undefined') {
+                filterTokenLocation();
+                program.tokens = extra.tokens;
+            }
+            if (typeof extra.errors !== 'undefined') {
+                program.errors = extra.errors;
+            }
+        } catch (e) {
+            throw e;
+        } finally {
+            extra = {};
+        }
+
+        return program;
+    }
+
+    // Sync with *.json manifests.
+    exports.version = '2.7.1';
+
+    exports.tokenize = tokenize;
+
+    exports.parse = parse;
+
+    // Deep copy.
+    /* istanbul ignore next */
+    exports.Syntax = (function () {
+        var name, types = {};
+
+        if (typeof Object.create === 'function') {
+            types = Object.create(null);
+        }
+
+        for (name in Syntax) {
+            if (Syntax.hasOwnProperty(name)) {
+                types[name] = Syntax[name];
+            }
+        }
+
+        if (typeof Object.freeze === 'function') {
+            Object.freeze(types);
+        }
+
+        return types;
+    }());
+
+}));
+/* vim: set sw=4 ts=4 et tw=80 : */
+
+},{}],17:[function(require,module,exports){
 /*
 Syntax highlighting with language autodetection.
 https://highlightjs.org/
@@ -1369,7 +7112,7 @@ https://highlightjs.org/
   return hljs;
 }));
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var hljs = require('./highlight');
 
 hljs.registerLanguage('1c', require('./languages/1c'));
@@ -1511,7 +7254,7 @@ hljs.registerLanguage('xquery', require('./languages/xquery'));
 hljs.registerLanguage('zephir', require('./languages/zephir'));
 
 module.exports = hljs;
-},{"./highlight":16,"./languages/1c":18,"./languages/accesslog":19,"./languages/actionscript":20,"./languages/apache":21,"./languages/applescript":22,"./languages/armasm":23,"./languages/asciidoc":24,"./languages/aspectj":25,"./languages/autohotkey":26,"./languages/autoit":27,"./languages/avrasm":28,"./languages/axapta":29,"./languages/bash":30,"./languages/brainfuck":31,"./languages/cal":32,"./languages/capnproto":33,"./languages/ceylon":34,"./languages/clojure":36,"./languages/clojure-repl":35,"./languages/cmake":37,"./languages/coffeescript":38,"./languages/cpp":39,"./languages/crmsh":40,"./languages/crystal":41,"./languages/cs":42,"./languages/css":43,"./languages/d":44,"./languages/dart":45,"./languages/delphi":46,"./languages/diff":47,"./languages/django":48,"./languages/dns":49,"./languages/dockerfile":50,"./languages/dos":51,"./languages/dust":52,"./languages/elixir":53,"./languages/elm":54,"./languages/erb":55,"./languages/erlang":57,"./languages/erlang-repl":56,"./languages/fix":58,"./languages/fortran":59,"./languages/fsharp":60,"./languages/gams":61,"./languages/gcode":62,"./languages/gherkin":63,"./languages/glsl":64,"./languages/go":65,"./languages/golo":66,"./languages/gradle":67,"./languages/groovy":68,"./languages/haml":69,"./languages/handlebars":70,"./languages/haskell":71,"./languages/haxe":72,"./languages/http":73,"./languages/inform7":74,"./languages/ini":75,"./languages/irpf90":76,"./languages/java":77,"./languages/javascript":78,"./languages/json":79,"./languages/julia":80,"./languages/kotlin":81,"./languages/lasso":82,"./languages/less":83,"./languages/lisp":84,"./languages/livecodeserver":85,"./languages/livescript":86,"./languages/lua":87,"./languages/makefile":88,"./languages/markdown":89,"./languages/mathematica":90,"./languages/matlab":91,"./languages/mel":92,"./languages/mercury":93,"./languages/mizar":94,"./languages/mojolicious":95,"./languages/monkey":96,"./languages/nginx":97,"./languages/nimrod":98,"./languages/nix":99,"./languages/nsis":100,"./languages/objectivec":101,"./languages/ocaml":102,"./languages/openscad":103,"./languages/oxygene":104,"./languages/parser3":105,"./languages/perl":106,"./languages/pf":107,"./languages/php":108,"./languages/powershell":109,"./languages/processing":110,"./languages/profile":111,"./languages/prolog":112,"./languages/protobuf":113,"./languages/puppet":114,"./languages/python":115,"./languages/q":116,"./languages/r":117,"./languages/rib":118,"./languages/roboconf":119,"./languages/rsl":120,"./languages/ruby":121,"./languages/ruleslanguage":122,"./languages/rust":123,"./languages/scala":124,"./languages/scheme":125,"./languages/scilab":126,"./languages/scss":127,"./languages/smali":128,"./languages/smalltalk":129,"./languages/sml":130,"./languages/sqf":131,"./languages/sql":132,"./languages/stata":133,"./languages/step21":134,"./languages/stylus":135,"./languages/swift":136,"./languages/tcl":137,"./languages/tex":138,"./languages/thrift":139,"./languages/tp":140,"./languages/twig":141,"./languages/typescript":142,"./languages/vala":143,"./languages/vbnet":144,"./languages/vbscript":146,"./languages/vbscript-html":145,"./languages/verilog":147,"./languages/vhdl":148,"./languages/vim":149,"./languages/x86asm":150,"./languages/xl":151,"./languages/xml":152,"./languages/xquery":153,"./languages/zephir":154}],18:[function(require,module,exports){
+},{"./highlight":17,"./languages/1c":19,"./languages/accesslog":20,"./languages/actionscript":21,"./languages/apache":22,"./languages/applescript":23,"./languages/armasm":24,"./languages/asciidoc":25,"./languages/aspectj":26,"./languages/autohotkey":27,"./languages/autoit":28,"./languages/avrasm":29,"./languages/axapta":30,"./languages/bash":31,"./languages/brainfuck":32,"./languages/cal":33,"./languages/capnproto":34,"./languages/ceylon":35,"./languages/clojure":37,"./languages/clojure-repl":36,"./languages/cmake":38,"./languages/coffeescript":39,"./languages/cpp":40,"./languages/crmsh":41,"./languages/crystal":42,"./languages/cs":43,"./languages/css":44,"./languages/d":45,"./languages/dart":46,"./languages/delphi":47,"./languages/diff":48,"./languages/django":49,"./languages/dns":50,"./languages/dockerfile":51,"./languages/dos":52,"./languages/dust":53,"./languages/elixir":54,"./languages/elm":55,"./languages/erb":56,"./languages/erlang":58,"./languages/erlang-repl":57,"./languages/fix":59,"./languages/fortran":60,"./languages/fsharp":61,"./languages/gams":62,"./languages/gcode":63,"./languages/gherkin":64,"./languages/glsl":65,"./languages/go":66,"./languages/golo":67,"./languages/gradle":68,"./languages/groovy":69,"./languages/haml":70,"./languages/handlebars":71,"./languages/haskell":72,"./languages/haxe":73,"./languages/http":74,"./languages/inform7":75,"./languages/ini":76,"./languages/irpf90":77,"./languages/java":78,"./languages/javascript":79,"./languages/json":80,"./languages/julia":81,"./languages/kotlin":82,"./languages/lasso":83,"./languages/less":84,"./languages/lisp":85,"./languages/livecodeserver":86,"./languages/livescript":87,"./languages/lua":88,"./languages/makefile":89,"./languages/markdown":90,"./languages/mathematica":91,"./languages/matlab":92,"./languages/mel":93,"./languages/mercury":94,"./languages/mizar":95,"./languages/mojolicious":96,"./languages/monkey":97,"./languages/nginx":98,"./languages/nimrod":99,"./languages/nix":100,"./languages/nsis":101,"./languages/objectivec":102,"./languages/ocaml":103,"./languages/openscad":104,"./languages/oxygene":105,"./languages/parser3":106,"./languages/perl":107,"./languages/pf":108,"./languages/php":109,"./languages/powershell":110,"./languages/processing":111,"./languages/profile":112,"./languages/prolog":113,"./languages/protobuf":114,"./languages/puppet":115,"./languages/python":116,"./languages/q":117,"./languages/r":118,"./languages/rib":119,"./languages/roboconf":120,"./languages/rsl":121,"./languages/ruby":122,"./languages/ruleslanguage":123,"./languages/rust":124,"./languages/scala":125,"./languages/scheme":126,"./languages/scilab":127,"./languages/scss":128,"./languages/smali":129,"./languages/smalltalk":130,"./languages/sml":131,"./languages/sqf":132,"./languages/sql":133,"./languages/stata":134,"./languages/step21":135,"./languages/stylus":136,"./languages/swift":137,"./languages/tcl":138,"./languages/tex":139,"./languages/thrift":140,"./languages/tp":141,"./languages/twig":142,"./languages/typescript":143,"./languages/vala":144,"./languages/vbnet":145,"./languages/vbscript":147,"./languages/vbscript-html":146,"./languages/verilog":148,"./languages/vhdl":149,"./languages/vim":150,"./languages/x86asm":151,"./languages/xl":152,"./languages/xml":153,"./languages/xquery":154,"./languages/zephir":155}],19:[function(require,module,exports){
 module.exports = function(hljs){
   var IDENT_RE_RU = '[a-zA-Zа-яА-Я][a-zA-Z0-9_а-яА-Я]*';
   var OneS_KEYWORDS = 'возврат дата для если и или иначе иначеесли исключение конецесли ' +
@@ -1597,7 +7340,7 @@ module.exports = function(hljs){
     ]
   };
 };
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -1635,7 +7378,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z_$][a-zA-Z0-9_$]*';
   var IDENT_FUNC_RETURN_TYPE_RE = '([*]|[a-zA-Z_$][a-zA-Z0-9_$]*)';
@@ -1710,7 +7453,7 @@ module.exports = function(hljs) {
     illegal: /#/
   };
 };
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUMBER = {className: 'number', begin: '[\\$%]\\d+'};
   return {
@@ -1756,7 +7499,7 @@ module.exports = function(hljs) {
     illegal: /\S/
   };
 };
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = hljs.inherit(hljs.QUOTE_STRING_MODE, {illegal: ''});
   var PARAMS = {
@@ -1853,7 +7596,7 @@ module.exports = function(hljs) {
     illegal: '//|->|=>|\\[\\['
   };
 };
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = function(hljs) {
     //local labels: %?[FB]?[AT]?\d{1,2}\w+
   return {
@@ -1945,7 +7688,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['adoc'],
@@ -2137,7 +7880,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS =
     'false synchronized int abstract float private char boolean static null if const ' +
@@ -2275,7 +8018,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = function(hljs) {
   var BACKTICK_ESCAPE = {
     className: 'escape',
@@ -2337,7 +8080,7 @@ module.exports = function(hljs) {
     ])
   }
 };
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = function(hljs) {
     var KEYWORDS = 'ByRef Case Const ContinueCase ContinueLoop ' +
         'Default Dim Do Else ElseIf EndFunc EndIf EndSelect ' +
@@ -4092,7 +9835,7 @@ module.exports = function(hljs) {
         ]
     }
 };
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -4154,7 +9897,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: 'false int abstract private char boolean static null if for true ' +
@@ -4185,7 +9928,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR = {
     className: 'variable',
@@ -4261,7 +10004,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 module.exports = function(hljs){
   var LITERAL = {
     className: 'literal',
@@ -4298,7 +10041,7 @@ module.exports = function(hljs){
     ]
   };
 };
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS =
     'div mod in and or not xor asserterror begin case do downto else end exit for if of repeat then to ' +
@@ -4378,7 +10121,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['capnp'],
@@ -4427,7 +10170,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 module.exports = function(hljs) {
   // 2.3. Identifiers and keywords
   var KEYWORDS =
@@ -4495,7 +10238,7 @@ module.exports = function(hljs) {
     ].concat(EXPRESSIONS)
   };
 };
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -4510,7 +10253,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 module.exports = function(hljs) {
   var keywords = {
     built_in:
@@ -4607,7 +10350,7 @@ module.exports = function(hljs) {
     contains: [LIST, STRING, HINT, HINT_COL, COMMENT, KEY, COLLECTION, NUMBER, LITERAL]
   }
 };
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['cmake.in'],
@@ -4646,7 +10389,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -4787,7 +10530,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = function(hljs) {
   var CPP_PRIMATIVE_TYPES = {
     className: 'keyword',
@@ -4928,7 +10671,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 module.exports = function(hljs) {
   var RESOURCES = 'primitive rsc_template';
 
@@ -5026,7 +10769,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUM_SUFFIX = '(_[uif](8|16|32|64))?';
   var CRYSTAL_IDENT_RE = '[a-zA-Z_]\\w*[!?=]?';
@@ -5218,7 +10961,7 @@ module.exports = function(hljs) {
     contains: CRYSTAL_DEFAULT_CONTAINS
   };
 };
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS =
     // Normal keywords.
@@ -5337,7 +11080,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var FUNCTION = {
@@ -5439,7 +11182,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 module.exports = /**
  * Known issues:
  *
@@ -5697,7 +11440,7 @@ function(hljs) {
     ]
   };
 };
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 module.exports = function (hljs) {
   var SUBST = {
     className: 'subst',
@@ -5798,7 +11541,7 @@ module.exports = function (hljs) {
     ]
   }
 };
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS =
     'exports register file shl array record property for mod while set ally label uses raise not ' +
@@ -5865,7 +11608,7 @@ module.exports = function(hljs) {
     ].concat(COMMENT_MODES)
   };
 };
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['patch'],
@@ -5905,7 +11648,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 module.exports = function(hljs) {
   var FILTER = {
     className: 'filter',
@@ -5955,7 +11698,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['bind', 'zone'],
@@ -5983,7 +11726,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['docker'],
@@ -6018,7 +11761,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT = hljs.COMMENT(
     /@?rem\b/, /$/,
@@ -6067,7 +11810,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 module.exports = function(hljs) {
   var EXPRESSION_KEYWORDS = 'if eq ne lt lte gt gte select default math sep';
   return {
@@ -6102,7 +11845,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 module.exports = function(hljs) {
   var ELIXIR_IDENT_RE = '[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?';
   var ELIXIR_METHOD_RE = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?';
@@ -6204,7 +11947,7 @@ module.exports = function(hljs) {
     contains: ELIXIR_DEFAULT_CONTAINS
   };
 };
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT_MODES = [
     hljs.COMMENT('--', '$'),
@@ -6290,7 +12033,7 @@ module.exports = function(hljs) {
     ].concat(COMMENT_MODES)
   };
 };
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -6305,7 +12048,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],56:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -6353,7 +12096,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 module.exports = function(hljs) {
   var BASIC_ATOM_RE = '[a-z\'][a-zA-Z0-9_\']*';
   var FUNCTION_NAME_RE = '(' + BASIC_ATOM_RE + ':' + BASIC_ATOM_RE + '|' + BASIC_ATOM_RE + ')';
@@ -6505,7 +12248,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -6534,7 +12277,7 @@ module.exports = function(hljs) {
     case_insensitive: true
   };
 };
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -6605,7 +12348,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 module.exports = function(hljs) {
   var TYPEPARAM = {
     begin: '<', end: '>',
@@ -6664,7 +12407,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],61:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS =
     'abort acronym acronyms alias all and assign binary card diag display else1 eps eq equation equations file files ' +
@@ -6701,7 +12444,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 module.exports = function(hljs) {
     var GCODE_IDENT_RE = '[A-Z_][A-Z0-9_.]*';
     var GCODE_CLOSE_RE = '\\%';
@@ -6774,7 +12517,7 @@ module.exports = function(hljs) {
         ].concat(GCODE_CODE)
     };
 };
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 module.exports = function (hljs) {
   return {
     aliases: ['feature'],
@@ -6807,7 +12550,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -6901,7 +12644,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 module.exports = function(hljs) {
   var GO_KEYWORDS = {
     keyword:
@@ -6940,7 +12683,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],66:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 module.exports = function(hljs) {
     return {
       keywords: {
@@ -6964,7 +12707,7 @@ module.exports = function(hljs) {
       ]
     }
 };
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -6999,7 +12742,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 module.exports = function(hljs) {
     return {
         keywords: {
@@ -7087,7 +12830,7 @@ module.exports = function(hljs) {
         illegal: /#/
     }
 };
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 module.exports = // TODO support filter tags like :javascript, support inline HTML
 function(hljs) {
   return {
@@ -7195,7 +12938,7 @@ function(hljs) {
     ]
   };
 };
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 module.exports = function(hljs) {
   var EXPRESSION_KEYWORDS = 'each in with if else unless bindattr action collection debugger log outlet template unbound view yield';
   return {
@@ -7228,7 +12971,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT_MODES = [
     hljs.COMMENT('--', '$'),
@@ -7352,7 +13095,7 @@ module.exports = function(hljs) {
     ].concat(COMMENT_MODES)
   };
 };
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z_$][a-zA-Z0-9_$]*';
   var IDENT_FUNC_RETURN_TYPE_RE = '([*]|[a-zA-Z_$][a-zA-Z0-9_$]*)';
@@ -7413,7 +13156,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['https'],
@@ -7448,7 +13191,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 module.exports = function(hljs) {
   var START_BRACKET = '\\[';
   var END_BRACKET = '\\]';
@@ -7506,7 +13249,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = {
     className: "string",
@@ -7566,7 +13309,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -7642,7 +13385,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 module.exports = function(hljs) {
   var GENERIC_IDENT_RE = hljs.UNDERSCORE_IDENT_RE + '(<' + hljs.UNDERSCORE_IDENT_RE + '>)?';
   var KEYWORDS =
@@ -7742,7 +13485,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['js'],
@@ -7854,7 +13597,7 @@ module.exports = function(hljs) {
     illegal: /#/
   };
 };
-},{}],79:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 module.exports = function(hljs) {
   var LITERALS = {literal: 'true false null'};
   var TYPES = [
@@ -7892,7 +13635,7 @@ module.exports = function(hljs) {
     illegal: '\\S'
   };
 };
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 module.exports = function(hljs) {
   // Since there are numerous special names in Julia, it is too much trouble
   // to maintain them by hand. Hence these names (i.e. keywords, literals and
@@ -8053,7 +13796,7 @@ module.exports = function(hljs) {
 
   return DEFAULT;
 };
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS = 'val var get set class trait object public open private protected ' +
     'final enum if else do while for when break continue throw try catch finally ' +
@@ -8154,7 +13897,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 module.exports = function(hljs) {
   var LASSO_IDENT_RE = '[a-zA-Z_][a-zA-Z0-9_.]*';
   var LASSO_ANGLE_RE = '<\\?(lasso(script)?|=)';
@@ -8340,7 +14083,7 @@ module.exports = function(hljs) {
     ].concat(LASSO_CODE)
   };
 };
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE        = '[\\w-]+'; // yes, Less identifiers may begin with a digit
   var INTERP_IDENT_RE = '(' + IDENT_RE + '|@{' + IDENT_RE + '})';
@@ -8477,7 +14220,7 @@ module.exports = function(hljs) {
     contains: RULES
   };
 };
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 module.exports = function(hljs) {
   var LISP_IDENT_RE = '[a-zA-Z_\\-\\+\\*\\/\\<\\=\\>\\&\\#][a-zA-Z0-9_\\-\\+\\*\\/\\<\\=\\>\\&\\#!]*';
   var MEC_RE = '\\|[^]*?\\|';
@@ -8584,7 +14327,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     className: 'variable', begin: '\\b[gtps][A-Z]+[A-Za-z0-9_\\-]*\\b|\\$_[A-Z]+',
@@ -8742,7 +14485,7 @@ module.exports = function(hljs) {
     illegal: ';$|^\\[|^='
   };
 };
-},{}],86:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -8893,7 +14636,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 module.exports = function(hljs) {
   var OPENING_LONG_BRACKET = '\\[=*\\[';
   var CLOSING_LONG_BRACKET = '\\]=*\\]';
@@ -8949,7 +14692,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     className: 'variable',
@@ -8995,7 +14738,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],89:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['md', 'mkdown', 'mkd'],
@@ -9097,7 +14840,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],90:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['mma'],
@@ -9156,7 +14899,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],91:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMON_CONTAINS = [
     hljs.C_NUMBER_MODE,
@@ -9247,7 +14990,7 @@ module.exports = function(hljs) {
     ].concat(COMMON_CONTAINS)
   };
 };
-},{}],92:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -9477,7 +15220,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],93:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -9566,7 +15309,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],94:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -9585,7 +15328,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],95:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -9610,7 +15353,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],96:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUMBER = {
     className: 'number', relevance: 0,
@@ -9689,7 +15432,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],97:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR = {
     className: 'variable',
@@ -9771,7 +15514,7 @@ module.exports = function(hljs) {
     illegal: '[^\\s\\}]'
   };
 };
-},{}],98:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['nim'],
@@ -9823,7 +15566,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],99:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 module.exports = function(hljs) {
   var NIX_KEYWORDS = {
     keyword: 'rec with let in inherit assert if else then',
@@ -9874,7 +15617,7 @@ module.exports = function(hljs) {
     contains: EXPRESSIONS
   };
 };
-},{}],100:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 module.exports = function(hljs) {
   var CONSTANTS = {
     className: 'symbol',
@@ -9962,7 +15705,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],101:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 module.exports = function(hljs) {
   var API_CLASS = {
     className: 'built_in',
@@ -10041,7 +15784,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],102:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 module.exports = function(hljs) {
   /* missing support for heredoc-like string (OCaml 4.0.2+) */
   return {
@@ -10112,7 +15855,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],103:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = function(hljs) {
 	var SPECIAL_VARS = {
 		className: 'keyword',
@@ -10170,7 +15913,7 @@ module.exports = function(hljs) {
 		]
 	}
 };
-},{}],104:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 module.exports = function(hljs) {
   var OXYGENE_KEYWORDS = 'abstract add and array as asc aspect assembly async begin break block by case class concat const copy constructor continue '+
     'create default delegate desc distinct div do downto dynamic each else empty end ensure enum equals event except exit extension external false '+
@@ -10239,7 +15982,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],105:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 module.exports = function(hljs) {
   var CURLY_SUBCOMMENT = hljs.COMMENT(
     '{',
@@ -10287,7 +16030,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],106:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 module.exports = function(hljs) {
   var PERL_KEYWORDS = 'getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ' +
     'ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime ' +
@@ -10444,7 +16187,7 @@ module.exports = function(hljs) {
     contains: PERL_DEFAULT_CONTAINS
   };
 };
-},{}],107:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = function(hljs) {
   var MACRO = {
     className: 'variable',
@@ -10496,7 +16239,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],108:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     className: 'variable', begin: '\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'
@@ -10621,7 +16364,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],109:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = function(hljs) {
   var backtickEscape = {
     begin: '`[\\s\\S]',
@@ -10669,7 +16412,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],110:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -10717,7 +16460,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],111:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -10759,7 +16502,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],112:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var ATOM = {
@@ -10848,7 +16591,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],113:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -10885,7 +16628,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],114:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var PUPPET_KEYWORDS = {
@@ -10993,7 +16736,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],115:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 module.exports = function(hljs) {
   var PROMPT = {
     className: 'prompt',  begin: /^(>>>|\.\.\.) /
@@ -11078,7 +16821,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],116:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 module.exports = function(hljs) {
   var Q_KEYWORDS = {
   keyword:
@@ -11101,7 +16844,7 @@ module.exports = function(hljs) {
      ]
   };
 };
-},{}],117:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '([a-zA-Z]|\\.[a-zA-Z.])[a-zA-Z0-9._]*';
 
@@ -11171,7 +16914,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],118:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -11198,7 +16941,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],119:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENTIFIER = '[a-zA-Z-_][^\n{\r\n]+\\{';
 
@@ -11258,7 +17001,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],120:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -11295,7 +17038,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],121:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 module.exports = function(hljs) {
   var RUBY_METHOD_RE = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?';
   var RUBY_KEYWORDS =
@@ -11465,7 +17208,7 @@ module.exports = function(hljs) {
     contains: COMMENT_MODES.concat(IRB_DEFAULT).concat(RUBY_DEFAULT_CONTAINS)
   };
 };
-},{}],122:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -11526,7 +17269,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],123:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUM_SUFFIX = '([uif](8|16|32|64|size))\?';
   var BLOCK_COMMENT = hljs.inherit(hljs.C_BLOCK_COMMENT_MODE);
@@ -11612,7 +17355,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],124:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var ANNOTATION = {
@@ -11675,7 +17418,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],125:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 module.exports = function(hljs) {
   var SCHEME_IDENT_RE = '[^\\(\\)\\[\\]\\{\\}",\'`;#|\\\\\\s]+';
   var SCHEME_SIMPLE_NUMBER_RE = '(\\-|\\+)?\\d+([./]\\d+)?';
@@ -11797,7 +17540,7 @@ module.exports = function(hljs) {
     contains: [SHEBANG, NUMBER, STRING, QUOTED_IDENT, LIST].concat(COMMENT_MODES)
   };
 };
-},{}],126:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var COMMON_CONTAINS = [
@@ -11852,7 +17595,7 @@ module.exports = function(hljs) {
     ].concat(COMMON_CONTAINS)
   };
 };
-},{}],127:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var VARIABLE = {
@@ -11969,7 +17712,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],128:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 module.exports = function(hljs) {
   var smali_instr_low_prio = ['add', 'and', 'cmp', 'cmpg', 'cmpl', 'const', 'div', 'double', 'float', 'goto', 'if', 'int', 'long', 'move', 'mul', 'neg', 'new', 'nop', 'not', 'or', 'rem', 'return', 'shl', 'shr', 'sput', 'sub', 'throw', 'ushr', 'xor'];
   var smali_instr_high_prio = ['aget', 'aput', 'array', 'check', 'execute', 'fill', 'filled', 'goto/16', 'goto/32', 'iget', 'instance', 'invoke', 'iput', 'monitor', 'packed', 'sget', 'sparse'];
@@ -12052,7 +17795,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],129:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR_IDENT_RE = '[a-z][a-zA-Z0-9_]*';
   var CHAR = {
@@ -12105,7 +17848,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],130:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['ml'],
@@ -12170,7 +17913,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],131:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 module.exports = function(hljs) {
   var allCommands = ['!', '-', '+', '!=', '%', '&&', '*', '/', '=', '==', '>', '>=', '<', '<=', 'or', 'plus', '^', ':', '>>', 'abs', 'accTime', 'acos', 'action', 'actionKeys', 'actionKeysImages', 'actionKeysNames', 'actionKeysNamesArray', 'actionName', 'activateAddons', 'activatedAddons', 'activateKey', 'addAction', 'addBackpack', 'addBackpackCargo', 'addBackpackCargoGlobal', 'addBackpackGlobal', 'addCamShake', 'addCuratorAddons', 'addCuratorCameraArea', 'addCuratorEditableObjects', 'addCuratorEditingArea', 'addCuratorPoints', 'addEditorObject', 'addEventHandler', 'addGoggles', 'addGroupIcon', 'addHandgunItem', 'addHeadgear', 'addItem', 'addItemCargo', 'addItemCargoGlobal', 'addItemPool', 'addItemToBackpack', 'addItemToUniform', 'addItemToVest', 'addLiveStats', 'addMagazine', 'addMagazine array', 'addMagazineAmmoCargo', 'addMagazineCargo', 'addMagazineCargoGlobal', 'addMagazineGlobal', 'addMagazinePool', 'addMagazines', 'addMagazineTurret', 'addMenu', 'addMenuItem', 'addMissionEventHandler', 'addMPEventHandler', 'addMusicEventHandler', 'addPrimaryWeaponItem', 'addPublicVariableEventHandler', 'addRating', 'addResources', 'addScore', 'addScoreSide', 'addSecondaryWeaponItem', 'addSwitchableUnit', 'addTeamMember', 'addToRemainsCollector', 'addUniform', 'addVehicle', 'addVest', 'addWaypoint', 'addWeapon', 'addWeaponCargo', 'addWeaponCargoGlobal', 'addWeaponGlobal', 'addWeaponPool', 'addWeaponTurret', 'agent', 'agents', 'AGLToASL', 'aimedAtTarget', 'aimPos', 'airDensityRTD', 'airportSide', 'AISFinishHeal', 'alive', 'allControls', 'allCurators', 'allDead', 'allDeadMen', 'allDisplays', 'allGroups', 'allMapMarkers', 'allMines', 'allMissionObjects', 'allow3DMode', 'allowCrewInImmobile', 'allowCuratorLogicIgnoreAreas', 'allowDamage', 'allowDammage', 'allowFileOperations', 'allowFleeing', 'allowGetIn', 'allPlayers', 'allSites', 'allTurrets', 'allUnits', 'allUnitsUAV', 'allVariables', 'ammo', 'and', 'animate', 'animateDoor', 'animationPhase', 'animationState', 'append', 'armoryPoints', 'arrayIntersect', 'asin', 'ASLToAGL', 'ASLToATL', 'assert', 'assignAsCargo', 'assignAsCargoIndex', 'assignAsCommander', 'assignAsDriver', 'assignAsGunner', 'assignAsTurret', 'assignCurator', 'assignedCargo', 'assignedCommander', 'assignedDriver', 'assignedGunner', 'assignedItems', 'assignedTarget', 'assignedTeam', 'assignedVehicle', 'assignedVehicleRole', 'assignItem', 'assignTeam', 'assignToAirport', 'atan', 'atan2', 'atg', 'ATLToASL', 'attachedObject', 'attachedObjects', 'attachedTo', 'attachObject', 'attachTo', 'attackEnabled', 'backpack', 'backpackCargo', 'backpackContainer', 'backpackItems', 'backpackMagazines', 'backpackSpaceFor', 'behaviour', 'benchmark', 'binocular', 'blufor', 'boundingBox', 'boundingBoxReal', 'boundingCenter', 'breakOut', 'breakTo', 'briefingName', 'buildingExit', 'buildingPos', 'buttonAction', 'buttonSetAction', 'cadetMode', 'call', 'callExtension', 'camCommand', 'camCommit', 'camCommitPrepared', 'camCommitted', 'camConstuctionSetParams', 'camCreate', 'camDestroy', 'cameraEffect', 'cameraEffectEnableHUD', 'cameraInterest', 'cameraOn', 'cameraView', 'campaignConfigFile', 'camPreload', 'camPreloaded', 'camPrepareBank', 'camPrepareDir', 'camPrepareDive', 'camPrepareFocus', 'camPrepareFov', 'camPrepareFovRange', 'camPreparePos', 'camPrepareRelPos', 'camPrepareTarget', 'camSetBank', 'camSetDir', 'camSetDive', 'camSetFocus', 'camSetFov', 'camSetFovRange', 'camSetPos', 'camSetRelPos', 'camSetTarget', 'camTarget', 'camUseNVG', 'canAdd', 'canAddItemToBackpack', 'canAddItemToUniform', 'canAddItemToVest', 'cancelSimpleTaskDestination', 'canFire', 'canMove', 'canSlingLoad', 'canStand', 'canUnloadInCombat', 'captive', 'captiveNum', 'case', 'catch', 'cbChecked', 'cbSetChecked', 'ceil', 'cheatsEnabled', 'checkAIFeature', 'civilian', 'className', 'clearAllItemsFromBackpack', 'clearBackpackCargo', 'clearBackpackCargoGlobal', 'clearGroupIcons', 'clearItemCargo', 'clearItemCargoGlobal', 'clearItemPool', 'clearMagazineCargo', 'clearMagazineCargoGlobal', 'clearMagazinePool', 'clearOverlay', 'clearRadio', 'clearWeaponCargo', 'clearWeaponCargoGlobal', 'clearWeaponPool', 'closeDialog', 'closeDisplay', 'closeOverlay', 'collapseObjectTree', 'combatMode', 'commandArtilleryFire', 'commandChat', 'commander', 'commandFire', 'commandFollow', 'commandFSM', 'commandGetOut', 'commandingMenu', 'commandMove', 'commandRadio', 'commandStop', 'commandTarget', 'commandWatch', 'comment', 'commitOverlay', 'compile', 'compileFinal', 'completedFSM', 'composeText', 'configClasses', 'configFile', 'configHierarchy', 'configName', 'configProperties', 'configSourceMod', 'configSourceModList', 'connectTerminalToUAV', 'controlNull', 'controlsGroupCtrl', 'copyFromClipboard', 'copyToClipboard', 'copyWaypoints', 'cos', 'count', 'countEnemy', 'countFriendly', 'countSide', 'countType', 'countUnknown', 'createAgent', 'createCenter', 'createDialog', 'createDiaryLink', 'createDiaryRecord', 'createDiarySubject', 'createDisplay', 'createGearDialog', 'createGroup', 'createGuardedPoint', 'createLocation', 'createMarker', 'createMarkerLocal', 'createMenu', 'createMine', 'createMissionDisplay', 'createSimpleTask', 'createSite', 'createSoundSource', 'createTask', 'createTeam', 'createTrigger', 'createUnit', 'createUnit array', 'createVehicle', 'createVehicle array', 'createVehicleCrew', 'createVehicleLocal', 'crew', 'ctrlActivate', 'ctrlAddEventHandler', 'ctrlAutoScrollDelay', 'ctrlAutoScrollRewind', 'ctrlAutoScrollSpeed', 'ctrlChecked', 'ctrlClassName', 'ctrlCommit', 'ctrlCommitted', 'ctrlCreate', 'ctrlDelete', 'ctrlEnable', 'ctrlEnabled', 'ctrlFade', 'ctrlHTMLLoaded', 'ctrlIDC', 'ctrlIDD', 'ctrlMapAnimAdd', 'ctrlMapAnimClear', 'ctrlMapAnimCommit', 'ctrlMapAnimDone', 'ctrlMapCursor', 'ctrlMapMouseOver', 'ctrlMapScale', 'ctrlMapScreenToWorld', 'ctrlMapWorldToScreen', 'ctrlModel', 'ctrlModelDirAndUp', 'ctrlModelScale', 'ctrlParent', 'ctrlPosition', 'ctrlRemoveAllEventHandlers', 'ctrlRemoveEventHandler', 'ctrlScale', 'ctrlSetActiveColor', 'ctrlSetAutoScrollDelay', 'ctrlSetAutoScrollRewind', 'ctrlSetAutoScrollSpeed', 'ctrlSetBackgroundColor', 'ctrlSetChecked', 'ctrlSetEventHandler', 'ctrlSetFade', 'ctrlSetFocus', 'ctrlSetFont', 'ctrlSetFontH1', 'ctrlSetFontH1B', 'ctrlSetFontH2', 'ctrlSetFontH2B', 'ctrlSetFontH3', 'ctrlSetFontH3B', 'ctrlSetFontH4', 'ctrlSetFontH4B', 'ctrlSetFontH5', 'ctrlSetFontH5B', 'ctrlSetFontH6', 'ctrlSetFontH6B', 'ctrlSetFontHeight', 'ctrlSetFontHeightH1', 'ctrlSetFontHeightH2', 'ctrlSetFontHeightH3', 'ctrlSetFontHeightH4', 'ctrlSetFontHeightH5', 'ctrlSetFontHeightH6', 'ctrlSetFontP', 'ctrlSetFontPB', 'ctrlSetForegroundColor', 'ctrlSetModel', 'ctrlSetModelDirAndUp', 'ctrlSetModelScale', 'ctrlSetPosition', 'ctrlSetScale', 'ctrlSetStructuredText', 'ctrlSetText', 'ctrlSetTextColor', 'ctrlSetTooltip', 'ctrlSetTooltipColorBox', 'ctrlSetTooltipColorShade', 'ctrlSetTooltipColorText', 'ctrlShow', 'ctrlShown', 'ctrlText', 'ctrlTextHeight', 'ctrlType', 'ctrlVisible', 'curatorAddons', 'curatorCamera', 'curatorCameraArea', 'curatorCameraAreaCeiling', 'curatorCoef', 'curatorEditableObjects', 'curatorEditingArea', 'curatorEditingAreaType', 'curatorMouseOver', 'curatorPoints', 'curatorRegisteredObjects', 'curatorSelected', 'curatorWaypointCost', 'currentChannel', 'currentCommand', 'currentMagazine', 'currentMagazineDetail', 'currentMagazineDetailTurret', 'currentMagazineTurret', 'currentMuzzle', 'currentNamespace', 'currentTask', 'currentTasks', 'currentThrowable', 'currentVisionMode', 'currentWaypoint', 'currentWeapon', 'currentWeaponMode', 'currentWeaponTurret', 'currentZeroing', 'cursorTarget', 'customChat', 'customRadio', 'cutFadeOut', 'cutObj', 'cutRsc', 'cutText', 'damage', 'date', 'dateToNumber', 'daytime', 'deActivateKey', 'debriefingText', 'debugFSM', 'debugLog', 'default', 'deg', 'deleteAt', 'deleteCenter', 'deleteCollection', 'deleteEditorObject', 'deleteGroup', 'deleteIdentity', 'deleteLocation', 'deleteMarker', 'deleteMarkerLocal', 'deleteRange', 'deleteResources', 'deleteSite', 'deleteStatus', 'deleteTeam', 'deleteVehicle', 'deleteVehicleCrew', 'deleteWaypoint', 'detach', 'detectedMines', 'diag activeMissionFSMs', 'diag activeSQFScripts', 'diag activeSQSScripts', 'diag captureFrame', 'diag captureSlowFrame', 'diag fps', 'diag fpsMin', 'diag frameNo', 'diag log', 'diag logSlowFrame', 'diag tickTime', 'dialog', 'diarySubjectExists', 'didJIP', 'didJIPOwner', 'difficulty', 'difficultyEnabled', 'difficultyEnabledRTD', 'direction', 'directSay', 'disableAI', 'disableCollisionWith', 'disableConversation', 'disableDebriefingStats', 'disableSerialization', 'disableTIEquipment', 'disableUAVConnectability', 'disableUserInput', 'displayAddEventHandler', 'displayCtrl', 'displayNull', 'displayRemoveAllEventHandlers', 'displayRemoveEventHandler', 'displaySetEventHandler', 'dissolveTeam', 'distance', 'distance2D', 'distanceSqr', 'distributionRegion', 'do', 'doArtilleryFire', 'doFire', 'doFollow', 'doFSM', 'doGetOut', 'doMove', 'doorPhase', 'doStop', 'doTarget', 'doWatch', 'drawArrow', 'drawEllipse', 'drawIcon', 'drawIcon3D', 'drawLine', 'drawLine3D', 'drawLink', 'drawLocation', 'drawRectangle', 'driver', 'drop', 'east', 'echo', 'editObject', 'editorSetEventHandler', 'effectiveCommander', 'else', 'emptyPositions', 'enableAI', 'enableAIFeature', 'enableAttack', 'enableCamShake', 'enableCaustics', 'enableCollisionWith', 'enableCopilot', 'enableDebriefingStats', 'enableDiagLegend', 'enableEndDialog', 'enableEngineArtillery', 'enableEnvironment', 'enableFatigue', 'enableGunLights', 'enableIRLasers', 'enableMimics', 'enablePersonTurret', 'enableRadio', 'enableReload', 'enableRopeAttach', 'enableSatNormalOnDetail', 'enableSaving', 'enableSentences', 'enableSimulation', 'enableSimulationGlobal', 'enableTeamSwitch', 'enableUAVConnectability', 'enableUAVWaypoints', 'endLoadingScreen', 'endMission', 'engineOn', 'enginesIsOnRTD', 'enginesRpmRTD', 'enginesTorqueRTD', 'entities', 'estimatedEndServerTime', 'estimatedTimeLeft', 'evalObjectArgument', 'everyBackpack', 'everyContainer', 'exec', 'execEditorScript', 'execFSM', 'execVM', 'exit', 'exitWith', 'exp', 'expectedDestination', 'eyeDirection', 'eyePos', 'face', 'faction', 'fadeMusic', 'fadeRadio', 'fadeSound', 'fadeSpeech', 'failMission', 'false', 'fillWeaponsFromPool', 'find', 'findCover', 'findDisplay', 'findEditorObject', 'findEmptyPosition', 'findEmptyPositionReady', 'findNearestEnemy', 'finishMissionInit', 'finite', 'fire', 'fireAtTarget', 'firstBackpack', 'flag', 'flagOwner', 'fleeing', 'floor', 'flyInHeight', 'fog', 'fogForecast', 'fogParams', 'for', 'forceAddUniform', 'forceEnd', 'forceMap', 'forceRespawn', 'forceSpeed', 'forceWalk', 'forceWeaponFire', 'forceWeatherChange', 'forEach', 'forEachMember', 'forEachMemberAgent', 'forEachMemberTeam', 'format', 'formation', 'formationDirection', 'formationLeader', 'formationMembers', 'formationPosition', 'formationTask', 'formatText', 'formLeader', 'freeLook', 'from', 'fromEditor', 'fuel', 'fullCrew', 'gearSlotAmmoCount', 'gearSlotData', 'getAllHitPointsDamage', 'getAmmoCargo', 'getArray', 'getArtilleryAmmo', 'getArtilleryComputerSettings', 'getArtilleryETA', 'getAssignedCuratorLogic', 'getAssignedCuratorUnit', 'getBackpackCargo', 'getBleedingRemaining', 'getBurningValue', 'getCargoIndex', 'getCenterOfMass', 'getClientState', 'getConnectedUAV', 'getDammage', 'getDescription', 'getDir', 'getDirVisual', 'getDLCs', 'getEditorCamera', 'getEditorMode', 'getEditorObjectScope', 'getElevationOffset', 'getFatigue', 'getFriend', 'getFSMVariable', 'getFuelCargo', 'getGroupIcon', 'getGroupIconParams', 'getGroupIcons', 'getHideFrom', 'getHit', 'getHitIndex', 'getHitPointDamage', 'getItemCargo', 'getMagazineCargo', 'getMarkerColor', 'getMarkerPos', 'getMarkerSize', 'getMarkerType', 'getMass', 'getModelInfo', 'getNumber', 'getObjectArgument', 'getObjectChildren', 'getObjectDLC', 'getObjectMaterials', 'getObjectProxy', 'getObjectTextures', 'getObjectType', 'getObjectViewDistance', 'getOxygenRemaining', 'getPersonUsedDLCs', 'getPlayerChannel', 'getPlayerUID', 'getPos', 'getPosASL', 'getPosASLVisual', 'getPosASLW', 'getPosATL', 'getPosATLVisual', 'getPosVisual', 'getPosWorld', 'getRepairCargo', 'getResolution', 'getShadowDistance', 'getSlingLoad', 'getSpeed', 'getSuppression', 'getTerrainHeightASL', 'getText', 'getVariable', 'getWeaponCargo', 'getWPPos', 'glanceAt', 'globalChat', 'globalRadio', 'goggles', 'goto', 'group', 'groupChat', 'groupFromNetId', 'groupIconSelectable', 'groupIconsVisible', 'groupId', 'groupOwner', 'groupRadio', 'groupSelectedUnits', 'groupSelectUnit', 'grpNull', 'gunner', 'gusts', 'halt', 'handgunItems', 'handgunMagazine', 'handgunWeapon', 'handsHit', 'hasInterface', 'hasWeapon', 'hcAllGroups', 'hcGroupParams', 'hcLeader', 'hcRemoveAllGroups', 'hcRemoveGroup', 'hcSelected', 'hcSelectGroup', 'hcSetGroup', 'hcShowBar', 'hcShownBar', 'headgear', 'hideBody', 'hideObject', 'hideObjectGlobal', 'hint', 'hintC', 'hintCadet', 'hintSilent', 'hmd', 'hostMission', 'htmlLoad', 'HUDMovementLevels', 'humidity', 'if', 'image', 'importAllGroups', 'importance', 'in', 'incapacitatedState', 'independent', 'inflame', 'inflamed', 'inGameUISetEventHandler', 'inheritsFrom', 'initAmbientLife', 'inputAction', 'inRangeOfArtillery', 'insertEditorObject', 'intersect', 'isAbleToBreathe', 'isAgent', 'isArray', 'isAutoHoverOn', 'isAutonomous', 'isAutotest', 'isBleeding', 'isBurning', 'isClass', 'isCollisionLightOn', 'isCopilotEnabled', 'isDedicated', 'isDLCAvailable', 'isEngineOn', 'isEqualTo', 'isFlashlightOn', 'isFlatEmpty', 'isForcedWalk', 'isFormationLeader', 'isHidden', 'isInRemainsCollector', 'isInstructorFigureEnabled', 'isIRLaserOn', 'isKeyActive', 'isKindOf', 'isLightOn', 'isLocalized', 'isManualFire', 'isMarkedForCollection', 'isMultiplayer', 'isNil', 'isNull', 'isNumber', 'isObjectHidden', 'isObjectRTD', 'isOnRoad', 'isPipEnabled', 'isPlayer', 'isRealTime', 'isServer', 'isShowing3DIcons', 'isSteamMission', 'isStreamFriendlyUIEnabled', 'isText', 'isTouchingGround', 'isTurnedOut', 'isTutHintsEnabled', 'isUAVConnectable', 'isUAVConnected', 'isUniformAllowed', 'isWalking', 'isWeaponDeployed', 'isWeaponRested', 'itemCargo', 'items', 'itemsWithMagazines', 'join', 'joinAs', 'joinAsSilent', 'joinSilent', 'joinString', 'kbAddDatabase', 'kbAddDatabaseTargets', 'kbAddTopic', 'kbHasTopic', 'kbReact', 'kbRemoveTopic', 'kbTell', 'kbWasSaid', 'keyImage', 'keyName', 'knowsAbout', 'land', 'landAt', 'landResult', 'language', 'laserTarget', 'lbAdd', 'lbClear', 'lbColor', 'lbCurSel', 'lbData', 'lbDelete', 'lbIsSelected', 'lbPicture', 'lbSelection', 'lbSetColor', 'lbSetCurSel', 'lbSetData', 'lbSetPicture', 'lbSetPictureColor', 'lbSetPictureColorDisabled', 'lbSetPictureColorSelected', 'lbSetSelectColor', 'lbSetSelectColorRight', 'lbSetSelected', 'lbSetTooltip', 'lbSetValue', 'lbSize', 'lbSort', 'lbSortByValue', 'lbText', 'lbValue', 'leader', 'leaderboardDeInit', 'leaderboardGetRows', 'leaderboardInit', 'leaveVehicle', 'libraryCredits', 'libraryDisclaimers', 'lifeState', 'lightAttachObject', 'lightDetachObject', 'lightIsOn', 'lightnings', 'limitSpeed', 'linearConversion', 'lineBreak', 'lineIntersects', 'lineIntersectsObjs', 'lineIntersectsSurfaces', 'lineIntersectsWith', 'linkItem', 'list', 'listObjects', 'ln', 'lnbAddArray', 'lnbAddColumn', 'lnbAddRow', 'lnbClear', 'lnbColor', 'lnbCurSelRow', 'lnbData', 'lnbDeleteColumn', 'lnbDeleteRow', 'lnbGetColumnsPosition', 'lnbPicture', 'lnbSetColor', 'lnbSetColumnsPos', 'lnbSetCurSelRow', 'lnbSetData', 'lnbSetPicture', 'lnbSetText', 'lnbSetValue', 'lnbSize', 'lnbText', 'lnbValue', 'load', 'loadAbs', 'loadBackpack', 'loadFile', 'loadGame', 'loadIdentity', 'loadMagazine', 'loadOverlay', 'loadStatus', 'loadUniform', 'loadVest', 'local', 'localize', 'locationNull', 'locationPosition', 'lock', 'lockCameraTo', 'lockCargo', 'lockDriver', 'locked', 'lockedCargo', 'lockedDriver', 'lockedTurret', 'lockTurret', 'lockWP', 'log', 'logEntities', 'lookAt', 'lookAtPos', 'magazineCargo', 'magazines', 'magazinesAllTurrets', 'magazinesAmmo', 'magazinesAmmoCargo', 'magazinesAmmoFull', 'magazinesDetail', 'magazinesDetailBackpack', 'magazinesDetailUniform', 'magazinesDetailVest', 'magazinesTurret', 'magazineTurretAmmo', 'mapAnimAdd', 'mapAnimClear', 'mapAnimCommit', 'mapAnimDone', 'mapCenterOnCamera', 'mapGridPosition', 'markAsFinishedOnSteam', 'markerAlpha', 'markerBrush', 'markerColor', 'markerDir', 'markerPos', 'markerShape', 'markerSize', 'markerText', 'markerType', 'max', 'members', 'min', 'mineActive', 'mineDetectedBy', 'missionConfigFile', 'missionName', 'missionNamespace', 'missionStart', 'mod', 'modelToWorld', 'modelToWorldVisual', 'moonIntensity', 'morale', 'move', 'moveInAny', 'moveInCargo', 'moveInCommander', 'moveInDriver', 'moveInGunner', 'moveInTurret', 'moveObjectToEnd', 'moveOut', 'moveTime', 'moveTo', 'moveToCompleted', 'moveToFailed', 'musicVolume', 'name', 'name location', 'nameSound', 'nearEntities', 'nearestBuilding', 'nearestLocation', 'nearestLocations', 'nearestLocationWithDubbing', 'nearestObject', 'nearestObjects', 'nearObjects', 'nearObjectsReady', 'nearRoads', 'nearSupplies', 'nearTargets', 'needReload', 'netId', 'netObjNull', 'newOverlay', 'nextMenuItemIndex', 'nextWeatherChange', 'nil', 'nMenuItems', 'not', 'numberToDate', 'objectCurators', 'objectFromNetId', 'objectParent', 'objNull', 'objStatus', 'onBriefingGroup', 'onBriefingNotes', 'onBriefingPlan', 'onBriefingTeamSwitch', 'onCommandModeChanged', 'onDoubleClick', 'onEachFrame', 'onGroupIconClick', 'onGroupIconOverEnter', 'onGroupIconOverLeave', 'onHCGroupSelectionChanged', 'onMapSingleClick', 'onPlayerConnected', 'onPlayerDisconnected', 'onPreloadFinished', 'onPreloadStarted', 'onShowNewObject', 'onTeamSwitch', 'openCuratorInterface', 'openMap', 'openYoutubeVideo', 'opfor', 'or', 'orderGetIn', 'overcast', 'overcastForecast', 'owner', 'param', 'params', 'parseNumber', 'parseText', 'parsingNamespace', 'particlesQuality', 'pi', 'pickWeaponPool', 'pitch', 'playableSlotsNumber', 'playableUnits', 'playAction', 'playActionNow', 'player', 'playerRespawnTime', 'playerSide', 'playersNumber', 'playGesture', 'playMission', 'playMove', 'playMoveNow', 'playMusic', 'playScriptedMission', 'playSound', 'playSound3D', 'position', 'positionCameraToWorld', 'posScreenToWorld', 'posWorldToScreen', 'ppEffectAdjust', 'ppEffectCommit', 'ppEffectCommitted', 'ppEffectCreate', 'ppEffectDestroy', 'ppEffectEnable', 'ppEffectForceInNVG', 'precision', 'preloadCamera', 'preloadObject', 'preloadSound', 'preloadTitleObj', 'preloadTitleRsc', 'preprocessFile', 'preprocessFileLineNumbers', 'primaryWeapon', 'primaryWeaponItems', 'primaryWeaponMagazine', 'priority', 'private', 'processDiaryLink', 'productVersion', 'profileName', 'profileNamespace', 'profileNameSteam', 'progressLoadingScreen', 'progressPosition', 'progressSetPosition', 'publicVariable', 'publicVariableClient', 'publicVariableServer', 'pushBack', 'putWeaponPool', 'queryItemsPool', 'queryMagazinePool', 'queryWeaponPool', 'rad', 'radioChannelAdd', 'radioChannelCreate', 'radioChannelRemove', 'radioChannelSetCallSign', 'radioChannelSetLabel', 'radioVolume', 'rain', 'rainbow', 'random', 'rank', 'rankId', 'rating', 'rectangular', 'registeredTasks', 'registerTask', 'reload', 'reloadEnabled', 'remoteControl', 'remoteExec', 'remoteExecCall', 'removeAction', 'removeAllActions', 'removeAllAssignedItems', 'removeAllContainers', 'removeAllCuratorAddons', 'removeAllCuratorCameraAreas', 'removeAllCuratorEditingAreas', 'removeAllEventHandlers', 'removeAllHandgunItems', 'removeAllItems', 'removeAllItemsWithMagazines', 'removeAllMissionEventHandlers', 'removeAllMPEventHandlers', 'removeAllMusicEventHandlers', 'removeAllPrimaryWeaponItems', 'removeAllWeapons', 'removeBackpack', 'removeBackpackGlobal', 'removeCuratorAddons', 'removeCuratorCameraArea', 'removeCuratorEditableObjects', 'removeCuratorEditingArea', 'removeDrawIcon', 'removeDrawLinks', 'removeEventHandler', 'removeFromRemainsCollector', 'removeGoggles', 'removeGroupIcon', 'removeHandgunItem', 'removeHeadgear', 'removeItem', 'removeItemFromBackpack', 'removeItemFromUniform', 'removeItemFromVest', 'removeItems', 'removeMagazine', 'removeMagazineGlobal', 'removeMagazines', 'removeMagazinesTurret', 'removeMagazineTurret', 'removeMenuItem', 'removeMissionEventHandler', 'removeMPEventHandler', 'removeMusicEventHandler', 'removePrimaryWeaponItem', 'removeSecondaryWeaponItem', 'removeSimpleTask', 'removeSwitchableUnit', 'removeTeamMember', 'removeUniform', 'removeVest', 'removeWeapon', 'removeWeaponGlobal', 'removeWeaponTurret', 'requiredVersion', 'resetCamShake', 'resetSubgroupDirection', 'resistance', 'resize', 'resources', 'respawnVehicle', 'restartEditorCamera', 'reveal', 'revealMine', 'reverse', 'reversedMouseY', 'roadsConnectedTo', 'roleDescription', 'ropeAttachedObjects', 'ropeAttachedTo', 'ropeAttachEnabled', 'ropeAttachTo', 'ropeCreate', 'ropeCut', 'ropeEndPosition', 'ropeLength', 'ropes', 'ropeUnwind', 'ropeUnwound', 'rotorsForcesRTD', 'rotorsRpmRTD', 'round', 'runInitScript', 'safeZoneH', 'safeZoneW', 'safeZoneWAbs', 'safeZoneX', 'safeZoneXAbs', 'safeZoneY', 'saveGame', 'saveIdentity', 'saveJoysticks', 'saveOverlay', 'saveProfileNamespace', 'saveStatus', 'saveVar', 'savingEnabled', 'say', 'say2D', 'say3D', 'scopeName', 'score', 'scoreSide', 'screenToWorld', 'scriptDone', 'scriptName', 'scriptNull', 'scudState', 'secondaryWeapon', 'secondaryWeaponItems', 'secondaryWeaponMagazine', 'select', 'selectBestPlaces', 'selectDiarySubject', 'selectedEditorObjects', 'selectEditorObject', 'selectionPosition', 'selectLeader', 'selectNoPlayer', 'selectPlayer', 'selectWeapon', 'selectWeaponTurret', 'sendAUMessage', 'sendSimpleCommand', 'sendTask', 'sendTaskResult', 'sendUDPMessage', 'serverCommand', 'serverCommandAvailable', 'serverCommandExecutable', 'serverName', 'serverTime', 'set', 'setAccTime', 'setAirportSide', 'setAmmo', 'setAmmoCargo', 'setAperture', 'setApertureNew', 'setArmoryPoints', 'setAttributes', 'setAutonomous', 'setBehaviour', 'setBleedingRemaining', 'setCameraInterest', 'setCamShakeDefParams', 'setCamShakeParams', 'setCamUseTi', 'setCaptive', 'setCenterOfMass', 'setCollisionLight', 'setCombatMode', 'setCompassOscillation', 'setCuratorCameraAreaCeiling', 'setCuratorCoef', 'setCuratorEditingAreaType', 'setCuratorWaypointCost', 'setCurrentChannel', 'setCurrentTask', 'setCurrentWaypoint', 'setDamage', 'setDammage', 'setDate', 'setDebriefingText', 'setDefaultCamera', 'setDestination', 'setDetailMapBlendPars', 'setDir', 'setDirection', 'setDrawIcon', 'setDropInterval', 'setEditorMode', 'setEditorObjectScope', 'setEffectCondition', 'setFace', 'setFaceAnimation', 'setFatigue', 'setFlagOwner', 'setFlagSide', 'setFlagTexture', 'setFog', 'setFog array', 'setFormation', 'setFormationTask', 'setFormDir', 'setFriend', 'setFromEditor', 'setFSMVariable', 'setFuel', 'setFuelCargo', 'setGroupIcon', 'setGroupIconParams', 'setGroupIconsSelectable', 'setGroupIconsVisible', 'setGroupId', 'setGroupIdGlobal', 'setGroupOwner', 'setGusts', 'setHideBehind', 'setHit', 'setHitIndex', 'setHitPointDamage', 'setHorizonParallaxCoef', 'setHUDMovementLevels', 'setIdentity', 'setImportance', 'setLeader', 'setLightAmbient', 'setLightAttenuation', 'setLightBrightness', 'setLightColor', 'setLightDayLight', 'setLightFlareMaxDistance', 'setLightFlareSize', 'setLightIntensity', 'setLightnings', 'setLightUseFlare', 'setLocalWindParams', 'setMagazineTurretAmmo', 'setMarkerAlpha', 'setMarkerAlphaLocal', 'setMarkerBrush', 'setMarkerBrushLocal', 'setMarkerColor', 'setMarkerColorLocal', 'setMarkerDir', 'setMarkerDirLocal', 'setMarkerPos', 'setMarkerPosLocal', 'setMarkerShape', 'setMarkerShapeLocal', 'setMarkerSize', 'setMarkerSizeLocal', 'setMarkerText', 'setMarkerTextLocal', 'setMarkerType', 'setMarkerTypeLocal', 'setMass', 'setMimic', 'setMousePosition', 'setMusicEffect', 'setMusicEventHandler', 'setName', 'setNameSound', 'setObjectArguments', 'setObjectMaterial', 'setObjectProxy', 'setObjectTexture', 'setObjectTextureGlobal', 'setObjectViewDistance', 'setOvercast', 'setOwner', 'setOxygenRemaining', 'setParticleCircle', 'setParticleClass', 'setParticleFire', 'setParticleParams', 'setParticleRandom', 'setPilotLight', 'setPiPEffect', 'setPitch', 'setPlayable', 'setPlayerRespawnTime', 'setPos', 'setPosASL', 'setPosASL2', 'setPosASLW', 'setPosATL', 'setPosition', 'setPosWorld', 'setRadioMsg', 'setRain', 'setRainbow', 'setRandomLip', 'setRank', 'setRectangular', 'setRepairCargo', 'setShadowDistance', 'setSide', 'setSimpleTaskDescription', 'setSimpleTaskDestination', 'setSimpleTaskTarget', 'setSimulWeatherLayers', 'setSize', 'setSkill', 'setSkill array', 'setSlingLoad', 'setSoundEffect', 'setSpeaker', 'setSpeech', 'setSpeedMode', 'setStatValue', 'setSuppression', 'setSystemOfUnits', 'setTargetAge', 'setTaskResult', 'setTaskState', 'setTerrainGrid', 'setText', 'setTimeMultiplier', 'setTitleEffect', 'setTriggerActivation', 'setTriggerArea', 'setTriggerStatements', 'setTriggerText', 'setTriggerTimeout', 'setTriggerType', 'setType', 'setUnconscious', 'setUnitAbility', 'setUnitPos', 'setUnitPosWeak', 'setUnitRank', 'setUnitRecoilCoefficient', 'setUnloadInCombat', 'setUserActionText', 'setVariable', 'setVectorDir', 'setVectorDirAndUp', 'setVectorUp', 'setVehicleAmmo', 'setVehicleAmmoDef', 'setVehicleArmor', 'setVehicleId', 'setVehicleLock', 'setVehiclePosition', 'setVehicleTiPars', 'setVehicleVarName', 'setVelocity', 'setVelocityTransformation', 'setViewDistance', 'setVisibleIfTreeCollapsed', 'setWaves', 'setWaypointBehaviour', 'setWaypointCombatMode', 'setWaypointCompletionRadius', 'setWaypointDescription', 'setWaypointFormation', 'setWaypointHousePosition', 'setWaypointLoiterRadius', 'setWaypointLoiterType', 'setWaypointName', 'setWaypointPosition', 'setWaypointScript', 'setWaypointSpeed', 'setWaypointStatements', 'setWaypointTimeout', 'setWaypointType', 'setWaypointVisible', 'setWeaponReloadingTime', 'setWind', 'setWindDir', 'setWindForce', 'setWindStr', 'setWPPos', 'show3DIcons', 'showChat', 'showCinemaBorder', 'showCommandingMenu', 'showCompass', 'showCuratorCompass', 'showGPS', 'showHUD', 'showLegend', 'showMap', 'shownArtilleryComputer', 'shownChat', 'shownCompass', 'shownCuratorCompass', 'showNewEditorObject', 'shownGPS', 'shownHUD', 'shownMap', 'shownPad', 'shownRadio', 'shownUAVFeed', 'shownWarrant', 'shownWatch', 'showPad', 'showRadio', 'showSubtitles', 'showUAVFeed', 'showWarrant', 'showWatch', 'showWaypoint', 'side', 'sideChat', 'sideEnemy', 'sideFriendly', 'sideLogic', 'sideRadio', 'sideUnknown', 'simpleTasks', 'simulationEnabled', 'simulCloudDensity', 'simulCloudOcclusion', 'simulInClouds', 'simulWeatherSync', 'sin', 'size', 'sizeOf', 'skill', 'skillFinal', 'skipTime', 'sleep', 'sliderPosition', 'sliderRange', 'sliderSetPosition', 'sliderSetRange', 'sliderSetSpeed', 'sliderSpeed', 'slingLoadAssistantShown', 'soldierMagazines', 'someAmmo', 'sort', 'soundVolume', 'spawn', 'speaker', 'speed', 'speedMode', 'splitString', 'sqrt', 'squadParams', 'stance', 'startLoadingScreen', 'step', 'stop', 'stopped', 'str', 'sunOrMoon', 'supportInfo', 'suppressFor', 'surfaceIsWater', 'surfaceNormal', 'surfaceType', 'swimInDepth', 'switch', 'switchableUnits', 'switchAction', 'switchCamera', 'switchGesture', 'switchLight', 'switchMove', 'synchronizedObjects', 'synchronizedTriggers', 'synchronizedWaypoints', 'synchronizeObjectsAdd', 'synchronizeObjectsRemove', 'synchronizeTrigger', 'synchronizeWaypoint', 'synchronizeWaypoint trigger', 'systemChat', 'systemOfUnits', 'tan', 'targetKnowledge', 'targetsAggregate', 'targetsQuery', 'taskChildren', 'taskCompleted', 'taskDescription', 'taskDestination', 'taskHint', 'taskNull', 'taskParent', 'taskResult', 'taskState', 'teamMember', 'teamMemberNull', 'teamName', 'teams', 'teamSwitch', 'teamSwitchEnabled', 'teamType', 'terminate', 'terrainIntersect', 'terrainIntersectASL', 'text', 'text location', 'textLog', 'textLogFormat', 'tg', 'then', 'throw', 'time', 'timeMultiplier', 'titleCut', 'titleFadeOut', 'titleObj', 'titleRsc', 'titleText', 'to', 'toArray', 'toLower', 'toString', 'toUpper', 'triggerActivated', 'triggerActivation', 'triggerArea', 'triggerAttachedVehicle', 'triggerAttachObject', 'triggerAttachVehicle', 'triggerStatements', 'triggerText', 'triggerTimeout', 'triggerTimeoutCurrent', 'triggerType', 'true', 'try', 'turretLocal', 'turretOwner', 'turretUnit', 'tvAdd', 'tvClear', 'tvCollapse', 'tvCount', 'tvCurSel', 'tvData', 'tvDelete', 'tvExpand', 'tvPicture', 'tvSetCurSel', 'tvSetData', 'tvSetPicture', 'tvSetPictureColor', 'tvSetTooltip', 'tvSetValue', 'tvSort', 'tvSortByValue', 'tvText', 'tvValue', 'type', 'typeName', 'typeOf', 'UAVControl', 'uiNamespace', 'uiSleep', 'unassignCurator', 'unassignItem', 'unassignTeam', 'unassignVehicle', 'underwater', 'uniform', 'uniformContainer', 'uniformItems', 'uniformMagazines', 'unitAddons', 'unitBackpack', 'unitPos', 'unitReady', 'unitRecoilCoefficient', 'units', 'unitsBelowHeight', 'unlinkItem', 'unlockAchievement', 'unregisterTask', 'updateDrawIcon', 'updateMenuItem', 'updateObjectTree', 'useAudioTimeForMoves', 'vectorAdd', 'vectorCos', 'vectorCrossProduct', 'vectorDiff', 'vectorDir', 'vectorDirVisual', 'vectorDistance', 'vectorDistanceSqr', 'vectorDotProduct', 'vectorFromTo', 'vectorMagnitude', 'vectorMagnitudeSqr', 'vectorMultiply', 'vectorNormalized', 'vectorUp', 'vectorUpVisual', 'vehicle', 'vehicleChat', 'vehicleRadio', 'vehicles', 'vehicleVarName', 'velocity', 'velocityModelSpace', 'verifySignature', 'vest', 'vestContainer', 'vestItems', 'vestMagazines', 'viewDistance', 'visibleCompass', 'visibleGPS', 'visibleMap', 'visiblePosition', 'visiblePositionASL', 'visibleWatch', 'waitUntil', 'waves', 'waypointAttachedObject', 'waypointAttachedVehicle', 'waypointAttachObject', 'waypointAttachVehicle', 'waypointBehaviour', 'waypointCombatMode', 'waypointCompletionRadius', 'waypointDescription', 'waypointFormation', 'waypointHousePosition', 'waypointLoiterRadius', 'waypointLoiterType', 'waypointName', 'waypointPosition', 'waypoints', 'waypointScript', 'waypointsEnabledUAV', 'waypointShow', 'waypointSpeed', 'waypointStatements', 'waypointTimeout', 'waypointTimeoutCurrent', 'waypointType', 'waypointVisible', 'weaponAccessories', 'weaponCargo', 'weaponDirection', 'weaponLowered', 'weapons', 'weaponsItems', 'weaponsItemsCargo', 'weaponState', 'weaponsTurret', 'weightRTD', 'west', 'WFSideText', 'while', 'wind', 'windDir', 'windStr', 'wingsForcesRTD', 'with', 'worldName', 'worldSize', 'worldToModel', 'worldToModelVisual', 'worldToScreen'];
   var control = ['case', 'catch', 'default', 'do', 'else', 'exit', 'exitWith|5', 'for', 'forEach', 'from', 'if', 'switch', 'then', 'throw', 'to', 'try', 'while', 'with'];
@@ -12266,7 +18009,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],132:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT_MODE = hljs.COMMENT('--', '$');
   return {
@@ -12426,7 +18169,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],133:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['do', 'ado'],
@@ -12464,7 +18207,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],134:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 module.exports = function(hljs) {
   var STEP21_IDENT_RE = '[A-Z_][A-Z0-9_.]*';
   var STEP21_CLOSE_RE = 'END-ISO-10303-21;';
@@ -12516,7 +18259,7 @@ module.exports = function(hljs) {
     ].concat(STEP21_CODE)
   };
 };
-},{}],135:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var VARIABLE = {
@@ -12959,7 +18702,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],136:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 module.exports = function(hljs) {
   var SWIFT_KEYWORDS = {
       keyword: '__COLUMN__ __FILE__ __FUNCTION__ __LINE__ as as! as? associativity ' +
@@ -13079,7 +18822,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],137:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['tk'],
@@ -13141,7 +18884,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],138:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMAND1 = {
     className: 'command',
@@ -13196,7 +18939,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],139:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 module.exports = function(hljs) {
   var BUILT_IN_TYPES = 'bool byte i16 i32 i64 double string binary';
   return {
@@ -13231,7 +18974,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],140:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 module.exports = function(hljs) {
   var TPID = {
     className: 'number',
@@ -13315,7 +19058,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],141:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -13372,7 +19115,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],142:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -13470,7 +19213,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],143:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -13525,7 +19268,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],144:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['vb'],
@@ -13581,7 +19324,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],145:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -13593,7 +19336,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],146:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['vbs'],
@@ -13632,7 +19375,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],147:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['v'],
@@ -13682,7 +19425,7 @@ module.exports = function(hljs) {
     ]
   }; // return
 };
-},{}],148:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 module.exports = function(hljs) {
   // Regular expression for VHDL numeric literals.
 
@@ -13738,7 +19481,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],149:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     lexemes: /[!#@\w]+/,
@@ -13801,7 +19544,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],150:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -13937,7 +19680,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],151:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 module.exports = function(hljs) {
   var BUILTIN_MODULES =
     'ObjectLoader Animate MovieCredits Slides Filters Shading Materials LensFlare Mapping VLCAudioVideo ' +
@@ -14024,7 +19767,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],152:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 module.exports = function(hljs) {
   var XML_IDENT_RE = '[A-Za-z0-9\\._:-]+';
   var PHP = {
@@ -14127,7 +19870,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],153:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = 'for let if while then else return where group by xquery encoding version' +
     'module namespace boundary-space preserve strip default collation base-uri ordering' +
@@ -14200,7 +19943,7 @@ module.exports = function(hljs) {
     contains: CONTAINS
   };
 };
-},{}],154:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = {
     className: 'string',
@@ -14307,7 +20050,206 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],155:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
+/*!
+ * node-inherit
+ * Copyright(c) 2011 Dmitry Filatov <dfilatov@yandex-team.ru>
+ * MIT Licensed
+ */
+
+module.exports = require('./lib/inherit');
+
+},{"./lib/inherit":157}],157:[function(require,module,exports){
+/**
+ * @module inherit
+ * @version 2.2.2
+ * @author Filatov Dmitry <dfilatov@yandex-team.ru>
+ * @description This module provides some syntax sugar for "class" declarations, constructors, mixins, "super" calls and static members.
+ */
+
+(function(global) {
+
+var hasIntrospection = (function(){'_';}).toString().indexOf('_') > -1,
+    emptyBase = function() {},
+    hasOwnProperty = Object.prototype.hasOwnProperty,
+    objCreate = Object.create || function(ptp) {
+        var inheritance = function() {};
+        inheritance.prototype = ptp;
+        return new inheritance();
+    },
+    objKeys = Object.keys || function(obj) {
+        var res = [];
+        for(var i in obj) {
+            hasOwnProperty.call(obj, i) && res.push(i);
+        }
+        return res;
+    },
+    extend = function(o1, o2) {
+        for(var i in o2) {
+            hasOwnProperty.call(o2, i) && (o1[i] = o2[i]);
+        }
+
+        return o1;
+    },
+    toStr = Object.prototype.toString,
+    isArray = Array.isArray || function(obj) {
+        return toStr.call(obj) === '[object Array]';
+    },
+    isFunction = function(obj) {
+        return toStr.call(obj) === '[object Function]';
+    },
+    noOp = function() {},
+    needCheckProps = true,
+    testPropObj = { toString : '' };
+
+for(var i in testPropObj) { // fucking ie hasn't toString, valueOf in for
+    testPropObj.hasOwnProperty(i) && (needCheckProps = false);
+}
+
+var specProps = needCheckProps? ['toString', 'valueOf'] : null;
+
+function getPropList(obj) {
+    var res = objKeys(obj);
+    if(needCheckProps) {
+        var specProp, i = 0;
+        while(specProp = specProps[i++]) {
+            obj.hasOwnProperty(specProp) && res.push(specProp);
+        }
+    }
+
+    return res;
+}
+
+function override(base, res, add) {
+    var addList = getPropList(add),
+        j = 0, len = addList.length,
+        name, prop;
+    while(j < len) {
+        if((name = addList[j++]) === '__self') {
+            continue;
+        }
+        prop = add[name];
+        if(isFunction(prop) &&
+                (!hasIntrospection || prop.toString().indexOf('.__base') > -1)) {
+            res[name] = (function(name, prop) {
+                var baseMethod = base[name]?
+                        base[name] :
+                        name === '__constructor'? // case of inheritance from plane function
+                            res.__self.__parent :
+                            noOp;
+                return function() {
+                    var baseSaved = this.__base;
+                    this.__base = baseMethod;
+                    var res = prop.apply(this, arguments);
+                    this.__base = baseSaved;
+                    return res;
+                };
+            })(name, prop);
+        } else {
+            res[name] = prop;
+        }
+    }
+}
+
+function applyMixins(mixins, res) {
+    var i = 1, mixin;
+    while(mixin = mixins[i++]) {
+        res?
+            isFunction(mixin)?
+                inherit.self(res, mixin.prototype, mixin) :
+                inherit.self(res, mixin) :
+            res = isFunction(mixin)?
+                inherit(mixins[0], mixin.prototype, mixin) :
+                inherit(mixins[0], mixin);
+    }
+    return res || mixins[0];
+}
+
+/**
+* Creates class
+* @exports
+* @param {Function|Array} [baseClass|baseClassAndMixins] class (or class and mixins) to inherit from
+* @param {Object} prototypeFields
+* @param {Object} [staticFields]
+* @returns {Function} class
+*/
+function inherit() {
+    var args = arguments,
+        withMixins = isArray(args[0]),
+        hasBase = withMixins || isFunction(args[0]),
+        base = hasBase? withMixins? applyMixins(args[0]) : args[0] : emptyBase,
+        props = args[hasBase? 1 : 0] || {},
+        staticProps = args[hasBase? 2 : 1],
+        res = props.__constructor || (hasBase && base.prototype.__constructor)?
+            function() {
+                return this.__constructor.apply(this, arguments);
+            } :
+            hasBase?
+                function() {
+                    return base.apply(this, arguments);
+                } :
+                function() {};
+
+    if(!hasBase) {
+        res.prototype = props;
+        res.prototype.__self = res.prototype.constructor = res;
+        return extend(res, staticProps);
+    }
+
+    extend(res, base);
+
+    res.__parent = base;
+
+    var basePtp = base.prototype,
+        resPtp = res.prototype = objCreate(basePtp);
+
+    resPtp.__self = resPtp.constructor = res;
+
+    props && override(basePtp, resPtp, props);
+    staticProps && override(base, res, staticProps);
+
+    return res;
+}
+
+inherit.self = function() {
+    var args = arguments,
+        withMixins = isArray(args[0]),
+        base = withMixins? applyMixins(args[0], args[0][0]) : args[0],
+        props = args[1],
+        staticProps = args[2],
+        basePtp = base.prototype;
+
+    props && override(basePtp, basePtp, props);
+    staticProps && override(base, base, staticProps);
+
+    return base;
+};
+
+var defineAsGlobal = true;
+if(typeof exports === 'object') {
+    module.exports = inherit;
+    defineAsGlobal = false;
+}
+
+if(typeof modules === 'object') {
+    modules.define('inherit', function(provide) {
+        provide(inherit);
+    });
+    defineAsGlobal = false;
+}
+
+if(typeof define === 'function') {
+    define(function(require, exports, module) {
+        module.exports = inherit;
+    });
+    defineAsGlobal = false;
+}
+
+defineAsGlobal && (global.inherit = inherit);
+
+})(this);
+
+},{}],158:[function(require,module,exports){
 /**
  * isMobile.js v0.3.9
  *
@@ -14435,7 +20377,7 @@ module.exports = function(hljs) {
 
 })(this);
 
-},{}],156:[function(require,module,exports){
+},{}],159:[function(require,module,exports){
 'use strict';
 
 
@@ -14444,7 +20386,7 @@ var yaml = require('./lib/js-yaml.js');
 
 module.exports = yaml;
 
-},{"./lib/js-yaml.js":157}],157:[function(require,module,exports){
+},{"./lib/js-yaml.js":160}],160:[function(require,module,exports){
 'use strict';
 
 
@@ -14485,24 +20427,26 @@ module.exports.parse          = deprecated('parse');
 module.exports.compose        = deprecated('compose');
 module.exports.addConstructor = deprecated('addConstructor');
 
-},{"./js-yaml/dumper":159,"./js-yaml/exception":160,"./js-yaml/loader":161,"./js-yaml/schema":163,"./js-yaml/schema/core":164,"./js-yaml/schema/default_full":165,"./js-yaml/schema/default_safe":166,"./js-yaml/schema/failsafe":167,"./js-yaml/schema/json":168,"./js-yaml/type":169}],158:[function(require,module,exports){
+},{"./js-yaml/dumper":162,"./js-yaml/exception":163,"./js-yaml/loader":164,"./js-yaml/schema":166,"./js-yaml/schema/core":167,"./js-yaml/schema/default_full":168,"./js-yaml/schema/default_safe":169,"./js-yaml/schema/failsafe":170,"./js-yaml/schema/json":171,"./js-yaml/type":172}],161:[function(require,module,exports){
 'use strict';
 
 
 function isNothing(subject) {
-  return (typeof subject === 'undefined') || (subject === null);
+  return (typeof subject === 'undefined') || (null === subject);
 }
 
 
 function isObject(subject) {
-  return (typeof subject === 'object') && (subject !== null);
+  return (typeof subject === 'object') && (null !== subject);
 }
 
 
 function toArray(sequence) {
-  if (Array.isArray(sequence)) return sequence;
-  else if (isNothing(sequence)) return [];
-
+  if (Array.isArray(sequence)) {
+    return sequence;
+  } else if (isNothing(sequence)) {
+    return [];
+  }
   return [ sequence ];
 }
 
@@ -14535,7 +20479,7 @@ function repeat(string, count) {
 
 
 function isNegativeZero(number) {
-  return (number === 0) && (Number.NEGATIVE_INFINITY === 1 / number);
+  return (0 === number) && (Number.NEGATIVE_INFINITY === 1 / number);
 }
 
 
@@ -14546,7 +20490,7 @@ module.exports.repeat         = repeat;
 module.exports.isNegativeZero = isNegativeZero;
 module.exports.extend         = extend;
 
-},{}],159:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable no-use-before-define*/
@@ -14609,7 +20553,9 @@ var DEPRECATED_BOOLEANS_SYNTAX = [
 function compileStyleMap(schema, map) {
   var result, keys, index, length, tag, style, type;
 
-  if (map === null) return {};
+  if (null === map) {
+    return {};
+  }
 
   result = {};
   keys = Object.keys(map);
@@ -14618,7 +20564,7 @@ function compileStyleMap(schema, map) {
     tag = keys[index];
     style = String(map[tag]);
 
-    if (tag.slice(0, 2) === '!!') {
+    if ('!!' === tag.slice(0, 2)) {
       tag = 'tag:yaml.org,2002:' + tag.slice(2);
     }
 
@@ -14662,8 +20608,7 @@ function State(options) {
   this.flowLevel   = (common.isNothing(options['flowLevel']) ? -1 : options['flowLevel']);
   this.styleMap    = compileStyleMap(this.schema, options['styles'] || null);
   this.sortKeys    = options['sortKeys'] || false;
-  this.lineWidth   = options['lineWidth'] || 80;
-  this.noRefs      = options['noRefs'] || false;
+  this.lineWidth    = options['lineWidth'] || 80;
 
   this.implicitTypes = this.schema.compiledImplicit;
   this.explicitTypes = this.schema.compiledExplicit;
@@ -14692,9 +20637,9 @@ function indentString(string, spaces) {
       line = string.slice(position, next + 1);
       position = next + 1;
     }
-
-    if (line.length && line !== '\n') result += ind;
-
+    if (line.length && line !== '\n') {
+      result += ind;
+    }
     result += line;
   }
 
@@ -14763,12 +20708,12 @@ function writeScalar(state, object, level, iskey) {
       position, escapeSeq, hexEsc, previous, lineLength, modifier,
       trailingLineBreaks, result;
 
-  if (object.length === 0) {
+  if (0 === object.length) {
     state.dump = "''";
     return;
   }
 
-  if (DEPRECATED_BOOLEANS_SYNTAX.indexOf(object) !== -1) {
+  if (-1 !== DEPRECATED_BOOLEANS_SYNTAX.indexOf(object)) {
     state.dump = "'" + object + "'";
     return;
   }
@@ -14787,11 +20732,9 @@ function writeScalar(state, object, level, iskey) {
     simple = false;
   }
 
-  // Can only use > and | if not wrapped in spaces or is not a key.
-  // Also, don't use if in flow mode.
-  if (spaceWrap || (state.flowLevel > -1 && state.flowLevel <= level)) {
-    if (spaceWrap) simple = false;
-
+  // can only use > and | if not wrapped in spaces or is not a key.
+  if (spaceWrap) {
+    simple = false;
     folded = false;
     literal = false;
   } else {
@@ -14808,13 +20751,17 @@ function writeScalar(state, object, level, iskey) {
 
   indent = state.indent * level;
   max = state.lineWidth;
+  if (max === -1) {
+    // Replace -1 with biggest ingeger number according to
+    // http://ecma262-5.com/ELS5_HTML.htm#Section_8.5
+    max = 9007199254740991;
+  }
 
-  // Replace -1 with biggest ingeger number according to
-  // http://ecma262-5.com/ELS5_HTML.htm#Section_8.5
-  if (max === -1) max = 9007199254740991;
-
-  if (indent < 40) max -= indent;
-  else max = 40;
+  if (indent < 40) {
+    max -= indent;
+  } else {
+    max = 40;
+  }
 
   for (position = 0; position < object.length; position++) {
     character = object.charCodeAt(position);
@@ -14858,17 +20805,23 @@ function writeScalar(state, object, level, iskey) {
       if (folded) {
         lineLength = position - linePosition;
         linePosition = position;
-        if (lineLength > longestLine) longestLine = lineLength;
+        if (lineLength > longestLine) {
+          longestLine = lineLength;
+        }
       }
     }
 
-    if (character !== CHAR_DOUBLE_QUOTE) single = false;
+    if (character !== CHAR_DOUBLE_QUOTE) {
+      single = false;
+    }
 
     double.takeUpTo(position);
     double.escapeChar();
   }
 
-  if (simple && testImplicitResolving(state, object)) simple = false;
+  if (simple && testImplicitResolving(state, object)) {
+    simple = false;
+  }
 
   modifier = '';
   if (folded || literal) {
@@ -14880,17 +20833,22 @@ function writeScalar(state, object, level, iskey) {
       }
     }
 
-    if (trailingLineBreaks === 0) modifier = '-';
-    else if (trailingLineBreaks === 2) modifier = '+';
+    if (trailingLineBreaks === 0) {
+      modifier = '-';
+    } else if (trailingLineBreaks === 2) {
+      modifier = '+';
+    }
   }
 
-  if (literal && longestLine < max || state.tag !== null) {
+  if (literal && longestLine < max) {
     folded = false;
   }
 
   // If it's literally one line, then don't bother with the literal.
   // We may still want to do a fold, though, if it's a super long line.
-  if (!sawLineFeed) literal = false;
+  if (!sawLineFeed) {
+    literal = false;
+  }
 
   if (simple) {
     state.dump = object;
@@ -14900,7 +20858,9 @@ function writeScalar(state, object, level, iskey) {
     result = fold(object, max);
     state.dump = '>' + modifier + '\n' + indentString(result, indent);
   } else if (literal) {
-    if (!modifier) object = object.replace(/\n$/, '');
+    if (!modifier) {
+      object = object.replace(/\n$/, '');
+    }
     state.dump = '|' + modifier + '\n' + indentString(object, indent);
   } else if (double) {
     double.finish();
@@ -14938,24 +20898,30 @@ function fold(object, max) {
   while (position < length) {
     newLine = object.indexOf('\n', position);
     if (newLine > length || newLine === -1) {
-      if (result) result += '\n\n';
+      if (result) {
+        result += '\n\n';
+      }
       result += foldLine(object.slice(position, length), max);
       position = length;
-
     } else {
-      if (result) result += '\n\n';
+      if (result) {
+        result += '\n\n';
+      }
       result += foldLine(object.slice(position, newLine), max);
       position = newLine + 1;
     }
   }
-
-  if (trailing && trailing[0] !== '\n') result += trailing[0];
+  if (trailing && trailing[0] !== '\n') {
+    result += trailing[0];
+  }
 
   return result;
 }
 
 function foldLine(line, max) {
-  if (line === '') return line;
+  if (line === '') {
+    return line;
+  }
 
   var foldRe = /[^\s] [^\s]/g,
       result = '',
@@ -14973,10 +20939,15 @@ function foldLine(line, max) {
     // been ok, use that one, and carry on.  If there was no previous
     // match on this fold section, then just have a long line.
     if (index - foldStart > max) {
-      if (prevMatch !== foldStart) foldEnd = prevMatch;
-      else foldEnd = index;
+      if (prevMatch !== foldStart) {
+        foldEnd = prevMatch;
+      } else {
+        foldEnd = index;
+      }
 
-      if (result) result += '\n';
+      if (result) {
+        result += '\n';
+      }
       folded = line.slice(foldStart, foldEnd);
       result += folded;
       foldStart = foldEnd + 1;
@@ -14985,7 +20956,9 @@ function foldLine(line, max) {
     match = foldRe.exec(line);
   }
 
-  if (result) result += '\n';
+  if (result) {
+    result += '\n';
+  }
 
   // if we end up with one last word at the end, then the last bit might
   // be slightly bigger than we wanted, because we exited out of the loop.
@@ -15026,7 +20999,7 @@ function simpleChar(character) {
 // Returns true if the character code needs to be escaped.
 function needsHexEscape(character) {
   return !((0x00020 <= character && character <= 0x00007E) ||
-           (character === 0x00085)                         ||
+           (0x00085 === character)                         ||
            (0x000A0 <= character && character <= 0x00D7FF) ||
            (0x0E000 <= character && character <= 0x00FFFD) ||
            (0x10000 <= character && character <= 0x10FFFF));
@@ -15041,7 +21014,9 @@ function writeFlowSequence(state, level, object) {
   for (index = 0, length = object.length; index < length; index += 1) {
     // Write only valid elements.
     if (writeNode(state, level, object[index], false, false)) {
-      if (index !== 0) _result += ', ';
+      if (0 !== index) {
+        _result += ', ';
+      }
       _result += state.dump;
     }
   }
@@ -15059,7 +21034,7 @@ function writeBlockSequence(state, level, object, compact) {
   for (index = 0, length = object.length; index < length; index += 1) {
     // Write only valid elements.
     if (writeNode(state, level + 1, object[index], true, true)) {
-      if (!compact || index !== 0) {
+      if (!compact || 0 !== index) {
         _result += generateNextLine(state, level);
       }
       _result += '- ' + state.dump;
@@ -15083,7 +21058,9 @@ function writeFlowMapping(state, level, object) {
   for (index = 0, length = objectKeyList.length; index < length; index += 1) {
     pairBuffer = '';
 
-    if (index !== 0) pairBuffer += ', ';
+    if (0 !== index) {
+      pairBuffer += ', ';
+    }
 
     objectKey = objectKeyList[index];
     objectValue = object[objectKey];
@@ -15092,7 +21069,9 @@ function writeFlowMapping(state, level, object) {
       continue; // Skip this pair because of invalid key;
     }
 
-    if (state.dump.length > 1024) pairBuffer += '? ';
+    if (state.dump.length > 1024) {
+      pairBuffer += '? ';
+    }
 
     pairBuffer += state.dump + ': ';
 
@@ -15136,7 +21115,7 @@ function writeBlockMapping(state, level, object, compact) {
   for (index = 0, length = objectKeyList.length; index < length; index += 1) {
     pairBuffer = '';
 
-    if (!compact || index !== 0) {
+    if (!compact || 0 !== index) {
       pairBuffer += generateNextLine(state, level);
     }
 
@@ -15147,7 +21126,7 @@ function writeBlockMapping(state, level, object, compact) {
       continue; // Skip this pair because of invalid key.
     }
 
-    explicitPair = (state.tag !== null && state.tag !== '?') ||
+    explicitPair = (null !== state.tag && '?' !== state.tag) ||
                    (state.dump && state.dump.length > 1024);
 
     if (explicitPair) {
@@ -15193,7 +21172,7 @@ function detectType(state, object, explicit) {
     type = typeList[index];
 
     if ((type.instanceOf  || type.predicate) &&
-        (!type.instanceOf || ((typeof object === 'object') && (object instanceof type.instanceOf))) &&
+        (!type.instanceOf || (('object' === typeof object) && (object instanceof type.instanceOf))) &&
         (!type.predicate  || type.predicate(object))) {
 
       state.tag = explicit ? type.tag : '?';
@@ -15201,7 +21180,7 @@ function detectType(state, object, explicit) {
       if (type.represent) {
         style = state.styleMap[type.tag] || type.defaultStyle;
 
-        if (_toString.call(type.represent) === '[object Function]') {
+        if ('[object Function]' === _toString.call(type.represent)) {
           _result = type.represent(object, style);
         } else if (_hasOwnProperty.call(type.represent, style)) {
           _result = type.represent[style](object, style);
@@ -15233,10 +21212,10 @@ function writeNode(state, level, object, block, compact, iskey) {
   var type = _toString.call(state.dump);
 
   if (block) {
-    block = (state.flowLevel < 0 || state.flowLevel > level);
+    block = (0 > state.flowLevel || state.flowLevel > level);
   }
 
-  var objectOrArray = type === '[object Object]' || type === '[object Array]',
+  var objectOrArray = '[object Object]' === type || '[object Array]' === type,
       duplicateIndex,
       duplicate;
 
@@ -15245,7 +21224,7 @@ function writeNode(state, level, object, block, compact, iskey) {
     duplicate = duplicateIndex !== -1;
   }
 
-  if ((state.tag !== null && state.tag !== '?') || duplicate || (state.indent !== 2 && level > 0)) {
+  if ((null !== state.tag && '?' !== state.tag) || duplicate || (2 !== state.indent && level > 0)) {
     compact = false;
   }
 
@@ -15255,8 +21234,8 @@ function writeNode(state, level, object, block, compact, iskey) {
     if (objectOrArray && duplicate && !state.usedDuplicates[duplicateIndex]) {
       state.usedDuplicates[duplicateIndex] = true;
     }
-    if (type === '[object Object]') {
-      if (block && (Object.keys(state.dump).length !== 0)) {
+    if ('[object Object]' === type) {
+      if (block && (0 !== Object.keys(state.dump).length)) {
         writeBlockMapping(state, level, state.dump, compact);
         if (duplicate) {
           state.dump = '&ref_' + duplicateIndex + state.dump;
@@ -15267,8 +21246,8 @@ function writeNode(state, level, object, block, compact, iskey) {
           state.dump = '&ref_' + duplicateIndex + ' ' + state.dump;
         }
       }
-    } else if (type === '[object Array]') {
-      if (block && (state.dump.length !== 0)) {
+    } else if ('[object Array]' === type) {
+      if (block && (0 !== state.dump.length)) {
         writeBlockSequence(state, level, state.dump, compact);
         if (duplicate) {
           state.dump = '&ref_' + duplicateIndex + state.dump;
@@ -15279,16 +21258,18 @@ function writeNode(state, level, object, block, compact, iskey) {
           state.dump = '&ref_' + duplicateIndex + ' ' + state.dump;
         }
       }
-    } else if (type === '[object String]') {
-      if (state.tag !== '?') {
+    } else if ('[object String]' === type) {
+      if ('?' !== state.tag) {
         writeScalar(state, state.dump, level, iskey);
       }
     } else {
-      if (state.skipInvalid) return false;
+      if (state.skipInvalid) {
+        return false;
+      }
       throw new YAMLException('unacceptable kind of an object to dump ' + type);
     }
 
-    if (state.tag !== null && state.tag !== '?') {
+    if (null !== state.tag && '?' !== state.tag) {
       state.dump = '!<' + state.tag + '> ' + state.dump;
     }
   }
@@ -15315,10 +21296,10 @@ function inspectNode(object, objects, duplicatesIndexes) {
       index,
       length;
 
-  if (object !== null && typeof object === 'object') {
+  if (null !== object && 'object' === typeof object) {
     index = objects.indexOf(object);
-    if (index !== -1) {
-      if (duplicatesIndexes.indexOf(index) === -1) {
+    if (-1 !== index) {
+      if (-1 === duplicatesIndexes.indexOf(index)) {
         duplicatesIndexes.push(index);
       }
     } else {
@@ -15344,10 +21325,11 @@ function dump(input, options) {
 
   var state = new State(options);
 
-  if (!state.noRefs) getDuplicateReferences(input, state);
+  getDuplicateReferences(input, state);
 
-  if (writeNode(state, 0, input, true, true)) return state.dump + '\n';
-
+  if (writeNode(state, 0, input, true, true)) {
+    return state.dump + '\n';
+  }
   return '';
 }
 
@@ -15358,10 +21340,14 @@ function safeDump(input, options) {
 module.exports.dump     = dump;
 module.exports.safeDump = safeDump;
 
-},{"./common":158,"./exception":160,"./schema/default_full":165,"./schema/default_safe":166}],160:[function(require,module,exports){
+},{"./common":161,"./exception":163,"./schema/default_full":168,"./schema/default_safe":169}],163:[function(require,module,exports){
 // YAML error class. http://stackoverflow.com/questions/8458984
 //
 'use strict';
+
+
+var inherits = require('inherit');
+
 
 function YAMLException(reason, mark) {
   // Super constructor
@@ -15384,8 +21370,7 @@ function YAMLException(reason, mark) {
 
 
 // Inherit from Error
-YAMLException.prototype = Object.create(Error.prototype);
-YAMLException.prototype.constructor = YAMLException;
+inherits(YAMLException, Error);
 
 
 YAMLException.prototype.toString = function toString(compact) {
@@ -15403,7 +21388,7 @@ YAMLException.prototype.toString = function toString(compact) {
 
 module.exports = YAMLException;
 
-},{}],161:[function(require,module,exports){
+},{"inherit":156}],164:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable max-len,no-use-before-define*/
@@ -15452,11 +21437,11 @@ function is_WS_OR_EOL(c) {
 }
 
 function is_FLOW_INDICATOR(c) {
-  return c === 0x2C/* , */ ||
-         c === 0x5B/* [ */ ||
-         c === 0x5D/* ] */ ||
-         c === 0x7B/* { */ ||
-         c === 0x7D/* } */;
+  return 0x2C/* , */ === c ||
+         0x5B/* [ */ === c ||
+         0x5D/* ] */ === c ||
+         0x7B/* { */ === c ||
+         0x7D/* } */ === c;
 }
 
 function fromHexCode(c) {
@@ -15537,8 +21522,6 @@ function State(input, options) {
   this.schema    = options['schema']    || DEFAULT_FULL_SCHEMA;
   this.onWarning = options['onWarning'] || null;
   this.legacy    = options['legacy']    || false;
-  this.json      = options['json']      || false;
-  this.listener  = options['listener']  || null;
 
   this.implicitTypes = this.schema.compiledImplicit;
   this.typeMap       = this.schema.compiledTypeMap;
@@ -15585,62 +21568,62 @@ var directiveHandlers = {
 
   YAML: function handleYamlDirective(state, name, args) {
 
-    var match, major, minor;
+      var match, major, minor;
 
-    if (state.version !== null) {
-      throwError(state, 'duplication of %YAML directive');
-    }
+      if (null !== state.version) {
+        throwError(state, 'duplication of %YAML directive');
+      }
 
-    if (args.length !== 1) {
-      throwError(state, 'YAML directive accepts exactly one argument');
-    }
+      if (1 !== args.length) {
+        throwError(state, 'YAML directive accepts exactly one argument');
+      }
 
-    match = /^([0-9]+)\.([0-9]+)$/.exec(args[0]);
+      match = /^([0-9]+)\.([0-9]+)$/.exec(args[0]);
 
-    if (match === null) {
-      throwError(state, 'ill-formed argument of the YAML directive');
-    }
+      if (null === match) {
+        throwError(state, 'ill-formed argument of the YAML directive');
+      }
 
-    major = parseInt(match[1], 10);
-    minor = parseInt(match[2], 10);
+      major = parseInt(match[1], 10);
+      minor = parseInt(match[2], 10);
 
-    if (major !== 1) {
-      throwError(state, 'unacceptable YAML version of the document');
-    }
+      if (1 !== major) {
+        throwError(state, 'unacceptable YAML version of the document');
+      }
 
-    state.version = args[0];
-    state.checkLineBreaks = (minor < 2);
+      state.version = args[0];
+      state.checkLineBreaks = (minor < 2);
 
-    if (minor !== 1 && minor !== 2) {
-      throwWarning(state, 'unsupported YAML version of the document');
-    }
-  },
+      if (1 !== minor && 2 !== minor) {
+        throwWarning(state, 'unsupported YAML version of the document');
+      }
+    },
 
   TAG: function handleTagDirective(state, name, args) {
 
-    var handle, prefix;
+      var handle, prefix;
 
-    if (args.length !== 2) {
-      throwError(state, 'TAG directive accepts exactly two arguments');
+      if (2 !== args.length) {
+        throwError(state, 'TAG directive accepts exactly two arguments');
+      }
+
+      handle = args[0];
+      prefix = args[1];
+
+      if (!PATTERN_TAG_HANDLE.test(handle)) {
+        throwError(state, 'ill-formed tag handle (first argument) of the TAG directive');
+      }
+
+      if (_hasOwnProperty.call(state.tagMap, handle)) {
+        throwError(state, 'there is a previously declared suffix for "' + handle + '" tag handle');
+      }
+
+      if (!PATTERN_TAG_URI.test(prefix)) {
+        throwError(state, 'ill-formed tag prefix (second argument) of the TAG directive');
+      }
+
+      state.tagMap[handle] = prefix;
     }
-
-    handle = args[0];
-    prefix = args[1];
-
-    if (!PATTERN_TAG_HANDLE.test(handle)) {
-      throwError(state, 'ill-formed tag handle (first argument) of the TAG directive');
-    }
-
-    if (_hasOwnProperty.call(state.tagMap, handle)) {
-      throwError(state, 'there is a previously declared suffix for "' + handle + '" tag handle');
-    }
-
-    if (!PATTERN_TAG_URI.test(prefix)) {
-      throwError(state, 'ill-formed tag prefix (second argument) of the TAG directive');
-    }
-
-    state.tagMap[handle] = prefix;
-  }
 };
 
 
@@ -15655,8 +21638,8 @@ function captureSegment(state, start, end, checkJson) {
            _position < _length;
            _position += 1) {
         _character = _result.charCodeAt(_position);
-        if (!(_character === 0x09 ||
-              (0x20 <= _character && _character <= 0x10FFFF))) {
+        if (!(0x09 === _character ||
+              0x20 <= _character && _character <= 0x10FFFF)) {
           throwError(state, 'expected valid JSON character');
         }
       }
@@ -15668,7 +21651,7 @@ function captureSegment(state, start, end, checkJson) {
   }
 }
 
-function mergeMappings(state, destination, source, overridableKeys) {
+function mergeMappings(state, destination, source) {
   var sourceKeys, key, index, quantity;
 
   if (!common.isObject(source)) {
@@ -15682,36 +21665,29 @@ function mergeMappings(state, destination, source, overridableKeys) {
 
     if (!_hasOwnProperty.call(destination, key)) {
       destination[key] = source[key];
-      overridableKeys[key] = true;
     }
   }
 }
 
-function storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valueNode) {
+function storeMappingPair(state, _result, keyTag, keyNode, valueNode) {
   var index, quantity;
 
   keyNode = String(keyNode);
 
-  if (_result === null) {
+  if (null === _result) {
     _result = {};
   }
 
-  if (keyTag === 'tag:yaml.org,2002:merge') {
+  if ('tag:yaml.org,2002:merge' === keyTag) {
     if (Array.isArray(valueNode)) {
       for (index = 0, quantity = valueNode.length; index < quantity; index += 1) {
-        mergeMappings(state, _result, valueNode[index], overridableKeys);
+        mergeMappings(state, _result, valueNode[index]);
       }
     } else {
-      mergeMappings(state, _result, valueNode, overridableKeys);
+      mergeMappings(state, _result, valueNode);
     }
   } else {
-    if (!state.json &&
-        !_hasOwnProperty.call(overridableKeys, keyNode) &&
-        _hasOwnProperty.call(_result, keyNode)) {
-      throwError(state, 'duplicated mapping key');
-    }
     _result[keyNode] = valueNode;
-    delete overridableKeys[keyNode];
   }
 
   return _result;
@@ -15722,11 +21698,11 @@ function readLineBreak(state) {
 
   ch = state.input.charCodeAt(state.position);
 
-  if (ch === 0x0A/* LF */) {
+  if (0x0A/* LF */ === ch) {
     state.position++;
-  } else if (ch === 0x0D/* CR */) {
+  } else if (0x0D/* CR */ === ch) {
     state.position++;
-    if (state.input.charCodeAt(state.position) === 0x0A/* LF */) {
+    if (0x0A/* LF */ === state.input.charCodeAt(state.position)) {
       state.position++;
     }
   } else {
@@ -15741,15 +21717,15 @@ function skipSeparationSpace(state, allowComments, checkIndent) {
   var lineBreaks = 0,
       ch = state.input.charCodeAt(state.position);
 
-  while (ch !== 0) {
+  while (0 !== ch) {
     while (is_WHITE_SPACE(ch)) {
       ch = state.input.charCodeAt(++state.position);
     }
 
-    if (allowComments && ch === 0x23/* # */) {
+    if (allowComments && 0x23/* # */ === ch) {
       do {
         ch = state.input.charCodeAt(++state.position);
-      } while (ch !== 0x0A/* LF */ && ch !== 0x0D/* CR */ && ch !== 0);
+      } while (ch !== 0x0A/* LF */ && ch !== 0x0D/* CR */ && 0 !== ch);
     }
 
     if (is_EOL(ch)) {
@@ -15759,7 +21735,7 @@ function skipSeparationSpace(state, allowComments, checkIndent) {
       lineBreaks++;
       state.lineIndent = 0;
 
-      while (ch === 0x20/* Space */) {
+      while (0x20/* Space */ === ch) {
         state.lineIndent++;
         ch = state.input.charCodeAt(++state.position);
       }
@@ -15768,7 +21744,7 @@ function skipSeparationSpace(state, allowComments, checkIndent) {
     }
   }
 
-  if (checkIndent !== -1 && lineBreaks !== 0 && state.lineIndent < checkIndent) {
+  if (-1 !== checkIndent && 0 !== lineBreaks && state.lineIndent < checkIndent) {
     throwWarning(state, 'deficient indentation');
   }
 
@@ -15783,9 +21759,9 @@ function testDocumentSeparator(state) {
 
   // Condition state.position === state.lineStart is tested
   // in parent on each call, for efficiency. No needs to test here again.
-  if ((ch === 0x2D/* - */ || ch === 0x2E/* . */) &&
-      ch === state.input.charCodeAt(_position + 1) &&
-      ch === state.input.charCodeAt(_position + 2)) {
+  if ((0x2D/* - */ === ch || 0x2E/* . */ === ch) &&
+      state.input.charCodeAt(_position + 1) === ch &&
+      state.input.charCodeAt(_position + 2) === ch) {
 
     _position += 3;
 
@@ -15800,7 +21776,7 @@ function testDocumentSeparator(state) {
 }
 
 function writeFoldedLines(state, count) {
-  if (count === 1) {
+  if (1 === count) {
     state.result += ' ';
   } else if (count > 1) {
     state.result += common.repeat('\n', count - 1);
@@ -15823,23 +21799,23 @@ function readPlainScalar(state, nodeIndent, withinFlowCollection) {
 
   ch = state.input.charCodeAt(state.position);
 
-  if (is_WS_OR_EOL(ch)      ||
-      is_FLOW_INDICATOR(ch) ||
-      ch === 0x23/* # */    ||
-      ch === 0x26/* & */    ||
-      ch === 0x2A/* * */    ||
-      ch === 0x21/* ! */    ||
-      ch === 0x7C/* | */    ||
-      ch === 0x3E/* > */    ||
-      ch === 0x27/* ' */    ||
-      ch === 0x22/* " */    ||
-      ch === 0x25/* % */    ||
-      ch === 0x40/* @ */    ||
-      ch === 0x60/* ` */) {
+  if (is_WS_OR_EOL(ch)             ||
+      is_FLOW_INDICATOR(ch)        ||
+      0x23/* # */           === ch ||
+      0x26/* & */           === ch ||
+      0x2A/* * */           === ch ||
+      0x21/* ! */           === ch ||
+      0x7C/* | */           === ch ||
+      0x3E/* > */           === ch ||
+      0x27/* ' */           === ch ||
+      0x22/* " */           === ch ||
+      0x25/* % */           === ch ||
+      0x40/* @ */           === ch ||
+      0x60/* ` */           === ch) {
     return false;
   }
 
-  if (ch === 0x3F/* ? */ || ch === 0x2D/* - */) {
+  if (0x3F/* ? */ === ch || 0x2D/* - */ === ch) {
     following = state.input.charCodeAt(state.position + 1);
 
     if (is_WS_OR_EOL(following) ||
@@ -15853,8 +21829,8 @@ function readPlainScalar(state, nodeIndent, withinFlowCollection) {
   captureStart = captureEnd = state.position;
   hasPendingContent = false;
 
-  while (ch !== 0) {
-    if (ch === 0x3A/* : */) {
+  while (0 !== ch) {
+    if (0x3A/* : */ === ch) {
       following = state.input.charCodeAt(state.position + 1);
 
       if (is_WS_OR_EOL(following) ||
@@ -15862,7 +21838,7 @@ function readPlainScalar(state, nodeIndent, withinFlowCollection) {
         break;
       }
 
-    } else if (ch === 0x23/* # */) {
+    } else if (0x23/* # */ === ch) {
       preceding = state.input.charCodeAt(state.position - 1);
 
       if (is_WS_OR_EOL(preceding)) {
@@ -15923,7 +21899,7 @@ function readSingleQuotedScalar(state, nodeIndent) {
 
   ch = state.input.charCodeAt(state.position);
 
-  if (ch !== 0x27/* ' */) {
+  if (0x27/* ' */ !== ch) {
     return false;
   }
 
@@ -15932,12 +21908,12 @@ function readSingleQuotedScalar(state, nodeIndent) {
   state.position++;
   captureStart = captureEnd = state.position;
 
-  while ((ch = state.input.charCodeAt(state.position)) !== 0) {
-    if (ch === 0x27/* ' */) {
+  while (0 !== (ch = state.input.charCodeAt(state.position))) {
+    if (0x27/* ' */ === ch) {
       captureSegment(state, captureStart, state.position, true);
       ch = state.input.charCodeAt(++state.position);
 
-      if (ch === 0x27/* ' */) {
+      if (0x27/* ' */ === ch) {
         captureStart = captureEnd = state.position;
         state.position++;
       } else {
@@ -15971,7 +21947,7 @@ function readDoubleQuotedScalar(state, nodeIndent) {
 
   ch = state.input.charCodeAt(state.position);
 
-  if (ch !== 0x22/* " */) {
+  if (0x22/* " */ !== ch) {
     return false;
   }
 
@@ -15980,13 +21956,13 @@ function readDoubleQuotedScalar(state, nodeIndent) {
   state.position++;
   captureStart = captureEnd = state.position;
 
-  while ((ch = state.input.charCodeAt(state.position)) !== 0) {
-    if (ch === 0x22/* " */) {
+  while (0 !== (ch = state.input.charCodeAt(state.position))) {
+    if (0x22/* " */ === ch) {
       captureSegment(state, captureStart, state.position, true);
       state.position++;
       return true;
 
-    } else if (ch === 0x5C/* \ */) {
+    } else if (0x5C/* \ */ === ch) {
       captureSegment(state, captureStart, state.position, true);
       ch = state.input.charCodeAt(++state.position);
 
@@ -16051,7 +22027,6 @@ function readFlowCollection(state, nodeIndent) {
       isPair,
       isExplicitPair,
       isMapping,
-      overridableKeys = {},
       keyNode,
       keyTag,
       valueNode,
@@ -16071,13 +22046,13 @@ function readFlowCollection(state, nodeIndent) {
     return false;
   }
 
-  if (state.anchor !== null) {
+  if (null !== state.anchor) {
     state.anchorMap[state.anchor] = _result;
   }
 
   ch = state.input.charCodeAt(++state.position);
 
-  while (ch !== 0) {
+  while (0 !== ch) {
     skipSeparationSpace(state, true, nodeIndent);
 
     ch = state.input.charCodeAt(state.position);
@@ -16096,7 +22071,7 @@ function readFlowCollection(state, nodeIndent) {
     keyTag = keyNode = valueNode = null;
     isPair = isExplicitPair = false;
 
-    if (ch === 0x3F/* ? */) {
+    if (0x3F/* ? */ === ch) {
       following = state.input.charCodeAt(state.position + 1);
 
       if (is_WS_OR_EOL(following)) {
@@ -16114,7 +22089,7 @@ function readFlowCollection(state, nodeIndent) {
 
     ch = state.input.charCodeAt(state.position);
 
-    if ((isExplicitPair || state.line === _line) && ch === 0x3A/* : */) {
+    if ((isExplicitPair || state.line === _line) && 0x3A/* : */ === ch) {
       isPair = true;
       ch = state.input.charCodeAt(++state.position);
       skipSeparationSpace(state, true, nodeIndent);
@@ -16123,9 +22098,9 @@ function readFlowCollection(state, nodeIndent) {
     }
 
     if (isMapping) {
-      storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valueNode);
+      storeMappingPair(state, _result, keyTag, keyNode, valueNode);
     } else if (isPair) {
-      _result.push(storeMappingPair(state, null, overridableKeys, keyTag, keyNode, valueNode));
+      _result.push(storeMappingPair(state, null, keyTag, keyNode, valueNode));
     } else {
       _result.push(keyNode);
     }
@@ -16134,7 +22109,7 @@ function readFlowCollection(state, nodeIndent) {
 
     ch = state.input.charCodeAt(state.position);
 
-    if (ch === 0x2C/* , */) {
+    if (0x2C/* , */ === ch) {
       readNext = true;
       ch = state.input.charCodeAt(++state.position);
     } else {
@@ -16169,12 +22144,12 @@ function readBlockScalar(state, nodeIndent) {
   state.kind = 'scalar';
   state.result = '';
 
-  while (ch !== 0) {
+  while (0 !== ch) {
     ch = state.input.charCodeAt(++state.position);
 
-    if (ch === 0x2B/* + */ || ch === 0x2D/* - */) {
+    if (0x2B/* + */ === ch || 0x2D/* - */ === ch) {
       if (CHOMPING_CLIP === chomping) {
-        chomping = (ch === 0x2B/* + */) ? CHOMPING_KEEP : CHOMPING_STRIP;
+        chomping = (0x2B/* + */ === ch) ? CHOMPING_KEEP : CHOMPING_STRIP;
       } else {
         throwError(state, 'repeat of a chomping mode identifier');
       }
@@ -16198,20 +22173,20 @@ function readBlockScalar(state, nodeIndent) {
     do { ch = state.input.charCodeAt(++state.position); }
     while (is_WHITE_SPACE(ch));
 
-    if (ch === 0x23/* # */) {
+    if (0x23/* # */ === ch) {
       do { ch = state.input.charCodeAt(++state.position); }
-      while (!is_EOL(ch) && (ch !== 0));
+      while (!is_EOL(ch) && (0 !== ch));
     }
   }
 
-  while (ch !== 0) {
+  while (0 !== ch) {
     readLineBreak(state);
     state.lineIndent = 0;
 
     ch = state.input.charCodeAt(state.position);
 
     while ((!detectedIndent || state.lineIndent < textIndent) &&
-           (ch === 0x20/* Space */)) {
+           (0x20/* Space */ === ch)) {
       state.lineIndent++;
       ch = state.input.charCodeAt(++state.position);
     }
@@ -16255,7 +22230,7 @@ function readBlockScalar(state, nodeIndent) {
         state.result += common.repeat('\n', emptyLines + 1);
 
       // Just one line break - perceive as the same line.
-      } else if (emptyLines === 0) {
+      } else if (0 === emptyLines) {
         if (detectedIndent) { // i.e. only if we have already read some scalar content.
           state.result += ' ';
         }
@@ -16278,7 +22253,7 @@ function readBlockScalar(state, nodeIndent) {
     emptyLines = 0;
     captureStart = state.position;
 
-    while (!is_EOL(ch) && (ch !== 0)) {
+    while (!is_EOL(ch) && (0 !== ch)) {
       ch = state.input.charCodeAt(++state.position);
     }
 
@@ -16297,15 +22272,15 @@ function readBlockSequence(state, nodeIndent) {
       detected  = false,
       ch;
 
-  if (state.anchor !== null) {
+  if (null !== state.anchor) {
     state.anchorMap[state.anchor] = _result;
   }
 
   ch = state.input.charCodeAt(state.position);
 
-  while (ch !== 0) {
+  while (0 !== ch) {
 
-    if (ch !== 0x2D/* - */) {
+    if (0x2D/* - */ !== ch) {
       break;
     }
 
@@ -16333,7 +22308,7 @@ function readBlockSequence(state, nodeIndent) {
 
     ch = state.input.charCodeAt(state.position);
 
-    if ((state.line === _line || state.lineIndent > nodeIndent) && (ch !== 0)) {
+    if ((state.line === _line || state.lineIndent > nodeIndent) && (0 !== ch)) {
       throwError(state, 'bad indentation of a sequence entry');
     } else if (state.lineIndent < nodeIndent) {
       break;
@@ -16357,7 +22332,6 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
       _tag          = state.tag,
       _anchor       = state.anchor,
       _result       = {},
-      overridableKeys = {},
       keyTag        = null,
       keyNode       = null,
       valueNode     = null,
@@ -16365,13 +22339,13 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
       detected      = false,
       ch;
 
-  if (state.anchor !== null) {
+  if (null !== state.anchor) {
     state.anchorMap[state.anchor] = _result;
   }
 
   ch = state.input.charCodeAt(state.position);
 
-  while (ch !== 0) {
+  while (0 !== ch) {
     following = state.input.charCodeAt(state.position + 1);
     _line = state.line; // Save the current line.
 
@@ -16379,11 +22353,11 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
     // Explicit notation case. There are two separate blocks:
     // first for the key (denoted by "?") and second for the value (denoted by ":")
     //
-    if ((ch === 0x3F/* ? */ || ch === 0x3A/* : */) && is_WS_OR_EOL(following)) {
+    if ((0x3F/* ? */ === ch || 0x3A/* : */  === ch) && is_WS_OR_EOL(following)) {
 
-      if (ch === 0x3F/* ? */) {
+      if (0x3F/* ? */ === ch) {
         if (atExplicitKey) {
-          storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, null);
+          storeMappingPair(state, _result, keyTag, keyNode, null);
           keyTag = keyNode = valueNode = null;
         }
 
@@ -16415,7 +22389,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
           ch = state.input.charCodeAt(++state.position);
         }
 
-        if (ch === 0x3A/* : */) {
+        if (0x3A/* : */ === ch) {
           ch = state.input.charCodeAt(++state.position);
 
           if (!is_WS_OR_EOL(ch)) {
@@ -16423,7 +22397,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
           }
 
           if (atExplicitKey) {
-            storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, null);
+            storeMappingPair(state, _result, keyTag, keyNode, null);
             keyTag = keyNode = valueNode = null;
           }
 
@@ -16468,7 +22442,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
       }
 
       if (!atExplicitKey) {
-        storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valueNode);
+        storeMappingPair(state, _result, keyTag, keyNode, valueNode);
         keyTag = keyNode = valueNode = null;
       }
 
@@ -16476,7 +22450,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
       ch = state.input.charCodeAt(state.position);
     }
 
-    if (state.lineIndent > nodeIndent && (ch !== 0)) {
+    if (state.lineIndent > nodeIndent && (0 !== ch)) {
       throwError(state, 'bad indentation of a mapping entry');
     } else if (state.lineIndent < nodeIndent) {
       break;
@@ -16489,7 +22463,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
 
   // Special case: last mapping's node contains only the key in explicit notation.
   if (atExplicitKey) {
-    storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, null);
+    storeMappingPair(state, _result, keyTag, keyNode, null);
   }
 
   // Expose the resulting mapping.
@@ -16513,19 +22487,21 @@ function readTagProperty(state) {
 
   ch = state.input.charCodeAt(state.position);
 
-  if (ch !== 0x21/* ! */) return false;
+  if (0x21/* ! */ !== ch) {
+    return false;
+  }
 
-  if (state.tag !== null) {
+  if (null !== state.tag) {
     throwError(state, 'duplication of a tag property');
   }
 
   ch = state.input.charCodeAt(++state.position);
 
-  if (ch === 0x3C/* < */) {
+  if (0x3C/* < */ === ch) {
     isVerbatim = true;
     ch = state.input.charCodeAt(++state.position);
 
-  } else if (ch === 0x21/* ! */) {
+  } else if (0x21/* ! */ === ch) {
     isNamed = true;
     tagHandle = '!!';
     ch = state.input.charCodeAt(++state.position);
@@ -16538,7 +22514,7 @@ function readTagProperty(state) {
 
   if (isVerbatim) {
     do { ch = state.input.charCodeAt(++state.position); }
-    while (ch !== 0 && ch !== 0x3E/* > */);
+    while (0 !== ch && 0x3E/* > */ !== ch);
 
     if (state.position < state.length) {
       tagName = state.input.slice(_position, state.position);
@@ -16547,9 +22523,9 @@ function readTagProperty(state) {
       throwError(state, 'unexpected end of the stream within a verbatim tag');
     }
   } else {
-    while (ch !== 0 && !is_WS_OR_EOL(ch)) {
+    while (0 !== ch && !is_WS_OR_EOL(ch)) {
 
-      if (ch === 0x21/* ! */) {
+      if (0x21/* ! */ === ch) {
         if (!isNamed) {
           tagHandle = state.input.slice(_position - 1, state.position + 1);
 
@@ -16584,10 +22560,10 @@ function readTagProperty(state) {
   } else if (_hasOwnProperty.call(state.tagMap, tagHandle)) {
     state.tag = state.tagMap[tagHandle] + tagName;
 
-  } else if (tagHandle === '!') {
+  } else if ('!' === tagHandle) {
     state.tag = '!' + tagName;
 
-  } else if (tagHandle === '!!') {
+  } else if ('!!' === tagHandle) {
     state.tag = 'tag:yaml.org,2002:' + tagName;
 
   } else {
@@ -16603,16 +22579,18 @@ function readAnchorProperty(state) {
 
   ch = state.input.charCodeAt(state.position);
 
-  if (ch !== 0x26/* & */) return false;
+  if (0x26/* & */ !== ch) {
+    return false;
+  }
 
-  if (state.anchor !== null) {
+  if (null !== state.anchor) {
     throwError(state, 'duplication of an anchor property');
   }
 
   ch = state.input.charCodeAt(++state.position);
   _position = state.position;
 
-  while (ch !== 0 && !is_WS_OR_EOL(ch) && !is_FLOW_INDICATOR(ch)) {
+  while (0 !== ch && !is_WS_OR_EOL(ch) && !is_FLOW_INDICATOR(ch)) {
     ch = state.input.charCodeAt(++state.position);
   }
 
@@ -16630,12 +22608,14 @@ function readAlias(state) {
 
   ch = state.input.charCodeAt(state.position);
 
-  if (ch !== 0x2A/* * */) return false;
+  if (0x2A/* * */ !== ch) {
+    return false;
+  }
 
   ch = state.input.charCodeAt(++state.position);
   _position = state.position;
 
-  while (ch !== 0 && !is_WS_OR_EOL(ch) && !is_FLOW_INDICATOR(ch)) {
+  while (0 !== ch && !is_WS_OR_EOL(ch) && !is_FLOW_INDICATOR(ch)) {
     ch = state.input.charCodeAt(++state.position);
   }
 
@@ -16667,10 +22647,6 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
       flowIndent,
       blockIndent;
 
-  if (state.listener !== null) {
-    state.listener('open', state);
-  }
-
   state.tag    = null;
   state.anchor = null;
   state.kind   = null;
@@ -16694,7 +22670,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
     }
   }
 
-  if (indentStatus === 1) {
+  if (1 === indentStatus) {
     while (readTagProperty(state) || readAnchorProperty(state)) {
       if (skipSeparationSpace(state, true, -1)) {
         atNewLine = true;
@@ -16717,7 +22693,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
     allowBlockCollections = atNewLine || allowCompact;
   }
 
-  if (indentStatus === 1 || CONTEXT_BLOCK_OUT === nodeContext) {
+  if (1 === indentStatus || CONTEXT_BLOCK_OUT === nodeContext) {
     if (CONTEXT_FLOW_IN === nodeContext || CONTEXT_FLOW_OUT === nodeContext) {
       flowIndent = parentIndent;
     } else {
@@ -16726,7 +22702,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
 
     blockIndent = state.position - state.lineStart;
 
-    if (indentStatus === 1) {
+    if (1 === indentStatus) {
       if (allowBlockCollections &&
           (readBlockSequence(state, blockIndent) ||
            readBlockMapping(state, blockIndent, flowIndent)) ||
@@ -16741,31 +22717,31 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
         } else if (readAlias(state)) {
           hasContent = true;
 
-          if (state.tag !== null || state.anchor !== null) {
+          if (null !== state.tag || null !== state.anchor) {
             throwError(state, 'alias node should not have any properties');
           }
 
         } else if (readPlainScalar(state, flowIndent, CONTEXT_FLOW_IN === nodeContext)) {
           hasContent = true;
 
-          if (state.tag === null) {
+          if (null === state.tag) {
             state.tag = '?';
           }
         }
 
-        if (state.anchor !== null) {
+        if (null !== state.anchor) {
           state.anchorMap[state.anchor] = state.result;
         }
       }
-    } else if (indentStatus === 0) {
+    } else if (0 === indentStatus) {
       // Special case: block sequences are allowed to have same indentation level as the parent.
       // http://www.yaml.org/spec/1.2/spec.html#id2799784
       hasContent = allowBlockCollections && readBlockSequence(state, blockIndent);
     }
   }
 
-  if (state.tag !== null && state.tag !== '!') {
-    if (state.tag === '?') {
+  if (null !== state.tag && '!' !== state.tag) {
+    if ('?' === state.tag) {
       for (typeIndex = 0, typeQuantity = state.implicitTypes.length;
            typeIndex < typeQuantity;
            typeIndex += 1) {
@@ -16778,7 +22754,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
         if (type.resolve(state.result)) { // `state.result` updated in resolver if matched
           state.result = type.construct(state.result);
           state.tag = type.tag;
-          if (state.anchor !== null) {
+          if (null !== state.anchor) {
             state.anchorMap[state.anchor] = state.result;
           }
           break;
@@ -16787,7 +22763,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
     } else if (_hasOwnProperty.call(state.typeMap, state.tag)) {
       type = state.typeMap[state.tag];
 
-      if (state.result !== null && type.kind !== state.kind) {
+      if (null !== state.result && type.kind !== state.kind) {
         throwError(state, 'unacceptable node kind for !<' + state.tag + '> tag; it should be "' + type.kind + '", not "' + state.kind + '"');
       }
 
@@ -16795,7 +22771,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
         throwError(state, 'cannot resolve a node with !<' + state.tag + '> explicit tag');
       } else {
         state.result = type.construct(state.result);
-        if (state.anchor !== null) {
+        if (null !== state.anchor) {
           state.anchorMap[state.anchor] = state.result;
         }
       }
@@ -16804,10 +22780,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
     }
   }
 
-  if (state.listener !== null) {
-    state.listener('close', state);
-  }
-  return state.tag !== null ||  state.anchor !== null || hasContent;
+  return null !== state.tag || null !== state.anchor || hasContent;
 }
 
 function readDocument(state) {
@@ -16823,12 +22796,12 @@ function readDocument(state) {
   state.tagMap = {};
   state.anchorMap = {};
 
-  while ((ch = state.input.charCodeAt(state.position)) !== 0) {
+  while (0 !== (ch = state.input.charCodeAt(state.position))) {
     skipSeparationSpace(state, true, -1);
 
     ch = state.input.charCodeAt(state.position);
 
-    if (state.lineIndent > 0 || ch !== 0x25/* % */) {
+    if (state.lineIndent > 0 || 0x25/* % */ !== ch) {
       break;
     }
 
@@ -16836,7 +22809,7 @@ function readDocument(state) {
     ch = state.input.charCodeAt(++state.position);
     _position = state.position;
 
-    while (ch !== 0 && !is_WS_OR_EOL(ch)) {
+    while (0 !== ch && !is_WS_OR_EOL(ch)) {
       ch = state.input.charCodeAt(++state.position);
     }
 
@@ -16847,29 +22820,33 @@ function readDocument(state) {
       throwError(state, 'directive name must not be less than one character in length');
     }
 
-    while (ch !== 0) {
+    while (0 !== ch) {
       while (is_WHITE_SPACE(ch)) {
         ch = state.input.charCodeAt(++state.position);
       }
 
-      if (ch === 0x23/* # */) {
+      if (0x23/* # */ === ch) {
         do { ch = state.input.charCodeAt(++state.position); }
-        while (ch !== 0 && !is_EOL(ch));
+        while (0 !== ch && !is_EOL(ch));
         break;
       }
 
-      if (is_EOL(ch)) break;
+      if (is_EOL(ch)) {
+        break;
+      }
 
       _position = state.position;
 
-      while (ch !== 0 && !is_WS_OR_EOL(ch)) {
+      while (0 !== ch && !is_WS_OR_EOL(ch)) {
         ch = state.input.charCodeAt(++state.position);
       }
 
       directiveArgs.push(state.input.slice(_position, state.position));
     }
 
-    if (ch !== 0) readLineBreak(state);
+    if (0 !== ch) {
+      readLineBreak(state);
+    }
 
     if (_hasOwnProperty.call(directiveHandlers, directiveName)) {
       directiveHandlers[directiveName](state, directiveName, directiveArgs);
@@ -16880,10 +22857,10 @@ function readDocument(state) {
 
   skipSeparationSpace(state, true, -1);
 
-  if (state.lineIndent === 0 &&
-      state.input.charCodeAt(state.position)     === 0x2D/* - */ &&
-      state.input.charCodeAt(state.position + 1) === 0x2D/* - */ &&
-      state.input.charCodeAt(state.position + 2) === 0x2D/* - */) {
+  if (0 === state.lineIndent &&
+      0x2D/* - */ === state.input.charCodeAt(state.position) &&
+      0x2D/* - */ === state.input.charCodeAt(state.position + 1) &&
+      0x2D/* - */ === state.input.charCodeAt(state.position + 2)) {
     state.position += 3;
     skipSeparationSpace(state, true, -1);
 
@@ -16903,7 +22880,7 @@ function readDocument(state) {
 
   if (state.position === state.lineStart && testDocumentSeparator(state)) {
 
-    if (state.input.charCodeAt(state.position) === 0x2E/* . */) {
+    if (0x2E/* . */ === state.input.charCodeAt(state.position)) {
       state.position += 3;
       skipSeparationSpace(state, true, -1);
     }
@@ -16925,8 +22902,8 @@ function loadDocuments(input, options) {
   if (input.length !== 0) {
 
     // Add tailing `\n` if not exists
-    if (input.charCodeAt(input.length - 1) !== 0x0A/* LF */ &&
-        input.charCodeAt(input.length - 1) !== 0x0D/* CR */) {
+    if (0x0A/* LF */ !== input.charCodeAt(input.length - 1) &&
+        0x0D/* CR */ !== input.charCodeAt(input.length - 1)) {
       input += '\n';
     }
 
@@ -16941,7 +22918,7 @@ function loadDocuments(input, options) {
   // Use 0 as string terminator. That significantly simplifies bounds check.
   state.input += '\0';
 
-  while (state.input.charCodeAt(state.position) === 0x20/* Space */) {
+  while (0x20/* Space */ === state.input.charCodeAt(state.position)) {
     state.lineIndent += 1;
     state.position += 1;
   }
@@ -16966,10 +22943,10 @@ function loadAll(input, iterator, options) {
 function load(input, options) {
   var documents = loadDocuments(input, options);
 
-  if (documents.length === 0) {
+  if (0 === documents.length) {
     /*eslint-disable no-undefined*/
     return undefined;
-  } else if (documents.length === 1) {
+  } else if (1 === documents.length) {
     return documents[0];
   }
   throw new YAMLException('expected a single document in the stream, but found more');
@@ -16991,7 +22968,7 @@ module.exports.load        = load;
 module.exports.safeLoadAll = safeLoadAll;
 module.exports.safeLoad    = safeLoad;
 
-},{"./common":158,"./exception":160,"./mark":162,"./schema/default_full":165,"./schema/default_safe":166}],162:[function(require,module,exports){
+},{"./common":161,"./exception":163,"./mark":165,"./schema/default_full":168,"./schema/default_safe":169}],165:[function(require,module,exports){
 'use strict';
 
 
@@ -17010,7 +22987,9 @@ function Mark(name, buffer, position, line, column) {
 Mark.prototype.getSnippet = function getSnippet(indent, maxLength) {
   var head, start, tail, end, snippet;
 
-  if (!this.buffer) return null;
+  if (!this.buffer) {
+    return null;
+  }
 
   indent = indent || 4;
   maxLength = maxLength || 75;
@@ -17018,7 +22997,7 @@ Mark.prototype.getSnippet = function getSnippet(indent, maxLength) {
   head = '';
   start = this.position;
 
-  while (start > 0 && '\x00\r\n\x85\u2028\u2029'.indexOf(this.buffer.charAt(start - 1)) === -1) {
+  while (start > 0 && -1 === '\x00\r\n\x85\u2028\u2029'.indexOf(this.buffer.charAt(start - 1))) {
     start -= 1;
     if (this.position - start > (maxLength / 2 - 1)) {
       head = ' ... ';
@@ -17030,7 +23009,7 @@ Mark.prototype.getSnippet = function getSnippet(indent, maxLength) {
   tail = '';
   end = this.position;
 
-  while (end < this.buffer.length && '\x00\r\n\x85\u2028\u2029'.indexOf(this.buffer.charAt(end)) === -1) {
+  while (end < this.buffer.length && -1 === '\x00\r\n\x85\u2028\u2029'.indexOf(this.buffer.charAt(end))) {
     end += 1;
     if (end - this.position > (maxLength / 2 - 1)) {
       tail = ' ... ';
@@ -17069,7 +23048,7 @@ Mark.prototype.toString = function toString(compact) {
 
 module.exports = Mark;
 
-},{"./common":158}],163:[function(require,module,exports){
+},{"./common":161}],166:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable max-len*/
@@ -17097,7 +23076,7 @@ function compileList(schema, name, result) {
   });
 
   return result.filter(function (type, index) {
-    return exclude.indexOf(index) === -1;
+    return -1 === exclude.indexOf(index);
   });
 }
 
@@ -17123,7 +23102,7 @@ function Schema(definition) {
   this.explicit = definition.explicit || [];
 
   this.implicit.forEach(function (type) {
-    if (type.loadKind && type.loadKind !== 'scalar') {
+    if (type.loadKind && 'scalar' !== type.loadKind) {
       throw new YAMLException('There is a non-scalar type in the implicit list of a schema. Implicit resolving of such types is not supported.');
     }
   });
@@ -17141,18 +23120,18 @@ Schema.create = function createSchema() {
   var schemas, types;
 
   switch (arguments.length) {
-    case 1:
-      schemas = Schema.DEFAULT;
-      types = arguments[0];
-      break;
+  case 1:
+    schemas = Schema.DEFAULT;
+    types = arguments[0];
+    break;
 
-    case 2:
-      schemas = arguments[0];
-      types = arguments[1];
-      break;
+  case 2:
+    schemas = arguments[0];
+    types = arguments[1];
+    break;
 
-    default:
-      throw new YAMLException('Wrong number of arguments for Schema.create function');
+  default:
+    throw new YAMLException('Wrong number of arguments for Schema.create function');
   }
 
   schemas = common.toArray(schemas);
@@ -17175,7 +23154,7 @@ Schema.create = function createSchema() {
 
 module.exports = Schema;
 
-},{"./common":158,"./exception":160,"./type":169}],164:[function(require,module,exports){
+},{"./common":161,"./exception":163,"./type":172}],167:[function(require,module,exports){
 // Standard YAML's Core schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2804923
 //
@@ -17195,7 +23174,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":163,"./json":168}],165:[function(require,module,exports){
+},{"../schema":166,"./json":171}],168:[function(require,module,exports){
 // JS-YAML's default schema for `load` function.
 // It is not described in the YAML specification.
 //
@@ -17222,7 +23201,7 @@ module.exports = Schema.DEFAULT = new Schema({
   ]
 });
 
-},{"../schema":163,"../type/js/function":174,"../type/js/regexp":175,"../type/js/undefined":176,"./default_safe":166}],166:[function(require,module,exports){
+},{"../schema":166,"../type/js/function":177,"../type/js/regexp":178,"../type/js/undefined":179,"./default_safe":169}],169:[function(require,module,exports){
 // JS-YAML's default schema for `safeLoad` function.
 // It is not described in the YAML specification.
 //
@@ -17252,7 +23231,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":163,"../type/binary":170,"../type/merge":178,"../type/omap":180,"../type/pairs":181,"../type/set":183,"../type/timestamp":185,"./core":164}],167:[function(require,module,exports){
+},{"../schema":166,"../type/binary":173,"../type/merge":181,"../type/omap":183,"../type/pairs":184,"../type/set":186,"../type/timestamp":188,"./core":167}],170:[function(require,module,exports){
 // Standard YAML's Failsafe schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2802346
 
@@ -17271,7 +23250,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":163,"../type/map":177,"../type/seq":182,"../type/str":184}],168:[function(require,module,exports){
+},{"../schema":166,"../type/map":180,"../type/seq":185,"../type/str":187}],171:[function(require,module,exports){
 // Standard YAML's JSON schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2803231
 //
@@ -17298,7 +23277,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":163,"../type/bool":171,"../type/float":172,"../type/int":173,"../type/null":179,"./failsafe":167}],169:[function(require,module,exports){
+},{"../schema":166,"../type/bool":174,"../type/float":175,"../type/int":176,"../type/null":182,"./failsafe":170}],172:[function(require,module,exports){
 'use strict';
 
 var YAMLException = require('./exception');
@@ -17323,7 +23302,7 @@ var YAML_NODE_KINDS = [
 function compileStyleAliases(map) {
   var result = {};
 
-  if (map !== null) {
+  if (null !== map) {
     Object.keys(map).forEach(function (style) {
       map[style].forEach(function (alias) {
         result[String(alias)] = style;
@@ -17338,7 +23317,7 @@ function Type(tag, options) {
   options = options || {};
 
   Object.keys(options).forEach(function (name) {
-    if (TYPE_CONSTRUCTOR_OPTIONS.indexOf(name) === -1) {
+    if (-1 === TYPE_CONSTRUCTOR_OPTIONS.indexOf(name)) {
       throw new YAMLException('Unknown option "' + name + '" is met in definition of "' + tag + '" YAML type.');
     }
   });
@@ -17354,14 +23333,14 @@ function Type(tag, options) {
   this.defaultStyle = options['defaultStyle'] || null;
   this.styleAliases = compileStyleAliases(options['styleAliases'] || null);
 
-  if (YAML_NODE_KINDS.indexOf(this.kind) === -1) {
+  if (-1 === YAML_NODE_KINDS.indexOf(this.kind)) {
     throw new YAMLException('Unknown kind "' + this.kind + '" is specified for "' + tag + '" YAML type.');
   }
 }
 
 module.exports = Type;
 
-},{"./exception":160}],170:[function(require,module,exports){
+},{"./exception":163}],173:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable no-bitwise*/
@@ -17377,7 +23356,9 @@ var BASE64_MAP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 
 
 function resolveYamlBinary(data) {
-  if (data === null) return false;
+  if (null === data) {
+    return false;
+  }
 
   var code, idx, bitlen = 0, max = data.length, map = BASE64_MAP;
 
@@ -17386,10 +23367,10 @@ function resolveYamlBinary(data) {
     code = map.indexOf(data.charAt(idx));
 
     // Skip CR/LF
-    if (code > 64) continue;
+    if (code > 64) { continue; }
 
     // Fail on illegal characters
-    if (code < 0) return false;
+    if (code < 0) { return false; }
 
     bitlen += 6;
   }
@@ -17434,7 +23415,9 @@ function constructYamlBinary(data) {
   }
 
   // Wrap into Buffer for NodeJS and leave Array for browser
-  if (NodeBuffer) return new NodeBuffer(result);
+  if (NodeBuffer) {
+    return new NodeBuffer(result);
+  }
 
   return result;
 }
@@ -17493,13 +23476,15 @@ module.exports = new Type('tag:yaml.org,2002:binary', {
   represent: representYamlBinary
 });
 
-},{"../type":169,"buffer":15}],171:[function(require,module,exports){
+},{"../type":172,"buffer":15}],174:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
 
 function resolveYamlBoolean(data) {
-  if (data === null) return false;
+  if (null === data) {
+    return false;
+  }
 
   var max = data.length;
 
@@ -17514,7 +23499,7 @@ function constructYamlBoolean(data) {
 }
 
 function isBoolean(object) {
-  return Object.prototype.toString.call(object) === '[object Boolean]';
+  return '[object Boolean]' === Object.prototype.toString.call(object);
 }
 
 module.exports = new Type('tag:yaml.org,2002:bool', {
@@ -17530,7 +23515,7 @@ module.exports = new Type('tag:yaml.org,2002:bool', {
   defaultStyle: 'lowercase'
 });
 
-},{"../type":169}],172:[function(require,module,exports){
+},{"../type":172}],175:[function(require,module,exports){
 'use strict';
 
 var common = require('../common');
@@ -17544,10 +23529,13 @@ var YAML_FLOAT_PATTERN = new RegExp(
   '|\\.(?:nan|NaN|NAN))$');
 
 function resolveYamlFloat(data) {
-  if (data === null) return false;
+  if (null === data) {
+    return false;
+  }
 
-  if (!YAML_FLOAT_PATTERN.test(data)) return false;
-
+  if (!YAML_FLOAT_PATTERN.test(data)) {
+    return false;
+  }
   return true;
 }
 
@@ -17555,20 +23543,20 @@ function constructYamlFloat(data) {
   var value, sign, base, digits;
 
   value  = data.replace(/_/g, '').toLowerCase();
-  sign   = value[0] === '-' ? -1 : 1;
+  sign   = '-' === value[0] ? -1 : 1;
   digits = [];
 
-  if ('+-'.indexOf(value[0]) >= 0) {
+  if (0 <= '+-'.indexOf(value[0])) {
     value = value.slice(1);
   }
 
-  if (value === '.inf') {
-    return (sign === 1) ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
+  if ('.inf' === value) {
+    return (1 === sign) ? Number.POSITIVE_INFINITY : Number.NEGATIVE_INFINITY;
 
-  } else if (value === '.nan') {
+  } else if ('.nan' === value) {
     return NaN;
 
-  } else if (value.indexOf(':') >= 0) {
+  } else if (0 <= value.indexOf(':')) {
     value.split(':').forEach(function (v) {
       digits.unshift(parseFloat(v, 10));
     });
@@ -17595,21 +23583,30 @@ function representYamlFloat(object, style) {
 
   if (isNaN(object)) {
     switch (style) {
-      case 'lowercase': return '.nan';
-      case 'uppercase': return '.NAN';
-      case 'camelcase': return '.NaN';
+    case 'lowercase':
+      return '.nan';
+    case 'uppercase':
+      return '.NAN';
+    case 'camelcase':
+      return '.NaN';
     }
   } else if (Number.POSITIVE_INFINITY === object) {
     switch (style) {
-      case 'lowercase': return '.inf';
-      case 'uppercase': return '.INF';
-      case 'camelcase': return '.Inf';
+    case 'lowercase':
+      return '.inf';
+    case 'uppercase':
+      return '.INF';
+    case 'camelcase':
+      return '.Inf';
     }
   } else if (Number.NEGATIVE_INFINITY === object) {
     switch (style) {
-      case 'lowercase': return '-.inf';
-      case 'uppercase': return '-.INF';
-      case 'camelcase': return '-.Inf';
+    case 'lowercase':
+      return '-.inf';
+    case 'uppercase':
+      return '-.INF';
+    case 'camelcase':
+      return '-.Inf';
     }
   } else if (common.isNegativeZero(object)) {
     return '-0.0';
@@ -17624,8 +23621,8 @@ function representYamlFloat(object, style) {
 }
 
 function isFloat(object) {
-  return (Object.prototype.toString.call(object) === '[object Number]') &&
-         (object % 1 !== 0 || common.isNegativeZero(object));
+  return ('[object Number]' === Object.prototype.toString.call(object)) &&
+         (0 !== object % 1 || common.isNegativeZero(object));
 }
 
 module.exports = new Type('tag:yaml.org,2002:float', {
@@ -17637,7 +23634,7 @@ module.exports = new Type('tag:yaml.org,2002:float', {
   defaultStyle: 'lowercase'
 });
 
-},{"../common":158,"../type":169}],173:[function(require,module,exports){
+},{"../common":161,"../type":172}],176:[function(require,module,exports){
 'use strict';
 
 var common = require('../common');
@@ -17658,14 +23655,16 @@ function isDecCode(c) {
 }
 
 function resolveYamlInteger(data) {
-  if (data === null) return false;
+  if (null === data) {
+    return false;
+  }
 
   var max = data.length,
       index = 0,
       hasDigits = false,
       ch;
 
-  if (!max) return false;
+  if (!max) { return false; }
 
   ch = data[index];
 
@@ -17676,7 +23675,7 @@ function resolveYamlInteger(data) {
 
   if (ch === '0') {
     // 0
-    if (index + 1 === max) return true;
+    if (index + 1 === max) { return true; }
     ch = data[++index];
 
     // base 2, base 8, base 16
@@ -17687,8 +23686,10 @@ function resolveYamlInteger(data) {
 
       for (; index < max; index++) {
         ch = data[index];
-        if (ch === '_') continue;
-        if (ch !== '0' && ch !== '1') return false;
+        if (ch === '_') { continue; }
+        if (ch !== '0' && ch !== '1') {
+          return false;
+        }
         hasDigits = true;
       }
       return hasDigits;
@@ -17701,8 +23702,10 @@ function resolveYamlInteger(data) {
 
       for (; index < max; index++) {
         ch = data[index];
-        if (ch === '_') continue;
-        if (!isHexCode(data.charCodeAt(index))) return false;
+        if (ch === '_') { continue; }
+        if (!isHexCode(data.charCodeAt(index))) {
+          return false;
+        }
         hasDigits = true;
       }
       return hasDigits;
@@ -17711,8 +23714,10 @@ function resolveYamlInteger(data) {
     // base 8
     for (; index < max; index++) {
       ch = data[index];
-      if (ch === '_') continue;
-      if (!isOctCode(data.charCodeAt(index))) return false;
+      if (ch === '_') { continue; }
+      if (!isOctCode(data.charCodeAt(index))) {
+        return false;
+      }
       hasDigits = true;
     }
     return hasDigits;
@@ -17722,18 +23727,18 @@ function resolveYamlInteger(data) {
 
   for (; index < max; index++) {
     ch = data[index];
-    if (ch === '_') continue;
-    if (ch === ':') break;
+    if (ch === '_') { continue; }
+    if (ch === ':') { break; }
     if (!isDecCode(data.charCodeAt(index))) {
       return false;
     }
     hasDigits = true;
   }
 
-  if (!hasDigits) return false;
+  if (!hasDigits) { return false; }
 
   // if !base60 - done;
-  if (ch !== ':') return true;
+  if (ch !== ':') { return true; }
 
   // base60 almost not used, no needs to optimize
   return /^(:[0-5]?[0-9])+$/.test(data.slice(index));
@@ -17749,17 +23754,24 @@ function constructYamlInteger(data) {
   ch = value[0];
 
   if (ch === '-' || ch === '+') {
-    if (ch === '-') sign = -1;
+    if (ch === '-') { sign = -1; }
     value = value.slice(1);
     ch = value[0];
   }
 
-  if (value === '0') return 0;
+  if ('0' === value) {
+    return 0;
+  }
 
   if (ch === '0') {
-    if (value[1] === 'b') return sign * parseInt(value.slice(2), 2);
-    if (value[1] === 'x') return sign * parseInt(value, 16);
+    if (value[1] === 'b') {
+      return sign * parseInt(value.slice(2), 2);
+    }
+    if (value[1] === 'x') {
+      return sign * parseInt(value, 16);
+    }
     return sign * parseInt(value, 8);
+
   }
 
   if (value.indexOf(':') !== -1) {
@@ -17783,8 +23795,8 @@ function constructYamlInteger(data) {
 }
 
 function isInteger(object) {
-  return (Object.prototype.toString.call(object)) === '[object Number]' &&
-         (object % 1 === 0 && !common.isNegativeZero(object));
+  return ('[object Number]' === Object.prototype.toString.call(object)) &&
+         (0 === object % 1 && !common.isNegativeZero(object));
 }
 
 module.exports = new Type('tag:yaml.org,2002:int', {
@@ -17807,7 +23819,7 @@ module.exports = new Type('tag:yaml.org,2002:int', {
   }
 });
 
-},{"../common":158,"../type":169}],174:[function(require,module,exports){
+},{"../common":161,"../type":172}],177:[function(require,module,exports){
 'use strict';
 
 var esprima;
@@ -17820,27 +23832,27 @@ var esprima;
 //    found too - then fail to parse.
 //
 try {
-  // workaround to exclude package from browserify list.
-  var _require = require;
-  esprima = _require('esprima');
+  esprima = require('esprima');
 } catch (_) {
   /*global window */
-  if (typeof window !== 'undefined') esprima = window.esprima;
+  if (typeof window !== 'undefined') { esprima = window.esprima; }
 }
 
 var Type = require('../../type');
 
 function resolveJavascriptFunction(data) {
-  if (data === null) return false;
+  if (null === data) {
+    return false;
+  }
 
   try {
     var source = '(' + data + ')',
         ast    = esprima.parse(source, { range: true });
 
-    if (ast.type                    !== 'Program'             ||
-        ast.body.length             !== 1                     ||
-        ast.body[0].type            !== 'ExpressionStatement' ||
-        ast.body[0].expression.type !== 'FunctionExpression') {
+    if ('Program'             !== ast.type         ||
+        1                     !== ast.body.length  ||
+        'ExpressionStatement' !== ast.body[0].type ||
+        'FunctionExpression'  !== ast.body[0].expression.type) {
       return false;
     }
 
@@ -17858,10 +23870,10 @@ function constructJavascriptFunction(data) {
       params = [],
       body;
 
-  if (ast.type                    !== 'Program'             ||
-      ast.body.length             !== 1                     ||
-      ast.body[0].type            !== 'ExpressionStatement' ||
-      ast.body[0].expression.type !== 'FunctionExpression') {
+  if ('Program'             !== ast.type         ||
+      1                     !== ast.body.length  ||
+      'ExpressionStatement' !== ast.body[0].type ||
+      'FunctionExpression'  !== ast.body[0].expression.type) {
     throw new Error('Failed to resolve function');
   }
 
@@ -17882,7 +23894,7 @@ function representJavascriptFunction(object /*, style*/) {
 }
 
 function isFunction(object) {
-  return Object.prototype.toString.call(object) === '[object Function]';
+  return '[object Function]' === Object.prototype.toString.call(object);
 }
 
 module.exports = new Type('tag:yaml.org,2002:js/function', {
@@ -17893,14 +23905,19 @@ module.exports = new Type('tag:yaml.org,2002:js/function', {
   represent: representJavascriptFunction
 });
 
-},{"../../type":169}],175:[function(require,module,exports){
+},{"../../type":172,"esprima":16}],178:[function(require,module,exports){
 'use strict';
 
 var Type = require('../../type');
 
 function resolveJavascriptRegExp(data) {
-  if (data === null) return false;
-  if (data.length === 0) return false;
+  if (null === data) {
+    return false;
+  }
+
+  if (0 === data.length) {
+    return false;
+  }
 
   var regexp = data,
       tail   = /\/([gim]*)$/.exec(data),
@@ -17908,15 +23925,23 @@ function resolveJavascriptRegExp(data) {
 
   // if regexp starts with '/' it can have modifiers and must be properly closed
   // `/foo/gim` - modifiers tail can be maximum 3 chars
-  if (regexp[0] === '/') {
-    if (tail) modifiers = tail[1];
+  if ('/' === regexp[0]) {
+    if (tail) {
+      modifiers = tail[1];
+    }
 
-    if (modifiers.length > 3) return false;
+    if (modifiers.length > 3) { return false; }
     // if expression starts with /, is should be properly terminated
-    if (regexp[regexp.length - modifiers.length - 1] !== '/') return false;
+    if (regexp[regexp.length - modifiers.length - 1] !== '/') { return false; }
+
+    regexp = regexp.slice(1, regexp.length - modifiers.length - 1);
   }
 
-  return true;
+  try {
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
 
 function constructJavascriptRegExp(data) {
@@ -17925,8 +23950,10 @@ function constructJavascriptRegExp(data) {
       modifiers = '';
 
   // `/foo/gim` - tail can be maximum 4 chars
-  if (regexp[0] === '/') {
-    if (tail) modifiers = tail[1];
+  if ('/' === regexp[0]) {
+    if (tail) {
+      modifiers = tail[1];
+    }
     regexp = regexp.slice(1, regexp.length - modifiers.length - 1);
   }
 
@@ -17936,15 +23963,23 @@ function constructJavascriptRegExp(data) {
 function representJavascriptRegExp(object /*, style*/) {
   var result = '/' + object.source + '/';
 
-  if (object.global) result += 'g';
-  if (object.multiline) result += 'm';
-  if (object.ignoreCase) result += 'i';
+  if (object.global) {
+    result += 'g';
+  }
+
+  if (object.multiline) {
+    result += 'm';
+  }
+
+  if (object.ignoreCase) {
+    result += 'i';
+  }
 
   return result;
 }
 
 function isRegExp(object) {
-  return Object.prototype.toString.call(object) === '[object RegExp]';
+  return '[object RegExp]' === Object.prototype.toString.call(object);
 }
 
 module.exports = new Type('tag:yaml.org,2002:js/regexp', {
@@ -17955,7 +23990,7 @@ module.exports = new Type('tag:yaml.org,2002:js/regexp', {
   represent: representJavascriptRegExp
 });
 
-},{"../../type":169}],176:[function(require,module,exports){
+},{"../../type":172}],179:[function(require,module,exports){
 'use strict';
 
 var Type = require('../../type');
@@ -17974,7 +24009,7 @@ function representJavascriptUndefined() {
 }
 
 function isUndefined(object) {
-  return typeof object === 'undefined';
+  return 'undefined' === typeof object;
 }
 
 module.exports = new Type('tag:yaml.org,2002:js/undefined', {
@@ -17985,23 +24020,23 @@ module.exports = new Type('tag:yaml.org,2002:js/undefined', {
   represent: representJavascriptUndefined
 });
 
-},{"../../type":169}],177:[function(require,module,exports){
+},{"../../type":172}],180:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
 
 module.exports = new Type('tag:yaml.org,2002:map', {
   kind: 'mapping',
-  construct: function (data) { return data !== null ? data : {}; }
+  construct: function (data) { return null !== data ? data : {}; }
 });
 
-},{"../type":169}],178:[function(require,module,exports){
+},{"../type":172}],181:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
 
 function resolveYamlMerge(data) {
-  return data === '<<' || data === null;
+  return '<<' === data || null === data;
 }
 
 module.exports = new Type('tag:yaml.org,2002:merge', {
@@ -18009,13 +24044,15 @@ module.exports = new Type('tag:yaml.org,2002:merge', {
   resolve: resolveYamlMerge
 });
 
-},{"../type":169}],179:[function(require,module,exports){
+},{"../type":172}],182:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
 
 function resolveYamlNull(data) {
-  if (data === null) return true;
+  if (null === data) {
+    return true;
+  }
 
   var max = data.length;
 
@@ -18028,7 +24065,7 @@ function constructYamlNull() {
 }
 
 function isNull(object) {
-  return object === null;
+  return null === object;
 }
 
 module.exports = new Type('tag:yaml.org,2002:null', {
@@ -18045,7 +24082,7 @@ module.exports = new Type('tag:yaml.org,2002:null', {
   defaultStyle: 'lowercase'
 });
 
-},{"../type":169}],180:[function(require,module,exports){
+},{"../type":172}],183:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18054,7 +24091,9 @@ var _hasOwnProperty = Object.prototype.hasOwnProperty;
 var _toString       = Object.prototype.toString;
 
 function resolveYamlOmap(data) {
-  if (data === null) return true;
+  if (null === data) {
+    return true;
+  }
 
   var objectKeys = [], index, length, pair, pairKey, pairHasKey,
       object = data;
@@ -18063,26 +24102,36 @@ function resolveYamlOmap(data) {
     pair = object[index];
     pairHasKey = false;
 
-    if (_toString.call(pair) !== '[object Object]') return false;
+    if ('[object Object]' !== _toString.call(pair)) {
+      return false;
+    }
 
     for (pairKey in pair) {
       if (_hasOwnProperty.call(pair, pairKey)) {
-        if (!pairHasKey) pairHasKey = true;
-        else return false;
+        if (!pairHasKey) {
+          pairHasKey = true;
+        } else {
+          return false;
+        }
       }
     }
 
-    if (!pairHasKey) return false;
+    if (!pairHasKey) {
+      return false;
+    }
 
-    if (objectKeys.indexOf(pairKey) === -1) objectKeys.push(pairKey);
-    else return false;
+    if (-1 === objectKeys.indexOf(pairKey)) {
+      objectKeys.push(pairKey);
+    } else {
+      return false;
+    }
   }
 
   return true;
 }
 
 function constructYamlOmap(data) {
-  return data !== null ? data : [];
+  return null !== data ? data : [];
 }
 
 module.exports = new Type('tag:yaml.org,2002:omap', {
@@ -18091,7 +24140,7 @@ module.exports = new Type('tag:yaml.org,2002:omap', {
   construct: constructYamlOmap
 });
 
-},{"../type":169}],181:[function(require,module,exports){
+},{"../type":172}],184:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18099,7 +24148,9 @@ var Type = require('../type');
 var _toString = Object.prototype.toString;
 
 function resolveYamlPairs(data) {
-  if (data === null) return true;
+  if (null === data) {
+    return true;
+  }
 
   var index, length, pair, keys, result,
       object = data;
@@ -18109,11 +24160,15 @@ function resolveYamlPairs(data) {
   for (index = 0, length = object.length; index < length; index += 1) {
     pair = object[index];
 
-    if (_toString.call(pair) !== '[object Object]') return false;
+    if ('[object Object]' !== _toString.call(pair)) {
+      return false;
+    }
 
     keys = Object.keys(pair);
 
-    if (keys.length !== 1) return false;
+    if (1 !== keys.length) {
+      return false;
+    }
 
     result[index] = [ keys[0], pair[keys[0]] ];
   }
@@ -18122,7 +24177,9 @@ function resolveYamlPairs(data) {
 }
 
 function constructYamlPairs(data) {
-  if (data === null) return [];
+  if (null === data) {
+    return [];
+  }
 
   var index, length, pair, keys, result,
       object = data;
@@ -18146,17 +24203,17 @@ module.exports = new Type('tag:yaml.org,2002:pairs', {
   construct: constructYamlPairs
 });
 
-},{"../type":169}],182:[function(require,module,exports){
+},{"../type":172}],185:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
 
 module.exports = new Type('tag:yaml.org,2002:seq', {
   kind: 'sequence',
-  construct: function (data) { return data !== null ? data : []; }
+  construct: function (data) { return null !== data ? data : []; }
 });
 
-},{"../type":169}],183:[function(require,module,exports){
+},{"../type":172}],186:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18164,13 +24221,17 @@ var Type = require('../type');
 var _hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function resolveYamlSet(data) {
-  if (data === null) return true;
+  if (null === data) {
+    return true;
+  }
 
   var key, object = data;
 
   for (key in object) {
     if (_hasOwnProperty.call(object, key)) {
-      if (object[key] !== null) return false;
+      if (null !== object[key]) {
+        return false;
+      }
     }
   }
 
@@ -18178,7 +24239,7 @@ function resolveYamlSet(data) {
 }
 
 function constructYamlSet(data) {
-  return data !== null ? data : {};
+  return null !== data ? data : {};
 }
 
 module.exports = new Type('tag:yaml.org,2002:set', {
@@ -18187,17 +24248,17 @@ module.exports = new Type('tag:yaml.org,2002:set', {
   construct: constructYamlSet
 });
 
-},{"../type":169}],184:[function(require,module,exports){
+},{"../type":172}],187:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
 
 module.exports = new Type('tag:yaml.org,2002:str', {
   kind: 'scalar',
-  construct: function (data) { return data !== null ? data : ''; }
+  construct: function (data) { return null !== data ? data : ''; }
 });
 
-},{"../type":169}],185:[function(require,module,exports){
+},{"../type":172}],188:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18215,8 +24276,14 @@ var YAML_TIMESTAMP_REGEXP = new RegExp(
   '(?::([0-9][0-9]))?))?)?$');         // [11] tz_minute
 
 function resolveYamlTimestamp(data) {
-  if (data === null) return false;
-  if (YAML_TIMESTAMP_REGEXP.exec(data) === null) return false;
+  if (null === data) {
+    return false;
+  }
+
+  if (YAML_TIMESTAMP_REGEXP.exec(data) === null) {
+    return false;
+  }
+
   return true;
 }
 
@@ -18226,7 +24293,9 @@ function constructYamlTimestamp(data) {
 
   match = YAML_TIMESTAMP_REGEXP.exec(data);
 
-  if (match === null) throw new Error('Date resolve error');
+  if (null === match) {
+    throw new Error('Date resolve error');
+  }
 
   // match: [1] year [2] month [3] day
 
@@ -18258,12 +24327,16 @@ function constructYamlTimestamp(data) {
     tz_hour = +(match[10]);
     tz_minute = +(match[11] || 0);
     delta = (tz_hour * 60 + tz_minute) * 60000; // delta in mili-seconds
-    if (match[9] === '-') delta = -delta;
+    if ('-' === match[9]) {
+      delta = -delta;
+    }
   }
 
   date = new Date(Date.UTC(year, month, day, hour, minute, second, fraction));
 
-  if (delta) date.setTime(date.getTime() - delta);
+  if (delta) {
+    date.setTime(date.getTime() - delta);
+  }
 
   return date;
 }
@@ -18280,7 +24353,7 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
   represent: representYamlTimestamp
 });
 
-},{"../type":169}],186:[function(require,module,exports){
+},{"../type":172}],189:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -19551,7 +25624,7 @@ if (typeof exports === 'object') {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],187:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 // Require Node modules in the browser thanks to Browserify: http://browserify.org
 
 var bespoke = require('bespoke'),
@@ -19655,7 +25728,7 @@ window.deck = bespoke.from('article', [
 
 sleek();
 
-},{"./sleek-menu":188,"./tutorial":189,"bespoke":14,"bespoke-backdrop":1,"bespoke-bullets":2,"bespoke-hash":3,"bespoke-keys":4,"bespoke-math":6,"bespoke-meta-markdown":7,"bespoke-progress":8,"bespoke-qrcode":9,"bespoke-simple-overview":10,"bespoke-state":11,"bespoke-theme-fancy":12,"bespoke-touch":13,"ismobilejs":155}],188:[function(require,module,exports){
+},{"./sleek-menu":191,"./tutorial":192,"bespoke":14,"bespoke-backdrop":2,"bespoke-bullets":3,"bespoke-hash":4,"bespoke-keys":5,"bespoke-math":1,"bespoke-meta-markdown":7,"bespoke-progress":8,"bespoke-qrcode":9,"bespoke-simple-overview":10,"bespoke-state":11,"bespoke-theme-fancy":12,"bespoke-touch":13,"ismobilejs":158}],191:[function(require,module,exports){
 module.exports = function() {
   var pageHeaderEl = document.getElementById('page-header'),
       bodyClasses = document.body.classList;
@@ -19671,7 +25744,7 @@ module.exports = function() {
   }
 };
 
-},{}],189:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 var tutorial = {
     turnedOn: true,
 
@@ -19715,7 +25788,7 @@ module.exports = function(tutorialEl) {
   };
 };
 
-},{}]},{},[187])
+},{}]},{},[190])
 
 
 //# sourceMappingURL=build.js.map
