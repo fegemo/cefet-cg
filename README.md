@@ -23,6 +23,7 @@
 # Aulas (página 2)
 
 - [Geometria](classes/geometry) (17/03/2016)
+- [Transformações Geométricas](classes/transforms) (22/03/2016)
 
 ---
 # Objetivos

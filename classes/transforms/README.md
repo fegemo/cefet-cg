@@ -21,19 +21,20 @@
 
 - Transformação é uma função que **mapeia pontos de um espaço Euclidiano em
   outros pontos** do mesmo espaço.
-- Se uma transformação é linear, então
+- Se uma transformação é linear, então:
   - Se um conjunto de pontos está contido em uma reta, depois de
     transformados eles também estarão contidos sobre uma reta.
-  - Se um ponto P guarda uma relação de distância com dois outros pontos Q e R,
-    então essa relação de distância é mantida pela transformação.
+  - Se um ponto <span class="math">P</span> guarda uma relação de distância
+    com dois outros pontos <span class="math">Q</span> e
+    <span class="math">R</span>, então essa relação de distância é mantida.
 
 ---
 ## Prática das transformações (em OpenGL)
 
-- Desenhamos quaisquer objetos em OpenGL **descrevendo seus vértices**
+- Desenhamos quaisquer objetos em OpenGL **descrevendo seus vértices**:
   - `glVertex3f(x, y, z)`
-- Podemos alterar as coordenadas dos vértices sem alterar o valor de x, y e z
-  de forma a
+- Podemos alterar as coordenadas dos vértices sem alterar o valor de
+  <span class="math">x, y</span> e <span class="math">z</span> de forma a:
   - Rotacioná-los (`glRotate`)
   - Movimentá-los (`glTranslate`)
   - Alterarmos seu tamanho (`glScale`)
@@ -46,35 +47,56 @@
 
 - Na geometria afim, vimos que podemos representar um ponto ou um vetor na
   forma:
+  <div class="math">R = \alpha_0 F.\vec{e_0} + \alpha_1 F.\vec{e_1} + \alpha_2 F.\vec{e_2} + \alpha_3 F.O</div>
 
-  R = &alpha;<sub>0</sub>F.e<sub>0</sub> + &alpha;<sub>1</sub>F.e<sub>1</sub> + &alpha;<sub>2</sub>F.e<sub>2</sub> + &alpha;<sub>3</sub>O
-
-  - Em que **&alpha;<sub>3</sub>** é 0 para vetores ou 1 para pontos
-    (é a **coordenada homogênea**), R é um ponto ou um vetor representado
-    em termos do sistema de coordenadas F
-
+  - Em que **<span class="math">\alpha_3</span>** é <span class="math">0</span>
+    para vetores ou <span class="math">1</span> para pontos (é a **coordenada
+    homogênea**), <span class="math">R</span> é um ponto ou um vetor
+    representado em termos do sistema de coordenadas <span class="math">F</span>
+  - Se usarmos o sistema de coordenadas cartesiano, podemos reescrever
+    <span class="math">R</span> como:
+    <div class="math">R = \alpha_x \vec{x} + \alpha_y \vec{y} + \alpha_z \vec{z} + \alpha_w</div>
+- <div class="math" style="float:right;">R = \begin{bmatrix}\alpha_x & \alpha_y&\alpha_z&\alpha_w\end{bmatrix}</div>
+  Mais sucintamente, dizemos que:
 ---
 ## Forma geral (cont.)
 
-- Das propriedades da geometria afim, podemos propor **uma função T** que, se
-  aplicada a cada componente da equação anterior, **se mantém uma equação afim**:
+- Das propriedades da geometria afim, podemos propor **uma função
+  <span class="math">T</span>** que, se aplicada a cada componente da
+  equação anterior, **se mantém uma equação afim**:
 
-  T(R) = &alpha;<sub>0</sub>T(F.e<sub>0</sub>) + &alpha;<sub>1</sub>T(F.e<sub>1</sub>) + &alpha;<sub>2</sub>T(F.e<sub>2</sub>) + &alpha;<sub>3</sub>T(O)
-
-  - Podemos chamar essa função T de **transformação**
+  <div class="math">R = \alpha_0 F.\vec{e_0} + \alpha_1 F.\vec{e_1} + \alpha_2 F.\vec{e_2} + \alpha_3 F.O</div>
+  <div class="math">T(R) = \alpha_0 T(F.\vec{e_0}) + \alpha_1 T(F.\vec{e_1}) + \alpha_2 T(F.\vec{e_2}) + \alpha_3 T(F.O)</div>
+  - Podemos chamar essa função <span class="math">T</span> de **transformação**
 
 ---
 ## Forma matricial
 
 - Podemos representar a equação anterior na forma matricial:
 
-  ![](../../images/transform-matrix-equation.png)
+  <div class="math">T(R) = \begin{bmatrix} T(F.\vec{e_0}) & T(F.\vec{e_1}) & T(F.\vec{e_2}) & T(F.O) \end{bmatrix}
+  \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
 
-  - As colunas representam as imagens dos elementos do sistema F transformado
-    por T
-  - Disso temos que **aplicar uma transformação afim é equivalente a
-    multiplicar as coordenadas (de um ponto ou vetor) por uma matriz**
-    - Em <span class="math">n</span> dimensões, isso equivale a uma matriz <span class="math">(n + 1)(n + 1)</span>
+  - As colunas representam as imagens dos elementos do sistema <span class="math">F</span> transformado
+    por <span class="math">T</span>
+  - Disso temos que **aplicar uma <u>transformação afim é equivalente a
+    multiplicar as coordenadas</u> (de um ponto ou vetor) <u>por uma matriz</u>**
+    - Em <span class="math">n</span> dimensões, isso equivale a uma matriz <span class="math">(n + 1)(n + 1)</span> por causa da coordenada homogênea
+
+---
+## Exemplo: Transformação Nula
+
+- <div class="math" style="float: right;">T=\begin{bmatrix} 1&0&0&0\\\0&1&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix}</div>
+  **A transformação nula** é aquela que mantém as coordenadas dos pontos e vetores inalterada - ou seja, dada pela **matriz identidade**:
+    <div style="clear: right;"></div>
+
+- Supondo o sistema de coordenadas cartesiano e um ponto <span class="math">P=\begin{bmatrix} \alpha_x&\alpha_y&\alpha_z&1 \end{bmatrix}^{T}</span>, temos que:
+  <div class="math">T(P)=\begin{bmatrix} 1&0&0&0\\\0&1&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix} \begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\\\\alpha_w \end{bmatrix}=\begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\\\\alpha_w \end{bmatrix}</div>
+
+---
+## A [Magnífica Matriz 2D](http://ncase.me/matrix/)
+
+<iframe src="http://ncase.me/matrix/" width="800" height="537"></iframe>
 
 ---
 # Tipos comuns de transformações
@@ -90,9 +112,20 @@
 ## Translação (cont.)
 
 - Mantém os ângulos e comprimentos
-- Pode ser representada por uma matriz T(t), em que t é o vetor de deslocamento
+- Pode ser representada por uma matriz <span class="math">T(\vec{t})</span>, em que <span class="math">\vec{t}</span> é o vetor de deslocamento:
 
-  ![](../../images/translacao-matriz.png)
+  <div class="math">
+  \begin{bmatrix}
+  1&0&0&t_x\\\0&1&0&t_y\\\0&0&1&t_z\\\0&0&0&1
+  \end{bmatrix}
+  \begin{bmatrix}
+  p_x\\\p_y\\\p_z\\\1
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+  p_x+t_x\\\p_y+t_y\\\p_z+t_z\\\1
+  \end{bmatrix}
+  </div>
 
 ---
 ## Translação em OpenGL
@@ -120,17 +153,17 @@
 - Benefícios
   - Podemos definir objetos (vértices) em um **sistemas de coordenadas local**
     a ele
-  - Podemos guardar objetos em listas de visualização (_display lists_) já que
-    eles estão definidos em um sistema local e transladá-los em qualquer posição
+  - Podemos guardar objetos _display lists_ já que
+    estão definidos em um sistema local e transladá-los em qualquer posição
 
 ---
 ## Matriz inversa da translação
 
 - Pode-se usar a matriz inversa de uma transformação para **se desfazer a
   operação** efetuada por ela
-- A matriz inversa de uma translação T(t) é dada por T<sup>-1</sup>(t) tal que:
-  - T<sup>-1</sup>(t) = T(-t)
-  - Ou seja, basta multiplicar o vetor t de deslocamento por -1 para se obter a
+- A matriz inversa de uma translação <span class="math">T(\vec{t})</span> é dada por <span class="math">T^{-1}(\vec{t})</span> tal que:
+  - <span class="math">T^{-1}(\vec{t})=T(-\vec{t})</span>
+  - Ou seja, basta multiplicar o vetor <span class="math">\vec{t}</span> de deslocamento por <span class="math">-1</span> para se obter a
     matriz inversa
 
 ---
@@ -144,7 +177,7 @@ de rotação.
 ---
 ## Rotação (cont.)
 
-- Equações para a rotação de um ponto (x, y) através de um ângulo Θ com relação
+- Equações para a rotação de um ponto <span class="math">(x, y)</span> através de um ângulo <span class="math">\theta</span> com relação
   à origem:
 
   ![](../../images/rotacao-exemplo.png)
@@ -153,11 +186,11 @@ de rotação.
 ## Rotação (cont.)
 
 - Podemos rotacionar objetos ao longo dos três eixos da base do nosso sistema
-  de coordenadas: (x, y, z)
+  de coordenadas: <span class="math">(x,y,z)</span>
   - Exemplo: nossa cabeça olha para cima ou baixo, esquerda ou direita e
     deita-se para a direita ou esquerda
-  - Se rotacionar-mos vértices em `x`, suas coordenadas `y` e `z` alteram, mas
-    `x` se mantêm
+  - Se rotacionar-mos vértices em <span class="math">x</span>, suas coordenadas <span class="math">y</span> e <span class="math">z</span> alteram, mas
+    <span class="math">x</span> se mantêm
     ![](../../images/rotacao-eixos.png)
     - Portanto, em 2D, para rotacionar um objeto provavelmente queremos usar o
       eixo Z
@@ -165,8 +198,9 @@ de rotação.
 ---
 ## Rotação no **eixo Z**
 
-- Pode ser representada por uma matriz <span class="math">R_{z}(\alpha)</span>, em que &alpha; é o ângulo de
+- Pode ser representada por uma matriz <span class="math">R_{z}(\alpha)</span>, em que <span class="math">\alpha</span> é o ângulo de
   rotação.
+
 
   ![](../../images/rotacao-matriz.png)
 
@@ -207,12 +241,13 @@ de rotação.
 
 - A matriz de rotação é ortogonal, o que implica que **sua inversa é sua
   transposta**
-- Dada uma matriz de rotação R(&alpha;), sua matriz inversa R<sup>-1</sup>(&alpha;)
+- Dada uma matriz de rotação <span class="math">R(\alpha)</span>, sua matriz inversa <span class="math">R^{-1}(\alpha)</span>
   é dada por:
-  - R<sup>-1</sup>(&alpha;) = R<sup>t</sup>(&alpha;)
+  - <span class="math">R^{-1}(\alpha)</span> = <span class="math">R^T(\alpha)</span>
 - Também é possível obter a inversa da matriz de rotação usando **a negação do
   ângulo de rotação**:
-  - R<sup>-1</sup>(&alpha;) = R(-&alpha;)
+  - <span class="math">R^{-1}(\alpha)=R(-\alpha)</span>
+
 
 ---
 ## Rotação em torno de um ponto
@@ -229,13 +264,13 @@ de rotação.
   de volta à sua posição original
 
   ![](../../images/rotacao-ponto.png)
-- Assim, fazemos uma transformação composta dada pela matriz obtida pela multiplicação:
-  <span class="math">Resultante = T(p)R_z(45)T(-p)</span>
+- Assim, fazemos uma **transformação composta** dada pela matriz obtida pela multiplicação:
+  - <span class="math">M = T(\vec{p})R_z(45)T(-\vec{p})</span>
 
 ---
 ## Rotações em geral (quaisquer eixos)
 
-- Uma rotação em eixos arbitrários pode ser definida pela multiplicação das
+- Uma rotação em **eixos arbitrários** pode ser definida pela multiplicação das
   matrizes de rotação em cada eixo
 
   <div class="math">E(h, p, r) = R_z(r)R_x(p)R_y(h)</div>
@@ -258,8 +293,8 @@ de rotação.
 ## Escala (cont.)
 
 - Uma transformação de escala simples é realizada pela multiplicação das
-  posições (x, y, z) de um objeto por fatores escalares s<sub>x</sub>, s<sub>y</sub>, s<sub>z</sub>
-- A transformação de escala pode ser representada por uma matriz S tal que:
+  posições <span class="math">(x,y,z)</span> de um objeto por fatores escalares <span class="math">s_x, s_y, s_z</span>
+- A transformação de escala pode ser representada por uma matriz <span class="math">S</span> tal que:
 
   ![](../../images/escala-matriz.png)
 
@@ -301,16 +336,16 @@ de rotação.
 ---
 ## Inclinação (cont.)
 
-- Pode ocorrer em 1 de 6 combinações de planos de coordenadas
-- Matriz da transformação no plano `xy`
+- Em 3D, pode ocorrer em 1 de 6 combinações de planos de coordenadas
+- Matriz da transformação no plano <span class="math">xy</span>
 
   ![](../../images/shear-matriz.png)
 
 ---
 ## Inclinação em OpenGL
 
-- Não existe um `glShear`, portanto precisamos implementar a matriz nós mesmos
-- O OpenGL possui o `glMultMatrix` que nos permite definir todas as coordenadas
+- **Não existe um `glShear`**, portanto precisamos implementar a matriz nós mesmos
+- O OpenGL possui o **`glMultMatrix`** que nos permite definir todas as coordenadas
   de uma matriz
   - `glRotate`, `glTranslate` e `glScale` chamam essa função
   - Referência do [glMultMatrix](https://www.opengl.org/sdk/docs/man2/xhtml/glMultMatrix.xml)
@@ -352,19 +387,20 @@ de rotação.
 - Quando chamamos uma função de multiplicação de matriz, estamos alterando o
   estado do OpenGL (máquina de estados)
 - Assim, consecutivas chamadas a `glTranslatef(10, 0, 0)` irão mover os objetos
-  da cena a 10u em cada chamada
+  da cena a `10u` em cada chamada
 
 ---
 ## Push, Pop (cont.)
 
 - Em particular, existem 4 variáveis de estado que são matrizes
-  - GL_MODELVIEW
-  - GL_PROJECTION
-  - GL_TEXTURE
-  - GL_COLOR
+  - `GL_MODELVIEW`
+  - `GL_PROJECTION`
+  - `GL_TEXTURE`
+  - `GL_COLOR`
 - Na realidade, cada variável dessas são **pilhas de matrizes**
 - Para evitar esse efeito, podemos empilhar a matriz atual para **preservá-la**
   e então trabalhar na nova matriz que está no topo
+- Usamos **`glMatrixMode(GL_...)`** para escolher com qual pilha de matrizes queremos aplicar transformações
 
 ---
 ## Push, Pop (cont.)
@@ -387,7 +423,7 @@ quadro.
 - Usar `glPushMatrix()`/`glPopMatrix()` é preferível porque eles tornam
   desnecessários desfazer as transformações - que, tipicamente, se faz
   aplicando a transformação inversa
-  
+
 ---
 # Referências
 
