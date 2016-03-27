@@ -56,13 +56,13 @@ configuração** para ajudar os alunos do futuro. O tutorial vale
 
 Envie a imagem com a _screenshot_ pelo [Moodle](http://moodle.cefetmg.br).
 
-Envie o tutorial pelo [Sistema de Tutoriais OpenGL](http://opengl.meteor.com). Não deixe de fazer login no sistema antes.
+Envie o tutorial pelo [Sistema de Tutoriais OpenGL](http://opengl-tutorials.herokuapp.com/). Não deixe de fazer login no sistema antes.
 
 
 ## Referências de apoio
 
 Veja os tutoriais criados pelos alunos de Computação Gráfica em semestres anteriores:
 
-- Sistema [Tutoriais OpenGL](http://opengl.meteor.com)
+- Sistema [Tutoriais OpenGL](http://opengl-tutorials.herokuapp.com/)
 
 Note que ainda não há tutoriais ensinando a instalar o **glew**, pois 2016/01 é o primeiro semestre em que vamos utilizá-lo na disciplina.
