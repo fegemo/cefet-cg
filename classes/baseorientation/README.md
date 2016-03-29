@@ -1,13 +1,48 @@
-# Geometria - Exercícios
+# Mudança de Base e Orientação
 
 ---
 # Roteiro
 
-1. Produto Vetorial
 1. Orientação
-1. Mudança de Sistema de coordenadas
+1. Produto Vetorial
+1. Mudança de Sistema de Coordenadas
 1. Exercícios
 
+---
+# Orientação
+
+---
+## Orientação
+
+- Orientação de 2 pontos em 1D
+  - <span class="math">P_1 < P_2</span>, <span class="math">P_1 = P_2</span> ou <span class="math">P_1 > P_2</span>
+- Orientação de 3 pontos em 2D
+  - O percurso <span class="math">P_1, P_2, P_3</span>  é feito no sentido dos ponteiros do relógio, no
+    sentido contrário ou são colineares
+
+    ![](../../images/orientacao.png)
+
+---
+## Orientação
+
+- Orientação de 4 pontos em 3D
+  - O percurso <span class="math">P_1, P_2, P_3, P_4</span>  está definido segundo a regra da mão direita,
+    mão esquerda ou são coplanares
+
+    ![](../../images/orientacao3d.png)
+
+---
+## Computando a orientação
+
+- A orientação de <span class="math">n+1</span> pontos em um espaço n-dimensional é dado pelo **sinal
+  do determinante da matriz** cujas colunas são as coordenadas homogêneas
+  dos pontos **com o 1 vindo primeiro**
+
+  ![](../../images/orientacao-comp.png)
+- O OpenGL faz isto internamente para descobrir
+  qual a orientação dos polígonos
+
+---
 ---
 # Produto Vetorial
 
@@ -30,38 +65,6 @@
     - <span class="math">u \times (v + w) = (u \times v) + (u \times w)</span>
   - <span class="math">u \times v</span> é perpendicular tanto a <span class="math">u</span> quanto a <span class="math">v</span>
   - O comprimento de <span class="math">u \times v</span> é igual a área do paralelogramo definido por  <span class="math">u</span> e <span class="math">v</span>, isto é, <span class="math">| u \times v | = | u | | v | \sin \theta</span>
-
----
-# Orientação
-
----
-## Orientação
-
-- Orientação de 2 pontos em 1D
-  - P1 < P2 , P1 = P2 ou P1 > P2
-- Orientação de 3 pontos em 2D
-  - O percurso P1 , P2 , P3  é feito no sentido dos ponteiros do relógio, no
-    sentido contrário ou são colineares
-
-    ![](../../images/orientacao.png)
-
----
-## Orientação
-
-- Orientação de 4 pontos em 3D
-  - O percurso P1 , P2 , P3 , P4  está definido segundo a regra da mão direita,
-    mão esquerda ou são coplanares
-
-    ![](../../images/orientacao3d.png)
-
----
-## Computando a orientação
-
-- A orientação de n+1 pontos em um espaço n-dimensional é dado pelo **sinal
-  do determinante da matriz** cujas colunas são as coordenadas homogêneas
-  dos pontos **com o 1 vindo primeiro**
-
-  ![](../../images/orientacao-comp.png)
 
 ---
 # Mudança de Sistema de Coordenadas
@@ -110,20 +113,43 @@
 ---
 ## Mudança de Sistema (cont.)
 
-- Matricialmente:
-
-  ![](../../images/coord-eq5.png)
-- Usando coordenadas homogêneas:
+- ![right](../../images/coord-eq5.png)
+  A equação anterior, vista **de forma matricial**:
+- Usando **coordenadas homogêneas**, podemos usar
+  **apenas uma multiplicação** de matriz com vetor:
 
   ![](../../images/coord-eq6.png)
+- Ou seja, dadas as coordenadas de um ponto ou vetor em um sistema Q/T/U, podemos **achar suas coordenadas em um sistema O/X/Y <u>multiplicando as coordenadas por uma matriz</u>**
 
 ---
 ## Mudança de Sistema (cont.)
 
-- Para resolver o problema inverso:
+- Se quiser passar uma coordenada do sistema O/X/Y para Q/T/U, basta **resolver o problema inverso**:
 
   ![](../../images/coord-eq7.png)
 
+---
+## Exemplo Concreto
+
+- Considere que:
+  - <span class="math">P[Q/T/U] = (2.5, 1)</span>
+  - Sistema <span class="math">Q/T/U</span> dado em <span class="math">O/X/Y</span>:
+    - <span class="math">Q[O/X/Y]= (3.5, 1.25)</span>
+    - <span class="math">T[O/X/Y]= (-1, 0.25)</span>
+    - <span class="math">U[O/X/Y]= (-0.25, -1)</span>
+- Calcule as coordenadas de <span class="math">P</span> no sistema <span class="math">O/X/Y</span>.
+
+---
+## Resolvendo o Exercício
+
+- Matriz de mudança de sistemas de coordenadas:
+
+  ![](../../images/coord-eq6.png)
+
+- Materializando para o <span class="math">P</span>
+
+  <div class="math">\begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=\begin{bmatrix}-1&-0.25&3.5\\\0.25&-1&1.25\\\0&0&1\end{bmatrix} \cdot \begin{bmatrix}2.5\\\1\\\1\end{bmatrix}</div>
+- Resultado: <span class="math">P[O/X/Y] = (0.75, 0.875)</span>
 
 ---
 # Referências
