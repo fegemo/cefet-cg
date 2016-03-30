@@ -24,6 +24,8 @@
 
 - [Geometria](classes/geometry) (17/03/2016)
 - [Transformações Geométricas](classes/transforms) (22/03/2016)
+- [Orientação e Mudança de Coordenadas](classes/baseorientation) (29/03/2016)
+- [O Pipeline Gráfico](classes/pipeline) (05/04/2016)
 
 ---
 # Objetivos
