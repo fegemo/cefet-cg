@@ -1185,6 +1185,14 @@ thead > tr {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.bespoke-slide[data-bespoke-backdrop="pipeline-subway"] h2 {
+  padding: 0.15em 0.5em;
+  border-radius: 0.25em;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.15) 100%);
+  font-weight: bolder;
+  color: #0833bf;
+  text-shadow: 2px 2px #000;
+}
 .paradigma-universos.bespoke-backdrop-active {
   background-image: url("../images/paradigma-universos-legenda.png");
   background-size: cover;

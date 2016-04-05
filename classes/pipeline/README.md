@@ -61,14 +61,18 @@
   - Depende da cena e de como foi implementada
 - Na analogia do hospital:
   1. Os **vértices** são os **pacientes** que precisam ser renderizados
-  1. Para isso eles precisam passar por algumas etapas, em que **são transformados**
-  1. Os **atendentes/enfermeiros/médicos** são componentes de **_software_ ou _hardware_**
+  1. Para isso eles precisam passar por algumas etapas, em que **são
+    transformados**
+  1. Os **atendentes/enfermeiros/médicos** são componentes de **_software_
+    ou _hardware_**
 
 ---
 # Estágio de **aplicação**
 
 ---
 ## Estágio de **aplicação**
+
+![](../../images/pipeline-grafico-fases-aplicacao.png)
 
 - Controlado pelo desenvolvedor
 - É onde define-se a descrição dos objetos da cena
@@ -79,8 +83,8 @@
 ---
 ## Estágio de **aplicação** (cont.)
 
-- Como este estágio está **completamente em _software_**, geralmente ele não é subdividido
-  paralelizado
+- Como este estágio está **completamente em _software_**, geralmente ele
+  não é subdividido paralelizado
 - Atividades típicas que executamos neste estágio
   - Cálculo de colisão
   - Atualização de lógica de animação
@@ -89,6 +93,8 @@
 
 ---
 # Estágio de **geometria**
+
+![](../../images/pipeline-grafico-fases-geometria.png)
 
 ---
 ## Estágio de **geometria**
@@ -209,6 +215,8 @@
 ---
 # Estágio de **Rasterização**
 
+![](../../images/pipeline-grafico-fases-rasterizacao.png)
+
 ---
 ## Estágio de **Rasterização**
 
@@ -221,14 +229,16 @@
 ---
 ## Rasterização &gt;&gt; (1) Configuração de Triângulos
 
-- Neste estágio, informações sobre os triângulos definidos pelos vértices são
+- ![right](../../images/triangle-assembly.png)
+  Neste estágio, informações sobre os triângulos definidos pelos vértices são
   determinadas
   - Basicamente, determina-se a conectividade das primitivas
 
 ---
 ## Rasterização &gt;&gt; (2) _Scan Conversion_
 
-- Cada pixel que tem seu centro "coberto" por um triângulo é verificado e um
+- ![right](../../images/scan-conversion-triangle.png)
+  Cada pixel que tem seu centro "coberto" por um triângulo é verificado e um
   fragmento é criado
 - Determinar que pixels estão dentro de um triângulo é denominado _scan
   conversion_
@@ -238,7 +248,8 @@
 ---
 ## Rasterização &gt;&gt; (3) Sombreamento de ~~Pixels~~ Fragmentos
 
-- Para cada fragmento, devemos obter sua cor
+- ![right](../../images/shading-triangle.png)
+  Para cada fragmento, devemos obter sua cor
 - Várias técnicas podem ser usadas aqui
   - Sombreamento de _Phong_
   - Sombreamento de _Goraud_

@@ -38,15 +38,11 @@
   do determinante da matriz** cujas colunas são as coordenadas homogêneas
   dos pontos **com o 1 vindo primeiro**
 
-  <span class="math">
-    Or_2(P_1,P_2,P_3)=sign\left(\begin{vmatrix}1&1&1\\\x_1&x_2&x_3\\\y_1&y_2&y_3\end{vmatrix}\right)
-  </span>
-  <span class="math">
-    Or_3(P_1,P_2,P_3,P_4)=sign\left(\begin{vmatrix}1&1&1&1\\\x_1&x_2&x_3&x_4\\\y_1&y_2&y_3&y_4\\\z_1&z_2&z_3&z_4\end{vmatrix}\right)
-  </span>
+  ![](../../images/orientacao-comp.png)
 - O OpenGL faz isto internamente para descobrir
   qual a orientação dos polígonos
 
+---
 ---
 # Produto Vetorial
 
@@ -54,22 +50,21 @@
 ## Produto Vetorial
 
 - Da geometria Euclidiana, permite achar um vetor perpendicular a outros dois
-- ![right](../../images/prod-vetorial-grafico.png)
-  Útil na construção de sistemas de coordenadas
-  <div class="math" style="display: inline-block;">
-    \vec{u} \times \vec{v} = \begin{bmatrix}u_y v_z - u_z v_y\\\u_z v_x - u_x v_z\\\u_x v_y - u_y v_x\end{bmatrix}
-  </div>
+- Útil na construção de sistemas de coordenadas
+
+  ![](../../images/prod-vetorial.png)
+  ![](../../images/prod-vetorial-grafico.png)
 
 ---
 ## Produto Vetorial (cont.)
 
-- Propriedades (assume-se <span class="math">\vec{u}</span>, <span class="math">\vec{v}</span> linearmente independentes):
-  - Antisimetria: <span class="math">\vec{u} \times \vec{v} = -\vec{v} \times \vec{u}</span>
+- Propriedades (assume-se <span class="math">u</span>, <span class="math">v</span> linearmente independentes):
+  - Antisimetria: <span class="math">u \times v = -v \times u</span>
   - Bilinearidade:
-    - <span class="math">\vec{u} \times (\alpha \vec{v}) = \alpha (\vec{u} \times \vec{v})</span>  e
-    - <span class="math">\vec{u} \times (\vec{v} + \vec{w}) = (\vec{u} \times \vec{v}) + (\vec{u} \times \vec{w})</span>
-  - <span class="math">\vec{u} \times \vec{v}</span> é perpendicular tanto a <span class="math">\vec{u}</span> quanto a <span class="math">\vec{v}</span>
-  - O comprimento de <span class="math">\vec{u} \times \vec{v}</span> é igual a área do paralelogramo definido por  <span class="math">\vec{u}</span> e <span class="math">\vec{v}</span>, isto é, <span class="math">\lVert \vec{u} \times \vec{v} \rVert = \lVert \vec{u} \rVert \lVert \vec{v} \rVert \sin \theta</span>
+    - <span class="math">u \times (\alpha v) = \alpha (u \times v)</span>  e
+    - <span class="math">u \times (v + w) = (u \times v) + (u \times w)</span>
+  - <span class="math">u \times v</span> é perpendicular tanto a <span class="math">u</span> quanto a <span class="math">v</span>
+  - O comprimento de <span class="math">u \times v</span> é igual a área do paralelogramo definido por  <span class="math">u</span> e <span class="math">v</span>, isto é, <span class="math">| u \times v | = | u | | v | \sin \theta</span>
 
 ---
 # Mudança de Sistema de Coordenadas
@@ -90,9 +85,8 @@
 ---
 ## Mudança de Sistema
 
-- Se estabelecemos um outro sistema (ex.: <span class="math">Q</span>/
-  <span class="math">T</span>/<span class="math">U</span>), como computar
-  as coordenadas nesse novo sistema?
+- Se estabelecemos um outro sistema (ex.: <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span>), como computar as coordenadas
+  nesse novo sistema?
 
   ![](../../images/coord-grafico.png)
 
@@ -110,120 +104,52 @@
 ---
 ## Algebricamente...
 
-<style>
-.steps-base-change {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  counter-reset: step;
-}
-.steps-base-change > li::before {
-  counter-increment: step;
-  content: "Passo " counter(step);
-  counter-increment: step;
-  content: "Passo " counter(step);
-  font-size: 0.6em;
-  background: orange;
-  border-radius: 0.25em;
-  padding: 0em 0.5em;
-  color: white;
-  box-shadow: 2px 2px 3px rgba(0,0,0,0.25);
-  display: block;
-  width: 4em;
-  line-height: 2em;
-}
-.steps-base-change > li:nth-of-type(1),
-.steps-base-change > li:nth-of-type(2) {
-  justify-content: space-between;
-  width: 50%;
-}
-.steps-base-change > li:nth-of-type(3),
-.steps-base-change > li:nth-of-type(4) {
-  width: 100%;
-}
-.steps-base-change > li:nth-of-type(2) {
-  text-align: left;
-}
-</style>
+![](../../images/coord-eq3.png)
 
-<ul class="steps-base-change">
-  <li>
-    <span class="math bullet">P[Q]=t_P T + u_P U + Q</span>
-  </li>
-  <li>
-    <span class="math bullet">\color{red}{Q[O]}=x_Q X + y_Q Y + O</span><br>
-    <span class="math bullet">\color{blue}{T[O]}=x_T X + y_T Y</span><br>
-    <span class="math bullet">\color{green}{U[O]}=x_U X + y_U Y</span>
-  </li>
-  <li>
-    <span class="math bullet">=t_P \color{blue}{\left(x_T X + y_T Y\right)} + u_P \color{green}{\left(x_U X + y_U Y\right)} + \color{red}{\left(x_Q X + y_Q Y + O\right)}</span>
-    <span class="math bullet">=X \left(t_P x_T + u_P x_U + x_Q\right) + Y \left(t_P y_T + u_P y_U + y_Q\right) + O</span>
-  </li>
-  <li>
-    <div class="math bullet">x_P=t_P x_T + u_P x_U + x_Q</div>
-    <div class="math bullet">y_P=t_P y_T + u_P y_U + y_Q</div>
-  </li>
-</ul>
+- Logo,
+
+  ![](../../images/coord-eq4.png)
 
 ---
 ## Mudança de Sistema (cont.)
 
-- <div class="math" style="float: right;">
-    \begin{bmatrix}x_P\\\y_P\end{bmatrix}=
-    \begin{bmatrix}x_T&x_U\\\y_T&y_U\end{bmatrix}\times
-    \begin{bmatrix}t_P\\\u_P\end{bmatrix}+
-    \begin{bmatrix}x_Q\\\y_Q\end{bmatrix}
-  </div>
+- ![right](../../images/coord-eq5.png)
   A equação anterior, vista **de forma matricial**:
 - Usando **coordenadas homogêneas**, podemos usar
   **apenas uma multiplicação** de matriz com vetor:
 
-  <div class="math">
-    \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=
-    \begin{bmatrix}x_T&x_U&x_Q\\\y_T&y_U&y_Q\\\0&0&1\end{bmatrix}\times
-    \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}
-  </div>
-- Ou seja, dadas as coordenadas de um ponto ou vetor em um sistema Q/T/U,
-  podemos **achar suas coordenadas em um sistema O/X/Y <u>multiplicando as
-  coordenadas por uma matriz</u>**
+  ![](../../images/coord-eq6.png)
+- Ou seja, dadas as coordenadas de um ponto ou vetor em um sistema Q/T/U, podemos **achar suas coordenadas em um sistema O/X/Y <u>multiplicando as coordenadas por uma matriz</u>**
 
 ---
 ## Mudança de Sistema (cont.)
 
-- Se quiser passar uma coordenada do sistema O/X/Y para Q/T/U, basta
-  **resolver o problema inverso**:
+- Se quiser passar uma coordenada do sistema O/X/Y para Q/T/U, basta **resolver o problema inverso**:
 
-  <div class="math">
-    \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=
-    \begin{bmatrix}x_T&x_U&x_Q\\\y_T&y_U&y_Q\\\0&0&1\end{bmatrix}^{-1}\times
-    \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}
-  </div>
+  ![](../../images/coord-eq7.png)
 
 ---
 ## Exemplo Concreto
 
 - Considere que:
-  - <span class="math">P[Q] = (2.5, 1)</span>
-  - Sistema <span class="math">Q/T/U</span> dado em
-    <span class="math">O/X/Y</span>:
-    - <span class="math">Q[O]= (3.5, 1.25)</span>
-    - <span class="math">T[O]= (-1, 0.25)</span>
-    - <span class="math">U[O]= (-0.25, -1)</span>
-- Calcule as coordenadas de <span class="math">P</span> no sistema
-  <span class="math">O/X/Y</span>.
+  - <span class="math">P[Q/T/U] = (2.5, 1)</span>
+  - Sistema <span class="math">Q/T/U</span> dado em <span class="math">O/X/Y</span>:
+    - <span class="math">Q[O/X/Y]= (3.5, 1.25)</span>
+    - <span class="math">T[O/X/Y]= (-1, 0.25)</span>
+    - <span class="math">U[O/X/Y]= (-0.25, -1)</span>
+- Calcule as coordenadas de <span class="math">P</span> no sistema <span class="math">O/X/Y</span>.
 
 ---
 ## Resolvendo o Exercício
 
 - Matriz de mudança de sistemas de coordenadas:
-  <div class="math">
-    \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=
-    \begin{bmatrix}x_T&x_U&x_Q\\\y_T&y_U&y_Q\\\0&0&1\end{bmatrix}\times
-    \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}
-  </div>
+
+  ![](../../images/coord-eq6.png)
+
 - Materializando para o <span class="math">P</span>
+
   <div class="math">\begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=\begin{bmatrix}-1&-0.25&3.5\\\0.25&-1&1.25\\\0&0&1\end{bmatrix} \cdot \begin{bmatrix}2.5\\\1\\\1\end{bmatrix}</div>
-- Resultado: <span class="math">P[O] = (0.75, 0.875)</span>
+- Resultado: <span class="math">P[O/X/Y] = (0.75, 0.875)</span>
 
 ---
 # Referências
