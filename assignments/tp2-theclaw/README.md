@@ -23,27 +23,30 @@ nota, deve ter os seguintes itens:
 - **Mundo**:
   1. Deve haver um mundo definido razoavelmente grande, com um "chão" que
     pode ser modelado por um plano horizontal.
-    - No centro do mundo, deve haver uma **_claw machine_**, modelada de forma
-      hierárquica. A garra pode ser feito usando-se apenas os sólidos da GLU
-      e GLUT (cone, pirâmide, cubo, esfera, cilindro etc.).
-    - Deve haver 01 tipo de objeto, com instâncias espalhadas dentro
+    - No centro do mundo, deve haver uma **_claw machine_** simples,
+      modelada de forma hierárquica. A garra pode ser feito usando-se
+      apenas os sólidos da GLU e GLUT (cone, pirâmide, cubo, esfera,
+      cilindro etc.).
+    - Deve haver 1 tipo de objeto, com instâncias espalhadas dentro
       da máquina (como brinquedos, balas etc.). Também é possível usar
       apenas GLU e GLUT para eles.
       - Os objetos podem estar espalhados de forma que um não fique em cima
         do outro.
 - **Garra**:
   - Ela deve possuir ao menos 3 "dedos" para pegar os objetos e
-    deve executar o movimento de abertura e fechamento dos "dedos".
+    deve ser capaz de executar o movimento de abertura e fechamento
+    dos "dedos".
     - Caso não queira modelá-la com dedos, você pode criar algo semelhante,
       contanto que seja feita a modelagem de forma hierárquica (_i.e._, com
       `glPushMatrix()...glPopMatrix` aninhados)
   - Pode ser controlada pelo usuário com movimentos em todos os
-    sentidos das 3 dimensões utilizando as _"arrow keys"_
+    sentidos dos eixos X e Z utilizando as _"arrow keys"_
     (<kbd>&uarr;</kbd><kbd>&rarr;</kbd><kbd>&darr;</kbd><kbd>&larr;</kbd>).
   - A <kbd>barra de espaço</kbd> deve fazer o movimento para que
     a barra desça para tentar capturar um objeto.
-    - Capturando ou não, a garra faz um movimento de descida, subida e depois
-      de retorno à sua "posição de repouso".
+    - Capturando ou não, a garra faz um movimento de descida, fecha os dedos,
+      faz o movimento da subida e depois de retorno à sua "posição de repouso",
+      só então abrindo os dedos e eventualmente liberando o objeto capturado.
     - Durante a movimentação "automática", ela não pode ser controlada.
   - Se a garra colide com um objeto, ela o captura, volta para sua altura
     original, volta para sua posição de repouso e solta o objeto.
@@ -84,7 +87,7 @@ extras com suas respectivas pontuações **máximas**:
     objetos de forma _hard-coded_, crie um arquivo num formato proposto
     por você mesmo (_e.g._, `objetos-claw-machine.tp2`) que descreve quantos,
     que tipos, as posições e as orientações (rotação nos 3 eixos) dos objetos.
-  1. :collision: **Modelos no formato .obj (até 10%)**: em vez de usar os
+  1. :bomb: :boom: **Modelos no formato .obj (até 10%)**: em vez de usar os
     sólidos da GLU/GLUT, modele um objeto \*simples\* usando um _software_
     CAD, salve-o num formato \*simples\* (_e.g._, `.obj`) e carregue-o no
     seu programa. Há alguns tutoriais disponíveis nas _interwebs_ sobre
@@ -95,12 +98,12 @@ extras com suas respectivas pontuações **máximas**:
     especificação básica) de que todos os objetos devem estar no chão e
     coloque-os amontados. Repare que a garra precisa, então, saber reconhecer
     direitinho com qual objeto houve colisão.
-  1. :bomb: :collision: :boom: **Física (até 8%)**: faça com que
+  1. :bomb: :boom: **Física (até 8%)**: faça com que
     os objetos obedeçam as leis da física para gravidade e atrito, de
     forma que eles se (re)acomodem quando um objeto for retirado.
 - Relativas à **Garra**:
-  1. **Animação de abertura/fechamento (8%)**: faça a garra abrir e fechar
-    quando for o caso.
+  1. **Animação de abertura/fechamento (8%)**: faça a garra abrir e fechar,
+    quando for o caso, de forma animada.
 - Relativas à **Câmera**:
   1. Visões **laterais (5%)**: ao se pressionar <kbd>c</kbd> ou <kbd>v</kbd>, a
     câmera deve trocar de posição como se o jogador tivesse andado para a
