@@ -72,11 +72,6 @@ gulp.task('md', function() {
     .pipe(isDist ? through() : plumber())
     .pipe(gulp.dest('dist/classes'))
     .pipe(connect.reload()));
-  tasks.push(gulp.src('assignments/**/*.md')
-    .pipe(changed('dist/assignments'))
-    .pipe(isDist ? through() : plumber())
-    .pipe(gulp.dest('dist/assignments'))
-    .pipe(connect.reload()));
   return merge(tasks);
 });
 
@@ -105,10 +100,11 @@ gulp.task('css-classes', function() {
 });
 
 gulp.task('images', function() {
-  return gulp.src('images/**/*')
+  var tasks = [];
+  tasks.push(gulp.src('images/**/*')
     .pipe(changed('dist/images'))
     .pipe(gulp.dest('dist/images'))
-    .pipe(connect.reload());
+    .pipe(connect.reload()));
 });
 
 gulp.task('attachments', function() {
@@ -157,7 +153,7 @@ function getFolders(cwd, dir) {
 }
 
 gulp.task('build', ['js', /*'js-classes',*/ 'html', 'md', 'css', 'css-classes', 'images', 'videos', 'attachments', 'samples', 'favicon'], function() {
-  var folders = getFolders('.', 'classes').concat(getFolders('.', 'assignments')),
+  var folders = getFolders('.', 'classes'),
       tasks = folders.map(function(folder) {
         var t = [];
         t.push(gulp.src(['html/index.html'])
@@ -190,7 +186,7 @@ gulp.task('watch', function() {
   gulp.watch('scripts/*.js', ['js']);
   // gulp.watch('scripts/classes/*.js', ['js-classes']);
   gulp.watch('html/**/*.html', ['html']);
-  gulp.watch(['README.md', 'classes/**/*.md', 'assignments/**/*.md'], ['md']);
+  gulp.watch(['README.md', 'classes/**/*.md'], ['md']);
   gulp.watch('styles/**/*.styl', ['css']);
   gulp.watch('styles/classes/*.css', ['css-classes']);
   gulp.watch('images/**/*', ['images']);

@@ -312,13 +312,13 @@ _A wild TP2 appears..._
 ---
 ## TP2: O Garra
 
-<img alt="" src="../../assignments/tp2-theclaw/images/o-garra.gif"
+<img alt="" src="https://github.com/fegemo/cefet-cg/raw/master/assignments/tp2-theclaw/images/o-garra.gif"
   style="float: right; width: 420px; margin: 0 0 5px 20px">
   _"Dizem que a_ 'claw machine' _(máquina de garra)
   foi inventada por volta de 1893 e só em 1926 a primeira delas
   foi patenteada como_ 'The Erie Digger' _"_
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-tprain/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-theclaw/README.md)).
 
 ---
 # Referências
