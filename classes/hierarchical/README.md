@@ -1,5 +1,6 @@
-# Composição de Transformações e Modelagem Hieráquica
-
+# Composição de Transformações
+## +
+# Modelagem Hieráquica
 ---
 # Objetivos
 
@@ -13,7 +14,7 @@
 ## Composição de Transformações
 
 - Frequentemente é necessário fazer várias transformações
-  geométricas posicionar objetos
+  geométricas para posicionar objetos
   - Exemplo: combinação de rotações e translações
 - A **ordem** com que transformações são aplicadas importa
   - Multiplicação de matrizes não é comutativa
@@ -31,8 +32,6 @@
   <img src="../../images/composicao-transformacoes-grafico-1.png" class="bullet bullet-no-anim" style="position:absolute;top:0;left:0;">
   <img src="../../images/composicao-transformacoes-grafico-2.png" class="bullet bullet-no-anim" style="position:absolute;top:0;left:0;">
 </figure>
-
-
 
 ---
 ## Compondo transformações
@@ -55,6 +54,9 @@
   - <span class="math">C = A * B</span>
 - Qual forma usar **depende de como você prefere pensar**
   - O OpenGL usa **pós-multiplicação**
+
+---
+# Marotinho: [Transformação em OpenGL](https://moodle.cefetmg.br/mod/quiz/view.php?id=18346)
 
 ---
 ## Duas formas de se pensar
@@ -164,8 +166,10 @@
   - Chame as funções de transformação nessa ordem
   - OpenGL faz pós-multiplicação de matrizes
   - A matriz de acumulação multplicará os vértices dos objetos
+- Exemplo: [Composição de Tranformações](codeblocks:composicao-transformacao/CodeBlocks/composicao-transformacao.cbp)
 
 ---
 # Modelagem Hierárquica
 
 - Vide slides do professor Moisés Pereira
+- Exemplo: [Braço do Robô](codeblocks:braco-robo/CodeBlocks/braco-robo.cbp)

@@ -18,15 +18,19 @@
 - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (10/03/2016)
 - [Cê](classes/c) (15/03/2016)
 - [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (15/03/2016)
+- [Geometria](classes/geometry) (17/03/2016)
 
 ---
 # Aulas (página 2)
 
-- [Geometria](classes/geometry) (17/03/2016)
 - [Transformações Geométricas](classes/transforms) (22/03/2016)
 - [Orientação e Mudança de Coordenadas](classes/baseorientation) (29/03/2016)
 - [O Pipeline Gráfico](classes/pipeline) (05/04/2016)
 - [Projeção](classes/projection) (07/04/2016)
+- [Modelagem Hierárquica](classes/hierarchical) (12/04/2016)
+- [Iluminação e Sombreamento](classes/lighting) (14/04/2016)
+- [Modelagem de Objetos](classes/modeling) (19/04/2016)
+
 
 ---
 # Objetivos
