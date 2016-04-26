@@ -28,8 +28,9 @@
 - [O Pipeline Gráfico](classes/pipeline) (05/04/2016)
 - [Projeção](classes/projection) (07/04/2016)
 - [Modelagem Hierárquica](classes/hierarchical) (12/04/2016)
-- [Iluminação e Sombreamento](classes/lighting) (14/04/2016)
-- [Modelagem de Objetos](classes/modeling) (19/04/2016)
+- [Iluminação e Sombreamento](classes/lighting) (14 e 19/04/2016)
+- [Modelagem de Objetos](classes/modeling) (26/04/2016)
+- [Texturas](classes/textures) (28/04/2016)
 
 
 ---
@@ -142,12 +143,12 @@
 
 - [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
 - [TP1: Tá Chovendo {Paradas}][tp1] (20 pontos)
-- TP2: ~~_Townsville_~~, grupos <span class="math">\leq</span> 3 (20 pontos)
+- [TP2: O Garra][tp2], grupos <span class="math">\leq</span> 3 (20 pontos)
 - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
   - Primeira parte: no laboratório
   - Segunda parte: no laboratório
 
 [tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-tprain/README.md
-[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-townsville/README.md
+[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-theclaw/README.md
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3

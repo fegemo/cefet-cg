@@ -402,7 +402,7 @@ for num in (2..5)
   will-change opacity
   transition opacity 200ms ease-out 0ms
   pointer-events none
-  &.bespoke-backdrop-active
+  &.bespoke-backdrop
     opacity 1
     transition-delay 800ms
 
@@ -468,12 +468,13 @@ full-dimension-backdrop(repeat)
     background-image linear-gradient(to bottom, rgba(white, .5) 0%, rgba(white,0.15) 100%)
     font-weight bolder
     color #0833BF
-    text-shadow 2px 2px black    
+    text-shadow 2px 2px black
 
 .paradigma-universos.bespoke-backdrop-active
   background-image url(../images/paradigma-universos-legenda.png)
   full-dimension-backdrop(false)
-  background-size: inherit
+  background-size inherit
+  background-position 3% 97%
 
 .stars.bespoke-backdrop
   background-image url(../images/stars-bg.png)
