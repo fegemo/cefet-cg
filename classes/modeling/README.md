@@ -41,7 +41,8 @@
   - Implícita ou explicitamente contém informações do fechamento e
     conectividade dos objetos
   - Garante a realização física
-  - Sistemas <abbr title="Computer Aided Design">CAD</abbr>-<abbr title="Computer Aided Manufacture">CAM</abbr>
+  - Sistemas <abbr title="Computer Aided Design">CAD</abbr>-
+    <abbr title="Computer Aided Manufacture">CAM</abbr>
     utilizados pela indústria
 
 ---
@@ -76,9 +77,13 @@ backdrop: paradigma-universos
 - MATEMÁTICO
   - Contém uma **descrição abstrata** dos objetos do mundo físico
 - REPRESENTAÇÃO
-  - Constituído por **representações simbólicas e finitas** associadas a objetos do universo matemático
+  - Constituído por **representações simbólicas e finitas** associadas a
+    objetos do universo matemático
 - IMPLEMENTAÇÃO
-  - Associamos às descrições simbólicas e finitas do universo de representação com **estrutura de dados**, com a finalidade de se obter uma representação do objeto no computador
+  - Associamos às descrições simbólicas e finitas do universo de
+    representação com **estrutura de dados**, com a finalidade de se
+    obter uma representação do objeto no computador
+- Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
 
 ---
 <!--
@@ -100,6 +105,7 @@ backdrop: paradigma-universos
 -->
 
 # Representação
+
 ---
 <!--
 backdrop: paradigma-universos
@@ -196,16 +202,16 @@ backdrop: paradigma-universos
 ## Operações sobre Malhas Poligonais
 
 - <img src="../../images/malha-arestas.png" style="float: right; margin-left: 20px">
-  **Desenhar a malha** (óbviozão)
+  **Desenhar a malha**
 - Achar todas as arestas que incidem em um vértice
 - Achar as faces que incidem numa aresta ou vértice
 - Achar as arestas na fronteira de uma face
 
 ---
-# Codificação
+# Implementação
 
 ---
-## Tipos de Codificação
+## Tipos de **Codificação de Malhas**
 
 1. Explícita
 1. Ponteiros para lista de vértices
@@ -220,7 +226,7 @@ backdrop: paradigma-universos
 - A **mais simples**
 - **Cada face** armazena explicitamente a **lista ordenada das coordenadas dos
   seus vértices**:
-  <div class="math">P={(x_1,y_1,z_1),(x_2,y_2,z_2),...,(x_n,y_n,z_n)}</div>
+  <div class="math">P={(x_1,y_1,z_1),(x_2,y_2,z_2),\cdots,(x_n,y_n,z_n)}</div>
 - Muita redundância de informação
 - Consultas são complicadas
   - Obriga a execução de algoritmos geométricos para determinar adjacências
@@ -247,7 +253,7 @@ backdrop: paradigma-universos
 
 ![](../../images/malha-ponteiro-lista-vertices.png)
 
-- <span class="math">V = \left\\{ V_1 = (x_1, y_1, z_1), V_2 = (x_2, y_2, z_2), ..., V_4 = (x_4, y_4, z_4) \\right\\}</span>
+- <span class="math">V = \left\\{ V_1 = (x_1, y_1, z_1), V_2 = (x_2, y_2, z_2), \cdots, V_4 = (x_4, y_4, z_4) \\right\\}</span>
 - <span class="math">P_1 = \left\\{ V_1, V_2, V_4 \\right\\}</span>
 - <span class="math">P_2 = \\left\\{ V_4, V_2, V_3 \\right\\}</span>
 
@@ -298,12 +304,13 @@ backdrop: paradigma-universos
   - Não desenha arestas duas vezes
   - Fácil achar adjacência entre vértices
 - Desvantagens:
-  - Achar adjacências ainda é complicado
-    - <q>A aresta <span class="math">E_1</span> é adjacente a
-      <span class="math">E_1</span>?</q>
-    - <q>A face <span class="math">P_1</span> é adjacente a
-      <span class="math">P_1</span>?</q>
-
+  - Achar adjacências ainda é complicado:
+    - <q>Me dê todas as arestas adjacentes a <span class="math">E_1</span></q>
+      - É necessário percorrer todas as arestas para fazê-lo:
+        <span class="math">O(E)</span>
+    - <q>Me dê todas as faces adjacentes a <span class="math">V_1</span></q>
+      - Para cada face, visitar cada aresta e ver se o vértice está lá:
+        <span class="math">O(F\*3\*2) = O(6F) = O(F)</span>
 ---
 ## (4) _Winged-Edge_ (Aresta Alada)
 
