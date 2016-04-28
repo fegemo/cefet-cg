@@ -15,8 +15,13 @@
 ---
 # Roteiro
 
+1. Textura como uma função
 1. Mapeando cores
+1. Texturas procedurais
 1. Outras proprieadades mapeáveis
+  - Alturas (_height mapping_)
+  - Perturbações na normal (_bump mapping_)
+  - Normais (_normal mapping_)
 
 ---
 # O que temos até agora
@@ -32,8 +37,8 @@
     - Tecidos ou uma parede de tijolos
 - Em princípio, é possível modelar esses detalhes com geometria e usando
   materiais de propriedades óticas distintas
-- Na prática, esses efeitos são modelados usando uma técnica chamada
-  mapeamento de textura
+- Na prática, **esses efeitos são modelados usando uma técnica chamada
+  mapeamento de textura**
 
 ---
 # Mapeamento de cores
@@ -60,12 +65,13 @@
     1. Um código de barras
        ![](../../images/textura-1d2.png)
 - Pode ser representado como um array de valores RGB
-- Contudo, é mais elegante considerar que uma textura é uma função que mapeia
-  um ponto `t` no espaço da textura a um valor RGB
-  - Dessa forma, dado um valor 0 &le; t &le; 1, a função T(t) retorna um valor RGB
+- Contudo, é mais elegante considerar que **uma textura é uma função que mapeia
+  um ponto <span class="math">s</span> no espaço da textura a um valor RGB**
+  - Dessa forma, dado um valor <span class="math">0 \le s \le 1</span>,
+    a função <span class="math">T(s)</span> retorna um valor RGB
 
 ---
-## Textura em 1D - Exemplo sem textura
+## Textura em 1D - Exemplo sem textura (glColor)
 
 ![](../../images/textura-triangulo-gouraud.png)
 
@@ -82,6 +88,10 @@
   glEnable(GL_TEXTURE_1D);
   ```
 - Em segundo lugar, você deve ter disponibilizado um _array_ que contém valores de cor.
+- Você pode:
+  - Abrir um arquivo de imagem e recuperar esse _array_ ("na mão", ou
+    usando uma biblioteca _e.g._ [SOIL](http://www.lonesock.net/soil.html)) ou
+  - Criar uma função que gere esse array (textura procedural)
 
 ---
 ## Textura 1D no OpenGL (cont.)
@@ -98,17 +108,20 @@
     arrayCores);      // array com as cores
   ```
 - [Referência](https://www.opengl.org/sdk/docs/man2/xhtml/glTexImage1D.xml)
+- A [SOIL](http://www.lonesock.net/soil.html) chama este método internamente,
+  quando você invoca `SOIL_load_OGL_texture(...)`
 
 ---
 ## Textura 1D no OpenGL (cont.)
 
-- Por fim, você deve atribuir, para cada vértice do seu objeto, um valor `t`
-  que representa qual o ponto da textura será mapeado a ele:
+- Por fim, você deve atribuir, para cada vértice do seu objeto, um valor
+  <span class="math">s</span> que representa qual o ponto da textura
+  será mapeado a ele:
   ```c
   glBegin(GL_TRIANGLES);
-    glTexCoord1f(0.2); // t = 0.2
+    glTexCoord1f(0.2); // s = 0.2
     glVertex3fv(p1);
-    glTexCoord1f(0.8);
+    glTexCoord1f(0.8); // s = 0.8
     glVertex3fv(p2);
     // ...
   glEnd();
@@ -119,7 +132,8 @@
 
 ![](../../images/textura-2d.png)
 
-- Exatamente como 1D, porém o espaço da textura é T(s,t) em vez de T(t)
+- Exatamente como 1D, porém o espaço da textura é
+  <span class="math">T(s,t)</span> em vez de <span class="math">T(s)</span>
 
 ---
 ## Textura 2D (cont.)
@@ -127,7 +141,7 @@
 ![](../../images/texture-space.png)
 
 - Tipicamente, representamos qualquer textura 2D no espaço bidimensional com
-  0 &le; s, t &le; 1
+  <span class="math">0 \le s,t \le 1</span>
 
 ---
 ## Parametrização de superfície
@@ -137,19 +151,19 @@
 
   ![](../../images/textura-parametrizacao-esfera.png)
 - Devemos associar cada ponto da superfície do objeto com duas coordenadas
-  `(u,v)` no **espaço da superfície**
+  <span class="math">(u,v)</span> no **espaço da superfície**
 
 ---
 ## Função de mapeamento
 
 - Retorna o ponto do objeto correspondente a cada ponto do espaço de textura
-  (x, y, z) = F (s, t)
+  <span class="math">(x, y, z) = F (s, t)</span>
 - Corresponde à forma com que a textura é usada para "embrulhar" (_wrap_)
   o objeto
   - Na verdade, na maioria dos casos, precisamos de uma função que nos
     permita "desembrulhar" (_unwrap_) a textura do objeto, isto é, a
     inversa da função de mapeamento
-- Se a superfície do objeto pode ser descrita em forma paramétrica esta pode
+- Se a superfície do objeto pode ser descrita em forma paramétrica, esta pode
   servir como base para função de mapeamento
 
 ---
@@ -197,7 +211,7 @@
 ![](../../images/texture-projections.png)
 
 - Tipicamente, o mapeamento da textura é feito durante a modelagem dos objetos
-  (e.g., no blender) e armazenado no arquivo do objeto
+  e armazenado no arquivo do objeto
 
 ---
 ## Exemplo na vida real (cont.)
@@ -258,7 +272,8 @@
 ---
 ## Texturas 2D em OpenGL (cont.)
 
-- (4) Por fim, devemos mapear cada vértice a um valor (s,t) da textura usando
+- (4) Por fim, devemos mapear cada vértice a um valor
+  <span class="math">(s,t)</span> da textura usando
   `glTextCoord*` para cada vértice
   ```c
   glBegin(GL_POLYGON);
@@ -419,13 +434,11 @@ void makeCheckImage()
     ```
 
 ---
-## Exemplo de **height map**
+## Exemplo de **height map** ([Explicação](http://www.lighthouse3d.com/opengl/terrain/index.php?heightmap))
 
 <video width="496" height="496" class="left-aligned" poster="../../images/height-map-poster.png" controls loop>
   <source src="../../videos/height-map.mp4" type="video/mp4" />
 </video>
-
-- [Explicação](http://www.lighthouse3d.com/opengl/terrain/index.php?heightmap) em lighthouse3d
 
 ---
 # Referências
