@@ -414,6 +414,7 @@ void makeCheckImage()
 
 - [Demonstração](http://coryg89.github.io/MoonDemo/) do [Cory Gross](http://coryg89.github.io/)
 - [Explicação](http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/) sobre como a demonstração foi feita
+- Pergunta: por que o _normal map_ é azulado? :3
 
 ---
 ## Exemplo de **bump mapping**
