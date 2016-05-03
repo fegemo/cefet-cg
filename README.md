@@ -32,6 +32,10 @@
 - [Modelagem de Objetos](classes/modeling) (26/04/2016)
 - [Texturas](classes/textures) (28/04/2016)
 
+---
+# Aulas (página 3)
+
+- [Efeitos Visuais](classes/visual-effects) (03/05/2016)
 
 ---
 # Objetivos

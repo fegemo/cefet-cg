@@ -3,9 +3,9 @@
 ---
 ## O espectro de renderização
 
-_"The **goal of rendering** is to **portray an object on the screen**; how we attain
-  that goal is our choice"_
-  (Akenine Möller e amigos)
+_"The **goal of rendering** is to **portray an object on the screen**;
+  how we attain that goal is our choice"_
+  (Akenine-Möller e amigos)
 
 <img src="../../images/rendering-spectrum-1.png" class="bullet">
 <img src="../../images/rendering-spectrum-2.png" class="bullet">
@@ -13,11 +13,15 @@ _"The **goal of rendering** is to **portray an object on the screen**; how we at
 ---
 # Objetivos
 
-1. Entender o funcionamento de **_skyboxes_** para maquear a limitação do campo de visão
-1. Conhecer a técnica de **_billboarding_** e **_spriting_** para renderização "barata"
-1. Simular o comportamento e aparência de gases e fogo com **sistemas de partículas**
+1. Entender o funcionamento de **_skyboxes_** para maquear a limitação do
+  campo de visão
+1. Conhecer a técnica de **_billboarding_** e **_spriting_** para
+  renderização "barata"
+1. Simular o comportamento e aparência de gases e fogo com **sistemas
+  de partículas**
 1. Conhecer técnicas para geração de **sombras**
-1. Conhecer técnicas para simulação de reflexão (espelho, metal etc.) usando **_environment mapping_**
+1. Conhecer técnicas para simulação de reflexão (espelho, metal etc.)
+  usando **_environment mapping_**
 1. Conhecer efeitos de câmera **_depth of field_** e **_motion blur_**
 
 ---
@@ -31,16 +35,13 @@ backdrop: skybox
 ## _Skybox_
 
 - ![right](../../images/skybox-structure.jpg)
-  Para maquear a limitação do campo de visualização, podemos usar um _**skybox**_
-  envolvendo todo o frustum
+  Para maquear a limitação do campo de visualização, podemos usar um
+  _**skybox**_ envolvendo todo o frustum
 - Um _skybox_ é tipicamente criando usando um **cubo** cujas faces internas
-  recebem texturas que representam o que pode ser visto no **horizonte da cena**
+  recebem texturas que representam o que pode ser visto no **horizonte
+  da cena**
   - Mas outros modelos podem ser usados além do cubo
   - O _skybox_ **deve ser mover** juntamente com o **campo de visão**
-- Por quê podemos usar um _skybox_?
-  - _**Parallax**_ (ou paralaxe) é a diferença de
-  - Para objetos muito próximos do nosso campo de visão, o efeito do
-    _parallax_ é muito grande. Mas para objetos distantes, ele pode ser ignorado
 
 ---
 <!--
@@ -57,8 +58,8 @@ backdrop: billboarding
 - Uma **_sprite_** é uma imagem desenhada diretamente na cena
   - Pode ter os pixels desenhados diretamente, ou a partir de uma textura
     aplicada a um retângulo
-  - Animações quadro a quadro podem ser feitas, utilizando mais imagens e alterando qual
-    imagem está sendo mostrada
+  - Animações quadro a quadro podem ser feitas, utilizando mais imagens e
+    alterando qual imagem está sendo mostrada
 - Um caso especial de _sprite_ é a técnica de **_billboarding_**
   - Neste caso, o polígono texturizado é **orientado de acordo
     com a direção de visualização**
@@ -119,7 +120,8 @@ _Screen-aligned_
 ![left](../../images/axis-aligned-billboard-1.png)
 ![right](../../images/axis-aligned-billboard-2.png)
 
-- Código fonte em [codesampler.com](http://www.codesampler.com/oglsrc/oglsrc_8.htm)
+- Código fonte em
+  [codesampler.com](http://www.codesampler.com/oglsrc/oglsrc_8.htm)
 
 ---
 # Sombras em Tempo Real
@@ -193,7 +195,8 @@ _Screen-aligned_
   1. Computar a distância <span class="math">d_P</span> de
     <span class="math">P</span> até a fonte de luz
   1. Converter <span class="math">P</span> das coordenadas do mundo para
-    coordenadas do _shadow map_ (usando matrizes <span class="math">projection * view</span> usada para gerar o mapa)
+    coordenadas do _shadow map_ (usando matrizes
+    <span class="math">projection * view</span> usada para gerar o mapa)
   1. Recuperar a distância <span class="math">d_{min}</span> no mapa
   1. <span class="math">P</span> está na sombra se
     <span class="math">d_P \leq d_{min}</span>, _i.e._, se estiver atrás de um
@@ -240,7 +243,6 @@ backdrop: particles
 
 - Um **sistema de partículas** é um conjunto de objetos pequenos colocados
   em movimento, usando algum algoritmo
-  - Os _boids_ podem ser considerados um sistema de partículas
 - Com ele, é possível simular: **fogo, fumaça, explosões, galáxias giratórias,
   lançamento de magias, efeito de "_level up_"** etc.
 
@@ -269,7 +271,7 @@ backdrop: particles
 - Estágio de renderização (`void desenha()`):
   - Partículas são tipicamente renderizadas usando uma **_sprite_ ou
     um _billboard_**
-  - Mas também podemos usar GL_POINTS, GL_LINES
+  - Mas também podemos usar `GL_POINTS`, `GL_LINES`
 
 ---
 ## Sistema de Partículas: C/C++
@@ -356,6 +358,15 @@ backdrop: depth-of-field
 - Em OpenGL, podemos usar o **_accumulation buffer_**
   - [Como fazer _depth of field_](http://www.glprogramming.com/red/chapter10.html), no livro vermelho
   - [Referência do `glAccum`](https://www.opengl.org/sdk/docs/man2/xhtml/glAccum.xml) na documentação do OpenGL
+
+---
+## _Depth of field_ usando _Accumulation Buffer_
+
+![](../../images/depth-of-field-accum.png)
+
+- "Tira fotos" deslocando a câmera levemente para cada lado
+- Mescla as fotos usando o _accumulation buffer_
+- Regiões laterais ficam fora de foco
 
 ---
 ## _Motion blur_

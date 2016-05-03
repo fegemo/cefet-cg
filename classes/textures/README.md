@@ -410,10 +410,12 @@ void makeCheckImage()
 ![](../../images/moon-demo.png)
 
 ![left](../../images/texture-moon.png)_
-![right](../../images/texture-moon-normals.png)
+![right](../../images/textuvee-moon-normals.png)
 
-- [Demonstração](http://coryg89.github.io/MoonDemo/) do [Cory Gross](http://coryg89.github.io/)
-- [Explicação](http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/) sobre como a demonstração foi feita
+- [Demonstração](http://coryg89.github.io/MoonDemo/) do
+  [Cory Gross](http://coryg89.github.io/)
+- [Explicação](http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/)
+  sobre como a demonstração foi feita
 - Pergunta: por que o _normal map_ é azulado? :3
 
 ---
