@@ -1274,6 +1274,7 @@ thead > tr {
 }
 .particle-system-fire.bespoke-backdrop-active {
   background-image: url("../images/particle-system-fire.jpg");
+  opacity: 0.5;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
