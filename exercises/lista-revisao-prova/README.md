@@ -79,7 +79,7 @@ void Desenha() {
 
 ![](images/espiral.png)
 
-_Dikentinha: Uma espiral é um círculo cujo raio vai aumentando._
+_Dikentinha: Uma espiral parte de um cículo cujo raio vai aumentando._
 
 
 **Questão 4**: Sobre o _pipeline_ gráfico:
@@ -95,7 +95,7 @@ _Dikentinha: Uma espiral é um círculo cujo raio vai aumentando._
 
 **Questão 7**: O que é _Z-buffer_ ou _depth buffer_ e qual sua principal função para a renderização de imagens?
 
-**Questão 8**: Determine um produto de matrizes homogêneas que represente a sequência de transformações geométricas que leva a janela da figura da esquerda na janela da figura da direita.
+**Questão 8**: Determine um produto de **matrizes homogêneas** que represente a sequência de transformações geométricas que leva a janela da figura da esquerda na janela da figura da direita. Considere apenas as coordenadas x e y.
 
 ![](images/coordenadas.png)
 
@@ -119,9 +119,7 @@ _Sua resposta deve ser dada graficamente, <u>na forma de uma árvore</u> cujos n
   1. Difusa
   1. Especular
 
-**Questão 13**: Qual é o impacto em uma imagem renderizada de se alterar (aumentar, diminuir) o valor do coeficiente de especularidade do material aplicado a um objeto que sofre contribuição de uma fonte de luz que tem componente especular diferente de zero?
-
-**Questão 14**: Sobre modelos de sombreamento constante, _Gouraud_ e _Phong_, responda:
+**Questão 13**: Sobre modelos de sombreamento constante, _Gouraud_ e _Phong_, responda:
 
 1. Discuta seu custo computacional.
 1. Quais deles são oferecidos pelo OpenGL?
