@@ -38,7 +38,7 @@ backdrop: raytraced-teapot
 - Materiais realísticos (pinturas, vidro) etc.
 
 ---
-## _Soft shadows_ (sombras com penumbra)
+## _Soft shadows_ (sombras com **penumbra**)
 
 ![](../../images/soft-shadows.jpg)
 
@@ -160,12 +160,13 @@ backdrop: raytraced-teapot
   - Foi uma das primeiras áreas de pesquisa
   - Existem rotinas otimizadas para vários tipos de primitivas (esferas, toróides, triângulos etc.)
 - Devem calcular diversos tipos de informação:
+  - Para **raios primários**: ponto de interseção, material, normal
   - Para _shadow rays_: intercepta/não intercepta
-  - Para raios primários: ponto de interseção, material, normal
   - Coordenadas de textura
+- Mas como **representar um raio**?
 
 ---
-## Como **representar um raio**?
+## **Representação** de um **raio**
 
 ![](../../images/raytracing-ray.png)
 
@@ -234,6 +235,10 @@ public:
   - Veja como fazer para uma esfera no próximo slide...
 
 ---
+<!--
+  backdrop: raytracing-collision
+-->
+
 ## Exemplo: Interseção com Esfera
 
 - Primeiramente, vamos **simplificar** o problema e assumir que a **esfera é
@@ -244,6 +249,10 @@ public:
 - (continua...)
 
 ---
+<!--
+  backdrop: raytracing-collision
+-->
+
 ## Exemplo: Interseção com Esfera (2)
 
 - Logo,
