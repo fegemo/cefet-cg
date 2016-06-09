@@ -26,10 +26,12 @@ O código para carregar o arquivo de entrada nesse formato e também o código p
 Para a descrição da cena, o que é relevante para o trabalho é:
 
 - Posição da **câmera**:
+
   ```java
   Vector3 posicaoCamera = scene.camera.eye;
   ```
 - Posição, cor e atenuação das **fontes de luz**:
+
   ```java
   Light luz = scene.lights.get(0);
   Vector3 posicaoDaLuz = luz.position;
@@ -39,11 +41,13 @@ Para a descrição da cena, o que é relevante para o trabalho é:
   double atenuacaoQuadratica = luz.quadraticAttenuation;
   ```
 - Cor dos **pigmentos**:
+
   ```java
   Pygment pigmento = objetoAtingido.pygment;
   Vector3 corDoPigmento = pigmento.color;
   ```
 - Coeficientes (de Phong) dos **materiais**:
+
   ```java
   Material material = objetoAtingido.material;
   double coeficienteAmbiente = material.ambientCoefficient;
@@ -52,6 +56,7 @@ Para a descrição da cena, o que é relevante para o trabalho é:
   double expoenteEspecular = material.specularExponent;
   ```
 - Posição, raio, pigmento e material das **esferas** (classe `Object`):
+
   ```java
   Vector3 posicaoDaEsfera = esfera.position;
   double raioDaEsfera = esfera.radius;
