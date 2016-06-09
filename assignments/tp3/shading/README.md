@@ -5,7 +5,7 @@ Veja as instruções sobre a primeira parte do trabalho a seguir.
 ## Parte 2: **Colorindo** os pixels com o sombreamento de Phong-_ish_
 
 Nesta parte, vocês implementarão o modelo de iluminação e sombreamento bem semelhante ao de Phong, que está descrito na apostila do bisavô de vocês, o Prof. David Mount.
-Você pode usar o código pronto da primeira parte, mas eu sugiro [baixar o do professor aqui](http://moodle.cefetmg.br/mod/resource/view.php?id=15443) porque ele está cheio de comentários mostrando o que deve ser feito, passo a passo.
+Você pode usar o código pronto da primeira parte, mas eu sugiro baixar o do professor no Moodle porque ele está cheio de comentários mostrando o que deve ser feito, passo a passo.
 
 As saídas para os arquivos de entrada de exemplo devem ser idênticas a estas:
 
