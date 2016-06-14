@@ -29,7 +29,7 @@ backdrop: ninokuni
 # Evolução do _hardware_ gráfico
 
 ---
-## Geração I: 3dfx Voodoo (1996)
+## Geração I: 3dfx Voodoo (**1996**)
 
 - ![right](../../images/3dfx-voodoo-1.png)
   Uma das primeiras placas gráficas com aceleração para operações 3D
@@ -48,7 +48,7 @@ backdrop: threed-hardware-generation-1
 # Duke Nuken 3D (1996)
 
 ---
-## Geração II: GeForce/Radeon 7500 (1998)
+## Geração II: GeForce/Radeon 7500 (**1998**)
 
 - ![right](../../images/nvidia-geforce-256.png)
   Principal inovação: cálculo de **transformação e iluminação** passaram a ser feitos pela GPU
@@ -67,7 +67,7 @@ backdrop: threed-hardware-generation-2
 # Resident Evil 2 (1998)
 
 ---
-## Geração III: GeForce3/Radeon 8500 (2001)
+## Geração III: GeForce3/Radeon 8500 (**2001**)
 
 - ![right](../../images/ati-radeon-8500.png)
   Principal inovação: **programabilidade** no pipeline, nas operações com vértices
@@ -83,7 +83,7 @@ backdrop: threed-hardware-generation-3
 # Max Payne (2001)
 
 ---
-## Geração IV: Radeon 9700/GeForce FX (2002)
+## Geração IV: Radeon 9700/GeForce FX (**2002**)
 
 - ![right](../../images/ati-radeon-9700.png)
   Primeira geraçao com pipeline "totalmente" programável
@@ -93,22 +93,24 @@ backdrop: threed-hardware-generation-3
 ![](../../images/3d-hardware-generation-4.png)
 
 ---
-## Geração IV e meio: GeForce6/X800 (2004)
+## Geração IV e meio: GeForce6/X800 (**2004**)
 
-- Renderização simultânea para mais de um _buffer_
-  - Aceleração para sombras, múltiplas câmeras na cena (_e.g._, um retrovisor de um carro,
-    um avatar 3D do personsagem selecionado)
-- Para os _shaders_, condicionais e _loops_ (antes não tinha :)
-- Aumento de precisão de 32bits para 64bits nas operações do pipeline
-- Surgimento do barramento PCIe (PCI express)
+- **Renderização simultânea** para mais de um _buffer_
+  - Aceleração para sombras, múltiplas câmeras na cena (_e.g._, um
+    retrovisor de um carro, um avatar 3D do personsagem selecionado)
+- Para os _shaders_, **condicionais e _loops_** (antes não tinha :)
+- Aumento de precisão de 32bits para **64bits** nas operações do pipeline
+- Surgimento do **barramento PCIe** (PCI express)
 
 ---
 # OpenGL Moderno
 
 - No pipeline fixo, certas decisões estão encrustadas
-- Para tirar proveito das novas características do _hardware_, o OpenGL (e o DirectX) evoluíram
-  - Em vez de oferecer apenas um modelo de iluminação (Phong), agora você pode criar o seu
-  - Na prática, podemos escrever:
+- Para tirar proveito das novas características do _hardware_, o OpenGL
+  (e o DirectX) evoluíram
+  - Em vez de oferecer apenas um modelo de iluminação (Phong), agora você
+    pode criar o seu
+  - Na prática, escrevemos:
     - Aplicação: igual já fazemos
     - **_Vertex shader_**: Programas que calculam a cor de cada vértice
     - **_Fragment (pixel) shader_**: Programas que calculam a cor de cada pixel
@@ -570,15 +572,6 @@ vec2 W = M * V; // W = vec2(7.0, 10.0)
   o _setup()_ da cena
 - Para isso, de dentro da aplicação, devemos **chamar uma série de comandos**:
   ![](../../images/modern-create-shader.png)
-
----
-## Código OpenGL de criação dos _shaders_
-
-
-
----
-## Iniciando dados e comunicando com os _shaders_
-
 
 ---
 ## Gouraud _shading_

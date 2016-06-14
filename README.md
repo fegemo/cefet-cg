@@ -38,6 +38,8 @@
 - [Efeitos Visuais](classes/visual-effects) (03/05/2016)
 - [Animações](http://fegemo.github.io/cefet-games/classes/animation) (24/05/2016)
 - [Ray tracing 1](classes/raytracing) (31/05/2016)
+- [Ray tracing 2](classes/raytracing2) (07/06/2016)
+- [Pipeline Programável](classes/programmable-pipeline) (14/06/2016)
 
 ---
 # Objetivos
