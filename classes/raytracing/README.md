@@ -184,9 +184,9 @@ backdrop: raytraced-teapot
     <h3>Em C:</h3>
     <pre style="text-align: left; ">
       <code class="hljs">struct ray {
-  Vector3 p0
+  Vector3 p0;
   Vector3 v;
-}</code>
+};</code>
     </pre>
   </section>
   <section style="border-right: 4px dotted silver; background: aliceblue;">
@@ -194,16 +194,16 @@ backdrop: raytraced-teapot
     <pre style="text-align: left; ">
       <code class="hljs">class ray {
 public:      
-  Vector3 p0
+  Vector3 p0;
   Vector3 v;
-}</code>
+};</code>
     </pre>
   </section>
   <section style="background: darkseagreen;">
     <h3>Em Java:</h3>
     <pre style="text-align: left;">
       <code class="hljs">public class Ray {
-  public Vector3 p0
+  public Vector3 p0;
   public Vector3 v;
 }</code>
     </pre>
