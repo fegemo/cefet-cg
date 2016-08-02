@@ -21,13 +21,13 @@ var fs = require('fs'),
   path = require('path'),
   merge = require('merge-stream'),
   opn = require('opn'),
-  isDist = process.argv.indexOf('serve') === -1;
+  isDist = process.argv.indexOf('dev') === -1;
 
 
 gulp.task('js', function() {
   return browserify({
       entries: 'scripts/main.js',
-      debug: true
+      debug: !isDist
     })
     .bundle()
     .pipe(source('build.js'))
@@ -53,7 +53,12 @@ gulp.task('js', function() {
 
 gulp.task('html', function() {
   return gulp.src('html/index.html')
-    .pipe(preprocess({context: { NODE_ENV: isDist ? 'production' : 'development', DEBUG: true}}))
+    .pipe(preprocess({
+      context: {
+        NODE_ENV: isDist ? 'production' : 'development',
+        DEBUG: true
+      }
+    }))
     .pipe(isDist ? through() : plumber())
     .pipe(replace('{path-to-root}', '.'))
     .pipe(gulp.dest('dist'))
@@ -80,7 +85,7 @@ gulp.task('css', function() {
     .pipe(changed('dist/build'))
     .pipe(isDist ? through() : plumber())
     .pipe(stylus({
-      // Allow CSS to be imported from node_modules and bower_components
+      // allows CSS to be imported from node_modules
       'include css': true,
       'paths': ['./node_modules']
     }))
@@ -151,34 +156,27 @@ function getFolders(cwd, dir) {
     });
 }
 
-gulp.task('build', ['js', /*'js-classes',*/ 'html', 'md', 'css', 'css-classes', 'images', 'videos', 'attachments', 'samples', 'favicon'], function() {
+gulp.task('build', ['js', /*'js-classes',*/ 'html', 'md', 'css', 'css-classes',
+  'images', 'videos', 'attachments', 'samples', 'favicon'], function() {
   var folders = getFolders('.', 'classes'),
       tasks = folders.map(function(folder) {
         var t = [];
         t.push(gulp.src(['html/index.html'])
-          .pipe(preprocess({context: { NODE_ENV: isDist ? 'production' : 'development', DEBUG: true}}))
+          .pipe(preprocess({
+            context: {
+              NODE_ENV: isDist ? 'production' : 'development',
+              DEBUG: true
+            }
+          }))
           .pipe(replace('{path-to-root}', '../..'))
           .pipe(gulp.dest(path.join('dist', folder))));
-        t.push(gulp.src(['node_modules/bespoke-math/node_modules/katex-build/fonts/**/*'])
+        t.push(gulp.src([
+          'node_modules/bespoke-math/node_modules/katex-build/fonts/**/*'
+        ])
           .pipe(gulp.dest(path.join('dist', folder, 'fonts'))));
         return merge(t);
       });
   return merge(tasks);
-});
-
-gulp.task('deploy', function(done) {
-  ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
-});
-
-gulp.task('serve', ['watch', 'build'], function(done) {
-  var port = 8080;
-  connect.server({
-    root: ['dist'],
-    port: port,
-    livereload: true
-  });
-
-  opn('http://localhost:' + port, done);
 });
 
 gulp.task('watch', function() {
@@ -191,4 +189,17 @@ gulp.task('watch', function() {
   gulp.watch('images/**/*', ['images']);
 });
 
-gulp.task('default', ['serve']);
+gulp.task('dev', ['watch', 'build'], function(done) {
+  const port = 8080;
+  connect.server({
+    root: ['dist'],
+    port: port,
+    livereload: true
+  });
+
+  opn(`http://localhost:${port}`, done);
+});
+
+gulp.task('deploy', function(done) {
+  ghpages.publish(path.join(__dirname, 'dist'), { logger: gutil.log }, done);
+});
