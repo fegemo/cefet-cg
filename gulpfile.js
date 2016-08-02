@@ -100,11 +100,10 @@ gulp.task('css-classes', function() {
 });
 
 gulp.task('images', function() {
-  var tasks = [];
-  tasks.push(gulp.src('images/**/*')
+  return gulp.src('images/**/*')
     .pipe(changed('dist/images'))
     .pipe(gulp.dest('dist/images'))
-    .pipe(connect.reload()));
+    .pipe(connect.reload());
 });
 
 gulp.task('attachments', function() {
