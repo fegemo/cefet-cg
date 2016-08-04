@@ -14,9 +14,10 @@
 ---
 ## Computação Gráfica
 
-**s.f.** conjunto de algoritmos, técnicas e metodologias para o tratamento
-e a representação gráfica de informações através da criação, armazenamento e
-manipulação de desenhos por meio de computadores e periféricos gráficos.
+Definição: *s.f.* conjunto de **algoritmos, técnicas e metodologias** para
+o **tratamento e a representação gráfica de informações** através da
+criação, armazenamento e manipulação de desenhos por meio de
+computadores e periféricos gráficos.
 
 ---
 ## Áreas de aplicação
@@ -75,7 +76,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ![Interação da Computação Gráfica com outras áreas](../../images/interacao-areas.png)
 
 ---
-# Problemas abordados em Computação Gráfica
+# **Problemas abordados** em Computação Gráfica
 
 ---
 ## Problemas
@@ -85,11 +86,13 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Processamento Digital de Imagens
 
-- Área que envolve as técnicas de transformação de imagens, em que tanto a imagem original
-  quanto a imagem resultado apresentam-se sob uma representação visual (geralmente matricial).
-– Estas transformações visam melhorar as características visuais da imagem. Ex.:
-  - aumentar contraste
-  - alterar foco
+- Área que envolve as **técnicas de transformação de imagens**, em que tanto
+  a imagem original quanto a imagem resultado apresentam-se **sob uma
+  representação visual** (geralmente matricial)
+- Estas transformações **visam melhorar as características visuais da imagem**,
+  _e.g._:
+  - aumentar o contraste
+  - alterar o foco
   - diminuir ruídos e algumas distorções
 
 ---
@@ -100,8 +103,10 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Análise de Imagens
 
-- Área que procura obter a especificação dos componentes de uma imagem a partir de sua representação visual.
-– Por exemplo, reconstrução de primitivas elementares (cubos, esferas, etc.) que aproximam um objeto visualizado em uma imagem
+- Área que procura **obter a especificação dos componentes de uma imagem a
+  partir de sua representação visual**
+- Por exemplo, reconstrução de primitivas elementares
+  (cubos, esferas, etc.) que aproximam um objeto visualizado em uma imagem
 
 ---
 ## Exemplo: Análise de Imagens
@@ -116,9 +121,10 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Modelagem
 
-- A modelagem geométrica consiste de um **conjunto de métodos que visam descrever a forma e as
-  características geométricas de um objeto**. Ela provê uma descrição ou modelo muito mais analítico,
-  matemático e abstrato que o real.
+- A modelagem geométrica consiste de um **conjunto de métodos que visam
+  descrever a forma e as características geométricas de um objeto**
+- Ela provê uma descrição ou modelo muito mais analítico,
+  matemático e abstrato que o real
 
 ---
 ## Exemplo: Modelagem
@@ -126,7 +132,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ![](../../images/modeling.png)
 
 ---
-## Síntese
+## Síntese (ou renderização)
 
 - A síntese de imagem designa o **processo de geração de imagens
   digitais a partir da descrição dos elementos que compõem uma cena 3D**,
@@ -151,7 +157,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Professor, mas eu quero fazer desenhos em 3D!
 
-- Você pode e mesmo terá a oportunidade no nosso projeto final
+- Você pode fazer isso e ganhar pontinhos extras nos trabalhos
 - Contudo, o foco do curso está em conhecer e entender como funcionam as
   ferramentas utilizadas na criação de imagens e animações 3D
 - Algumas ferramentas para criar cenas 3D:
@@ -194,7 +200,7 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
 ---
 ## Outros monitores
 
-- Liquid Cristal Display (LCD)
+- _Liquid Cristal Display_ (LCD)
   - Cada pixel são três (rgb) "orifícios" que permitem passagem de luz branca
   - Demonstração: [Desmontando um monitor de LCD (Enginner Guy)][lcd-teardown]
 - Plasma
@@ -233,8 +239,8 @@ manipulação de desenhos por meio de computadores e periféricos gráficos.
   - 8 bits para verde
   - 8 bits para azul
   - Exemplo: <span class="color-portrait ffd5d5"> </span> (<span class="pure-red">255</span>, <span class="pure-green">213</span>, <span class="pure-blue">213</span>) ou (<span class="pure-red">1</span>, <span class="pure-green">0.84</span>, <span class="pure-blue">0.84</span>)
+    - Seletor de cores: <input type="color">
 - [Questionário Maroto - parte 1](https://moodle.cefetmg.br/mod/quiz/view.php?id=17597)
-
 
 ---
 # Representação de Imagens

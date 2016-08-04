@@ -14309,7 +14309,7 @@ module.exports = function(hljs) {
 };
 },{}],155:[function(require,module,exports){
 /**
- * isMobile.js v0.3.9
+ * isMobile.js v0.4.0
  *
  * A simple library to detect Apple phones and tablets,
  * Android phones and tablets, other mobile devices (like blackberry, mini-opera and windows phone),
@@ -14366,9 +14366,18 @@ module.exports = function(hljs) {
 
     var IsMobileClass = function(userAgent) {
         var ua = userAgent || navigator.userAgent;
+
         // Facebook mobile app's integrated browser adds a bunch of strings that
         // match everything. Strip it out if it exists.
         var tmp = ua.split('[FBAN');
+        if (typeof tmp[1] !== 'undefined') {
+            ua = tmp[0];
+        }
+
+        // Twitter mobile app's integrated browser on iPad adds a "Twitter for
+        // iPhone" string. Same probable happens on other tablet platforms.
+        // This will confuse detection so strip it out if it exists.
+        tmp = ua.split('Twitter');
         if (typeof tmp[1] !== 'undefined') {
             ua = tmp[0];
         }
@@ -14404,8 +14413,10 @@ module.exports = function(hljs) {
         };
         this.seven_inch = match(seven_inch, ua);
         this.any = this.apple.device || this.android.device || this.windows.device || this.other.device || this.seven_inch;
+
         // excludes 'other' devices and ipods, targeting touchscreen phones
         this.phone = this.apple.phone || this.android.phone || this.windows.phone;
+
         // excludes 7 inch devices, classifying as phone or tablet is left to the user
         this.tablet = this.apple.tablet || this.android.tablet || this.windows.tablet;
 
@@ -14420,10 +14431,10 @@ module.exports = function(hljs) {
         return IM;
     };
 
-    if (typeof module != 'undefined' && module.exports && typeof window === 'undefined') {
+    if (typeof module !== 'undefined' && module.exports && typeof window === 'undefined') {
         //node
         module.exports = IsMobileClass;
-    } else if (typeof module != 'undefined' && module.exports && typeof window !== 'undefined') {
+    } else if (typeof module !== 'undefined' && module.exports && typeof window !== 'undefined') {
         //browserify
         module.exports = instantiate();
     } else if (typeof define === 'function' && define.amd) {
