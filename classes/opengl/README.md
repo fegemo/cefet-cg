@@ -50,32 +50,41 @@ int main(int argc, char** argv)
 ```
 
 ---
-# Rodando nosso _Hello World_...
+# Excecutando nosso _Hello World_...
 
 ![Uma tela preta com um quadrado branco](../../images/opengl-hw-inicial.png)
 
 ---
 ## OpenGL
 
-1. _Open Graphics Library_ ou biblioteca gráfica aberta
-1. Funciona como uma **máquina de estados**
-1. É uma API (_Application Programming Interface_) de acesso a recursos (algoritmos
-   e mesmo _hardware_) gráficos que oferece rotinas para:
-  1. Desenhar primitivas e imagens
-  1. Alterar variáveis de estado (cor, material, fontes de luz)
-  1. Consultar variáveis de estado
+- _Open Graphics Library_ ou biblioteca gráfica aberta
+- Basicamente, nos possibilita desenhar na tela
+- Funciona como uma **máquina de estados**, _e.g._:
+  - Existe o conceito de "cor selecionada" e tudo é desenhado com ela,
+    até que se selecione outra
+- É uma **API** (_Application Programming Interface_) de acesso a **recursos
+  (algoritmos e mesmo _hardware_) gráficos**, que oferece rotinas para:
+  - **Desenhar primitivas geométricas (polígonos)** e imagens
+  - **Alterar variáveis de estado** (cor, material, fontes de luz)
+  - Consultar variáveis de estado
 
 ---
 ## OpenGL (cont.)
 
-1. OpenGL é um padrão em evolução
-  1. Mecanismo padronizado de extensões
-  1. Novas versões são estabelecidas por um comitê (ARB) de usuários e
+- OpenGL é um padrão em evolução (atualmente, v4.5)
+  - Novas versões são estabelecidas por um comitê
+    (chamado <abbr title="Architecture Review Board">ARB</abbr>) de usuários e
     fabricantes
-    1. Tornou-se _OpenGL Working Group_ dentro do _Khronos Group_ em
-      setembro de 2006
-1. Depende de um sistema de janelas
-  1. **OpenGL cuida apenas de gerar o "conteúdo" das janelas**
+    - Tornou-se _OpenGL Working Group_ dentro do [_Khronos Group_][khronos]
+      em setembro de 2006
+- **OpenGL cuida apenas de gerar o "conteúdo" das janelas**
+  - <u>Depende de um sistema de janelas</u>: alguém que lide com
+    operações relativas a janelas:
+    1. criar uma janela
+    1. maximizar, minimizar
+    1. lidar com o fechamento etc.
+
+[khronos]: https://www.khronos.org/
 
 ---
 # Sistemas de janelas
@@ -83,19 +92,23 @@ int main(int argc, char** argv)
 ---
 ## Sistemas de janelas (**SJ**)
 
-1. Principal meio de interação homem/máquina
-  1. Baseado no conceito de WIMP
-1. Tela é dividida em janelas (eventualmente superpostas) controladas por
-  aplicações que têm a incumbência de mantê-las sempre atualizadas
-1. Cada sistema operacional tem o seu. O linux tem MUITAS opções
-  1. Cada sistema de janelas possui uma API distinta
-    1. `#include 'QtOpenGL' `
-    1. `#include 'windows.h' `, etc.
+- Principal meio de interação homem/máquina
+  - Baseado no conceito de
+    <abbr title="Windows, Icons, Menus and Pointers">WIMP</abbr>
+- **Tela é dividida em janelas** (eventualmente superpostas) **controladas por
+  aplicações** que têm a incumbência de mantê-las sempre atualizadas
+- **Cada sistema operacional tem o seu SJ** e o linux tem várias opções
+  - `#include 'x.h'`
+  - `#include 'QtOpenGL'`
+  - `#include 'QuartzCore/QuartzCore.h'`
+  - `#include 'windows.h'`, etc.
+- Cada sistema de janelas possui uma <u>API distinta</u>
+  - Ou seja, uma aplicação feita para `windows.h` não funciona no Linux =/
 
 ---
 ## Sistemas de janelas (cont.)
 
-Utiliza o paradigma de **programação orientada a eventos** (PoE).
+Utiliza o paradigma de **programação orientada a eventos** (PoE)
 
 1. A interação é comunicada via **eventos**:
   - Mouse se movimentou (10u, 5u)
@@ -246,27 +259,28 @@ int main(int argc, char** argv) {
   ```
 
 ---
-
 <!--
   classes: "two-column-code"
 -->
 
 ## Freeglut – _Callback_ de **desenho**
 
-- Chamada automaticamente sempre que a janela precisa ser redesenhada
-- Contém comandos do OpenGL para desenhar coisas na janela:
+- Chamada automaticamente sempre que a **janela precisa ser redesenhada**
+- Tipicamente colocamos comandos do OpenGL para desenhar coisas:
   ```c
   void desenha() {
-      glClear(GL_COLOR_BUFFER_BIT);
+      glClear(  // mesma linha
+        GL_COLOR_BUFFER_BIT);
       glBegin(GL_LINE_LOOP);
           glVertex3fv(0,  0, 0);
           glVertex3fv(0, 10, 0);
       glEnd();
-      glutSwapBuffers();
+      glFlush();
   }
 
   //... resto do programa
-  int main(int argc, char** argv) {
+
+  int main(int c, char** v) {
       // ...
       glutDisplayFunc(desenha);
       // ...
@@ -280,8 +294,9 @@ int main(int argc, char** argv) {
 
 ## Freeglut – Callback de **redimensionamento**
 
-- Chamada sempre que a janela é redimensionada, isto é, teve seu tamanho
+- Chamada sempre que a **janela é redimensionada**, isto é, teve seu tamanho
   alterado
+  - Além disso, chama-se 1x assim que a janela é criada
 - Tem a forma
   ```c
   void redimensionada(
@@ -292,7 +307,7 @@ int main(int argc, char** argv) {
   // resto do programa
   int main(int argc/*...*/) {
       // ...
-      glutReshapeFunc(
+      glutReshapeFunc(  // :3
         redimensionada);
       // ...
   }
@@ -418,4 +433,6 @@ criadas. Modo é um "ou" bit-a-bit de constantes:
   - Opcionalmente, você pode escrever um guia passo a passo sobre
     como configurar o OpenGL usando suas ferramentas favoritas
   - Os passos **DEVEM** ser reprodutíveis e funcionar para que se consiga os pontos
-  - Enviar via Sistema de [Tutoriais OpenGL](http://opengl.meteor.com) da disciplina
+  - Enviar via Sistema de [Tutoriais OpenGL][sistema-tutoriais] da disciplina
+
+[sistema-tutoriais]: http://opengl-tutorials.herokuapp.com/
