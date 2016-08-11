@@ -11,14 +11,14 @@
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/) (25/02/2016)
-- [OpenGL, Sistemas de Janelas](classes/opengl/) (01/03/2016)
+- [Introdução à Computação Gráfica](classes/intro/) (04/08/2016)
+- [OpenGL, Sistemas de Janelas](classes/opengl/) (09/08/2016)
+- [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (11/08/2016)
+- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (16/08/2016)
+- [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (18/08/2016)
+- [Cê](classes/c) (23/08/2016)
 
 <!--
-- [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (03/03/2016)
-- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (08/03/2016)
-- [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (10/03/2016)
-- [Cê](classes/c) (15/03/2016)
 - [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (15/03/2016)
 - [Geometria](classes/geometry) (17/03/2016)
 

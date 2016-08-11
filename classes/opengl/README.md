@@ -17,8 +17,8 @@
 Apenas uma janela preta com um quadrado verde :)
 
 ```c
-#include "GL/glew.h"
-#include "GL/freeglut.h"
+#include "GL/glew.h"  // use sinal maior,menor
+#include "GL/freeglut.h" // aqui também
 
 void desenharMinhaCena(void)
 {
