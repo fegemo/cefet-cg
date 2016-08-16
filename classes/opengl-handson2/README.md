@@ -22,7 +22,8 @@
   double terraParaSol = 1.49597870700e11;
   long int numeroDeCliquesNosSlides = 20040402040l;
   ```
-- Esses tipos diferentes usam **quantidades diferentes de espaço (bits)** da memória
+- Esses tipos diferentes usam **quantidades diferentes de espaço (bits)**
+  da memória
   - Um `short int`, **normalmente** usa 16 bits
   - Um `int`, 32 bits
   - Um `float`, 32 bits
@@ -31,13 +32,16 @@
 ---
 ## Tipos em OpenGL
 
-- Contudo, compiladores (e plataformas) diferentes **podem** usar uma **quantidade de bits diferente** do tradicional
+- Contudo, compiladores (e plataformas) diferentes **podem** usar uma
+  **quantidade de bits diferente** do tradicional
   - Por exemplo, o console Nintendo possuía apenas 8 bits
-- O OpenGL, com seu objetivo de executar em plataformas variadas, sugere o uso de seus próprios tipos de dados
+- O OpenGL, com seu objetivo de executar em plataformas variadas, sugere
+  o uso de seus próprios tipos de dados
   - Exemplo: `GLint` em vez de `int`
-- Assim, **garante-se a precisão necessária** (_e.g._, 32 bits) em cada tipo de dados, em vez de deixar o compilador
-  da plataforma decidir
-- A seguir, veja o **mapeamento** dos tipos primitivos em **C para os tipos sugeridos pelo OpenGL**
+- Assim, **garante-se a precisão necessária** (_e.g._, 32 bits) em cada
+  tipo de dados, em vez de deixar o compilador da plataforma decidir
+- A seguir, veja o **mapeamento** dos tipos primitivos em **C para os
+  tipos sugeridos pelo OpenGL**
 
 ---
 ## Tabela de tipos do OpenGL
@@ -107,9 +111,10 @@
       // atualiza a tela (desenha() será invocada novamente)
       glutPostRedisplay();
       // registra a callback novamente
+      // por quê 25? 1000/25 = 40fps
       glutTimerFunc(25, atualizaCena, 0);
     }
-    glutTimerFunc(0, atualizaCena, 0); // no int main()
+    glutTimerFunc(0, atualizaCena, 0); // lá no int main()
   ```
 
 ---
@@ -120,9 +125,9 @@
   void timerColored()
   {
     color += colorIncrement;
-  	if (color > 1) {
+  	if (color > 1) {         // maior que
   		color = 1; colorIncrement = colorIncrement * -1;
-  	} else if (color < 0) {
+  	} else if (color < 0) {  // menor que
   		color = 0; colorIncrement = colorIncrement * -1;
   	}
     glutPostRedisplay();
@@ -221,7 +226,7 @@ void display(void)
 ```
 
 ---
-## **glBitmap**
+## [glBitmap](https://www.opengl.org/documentation/specs/glut/spec3/node76.html)
 
 ```c
 void glBitmap(
@@ -234,7 +239,7 @@ void glBitmap(
   const GLubyte* bitmap);
 ```
 
-## **glRasterPosi**
+## [glRasterPosi](https://msdn.microsoft.com/en-us/library/windows/desktop/dd373990(v=vs.85).aspx)
 
 ```c
 void glRasterPos2i(GLint x, GLint y);
@@ -261,24 +266,23 @@ void glRasterPos2i(GLint x, GLint y);
 ## **Exemplo** de texto na tela em GLUT
 
 ```c
-void texto(void* font, char* s, float x, float y, float z) {
-    unsigned int i;
-    glRasterPos3f(x, y, z);
+void texto(void* font, char* s, float x, float y) {
+  unsigned int i;
+  glRasterPos2f(x, y);
 
-    for (i = 0; i < strlen (s); i++) {
-       glutBitmapCharacter (font, s[i]);
-    }
+  for (i = 0; i < strlen (s); i++) {// menor que
+     glutBitmapCharacter(font, s[i]);
+  }
 }
 
 void display() {
-   glClear(GL_COLOR_BUFFER_BIT);
-   glColor3f (1.0, 1.0, 1.0);
-   texto(GLUT_BITMAP_HELVETICA_18, "FFF", 20, 20, 0);
-   glFlush();
+  glClear(GL_COLOR_BUFFER_BIT);
+  glColor3f (1.0, 1.0, 1.0);
+  texto(GLUT_BITMAP_HELVETICA_18, "FFF", 20, 20);
+  glFlush();
 }
 
 ```
-
 - [Exemplo de texto usando GLUT](codeblocks:fontes-glut/CodeBlocks/fontes-glut.cbp)
 - [Mesmo exemplo, em OpenGL puro](codeblocks:fontes-opengl/CodeBlocks/fontes-opengl.cbp)
 
@@ -303,15 +307,15 @@ void display() {
 ## Função: desenhaDisco(R, x, y, z)
 
 ```c
-void drawDisc(float R, float X, float Y, float Z) {
+void desenhaDisco(float raio, float x, float y, float z) {
   float t;
   int i;
 
   glBegin(GL_TRIANGLE_FAN);
-    glVertex3f( X, Y, Z);
-      for(i = 0; i <= NUM_LADOS; ++i) {
+    glVertex3f(x, y, z);
+      for(i = 0; i <= NUM_LADOS; ++i) {//menor ou igual
         t = 2 * M_PI * i / NUM_LADOS;
-        glVertex3f(X + cos(t) * R, Y + sin(t) * R, Z);
+        glVertex3f(x + cos(t) * raio, y + sin(t) * raio, z);
       }
   glEnd();
 }
@@ -328,15 +332,15 @@ void drawDisc(float R, float X, float Y, float Z) {
 ## **Depth Buffer**
 
 - O OpenGL simplesmente desenha os triângulos, na ordem que pedimos
-- Para que ele faça um teste da coordenada `Z`, precisamos ativar o **teste
-  de profundidade**
+- Para que ele faça um teste da coordenada `Z`, <u>precisamos ativar o **teste
+  de profundidade**</u>
   - ```c
     glEnable(GL_DEPTH_TEST);
     // desenha
     glDisable(GL_DEPTH_TEST);
     ```
-- Também precisamos limpar o _depth buffer_, da mesma forma que limpamos a cor
-  da janela
+- Também precisamos <u>limpar o _depth buffer_</u>, da mesma forma que
+  limpamos a cor da janela
   ```c
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   ```
