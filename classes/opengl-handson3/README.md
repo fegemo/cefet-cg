@@ -21,14 +21,14 @@
 ---
 ## Tentativa 1
 
-- Desenha-se o polígono preenchido
+- Desenha-se o polígono preenchido:
   ```c
   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
   glBegin(GL_TRIANGLE_STRIP);
     // 10 vértices aqui...
   glEnd();
   ```
-- Desenha-se o polígono em modo _wire_
+- Em seguida, desenha-se o polígono em modo _wire_:
   ```c
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
   glBegin(GL_TRIANGLE_STRIP);
@@ -41,14 +41,13 @@
 
 - Temos um **_code smell_** - algo está errado
 - **Não devemos repetir código** para que não precisemos alterar mais de um
-  lugar
+  lugar caso precisemos no futuro
   - Princípio DRY - _Don't Repeat Yourself_
 - Podemos resolver isso extraindo o código repetido para uma função...
+  - Esse processo se chama **refatorar o código**
 
 ---
-## Tentativa 2
-
-- Criamos uma função: `desenhaAnelQuadrado`
+## Tentativa 2: Criamos uma função: `desenhaAnelQuadrado()`
   ```c
   void desenhaAnelQuadrado() {
     glBegin(GL_TRIANGLE_STRIP);
@@ -73,8 +72,10 @@
 
 - Resolvemos o _code smell_, mas não paramos por aí
 - Se, em vez de 10 vértices, nosso polígono tivesse 1 mil vértices?
-  - Cada chamada a `glVertex` faz uma viagem da CPU à GPU
-- O OpenGL pode registrar um polígono caso queiramos desenhá-lo várias vezes
+  - Cada chamada a `glVertex` faz **uma viagem da CPU à GPU**
+    - Em outras palavras, é uma **_draw call_**
+- O OpenGL pode **registrar um polígono** caso queiramos desenhá-lo
+  várias vezes
 
 ---
 ## Tentativa 3 - usando **lista de visualização**
@@ -85,25 +86,26 @@
 - Assim, otimizamos bem as chamadas de desenho de vértices
 
 ---
-## Tentativa 3
+<!--
+  classes: two-column-code
+-->
+
+## Tentativa 3 (1/2)
 
 ```c
 int listaAnel;
 void criaListaAnelQuadrado() {
   listaAnel = glGenLists(1);
-  glNewList(listaAnel, GL_COMPILE);
+  glNewList(listaAnel,
+    GL_COMPILE);
     glBegin(GL_TRIANGLE_STRIP);
       // os 10 vértices
     glEnd();
   glEndList();
 }
-```
 
----
-## Tentativa 3 (cont.)
 
-```c
-int main(int argc, char** argv) {
+int main(int c, char** v) {
   glutInit(argc, argv);
   //...
   criaListaAnelQuadrado();
@@ -113,17 +115,17 @@ int main(int argc, char** argv) {
 ```
 
 ---
-## Tentativa 3 (cont.)
+## Tentativa 3 (2/2)
 
 ```c
 void desenhaCena() {
   glColor3f(1.0, 0, 0);     // azul
   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glCallList(listaAnel);
+  glCallList(listaAnel);    // chama lista
 
   glColor3f(1.0, 0, 0);     // preto
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
-  glCallList(listaAnel);
+  glCallList(listaAnel);    // chama lista
 }
 ```
 
@@ -145,8 +147,8 @@ void desenhaCena() {
 ---
 ## Orientação no OpenGL
 
-- O lado de fora/frente de um polígono em OpenGL é dado **pela ordem em que
-  declaramos seus vértices**
+- O lado de fora/frente de um polígono em OpenGL é dado **<u>pela ordem</u>
+  em que declaramos seus vértices**
 
   ![](../../images/opengl-primitive-orientation.png)
 
@@ -180,7 +182,7 @@ void desenhaMinhaCena()
 
 - A forma como temos posicionado objetos não é legal:
   ```c
-  glBegin(GL_POLYGON);
+  glBegin(GL_TRIANGLE_FAN);
       glVertex2f(per.x,             per.y);
       glVertex2f(per.x + per.larg,  per.y);
       glVertex2f(per.x + per.larg,  per.y + per.alt);
@@ -188,8 +190,8 @@ void desenhaMinhaCena()
   glEnd();
   ```
   - Problema: e se houver muito mais do que 4 vértices?
-  - Solução: é bem mais fácil achar as coordenadas se **considerarmos que estamos
-    sempre na origem**!
+  - Questão: não seria bem mais fácil definir as coordenadas se **pudéssemos
+    assumir que estamos <u>sempre na origem</u>?**
 
 ---
 ## Posicionando Objetos - Do Jeito Top
@@ -199,7 +201,7 @@ void desenhaMinhaCena()
   ```c
   glPushMatrix();                 // Importante!!
       glTranslatef(per.x, per.y, 0);
-      glBegin(GL_POLYGON);
+      glBegin(GL_TRIANGLE_FAN);
           glVertex2f(0,         0);
           glVertex2f(per.larg,  0);
           glVertex2f(per.larg,  per.alt);
@@ -238,15 +240,19 @@ void desenhaMinhaCena()
 ## Na _callback_ de desenho
 
 ```c
-glEnable(GL_TEXTURE_2D);
-glBindTexture(GL_TEXTURE_2D, texturaDoMario);
-glBegin(GL_QUADS);
-  glTexCoord2f(0, 0); glVertex3f(-1, -1,  0);
-  glTexCoord2f(1, 0); glVertex3f( 1, -1,  0);
-  glTexCoord2f(1, 1); glVertex3f( 1,  1,  0);
-  glTexCoord2f(0, 1); glVertex3f(-1,  1,  0);
-glEnd();
-glDisable(GL_TEXTURE_2D);
+void desenhaMinhaCena() {
+  //...
+  glEnable(GL_TEXTURE_2D);
+  glBindTexture(GL_TEXTURE_2D, texturaDoMario);
+  glBegin(GL_QUADS);
+    glTexCoord2f(0, 0); glVertex3f(-1, -1,  0);
+    glTexCoord2f(1, 0); glVertex3f( 1, -1,  0);
+    glTexCoord2f(1, 1); glVertex3f( 1,  1,  0);
+    glTexCoord2f(0, 1); glVertex3f(-1,  1,  0);
+  glEnd();
+  glDisable(GL_TEXTURE_2D);
+  //...
+}
 ```
 
 ---
@@ -284,7 +290,7 @@ glDisable(GL_TEXTURE_2D);
 ## Em alguma função de inicialização
 
 ```c
-GLuint texturaDoMario;    // id de textura
+GLuint texturaDoMario;    // id da textura
 
 void init() {
   texturaDoMario = SOIL_load_OGL_texture(
@@ -306,13 +312,14 @@ void init() {
 _A wild TP1 appears..._
 
 ---
-## TP1: **Tá Chovendo {PARADAS}**
+## TP1: **GORILLAS.BAS**
 
-<img alt="Animação de um jogo com uma chuva de carros, ônibus e aviões em um personagem" src="../../images/beware-falling-objects.gif"
+<img alt="Jogo Gorillas (1981)" src="http://i.imgur.com/14a90Cv.gif"
   style="float: right; width: 420px; margin: 0 0 5px 20px">
-  _"A metáfora mais crível para o curso de Engenharia de Computação no CEFET é um aluno que precisa evitar que a grande e colossal quantidade de TPs caia em sua cabeça"_
+  _"A ideia básica é lançar ~~bananas explosivas~~
+  projéteis nos ~~gorilas~~ adversários para ~~explodi-los~~ explodi-los."_
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-tprain/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-gorillas/README.md)).
 
 ---
 # Referências
