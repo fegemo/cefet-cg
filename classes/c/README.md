@@ -27,7 +27,7 @@
 
 - Desenvolvida entre 1969 e 1973, juntamente com o Unix
   <figure class="portrait right">
-    <img src="../../images/dennis-ritchie.png" alt="Foto de Dennis Ritchie">
+    <img src="../../images/dennis-ritchie-avatar.png" alt="Foto de Dennis Ritchie">
   </figure>
   Feita por Dennis Ritchie praticamente sozinho
 - Projetada para programação de:
