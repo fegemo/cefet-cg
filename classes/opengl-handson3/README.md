@@ -30,7 +30,7 @@
   ```
 - Em seguida, desenha-se o polígono em modo _wire_:
   ```c
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   glBegin(GL_TRIANGLE_STRIP);
     // os mesmos 10 vértices aqui...
   glEnd();
@@ -57,12 +57,12 @@
   //...
 
   void desenhaCena() {
-    glColor3f(1.0, 0, 0);     // azul
+    glColor3f(0, 0, 1);     // azul
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     desenhaAnelQuadrado();
 
-    glColor3f(1.0, 0, 0);     // preto
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+    glColor3f(0, 0, 0);     // preto
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     desenhaAnelQuadrado();
   }
   ```
@@ -97,9 +97,10 @@ int listaAnel;
 void criaListaAnelQuadrado() {
   listaAnel = glGenLists(1);
   glNewList(listaAnel,
-    GL_COMPILE);
+    GL_COMPILE);  // ou GL_COMPILE_AND_EXECUTE
     glBegin(GL_TRIANGLE_STRIP);
       // os 10 vértices
+      // ...
     glEnd();
   glEndList();
 }
@@ -119,12 +120,12 @@ int main(int c, char** v) {
 
 ```c
 void desenhaCena() {
-  glColor3f(1.0, 0, 0);     // azul
+  glColor3f(0, 0, 1);       // azul
   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
   glCallList(listaAnel);    // chama lista
 
-  glColor3f(1.0, 0, 0);     // preto
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINES);
+  glColor3f(0, 0, 0);       // preto
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   glCallList(listaAnel);    // chama lista
 }
 ```
@@ -244,7 +245,7 @@ void desenhaMinhaCena() {
   //...
   glEnable(GL_TEXTURE_2D);
   glBindTexture(GL_TEXTURE_2D, texturaDoMario);
-  glBegin(GL_QUADS);
+  glBegin(GL_TRIANGLE_FAN);
     glTexCoord2f(0, 0); glVertex3f(-1, -1,  0);
     glTexCoord2f(1, 0); glVertex3f( 1, -1,  0);
     glTexCoord2f(1, 1); glVertex3f( 1,  1,  0);
@@ -300,7 +301,7 @@ void init() {
     SOIL_FLAG_INVERT_Y
   );
 
-  if (texturaDoMario == 0 ) {
+  if (texturaDoMario == 0) {
     printf("Erro carregando textura: '%s'\n", SOIL_last_result());
   }
 }

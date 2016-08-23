@@ -374,7 +374,7 @@ module.exports = function() {
   };
 };
 
-},{"highlight.js":17,"marked":186}],6:[function(require,module,exports){
+},{"highlight.js":16,"marked":185}],6:[function(require,module,exports){
 (function (global){
 /*! bespoke-math v1.2.0 © 2016 Flávio, MIT License */
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,t=t.bespoke||(t.bespoke={}),t=t.plugins||(t.plugins={}),t.math=e()}}(function(){return function e(t,i,h){function a(r,l){if(!i[r]){if(!t[r]){var n="function"==typeof require&&require;if(!l&&n)return n(r,!0);if(s)return s(r,!0);var p=new Error("Cannot find module '"+r+"'");throw p.code="MODULE_NOT_FOUND",p}var o=i[r]={exports:{}};t[r][0].call(o.exports,function(e){var i=t[r][1][e];return a(i?i:e)},o,o.exports,e,t,i,h)}return i[r].exports}for(var s="function"==typeof require&&require,r=0;r<h.length;r++)a(h[r]);return a}({1:[function(e,t,i){var h="@font-face {\n  font-family: KaTeX_AMS;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.eot);\n  src: url(fonts/KaTeX_AMS-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_AMS-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Caligraphic;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.eot);\n  src: url(fonts/KaTeX_Caligraphic-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Caligraphic;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.eot);\n  src: url(fonts/KaTeX_Caligraphic-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Caligraphic-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Fraktur;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.eot);\n  src: url(fonts/KaTeX_Fraktur-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Fraktur;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.eot);\n  src: url(fonts/KaTeX_Fraktur-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Fraktur-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.eot);\n  src: url(fonts/KaTeX_Main-Bold.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Bold.ttf) format('ttf');\n  font-weight: 700;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.eot);\n  src: url(fonts/KaTeX_Main-Italic.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Italic.ttf) format('ttf');\n  font-weight: 400;\n  font-style: italic;\n}\n@font-face {\n  font-family: KaTeX_Main;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.eot);\n  src: url(fonts/KaTeX_Main-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Main-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Math;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.eot);\n  src: url(fonts/KaTeX_Math-Italic.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Math-Italic.ttf) format('ttf');\n  font-weight: 400;\n  font-style: italic;\n}\n@font-face {\n  font-family: KaTeX_SansSerif;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.eot);\n  src: url(fonts/KaTeX_SansSerif-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_SansSerif-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Script;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.eot);\n  src: url(fonts/KaTeX_Script-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Script-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size1;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.eot);\n  src: url(fonts/KaTeX_Size1-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size1-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size2;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.eot);\n  src: url(fonts/KaTeX_Size2-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size2-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size3;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.eot);\n  src: url(fonts/KaTeX_Size3-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size3-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Size4;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.eot);\n  src: url(fonts/KaTeX_Size4-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Size4-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n@font-face {\n  font-family: KaTeX_Typewriter;\n  src: url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.eot);\n  src: url(fonts/KaTeX_Typewriter-Regular.eot#iefix) format('embedded-opentype'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.woff2) format('woff2'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.woff) format('woff'),url(https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/fonts/KaTeX_Typewriter-Regular.ttf) format('ttf');\n  font-weight: 400;\n  font-style: normal;\n}\n.katex-display {\n  display: block;\n  margin: 1em 0;\n  text-align: center;\n}\n.katex-display>.katex {\n  display: inline-block;\n}\n.katex {\n  font: 400 1.21em KaTeX_Main;\n  line-height: 1.2;\n  white-space: nowrap;\n  text-indent: 0;\n}\n.katex .katex-html {\n  display: inline-block;\n}\n.katex .katex-mathml {\n  position: absolute;\n  clip: rect(1px,1px,1px,1px);\n  padding: 0;\n  border: 0;\n  height: 1px;\n  width: 1px;\n  overflow: hidden;\n}\n.katex .base,\n.katex .strut {\n  display: inline-block;\n}\n.katex .mathit {\n  font-family: KaTeX_Math;\n  font-style: italic;\n}\n.katex .mathbf {\n  font-family: KaTeX_Main;\n  font-weight: 700;\n}\n.katex .amsrm,\n.katex .mathbb {\n  font-family: KaTeX_AMS;\n}\n.katex .mathcal {\n  font-family: KaTeX_Caligraphic;\n}\n.katex .mathfrak {\n  font-family: KaTeX_Fraktur;\n}\n.katex .mathtt {\n  font-family: KaTeX_Typewriter;\n}\n.katex .mathscr {\n  font-family: KaTeX_Script;\n}\n.katex .mathsf {\n  font-family: KaTeX_SansSerif;\n}\n.katex .mainit {\n  font-family: KaTeX_Main;\n  font-style: italic;\n}\n.katex .textstyle>.mord+.mop {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mord+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mord+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mop+.mop,\n.katex .textstyle>.mop+.mord,\n.katex .textstyle>.mord+.minner {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mop+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mop+.minner {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mbin+.minner,\n.katex .textstyle>.mbin+.mop,\n.katex .textstyle>.mbin+.mopen,\n.katex .textstyle>.mbin+.mord {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mrel+.minner,\n.katex .textstyle>.mrel+.mop,\n.katex .textstyle>.mrel+.mopen,\n.katex .textstyle>.mrel+.mord {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mclose+.mop {\n  margin-left: .16667em;\n}\n.katex .textstyle>.mclose+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.mclose+.mrel {\n  margin-left: .27778em;\n}\n.katex .textstyle>.mclose+.minner,\n.katex .textstyle>.minner+.mop,\n.katex .textstyle>.minner+.mord,\n.katex .textstyle>.mpunct+.mclose,\n.katex .textstyle>.mpunct+.minner,\n.katex .textstyle>.mpunct+.mop,\n.katex .textstyle>.mpunct+.mopen,\n.katex .textstyle>.mpunct+.mord,\n.katex .textstyle>.mpunct+.mpunct,\n.katex .textstyle>.mpunct+.mrel {\n  margin-left: .16667em;\n}\n.katex .textstyle>.minner+.mbin {\n  margin-left: .22222em;\n}\n.katex .textstyle>.minner+.mrel {\n  margin-left: .27778em;\n}\n.katex .mclose+.mop,\n.katex .minner+.mop,\n.katex .mop+.mop,\n.katex .mop+.mord,\n.katex .mord+.mop,\n.katex .textstyle>.minner+.minner,\n.katex .textstyle>.minner+.mopen,\n.katex .textstyle>.minner+.mpunct {\n  margin-left: .16667em;\n}\n.katex .reset-textstyle.textstyle {\n  font-size: 1em;\n}\n.katex .reset-textstyle.scriptstyle {\n  font-size: .7em;\n}\n.katex .reset-textstyle.scriptscriptstyle {\n  font-size: .5em;\n}\n.katex .reset-scriptstyle.textstyle {\n  font-size: 1.42857em;\n}\n.katex .reset-scriptstyle.scriptstyle {\n  font-size: 1em;\n}\n.katex .reset-scriptstyle.scriptscriptstyle {\n  font-size: .71429em;\n}\n.katex .reset-scriptscriptstyle.textstyle {\n  font-size: 2em;\n}\n.katex .reset-scriptscriptstyle.scriptstyle {\n  font-size: 1.4em;\n}\n.katex .reset-scriptscriptstyle.scriptscriptstyle {\n  font-size: 1em;\n}\n.katex .style-wrap {\n  position: relative;\n}\n.katex .vlist {\n  display: inline-block;\n}\n.katex .vlist>span {\n  display: block;\n  height: 0;\n  position: relative;\n}\n.katex .vlist>span>span {\n  display: inline-block;\n}\n.katex .vlist .baseline-fix {\n  display: inline-table;\n  table-layout: fixed;\n}\n.katex .msupsub {\n  text-align: left;\n}\n.katex .mfrac>span>span {\n  text-align: center;\n}\n.katex .mfrac .frac-line {\n  width: 100%;\n}\n.katex .mfrac .frac-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .mfrac .frac-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .mspace {\n  display: inline-block;\n}\n.katex .mspace.negativethinspace {\n  margin-left: -.16667em;\n}\n.katex .mspace.thinspace {\n  width: .16667em;\n}\n.katex .mspace.mediumspace {\n  width: .22222em;\n}\n.katex .mspace.thickspace {\n  width: .27778em;\n}\n.katex .mspace.enspace {\n  width: .5em;\n}\n.katex .mspace.quad {\n  width: 1em;\n}\n.katex .mspace.qquad {\n  width: 2em;\n}\n.katex .llap,\n.katex .rlap {\n  width: 0;\n  position: relative;\n}\n.katex .llap>.inner,\n.katex .rlap>.inner {\n  position: absolute;\n}\n.katex .llap>.fix,\n.katex .rlap>.fix {\n  display: inline-block;\n}\n.katex .llap>.inner {\n  right: 0;\n}\n.katex .rlap>.inner {\n  left: 0;\n}\n.katex .katex-logo .a {\n  font-size: .75em;\n  margin-left: -.32em;\n  position: relative;\n  top: -.2em;\n}\n.katex .katex-logo .t {\n  margin-left: -.23em;\n}\n.katex .katex-logo .e {\n  margin-left: -.1667em;\n  position: relative;\n  top: .2155em;\n}\n.katex .katex-logo .x {\n  margin-left: -.125em;\n}\n.katex .rule {\n  display: inline-block;\n  border-style: solid;\n  position: relative;\n}\n.katex .overline .overline-line {\n  width: 100%;\n}\n.katex .overline .overline-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .overline .overline-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .sqrt>.sqrt-sign {\n  position: relative;\n}\n.katex .sqrt .sqrt-line {\n  width: 100%;\n}\n.katex .sqrt .sqrt-line:before {\n  border-bottom-style: solid;\n  border-bottom-width: 1px;\n  content: \"\";\n  display: block;\n}\n.katex .sqrt .sqrt-line:after {\n  border-bottom-style: solid;\n  border-bottom-width: .04em;\n  content: \"\";\n  display: block;\n  margin-top: -1px;\n}\n.katex .sqrt>.root {\n  margin-left: .27777778em;\n  margin-right: -.55555556em;\n}\n.katex .fontsize-ensurer,\n.katex .sizing {\n  display: inline-block;\n}\n.katex .fontsize-ensurer.reset-size1.size1,\n.katex .sizing.reset-size1.size1 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size1.size2,\n.katex .sizing.reset-size1.size2 {\n  font-size: 1.4em;\n}\n.katex .fontsize-ensurer.reset-size1.size3,\n.katex .sizing.reset-size1.size3 {\n  font-size: 1.6em;\n}\n.katex .fontsize-ensurer.reset-size1.size4,\n.katex .sizing.reset-size1.size4 {\n  font-size: 1.8em;\n}\n.katex .fontsize-ensurer.reset-size1.size5,\n.katex .sizing.reset-size1.size5 {\n  font-size: 2em;\n}\n.katex .fontsize-ensurer.reset-size1.size6,\n.katex .sizing.reset-size1.size6 {\n  font-size: 2.4em;\n}\n.katex .fontsize-ensurer.reset-size1.size7,\n.katex .sizing.reset-size1.size7 {\n  font-size: 2.88em;\n}\n.katex .fontsize-ensurer.reset-size1.size8,\n.katex .sizing.reset-size1.size8 {\n  font-size: 3.46em;\n}\n.katex .fontsize-ensurer.reset-size1.size9,\n.katex .sizing.reset-size1.size9 {\n  font-size: 4.14em;\n}\n.katex .fontsize-ensurer.reset-size1.size10,\n.katex .sizing.reset-size1.size10 {\n  font-size: 4.98em;\n}\n.katex .fontsize-ensurer.reset-size2.size1,\n.katex .sizing.reset-size2.size1 {\n  font-size: .71428571em;\n}\n.katex .fontsize-ensurer.reset-size2.size2,\n.katex .sizing.reset-size2.size2 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size2.size3,\n.katex .sizing.reset-size2.size3 {\n  font-size: 1.14285714em;\n}\n.katex .fontsize-ensurer.reset-size2.size4,\n.katex .sizing.reset-size2.size4 {\n  font-size: 1.28571429em;\n}\n.katex .fontsize-ensurer.reset-size2.size5,\n.katex .sizing.reset-size2.size5 {\n  font-size: 1.42857143em;\n}\n.katex .fontsize-ensurer.reset-size2.size6,\n.katex .sizing.reset-size2.size6 {\n  font-size: 1.71428571em;\n}\n.katex .fontsize-ensurer.reset-size2.size7,\n.katex .sizing.reset-size2.size7 {\n  font-size: 2.05714286em;\n}\n.katex .fontsize-ensurer.reset-size2.size8,\n.katex .sizing.reset-size2.size8 {\n  font-size: 2.47142857em;\n}\n.katex .fontsize-ensurer.reset-size2.size9,\n.katex .sizing.reset-size2.size9 {\n  font-size: 2.95714286em;\n}\n.katex .fontsize-ensurer.reset-size2.size10,\n.katex .sizing.reset-size2.size10 {\n  font-size: 3.55714286em;\n}\n.katex .fontsize-ensurer.reset-size3.size1,\n.katex .sizing.reset-size3.size1 {\n  font-size: .625em;\n}\n.katex .fontsize-ensurer.reset-size3.size2,\n.katex .sizing.reset-size3.size2 {\n  font-size: .875em;\n}\n.katex .fontsize-ensurer.reset-size3.size3,\n.katex .sizing.reset-size3.size3 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size3.size4,\n.katex .sizing.reset-size3.size4 {\n  font-size: 1.125em;\n}\n.katex .fontsize-ensurer.reset-size3.size5,\n.katex .sizing.reset-size3.size5 {\n  font-size: 1.25em;\n}\n.katex .fontsize-ensurer.reset-size3.size6,\n.katex .sizing.reset-size3.size6 {\n  font-size: 1.5em;\n}\n.katex .fontsize-ensurer.reset-size3.size7,\n.katex .sizing.reset-size3.size7 {\n  font-size: 1.8em;\n}\n.katex .fontsize-ensurer.reset-size3.size8,\n.katex .sizing.reset-size3.size8 {\n  font-size: 2.1625em;\n}\n.katex .fontsize-ensurer.reset-size3.size9,\n.katex .sizing.reset-size3.size9 {\n  font-size: 2.5875em;\n}\n.katex .fontsize-ensurer.reset-size3.size10,\n.katex .sizing.reset-size3.size10 {\n  font-size: 3.1125em;\n}\n.katex .fontsize-ensurer.reset-size4.size1,\n.katex .sizing.reset-size4.size1 {\n  font-size: .55555556em;\n}\n.katex .fontsize-ensurer.reset-size4.size2,\n.katex .sizing.reset-size4.size2 {\n  font-size: .77777778em;\n}\n.katex .fontsize-ensurer.reset-size4.size3,\n.katex .sizing.reset-size4.size3 {\n  font-size: .88888889em;\n}\n.katex .fontsize-ensurer.reset-size4.size4,\n.katex .sizing.reset-size4.size4 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size4.size5,\n.katex .sizing.reset-size4.size5 {\n  font-size: 1.11111111em;\n}\n.katex .fontsize-ensurer.reset-size4.size6,\n.katex .sizing.reset-size4.size6 {\n  font-size: 1.33333333em;\n}\n.katex .fontsize-ensurer.reset-size4.size7,\n.katex .sizing.reset-size4.size7 {\n  font-size: 1.6em;\n}\n.katex .fontsize-ensurer.reset-size4.size8,\n.katex .sizing.reset-size4.size8 {\n  font-size: 1.92222222em;\n}\n.katex .fontsize-ensurer.reset-size4.size9,\n.katex .sizing.reset-size4.size9 {\n  font-size: 2.3em;\n}\n.katex .fontsize-ensurer.reset-size4.size10,\n.katex .sizing.reset-size4.size10 {\n  font-size: 2.76666667em;\n}\n.katex .fontsize-ensurer.reset-size5.size1,\n.katex .sizing.reset-size5.size1 {\n  font-size: .5em;\n}\n.katex .fontsize-ensurer.reset-size5.size2,\n.katex .sizing.reset-size5.size2 {\n  font-size: .7em;\n}\n.katex .fontsize-ensurer.reset-size5.size3,\n.katex .sizing.reset-size5.size3 {\n  font-size: .8em;\n}\n.katex .fontsize-ensurer.reset-size5.size4,\n.katex .sizing.reset-size5.size4 {\n  font-size: .9em;\n}\n.katex .fontsize-ensurer.reset-size5.size5,\n.katex .sizing.reset-size5.size5 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size5.size6,\n.katex .sizing.reset-size5.size6 {\n  font-size: 1.2em;\n}\n.katex .fontsize-ensurer.reset-size5.size7,\n.katex .sizing.reset-size5.size7 {\n  font-size: 1.44em;\n}\n.katex .fontsize-ensurer.reset-size5.size8,\n.katex .sizing.reset-size5.size8 {\n  font-size: 1.73em;\n}\n.katex .fontsize-ensurer.reset-size5.size9,\n.katex .sizing.reset-size5.size9 {\n  font-size: 2.07em;\n}\n.katex .fontsize-ensurer.reset-size5.size10,\n.katex .sizing.reset-size5.size10 {\n  font-size: 2.49em;\n}\n.katex .fontsize-ensurer.reset-size6.size1,\n.katex .sizing.reset-size6.size1 {\n  font-size: .41666667em;\n}\n.katex .fontsize-ensurer.reset-size6.size2,\n.katex .sizing.reset-size6.size2 {\n  font-size: .58333333em;\n}\n.katex .fontsize-ensurer.reset-size6.size3,\n.katex .sizing.reset-size6.size3 {\n  font-size: .66666667em;\n}\n.katex .fontsize-ensurer.reset-size6.size4,\n.katex .sizing.reset-size6.size4 {\n  font-size: .75em;\n}\n.katex .fontsize-ensurer.reset-size6.size5,\n.katex .sizing.reset-size6.size5 {\n  font-size: .83333333em;\n}\n.katex .fontsize-ensurer.reset-size6.size6,\n.katex .sizing.reset-size6.size6 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size6.size7,\n.katex .sizing.reset-size6.size7 {\n  font-size: 1.2em;\n}\n.katex .fontsize-ensurer.reset-size6.size8,\n.katex .sizing.reset-size6.size8 {\n  font-size: 1.44166667em;\n}\n.katex .fontsize-ensurer.reset-size6.size9,\n.katex .sizing.reset-size6.size9 {\n  font-size: 1.725em;\n}\n.katex .fontsize-ensurer.reset-size6.size10,\n.katex .sizing.reset-size6.size10 {\n  font-size: 2.075em;\n}\n.katex .fontsize-ensurer.reset-size7.size1,\n.katex .sizing.reset-size7.size1 {\n  font-size: .34722222em;\n}\n.katex .fontsize-ensurer.reset-size7.size2,\n.katex .sizing.reset-size7.size2 {\n  font-size: .48611111em;\n}\n.katex .fontsize-ensurer.reset-size7.size3,\n.katex .sizing.reset-size7.size3 {\n  font-size: .55555556em;\n}\n.katex .fontsize-ensurer.reset-size7.size4,\n.katex .sizing.reset-size7.size4 {\n  font-size: .625em;\n}\n.katex .fontsize-ensurer.reset-size7.size5,\n.katex .sizing.reset-size7.size5 {\n  font-size: .69444444em;\n}\n.katex .fontsize-ensurer.reset-size7.size6,\n.katex .sizing.reset-size7.size6 {\n  font-size: .83333333em;\n}\n.katex .fontsize-ensurer.reset-size7.size7,\n.katex .sizing.reset-size7.size7 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size7.size8,\n.katex .sizing.reset-size7.size8 {\n  font-size: 1.20138889em;\n}\n.katex .fontsize-ensurer.reset-size7.size9,\n.katex .sizing.reset-size7.size9 {\n  font-size: 1.4375em;\n}\n.katex .fontsize-ensurer.reset-size7.size10,\n.katex .sizing.reset-size7.size10 {\n  font-size: 1.72916667em;\n}\n.katex .fontsize-ensurer.reset-size8.size1,\n.katex .sizing.reset-size8.size1 {\n  font-size: .28901734em;\n}\n.katex .fontsize-ensurer.reset-size8.size2,\n.katex .sizing.reset-size8.size2 {\n  font-size: .40462428em;\n}\n.katex .fontsize-ensurer.reset-size8.size3,\n.katex .sizing.reset-size8.size3 {\n  font-size: .46242775em;\n}\n.katex .fontsize-ensurer.reset-size8.size4,\n.katex .sizing.reset-size8.size4 {\n  font-size: .52023121em;\n}\n.katex .fontsize-ensurer.reset-size8.size5,\n.katex .sizing.reset-size8.size5 {\n  font-size: .57803468em;\n}\n.katex .fontsize-ensurer.reset-size8.size6,\n.katex .sizing.reset-size8.size6 {\n  font-size: .69364162em;\n}\n.katex .fontsize-ensurer.reset-size8.size7,\n.katex .sizing.reset-size8.size7 {\n  font-size: .83236994em;\n}\n.katex .fontsize-ensurer.reset-size8.size8,\n.katex .sizing.reset-size8.size8 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size8.size9,\n.katex .sizing.reset-size8.size9 {\n  font-size: 1.19653179em;\n}\n.katex .fontsize-ensurer.reset-size8.size10,\n.katex .sizing.reset-size8.size10 {\n  font-size: 1.43930636em;\n}\n.katex .fontsize-ensurer.reset-size9.size1,\n.katex .sizing.reset-size9.size1 {\n  font-size: .24154589em;\n}\n.katex .fontsize-ensurer.reset-size9.size2,\n.katex .sizing.reset-size9.size2 {\n  font-size: .33816425em;\n}\n.katex .fontsize-ensurer.reset-size9.size3,\n.katex .sizing.reset-size9.size3 {\n  font-size: .38647343em;\n}\n.katex .fontsize-ensurer.reset-size9.size4,\n.katex .sizing.reset-size9.size4 {\n  font-size: .43478261em;\n}\n.katex .fontsize-ensurer.reset-size9.size5,\n.katex .sizing.reset-size9.size5 {\n  font-size: .48309179em;\n}\n.katex .fontsize-ensurer.reset-size9.size6,\n.katex .sizing.reset-size9.size6 {\n  font-size: .57971014em;\n}\n.katex .fontsize-ensurer.reset-size9.size7,\n.katex .sizing.reset-size9.size7 {\n  font-size: .69565217em;\n}\n.katex .fontsize-ensurer.reset-size9.size8,\n.katex .sizing.reset-size9.size8 {\n  font-size: .83574879em;\n}\n.katex .fontsize-ensurer.reset-size9.size9,\n.katex .sizing.reset-size9.size9 {\n  font-size: 1em;\n}\n.katex .fontsize-ensurer.reset-size9.size10,\n.katex .sizing.reset-size9.size10 {\n  font-size: 1.20289855em;\n}\n.katex .fontsize-ensurer.reset-size10.size1,\n.katex .sizing.reset-size10.size1 {\n  font-size: .20080321em;\n}\n.katex .fontsize-ensurer.reset-size10.size2,\n.katex .sizing.reset-size10.size2 {\n  font-size: .2811245em;\n}\n.katex .fontsize-ensurer.reset-size10.size3,\n.katex .sizing.reset-size10.size3 {\n  font-size: .32128514em;\n}\n.katex .fontsize-ensurer.reset-size10.size4,\n.katex .sizing.reset-size10.size4 {\n  font-size: .36144578em;\n}\n.katex .fontsize-ensurer.reset-size10.size5,\n.katex .sizing.reset-size10.size5 {\n  font-size: .40160643em;\n}\n.katex .fontsize-ensurer.reset-size10.size6,\n.katex .sizing.reset-size10.size6 {\n  font-size: .48192771em;\n}\n.katex .fontsize-ensurer.reset-size10.size7,\n.katex .sizing.reset-size10.size7 {\n  font-size: .57831325em;\n}\n.katex .fontsize-ensurer.reset-size10.size8,\n.katex .sizing.reset-size10.size8 {\n  font-size: .69477912em;\n}\n.katex .fontsize-ensurer.reset-size10.size9,\n.katex .sizing.reset-size10.size9 {\n  font-size: .8313253em;\n}\n.katex .fontsize-ensurer.reset-size10.size10,\n.katex .sizing.reset-size10.size10 {\n  font-size: 1em;\n}\n.katex .delimsizing.size1 {\n  font-family: KaTeX_Size1;\n}\n.katex .delimsizing.size2 {\n  font-family: KaTeX_Size2;\n}\n.katex .delimsizing.size3 {\n  font-family: KaTeX_Size3;\n}\n.katex .delimsizing.size4 {\n  font-family: KaTeX_Size4;\n}\n.katex .delimsizing.mult .delim-size1>span {\n  font-family: KaTeX_Size1;\n}\n.katex .delimsizing.mult .delim-size4>span {\n  font-family: KaTeX_Size4;\n}\n.katex .nulldelimiter {\n  display: inline-block;\n  width: .12em;\n}\n.katex .op-symbol {\n  position: relative;\n}\n.katex .op-symbol.small-op {\n  font-family: KaTeX_Size1;\n}\n.katex .op-symbol.large-op {\n  font-family: KaTeX_Size2;\n}\n.katex .accent>.vlist>span,\n.katex .op-limits>.vlist>span {\n  text-align: center;\n}\n.katex .accent .accent-body>span {\n  width: 0;\n}\n.katex .accent .accent-body.accent-vec>span {\n  position: relative;\n  left: .326em;\n}\n.katex .mtable .vertical-separator {\n  display: inline-block;\n  margin: 0 -.025em;\n  border-right: .05em solid #000;\n}\n.katex .mtable .arraycolsep {\n  display: inline-block;\n}\n.katex .mtable .col-align-c>.vlist {\n  text-align: center;\n}\n.katex .mtable .col-align-l>.vlist {\n  text-align: left;\n}\n.katex .mtable .col-align-r>.vlist {\n  text-align: right;\n}\n";e("browserify-css").createStyle(h,{href:"katex.min.css"}),t.exports=h},{"browserify-css":3}],2:[function(e,t,i){var h=e("katex"),a=function(e,t){try{return h.renderToString(e,{displayMode:t})}catch(i){console.log('Katex error trying to parse: "'+e+'". Description: '+i)}};t.exports=function(t,i){var h="undefined"!=typeof i?"separateSelector":"spanIsInline";return t=arguments.length>0?t:".math",function(s){var r,l=!1;switch(h){case"separateSelector":r=s.parent.querySelectorAll(t),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,!1),l=!0}),r=s.parent.querySelectorAll(i),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,!0),l=!0});break;case"spanIsInline":r=s.parent.querySelectorAll(t),Array.prototype.slice.call(r).forEach(function(e){e.innerHTML=a(e.innerText,"span"!==e.tagName.toLowerCase()),l=!0})}if(l)try{e("../katex/katex.min.css")}catch(n){console.log("It was not possible to load the CSS from KaTeX. Details: "+n)}}}},{"../katex/katex.min.css":1,katex:4}],3:[function(e,t,i){"use strict";t.exports={createLink:function(e,t){var i=document.head||document.getElementsByTagName("head")[0],h=document.createElement("link");h.href=e,h.rel="stylesheet";for(var a in t)if(t.hasOwnProperty(a)){var s=t[a];h.setAttribute("data-"+a,s)}i.appendChild(h)},createStyle:function(e,t){var i=document.head||document.getElementsByTagName("head")[0],h=document.createElement("style");h.type="text/css";for(var a in t)if(t.hasOwnProperty(a)){var s=t[a];h.setAttribute("data-"+a,s)}h.sheet?(h.innerHTML=e,h.sheet.cssText=e,i.appendChild(h)):h.styleSheet?(i.appendChild(h),h.styleSheet.cssText=e):(h.appendChild(document.createTextNode(e)),i.appendChild(h))}}},{}],4:[function(e,t,i){var h=e("./src/ParseError"),a=e("./src/Settings"),s=e("./src/buildTree"),r=e("./src/parseTree"),l=e("./src/utils"),n=function(e,t,i){l.clearNode(t);var h=new a(i),n=r(e,h),p=s(n,e,h).toNode();t.appendChild(p)};"undefined"!=typeof document&&"CSS1Compat"!==document.compatMode&&("undefined"!=typeof console&&console.warn("Warning: KaTeX doesn't work in quirks mode. Make sure your website has a suitable doctype."),n=function(){throw new h("KaTeX doesn't work in quirks mode.")});var p=function(e,t){var i=new a(t),h=r(e,i);return s(h,e,i).toMarkup()},o=function(e,t){var i=new a(t);return r(e,i)};t.exports={render:n,renderToString:p,__parse:o,ParseError:h}},{"./src/ParseError":7,"./src/Settings":9,"./src/buildTree":14,"./src/parseTree":23,"./src/utils":25}],5:[function(e,t,i){function h(e){this._input=e}function a(e,t,i){this.text=e,this.data=t,this.position=i}var s=e("match-at"),r=e("./ParseError"),l=[/[\/|@.""`0-9a-zA-Z]/,/[*+-]/,/[=<>:]/,/[,;]/,/['\^_{}]/,/[(\[]/,/[)\]?!]/,/~/,/&/,/\\\\/],n=[/[a-zA-Z0-9`!@*()-=+\[\]'";:?\/.,]/,/[{}]/,/~/,/&/,/\\\\/],p=/\s*/,o=/ +|\\  +/,c=/\\(?:[a-zA-Z]+|.)/;h.prototype._innerLex=function(e,t,i){var h,l=this._input;if(i)h=s(p,l,e)[0],e+=h.length;else if(h=s(o,l,e),null!==h)return new a(" ",null,e+h[0].length);if(e===l.length)return new a("EOF",null,e);var n;if(n=s(c,l,e))return new a(n[0],null,e+n[0].length);for(var g=0;g<t.length;g++){var d=t[g];if(n=s(d,l,e))return new a(n[0],null,e+n[0].length)}throw new r("Unexpected character: '"+l[e]+"'",this,e)};var g=/#[a-z0-9]+|[a-z]+/i;h.prototype._innerLexColor=function(e){var t=this._input,i=s(p,t,e)[0];e+=i.length;var h;if(h=s(g,t,e))return new a(h[0],null,e+h[0].length);throw new r("Invalid color",this,e)};var d=/(-?)\s*(\d+(?:\.\d*)?|\.\d+)\s*([a-z]{2})/;h.prototype._innerLexSize=function(e){var t=this._input,i=s(p,t,e)[0];e+=i.length;var h;if(h=s(d,t,e)){var l=h[3];if("em"!==l&&"ex"!==l)throw new r("Invalid unit: '"+l+"'",this,e);return new a(h[0],{number:+(h[1]+h[2]),unit:l},e+h[0].length)}throw new r("Invalid size",this,e)},h.prototype._innerLexWhitespace=function(e){
@@ -429,7 +429,7 @@ module.exports = function(config) {
   };
 };
 
-},{"bespoke-markdown":5,"js-yaml":156}],8:[function(require,module,exports){
+},{"bespoke-markdown":5,"js-yaml":155}],8:[function(require,module,exports){
 module.exports = function(options) {
   return function (deck) {
     var progressParent = document.createElement('div'),
@@ -595,8 +595,6 @@ module.exports = {
 };
 
 },{}],15:[function(require,module,exports){
-
-},{}],16:[function(require,module,exports){
 /*
 Syntax highlighting with language autodetection.
 https://highlightjs.org/
@@ -1369,7 +1367,7 @@ https://highlightjs.org/
   return hljs;
 }));
 
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var hljs = require('./highlight');
 
 hljs.registerLanguage('1c', require('./languages/1c'));
@@ -1511,7 +1509,7 @@ hljs.registerLanguage('xquery', require('./languages/xquery'));
 hljs.registerLanguage('zephir', require('./languages/zephir'));
 
 module.exports = hljs;
-},{"./highlight":16,"./languages/1c":18,"./languages/accesslog":19,"./languages/actionscript":20,"./languages/apache":21,"./languages/applescript":22,"./languages/armasm":23,"./languages/asciidoc":24,"./languages/aspectj":25,"./languages/autohotkey":26,"./languages/autoit":27,"./languages/avrasm":28,"./languages/axapta":29,"./languages/bash":30,"./languages/brainfuck":31,"./languages/cal":32,"./languages/capnproto":33,"./languages/ceylon":34,"./languages/clojure":36,"./languages/clojure-repl":35,"./languages/cmake":37,"./languages/coffeescript":38,"./languages/cpp":39,"./languages/crmsh":40,"./languages/crystal":41,"./languages/cs":42,"./languages/css":43,"./languages/d":44,"./languages/dart":45,"./languages/delphi":46,"./languages/diff":47,"./languages/django":48,"./languages/dns":49,"./languages/dockerfile":50,"./languages/dos":51,"./languages/dust":52,"./languages/elixir":53,"./languages/elm":54,"./languages/erb":55,"./languages/erlang":57,"./languages/erlang-repl":56,"./languages/fix":58,"./languages/fortran":59,"./languages/fsharp":60,"./languages/gams":61,"./languages/gcode":62,"./languages/gherkin":63,"./languages/glsl":64,"./languages/go":65,"./languages/golo":66,"./languages/gradle":67,"./languages/groovy":68,"./languages/haml":69,"./languages/handlebars":70,"./languages/haskell":71,"./languages/haxe":72,"./languages/http":73,"./languages/inform7":74,"./languages/ini":75,"./languages/irpf90":76,"./languages/java":77,"./languages/javascript":78,"./languages/json":79,"./languages/julia":80,"./languages/kotlin":81,"./languages/lasso":82,"./languages/less":83,"./languages/lisp":84,"./languages/livecodeserver":85,"./languages/livescript":86,"./languages/lua":87,"./languages/makefile":88,"./languages/markdown":89,"./languages/mathematica":90,"./languages/matlab":91,"./languages/mel":92,"./languages/mercury":93,"./languages/mizar":94,"./languages/mojolicious":95,"./languages/monkey":96,"./languages/nginx":97,"./languages/nimrod":98,"./languages/nix":99,"./languages/nsis":100,"./languages/objectivec":101,"./languages/ocaml":102,"./languages/openscad":103,"./languages/oxygene":104,"./languages/parser3":105,"./languages/perl":106,"./languages/pf":107,"./languages/php":108,"./languages/powershell":109,"./languages/processing":110,"./languages/profile":111,"./languages/prolog":112,"./languages/protobuf":113,"./languages/puppet":114,"./languages/python":115,"./languages/q":116,"./languages/r":117,"./languages/rib":118,"./languages/roboconf":119,"./languages/rsl":120,"./languages/ruby":121,"./languages/ruleslanguage":122,"./languages/rust":123,"./languages/scala":124,"./languages/scheme":125,"./languages/scilab":126,"./languages/scss":127,"./languages/smali":128,"./languages/smalltalk":129,"./languages/sml":130,"./languages/sqf":131,"./languages/sql":132,"./languages/stata":133,"./languages/step21":134,"./languages/stylus":135,"./languages/swift":136,"./languages/tcl":137,"./languages/tex":138,"./languages/thrift":139,"./languages/tp":140,"./languages/twig":141,"./languages/typescript":142,"./languages/vala":143,"./languages/vbnet":144,"./languages/vbscript":146,"./languages/vbscript-html":145,"./languages/verilog":147,"./languages/vhdl":148,"./languages/vim":149,"./languages/x86asm":150,"./languages/xl":151,"./languages/xml":152,"./languages/xquery":153,"./languages/zephir":154}],18:[function(require,module,exports){
+},{"./highlight":15,"./languages/1c":17,"./languages/accesslog":18,"./languages/actionscript":19,"./languages/apache":20,"./languages/applescript":21,"./languages/armasm":22,"./languages/asciidoc":23,"./languages/aspectj":24,"./languages/autohotkey":25,"./languages/autoit":26,"./languages/avrasm":27,"./languages/axapta":28,"./languages/bash":29,"./languages/brainfuck":30,"./languages/cal":31,"./languages/capnproto":32,"./languages/ceylon":33,"./languages/clojure":35,"./languages/clojure-repl":34,"./languages/cmake":36,"./languages/coffeescript":37,"./languages/cpp":38,"./languages/crmsh":39,"./languages/crystal":40,"./languages/cs":41,"./languages/css":42,"./languages/d":43,"./languages/dart":44,"./languages/delphi":45,"./languages/diff":46,"./languages/django":47,"./languages/dns":48,"./languages/dockerfile":49,"./languages/dos":50,"./languages/dust":51,"./languages/elixir":52,"./languages/elm":53,"./languages/erb":54,"./languages/erlang":56,"./languages/erlang-repl":55,"./languages/fix":57,"./languages/fortran":58,"./languages/fsharp":59,"./languages/gams":60,"./languages/gcode":61,"./languages/gherkin":62,"./languages/glsl":63,"./languages/go":64,"./languages/golo":65,"./languages/gradle":66,"./languages/groovy":67,"./languages/haml":68,"./languages/handlebars":69,"./languages/haskell":70,"./languages/haxe":71,"./languages/http":72,"./languages/inform7":73,"./languages/ini":74,"./languages/irpf90":75,"./languages/java":76,"./languages/javascript":77,"./languages/json":78,"./languages/julia":79,"./languages/kotlin":80,"./languages/lasso":81,"./languages/less":82,"./languages/lisp":83,"./languages/livecodeserver":84,"./languages/livescript":85,"./languages/lua":86,"./languages/makefile":87,"./languages/markdown":88,"./languages/mathematica":89,"./languages/matlab":90,"./languages/mel":91,"./languages/mercury":92,"./languages/mizar":93,"./languages/mojolicious":94,"./languages/monkey":95,"./languages/nginx":96,"./languages/nimrod":97,"./languages/nix":98,"./languages/nsis":99,"./languages/objectivec":100,"./languages/ocaml":101,"./languages/openscad":102,"./languages/oxygene":103,"./languages/parser3":104,"./languages/perl":105,"./languages/pf":106,"./languages/php":107,"./languages/powershell":108,"./languages/processing":109,"./languages/profile":110,"./languages/prolog":111,"./languages/protobuf":112,"./languages/puppet":113,"./languages/python":114,"./languages/q":115,"./languages/r":116,"./languages/rib":117,"./languages/roboconf":118,"./languages/rsl":119,"./languages/ruby":120,"./languages/ruleslanguage":121,"./languages/rust":122,"./languages/scala":123,"./languages/scheme":124,"./languages/scilab":125,"./languages/scss":126,"./languages/smali":127,"./languages/smalltalk":128,"./languages/sml":129,"./languages/sqf":130,"./languages/sql":131,"./languages/stata":132,"./languages/step21":133,"./languages/stylus":134,"./languages/swift":135,"./languages/tcl":136,"./languages/tex":137,"./languages/thrift":138,"./languages/tp":139,"./languages/twig":140,"./languages/typescript":141,"./languages/vala":142,"./languages/vbnet":143,"./languages/vbscript":145,"./languages/vbscript-html":144,"./languages/verilog":146,"./languages/vhdl":147,"./languages/vim":148,"./languages/x86asm":149,"./languages/xl":150,"./languages/xml":151,"./languages/xquery":152,"./languages/zephir":153}],17:[function(require,module,exports){
 module.exports = function(hljs){
   var IDENT_RE_RU = '[a-zA-Zа-яА-Я][a-zA-Z0-9_а-яА-Я]*';
   var OneS_KEYWORDS = 'возврат дата для если и или иначе иначеесли исключение конецесли ' +
@@ -1597,7 +1595,7 @@ module.exports = function(hljs){
     ]
   };
 };
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -1635,7 +1633,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],20:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z_$][a-zA-Z0-9_$]*';
   var IDENT_FUNC_RETURN_TYPE_RE = '([*]|[a-zA-Z_$][a-zA-Z0-9_$]*)';
@@ -1710,7 +1708,7 @@ module.exports = function(hljs) {
     illegal: /#/
   };
 };
-},{}],21:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUMBER = {className: 'number', begin: '[\\$%]\\d+'};
   return {
@@ -1756,7 +1754,7 @@ module.exports = function(hljs) {
     illegal: /\S/
   };
 };
-},{}],22:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = hljs.inherit(hljs.QUOTE_STRING_MODE, {illegal: ''});
   var PARAMS = {
@@ -1853,7 +1851,7 @@ module.exports = function(hljs) {
     illegal: '//|->|=>|\\[\\['
   };
 };
-},{}],23:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 module.exports = function(hljs) {
     //local labels: %?[FB]?[AT]?\d{1,2}\w+
   return {
@@ -1945,7 +1943,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['adoc'],
@@ -2137,7 +2135,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS =
     'false synchronized int abstract float private char boolean static null if const ' +
@@ -2275,7 +2273,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],26:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 module.exports = function(hljs) {
   var BACKTICK_ESCAPE = {
     className: 'escape',
@@ -2337,7 +2335,7 @@ module.exports = function(hljs) {
     ])
   }
 };
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 module.exports = function(hljs) {
     var KEYWORDS = 'ByRef Case Const ContinueCase ContinueLoop ' +
         'Default Dim Do Else ElseIf EndFunc EndIf EndSelect ' +
@@ -4092,7 +4090,7 @@ module.exports = function(hljs) {
         ]
     }
 };
-},{}],28:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -4154,7 +4152,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],29:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: 'false int abstract private char boolean static null if for true ' +
@@ -4185,7 +4183,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],30:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR = {
     className: 'variable',
@@ -4261,7 +4259,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],31:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 module.exports = function(hljs){
   var LITERAL = {
     className: 'literal',
@@ -4298,7 +4296,7 @@ module.exports = function(hljs){
     ]
   };
 };
-},{}],32:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS =
     'div mod in and or not xor asserterror begin case do downto else end exit for if of repeat then to ' +
@@ -4378,7 +4376,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],33:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['capnp'],
@@ -4427,7 +4425,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],34:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 module.exports = function(hljs) {
   // 2.3. Identifiers and keywords
   var KEYWORDS =
@@ -4495,7 +4493,7 @@ module.exports = function(hljs) {
     ].concat(EXPRESSIONS)
   };
 };
-},{}],35:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -4510,7 +4508,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],36:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 module.exports = function(hljs) {
   var keywords = {
     built_in:
@@ -4607,7 +4605,7 @@ module.exports = function(hljs) {
     contains: [LIST, STRING, HINT, HINT_COL, COMMENT, KEY, COLLECTION, NUMBER, LITERAL]
   }
 };
-},{}],37:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['cmake.in'],
@@ -4646,7 +4644,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],38:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -4787,7 +4785,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],39:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 module.exports = function(hljs) {
   var CPP_PRIMATIVE_TYPES = {
     className: 'keyword',
@@ -4928,7 +4926,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],40:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 module.exports = function(hljs) {
   var RESOURCES = 'primitive rsc_template';
 
@@ -5026,7 +5024,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],41:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUM_SUFFIX = '(_[uif](8|16|32|64))?';
   var CRYSTAL_IDENT_RE = '[a-zA-Z_]\\w*[!?=]?';
@@ -5218,7 +5216,7 @@ module.exports = function(hljs) {
     contains: CRYSTAL_DEFAULT_CONTAINS
   };
 };
-},{}],42:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS =
     // Normal keywords.
@@ -5337,7 +5335,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],43:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var FUNCTION = {
@@ -5439,7 +5437,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],44:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 module.exports = /**
  * Known issues:
  *
@@ -5697,7 +5695,7 @@ function(hljs) {
     ]
   };
 };
-},{}],45:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 module.exports = function (hljs) {
   var SUBST = {
     className: 'subst',
@@ -5798,7 +5796,7 @@ module.exports = function (hljs) {
     ]
   }
 };
-},{}],46:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS =
     'exports register file shl array record property for mod while set ally label uses raise not ' +
@@ -5865,7 +5863,7 @@ module.exports = function(hljs) {
     ].concat(COMMENT_MODES)
   };
 };
-},{}],47:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['patch'],
@@ -5905,7 +5903,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],48:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 module.exports = function(hljs) {
   var FILTER = {
     className: 'filter',
@@ -5955,7 +5953,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],49:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['bind', 'zone'],
@@ -5983,7 +5981,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],50:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['docker'],
@@ -6018,7 +6016,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],51:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT = hljs.COMMENT(
     /@?rem\b/, /$/,
@@ -6067,7 +6065,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],52:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 module.exports = function(hljs) {
   var EXPRESSION_KEYWORDS = 'if eq ne lt lte gt gte select default math sep';
   return {
@@ -6102,7 +6100,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],53:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 module.exports = function(hljs) {
   var ELIXIR_IDENT_RE = '[a-zA-Z_][a-zA-Z0-9_]*(\\!|\\?)?';
   var ELIXIR_METHOD_RE = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?';
@@ -6204,7 +6202,7 @@ module.exports = function(hljs) {
     contains: ELIXIR_DEFAULT_CONTAINS
   };
 };
-},{}],54:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT_MODES = [
     hljs.COMMENT('--', '$'),
@@ -6290,7 +6288,7 @@ module.exports = function(hljs) {
     ].concat(COMMENT_MODES)
   };
 };
-},{}],55:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -6305,7 +6303,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],56:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -6353,7 +6351,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],57:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 module.exports = function(hljs) {
   var BASIC_ATOM_RE = '[a-z\'][a-zA-Z0-9_\']*';
   var FUNCTION_NAME_RE = '(' + BASIC_ATOM_RE + ':' + BASIC_ATOM_RE + '|' + BASIC_ATOM_RE + ')';
@@ -6505,7 +6503,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],58:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -6534,7 +6532,7 @@ module.exports = function(hljs) {
     case_insensitive: true
   };
 };
-},{}],59:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -6605,7 +6603,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],60:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 module.exports = function(hljs) {
   var TYPEPARAM = {
     begin: '<', end: '>',
@@ -6664,7 +6662,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],61:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS =
     'abort acronym acronyms alias all and assign binary card diag display else1 eps eq equation equations file files ' +
@@ -6701,7 +6699,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],62:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 module.exports = function(hljs) {
     var GCODE_IDENT_RE = '[A-Z_][A-Z0-9_.]*';
     var GCODE_CLOSE_RE = '\\%';
@@ -6774,7 +6772,7 @@ module.exports = function(hljs) {
         ].concat(GCODE_CODE)
     };
 };
-},{}],63:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 module.exports = function (hljs) {
   return {
     aliases: ['feature'],
@@ -6807,7 +6805,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],64:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -6901,7 +6899,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],65:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 module.exports = function(hljs) {
   var GO_KEYWORDS = {
     keyword:
@@ -6940,7 +6938,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],66:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 module.exports = function(hljs) {
     return {
       keywords: {
@@ -6964,7 +6962,7 @@ module.exports = function(hljs) {
       ]
     }
 };
-},{}],67:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -6999,7 +6997,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],68:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 module.exports = function(hljs) {
     return {
         keywords: {
@@ -7087,7 +7085,7 @@ module.exports = function(hljs) {
         illegal: /#/
     }
 };
-},{}],69:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 module.exports = // TODO support filter tags like :javascript, support inline HTML
 function(hljs) {
   return {
@@ -7195,7 +7193,7 @@ function(hljs) {
     ]
   };
 };
-},{}],70:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 module.exports = function(hljs) {
   var EXPRESSION_KEYWORDS = 'each in with if else unless bindattr action collection debugger log outlet template unbound view yield';
   return {
@@ -7228,7 +7226,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],71:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT_MODES = [
     hljs.COMMENT('--', '$'),
@@ -7352,7 +7350,7 @@ module.exports = function(hljs) {
     ].concat(COMMENT_MODES)
   };
 };
-},{}],72:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z_$][a-zA-Z0-9_$]*';
   var IDENT_FUNC_RETURN_TYPE_RE = '([*]|[a-zA-Z_$][a-zA-Z0-9_$]*)';
@@ -7413,7 +7411,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],73:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['https'],
@@ -7448,7 +7446,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],74:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 module.exports = function(hljs) {
   var START_BRACKET = '\\[';
   var END_BRACKET = '\\]';
@@ -7506,7 +7504,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],75:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = {
     className: "string",
@@ -7566,7 +7564,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],76:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -7642,7 +7640,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],77:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 module.exports = function(hljs) {
   var GENERIC_IDENT_RE = hljs.UNDERSCORE_IDENT_RE + '(<' + hljs.UNDERSCORE_IDENT_RE + '>)?';
   var KEYWORDS =
@@ -7742,7 +7740,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],78:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['js'],
@@ -7854,7 +7852,7 @@ module.exports = function(hljs) {
     illegal: /#/
   };
 };
-},{}],79:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 module.exports = function(hljs) {
   var LITERALS = {literal: 'true false null'};
   var TYPES = [
@@ -7892,7 +7890,7 @@ module.exports = function(hljs) {
     illegal: '\\S'
   };
 };
-},{}],80:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 module.exports = function(hljs) {
   // Since there are numerous special names in Julia, it is too much trouble
   // to maintain them by hand. Hence these names (i.e. keywords, literals and
@@ -8053,7 +8051,7 @@ module.exports = function(hljs) {
 
   return DEFAULT;
 };
-},{}],81:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 module.exports = function (hljs) {
   var KEYWORDS = 'val var get set class trait object public open private protected ' +
     'final enum if else do while for when break continue throw try catch finally ' +
@@ -8154,7 +8152,7 @@ module.exports = function (hljs) {
     ]
   };
 };
-},{}],82:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 module.exports = function(hljs) {
   var LASSO_IDENT_RE = '[a-zA-Z_][a-zA-Z0-9_.]*';
   var LASSO_ANGLE_RE = '<\\?(lasso(script)?|=)';
@@ -8340,7 +8338,7 @@ module.exports = function(hljs) {
     ].concat(LASSO_CODE)
   };
 };
-},{}],83:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE        = '[\\w-]+'; // yes, Less identifiers may begin with a digit
   var INTERP_IDENT_RE = '(' + IDENT_RE + '|@{' + IDENT_RE + '})';
@@ -8477,7 +8475,7 @@ module.exports = function(hljs) {
     contains: RULES
   };
 };
-},{}],84:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 module.exports = function(hljs) {
   var LISP_IDENT_RE = '[a-zA-Z_\\-\\+\\*\\/\\<\\=\\>\\&\\#][a-zA-Z0-9_\\-\\+\\*\\/\\<\\=\\>\\&\\#!]*';
   var MEC_RE = '\\|[^]*?\\|';
@@ -8584,7 +8582,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],85:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     className: 'variable', begin: '\\b[gtps][A-Z]+[A-Za-z0-9_\\-]*\\b|\\$_[A-Z]+',
@@ -8742,7 +8740,7 @@ module.exports = function(hljs) {
     illegal: ';$|^\\[|^='
   };
 };
-},{}],86:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -8893,7 +8891,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],87:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 module.exports = function(hljs) {
   var OPENING_LONG_BRACKET = '\\[=*\\[';
   var CLOSING_LONG_BRACKET = '\\]=*\\]';
@@ -8949,7 +8947,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],88:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     className: 'variable',
@@ -8995,7 +8993,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],89:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['md', 'mkdown', 'mkd'],
@@ -9097,7 +9095,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],90:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['mma'],
@@ -9156,7 +9154,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],91:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMON_CONTAINS = [
     hljs.C_NUMBER_MODE,
@@ -9247,7 +9245,7 @@ module.exports = function(hljs) {
     ].concat(COMMON_CONTAINS)
   };
 };
-},{}],92:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -9477,7 +9475,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],93:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -9566,7 +9564,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],94:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -9585,7 +9583,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],95:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -9610,7 +9608,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],96:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUMBER = {
     className: 'number', relevance: 0,
@@ -9689,7 +9687,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],97:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR = {
     className: 'variable',
@@ -9771,7 +9769,7 @@ module.exports = function(hljs) {
     illegal: '[^\\s\\}]'
   };
 };
-},{}],98:[function(require,module,exports){
+},{}],97:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['nim'],
@@ -9823,7 +9821,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],99:[function(require,module,exports){
+},{}],98:[function(require,module,exports){
 module.exports = function(hljs) {
   var NIX_KEYWORDS = {
     keyword: 'rec with let in inherit assert if else then',
@@ -9874,7 +9872,7 @@ module.exports = function(hljs) {
     contains: EXPRESSIONS
   };
 };
-},{}],100:[function(require,module,exports){
+},{}],99:[function(require,module,exports){
 module.exports = function(hljs) {
   var CONSTANTS = {
     className: 'symbol',
@@ -9962,7 +9960,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],101:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 module.exports = function(hljs) {
   var API_CLASS = {
     className: 'built_in',
@@ -10041,7 +10039,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],102:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 module.exports = function(hljs) {
   /* missing support for heredoc-like string (OCaml 4.0.2+) */
   return {
@@ -10112,7 +10110,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],103:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 module.exports = function(hljs) {
 	var SPECIAL_VARS = {
 		className: 'keyword',
@@ -10170,7 +10168,7 @@ module.exports = function(hljs) {
 		]
 	}
 };
-},{}],104:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 module.exports = function(hljs) {
   var OXYGENE_KEYWORDS = 'abstract add and array as asc aspect assembly async begin break block by case class concat const copy constructor continue '+
     'create default delegate desc distinct div do downto dynamic each else empty end ensure enum equals event except exit extension external false '+
@@ -10239,7 +10237,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],105:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 module.exports = function(hljs) {
   var CURLY_SUBCOMMENT = hljs.COMMENT(
     '{',
@@ -10287,7 +10285,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],106:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 module.exports = function(hljs) {
   var PERL_KEYWORDS = 'getpwent getservent quotemeta msgrcv scalar kill dbmclose undef lc ' +
     'ma syswrite tr send umask sysopen shmwrite vec qx utime local oct semctl localtime ' +
@@ -10444,7 +10442,7 @@ module.exports = function(hljs) {
     contains: PERL_DEFAULT_CONTAINS
   };
 };
-},{}],107:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 module.exports = function(hljs) {
   var MACRO = {
     className: 'variable',
@@ -10496,7 +10494,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],108:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 module.exports = function(hljs) {
   var VARIABLE = {
     className: 'variable', begin: '\\$+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'
@@ -10621,7 +10619,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],109:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 module.exports = function(hljs) {
   var backtickEscape = {
     begin: '`[\\s\\S]',
@@ -10669,7 +10667,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],110:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -10717,7 +10715,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],111:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     contains: [
@@ -10759,7 +10757,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],112:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var ATOM = {
@@ -10848,7 +10846,7 @@ module.exports = function(hljs) {
     ])
   };
 };
-},{}],113:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -10885,7 +10883,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],114:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var PUPPET_KEYWORDS = {
@@ -10993,7 +10991,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],115:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 module.exports = function(hljs) {
   var PROMPT = {
     className: 'prompt',  begin: /^(>>>|\.\.\.) /
@@ -11078,7 +11076,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],116:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 module.exports = function(hljs) {
   var Q_KEYWORDS = {
   keyword:
@@ -11101,7 +11099,7 @@ module.exports = function(hljs) {
      ]
   };
 };
-},{}],117:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '([a-zA-Z]|\\.[a-zA-Z.])[a-zA-Z0-9._]*';
 
@@ -11171,7 +11169,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],118:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords:
@@ -11198,7 +11196,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],119:[function(require,module,exports){
+},{}],118:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENTIFIER = '[a-zA-Z-_][^\n{\r\n]+\\{';
 
@@ -11258,7 +11256,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],120:[function(require,module,exports){
+},{}],119:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -11295,7 +11293,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],121:[function(require,module,exports){
+},{}],120:[function(require,module,exports){
 module.exports = function(hljs) {
   var RUBY_METHOD_RE = '[a-zA-Z_]\\w*[!?=]?|[-+~]\\@|<<|>>|=~|===?|<=>|[<>]=?|\\*\\*|[-/+%^&*~`|]|\\[\\]=?';
   var RUBY_KEYWORDS =
@@ -11465,7 +11463,7 @@ module.exports = function(hljs) {
     contains: COMMENT_MODES.concat(IRB_DEFAULT).concat(RUBY_DEFAULT_CONTAINS)
   };
 };
-},{}],122:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -11526,7 +11524,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],123:[function(require,module,exports){
+},{}],122:[function(require,module,exports){
 module.exports = function(hljs) {
   var NUM_SUFFIX = '([uif](8|16|32|64|size))\?';
   var BLOCK_COMMENT = hljs.inherit(hljs.C_BLOCK_COMMENT_MODE);
@@ -11612,7 +11610,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],124:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var ANNOTATION = {
@@ -11675,7 +11673,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],125:[function(require,module,exports){
+},{}],124:[function(require,module,exports){
 module.exports = function(hljs) {
   var SCHEME_IDENT_RE = '[^\\(\\)\\[\\]\\{\\}",\'`;#|\\\\\\s]+';
   var SCHEME_SIMPLE_NUMBER_RE = '(\\-|\\+)?\\d+([./]\\d+)?';
@@ -11797,7 +11795,7 @@ module.exports = function(hljs) {
     contains: [SHEBANG, NUMBER, STRING, QUOTED_IDENT, LIST].concat(COMMENT_MODES)
   };
 };
-},{}],126:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var COMMON_CONTAINS = [
@@ -11852,7 +11850,7 @@ module.exports = function(hljs) {
     ].concat(COMMON_CONTAINS)
   };
 };
-},{}],127:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 module.exports = function(hljs) {
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var VARIABLE = {
@@ -11969,7 +11967,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],128:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 module.exports = function(hljs) {
   var smali_instr_low_prio = ['add', 'and', 'cmp', 'cmpg', 'cmpl', 'const', 'div', 'double', 'float', 'goto', 'if', 'int', 'long', 'move', 'mul', 'neg', 'new', 'nop', 'not', 'or', 'rem', 'return', 'shl', 'shr', 'sput', 'sub', 'throw', 'ushr', 'xor'];
   var smali_instr_high_prio = ['aget', 'aput', 'array', 'check', 'execute', 'fill', 'filled', 'goto/16', 'goto/32', 'iget', 'instance', 'invoke', 'iput', 'monitor', 'packed', 'sget', 'sparse'];
@@ -12052,7 +12050,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],129:[function(require,module,exports){
+},{}],128:[function(require,module,exports){
 module.exports = function(hljs) {
   var VAR_IDENT_RE = '[a-z][a-zA-Z0-9_]*';
   var CHAR = {
@@ -12105,7 +12103,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],130:[function(require,module,exports){
+},{}],129:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['ml'],
@@ -12170,7 +12168,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],131:[function(require,module,exports){
+},{}],130:[function(require,module,exports){
 module.exports = function(hljs) {
   var allCommands = ['!', '-', '+', '!=', '%', '&&', '*', '/', '=', '==', '>', '>=', '<', '<=', 'or', 'plus', '^', ':', '>>', 'abs', 'accTime', 'acos', 'action', 'actionKeys', 'actionKeysImages', 'actionKeysNames', 'actionKeysNamesArray', 'actionName', 'activateAddons', 'activatedAddons', 'activateKey', 'addAction', 'addBackpack', 'addBackpackCargo', 'addBackpackCargoGlobal', 'addBackpackGlobal', 'addCamShake', 'addCuratorAddons', 'addCuratorCameraArea', 'addCuratorEditableObjects', 'addCuratorEditingArea', 'addCuratorPoints', 'addEditorObject', 'addEventHandler', 'addGoggles', 'addGroupIcon', 'addHandgunItem', 'addHeadgear', 'addItem', 'addItemCargo', 'addItemCargoGlobal', 'addItemPool', 'addItemToBackpack', 'addItemToUniform', 'addItemToVest', 'addLiveStats', 'addMagazine', 'addMagazine array', 'addMagazineAmmoCargo', 'addMagazineCargo', 'addMagazineCargoGlobal', 'addMagazineGlobal', 'addMagazinePool', 'addMagazines', 'addMagazineTurret', 'addMenu', 'addMenuItem', 'addMissionEventHandler', 'addMPEventHandler', 'addMusicEventHandler', 'addPrimaryWeaponItem', 'addPublicVariableEventHandler', 'addRating', 'addResources', 'addScore', 'addScoreSide', 'addSecondaryWeaponItem', 'addSwitchableUnit', 'addTeamMember', 'addToRemainsCollector', 'addUniform', 'addVehicle', 'addVest', 'addWaypoint', 'addWeapon', 'addWeaponCargo', 'addWeaponCargoGlobal', 'addWeaponGlobal', 'addWeaponPool', 'addWeaponTurret', 'agent', 'agents', 'AGLToASL', 'aimedAtTarget', 'aimPos', 'airDensityRTD', 'airportSide', 'AISFinishHeal', 'alive', 'allControls', 'allCurators', 'allDead', 'allDeadMen', 'allDisplays', 'allGroups', 'allMapMarkers', 'allMines', 'allMissionObjects', 'allow3DMode', 'allowCrewInImmobile', 'allowCuratorLogicIgnoreAreas', 'allowDamage', 'allowDammage', 'allowFileOperations', 'allowFleeing', 'allowGetIn', 'allPlayers', 'allSites', 'allTurrets', 'allUnits', 'allUnitsUAV', 'allVariables', 'ammo', 'and', 'animate', 'animateDoor', 'animationPhase', 'animationState', 'append', 'armoryPoints', 'arrayIntersect', 'asin', 'ASLToAGL', 'ASLToATL', 'assert', 'assignAsCargo', 'assignAsCargoIndex', 'assignAsCommander', 'assignAsDriver', 'assignAsGunner', 'assignAsTurret', 'assignCurator', 'assignedCargo', 'assignedCommander', 'assignedDriver', 'assignedGunner', 'assignedItems', 'assignedTarget', 'assignedTeam', 'assignedVehicle', 'assignedVehicleRole', 'assignItem', 'assignTeam', 'assignToAirport', 'atan', 'atan2', 'atg', 'ATLToASL', 'attachedObject', 'attachedObjects', 'attachedTo', 'attachObject', 'attachTo', 'attackEnabled', 'backpack', 'backpackCargo', 'backpackContainer', 'backpackItems', 'backpackMagazines', 'backpackSpaceFor', 'behaviour', 'benchmark', 'binocular', 'blufor', 'boundingBox', 'boundingBoxReal', 'boundingCenter', 'breakOut', 'breakTo', 'briefingName', 'buildingExit', 'buildingPos', 'buttonAction', 'buttonSetAction', 'cadetMode', 'call', 'callExtension', 'camCommand', 'camCommit', 'camCommitPrepared', 'camCommitted', 'camConstuctionSetParams', 'camCreate', 'camDestroy', 'cameraEffect', 'cameraEffectEnableHUD', 'cameraInterest', 'cameraOn', 'cameraView', 'campaignConfigFile', 'camPreload', 'camPreloaded', 'camPrepareBank', 'camPrepareDir', 'camPrepareDive', 'camPrepareFocus', 'camPrepareFov', 'camPrepareFovRange', 'camPreparePos', 'camPrepareRelPos', 'camPrepareTarget', 'camSetBank', 'camSetDir', 'camSetDive', 'camSetFocus', 'camSetFov', 'camSetFovRange', 'camSetPos', 'camSetRelPos', 'camSetTarget', 'camTarget', 'camUseNVG', 'canAdd', 'canAddItemToBackpack', 'canAddItemToUniform', 'canAddItemToVest', 'cancelSimpleTaskDestination', 'canFire', 'canMove', 'canSlingLoad', 'canStand', 'canUnloadInCombat', 'captive', 'captiveNum', 'case', 'catch', 'cbChecked', 'cbSetChecked', 'ceil', 'cheatsEnabled', 'checkAIFeature', 'civilian', 'className', 'clearAllItemsFromBackpack', 'clearBackpackCargo', 'clearBackpackCargoGlobal', 'clearGroupIcons', 'clearItemCargo', 'clearItemCargoGlobal', 'clearItemPool', 'clearMagazineCargo', 'clearMagazineCargoGlobal', 'clearMagazinePool', 'clearOverlay', 'clearRadio', 'clearWeaponCargo', 'clearWeaponCargoGlobal', 'clearWeaponPool', 'closeDialog', 'closeDisplay', 'closeOverlay', 'collapseObjectTree', 'combatMode', 'commandArtilleryFire', 'commandChat', 'commander', 'commandFire', 'commandFollow', 'commandFSM', 'commandGetOut', 'commandingMenu', 'commandMove', 'commandRadio', 'commandStop', 'commandTarget', 'commandWatch', 'comment', 'commitOverlay', 'compile', 'compileFinal', 'completedFSM', 'composeText', 'configClasses', 'configFile', 'configHierarchy', 'configName', 'configProperties', 'configSourceMod', 'configSourceModList', 'connectTerminalToUAV', 'controlNull', 'controlsGroupCtrl', 'copyFromClipboard', 'copyToClipboard', 'copyWaypoints', 'cos', 'count', 'countEnemy', 'countFriendly', 'countSide', 'countType', 'countUnknown', 'createAgent', 'createCenter', 'createDialog', 'createDiaryLink', 'createDiaryRecord', 'createDiarySubject', 'createDisplay', 'createGearDialog', 'createGroup', 'createGuardedPoint', 'createLocation', 'createMarker', 'createMarkerLocal', 'createMenu', 'createMine', 'createMissionDisplay', 'createSimpleTask', 'createSite', 'createSoundSource', 'createTask', 'createTeam', 'createTrigger', 'createUnit', 'createUnit array', 'createVehicle', 'createVehicle array', 'createVehicleCrew', 'createVehicleLocal', 'crew', 'ctrlActivate', 'ctrlAddEventHandler', 'ctrlAutoScrollDelay', 'ctrlAutoScrollRewind', 'ctrlAutoScrollSpeed', 'ctrlChecked', 'ctrlClassName', 'ctrlCommit', 'ctrlCommitted', 'ctrlCreate', 'ctrlDelete', 'ctrlEnable', 'ctrlEnabled', 'ctrlFade', 'ctrlHTMLLoaded', 'ctrlIDC', 'ctrlIDD', 'ctrlMapAnimAdd', 'ctrlMapAnimClear', 'ctrlMapAnimCommit', 'ctrlMapAnimDone', 'ctrlMapCursor', 'ctrlMapMouseOver', 'ctrlMapScale', 'ctrlMapScreenToWorld', 'ctrlMapWorldToScreen', 'ctrlModel', 'ctrlModelDirAndUp', 'ctrlModelScale', 'ctrlParent', 'ctrlPosition', 'ctrlRemoveAllEventHandlers', 'ctrlRemoveEventHandler', 'ctrlScale', 'ctrlSetActiveColor', 'ctrlSetAutoScrollDelay', 'ctrlSetAutoScrollRewind', 'ctrlSetAutoScrollSpeed', 'ctrlSetBackgroundColor', 'ctrlSetChecked', 'ctrlSetEventHandler', 'ctrlSetFade', 'ctrlSetFocus', 'ctrlSetFont', 'ctrlSetFontH1', 'ctrlSetFontH1B', 'ctrlSetFontH2', 'ctrlSetFontH2B', 'ctrlSetFontH3', 'ctrlSetFontH3B', 'ctrlSetFontH4', 'ctrlSetFontH4B', 'ctrlSetFontH5', 'ctrlSetFontH5B', 'ctrlSetFontH6', 'ctrlSetFontH6B', 'ctrlSetFontHeight', 'ctrlSetFontHeightH1', 'ctrlSetFontHeightH2', 'ctrlSetFontHeightH3', 'ctrlSetFontHeightH4', 'ctrlSetFontHeightH5', 'ctrlSetFontHeightH6', 'ctrlSetFontP', 'ctrlSetFontPB', 'ctrlSetForegroundColor', 'ctrlSetModel', 'ctrlSetModelDirAndUp', 'ctrlSetModelScale', 'ctrlSetPosition', 'ctrlSetScale', 'ctrlSetStructuredText', 'ctrlSetText', 'ctrlSetTextColor', 'ctrlSetTooltip', 'ctrlSetTooltipColorBox', 'ctrlSetTooltipColorShade', 'ctrlSetTooltipColorText', 'ctrlShow', 'ctrlShown', 'ctrlText', 'ctrlTextHeight', 'ctrlType', 'ctrlVisible', 'curatorAddons', 'curatorCamera', 'curatorCameraArea', 'curatorCameraAreaCeiling', 'curatorCoef', 'curatorEditableObjects', 'curatorEditingArea', 'curatorEditingAreaType', 'curatorMouseOver', 'curatorPoints', 'curatorRegisteredObjects', 'curatorSelected', 'curatorWaypointCost', 'currentChannel', 'currentCommand', 'currentMagazine', 'currentMagazineDetail', 'currentMagazineDetailTurret', 'currentMagazineTurret', 'currentMuzzle', 'currentNamespace', 'currentTask', 'currentTasks', 'currentThrowable', 'currentVisionMode', 'currentWaypoint', 'currentWeapon', 'currentWeaponMode', 'currentWeaponTurret', 'currentZeroing', 'cursorTarget', 'customChat', 'customRadio', 'cutFadeOut', 'cutObj', 'cutRsc', 'cutText', 'damage', 'date', 'dateToNumber', 'daytime', 'deActivateKey', 'debriefingText', 'debugFSM', 'debugLog', 'default', 'deg', 'deleteAt', 'deleteCenter', 'deleteCollection', 'deleteEditorObject', 'deleteGroup', 'deleteIdentity', 'deleteLocation', 'deleteMarker', 'deleteMarkerLocal', 'deleteRange', 'deleteResources', 'deleteSite', 'deleteStatus', 'deleteTeam', 'deleteVehicle', 'deleteVehicleCrew', 'deleteWaypoint', 'detach', 'detectedMines', 'diag activeMissionFSMs', 'diag activeSQFScripts', 'diag activeSQSScripts', 'diag captureFrame', 'diag captureSlowFrame', 'diag fps', 'diag fpsMin', 'diag frameNo', 'diag log', 'diag logSlowFrame', 'diag tickTime', 'dialog', 'diarySubjectExists', 'didJIP', 'didJIPOwner', 'difficulty', 'difficultyEnabled', 'difficultyEnabledRTD', 'direction', 'directSay', 'disableAI', 'disableCollisionWith', 'disableConversation', 'disableDebriefingStats', 'disableSerialization', 'disableTIEquipment', 'disableUAVConnectability', 'disableUserInput', 'displayAddEventHandler', 'displayCtrl', 'displayNull', 'displayRemoveAllEventHandlers', 'displayRemoveEventHandler', 'displaySetEventHandler', 'dissolveTeam', 'distance', 'distance2D', 'distanceSqr', 'distributionRegion', 'do', 'doArtilleryFire', 'doFire', 'doFollow', 'doFSM', 'doGetOut', 'doMove', 'doorPhase', 'doStop', 'doTarget', 'doWatch', 'drawArrow', 'drawEllipse', 'drawIcon', 'drawIcon3D', 'drawLine', 'drawLine3D', 'drawLink', 'drawLocation', 'drawRectangle', 'driver', 'drop', 'east', 'echo', 'editObject', 'editorSetEventHandler', 'effectiveCommander', 'else', 'emptyPositions', 'enableAI', 'enableAIFeature', 'enableAttack', 'enableCamShake', 'enableCaustics', 'enableCollisionWith', 'enableCopilot', 'enableDebriefingStats', 'enableDiagLegend', 'enableEndDialog', 'enableEngineArtillery', 'enableEnvironment', 'enableFatigue', 'enableGunLights', 'enableIRLasers', 'enableMimics', 'enablePersonTurret', 'enableRadio', 'enableReload', 'enableRopeAttach', 'enableSatNormalOnDetail', 'enableSaving', 'enableSentences', 'enableSimulation', 'enableSimulationGlobal', 'enableTeamSwitch', 'enableUAVConnectability', 'enableUAVWaypoints', 'endLoadingScreen', 'endMission', 'engineOn', 'enginesIsOnRTD', 'enginesRpmRTD', 'enginesTorqueRTD', 'entities', 'estimatedEndServerTime', 'estimatedTimeLeft', 'evalObjectArgument', 'everyBackpack', 'everyContainer', 'exec', 'execEditorScript', 'execFSM', 'execVM', 'exit', 'exitWith', 'exp', 'expectedDestination', 'eyeDirection', 'eyePos', 'face', 'faction', 'fadeMusic', 'fadeRadio', 'fadeSound', 'fadeSpeech', 'failMission', 'false', 'fillWeaponsFromPool', 'find', 'findCover', 'findDisplay', 'findEditorObject', 'findEmptyPosition', 'findEmptyPositionReady', 'findNearestEnemy', 'finishMissionInit', 'finite', 'fire', 'fireAtTarget', 'firstBackpack', 'flag', 'flagOwner', 'fleeing', 'floor', 'flyInHeight', 'fog', 'fogForecast', 'fogParams', 'for', 'forceAddUniform', 'forceEnd', 'forceMap', 'forceRespawn', 'forceSpeed', 'forceWalk', 'forceWeaponFire', 'forceWeatherChange', 'forEach', 'forEachMember', 'forEachMemberAgent', 'forEachMemberTeam', 'format', 'formation', 'formationDirection', 'formationLeader', 'formationMembers', 'formationPosition', 'formationTask', 'formatText', 'formLeader', 'freeLook', 'from', 'fromEditor', 'fuel', 'fullCrew', 'gearSlotAmmoCount', 'gearSlotData', 'getAllHitPointsDamage', 'getAmmoCargo', 'getArray', 'getArtilleryAmmo', 'getArtilleryComputerSettings', 'getArtilleryETA', 'getAssignedCuratorLogic', 'getAssignedCuratorUnit', 'getBackpackCargo', 'getBleedingRemaining', 'getBurningValue', 'getCargoIndex', 'getCenterOfMass', 'getClientState', 'getConnectedUAV', 'getDammage', 'getDescription', 'getDir', 'getDirVisual', 'getDLCs', 'getEditorCamera', 'getEditorMode', 'getEditorObjectScope', 'getElevationOffset', 'getFatigue', 'getFriend', 'getFSMVariable', 'getFuelCargo', 'getGroupIcon', 'getGroupIconParams', 'getGroupIcons', 'getHideFrom', 'getHit', 'getHitIndex', 'getHitPointDamage', 'getItemCargo', 'getMagazineCargo', 'getMarkerColor', 'getMarkerPos', 'getMarkerSize', 'getMarkerType', 'getMass', 'getModelInfo', 'getNumber', 'getObjectArgument', 'getObjectChildren', 'getObjectDLC', 'getObjectMaterials', 'getObjectProxy', 'getObjectTextures', 'getObjectType', 'getObjectViewDistance', 'getOxygenRemaining', 'getPersonUsedDLCs', 'getPlayerChannel', 'getPlayerUID', 'getPos', 'getPosASL', 'getPosASLVisual', 'getPosASLW', 'getPosATL', 'getPosATLVisual', 'getPosVisual', 'getPosWorld', 'getRepairCargo', 'getResolution', 'getShadowDistance', 'getSlingLoad', 'getSpeed', 'getSuppression', 'getTerrainHeightASL', 'getText', 'getVariable', 'getWeaponCargo', 'getWPPos', 'glanceAt', 'globalChat', 'globalRadio', 'goggles', 'goto', 'group', 'groupChat', 'groupFromNetId', 'groupIconSelectable', 'groupIconsVisible', 'groupId', 'groupOwner', 'groupRadio', 'groupSelectedUnits', 'groupSelectUnit', 'grpNull', 'gunner', 'gusts', 'halt', 'handgunItems', 'handgunMagazine', 'handgunWeapon', 'handsHit', 'hasInterface', 'hasWeapon', 'hcAllGroups', 'hcGroupParams', 'hcLeader', 'hcRemoveAllGroups', 'hcRemoveGroup', 'hcSelected', 'hcSelectGroup', 'hcSetGroup', 'hcShowBar', 'hcShownBar', 'headgear', 'hideBody', 'hideObject', 'hideObjectGlobal', 'hint', 'hintC', 'hintCadet', 'hintSilent', 'hmd', 'hostMission', 'htmlLoad', 'HUDMovementLevels', 'humidity', 'if', 'image', 'importAllGroups', 'importance', 'in', 'incapacitatedState', 'independent', 'inflame', 'inflamed', 'inGameUISetEventHandler', 'inheritsFrom', 'initAmbientLife', 'inputAction', 'inRangeOfArtillery', 'insertEditorObject', 'intersect', 'isAbleToBreathe', 'isAgent', 'isArray', 'isAutoHoverOn', 'isAutonomous', 'isAutotest', 'isBleeding', 'isBurning', 'isClass', 'isCollisionLightOn', 'isCopilotEnabled', 'isDedicated', 'isDLCAvailable', 'isEngineOn', 'isEqualTo', 'isFlashlightOn', 'isFlatEmpty', 'isForcedWalk', 'isFormationLeader', 'isHidden', 'isInRemainsCollector', 'isInstructorFigureEnabled', 'isIRLaserOn', 'isKeyActive', 'isKindOf', 'isLightOn', 'isLocalized', 'isManualFire', 'isMarkedForCollection', 'isMultiplayer', 'isNil', 'isNull', 'isNumber', 'isObjectHidden', 'isObjectRTD', 'isOnRoad', 'isPipEnabled', 'isPlayer', 'isRealTime', 'isServer', 'isShowing3DIcons', 'isSteamMission', 'isStreamFriendlyUIEnabled', 'isText', 'isTouchingGround', 'isTurnedOut', 'isTutHintsEnabled', 'isUAVConnectable', 'isUAVConnected', 'isUniformAllowed', 'isWalking', 'isWeaponDeployed', 'isWeaponRested', 'itemCargo', 'items', 'itemsWithMagazines', 'join', 'joinAs', 'joinAsSilent', 'joinSilent', 'joinString', 'kbAddDatabase', 'kbAddDatabaseTargets', 'kbAddTopic', 'kbHasTopic', 'kbReact', 'kbRemoveTopic', 'kbTell', 'kbWasSaid', 'keyImage', 'keyName', 'knowsAbout', 'land', 'landAt', 'landResult', 'language', 'laserTarget', 'lbAdd', 'lbClear', 'lbColor', 'lbCurSel', 'lbData', 'lbDelete', 'lbIsSelected', 'lbPicture', 'lbSelection', 'lbSetColor', 'lbSetCurSel', 'lbSetData', 'lbSetPicture', 'lbSetPictureColor', 'lbSetPictureColorDisabled', 'lbSetPictureColorSelected', 'lbSetSelectColor', 'lbSetSelectColorRight', 'lbSetSelected', 'lbSetTooltip', 'lbSetValue', 'lbSize', 'lbSort', 'lbSortByValue', 'lbText', 'lbValue', 'leader', 'leaderboardDeInit', 'leaderboardGetRows', 'leaderboardInit', 'leaveVehicle', 'libraryCredits', 'libraryDisclaimers', 'lifeState', 'lightAttachObject', 'lightDetachObject', 'lightIsOn', 'lightnings', 'limitSpeed', 'linearConversion', 'lineBreak', 'lineIntersects', 'lineIntersectsObjs', 'lineIntersectsSurfaces', 'lineIntersectsWith', 'linkItem', 'list', 'listObjects', 'ln', 'lnbAddArray', 'lnbAddColumn', 'lnbAddRow', 'lnbClear', 'lnbColor', 'lnbCurSelRow', 'lnbData', 'lnbDeleteColumn', 'lnbDeleteRow', 'lnbGetColumnsPosition', 'lnbPicture', 'lnbSetColor', 'lnbSetColumnsPos', 'lnbSetCurSelRow', 'lnbSetData', 'lnbSetPicture', 'lnbSetText', 'lnbSetValue', 'lnbSize', 'lnbText', 'lnbValue', 'load', 'loadAbs', 'loadBackpack', 'loadFile', 'loadGame', 'loadIdentity', 'loadMagazine', 'loadOverlay', 'loadStatus', 'loadUniform', 'loadVest', 'local', 'localize', 'locationNull', 'locationPosition', 'lock', 'lockCameraTo', 'lockCargo', 'lockDriver', 'locked', 'lockedCargo', 'lockedDriver', 'lockedTurret', 'lockTurret', 'lockWP', 'log', 'logEntities', 'lookAt', 'lookAtPos', 'magazineCargo', 'magazines', 'magazinesAllTurrets', 'magazinesAmmo', 'magazinesAmmoCargo', 'magazinesAmmoFull', 'magazinesDetail', 'magazinesDetailBackpack', 'magazinesDetailUniform', 'magazinesDetailVest', 'magazinesTurret', 'magazineTurretAmmo', 'mapAnimAdd', 'mapAnimClear', 'mapAnimCommit', 'mapAnimDone', 'mapCenterOnCamera', 'mapGridPosition', 'markAsFinishedOnSteam', 'markerAlpha', 'markerBrush', 'markerColor', 'markerDir', 'markerPos', 'markerShape', 'markerSize', 'markerText', 'markerType', 'max', 'members', 'min', 'mineActive', 'mineDetectedBy', 'missionConfigFile', 'missionName', 'missionNamespace', 'missionStart', 'mod', 'modelToWorld', 'modelToWorldVisual', 'moonIntensity', 'morale', 'move', 'moveInAny', 'moveInCargo', 'moveInCommander', 'moveInDriver', 'moveInGunner', 'moveInTurret', 'moveObjectToEnd', 'moveOut', 'moveTime', 'moveTo', 'moveToCompleted', 'moveToFailed', 'musicVolume', 'name', 'name location', 'nameSound', 'nearEntities', 'nearestBuilding', 'nearestLocation', 'nearestLocations', 'nearestLocationWithDubbing', 'nearestObject', 'nearestObjects', 'nearObjects', 'nearObjectsReady', 'nearRoads', 'nearSupplies', 'nearTargets', 'needReload', 'netId', 'netObjNull', 'newOverlay', 'nextMenuItemIndex', 'nextWeatherChange', 'nil', 'nMenuItems', 'not', 'numberToDate', 'objectCurators', 'objectFromNetId', 'objectParent', 'objNull', 'objStatus', 'onBriefingGroup', 'onBriefingNotes', 'onBriefingPlan', 'onBriefingTeamSwitch', 'onCommandModeChanged', 'onDoubleClick', 'onEachFrame', 'onGroupIconClick', 'onGroupIconOverEnter', 'onGroupIconOverLeave', 'onHCGroupSelectionChanged', 'onMapSingleClick', 'onPlayerConnected', 'onPlayerDisconnected', 'onPreloadFinished', 'onPreloadStarted', 'onShowNewObject', 'onTeamSwitch', 'openCuratorInterface', 'openMap', 'openYoutubeVideo', 'opfor', 'or', 'orderGetIn', 'overcast', 'overcastForecast', 'owner', 'param', 'params', 'parseNumber', 'parseText', 'parsingNamespace', 'particlesQuality', 'pi', 'pickWeaponPool', 'pitch', 'playableSlotsNumber', 'playableUnits', 'playAction', 'playActionNow', 'player', 'playerRespawnTime', 'playerSide', 'playersNumber', 'playGesture', 'playMission', 'playMove', 'playMoveNow', 'playMusic', 'playScriptedMission', 'playSound', 'playSound3D', 'position', 'positionCameraToWorld', 'posScreenToWorld', 'posWorldToScreen', 'ppEffectAdjust', 'ppEffectCommit', 'ppEffectCommitted', 'ppEffectCreate', 'ppEffectDestroy', 'ppEffectEnable', 'ppEffectForceInNVG', 'precision', 'preloadCamera', 'preloadObject', 'preloadSound', 'preloadTitleObj', 'preloadTitleRsc', 'preprocessFile', 'preprocessFileLineNumbers', 'primaryWeapon', 'primaryWeaponItems', 'primaryWeaponMagazine', 'priority', 'private', 'processDiaryLink', 'productVersion', 'profileName', 'profileNamespace', 'profileNameSteam', 'progressLoadingScreen', 'progressPosition', 'progressSetPosition', 'publicVariable', 'publicVariableClient', 'publicVariableServer', 'pushBack', 'putWeaponPool', 'queryItemsPool', 'queryMagazinePool', 'queryWeaponPool', 'rad', 'radioChannelAdd', 'radioChannelCreate', 'radioChannelRemove', 'radioChannelSetCallSign', 'radioChannelSetLabel', 'radioVolume', 'rain', 'rainbow', 'random', 'rank', 'rankId', 'rating', 'rectangular', 'registeredTasks', 'registerTask', 'reload', 'reloadEnabled', 'remoteControl', 'remoteExec', 'remoteExecCall', 'removeAction', 'removeAllActions', 'removeAllAssignedItems', 'removeAllContainers', 'removeAllCuratorAddons', 'removeAllCuratorCameraAreas', 'removeAllCuratorEditingAreas', 'removeAllEventHandlers', 'removeAllHandgunItems', 'removeAllItems', 'removeAllItemsWithMagazines', 'removeAllMissionEventHandlers', 'removeAllMPEventHandlers', 'removeAllMusicEventHandlers', 'removeAllPrimaryWeaponItems', 'removeAllWeapons', 'removeBackpack', 'removeBackpackGlobal', 'removeCuratorAddons', 'removeCuratorCameraArea', 'removeCuratorEditableObjects', 'removeCuratorEditingArea', 'removeDrawIcon', 'removeDrawLinks', 'removeEventHandler', 'removeFromRemainsCollector', 'removeGoggles', 'removeGroupIcon', 'removeHandgunItem', 'removeHeadgear', 'removeItem', 'removeItemFromBackpack', 'removeItemFromUniform', 'removeItemFromVest', 'removeItems', 'removeMagazine', 'removeMagazineGlobal', 'removeMagazines', 'removeMagazinesTurret', 'removeMagazineTurret', 'removeMenuItem', 'removeMissionEventHandler', 'removeMPEventHandler', 'removeMusicEventHandler', 'removePrimaryWeaponItem', 'removeSecondaryWeaponItem', 'removeSimpleTask', 'removeSwitchableUnit', 'removeTeamMember', 'removeUniform', 'removeVest', 'removeWeapon', 'removeWeaponGlobal', 'removeWeaponTurret', 'requiredVersion', 'resetCamShake', 'resetSubgroupDirection', 'resistance', 'resize', 'resources', 'respawnVehicle', 'restartEditorCamera', 'reveal', 'revealMine', 'reverse', 'reversedMouseY', 'roadsConnectedTo', 'roleDescription', 'ropeAttachedObjects', 'ropeAttachedTo', 'ropeAttachEnabled', 'ropeAttachTo', 'ropeCreate', 'ropeCut', 'ropeEndPosition', 'ropeLength', 'ropes', 'ropeUnwind', 'ropeUnwound', 'rotorsForcesRTD', 'rotorsRpmRTD', 'round', 'runInitScript', 'safeZoneH', 'safeZoneW', 'safeZoneWAbs', 'safeZoneX', 'safeZoneXAbs', 'safeZoneY', 'saveGame', 'saveIdentity', 'saveJoysticks', 'saveOverlay', 'saveProfileNamespace', 'saveStatus', 'saveVar', 'savingEnabled', 'say', 'say2D', 'say3D', 'scopeName', 'score', 'scoreSide', 'screenToWorld', 'scriptDone', 'scriptName', 'scriptNull', 'scudState', 'secondaryWeapon', 'secondaryWeaponItems', 'secondaryWeaponMagazine', 'select', 'selectBestPlaces', 'selectDiarySubject', 'selectedEditorObjects', 'selectEditorObject', 'selectionPosition', 'selectLeader', 'selectNoPlayer', 'selectPlayer', 'selectWeapon', 'selectWeaponTurret', 'sendAUMessage', 'sendSimpleCommand', 'sendTask', 'sendTaskResult', 'sendUDPMessage', 'serverCommand', 'serverCommandAvailable', 'serverCommandExecutable', 'serverName', 'serverTime', 'set', 'setAccTime', 'setAirportSide', 'setAmmo', 'setAmmoCargo', 'setAperture', 'setApertureNew', 'setArmoryPoints', 'setAttributes', 'setAutonomous', 'setBehaviour', 'setBleedingRemaining', 'setCameraInterest', 'setCamShakeDefParams', 'setCamShakeParams', 'setCamUseTi', 'setCaptive', 'setCenterOfMass', 'setCollisionLight', 'setCombatMode', 'setCompassOscillation', 'setCuratorCameraAreaCeiling', 'setCuratorCoef', 'setCuratorEditingAreaType', 'setCuratorWaypointCost', 'setCurrentChannel', 'setCurrentTask', 'setCurrentWaypoint', 'setDamage', 'setDammage', 'setDate', 'setDebriefingText', 'setDefaultCamera', 'setDestination', 'setDetailMapBlendPars', 'setDir', 'setDirection', 'setDrawIcon', 'setDropInterval', 'setEditorMode', 'setEditorObjectScope', 'setEffectCondition', 'setFace', 'setFaceAnimation', 'setFatigue', 'setFlagOwner', 'setFlagSide', 'setFlagTexture', 'setFog', 'setFog array', 'setFormation', 'setFormationTask', 'setFormDir', 'setFriend', 'setFromEditor', 'setFSMVariable', 'setFuel', 'setFuelCargo', 'setGroupIcon', 'setGroupIconParams', 'setGroupIconsSelectable', 'setGroupIconsVisible', 'setGroupId', 'setGroupIdGlobal', 'setGroupOwner', 'setGusts', 'setHideBehind', 'setHit', 'setHitIndex', 'setHitPointDamage', 'setHorizonParallaxCoef', 'setHUDMovementLevels', 'setIdentity', 'setImportance', 'setLeader', 'setLightAmbient', 'setLightAttenuation', 'setLightBrightness', 'setLightColor', 'setLightDayLight', 'setLightFlareMaxDistance', 'setLightFlareSize', 'setLightIntensity', 'setLightnings', 'setLightUseFlare', 'setLocalWindParams', 'setMagazineTurretAmmo', 'setMarkerAlpha', 'setMarkerAlphaLocal', 'setMarkerBrush', 'setMarkerBrushLocal', 'setMarkerColor', 'setMarkerColorLocal', 'setMarkerDir', 'setMarkerDirLocal', 'setMarkerPos', 'setMarkerPosLocal', 'setMarkerShape', 'setMarkerShapeLocal', 'setMarkerSize', 'setMarkerSizeLocal', 'setMarkerText', 'setMarkerTextLocal', 'setMarkerType', 'setMarkerTypeLocal', 'setMass', 'setMimic', 'setMousePosition', 'setMusicEffect', 'setMusicEventHandler', 'setName', 'setNameSound', 'setObjectArguments', 'setObjectMaterial', 'setObjectProxy', 'setObjectTexture', 'setObjectTextureGlobal', 'setObjectViewDistance', 'setOvercast', 'setOwner', 'setOxygenRemaining', 'setParticleCircle', 'setParticleClass', 'setParticleFire', 'setParticleParams', 'setParticleRandom', 'setPilotLight', 'setPiPEffect', 'setPitch', 'setPlayable', 'setPlayerRespawnTime', 'setPos', 'setPosASL', 'setPosASL2', 'setPosASLW', 'setPosATL', 'setPosition', 'setPosWorld', 'setRadioMsg', 'setRain', 'setRainbow', 'setRandomLip', 'setRank', 'setRectangular', 'setRepairCargo', 'setShadowDistance', 'setSide', 'setSimpleTaskDescription', 'setSimpleTaskDestination', 'setSimpleTaskTarget', 'setSimulWeatherLayers', 'setSize', 'setSkill', 'setSkill array', 'setSlingLoad', 'setSoundEffect', 'setSpeaker', 'setSpeech', 'setSpeedMode', 'setStatValue', 'setSuppression', 'setSystemOfUnits', 'setTargetAge', 'setTaskResult', 'setTaskState', 'setTerrainGrid', 'setText', 'setTimeMultiplier', 'setTitleEffect', 'setTriggerActivation', 'setTriggerArea', 'setTriggerStatements', 'setTriggerText', 'setTriggerTimeout', 'setTriggerType', 'setType', 'setUnconscious', 'setUnitAbility', 'setUnitPos', 'setUnitPosWeak', 'setUnitRank', 'setUnitRecoilCoefficient', 'setUnloadInCombat', 'setUserActionText', 'setVariable', 'setVectorDir', 'setVectorDirAndUp', 'setVectorUp', 'setVehicleAmmo', 'setVehicleAmmoDef', 'setVehicleArmor', 'setVehicleId', 'setVehicleLock', 'setVehiclePosition', 'setVehicleTiPars', 'setVehicleVarName', 'setVelocity', 'setVelocityTransformation', 'setViewDistance', 'setVisibleIfTreeCollapsed', 'setWaves', 'setWaypointBehaviour', 'setWaypointCombatMode', 'setWaypointCompletionRadius', 'setWaypointDescription', 'setWaypointFormation', 'setWaypointHousePosition', 'setWaypointLoiterRadius', 'setWaypointLoiterType', 'setWaypointName', 'setWaypointPosition', 'setWaypointScript', 'setWaypointSpeed', 'setWaypointStatements', 'setWaypointTimeout', 'setWaypointType', 'setWaypointVisible', 'setWeaponReloadingTime', 'setWind', 'setWindDir', 'setWindForce', 'setWindStr', 'setWPPos', 'show3DIcons', 'showChat', 'showCinemaBorder', 'showCommandingMenu', 'showCompass', 'showCuratorCompass', 'showGPS', 'showHUD', 'showLegend', 'showMap', 'shownArtilleryComputer', 'shownChat', 'shownCompass', 'shownCuratorCompass', 'showNewEditorObject', 'shownGPS', 'shownHUD', 'shownMap', 'shownPad', 'shownRadio', 'shownUAVFeed', 'shownWarrant', 'shownWatch', 'showPad', 'showRadio', 'showSubtitles', 'showUAVFeed', 'showWarrant', 'showWatch', 'showWaypoint', 'side', 'sideChat', 'sideEnemy', 'sideFriendly', 'sideLogic', 'sideRadio', 'sideUnknown', 'simpleTasks', 'simulationEnabled', 'simulCloudDensity', 'simulCloudOcclusion', 'simulInClouds', 'simulWeatherSync', 'sin', 'size', 'sizeOf', 'skill', 'skillFinal', 'skipTime', 'sleep', 'sliderPosition', 'sliderRange', 'sliderSetPosition', 'sliderSetRange', 'sliderSetSpeed', 'sliderSpeed', 'slingLoadAssistantShown', 'soldierMagazines', 'someAmmo', 'sort', 'soundVolume', 'spawn', 'speaker', 'speed', 'speedMode', 'splitString', 'sqrt', 'squadParams', 'stance', 'startLoadingScreen', 'step', 'stop', 'stopped', 'str', 'sunOrMoon', 'supportInfo', 'suppressFor', 'surfaceIsWater', 'surfaceNormal', 'surfaceType', 'swimInDepth', 'switch', 'switchableUnits', 'switchAction', 'switchCamera', 'switchGesture', 'switchLight', 'switchMove', 'synchronizedObjects', 'synchronizedTriggers', 'synchronizedWaypoints', 'synchronizeObjectsAdd', 'synchronizeObjectsRemove', 'synchronizeTrigger', 'synchronizeWaypoint', 'synchronizeWaypoint trigger', 'systemChat', 'systemOfUnits', 'tan', 'targetKnowledge', 'targetsAggregate', 'targetsQuery', 'taskChildren', 'taskCompleted', 'taskDescription', 'taskDestination', 'taskHint', 'taskNull', 'taskParent', 'taskResult', 'taskState', 'teamMember', 'teamMemberNull', 'teamName', 'teams', 'teamSwitch', 'teamSwitchEnabled', 'teamType', 'terminate', 'terrainIntersect', 'terrainIntersectASL', 'text', 'text location', 'textLog', 'textLogFormat', 'tg', 'then', 'throw', 'time', 'timeMultiplier', 'titleCut', 'titleFadeOut', 'titleObj', 'titleRsc', 'titleText', 'to', 'toArray', 'toLower', 'toString', 'toUpper', 'triggerActivated', 'triggerActivation', 'triggerArea', 'triggerAttachedVehicle', 'triggerAttachObject', 'triggerAttachVehicle', 'triggerStatements', 'triggerText', 'triggerTimeout', 'triggerTimeoutCurrent', 'triggerType', 'true', 'try', 'turretLocal', 'turretOwner', 'turretUnit', 'tvAdd', 'tvClear', 'tvCollapse', 'tvCount', 'tvCurSel', 'tvData', 'tvDelete', 'tvExpand', 'tvPicture', 'tvSetCurSel', 'tvSetData', 'tvSetPicture', 'tvSetPictureColor', 'tvSetTooltip', 'tvSetValue', 'tvSort', 'tvSortByValue', 'tvText', 'tvValue', 'type', 'typeName', 'typeOf', 'UAVControl', 'uiNamespace', 'uiSleep', 'unassignCurator', 'unassignItem', 'unassignTeam', 'unassignVehicle', 'underwater', 'uniform', 'uniformContainer', 'uniformItems', 'uniformMagazines', 'unitAddons', 'unitBackpack', 'unitPos', 'unitReady', 'unitRecoilCoefficient', 'units', 'unitsBelowHeight', 'unlinkItem', 'unlockAchievement', 'unregisterTask', 'updateDrawIcon', 'updateMenuItem', 'updateObjectTree', 'useAudioTimeForMoves', 'vectorAdd', 'vectorCos', 'vectorCrossProduct', 'vectorDiff', 'vectorDir', 'vectorDirVisual', 'vectorDistance', 'vectorDistanceSqr', 'vectorDotProduct', 'vectorFromTo', 'vectorMagnitude', 'vectorMagnitudeSqr', 'vectorMultiply', 'vectorNormalized', 'vectorUp', 'vectorUpVisual', 'vehicle', 'vehicleChat', 'vehicleRadio', 'vehicles', 'vehicleVarName', 'velocity', 'velocityModelSpace', 'verifySignature', 'vest', 'vestContainer', 'vestItems', 'vestMagazines', 'viewDistance', 'visibleCompass', 'visibleGPS', 'visibleMap', 'visiblePosition', 'visiblePositionASL', 'visibleWatch', 'waitUntil', 'waves', 'waypointAttachedObject', 'waypointAttachedVehicle', 'waypointAttachObject', 'waypointAttachVehicle', 'waypointBehaviour', 'waypointCombatMode', 'waypointCompletionRadius', 'waypointDescription', 'waypointFormation', 'waypointHousePosition', 'waypointLoiterRadius', 'waypointLoiterType', 'waypointName', 'waypointPosition', 'waypoints', 'waypointScript', 'waypointsEnabledUAV', 'waypointShow', 'waypointSpeed', 'waypointStatements', 'waypointTimeout', 'waypointTimeoutCurrent', 'waypointType', 'waypointVisible', 'weaponAccessories', 'weaponCargo', 'weaponDirection', 'weaponLowered', 'weapons', 'weaponsItems', 'weaponsItemsCargo', 'weaponState', 'weaponsTurret', 'weightRTD', 'west', 'WFSideText', 'while', 'wind', 'windDir', 'windStr', 'wingsForcesRTD', 'with', 'worldName', 'worldSize', 'worldToModel', 'worldToModelVisual', 'worldToScreen'];
   var control = ['case', 'catch', 'default', 'do', 'else', 'exit', 'exitWith|5', 'for', 'forEach', 'from', 'if', 'switch', 'then', 'throw', 'to', 'try', 'while', 'with'];
@@ -12266,7 +12264,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],132:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMENT_MODE = hljs.COMMENT('--', '$');
   return {
@@ -12426,7 +12424,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],133:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['do', 'ado'],
@@ -12464,7 +12462,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],134:[function(require,module,exports){
+},{}],133:[function(require,module,exports){
 module.exports = function(hljs) {
   var STEP21_IDENT_RE = '[A-Z_][A-Z0-9_.]*';
   var STEP21_CLOSE_RE = 'END-ISO-10303-21;';
@@ -12516,7 +12514,7 @@ module.exports = function(hljs) {
     ].concat(STEP21_CODE)
   };
 };
-},{}],135:[function(require,module,exports){
+},{}],134:[function(require,module,exports){
 module.exports = function(hljs) {
 
   var VARIABLE = {
@@ -12959,7 +12957,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],136:[function(require,module,exports){
+},{}],135:[function(require,module,exports){
 module.exports = function(hljs) {
   var SWIFT_KEYWORDS = {
       keyword: '__COLUMN__ __FILE__ __FUNCTION__ __LINE__ as as! as? associativity ' +
@@ -13079,7 +13077,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],137:[function(require,module,exports){
+},{}],136:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['tk'],
@@ -13141,7 +13139,7 @@ module.exports = function(hljs) {
     ]
   }
 };
-},{}],138:[function(require,module,exports){
+},{}],137:[function(require,module,exports){
 module.exports = function(hljs) {
   var COMMAND1 = {
     className: 'command',
@@ -13196,7 +13194,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],139:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 module.exports = function(hljs) {
   var BUILT_IN_TYPES = 'bool byte i16 i32 i64 double string binary';
   return {
@@ -13231,7 +13229,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],140:[function(require,module,exports){
+},{}],139:[function(require,module,exports){
 module.exports = function(hljs) {
   var TPID = {
     className: 'number',
@@ -13315,7 +13313,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],141:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
@@ -13372,7 +13370,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],142:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = {
     keyword:
@@ -13470,7 +13468,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],143:[function(require,module,exports){
+},{}],142:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     keywords: {
@@ -13525,7 +13523,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],144:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['vb'],
@@ -13581,7 +13579,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],145:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     subLanguage: 'xml',
@@ -13593,7 +13591,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],146:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['vbs'],
@@ -13632,7 +13630,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],147:[function(require,module,exports){
+},{}],146:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     aliases: ['v'],
@@ -13682,7 +13680,7 @@ module.exports = function(hljs) {
     ]
   }; // return
 };
-},{}],148:[function(require,module,exports){
+},{}],147:[function(require,module,exports){
 module.exports = function(hljs) {
   // Regular expression for VHDL numeric literals.
 
@@ -13738,7 +13736,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],149:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     lexemes: /[!#@\w]+/,
@@ -13801,7 +13799,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],150:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 module.exports = function(hljs) {
   return {
     case_insensitive: true,
@@ -13937,7 +13935,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],151:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 module.exports = function(hljs) {
   var BUILTIN_MODULES =
     'ObjectLoader Animate MovieCredits Slides Filters Shading Materials LensFlare Mapping VLCAudioVideo ' +
@@ -14024,7 +14022,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],152:[function(require,module,exports){
+},{}],151:[function(require,module,exports){
 module.exports = function(hljs) {
   var XML_IDENT_RE = '[A-Za-z0-9\\._:-]+';
   var PHP = {
@@ -14127,7 +14125,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],153:[function(require,module,exports){
+},{}],152:[function(require,module,exports){
 module.exports = function(hljs) {
   var KEYWORDS = 'for let if while then else return where group by xquery encoding version' +
     'module namespace boundary-space preserve strip default collation base-uri ordering' +
@@ -14200,7 +14198,7 @@ module.exports = function(hljs) {
     contains: CONTAINS
   };
 };
-},{}],154:[function(require,module,exports){
+},{}],153:[function(require,module,exports){
 module.exports = function(hljs) {
   var STRING = {
     className: 'string',
@@ -14307,7 +14305,7 @@ module.exports = function(hljs) {
     ]
   };
 };
-},{}],155:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 /**
  * isMobile.js v0.4.0
  *
@@ -14446,7 +14444,7 @@ module.exports = function(hljs) {
 
 })(this);
 
-},{}],156:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 'use strict';
 
 
@@ -14455,7 +14453,7 @@ var yaml = require('./lib/js-yaml.js');
 
 module.exports = yaml;
 
-},{"./lib/js-yaml.js":157}],157:[function(require,module,exports){
+},{"./lib/js-yaml.js":156}],156:[function(require,module,exports){
 'use strict';
 
 
@@ -14496,7 +14494,7 @@ module.exports.parse          = deprecated('parse');
 module.exports.compose        = deprecated('compose');
 module.exports.addConstructor = deprecated('addConstructor');
 
-},{"./js-yaml/dumper":159,"./js-yaml/exception":160,"./js-yaml/loader":161,"./js-yaml/schema":163,"./js-yaml/schema/core":164,"./js-yaml/schema/default_full":165,"./js-yaml/schema/default_safe":166,"./js-yaml/schema/failsafe":167,"./js-yaml/schema/json":168,"./js-yaml/type":169}],158:[function(require,module,exports){
+},{"./js-yaml/dumper":158,"./js-yaml/exception":159,"./js-yaml/loader":160,"./js-yaml/schema":162,"./js-yaml/schema/core":163,"./js-yaml/schema/default_full":164,"./js-yaml/schema/default_safe":165,"./js-yaml/schema/failsafe":166,"./js-yaml/schema/json":167,"./js-yaml/type":168}],157:[function(require,module,exports){
 'use strict';
 
 
@@ -14557,7 +14555,7 @@ module.exports.repeat         = repeat;
 module.exports.isNegativeZero = isNegativeZero;
 module.exports.extend         = extend;
 
-},{}],159:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable no-use-before-define*/
@@ -14572,7 +14570,6 @@ var _hasOwnProperty = Object.prototype.hasOwnProperty;
 
 var CHAR_TAB                  = 0x09; /* Tab */
 var CHAR_LINE_FEED            = 0x0A; /* LF */
-var CHAR_CARRIAGE_RETURN      = 0x0D; /* CR */
 var CHAR_SPACE                = 0x20; /* Space */
 var CHAR_EXCLAMATION          = 0x21; /* ! */
 var CHAR_DOUBLE_QUOTE         = 0x22; /* " */
@@ -14667,14 +14664,15 @@ function encodeHex(character) {
 }
 
 function State(options) {
-  this.schema      = options['schema'] || DEFAULT_FULL_SCHEMA;
-  this.indent      = Math.max(1, (options['indent'] || 2));
-  this.skipInvalid = options['skipInvalid'] || false;
-  this.flowLevel   = (common.isNothing(options['flowLevel']) ? -1 : options['flowLevel']);
-  this.styleMap    = compileStyleMap(this.schema, options['styles'] || null);
-  this.sortKeys    = options['sortKeys'] || false;
-  this.lineWidth   = options['lineWidth'] || 80;
-  this.noRefs      = options['noRefs'] || false;
+  this.schema       = options['schema'] || DEFAULT_FULL_SCHEMA;
+  this.indent       = Math.max(1, (options['indent'] || 2));
+  this.skipInvalid  = options['skipInvalid'] || false;
+  this.flowLevel    = (common.isNothing(options['flowLevel']) ? -1 : options['flowLevel']);
+  this.styleMap     = compileStyleMap(this.schema, options['styles'] || null);
+  this.sortKeys     = options['sortKeys'] || false;
+  this.lineWidth    = options['lineWidth'] || 80;
+  this.noRefs       = options['noRefs'] || false;
+  this.noCompatMode = options['noCompatMode'] || false;
 
   this.implicitTypes = this.schema.compiledImplicit;
   this.explicitTypes = this.schema.compiledExplicit;
@@ -14686,6 +14684,7 @@ function State(options) {
   this.usedDuplicates = null;
 }
 
+// Indents every line in a string. Empty lines (\n only) are not indented.
 function indentString(string, spaces) {
   var ind = common.repeat(' ', spaces),
       position = 0,
@@ -14730,317 +14729,308 @@ function testImplicitResolving(state, str) {
   return false;
 }
 
-function StringBuilder(source) {
-  this.source = source;
-  this.result = '';
-  this.checkpoint = 0;
+// [33] s-white ::= s-space | s-tab
+function isWhitespace(c) {
+  return c === CHAR_SPACE || c === CHAR_TAB;
 }
 
-StringBuilder.prototype.takeUpTo = function (position) {
-  var er;
+// Returns true if the character can be printed without escaping.
+// From YAML 1.2: "any allowed characters known to be non-printable
+// should also be escaped. [However,] This isn’t mandatory"
+// Derived from nb-char - \t - #x85 - #xA0 - #x2028 - #x2029.
+function isPrintable(c) {
+  return  (0x00020 <= c && c <= 0x00007E)
+      || ((0x000A1 <= c && c <= 0x00D7FF) && c !== 0x2028 && c !== 0x2029)
+      || ((0x0E000 <= c && c <= 0x00FFFD) && c !== 0xFEFF /* BOM */)
+      ||  (0x10000 <= c && c <= 0x10FFFF);
+}
 
-  if (position < this.checkpoint) {
-    er = new Error('position should be > checkpoint');
-    er.position = position;
-    er.checkpoint = this.checkpoint;
-    throw er;
-  }
+// Simplified test for values allowed after the first character in plain style.
+function isPlainSafe(c) {
+  // Uses a subset of nb-char - c-flow-indicator - ":" - "#"
+  // where nb-char ::= c-printable - b-char - c-byte-order-mark.
+  return isPrintable(c) && c !== 0xFEFF
+    // - c-flow-indicator
+    && c !== CHAR_COMMA
+    && c !== CHAR_LEFT_SQUARE_BRACKET
+    && c !== CHAR_RIGHT_SQUARE_BRACKET
+    && c !== CHAR_LEFT_CURLY_BRACKET
+    && c !== CHAR_RIGHT_CURLY_BRACKET
+    // - ":" - "#"
+    && c !== CHAR_COLON
+    && c !== CHAR_SHARP;
+}
 
-  this.result += this.source.slice(this.checkpoint, position);
-  this.checkpoint = position;
-  return this;
-};
+// Simplified test for values allowed as the first character in plain style.
+function isPlainSafeFirst(c) {
+  // Uses a subset of ns-char - c-indicator
+  // where ns-char = nb-char - s-white.
+  return isPrintable(c) && c !== 0xFEFF
+    && !isWhitespace(c) // - s-white
+    // - (c-indicator ::=
+    // “-” | “?” | “:” | “,” | “[” | “]” | “{” | “}”
+    && c !== CHAR_MINUS
+    && c !== CHAR_QUESTION
+    && c !== CHAR_COLON
+    && c !== CHAR_COMMA
+    && c !== CHAR_LEFT_SQUARE_BRACKET
+    && c !== CHAR_RIGHT_SQUARE_BRACKET
+    && c !== CHAR_LEFT_CURLY_BRACKET
+    && c !== CHAR_RIGHT_CURLY_BRACKET
+    // | “#” | “&” | “*” | “!” | “|” | “>” | “'” | “"”
+    && c !== CHAR_SHARP
+    && c !== CHAR_AMPERSAND
+    && c !== CHAR_ASTERISK
+    && c !== CHAR_EXCLAMATION
+    && c !== CHAR_VERTICAL_LINE
+    && c !== CHAR_GREATER_THAN
+    && c !== CHAR_SINGLE_QUOTE
+    && c !== CHAR_DOUBLE_QUOTE
+    // | “%” | “@” | “`”)
+    && c !== CHAR_PERCENT
+    && c !== CHAR_COMMERCIAL_AT
+    && c !== CHAR_GRAVE_ACCENT;
+}
 
-StringBuilder.prototype.escapeChar = function () {
-  var character, esc;
+var STYLE_PLAIN   = 1,
+    STYLE_SINGLE  = 2,
+    STYLE_LITERAL = 3,
+    STYLE_FOLDED  = 4,
+    STYLE_DOUBLE  = 5;
 
-  character = this.source.charCodeAt(this.checkpoint);
-  esc = ESCAPE_SEQUENCES[character] || encodeHex(character);
-  this.result += esc;
-  this.checkpoint += 1;
+// Determines which scalar styles are possible and returns the preferred style.
+// lineWidth = -1 => no limit.
+// Pre-conditions: str.length > 0.
+// Post-conditions:
+//    STYLE_PLAIN or STYLE_SINGLE => no \n are in the string.
+//    STYLE_LITERAL => no lines are suitable for folding (or lineWidth is -1).
+//    STYLE_FOLDED => a line > lineWidth and can be folded (and lineWidth != -1).
+function chooseScalarStyle(string, singleLineOnly, indentPerLevel, lineWidth, testAmbiguousType) {
+  var i;
+  var char;
+  var hasLineBreak = false;
+  var hasFoldableLine = false; // only checked if shouldTrackWidth
+  var shouldTrackWidth = lineWidth !== -1;
+  var previousLineBreak = -1; // count the first line correctly
+  var plain = isPlainSafeFirst(string.charCodeAt(0))
+          && !isWhitespace(string.charCodeAt(string.length - 1));
 
-  return this;
-};
-
-StringBuilder.prototype.finish = function () {
-  if (this.source.length > this.checkpoint) {
-    this.takeUpTo(this.source.length);
-  }
-};
-
-function writeScalar(state, object, level, iskey) {
-  var simple, first, spaceWrap, folded, literal, single, double,
-      sawLineFeed, linePosition, longestLine, indent, max, character,
-      position, escapeSeq, hexEsc, previous, lineLength, modifier,
-      trailingLineBreaks, result;
-
-  if (object.length === 0) {
-    state.dump = "''";
-    return;
-  }
-
-  if (DEPRECATED_BOOLEANS_SYNTAX.indexOf(object) !== -1) {
-    state.dump = "'" + object + "'";
-    return;
-  }
-
-  simple = true;
-  first = object.length ? object.charCodeAt(0) : 0;
-  spaceWrap = (CHAR_SPACE === first ||
-               CHAR_SPACE === object.charCodeAt(object.length - 1));
-
-  // Simplified check for restricted first characters
-  // http://www.yaml.org/spec/1.2/spec.html#ns-plain-first%28c%29
-  if (CHAR_MINUS         === first ||
-      CHAR_QUESTION      === first ||
-      CHAR_COMMERCIAL_AT === first ||
-      CHAR_GRAVE_ACCENT  === first) {
-    simple = false;
-  }
-
-  // Can only use > and | if not wrapped in spaces or is not a key.
-  // Also, don't use if in flow mode.
-  if (spaceWrap || (state.flowLevel > -1 && state.flowLevel <= level)) {
-    if (spaceWrap) simple = false;
-
-    folded = false;
-    literal = false;
-  } else {
-    folded = !iskey;
-    literal = !iskey;
-  }
-
-  single = true;
-  double = new StringBuilder(object);
-
-  sawLineFeed = false;
-  linePosition = 0;
-  longestLine = 0;
-
-  indent = state.indent * level;
-  max = state.lineWidth;
-
-  // Replace -1 with biggest ingeger number according to
-  // http://ecma262-5.com/ELS5_HTML.htm#Section_8.5
-  if (max === -1) max = 9007199254740991;
-
-  if (indent < 40) max -= indent;
-  else max = 40;
-
-  for (position = 0; position < object.length; position++) {
-    character = object.charCodeAt(position);
-    if (simple) {
-      // Characters that can never appear in the simple scalar
-      if (!simpleChar(character)) {
-        simple = false;
-      } else {
-        // Still simple.  If we make it all the way through like
-        // this, then we can just dump the string as-is.
-        continue;
+  if (singleLineOnly) {
+    // Case: no block styles.
+    // Check for disallowed characters to rule out plain and single.
+    for (i = 0; i < string.length; i++) {
+      char = string.charCodeAt(i);
+      if (!isPrintable(char)) {
+        return STYLE_DOUBLE;
       }
+      plain = plain && isPlainSafe(char);
     }
-
-    if (single && character === CHAR_SINGLE_QUOTE) {
-      single = false;
-    }
-
-    escapeSeq = ESCAPE_SEQUENCES[character];
-    hexEsc = needsHexEscape(character);
-
-    if (!escapeSeq && !hexEsc) {
-      continue;
-    }
-
-    if (character !== CHAR_LINE_FEED &&
-        character !== CHAR_DOUBLE_QUOTE &&
-        character !== CHAR_SINGLE_QUOTE) {
-      folded = false;
-      literal = false;
-    } else if (character === CHAR_LINE_FEED) {
-      sawLineFeed = true;
-      single = false;
-      if (position > 0) {
-        previous = object.charCodeAt(position - 1);
-        if (previous === CHAR_SPACE) {
-          literal = false;
-          folded = false;
+  } else {
+    // Case: block styles permitted.
+    for (i = 0; i < string.length; i++) {
+      char = string.charCodeAt(i);
+      if (char === CHAR_LINE_FEED) {
+        hasLineBreak = true;
+        // Check if any line can be folded.
+        if (shouldTrackWidth) {
+          hasFoldableLine = hasFoldableLine ||
+            // Foldable line = too long, and not more-indented.
+            (i - previousLineBreak - 1 > lineWidth &&
+             string[previousLineBreak + 1] !== ' ');
+          previousLineBreak = i;
         }
+      } else if (!isPrintable(char)) {
+        return STYLE_DOUBLE;
       }
-      if (folded) {
-        lineLength = position - linePosition;
-        linePosition = position;
-        if (lineLength > longestLine) longestLine = lineLength;
-      }
+      plain = plain && isPlainSafe(char);
     }
-
-    if (character !== CHAR_DOUBLE_QUOTE) single = false;
-
-    double.takeUpTo(position);
-    double.escapeChar();
+    // in case the end is missing a \n
+    hasFoldableLine = hasFoldableLine || (shouldTrackWidth &&
+      (i - previousLineBreak - 1 > lineWidth &&
+       string[previousLineBreak + 1] !== ' '));
   }
-
-  if (simple && testImplicitResolving(state, object)) simple = false;
-
-  modifier = '';
-  if (folded || literal) {
-    trailingLineBreaks = 0;
-    if (object.charCodeAt(object.length - 1) === CHAR_LINE_FEED) {
-      trailingLineBreaks += 1;
-      if (object.charCodeAt(object.length - 2) === CHAR_LINE_FEED) {
-        trailingLineBreaks += 1;
-      }
-    }
-
-    if (trailingLineBreaks === 0) modifier = '-';
-    else if (trailingLineBreaks === 2) modifier = '+';
+  // Although every style can represent \n without escaping, prefer block styles
+  // for multiline, since they're more readable and they don't add empty lines.
+  // Also prefer folding a super-long line.
+  if (!hasLineBreak && !hasFoldableLine) {
+    // Strings interpretable as another type have to be quoted;
+    // e.g. the string 'true' vs. the boolean true.
+    return plain && !testAmbiguousType(string)
+      ? STYLE_PLAIN : STYLE_SINGLE;
   }
-
-  if (literal && longestLine < max || state.tag !== null) {
-    folded = false;
+  // Edge case: block indentation indicator can only have one digit.
+  if (string[0] === ' ' && indentPerLevel > 9) {
+    return STYLE_DOUBLE;
   }
-
-  // If it's literally one line, then don't bother with the literal.
-  // We may still want to do a fold, though, if it's a super long line.
-  if (!sawLineFeed) literal = false;
-
-  if (simple) {
-    state.dump = object;
-  } else if (single) {
-    state.dump = '\'' + object + '\'';
-  } else if (folded) {
-    result = fold(object, max);
-    state.dump = '>' + modifier + '\n' + indentString(result, indent);
-  } else if (literal) {
-    if (!modifier) object = object.replace(/\n$/, '');
-    state.dump = '|' + modifier + '\n' + indentString(object, indent);
-  } else if (double) {
-    double.finish();
-    state.dump = '"' + double.result + '"';
-  } else {
-    throw new Error('Failed to dump scalar value');
-  }
-
-  return;
+  // At this point we know block styles are valid.
+  // Prefer literal style unless we want to fold.
+  return hasFoldableLine ? STYLE_FOLDED : STYLE_LITERAL;
 }
 
-// The `trailing` var is a regexp match of any trailing `\n` characters.
-//
-// There are three cases we care about:
-//
-// 1. One trailing `\n` on the string.  Just use `|` or `>`.
-//    This is the assumed default. (trailing = null)
-// 2. No trailing `\n` on the string.  Use `|-` or `>-` to "chomp" the end.
-// 3. More than one trailing `\n` on the string.  Use `|+` or `>+`.
-//
-// In the case of `>+`, these line breaks are *not* doubled (like the line
-// breaks within the string), so it's important to only end with the exact
-// same number as we started.
-function fold(object, max) {
-  var result = '',
-      position = 0,
-      length = object.length,
-      trailing = /\n+$/.exec(object),
-      newLine;
-
-  if (trailing) {
-    length = trailing.index + 1;
-  }
-
-  while (position < length) {
-    newLine = object.indexOf('\n', position);
-    if (newLine > length || newLine === -1) {
-      if (result) result += '\n\n';
-      result += foldLine(object.slice(position, length), max);
-      position = length;
-
-    } else {
-      if (result) result += '\n\n';
-      result += foldLine(object.slice(position, newLine), max);
-      position = newLine + 1;
+// Note: line breaking/folding is implemented for only the folded style.
+// NB. We drop the last trailing newline (if any) of a returned block scalar
+//  since the dumper adds its own newline. This always works:
+//    • No ending newline => unaffected; already using strip "-" chomping.
+//    • Ending newline    => removed then restored.
+//  Importantly, this keeps the "+" chomp indicator from gaining an extra line.
+function writeScalar(state, string, level, iskey) {
+  state.dump = (function () {
+    if (string.length === 0) {
+      return "''";
     }
-  }
+    if (!state.noCompatMode &&
+        DEPRECATED_BOOLEANS_SYNTAX.indexOf(string) !== -1) {
+      return "'" + string + "'";
+    }
 
-  if (trailing && trailing[0] !== '\n') result += trailing[0];
+    var indent = state.indent * Math.max(1, level); // no 0-indent scalars
+    // As indentation gets deeper, let the width decrease monotonically
+    // to the lower bound min(state.lineWidth, 40).
+    // Note that this implies
+    //  state.lineWidth ≤ 40 + state.indent: width is fixed at the lower bound.
+    //  state.lineWidth > 40 + state.indent: width decreases until the lower bound.
+    // This behaves better than a constant minimum width which disallows narrower options,
+    // or an indent threshold which causes the width to suddenly increase.
+    var lineWidth = state.lineWidth === -1
+      ? -1 : Math.max(Math.min(state.lineWidth, 40), state.lineWidth - indent);
 
-  return result;
+    // Without knowing if keys are implicit/explicit, assume implicit for safety.
+    var singleLineOnly = iskey
+      // No block styles in flow mode.
+      || (state.flowLevel > -1 && level >= state.flowLevel);
+    function testAmbiguity(string) {
+      return testImplicitResolving(state, string);
+    }
+
+    switch (chooseScalarStyle(string, singleLineOnly, state.indent, lineWidth, testAmbiguity)) {
+      case STYLE_PLAIN:
+        return string;
+      case STYLE_SINGLE:
+        return "'" + string.replace(/'/g, "''") + "'";
+      case STYLE_LITERAL:
+        return '|' + blockHeader(string, state.indent)
+          + dropEndingNewline(indentString(string, indent));
+      case STYLE_FOLDED:
+        return '>' + blockHeader(string, state.indent)
+          + dropEndingNewline(indentString(foldString(string, lineWidth), indent));
+      case STYLE_DOUBLE:
+        return '"' + escapeString(string, lineWidth) + '"';
+      default:
+        throw new YAMLException('impossible error: invalid scalar style');
+    }
+  }());
 }
 
-function foldLine(line, max) {
-  if (line === '') return line;
+// Pre-conditions: string is valid for a block scalar, 1 <= indentPerLevel <= 9.
+function blockHeader(string, indentPerLevel) {
+  var indentIndicator = (string[0] === ' ') ? String(indentPerLevel) : '';
 
-  var foldRe = /[^\s] [^\s]/g,
-      result = '',
-      prevMatch = 0,
-      foldStart = 0,
-      match = foldRe.exec(line),
-      index,
-      foldEnd,
-      folded;
+  // note the special case: the string '\n' counts as a "trailing" empty line.
+  var clip =          string[string.length - 1] === '\n';
+  var keep = clip && (string[string.length - 2] === '\n' || string === '\n');
+  var chomp = keep ? '+' : (clip ? '' : '-');
 
-  while (match) {
-    index = match.index;
+  return indentIndicator + chomp + '\n';
+}
 
-    // when we cross the max len, if the previous match would've
-    // been ok, use that one, and carry on.  If there was no previous
-    // match on this fold section, then just have a long line.
-    if (index - foldStart > max) {
-      if (prevMatch !== foldStart) foldEnd = prevMatch;
-      else foldEnd = index;
+// (See the note for writeScalar.)
+function dropEndingNewline(string) {
+  return string[string.length - 1] === '\n' ? string.slice(0, -1) : string;
+}
 
-      if (result) result += '\n';
-      folded = line.slice(foldStart, foldEnd);
-      result += folded;
-      foldStart = foldEnd + 1;
-    }
-    prevMatch = index + 1;
-    match = foldRe.exec(line);
-  }
+// Note: a long line without a suitable break point will exceed the width limit.
+// Pre-conditions: every char in str isPrintable, str.length > 0, width > 0.
+function foldString(string, width) {
+  // In folded style, $k$ consecutive newlines output as $k+1$ newlines—
+  // unless they're before or after a more-indented line, or at the very
+  // beginning or end, in which case $k$ maps to $k$.
+  // Therefore, parse each chunk as newline(s) followed by a content line.
+  var lineRe = /(\n+)([^\n]*)/g;
 
-  if (result) result += '\n';
+  // first line (possibly an empty line)
+  var result = (function () {
+    var nextLF = string.indexOf('\n');
+    nextLF = nextLF !== -1 ? nextLF : string.length;
+    lineRe.lastIndex = nextLF;
+    return foldLine(string.slice(0, nextLF), width);
+  }());
+  // If we haven't reached the first content line yet, don't add an extra \n.
+  var prevMoreIndented = string[0] === '\n' || string[0] === ' ';
+  var moreIndented;
 
-  // if we end up with one last word at the end, then the last bit might
-  // be slightly bigger than we wanted, because we exited out of the loop.
-  if (foldStart !== prevMatch && line.length - foldStart > max) {
-    result += line.slice(foldStart, prevMatch) + '\n' +
-              line.slice(prevMatch + 1);
-  } else {
-    result += line.slice(foldStart);
+  // rest of the lines
+  var match;
+  while ((match = lineRe.exec(string))) {
+    var prefix = match[1], line = match[2];
+    moreIndented = (line[0] === ' ');
+    result += prefix
+      + (!prevMoreIndented && !moreIndented && line !== ''
+        ? '\n' : '')
+      + foldLine(line, width);
+    prevMoreIndented = moreIndented;
   }
 
   return result;
 }
 
-// Returns true if character can be found in a simple scalar
-function simpleChar(character) {
-  return CHAR_TAB                  !== character &&
-         CHAR_LINE_FEED            !== character &&
-         CHAR_CARRIAGE_RETURN      !== character &&
-         CHAR_COMMA                !== character &&
-         CHAR_LEFT_SQUARE_BRACKET  !== character &&
-         CHAR_RIGHT_SQUARE_BRACKET !== character &&
-         CHAR_LEFT_CURLY_BRACKET   !== character &&
-         CHAR_RIGHT_CURLY_BRACKET  !== character &&
-         CHAR_SHARP                !== character &&
-         CHAR_AMPERSAND            !== character &&
-         CHAR_ASTERISK             !== character &&
-         CHAR_EXCLAMATION          !== character &&
-         CHAR_VERTICAL_LINE        !== character &&
-         CHAR_GREATER_THAN         !== character &&
-         CHAR_SINGLE_QUOTE         !== character &&
-         CHAR_DOUBLE_QUOTE         !== character &&
-         CHAR_PERCENT              !== character &&
-         CHAR_COLON                !== character &&
-         !ESCAPE_SEQUENCES[character]            &&
-         !needsHexEscape(character);
+// Greedy line breaking.
+// Picks the longest line under the limit each time,
+// otherwise settles for the shortest line over the limit.
+// NB. More-indented lines *cannot* be folded, as that would add an extra \n.
+function foldLine(line, width) {
+  if (line === '' || line[0] === ' ') return line;
+
+  // Since a more-indented line adds a \n, breaks can't be followed by a space.
+  var breakRe = / [^ ]/g; // note: the match index will always be <= length-2.
+  var match;
+  // start is an inclusive index. end, curr, and next are exclusive.
+  var start = 0, end, curr = 0, next = 0;
+  var result = '';
+
+  // Invariants: 0 <= start <= length-1.
+  //   0 <= curr <= next <= max(0, length-2). curr - start <= width.
+  // Inside the loop:
+  //   A match implies length >= 2, so curr and next are <= length-2.
+  while ((match = breakRe.exec(line))) {
+    next = match.index;
+    // maintain invariant: curr - start <= width
+    if (next - start > width) {
+      end = (curr > start) ? curr : next; // derive end <= length-2
+      result += '\n' + line.slice(start, end);
+      // skip the space that was output as \n
+      start = end + 1;                    // derive start <= length-1
+    }
+    curr = next;
+  }
+
+  // By the invariants, start <= length-1, so there is something left over.
+  // It is either the whole string or a part starting from non-whitespace.
+  result += '\n';
+  // Insert a break if the remainder is too long and there is a break available.
+  if (line.length - start > width && curr > start) {
+    result += line.slice(start, curr) + '\n' + line.slice(curr + 1);
+  } else {
+    result += line.slice(start);
+  }
+
+  return result.slice(1); // drop extra \n joiner
 }
 
-// Returns true if the character code needs to be escaped.
-function needsHexEscape(character) {
-  return !((0x00020 <= character && character <= 0x00007E) ||
-           (character === 0x00085)                         ||
-           (0x000A0 <= character && character <= 0x00D7FF) ||
-           (0x0E000 <= character && character <= 0x00FFFD) ||
-           (0x10000 <= character && character <= 0x10FFFF));
+// Escapes a double-quoted string.
+function escapeString(string) {
+  var result = '';
+  var char;
+  var escapeSeq;
+
+  for (var i = 0; i < string.length; i++) {
+    char = string.charCodeAt(i);
+    escapeSeq = ESCAPE_SEQUENCES[char];
+    result += !escapeSeq && isPrintable(char)
+      ? string[i]
+      : escapeSeq || encodeHex(char);
+  }
+
+  return result;
 }
 
 function writeFlowSequence(state, level, object) {
@@ -15369,7 +15359,7 @@ function safeDump(input, options) {
 module.exports.dump     = dump;
 module.exports.safeDump = safeDump;
 
-},{"./common":158,"./exception":160,"./schema/default_full":165,"./schema/default_safe":166}],160:[function(require,module,exports){
+},{"./common":157,"./exception":159,"./schema/default_full":164,"./schema/default_safe":165}],159:[function(require,module,exports){
 // YAML error class. http://stackoverflow.com/questions/8458984
 //
 'use strict';
@@ -15414,7 +15404,7 @@ YAMLException.prototype.toString = function toString(compact) {
 
 module.exports = YAMLException;
 
-},{}],161:[function(require,module,exports){
+},{}],160:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable max-len,no-use-before-define*/
@@ -16160,6 +16150,7 @@ function readBlockScalar(state, nodeIndent) {
   var captureStart,
       folding,
       chomping       = CHOMPING_CLIP,
+      didReadContent = false,
       detectedIndent = false,
       textIndent     = nodeIndent,
       emptyLines     = 0,
@@ -16241,9 +16232,9 @@ function readBlockScalar(state, nodeIndent) {
 
       // Perform the chomping.
       if (chomping === CHOMPING_KEEP) {
-        state.result += common.repeat('\n', emptyLines);
+        state.result += common.repeat('\n', didReadContent ? 1 + emptyLines : emptyLines);
       } else if (chomping === CHOMPING_CLIP) {
-        if (detectedIndent) { // i.e. only if the scalar is not empty.
+        if (didReadContent) { // i.e. only if the scalar is not empty.
           state.result += '\n';
         }
       }
@@ -16258,7 +16249,8 @@ function readBlockScalar(state, nodeIndent) {
       // Lines starting with white space characters (more-indented lines) are not folded.
       if (is_WHITE_SPACE(ch)) {
         atMoreIndented = true;
-        state.result += common.repeat('\n', emptyLines + 1);
+        // except for the first content line (cf. Example 8.1)
+        state.result += common.repeat('\n', didReadContent ? 1 + emptyLines : emptyLines);
 
       // End of more-indented block.
       } else if (atMoreIndented) {
@@ -16267,7 +16259,7 @@ function readBlockScalar(state, nodeIndent) {
 
       // Just one line break - perceive as the same line.
       } else if (emptyLines === 0) {
-        if (detectedIndent) { // i.e. only if we have already read some scalar content.
+        if (didReadContent) { // i.e. only if we have already read some scalar content.
           state.result += ' ';
         }
 
@@ -16277,14 +16269,12 @@ function readBlockScalar(state, nodeIndent) {
       }
 
     // Literal style: just add exact number of line breaks between content lines.
-    } else if (detectedIndent) {
-      // If current line isn't the first one - count line break from the last content line.
-      state.result += common.repeat('\n', emptyLines + 1);
     } else {
-      // In case of the first content line - count only empty lines.
-      state.result += common.repeat('\n', emptyLines);
+      // Keep all line breaks except the header line break.
+      state.result += common.repeat('\n', didReadContent ? 1 + emptyLines : emptyLines);
     }
 
+    didReadContent = true;
     detectedIndent = true;
     emptyLines = 0;
     captureStart = state.position;
@@ -17002,7 +16992,7 @@ module.exports.load        = load;
 module.exports.safeLoadAll = safeLoadAll;
 module.exports.safeLoad    = safeLoad;
 
-},{"./common":158,"./exception":160,"./mark":162,"./schema/default_full":165,"./schema/default_safe":166}],162:[function(require,module,exports){
+},{"./common":157,"./exception":159,"./mark":161,"./schema/default_full":164,"./schema/default_safe":165}],161:[function(require,module,exports){
 'use strict';
 
 
@@ -17080,7 +17070,7 @@ Mark.prototype.toString = function toString(compact) {
 
 module.exports = Mark;
 
-},{"./common":158}],163:[function(require,module,exports){
+},{"./common":157}],162:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable max-len*/
@@ -17186,7 +17176,7 @@ Schema.create = function createSchema() {
 
 module.exports = Schema;
 
-},{"./common":158,"./exception":160,"./type":169}],164:[function(require,module,exports){
+},{"./common":157,"./exception":159,"./type":168}],163:[function(require,module,exports){
 // Standard YAML's Core schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2804923
 //
@@ -17206,7 +17196,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":163,"./json":168}],165:[function(require,module,exports){
+},{"../schema":162,"./json":167}],164:[function(require,module,exports){
 // JS-YAML's default schema for `load` function.
 // It is not described in the YAML specification.
 //
@@ -17233,7 +17223,7 @@ module.exports = Schema.DEFAULT = new Schema({
   ]
 });
 
-},{"../schema":163,"../type/js/function":174,"../type/js/regexp":175,"../type/js/undefined":176,"./default_safe":166}],166:[function(require,module,exports){
+},{"../schema":162,"../type/js/function":173,"../type/js/regexp":174,"../type/js/undefined":175,"./default_safe":165}],165:[function(require,module,exports){
 // JS-YAML's default schema for `safeLoad` function.
 // It is not described in the YAML specification.
 //
@@ -17263,7 +17253,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":163,"../type/binary":170,"../type/merge":178,"../type/omap":180,"../type/pairs":181,"../type/set":183,"../type/timestamp":185,"./core":164}],167:[function(require,module,exports){
+},{"../schema":162,"../type/binary":169,"../type/merge":177,"../type/omap":179,"../type/pairs":180,"../type/set":182,"../type/timestamp":184,"./core":163}],166:[function(require,module,exports){
 // Standard YAML's Failsafe schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2802346
 
@@ -17282,7 +17272,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":163,"../type/map":177,"../type/seq":182,"../type/str":184}],168:[function(require,module,exports){
+},{"../schema":162,"../type/map":176,"../type/seq":181,"../type/str":183}],167:[function(require,module,exports){
 // Standard YAML's JSON schema.
 // http://www.yaml.org/spec/1.2/spec.html#id2803231
 //
@@ -17309,7 +17299,7 @@ module.exports = new Schema({
   ]
 });
 
-},{"../schema":163,"../type/bool":171,"../type/float":172,"../type/int":173,"../type/null":179,"./failsafe":167}],169:[function(require,module,exports){
+},{"../schema":162,"../type/bool":170,"../type/float":171,"../type/int":172,"../type/null":178,"./failsafe":166}],168:[function(require,module,exports){
 'use strict';
 
 var YAMLException = require('./exception');
@@ -17372,14 +17362,19 @@ function Type(tag, options) {
 
 module.exports = Type;
 
-},{"./exception":160}],170:[function(require,module,exports){
+},{"./exception":159}],169:[function(require,module,exports){
 'use strict';
 
 /*eslint-disable no-bitwise*/
 
-// A trick for browserified version.
-// Since we make browserifier to ignore `buffer` module, NodeBuffer will be undefined
-var NodeBuffer = require('buffer').Buffer;
+var NodeBuffer;
+
+try {
+  // A trick for browserified version, to not include `Buffer` shim
+  var _require = require;
+  NodeBuffer = _require('buffer').Buffer;
+} catch (__) {}
+
 var Type       = require('../type');
 
 
@@ -17504,7 +17499,7 @@ module.exports = new Type('tag:yaml.org,2002:binary', {
   represent: representYamlBinary
 });
 
-},{"../type":169,"buffer":15}],171:[function(require,module,exports){
+},{"../type":168}],170:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -17541,7 +17536,7 @@ module.exports = new Type('tag:yaml.org,2002:bool', {
   defaultStyle: 'lowercase'
 });
 
-},{"../type":169}],172:[function(require,module,exports){
+},{"../type":168}],171:[function(require,module,exports){
 'use strict';
 
 var common = require('../common');
@@ -17648,7 +17643,7 @@ module.exports = new Type('tag:yaml.org,2002:float', {
   defaultStyle: 'lowercase'
 });
 
-},{"../common":158,"../type":169}],173:[function(require,module,exports){
+},{"../common":157,"../type":168}],172:[function(require,module,exports){
 'use strict';
 
 var common = require('../common');
@@ -17818,7 +17813,7 @@ module.exports = new Type('tag:yaml.org,2002:int', {
   }
 });
 
-},{"../common":158,"../type":169}],174:[function(require,module,exports){
+},{"../common":157,"../type":168}],173:[function(require,module,exports){
 'use strict';
 
 var esprima;
@@ -17904,7 +17899,7 @@ module.exports = new Type('tag:yaml.org,2002:js/function', {
   represent: representJavascriptFunction
 });
 
-},{"../../type":169}],175:[function(require,module,exports){
+},{"../../type":168}],174:[function(require,module,exports){
 'use strict';
 
 var Type = require('../../type');
@@ -17966,7 +17961,7 @@ module.exports = new Type('tag:yaml.org,2002:js/regexp', {
   represent: representJavascriptRegExp
 });
 
-},{"../../type":169}],176:[function(require,module,exports){
+},{"../../type":168}],175:[function(require,module,exports){
 'use strict';
 
 var Type = require('../../type');
@@ -17996,7 +17991,7 @@ module.exports = new Type('tag:yaml.org,2002:js/undefined', {
   represent: representJavascriptUndefined
 });
 
-},{"../../type":169}],177:[function(require,module,exports){
+},{"../../type":168}],176:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18006,7 +18001,7 @@ module.exports = new Type('tag:yaml.org,2002:map', {
   construct: function (data) { return data !== null ? data : {}; }
 });
 
-},{"../type":169}],178:[function(require,module,exports){
+},{"../type":168}],177:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18020,7 +18015,7 @@ module.exports = new Type('tag:yaml.org,2002:merge', {
   resolve: resolveYamlMerge
 });
 
-},{"../type":169}],179:[function(require,module,exports){
+},{"../type":168}],178:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18056,7 +18051,7 @@ module.exports = new Type('tag:yaml.org,2002:null', {
   defaultStyle: 'lowercase'
 });
 
-},{"../type":169}],180:[function(require,module,exports){
+},{"../type":168}],179:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18102,7 +18097,7 @@ module.exports = new Type('tag:yaml.org,2002:omap', {
   construct: constructYamlOmap
 });
 
-},{"../type":169}],181:[function(require,module,exports){
+},{"../type":168}],180:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18157,7 +18152,7 @@ module.exports = new Type('tag:yaml.org,2002:pairs', {
   construct: constructYamlPairs
 });
 
-},{"../type":169}],182:[function(require,module,exports){
+},{"../type":168}],181:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18167,7 +18162,7 @@ module.exports = new Type('tag:yaml.org,2002:seq', {
   construct: function (data) { return data !== null ? data : []; }
 });
 
-},{"../type":169}],183:[function(require,module,exports){
+},{"../type":168}],182:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18198,7 +18193,7 @@ module.exports = new Type('tag:yaml.org,2002:set', {
   construct: constructYamlSet
 });
 
-},{"../type":169}],184:[function(require,module,exports){
+},{"../type":168}],183:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
@@ -18208,34 +18203,41 @@ module.exports = new Type('tag:yaml.org,2002:str', {
   construct: function (data) { return data !== null ? data : ''; }
 });
 
-},{"../type":169}],185:[function(require,module,exports){
+},{"../type":168}],184:[function(require,module,exports){
 'use strict';
 
 var Type = require('../type');
+
+var YAML_DATE_REGEXP = new RegExp(
+  '^([0-9][0-9][0-9][0-9])'          + // [1] year
+  '-([0-9][0-9])'                    + // [2] month
+  '-([0-9][0-9])$');                   // [3] day
 
 var YAML_TIMESTAMP_REGEXP = new RegExp(
   '^([0-9][0-9][0-9][0-9])'          + // [1] year
   '-([0-9][0-9]?)'                   + // [2] month
   '-([0-9][0-9]?)'                   + // [3] day
-  '(?:(?:[Tt]|[ \\t]+)'              + // ...
+  '(?:[Tt]|[ \\t]+)'                 + // ...
   '([0-9][0-9]?)'                    + // [4] hour
   ':([0-9][0-9])'                    + // [5] minute
   ':([0-9][0-9])'                    + // [6] second
   '(?:\\.([0-9]*))?'                 + // [7] fraction
   '(?:[ \\t]*(Z|([-+])([0-9][0-9]?)' + // [8] tz [9] tz_sign [10] tz_hour
-  '(?::([0-9][0-9]))?))?)?$');         // [11] tz_minute
+  '(?::([0-9][0-9]))?))?$');           // [11] tz_minute
 
 function resolveYamlTimestamp(data) {
   if (data === null) return false;
-  if (YAML_TIMESTAMP_REGEXP.exec(data) === null) return false;
-  return true;
+  if (YAML_DATE_REGEXP.exec(data) !== null) return true;
+  if (YAML_TIMESTAMP_REGEXP.exec(data) !== null) return true;
+  return false;
 }
 
 function constructYamlTimestamp(data) {
   var match, year, month, day, hour, minute, second, fraction = 0,
       delta = null, tz_hour, tz_minute, date;
 
-  match = YAML_TIMESTAMP_REGEXP.exec(data);
+  match = YAML_DATE_REGEXP.exec(data);
+  if (match === null) match = YAML_TIMESTAMP_REGEXP.exec(data);
 
   if (match === null) throw new Error('Date resolve error');
 
@@ -18291,7 +18293,7 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
   represent: representYamlTimestamp
 });
 
-},{"../type":169}],186:[function(require,module,exports){
+},{"../type":168}],185:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -19562,7 +19564,7 @@ if (typeof exports === 'object') {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],187:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 // Require Node modules in the browser thanks to Browserify: http://browserify.org
 
 var bespoke = require('bespoke'),
@@ -19666,7 +19668,7 @@ window.deck = bespoke.from('article', [
 
 sleek();
 
-},{"./sleek-menu":188,"./tutorial":189,"bespoke":14,"bespoke-backdrop":1,"bespoke-bullets":2,"bespoke-hash":3,"bespoke-keys":4,"bespoke-math":6,"bespoke-meta-markdown":7,"bespoke-progress":8,"bespoke-qrcode":9,"bespoke-simple-overview":10,"bespoke-state":11,"bespoke-theme-fancy":12,"bespoke-touch":13,"ismobilejs":155}],188:[function(require,module,exports){
+},{"./sleek-menu":187,"./tutorial":188,"bespoke":14,"bespoke-backdrop":1,"bespoke-bullets":2,"bespoke-hash":3,"bespoke-keys":4,"bespoke-math":6,"bespoke-meta-markdown":7,"bespoke-progress":8,"bespoke-qrcode":9,"bespoke-simple-overview":10,"bespoke-state":11,"bespoke-theme-fancy":12,"bespoke-touch":13,"ismobilejs":154}],187:[function(require,module,exports){
 module.exports = function() {
   var pageHeaderEl = document.getElementById('page-header'),
       bodyClasses = document.body.classList;
@@ -19682,7 +19684,7 @@ module.exports = function() {
   }
 };
 
-},{}],189:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 var tutorial = {
     turnedOn: true,
 
@@ -19726,7 +19728,7 @@ module.exports = function(tutorialEl) {
   };
 };
 
-},{}]},{},[187])
+},{}]},{},[186])
 
 
 //# sourceMappingURL=build.js.map
