@@ -186,6 +186,8 @@ int main(int argc, char* argv[]) {
 
 ---
 # Agrupando informação
+## com
+# Estruturas de Dados
 
 ---
 ## Motivação
@@ -196,25 +198,42 @@ int main(int argc, char* argv[]) {
 - A linguagem permite a criação de **estruturas de dados**. Para tal,
   usamos a sintaxe:
   ```c
-  struct vetorGeometrico {
+  struct vetor2d {
     float x;
     float y;
-  }
+  };
   ```
 
 ---
-## Como usar uma estrutura
+## Como usar uma estrutura (1/2)
 
 - Uma vez definida, podemos usar a estrutura para criar objetos que têm
   o mesmo tipo definido por ela:
   ```c
-  struct vetorGeometrico posicao;
-  struct vetorGeometrico velocidade;
+  struct vetor2d posicao;
+  struct vetor2d velocidade;
   ```
 - Então, podemos acessar os membros de cada objeto (`x` e `y`):
   ```c
   posicao.x = 1.5f;
-  velocidade.y *= 2;
+  velocidade.y *= 2;  // vel.y = vel.y * 2;
+  ```
+
+---
+## Como usar uma estrutura (2/2)
+
+- Alternativamente, podemos **criar a estrutura de dados** <u>e</u> **definir
+  um novo tipo de dados** ao mesmo tempo usando o `typedef`:
+  ```c
+  typedef struct vetor2d {
+    float x;
+    float y;
+  } tipo_vetor2d;
+  ```
+- Daí, na hora de declarar variáveis, **podemos omitir a palavra `struct`**:
+  ```c
+  tipo_vetor2d posicao;
+  tipo_vetor2d velocidade;
   ```
 
 ---
@@ -239,7 +258,7 @@ int main(int argc, char* argv[]) {
 
 - Constantes
   ```c
-  #define PI 3.1415926535
+  #define NUM_LADOS 25
   ```
 - Macros com argumentos
   ```
@@ -257,7 +276,7 @@ int main(int argc, char* argv[]) {
 ---
 ## Pré-processador
 
-- Inclusão de arquivos
+- Inclusão de arquivos: &lt; &gt; ou áspas
   - **`#include <arquivo1.h>`** <br>
     Esta variação é usada para cabeçalhos do sistema
     - Ela procura pelo arquivo **em uma lista de diretórios padrão**
@@ -284,43 +303,44 @@ int main(int argc, char* argv[]) {
 ---
 ## Exemplão (.h e .c)
 
-- vetorGeometria.c
+- vetor.c
   ```c
-  #include "vetorGeometria.h"
-  struct vetor somaEscalar(struct vetor v, float escalar) {
-      v.x += escalar;   v.y += escalar;
+  #include "vetor.h"
+  struct vetor multiEscalar(struct vetor v, float escalar) {
+      v.x *= escalar;   v.y *= escalar;
       return v;
   }
   ```
-- vetorGeometria.h (o que estamos "exportando")
+- vetor.h (o que estamos "exportando")
   ```c
   struct vetor {    // a estrutura de dados
       float x, y;
-  }
-  struct vetor somaEscalar(struct vetor, float); //op. soma
+  };
+  struct vetor multiEscalar(struct vetor, float);
   ```
 
 ---
 ## Exemplão (continuação)
 
-- **Para usar** o seu módulo `vetorGeometria` em outro arquivo do seu programa
-  (_e.g._, `main.c`), você **deve incluir o arquivo `vetorGeometria.h`**
-  - Fazendo isso, seu outro arquivo (_e.g._, `main.c`) saberá o que é um
-    `struct vetor` e que existe uma função `somaEscalar` que recebe
-    um `struct vetor` e um `float`
+- **Para usar** o seu módulo `vetor` em outro arquivo do seu programa
+  (_e.g._, `main.c`), você **deve incluir o arquivo `vetor.h`**
+  - Fazendo isso, seu outro arquivo (_e.g._, `main.c`) saberá:
+    1. o que é um `struct vetor`
+    1. que existe uma função `somaEscalar`
+      - que recebe um `struct vetor` e um `float`
 
 ---
 ## Exemplo de utilização
 
 ```c
-#include "vetorGeometria.h"
+#include "vetor.h"
 
 int main(int argc, char* argv[]) {
   struct vetor velocidade;
-  posicao.x = 1;
-  posicao.y = 1;
+  velocidade.x = 1.0f;
+  velocidade.y = 0.7f;
 
-  velocidade = somaEscalar(velocidade, 2);
+  velocidade = multiEscalar(velocidade, 2);
   printf("novaPosicao: %f, %f\n", velocidade.x, velocidade.y);
   return 0;
 }
@@ -346,7 +366,7 @@ int main(int argc, char* argv[]) {
 ---
 ## O GCC
 
-- O GCC é o compilador da linguagem C (e de C++, Objective-C, Objective-C++ e GO)
+- O GCC é o compilador da linguagem C (e de C++, Objective-C, Objective-C++...)
   mais famoso e utilizado
 - Ele foi feito para Unix e só executa lá
   - Felizmente, alguns _ports_ não oficiais foram feitos para Windows:
@@ -382,16 +402,16 @@ int main(int argc, char* argv[]) {
 OPCOES_COMPILADOR= -Wall
 
 main.o: main.c
-	gcc -o main.o -c main.c $(OPCOES_COMPILADOR)
+    gcc -o main.o -c main.c $(OPCOES_COMPILADOR)
 
 all: $(TODOS_ARQUIVOS_OBJ)
-	gcc -o main main.o -lglut32 -lm
+    gcc -o main main.o -lglut32 -lm
 
 run: all
-	main.exe
+    main.exe
 
 clean:
-	del *.o main
+    del *.o main
 ```
 
 ---
@@ -406,6 +426,52 @@ clean:
   $ make run
   ```
   - Para executar o programa
+
+---
+## Makefile (1/)
+
+- Makefile simples
+  ```makefile
+  aplicacao:  aplicacao.c vetor.c
+      gcc -o aplicacao aplicacao.c vetor.c -I.
+  ```
+  1. Coloque esse conteúdo em um **arquivo `Makefile` ou `makefile`**
+  1. **Digite `make`** na pasta e o GCC compilará o programa
+    - `make` (sem argumentos) executa a primeira regra do arquivo
+    - a regra só será executada se os arquivos à direita tiverem mudado desde a
+      última execução
+
+---
+## Makefile (2/)
+
+- Makefile simples++
+  ```
+  CC=gcc
+  CFLAGS=-I.
+  aplicacao:  aplicacao.o vetor.o
+      $(CC) -o aplicacao aplicacao.o vetor.o $(CFLAGS)
+  ```
+  - `CC` e `CFLAGS` são constantes
+  - Usamos as constantes na forma `$(CC)` e `$(CFLAGS)`
+  - Problema: quando alteramos um arquivo `.h`, **o make não recompila**
+
+---
+## Makefile (3/)
+
+- Makefile bacana
+  ```
+  CC=gcc
+  CFLAGS=-I.
+  DEPS=vetor.h
+  %.o: %.c $(DEPS)
+      $(CC) -c -o $@ $< $(CFLAGS)
+
+  aplicacao: aplicacao.o vetor.o
+      $(CC) -o aplicacao aplicacao.o vetor.o $(CFLAGS)
+  ```
+  - `DEPS` é o conjunto de todos os arquivos `.h`
+  - `%.o`: regra se aplica a todos os arquivos `.o`
+  - `$@` e `$<` representam o lado esquerdo e direito
 
 ---
 # Depuração de Programas
