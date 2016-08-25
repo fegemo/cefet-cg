@@ -17,10 +17,10 @@
 - [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (16/08/2016)
 - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (18/08/2016)
 - [Cê](classes/c) (23/08/2016)
+- [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (23/08/2016)
+- [Geometria](classes/geometry) (25/08/2016)
 
 <!--
-- [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (15/03/2016)
-- [Geometria](classes/geometry) (17/03/2016)
 
 
 # Aulas (página 2)

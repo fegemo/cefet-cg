@@ -7,16 +7,15 @@
 ---
 # Roteiro
 
-1. Motivação
 1. História da Geometria
 1. Geometria Afim
 1. Geometria Euclidiana
 1. Sistema de Coordenadas
 
----
+<!--
 # Motivação
 
----
+
 ## Motivação
 
 - Muitas áreas na computação usam **programação geométrica**
@@ -25,14 +24,15 @@
 - Computação Gráfica lida com geometria de retas e objetos lineares num espaço
   bi ou tridimensional
 
+-->
 ---
 ## Problemas Típicos (1/2)
 
 - **Interseção** (ou colisão)
-  - Dado um cubo e um raio ~~privatizador~~ (uma semi-reta), o raio acerta
+  - Dado um cubo e um raio (uma semi-reta), o raio acerta
     o cubo?
-  - Se acerta, em qual face?
-  - Se ele refletir dessa face, em qual direção?
+    - Se acerta, em qual face?
+    - Se ele refletir dessa face, em qual direção?
 - **Transformação**
   - Dados 4 vértices formando um polígono, quais seriam as novas coordenadas se
     o polígono fosse rotacionado 30° no eixo X?
@@ -47,7 +47,7 @@
 - **Mudança de coordenadas**
   - Dada uma esfera em um sistema de coordenadas (e.g., polar), quais seriam
     as coordenadas da esfera em um outro sistema de coordenadas
-    (e.g., cartesiano)?
+    (_e.g._, cartesiano)?
 
 ---
 ## Exemplo de problema: **rotação**
@@ -59,7 +59,7 @@
 ![Figura mostrando o mesmo quadrado da figura anterior, porém girado em 45º](../../images/geometry-square-transform2.png)
 
 - Sim, é possível!
-  - Mas dá muito trabalho e **bons programadores são preguiçosos**
+  - Mas dá muito trabalho e **bons programadores são preguiçosos**!
 
 ---
 ## Exemplo de problema: **rotação** (cont.)
@@ -73,7 +73,7 @@
 
 - Vamos supor que estamos na década de 90 e **vamos inventar uma peça de
   _hardware_ para fazer os cálculos necessários** (podemos batizá-la de
-  placa de vídeo :) para gerar imagens à partir de cenas bi/tridimensionais
+  placa de vídeo :) para gerar imagens a partir de cenas bi/tridimensionais
 - Vamos precisar:
   1. Definir que **tipos de operações com números** nosso _hardware_ deve fazer
   1. Restringir as operações a um **conjunto mínimo viável** (porque _hardware_
@@ -133,12 +133,12 @@
 - Elementos fundamentais:
   - **Escalares**: números reais
   - **Pontos**
-  - **Vetores (livres)**:
-    - Representam apenas um deslocamento em uma direção/sentido
-    - Não são posicionados
+  - **Vetores**:
+    - Representam apenas um <u>deslocamento em uma direção/sentido</u>
+    - Não são posicionados (são **livres** no espaço)
   - ~~Distâncias~~, ~~Ângulos~~ Fim! :)
 - Não há o conceito de origem do mundo
-- Premissa da geometria afim: preservar **paralelismo** e **colineraridade**
+- Premissa da geometria afim: preservar **paralelismo** e **colinearidade**
 
 ---
 ## **Escalar**
@@ -224,8 +224,10 @@
   <span class="math">P</span>
 - Podemos permitir <span class="math">\alpha</span> variar arbitrariamente,
   definindo toda a reta
+  - Aí temos uma **combinação linear**
 - No caso particular em que <span class="math">\alpha \in [0,1]</span>,
   chamamos a combinação afim de **combinação convexa**
+- Vimos uma combinação afim entre dois pontos, mas pode haver mais pontos...
 
 ---
 ## **Definição Geral** da Combinação Afim
@@ -238,8 +240,7 @@
 
   <div class="math">\sum_{i=1}^{n} {\alpha} = 1</div>
 
-- Para combinação convexa, <span class="math">\alpha_i \ge 0</span> e
-  <span class="math">1 \le i \le n</span>
+- Para combinação convexa, <span class="math">0 \le \alpha_i < 1</span>
 - O que seria uma combinação afim de 3 pontos? E uma combinação convexa?
 
 ---
@@ -249,8 +250,8 @@
 
 - Combinação afim: o plano
 - Combinação convexa: o triângulo
-- Dados os valores de <span class="math">\alpha_A, \alpha_B, \alpha_C</span>,
-  fica fácil determinar a cor de qualquer ponto
+- Nota: o OpenGL usa uma combinação convexa para determinar a cor dos polígonos
+  quando os vértices possuem cores diferentes
 
 ---
 # Geometria Euclidiana
