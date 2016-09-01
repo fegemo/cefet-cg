@@ -145,15 +145,15 @@
   ```c
   glTranslatef(player.x, player.y, 0);
   glBegin(GL_POLYGON);
-    glVertex3f(-10, -10, 0);    glVertex3f(10, -10, 0);
-    glVertex3f(10, 10, 0);      glVertex3f(-10, 10, 0);
+      glVertex3f(-10, -10, 0);    glVertex3f(10, -10, 0);
+      glVertex3f(10, 10, 0);      glVertex3f(-10, 10, 0);
   glEnd();
   glTranslatef(-player.x, -player.y, 0); // desfaz translação
   ```
 - Benefícios
   - Podemos definir objetos (vértices) em um **sistemas de coordenadas local**
     a ele
-  - Podemos guardar objetos _display lists_ já que
+  - Podemos guardar objetos em _display lists_ já que
     estão definidos em um sistema local e transladá-los em qualquer posição
 
 ---
@@ -169,27 +169,29 @@
 ---
 ## **Rotação**
 
-- A rotação de um objeto é especificada por um ângulo de rotação e um eixo
-de rotação.
-  - Todos os vértices do objeto são transformados para novas posições por meio
-    da rotação dos pontos em um ângulo especificado com **relação à origem**.
+- A rotação de um objeto é especificada por:
+  - um **ângulo** de rotação e
+  - um **eixo** de rotação.
+- Todos os vértices do objeto são transformados para novas posições por meio
+  da rotação dos pontos em um ângulo especificado com **relação à origem**.
 
 ---
 ## Rotação (cont.)
 
-- Equações para a rotação de um ponto <span class="math">(x, y)</span> através de um ângulo <span class="math">\theta</span> com relação
-  à origem:
+- Equações para a rotação de um ponto <span class="math">(x, y)</span>
+  através de um ângulo <span class="math">\theta</span> com relação à origem:
 
   ![](../../images/rotacao-exemplo.png)
 
 ---
 ## Rotação (cont.)
 
-- Podemos rotacionar objetos ao longo dos três eixos da base do nosso sistema
-  de coordenadas: <span class="math">(x,y,z)</span>
+- Podemos rotacionar objetos **ao longo dos três eixos** da base do
+  nosso sistema de coordenadas: <span class="math">(x,y,z)</span>
   - Exemplo: nossa cabeça olha para cima ou baixo, esquerda ou direita e
     deita-se para a direita ou esquerda
-  - Se rotacionar-mos vértices em <span class="math">x</span>, suas coordenadas <span class="math">y</span> e <span class="math">z</span> alteram, mas
+  - Se rotacionarmos vértices em <span class="math">x</span>, suas coordenadas
+    <span class="math">y</span> e <span class="math">z</span> alteram, mas
     <span class="math">x</span> se mantêm
     ![](../../images/rotacao-eixos.png)
     - Portanto, em 2D, para rotacionar um objeto provavelmente queremos usar o
@@ -201,16 +203,16 @@ de rotação.
 - Pode ser representada por uma matriz <span class="math">R_{z}(\alpha)</span>, em que <span class="math">\alpha</span> é o ângulo de
   rotação.
 
-
-  ![](../../images/rotacao-matriz.png)
+  <div class="math">R_{z}(\alpha)=\begin{bmatrix} \cos\alpha&- \sin\alpha&0&0\\\ \sin\alpha&\cos\alpha&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix}</div>
 
 ---
 ## Rotação nos **eixos X e Y**
 
-- Similarmente, as matrizes de rotação nos eixos `x` e `y`
+- Similarmente, as matrizes de rotação nos eixos <span class="math">x</span> e <span class="math">y</span>:
 
-  ![](../../images/rotacao-matriz-x.png)
-  ![](../../images/rotacao-matriz-y.png)
+  <div class="math" style="float:left;">R_x(\alpha)=\begin{bmatrix} 1&0&0&0\\\0&\cos\alpha&-\sin\alpha&0\\\0&\sin\alpha&\cos\alpha&0\\\0&0&1&0\end{bmatrix}</div>
+
+  <div class="math" style="float:right;">R_y(\alpha)=\begin{bmatrix} \cos\alpha&0&\sin\alpha&0\\\0&1&0&0\\\ -\sin\alpha&0&\cos\alpha&0\\\0&0&0&1\end{bmatrix}</div>
 
 ---
 ## Rotação em OpenGL
@@ -230,8 +232,8 @@ de rotação.
   ```c
   glRotatef(player.angle, 0, 0, 1);   // eixo z
   glBegin(GL_POLYGON);
-    glVertex3f(-10, -10, 0);    glVertex3f(10, -10, 0);
-    glVertex3f(10, 10, 0);      glVertex3f(-10, 10, 0);
+      glVertex3f(-10, -10, 0);    glVertex3f(10, -10, 0);
+      glVertex3f(10, 10, 0);      glVertex3f(-10, 10, 0);
   glEnd();
   glRotatef(-player.angle, 0, 0, 1);  // desfaz
   ```
@@ -239,7 +241,7 @@ de rotação.
 ---
 ## Matriz inversa da rotação
 
-- A matriz de rotação é ortogonal, o que implica que **sua inversa é sua
+- A matriz de rotação é ortogonal, ou seja, **sua inversa é sua
   transposta**
 - Dada uma matriz de rotação <span class="math">R(\alpha)</span>, sua matriz inversa <span class="math">R^{-1}(\alpha)</span>
   é dada por:
@@ -296,7 +298,7 @@ de rotação.
   posições <span class="math">(x,y,z)</span> de um objeto por fatores escalares <span class="math">s_x, s_y, s_z</span>
 - A transformação de escala pode ser representada por uma matriz <span class="math">S</span> tal que:
 
-  ![](../../images/escala-matriz.png)
+  <div class="math" style="float: right;">S(\vec{s})=\begin{bmatrix} s_x&0&0&0\\\0&s_y&0&0\\\0&0&s_z&0\\\0&0&0&1 \end{bmatrix}</div>
 
 ---
 ## Escala em OpenGL
@@ -337,23 +339,24 @@ de rotação.
 ## Inclinação (cont.)
 
 - Em 3D, pode ocorrer em 1 de 6 combinações de planos de coordenadas
-- Matriz da transformação no plano <span class="math">xy</span>
+- <div class="math" style="float: right;">H_{xy}(\vec{sh})=\begin{bmatrix} 1&0&sh_x&0\\\0&1&sh_y&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix}</div>
+  Matriz da transformação no plano <span class="math">xy</span>
 
-  ![](../../images/shear-matriz.png)
+
 
 ---
 ## Inclinação em OpenGL
 
-- **Não existe um `glShear`**, portanto precisamos implementar a matriz nós mesmos
+- **<u>Não existe um `glShear`</u>**, portanto precisamos implementar a matriz nós mesmos
 - O OpenGL possui o **`glMultMatrix`** que nos permite definir todas as coordenadas
   de uma matriz
   - `glRotate`, `glTranslate` e `glScale` chamam essa função
   - Referência do [glMultMatrix](https://www.opengl.org/sdk/docs/man2/xhtml/glMultMatrix.xml)
 
----
+<!--
 # Composição
 
----
+
 ## Composição
 
 - Uma sequência de transformações podem ser combinadas em uma única
@@ -363,12 +366,12 @@ de rotação.
   2. aplicar a rotação ao redor da origem
   3. transladar de volta ao ponto original
 
----
+
 ## Composição - Exemplo em 2D
 
 ![](../../images/composicao-exemplo.png)
 
----
+
 ## Composição (cont.)
 
 - As três matrizes de transformação são combinadas como a seguir
@@ -377,6 +380,7 @@ de rotação.
 
 - Lembre-se: multiplicação de matrizes não é comutativa - a ordem importa.
   - Além disso, o OpenGL **pré-multiplica** as matrizes
+-->
 
 ---
 # Push, Pop
@@ -384,8 +388,8 @@ de rotação.
 ---
 ## Push, Pop
 
-- Quando chamamos uma função de multiplicação de matriz, estamos alterando o
-  estado do OpenGL (máquina de estados)
+- Quando chamamos uma **função de multiplicação de matriz**, estamos **alterando o
+  estado** do OpenGL (máquina de estados)
 - Assim, consecutivas chamadas a `glTranslatef(10, 0, 0)` irão mover os objetos
   da cena a `10u` em cada chamada
 
@@ -397,7 +401,7 @@ de rotação.
   - `GL_PROJECTION`
   - `GL_TEXTURE`
   - `GL_COLOR`
-- Na realidade, cada variável dessas são **pilhas de matrizes**
+- Na realidade, cada variável dessas é uma **pilha de matrizes**
 - Para evitar esse efeito, podemos empilhar a matriz atual para **preservá-la**
   e então trabalhar na nova matriz que está no topo
 - Usamos **`glMatrixMode(GL_...)`** para escolher com qual pilha de matrizes queremos aplicar transformações
@@ -405,12 +409,12 @@ de rotação.
 ---
 ## Push, Pop (cont.)
 
-- `glPushMatrix` empilha a matriz corrente e a duplica no topo da pilha.
+- **`glPushMatrix`** empilha a matriz corrente e a duplica no topo da pilha.
   - Ou seja, assim que `glPushMatrix` é chamada, as duas primeiras matrizes da
   pilha são idênticas
-- `glPopMatrix` desempilha a matriz corrente
-- `glLoadIdentity` define a matriz do topo como uma identidade
-- `glRotate, glTranslate` etc., multiplicam a matriz do topo pela matriz de
+- **`glPopMatrix`** desempilha a matriz corrente
+- **`glLoadIdentity`** define a matriz do topo como uma identidade
+- **`glRotate, glTranslate`** etc., multiplicam a matriz do topo pela matriz de
   transformação correspondente
 
 ---
