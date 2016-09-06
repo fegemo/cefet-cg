@@ -27,12 +27,12 @@
 - [Orientação e Mudança de Coordenadas](classes/baseorientation) (08/09/2016)
 - [O Pipeline Gráfico](classes/pipeline) (13/09/2016)
 - [Projeção](classes/projection) (15/09/2016)
+- [Modelagem Hierárquica](classes/hierarchical) (20/09/2016)
+- [Iluminação e Sombreamento](classes/lighting) (22 e 27/09/2016)
+- [Modelagem de Objetos](classes/modeling) (02/10/2016)
 
 <!--
 
-- [Modelagem Hierárquica](classes/hierarchical) (12/04/2016)
-- [Iluminação e Sombreamento](classes/lighting) (14 e 19/04/2016)
-- [Modelagem de Objetos](classes/modeling) (26/04/2016)
 
 
 # Aulas (página 3)
