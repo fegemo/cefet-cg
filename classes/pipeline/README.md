@@ -141,20 +141,23 @@
 ## Geometria &gt;&gt; (2) Sombreamento de vértices
 
 - <img src="../../images/cena-3d.png" style="float: right; margin-left: 10px; width: 200px;">
-  Para produzir uma cena realística, precisamos usar um conceito de **iluminação**
+  Para produzir uma cena realística, precisamos usar um conceito de
+  **iluminação dinâmica**
+  - [Exemplo de cubo iluminado](http://www.mathematik.uni-marburg.de/~thormae/lectures/graphics1/code/WebGLShaderLightMat/ShaderLightMat.html)
 - Com os vértices em suas posições em um único sistema de coordenadas, podemos
-  agora **definir a contribuição das fontes de luz de cada vértice**
-- Ao final do sombreamento, temos **cores e coordenadas de textura para cada
-  vértice** da cena
+  agora **definir a <u>contribuição das fontes de luz</u> em cada
+  </u>vértice</u>**
+- Ao final da etapa, temos as **<u>cores resultantes</u> e as coordenadas de
+  textura para cada vértice** da cena
   - Essa informação será passada para o sub-estágio seguinte
 
 ---
 ## Geometria &gt;&gt; (3) Projeção
 
 - Após o sombreamento, o sistema de renderização realiza uma projeção
-  - Transforma o volume de visualização em um cubo unitário com extremos em
+  - Transforma o volume de visualização em um cubo com extremos em
     (-1, -1, -1) e (1, 1, 1)
-  - Cubo unitário é chamado de **volume de visualização canônico**
+  - Esse cubo é chamado de **volume de visualização canônico**
 - Dois métodos de projeção:
   1. Paralelo
   1. Perspectivo
@@ -178,7 +181,8 @@
   - Dizemos que temos **coordenadas de dispositivo normalizadas**
   - A coordenada Z dos vértices é removida (3D -> 2D), porém armazenada em um
     espaço chamado _Z-buffer_
-    - Por isso precisamos usar `glEnable(GL_DEPTH_TEST)` para usar :O
+    - É por isso precisamos usar `glEnable(GL_DEPTH_TEST)` para usar a
+      coordenada Z para determinar quem está na frente :O
 
 ---
 ## Geometria &gt;&gt; (4) Recorte
@@ -278,7 +282,8 @@
   fica visível
   - Isso pode ser solucionado usando-se mais de um buffer
     - _Double-buffer_: _front-buffer e back-buffer_
-    - [_Triple-buffer_](http://www.anandtech.com/show/2794/2)
+
+    <!-- - [_Triple-buffer_](http://www.anandtech.com/show/2794/2) -->
 
 ---
 # Referências
