@@ -34,11 +34,15 @@
 ---
 ## O problema da projeção **em Computação Gráfica**
 
-- Trata-se de transformar o volume de visualização em um volume de cubo
-  unitário, descartando as coordenadas Z dos vértices
-  - Na verdade, as coordenadas Z saem dos vértices e vão para o Z-buffer
+- Trata-se de (i) transformar o volume de visualização no volume
+  de visualização canônico (cubo com raio 1) e (ii) guardar as coordenadas
+  <span class="math">z</span> dos vértices no _z-buffer_
+
+  ![](../../images/projection-transformation-to-cvv.png)
 - Essa transformação é feita por meio de **uma matriz que vai multiplicar as
   coordenadas dos vértices**, assim como as outras transformações que vimos
+
+
 
 ---
 ## Elementos da projeção
@@ -89,13 +93,6 @@
   - Ângulo dos raios no plano de projeção = 90º
 
 ---
-## Projeção Paralela, Isométrica
-
-![](../../images/proj-isometrica.png)
-
-- A cena é orientada em 45º relativo ao plano de projeção
-
----
 ## Projeção **Ortogonal em OpenGL**
 
 - Queridíssimo `glOrtho` ([referência](http://earth.uni-muenster.de/~joergs/opengl/glOrtho.html))
@@ -112,6 +109,14 @@
 - A função multiplica a matriz corrente por uma matriz da forma acima (direita)
   - Devemos multiplicar a matriz **de projeção (`GL_PROJECTION`)**
 
+---
+## Projeção Paralela, Isométrica
+
+![](../../images/proj-isometrica.png)
+
+- A cena é orientada em 45º relativo ao plano de projeção
+- Também podemos usar `glOrtho`, mas vamos precisar "movimentar a câmera"
+  usando `gluLookAt` (veremos logo mais)
 
 ---
 # Projeção Perspectiva
@@ -203,7 +208,7 @@
                  double bottom, double top,
                  double near,   double far);
   ```
-  - **`near` e `far`** devem ser **positivos**!
+  - **`near` e `far`** devem ser **positivos** e `near` &gt; `far`
 
 ---
 ## glFrustum (cont.)
@@ -247,12 +252,12 @@
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
 
-  // fovy, aspect, nearZ, farZ
+  // fovy, aspectRatio, nearZ, farZ
   gluPerspective(45.0f, 4.0f/3.0f, 1, 20);
   ```
-- O `gluPerspective` substitui o uso de `glFrustum`, já que ele gera uma matriz
-  de transformação perspectiva da mesma forma, porém usando outros tipos de
-  parâmetros
+- O <u>`gluPerspective` substitui o uso de `glFrustum`</u>, já que ele gera
+  uma matriz de transformação perspectiva da mesma forma, porém usando
+  outros tipos de parâmetros
 
 ---
 ## gluPerspective (cont.)
@@ -310,15 +315,17 @@ void gluLookAt(double eyeX,     // posição do olho
 _A wild TP2 appears..._
 
 ---
-## TP2: O Garra
+## TP2: Masmorras e Dragões
 
-<img alt="" src="https://github.com/fegemo/cefet-cg/raw/master/assignments/tp2-theclaw/images/o-garra.gif"
-  style="float: right; width: 420px; margin: 0 0 5px 20px">
-  _"Dizem que a_ 'claw machine' _(máquina de garra)
-  foi inventada por volta de 1893 e só em 1926 a primeira delas
-  foi patenteada como_ 'The Erie Digger' _"_
+<img alt="" src="../../images/tp2-keep-out.png"
+  style="float: right; width: 450px; margin: 0 0 5px 20px">
+  -- _"**Guilherme (mestre):** Igor, você acabou de entrar em uma sala e nela tem
+  uma cama e um criado mudo. O que vai fazer?"_<br>
+  -- _"**Igor (jogador):** vou bater no criado mudo até ele me falar aonde
+  tenho que ir"_<br>
+  _"Rimos muito e encerramos a sessão de jogo naquele dia..."_
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-theclaw/README.md)).
+- Enunciado **QUASE** no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-dandd/README.md)).
 
 ---
 # Referências
