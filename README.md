@@ -9,6 +9,21 @@
 <img class="portrait" src="images/flavio-avatar.jpg">
 
 ---
+## Trabalhos (60 pontos)
+
+- [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
+- [TP1: GORILLAS.BAS][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
+- [TP2: Masmorras e Dragões][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
+  - Primeira parte: no laboratório
+  - Segunda parte: no laboratório
+
+[tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-gorillas/README.md
+[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-dandd/README.md
+[tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
+
+---
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/) (04/08/2016)
@@ -154,18 +169,3 @@
 - Questionários marotos (5 pontos)
 - Lista de revisão da prova (10 pontos)
 - Prova (15 pontos)
-
----
-## Trabalhos (60 pontos)
-
-- [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
-- [TP1: GORILLAS.BAS][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
-- [TP2: Masmorras e Dragões][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
-- TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
-  - Primeira parte: no laboratório
-  - Segunda parte: no laboratório
-
-[tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-gorillas/README.md
-[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-dandd/README.md
-[tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
