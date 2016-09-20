@@ -19,9 +19,10 @@
 - A **ordem** com que transformações são aplicadas importa
   - Multiplicação de matrizes não é comutativa
 
-    ![](../../images/composicao-transformacoes-grafico-1.png)
+<!--
 
----
+![](../../images/composicao-transformacoes-grafico-1.png)
+
 ## Exemplo
 
 - Translação (5,0) e depois rotação (60°) ou
@@ -33,6 +34,7 @@
   <img src="../../images/composicao-transformacoes-grafico-2.png" class="bullet bullet-no-anim" style="position:absolute;top:0;left:0;">
 </figure>
 
+-->
 ---
 ## Compondo transformações
 

@@ -9,6 +9,21 @@
 <img class="portrait" src="images/flavio-avatar.jpg">
 
 ---
+## Trabalhos (60 pontos)
+
+- [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
+- [TP1: GORILLAS.BAS][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
+- [TP2: Masmorras e Dragões][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
+  - Primeira parte: no laboratório
+  - Segunda parte: no laboratório
+
+[tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-gorillas/README.md
+[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-dandd/README.md
+[tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
+
+---
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/) (04/08/2016)
@@ -27,12 +42,12 @@
 - [Orientação e Mudança de Coordenadas](classes/baseorientation) (08/09/2016)
 - [O Pipeline Gráfico](classes/pipeline) (13/09/2016)
 - [Projeção](classes/projection) (15/09/2016)
+- [Modelagem Hierárquica](classes/hierarchical) (20/09/2016)
+- [Iluminação e Sombreamento](classes/lighting) (22 e 27/09/2016)
+- [Modelagem de Objetos](classes/modeling) (02/10/2016)
 
 <!--
 
-- [Modelagem Hierárquica](classes/hierarchical) (12/04/2016)
-- [Iluminação e Sombreamento](classes/lighting) (14 e 19/04/2016)
-- [Modelagem de Objetos](classes/modeling) (26/04/2016)
 
 
 # Aulas (página 3)
@@ -154,18 +169,3 @@
 - Questionários marotos (5 pontos)
 - Lista de revisão da prova (10 pontos)
 - Prova (15 pontos)
-
----
-## Trabalhos (60 pontos)
-
-- TP0: Ambiente de Desenvolvimento[][tp0] (1 ponto, +1 extra)
-- [TP1: GORILLAS.BAS][tp1] (20 pontos)
-- TP2: ??, grupos <span class="math">\leq</span> 3 (20 pontos)
-- TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
-  - Primeira parte: no laboratório
-  - Segunda parte: no laboratório
-
-[tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-gorillas/README.md
-[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-theclaw/README.md
-[tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3

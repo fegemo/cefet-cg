@@ -34,7 +34,8 @@
 ---
 ## Computando a orientação
 
-- A orientação de <span class="math">n+1</span> pontos em um espaço n-dimensional é dado pelo **sinal
+- A orientação de <span class="math">n+1</span> pontos em um espaço
+  <span class="math">n</span>-dimensional é dado pelo **sinal
   do determinante da matriz** cujas colunas são as coordenadas homogêneas
   dos pontos **com o 1 vindo primeiro**
 
@@ -44,8 +45,6 @@
   <span class="math">
     Or_3(P_1,P_2,P_3,P_4)=sign\left(\begin{vmatrix}1&1&1&1\\\x_1&x_2&x_3&x_4\\\y_1&y_2&y_3&y_4\\\z_1&z_2&z_3&z_4\end{vmatrix}\right)
   </span>
-- O OpenGL faz isto internamente para descobrir
-  qual a orientação dos polígonos
 
 ---
 # Produto Vetorial
@@ -64,12 +63,12 @@
 ## Produto Vetorial (cont.)
 
 - Propriedades (assume-se <span class="math">\vec{u}</span>, <span class="math">\vec{v}</span> linearmente independentes):
-  - Antisimetria: <span class="math">\vec{u} \times \vec{v} = -\vec{v} \times \vec{u}</span>
+  - Antissimetria: <span class="math">\vec{u} \times \vec{v} = -\vec{v} \times \vec{u}</span>
   - Bilinearidade:
     - <span class="math">\vec{u} \times (\alpha \vec{v}) = \alpha (\vec{u} \times \vec{v})</span>  e
     - <span class="math">\vec{u} \times (\vec{v} + \vec{w}) = (\vec{u} \times \vec{v}) + (\vec{u} \times \vec{w})</span>
   - <span class="math">\vec{u} \times \vec{v}</span> é perpendicular tanto a <span class="math">\vec{u}</span> quanto a <span class="math">\vec{v}</span>
-  - O comprimento de <span class="math">\vec{u} \times \vec{v}</span> é igual a área do paralelogramo definido por  <span class="math">\vec{u}</span> e <span class="math">\vec{v}</span>, isto é, <span class="math">\lVert \vec{u} \times \vec{v} \rVert = \lVert \vec{u} \rVert \lVert \vec{v} \rVert \sin \theta</span>
+  - O comprimento de <span class="math">\vec{u} \times \vec{v}</span> é igual à área do paralelogramo definido por  <span class="math">\vec{u}</span> e <span class="math">\vec{v}</span>, isto é, <span class="math">\lVert \vec{u} \times \vec{v} \rVert = \lVert \vec{u} \rVert \lVert \vec{v} \rVert \sin \theta</span>
 
 ---
 # Mudança de Sistema de Coordenadas
@@ -78,20 +77,20 @@
 ## Sistema de Coordenadas (**revisão**)
 
 - Um sistema de coordenadas para <span class="math">R^n</span> é definido por um ponto (origem) e <span class="math">n</span> vetores
-- Por exmplo: Seja um sistema de coordenadas para <span class="math">R^2</span> definido pelo ponto <span class="math">O</span> e
-  os vetores <span class="math">X</span> e <span class="math">Y</span>. Então,
-  - Um ponto <span class="math">P</span> é dado por coordenadas <span class="math">x_P</span> e <span class="math">y_P</span> tais que
+- Por exemplo: Seja um sistema de coordenadas para <span class="math">R^2</span> definido pelo ponto <span class="math">O</span> e
+  os vetores <span class="math">\vec{x}</span> e <span class="math">\vec{y}</span>. Então,
+  - Um <u>ponto</u> <span class="math">P</span> é dado por coordenadas <span class="math">(x_P, y_P)</span> tais que
 
-    <div class="math">P = x_P . X + y_P . Y + O</div>
-  - Um vetor <span class="math">V</span> é dado por coordenadas <span class="math">x_V</span> e <span class="math">y_V</span> tais que
+    <div class="math">P = x_P . \vec{x} + y_P . \vec{y} + O</div>
+  - Um <u>vetor</u> <span class="math">\vec{v}</span> é dado por coordenadas <span class="math">(x_v, y_v)</span> tais que
 
-    <div class="math">V = x_V . X + y_V . Y</div>
+    <div class="math">\vec{v} = x_v . \vec{x} + y_v . \vec{y}</div>
 
 ---
 ## Mudança de Sistema
 
 - Se estabelecemos um outro sistema (ex.: <span class="math">Q</span>/
-  <span class="math">T</span>/<span class="math">U</span>), como computar
+  <span class="math">\vec{t}</span>/<span class="math">\vec{u}</span>), como computar
   as coordenadas nesse novo sistema?
 
   ![](../../images/coord-grafico.png)
@@ -99,12 +98,11 @@
 ---
 ## Mudança de Sistema (cont.)
 
-- Como computar as coordenadas de um ponto <span class="math">P = (x_P, y_P)</span> em <span class="math">O</span>/<span class="math">X</span>/<span class="math">Y</span> dadas as
-  coordenadas de <span class="math">P</span> em <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span>, isto é, <span class="math">(t_P, u_P)</span>?
+- Problema: dadas as coordenadas do ponto <span class="math">P</span> no sistema <span class="math">Q</span>/<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span> <span class="math">(t_P, u_P)</span>, como encontrar as coordenadas de <span class="math">P</span> no sistema <span class="math">O</span>/<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span> <span class="math">(x_P, y_P)</span>?
 
-  1. Defina <span class="math">P</span> como um ponto no sistema <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span>
-  1. Defina as componentes do sistema <span class="math">Q</span>/<span class="math">T</span>/<span class="math">U</span> no sistema <span class="math">O</span>/<span class="math">X</span>/<span class="math">Y</span>
-  1. Fatore a fórmula de forma a isolar as componentes de <span class="math">O</span>/<span class="math">X</span>/<span class="math">Y</span>
+  1. Defina <span class="math">P</span> como um ponto no sistema <span class="math">Q</span>/<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span>
+  1. Defina as componentes do sistema <span class="math">Q</span>/<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span> no sistema <span class="math">O</span>/<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span>
+  1. Fatore a fórmula para isolar as componentes de <span class="math">O</span>/<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span>
   1. Você achou <span class="math">P = (x_P, y_P)</span> :)
 
 ---
@@ -148,20 +146,20 @@
 
 <ul class="steps-base-change">
   <li>
-    <span class="math bullet">P[Q]=t_P T + u_P U + Q</span>
+    <span class="math bullet">P[Q]=t_P \vec{t} + u_P \vec{u} + Q</span>
   </li>
   <li>
-    <span class="math bullet">\color{red}{Q[O]}=x_Q X + y_Q Y + O</span><br>
-    <span class="math bullet">\color{blue}{T[O]}=x_T X + y_T Y</span><br>
-    <span class="math bullet">\color{green}{U[O]}=x_U X + y_U Y</span>
+    <span class="math bullet">\color{red}{Q[O]}=x_Q \vec{x} + y_Q \vec{y} + O</span><br>
+    <span class="math bullet">\color{blue}{\vec{t}[O]}=x_t \vec{x} + y_t \vec{y}</span><br>
+    <span class="math bullet">\color{green}{\vec{u}[O]}=x_u \vec{x} + y_u \vec{y}</span>
   </li>
   <li>
-    <span class="math bullet">=t_P \color{blue}{\left(x_T X + y_T Y\right)} + u_P \color{green}{\left(x_U X + y_U Y\right)} + \color{red}{\left(x_Q X + y_Q Y + O\right)}</span>
-    <span class="math bullet">=X \left(t_P x_T + u_P x_U + x_Q\right) + Y \left(t_P y_T + u_P y_U + y_Q\right) + O</span>
+    <span class="math bullet">P[Q]=t_P \color{blue}{\left(x_t \vec{x} + y_t \vec{y}\right)} + u_P \color{green}{\left(x_u \vec{x} + y_u \vec{y}\right)} + \color{red}{\left(x_Q \vec{x} + y_Q \vec{y} + O\right)}</span>
+    <span class="math bullet">P[Q]=\vec{x} \left(t_P x_t + u_P x_u + x_Q\right) + \vec{y} \left(t_P y_t + u_P y_u + y_Q\right) + O</span>
   </li>
   <li>
-    <div class="math bullet">x_P=t_P x_T + u_P x_U + x_Q</div>
-    <div class="math bullet">y_P=t_P y_T + u_P y_U + y_Q</div>
+    <div class="math bullet">x_P=t_P x_t + u_P x_u + x_Q</div>
+    <div class="math bullet">y_P=t_P y_t + u_P y_u + y_Q</div>
   </li>
 </ul>
 
@@ -180,37 +178,37 @@
 
   <div class="math">
     \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=
-    \begin{bmatrix}x_T&x_U&x_Q\\\y_T&y_U&y_Q\\\0&0&1\end{bmatrix}\times
+    \begin{bmatrix}x_t&x_u&x_Q\\\y_t&y_u&y_Q\\\0&0&1\end{bmatrix}\times
     \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}
   </div>
-- Ou seja, dadas as coordenadas de um ponto ou vetor em um sistema Q/T/U,
-  podemos **achar suas coordenadas em um sistema O/X/Y <u>multiplicando as
+- Ou seja, dadas as coordenadas de um ponto ou vetor em um sistema <span class="math">Q/\vec{t}/\vec{u}</span>,
+  podemos **achar suas coordenadas em um sistema <span class="math">O/\vec{x}/\vec{y}</span> <u>multiplicando as
   coordenadas por uma matriz</u>**
 
 ---
 ## Mudança de Sistema (cont.)
 
-- Se quiser passar uma coordenada do sistema O/X/Y para Q/T/U, basta
+- Se quiser passar uma coordenada do sistema <span class="math">O/\vec{x}/\vec{y}</span> para <span class="math">Q/\vec{t}/\vec{u}</span>, basta
   **resolver o problema inverso**:
 
   <div class="math">
-    \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=
-    \begin{bmatrix}x_T&x_U&x_Q\\\y_T&y_U&y_Q\\\0&0&1\end{bmatrix}^{-1}\times
-    \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}
+    \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}=
+    \begin{bmatrix}x_t&x_U&x_Q\\\y_t&y_u&y_Q\\\0&0&1\end{bmatrix}^{-1}\times
+    \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}
   </div>
 
 ---
 ## Exemplo Concreto
 
+- Calcule as coordenadas de <span class="math">P</span> no sistema
+  <span class="math">O/\vec{x}/\vec{y}</span>.
 - Considere que:
   - <span class="math">P[Q] = (2.5, 1)</span>
-  - Sistema <span class="math">Q/T/U</span> dado em
-    <span class="math">O/X/Y</span>:
+  - Sistema <span class="math">Q/\vec{t}/\vec{u}</span> dado em
+    <span class="math">O/\vec{x}/\vec{y}</span>:
     - <span class="math">Q[O]= (3.5, 1.25)</span>
-    - <span class="math">T[O]= (-1, 0.25)</span>
-    - <span class="math">U[O]= (-0.25, -1)</span>
-- Calcule as coordenadas de <span class="math">P</span> no sistema
-  <span class="math">O/X/Y</span>.
+    - <span class="math">\vec{t}[O]= (-1, 0.25)</span>
+    - <span class="math">\vec{u}[O]= (-0.25, -1)</span>
 
 ---
 ## Resolvendo o Exercício
@@ -222,7 +220,7 @@
     \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}
   </div>
 - Materializando para o <span class="math">P</span>
-  <div class="math">\begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=\begin{bmatrix}-1&-0.25&3.5\\\0.25&-1&1.25\\\0&0&1\end{bmatrix} \cdot \begin{bmatrix}2.5\\\1\\\1\end{bmatrix}</div>
+  <div class="math">\begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=\begin{bmatrix}-1&-0.25&3.5\\\0.25&-1&1.25\\\0&0&1\end{bmatrix} \times \begin{bmatrix}2.5\\\1\\\1\end{bmatrix}</div>
 - Resultado: <span class="math">P[O] = (0.75, 0.875)</span>
 
 ---
