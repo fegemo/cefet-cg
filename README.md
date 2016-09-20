@@ -158,14 +158,14 @@
 ---
 ## Trabalhos (60 pontos)
 
-- TP0: Ambiente de Desenvolvimento[][tp0] (1 ponto, +1 extra)
-- [TP1: GORILLAS.BAS][tp1] (20 pontos)
-- TP2: ??, grupos <span class="math">\leq</span> 3 (20 pontos)
+- [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
+- [TP1: GORILLAS.BAS][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
+- [TP2: Masmorras e Dragões][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
 - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
   - Primeira parte: no laboratório
   - Segunda parte: no laboratório
 
 [tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-gorillas/README.md
-[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-theclaw/README.md
+[tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-dandd/README.md
 [tp3]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp3
