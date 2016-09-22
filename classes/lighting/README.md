@@ -11,7 +11,6 @@
 1. Conhecer formas de modelar a iluminação de objetos
 1. Entender os custos computacionais dos diferentes modelos
 
-
 ---
 # Roteiro
 
