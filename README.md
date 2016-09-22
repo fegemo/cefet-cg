@@ -44,16 +44,15 @@
 - [Projeção](classes/projection) (15/09/2016)
 - [Modelagem Hierárquica](classes/hierarchical) (20/09/2016)
 - [Iluminação e Sombreamento](classes/lighting) (22 e 27/09/2016)
-- [Modelagem de Objetos](classes/modeling) (02/10/2016)
+- [Modelagem de Objetos](classes/modeling) (29/09/2016)
+- [Texturas](classes/textures) (04/10/2016)
 
-<!--
-
-
-
+---
 # Aulas (página 3)
 
-- [Texturas](classes/textures) (28/04/2016)
-- [Efeitos Visuais](classes/visual-effects) (03/05/2016)
+- [Efeitos Visuais](classes/visual-effects) (06/10/2016)
+
+<!--
 - [Animações](http://fegemo.github.io/cefet-games/classes/animation) (24/05/2016)
 - [Ray tracing 1](classes/raytracing) (31/05/2016)
 - [Ray tracing 2](classes/raytracing2) (07/06/2016)
