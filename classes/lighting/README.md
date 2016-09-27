@@ -11,6 +11,7 @@
 1. Conhecer formas de modelar a iluminação de objetos
 1. Entender os custos computacionais dos diferentes modelos
 
+
 ---
 # Roteiro
 
@@ -311,13 +312,15 @@
 ---
 ## Geometria
 
-- Além das propriedades da luz e do material, a geometria do objeto também
+- Além das propriedades da luz e do material, a **geometria do objeto** também
   é importante
   - A posição dos vértices com relação ao olho e à fonte luminosa
     contribui no cálculo dos efeitos atmosféricos
-  - A _normal_ é fundamental
+    - _e.g._, atenuação da energia da luz
+  - A _normal_ dos polígonos é fundamental
     - Não é calculada automaticamente
     - Precisa ser especificada com `glNormal()`
+    - Mas como calculamos o vetor normal de cada face?
 
 ---
 ## Computando o vetor normal
@@ -346,8 +349,9 @@
 
 - Dada pelas cores `GL_AMBIENT` tanto das fontes luminosas quanto
   dos materiais
-- Além das fontes luminosas, o OpenGL possui uma **luz ambiente global**, que é usada
-  para iluminar uniformemente todos os objetos da cena
+- Além das fontes luminosas, o OpenGL possui uma **luz ambiente
+  <u>global</u>**, que é usada para iluminar uniformemente todos os
+  objetos da cena
   ```c
   glLightMaterialfv (GL_LIGHT_MODEL_AMBIENT, color);
   ```
@@ -357,9 +361,10 @@
   - <span class="math">k_a</span> é a cor ambiente do material
 
 ---
-## Fontes posicionais _vs_ direcionais
+## Fontes <u>posicionais</u> _vs_ <u>direcionais</u>
 
-- É possível configurar uma fonte de luz para que ela seja direcional em vez de posicional
+- É possível **configurar uma fonte de luz** para que ela seja <u>direcional</u>
+  em vez de <u>posicional</u>
   - Ao definir a posição da fonte via:
     ```c
     glLightfv(GL_LIGHT0, GL_POSITION, position);
@@ -372,7 +377,7 @@
   objeto sendo iluminado
 
 ---
-## Atenuação
+## **Atenuação**
 
 - A atenuação de uma fonte de luz é calculada como:
   <div class="math">aten = \frac{1}{k_c+k_ld+k_qd^2}</div>
@@ -390,24 +395,25 @@
 ## Juntando tudo
 
 - A atenuação só é aplicada sobre às componentes difusa e especular.
-- A fórmula que calcula a cor de um vértice devida a uma fonte luminosa i é dada por:
+- A fórmula que calcula a cor de um vértice devida a uma **fonte luminosa
+  <span class="math">i</span>** é dada por:
 
-  ![](../../images/luz-formula-cor.png)
-
+  <div class="math">C_i=A_i + aten(D_i + S_i)</div>
 - Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz)
-  somada à luz emitida e às contribuições Ci
+  somada à luz emitida e às contribuições fonte luminosa
+    <span class="math">C_i</span>:
 
-  ![](../../images/luz-eq-total.png)
+    <div class="math">C=Amb_{global} + E + \sum{A_i + aten(D_i + S_i)}</div>
 
 ---
 # Recapitulando iluminação
 
 - Vimos alguns modelos para simularmos um sistema de iluminação local
   nas nossas cenas de forma a torná-las mais realísticas
-- O modelo de iluminação calcula a cor de **cada vértice** da nossa geometria,
-  dadas fontes de luz e o material dos objetos
-- Contudo, ainda não sabemos a cor **de cada pixel**, que é o que precisamos
-  para gerar imagens
+- O modelo de iluminação **calcula a cor <u>de cada vértice</u>** da
+  nossa geometria, dadas fontes de luz e o material dos objetos
+- Contudo, ainda não sabemos a **cor <u>de cada pixel</u>**, que é o
+  que precisamos para gerar imagens
 
 ---
 # De volta ao _pipeline_ gráfico
@@ -419,7 +425,7 @@
 
 ![](../../images/pipeline-rasterizador-fases.png)
 
-- Sombreamento de Pixels
+- <u>Sombreamento de Pixels</u>
   - Para cada pixel que possui um fragmento, devemos obter sua cor
 - Já temos a cor de **cada vértice**, mas precisamos determinar a cor de cada
   fragmento de pixel agora
@@ -456,7 +462,7 @@
     ```
   - Phong
     ```c
-    glShadeModel(GL_PHONG);    // não há!!
+    glShadeModel(GL_PHONG);    // não está impl.!!
     ```
 
 ---
@@ -464,11 +470,26 @@
 
 ![](../../images/shading-flat-exemplo.png)
 
-- Usa (apenas) um vetor normal para cada polígono
+- Usa (apenas) **01 vetor normal para cada polígono**
   - Portanto, cada polígono tem apenas uma cor
 - Extremamente rápido, mas produz imagens facetadas, pois a transição de um
   polígono para outro adjacente é nítida
 - Útil para objetos "facetados" como, por exemplo, um tabuleiro de xadrez
+
+---
+<!--
+  backdrop: lowpoly
+-->
+
+# _Low poly is the new pixel art_
+
+---
+## Desenhos com _flat shading_
+
+<figure class="picture-steps">
+  <img class="bullet" src="../../images/lowpoly-octopus.jpg">
+  <img class="bullet" src="../../images/lowpoly-scene.jpg">
+</figure>
 
 ---
 ## _Gouraud shading_
@@ -482,15 +503,16 @@
 ---
 ## _Gouraud shading_ (cont.)
 
-- O vetor normal de um vértice precisa ser fornecido como a média das normais
-  das faces adjacentes ao vértice
+- Deve haver **01 vetor normal por vértice** (e não por face)
+- Ele precisa ser fornecido como a média das normais das faces
+  adjacentes ao vértice
 
 ![](../../images/normal-media-faces.png)
 
 ---
 ## Limitações do _Gouraud shading_
 
-- Realces da luz especular (_highlights_) sofrem por baixa amostragem de
+- Realces da luz especular (**_highlights_**) sofrem por baixa amostragem de
   vértices
 
   ![](../../images/shading-gouraud-low-anim.gif)
@@ -509,7 +531,8 @@
 - Interpola as normais em vez das cores
   - A função de iluminação deve ser avaliada **para cada pixel**
 - Significativamente mais caro
-- Não oferecido em OpenGL - tipicamente feito _"off-line"_
+- Não oferecido pelo OpenGL no _pipeline_ gráfico fixo
+  - É possível implementar usando versões mais novas do OpenGL
 
 ---
 ## Consertando o problema dos _highlights_ de Gouraud
@@ -546,14 +569,13 @@
 # _Fog_
 
 ---
-## _Fog_ (1)
+## Neblina (_Fog_)
 
-![](../../images/fog.jpg)
-
----
-## _Fog_ (2)
-
-![](../../images/fog-game.jpg)
+<figure class="picture-steps">
+  <img class="bullet" src="../../images/fog.jpg">
+  <img class="bullet" src="../../images/fog-game.jpg">
+  <img class="bullet" src="../../images/fog-peixes.jpg">
+</figure>
 
 ---
 ## _Fog_ (cont.)

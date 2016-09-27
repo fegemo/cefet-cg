@@ -1129,12 +1129,22 @@ thead > tr {
   height: 100%;
   background-size: cover;
 }
+.lowpoly.bespoke-backdrop-active {
+  background-image: url("../images/lowpoly-fox.jpg");
+  background-size: initial;
+  background-repeat: true;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
 .bespoke-slide[data-bespoke-backdrop="lighting-balloons"],
-.bespoke-slide[data-bespoke-backdrop="shading"] {
+.bespoke-slide[data-bespoke-backdrop="shading"],
+.bespoke-slide[data-bespoke-backdrop="lowpoly"] {
   text-shadow: 3px 1px #e8e8e8;
 }
 .bespoke-slide[data-bespoke-backdrop="lighting-balloons"] h1,
-.bespoke-slide[data-bespoke-backdrop="shading"] h1 {
+.bespoke-slide[data-bespoke-backdrop="shading"] h1,
+.bespoke-slide[data-bespoke-backdrop="lowpoly"] h1 {
   color: #f92672;
   font-weight: bold;
 }
