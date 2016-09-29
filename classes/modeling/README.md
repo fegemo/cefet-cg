@@ -438,21 +438,6 @@ backdrop: paradigma-universos
 
 ![](../../images/octree-dragon.png)
 
----
-# Representação Fractal
-
----
-## Fractais
-
-![](../../images/benoit-mandelbrot.png)
-
-- Benoit Mandelbrot:
-  <blockquote>“Clouds are not spheres, mountains are 	not cones, coastlines are not circles and 	bark is not smooth, nor does lightning 	travel in a straight line.”</blockquote>
-
----
-## Fractais... mais nos próximos capítulos
-
-![](../../images/fractal-samambaia.png)
 
 ---
 # Referências
