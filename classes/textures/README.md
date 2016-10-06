@@ -71,12 +71,12 @@
     a função <span class="math">T(s)</span> retorna um valor RGB
 
 ---
-## Textura em 1D - Exemplo sem textura (glColor)
+## Textura em 1D - Exemplo <u>sem textura</u> (glColor)
 
 ![](../../images/textura-triangulo-gouraud.png)
 
 ---
-## Textura em 1D - Exemplo usando textura 1D
+## Textura em 1D - Exemplo <u>usando textura</u> 1D
 
 ![](../../images/textura-triangulo-textura1d.png)
 
@@ -233,9 +233,9 @@
 
 - (2) Assinatura da função para definir uma textura:
   ```c
-  void glTexImage2D(GLenum target, GLint level, GLint internalFormat,
-    GLsizei width, GLsizei height, GLint border,
-    GLenum format, GLenum type,
+  void glTexImage2D(GLenum target, GLint level,
+    GLint internalFormat, GLsizei width, GLsizei height,
+    GLint border, GLenum format, GLenum type,
     const GLvoid* pixels);
   ```
 
@@ -288,7 +288,13 @@
 ## Filtragem
 
 ![](../../images/filtragem-textura.png)
-- [Explicação](http://www.felixgers.de/teaching/jogl/textureFiltering.html) sobre cada filtro
+
+---
+## Filtros de Aumento: `GL_TEXTURE_MAG_FILTER`
+
+![](../../images/texture-magnification-filters.jpg)
+- `GL_NEAREST`: Retorna o pixel mais próximo das coordenadas
+- `GL_LINEAR`: Retorna média ponderada dos 4 pixels mais próximos
 
 ---
 ## _Mipmaps_
@@ -330,6 +336,15 @@
   ```
 
   ![](../../images/texturas-modo-repeticao.png)
+
+---
+## Modos de Repetição: Exemplo
+
+![](../../images/texturas-modo-repeticao-gatinho.png)
+- `GL_REPEAT`
+- `GL_MIRRORED_REPEAT`
+- `GL_CLAMP_TO_EDGE`: Coordenada presa (_clamped_) entre 0 e 1
+- `GL_CLAMP_TO_BORDER`: Coordenadas fora de [0,1] recebem a "cor da borda"
 
 <!--
 ## Modos de Aplicação de Textura
@@ -410,7 +425,7 @@ void makeCheckImage()
 ![](../../images/moon-demo.png)
 
 ![left](../../images/texture-moon.png)_
-![right](../../images/textuvee-moon-normals.png)
+![right](../../images/texture-moon-normals.png)
 
 - [Demonstração](http://coryg89.github.io/MoonDemo/) do
   [Cory Gross](http://coryg89.github.io/)
