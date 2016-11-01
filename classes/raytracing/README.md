@@ -77,7 +77,9 @@ backdrop: raytraced-teapot
     - Refração
 - Funcionamento **basicão**:
   - Raios são lançados do olho para cada pixel da imagem a ser gerada
-  - Raios que acertam objetos, são coloridos com sua cor
+  - Raios que acertam objetos
+    - são coloridos com sua cor se estiverem iluminados
+    - não são colorido se estiverem na sombra
   - Raios que não atingem nada, são pintados com a cor do fundo
 
 ---
@@ -117,16 +119,6 @@ backdrop: raytraced-teapot
   - Arquiteturas para _Ray tracing_ em _hardware_
 
 ---
-## Verificação de sombras
-
-![](../../images/ray-casting2.png)
-
----
-## Reflexão
-
-![](../../images/ray-casting3.png)
-
----
 ## Algoritmo do _ray tracing_ recursivo
 
 - Mantém o método `renderScene(scene)` como está e modifica o
@@ -150,7 +142,9 @@ backdrop: raytraced-teapot
 - Para implementar um _ray tracing_, precisamos **responder a pelo menos 2
   perguntas**:
   1. Como determinar se um raio atinge um objeto (e em qual)?
+    - Semana 1
   1. Dado que um raio atingiu um objeto, como devemos calcular a cor retornada?
+    - Semana 2
 - Vejamos, primeiro, a representação de raios e sua interseção com objetos
 
 ---
@@ -172,8 +166,9 @@ backdrop: raytraced-teapot
 
 - **Raio é modelado** como uma **reta** em forma **paramétrica**:
   <span class="math">R(t) = P_0 + t(P_1 - P_0)</span>, ou seja
-  <div class="math">R(t) = P_0 + tV</div>
-- Computa-se para quais valores do parâmetro <span class="math">t</span> a reta o intercepta
+  <div class="math">R(t) = P_0 + t\vec{u}</div>
+- Computa-se para quais valores do parâmetro <span class="math">t</span> a
+  reta o intercepta
 
 
 ---
@@ -245,7 +240,7 @@ public:
   unitária e está centrada na origem**:
   <div class="math">x^2+y^2+z^2 - 1 = 0</div>
 - Raio parametrizado como:
-  <div class="math">[P_x+V_xt \;\;\; P_y+V_yt \;\;\; P_z+V_zt]^T</div>
+  <div class="math">[P_x+t\vec{u}_x \;\;\; P_y+t\vec{u}_y \;\;\; P_z+t\vec{u}_z]^T</div>
 - (continua...)
 
 ---
@@ -256,14 +251,14 @@ public:
 ## Exemplo: Interseção com Esfera (2)
 
 - Logo,
-  <div class="math">(P_x+V_xt)^2 + (P_y+V_yt)^2 + (P_z+V_zt])^2-1=0</div>
+  <div class="math">(P_x+t\vec{u}_x)^2 + (P_y+t\vec{u}_y)^2 + (P_z+t\vec{u}_z)^2-1=0</div>
   <ul>
     <li>ou<ul><li>
       <span class="math">at^2+bt+c=0</span></li></ul>
     </li>
     <li>onde<ul>
-      <li><span class="math">a = V_x^2 + V_y^2 + V_z^2</span></li>
-      <li><span class="math">b = 2(V_xP_x + V_yP_y + V_zP_z)</span></li>
+      <li><span class="math">a = \vec{u}_x^2 + \vec{u}_y^2 + \vec{u}_z^2</span></li>
+      <li><span class="math">b = 2(\vec{u}_xP_x + \vec{u}_yP_y + \vec{u}_zP_z)</span></li>
       <li><span class="math">c = P_x^2 + P_y^2 + P_z^2 - 1</span></li></ul>
     </li>
   </ul>
