@@ -27,6 +27,7 @@ Mais detalhadamente, as características que devem estar presentes nas imagens:
 - componente ambiente
 - componente difusa
 - componente especular
+- atenuação da luz
 - sombras provocadas por um objeto no outro
 - correta determinação de sobreposição de objetos em relação à câmera
 - devida iluminação para o lado interno de objetos
