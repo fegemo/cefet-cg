@@ -321,6 +321,7 @@ int main(int argc, char* argv[])
 
 - `vertexShader.glsl`
   ```glsl
+  #version 430
   layout(location=0) in vec4 squareCoords;
   layout(location=1) in vec4 squareColors;  
   uniform mat4 projMat;
@@ -339,6 +340,7 @@ int main(int argc, char* argv[])
 
 - `fragmentShader.glsl`
   ```glsl
+  #version 430
   in vec4 colorsExport;
   out vec4 colorsOut;
 
@@ -379,15 +381,6 @@ int main(int argc, char* argv[])
     um _Fragment shader_
 
 ---
-##  O que é programável?
-
-![](../../images/programmable-pipeline-stages.png)
-- _Shaders_ são programas (bem) pequenos **executados inteiramente pela GPU**
-- **_Vertex_ e _Fragment shaders_** são programáveis desde OpenGL 2.0
-  - Ambos são **obrigatórios**
-- **_Geometry_ e _Tessellation shaders_** são mais recentes (**opcionais**)
-
----
 # _**Vertex** shader_
 
 - O programa é **executado uma vez para <u>cada vértice</u>** da cena
@@ -399,6 +392,25 @@ int main(int argc, char* argv[])
   - Cor do vértice
   - Normal do vértice
   - Coordenadas de textura etc.
+
+---
+# _**Fragment** shader_
+
+- O programa é **executado uma vez para <u>cada fragmento</u>** da cena
+  rasterizada
+- Como **saída**, o _vertex shader_ deve dar a **cor do fragmento**
+  - Também pode simplesmente descartar o fragmento
+- Mas também pode usar:
+  - Textura para colorir
+
+---
+##  O que mais é programável?
+
+![](../../images/programmable-pipeline-stages.png)
+- _Shaders_ são programas (bem) pequenos **executados inteiramente pela GPU**
+- **_Vertex_ e _Fragment shaders_** são programáveis desde OpenGL 2.0
+  - Ambos são **obrigatórios**
+- **_Geometry_ e _Tessellation shaders_** são mais recentes (**opcionais**)
 
 ---
 ## _**Tessellation** shader_
@@ -418,16 +430,6 @@ int main(int argc, char* argv[])
 - Permite ao programador substituir ou transformar primitivas
   - _Input_: um ponto, um segmento, um triângulo de uma malha
   - _Output_: zero ou mais primitivas
-
----
-# _**Fragment** shader_
-
-- O programa é **executado uma vez para <u>cada fragmento</u>** da cena
-  rasterizada
-- Como **saída**, o _vertex shader_ deve dar a **cor do fragmento**
-  - Também pode simplesmente descartar o fragmento
-- Mas também pode usar:
-  - Textura para colorir
 
 ---
 <!--
@@ -490,8 +492,10 @@ int main(int argc, char* argv[])
   vec3 rgbColor = vec3(color);
   ```
 - Matriz
+  <div class="math" style="float:left;">M=\begin{bmatrix} 1.0&3.0&5.0\\\2.0&4.0&6.0 \end{bmatrix}</div>
+  <p style="margin-left: 1.5em; text-align: right;">Obs: GLSL é _column-major_, _i.e._, usa vetores coluna!</p>
+  <div style="clear:both"></div>
 
-  ![](../../images/glsl-matrix.png)
   ```glsl
   mat3x2 M = mat3x2(1.0, 2.0, 3.0, 4.0, 5.0, 6.0);
   ```
@@ -500,10 +504,10 @@ int main(int argc, char* argv[])
 ## Iniciando variáveis (2)
 
 ```glsl
-vec2 column0 = vec2(1.0, 2.0);
-vec2 column1 = vec2(3.0, 4.0);
-vec2 column2 = vec2(5.0, 6.0);
-mat3x2 M = mat3x2(column0, column1, column2);
+vec2 coluna0 = vec2(1.0, 2.0);
+vec2 coluna1 = vec2(3.0, 4.0);
+vec2 coluna2 = vec2(5.0, 6.0);
+mat3x2 M = mat3x2(coluna0, coluna1, coluna2);
 ```
 
 ---
@@ -518,8 +522,8 @@ mat3x2 M = mat3x2(column0, column1, column2);
   float xVal = pos1.x; // xVal = 1.0
   float yVal = pos1.y; // yVal = 2.0
   float yVal = pos1.g; // yVal = 2.0
-  vec4 pos2 = pos1.yxzw; // Rearranging: pos2 = (2.0, 1.0, 3.0, 4.0)
-  vec4 pos3 = pos1.rrba; // Duplication: pos3 = (1.0, 1.0, 3.0, 4.0)
+  vec4 pos2 = pos1.yxzw; // pos2 = (2.0, 1.0, 3.0, 4.0)
+  vec4 pos3 = pos1.rrba; // pos3 = (1.0, 1.0, 3.0, 4.0)
   vec4 pos4 = vec4(pos1.xyz, 5.0); // pos4 = (1.0, 2.0, 3.0, 5.0).
   ```
 
@@ -536,7 +540,7 @@ mat3x2 M = mat3x2(column0, column1, column2);
   - `M[j][i]` (**coluna**, depois **linha**)
 
 ---
-## Operações algébricas em Agregados
+## Operações algébricas em agregados
 
 ```glsl
 mat2 M = mat2(1.0, 2.0, 3.0, 4.0);
@@ -569,7 +573,7 @@ vec2 W = M * V; // W = vec2(7.0, 10.0)
 ## Criando _shader_ na aplicação
 
 - Os _shaders_ são **compilados em tempo de execução** do programa, **durante
-  o _setup()_ da cena
+  o _setup()_** da cena
 - Para isso, de dentro da aplicação, devemos **chamar uma série de comandos**:
   ![](../../images/modern-create-shader.png)
 
