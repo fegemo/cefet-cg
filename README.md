@@ -9,14 +9,14 @@
 <img class="portrait" src="images/flavio-avatar.jpg">
 
 ---
-## Trabalhos (60 pontos)
+## Trabalhos (61 pontos)
 
 - [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
-- [TP1: GORILLAS.BAS][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
-- [TP2: Masmorras e Dragões][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
-- [TP3: Ray-tracer][tp3], duplas (20 pontos, em duas entregas)
-  - [Primeira parte - colisão][tp3-collision]: no laboratório
-  - Segunda parte: no laboratório
+- TP1: GORILLAS.BAS, grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP2: Masmorras e Dragões, grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
+  - Primeira parte - colisão: no laboratório
+  - Segunda parte - iluminação: no laboratório
 
 [tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
 [tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-gorillas/README.md
@@ -28,6 +28,8 @@
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/) (04/08/2016)
+
+<!--
 - [OpenGL, Sistemas de Janelas](classes/opengl/) (09/08/2016)
 - [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (11/08/2016)
 - [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (16/08/2016)
@@ -36,7 +38,6 @@
 - [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (23/08/2016)
 - [Geometria](classes/geometry) (25/08/2016)
 
----
 # Aulas (página 2)
 
 - [Transformações Geométricas](classes/transforms) (06/09/2016)
@@ -48,7 +49,6 @@
 - [Modelagem de Objetos](classes/modeling) (29/09/2016)
 - [Texturas](classes/textures) (04/10/2016)
 
----
 # Aulas (página 3)
 
 - [Efeitos Visuais](classes/visual-effects) (06/10/2016)
@@ -56,6 +56,8 @@
 - [Ray tracing 2](classes/raytracing2) (08/11/2016)
 - [Animações](http://fegemo.github.io/cefet-games/classes/animation) (17/11/2016)
 - [Pipeline Programável](classes/programmable-pipeline) (22/11/2016)
+
+-->
 
 ---
 # Objetivos
@@ -69,7 +71,7 @@
 ---
 ## Trabalhos Anteriores
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/videoseries?list=PLNaBD3CnN0-_bnRPNztX7l6YUS38V2c6V" frameborder="0" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/playlist?list=PLNaBD3CnN0--7AFIYx9O1lGYJLDh2dVCt" frameborder="0" allowfullscreen></iframe>
 
 ---
 ## Interdisciplinaridades
@@ -163,6 +165,5 @@
 ## Prova e Listas (40 pontos)
 
 - Listas de exercício (10 pontos)
-- Questionários marotos (5 pontos)
-- Lista de revisão da prova (10 pontos)
+- Lista de revisão da prova (15 pontos)
 - Prova (15 pontos)
