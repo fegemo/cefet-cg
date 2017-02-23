@@ -12,8 +12,8 @@
 ## Trabalhos (61 pontos)
 
 - [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
-- TP1: GORILLAS.BAS, grupos <span class="math">\leq</span> 2 (20 pontos)
-- TP2: Masmorras e Dragões, grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP1: ??, grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP2: ??, grupos <span class="math">\leq</span> 2 (20 pontos)
 - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
   - Primeira parte - colisão: no laboratório
   - Segunda parte - iluminação: no laboratório
@@ -27,7 +27,7 @@
 ---
 # Aulas
 
-- [Introdução à Computação Gráfica](classes/intro/) (04/08/2016)
+- [Introdução à Computação Gráfica](classes/intro/)
 
 <!--
 - [OpenGL, Sistemas de Janelas](classes/opengl/) (09/08/2016)

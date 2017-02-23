@@ -429,6 +429,39 @@ full-dimension-backdrop(repeat)
   width 100%
   height 100%
 
+
+.area-games.bespoke-backdrop-active
+  background-image url(../images/cg-area-games.jpg)
+  full-dimension-backdrop(false)
+
+.area-entertainment.bespoke-backdrop-active
+  background-image url(../images/cg-area-entertainment.jpg)
+  full-dimension-backdrop(false)
+
+.area-cad.bespoke-backdrop-active
+  background-image url(../images/cg-area-cad.jpg)
+  full-dimension-backdrop(false)
+
+.area-education.bespoke-backdrop-active
+  background-image url(../images/cg-area-education.jpg)
+  full-dimension-backdrop(false)
+
+.area-art.bespoke-backdrop-active
+  background-image url(../images/cg-area-art.jpg)
+  full-dimension-backdrop(false)
+
+.bespoke-slide[data-bespoke-backdrop="area-games"]
+.bespoke-slide[data-bespoke-backdrop="area-entertainment"]
+.bespoke-slide[data-bespoke-backdrop="area-cad"]
+.bespoke-slide[data-bespoke-backdrop="area-education"]
+.bespoke-slide[data-bespoke-backdrop="area-art"]
+  h1
+    text-shadow 1px 1px black
+    background-color rgba(white,.5)
+    padding .3em
+    border-radius 10px
+    transition opacity 200ms ease-out
+
 .c-jump-boardgame.bespoke-backdrop-active
   background-image url(../images/c-jump-boardgame.jpg)
   full-dimension-backdrop(false)
@@ -587,7 +620,12 @@ full-dimension-backdrop(repeat)
   background-image url(../images/ni-no-kuni.jpg)
   full-dimension-backdrop(false)
 
-.bespoke-slide[data-bespoke-backdrop="ninokuni"],
+.introduction.bespoke-backdrop-active
+  background-image url(../images/forest.jpg)
+  full-dimension-backdrop(false)
+
+.bespoke-slide[data-bespoke-backdrop="ninokuni"]
+.bespoke-slide[data-bespoke-backdrop="introduction"]
 .bespoke-slide[data-bespoke-backdrop="wind-waker-raytraced"]
   h1
     text-shadow 1px 1px black

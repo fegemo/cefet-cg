@@ -1,3 +1,7 @@
+<!--
+  backdrop: introduction
+-->
+
 # Introdução à Computação Gráfica
 
 ---
@@ -9,18 +13,15 @@
 1. Modelos usados em Computação Gráfica
 
 ---
-# Alguns conceitos
-
----
 ## Computação Gráfica
 
 Definição: *s.f.* conjunto de **algoritmos, técnicas e metodologias** para
-o **tratamento e a representação gráfica de informações** através da
+o **tratamento e a representação gráfica de informações** por meio da
 criação, armazenamento e manipulação de desenhos por meio de
 computadores e periféricos gráficos.
 
 ---
-## Áreas de aplicação
+## Quem usa Computação Gráfica?
 
 1. Jogos
 1. Filmes e TV
@@ -31,44 +32,42 @@ computadores e periféricos gráficos.
 1. Simulação Científica
 
 ---
-## 1. Jogos \o/
+<!--
+  backdrop: area-games
+-->
 
-<img src="../../images/cg-area-games.jpg" class="full-height-right">
-
----
-## 2. Filmes, TV
-
-<img src="../../images/cg-area-movies1.jpg" class="full-height-right">
+# Jogos
 
 ---
-## 2. Filmes, TV
+<!--
+  backdrop: area-entertainment
+-->
 
-<img src="../../images/cg-area-movies2.jpg" class="full-height-right">
+# Entretenimento
 
----
-## 3. CAD (_Computer Aided Design_)
-
-<img src="../../images/cg-area-cad.jpg" class="full-height-right">
-
----
-## 4. Educação e Treinamento
-
-<img src="../../images/cg-area-education.jpg" class="full-height-right">
+<iframe src="https://player.vimeo.com/video/172374044" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 ---
-## 5. Arte por Computador
+<!--
+  backdrop: area-cad
+-->
 
-<img src="../../images/cg-area-art.jpg" class="full-height-right">
-
----
-## 6. Apresentações Gráficas
-
-<img src="../../images/cg-area-presentation.jpg" class="full-height-right">
+# CAD (_Computer Aided Design_)
 
 ---
-## 7. Simulações Científicas
+<!--
+  backdrop: area-education
+-->
 
-<img src="../../images/cg-area-simulation.jpg" class="full-height-right">
+# Educação e Treinamento
+
+
+---
+<!--
+  backdrop: area-art
+-->
+
+# Arte por Computador
 
 ---
 ## Interação com outras áreas
@@ -76,10 +75,7 @@ computadores e periféricos gráficos.
 ![Interação da Computação Gráfica com outras áreas](../../images/interacao-areas.png)
 
 ---
-# **Problemas abordados** em Computação Gráfica
-
----
-## Problemas
+# **Problemas abordados** na área
 
 ![](../../images/cg-overall-tasks.png)
 
@@ -152,7 +148,8 @@ computadores e periféricos gráficos.
   - Processamento de imagens é uma área por si só
   - Visão computacional estuda a análise de imagens (e vídeos)
 - Teoria e prática das técnicas e algoritmos envolvidos em modelagem e síntese
-- Objetivo fotorrealista, em tempo real
+- Geração de imagens em tempo real
+  - Mas também veremos geração *offline*
 
 ---
 ## Professor, mas eu quero fazer desenhos em 3D!
@@ -240,7 +237,10 @@ computadores e periféricos gráficos.
   - 8 bits para azul
   - Exemplo: <span class="color-portrait ffd5d5"> </span> (<span class="pure-red">255</span>, <span class="pure-green">213</span>, <span class="pure-blue">213</span>) ou (<span class="pure-red">1</span>, <span class="pure-green">0.84</span>, <span class="pure-blue">0.84</span>)
     - Seletor de cores: <input type="color">
+
+<!--
 - [Questionário Maroto - parte 1](https://moodle.cefetmg.br/mod/quiz/view.php?id=17597)
+-->
 
 ---
 # Representação de Imagens
@@ -274,20 +274,20 @@ Imagens podem ser representadas em duas formas principais:
 ## Modelos de Sistema Visual
 
 - Há várias formas de tentar reproduzir o sistema visual:
-  - Modelo do olho humano
-  - Modelo da camera escura (estenopeica)
-  - Modelo do _frustum_
+  1. Modelo do olho humano
+  1. Modelo da camera escura (estenopeica)
+  1. Modelo do _frustum_ de visualização
 - Vamos escolher um \o/
 
 ---
-## Modelo do olho humano
+## (1) Modelo do olho humano
 
 - ![left](../../images/eye-model.png)
   Fótons (raios de luz) entram pela pupila de forma reta até atingirem a retina
 - A imagem é formada pela contribuição da luz nos cones da retina
 - Quanto mais próximo ao centro da retina, maior o nível de detalhes que
   percebemos
-- Este modelo é complexo demais para a Computação Gráfica
+- Este modelo é **complexo demais** para a Computação Gráfica
   - Basicamente porque o sistema visual humano envolve fatores até
     [mesmo psicológicos da percepção de luminosidade](http://web.mit.edu/persci/gaz/)
 
@@ -300,9 +300,9 @@ Imagens podem ser representadas em duas formas principais:
 </figure>
 
 ---
-## A Câmera _"pinhole"_ (estenopeica)
+## (2) Modelo da câmera escura
 
-![A Câmera pinhole](../../images/pinhole-camera.png)
+![O modelo da câmera escura](../../images/pinhole-camera.png)
 
 ---
 ## A Câmera _"pinhole"_
@@ -312,15 +312,19 @@ Imagens podem ser representadas em duas formas principais:
 - Modelo bastante semelhante ao que usamos
 
 ---
-## O _View Frustum_
+## (3) O modelo de _View Frustum_
 
 ![O view frustum](../../images/view-frustum.gif)
 
 - A câmera é colocada na ponta da pirâmide
 - **_Frustum_**: sólido geométrico que é um **tronco de pirâmide** formado pelo
   plano próximo e plano distante
-- Apenas o que está dentro do _frustum_ importa
+- Apenas o que está dentro do _frustum_ é retratado
+
+<!--
+
 - [Questionário Maroto - parte 2](https://moodle.cefetmg.br/mod/quiz/view.php?id=17596)
+-->
 
 ---
 # Referências
