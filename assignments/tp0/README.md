@@ -65,4 +65,3 @@ Veja os tutoriais criados pelos alunos de Computação Gráfica em semestres ant
 
 - Sistema [Tutoriais OpenGL](http://opengl-tutorials.herokuapp.com/)
 
-Note que ainda não há tutoriais ensinando a instalar o **glew**, pois 2016/01 é o primeiro semestre em que vamos utilizá-lo na disciplina.
