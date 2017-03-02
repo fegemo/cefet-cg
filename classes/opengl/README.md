@@ -69,6 +69,13 @@ int main(int argc, char** argv)
   - Consultar variáveis de estado
 
 ---
+## Máquina de Estados <sub>WTH?</sub>
+
+![left](../../images/conversa-whatsapp-1.png)
+![left](../../images/conversa-whatsapp-2.png)
+
+
+---
 ## OpenGL (cont.)
 
 - OpenGL é um padrão em evolução (atualmente, v4.5)

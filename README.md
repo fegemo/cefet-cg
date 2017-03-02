@@ -28,9 +28,9 @@
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/)
+- [OpenGL, Sistemas de Janelas](classes/opengl/)
 
 <!--
-- [OpenGL, Sistemas de Janelas](classes/opengl/) (09/08/2016)
 - [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (11/08/2016)
 - [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (16/08/2016)
 - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (18/08/2016)
