@@ -121,19 +121,18 @@
 ## Experimento
 
 1. Criar um quadrado que muda de cor
-  ```c
-  void timerColored()
-  {
-    color += colorIncrement;
-  	if (color > 1) {         // maior que
-  		color = 1; colorIncrement = colorIncrement * -1;
-  	} else if (color < 0) {  // menor que
-  		color = 0; colorIncrement = colorIncrement * -1;
-  	}
-    glutPostRedisplay();
-    glutTimerFunc(25, timerColored, 0);
-  }
-  ```
+   ```c
+   void timerColored() {
+     color += colorIncrement;
+     if (color > 1) {         // maior que
+       color = 1; colorIncrement = colorIncrement * -1;
+     } else if (color < 0) {  // menor que
+       color = 0; colorIncrement = colorIncrement * -1;
+     }
+     glutPostRedisplay();
+     glutTimerFunc(25, timerColored, 0);
+   }
+   ```
 
 ---
 ## Usando **2 _Buffers_**
@@ -150,15 +149,15 @@
 ---
 ## Usando **2 _Buffers_** com Freeglut
 
-1. Configuramos o Freeglut com **`GLUT_DOUBLE`** em vez de `GLUT_SINGLE`:
+1. Configuramos o Freeglut com **`GLUT_DOUBLE`** <u>em vez de</u> `GLUT_SINGLE`:
   ```c
   int main(int argc, char** argv) {
       glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
       // ...
   }
   ```
-1. Na _callback_ de _display_, **`glutSwapBuffers();`** em vez
-  de `glFlush();`
+1. Na _callback_ de _display_, **`glutSwapBuffers();`** <u>em vez
+  de</u> `glFlush();`:
   ```c
   void desenha() {
       // ...
