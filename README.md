@@ -12,14 +12,14 @@
 ## Trabalhos (61 pontos)
 
 - [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
-- TP1: ??, grupos <span class="math">\leq</span> 2 (20 pontos)
+- [TP1: {Parad}oroids][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
 - TP2: ??, grupos <span class="math">\leq</span> 2 (20 pontos)
 - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
   - Primeira parte - colisão: no laboratório
   - Segunda parte - iluminação: no laboratório
 
 [tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-gorillas/README.md
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-asteroids/README.md
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-dandd/README.md
 [tp3]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp3/README.md#trabalho-prático-3---ray-tracer
 [tp3-collision]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp3/collision/README.md#trabalho-prático-3---ray-tracer
@@ -29,11 +29,11 @@
 
 - [Introdução à Computação Gráfica](classes/intro/)
 - [OpenGL, Sistemas de Janelas](classes/opengl/)
+- [OpenGL Hands-on - Parte 1](classes/opengl-handson/)
+- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/)
+- [OpenGL Hands-on - Parte 3](classes/opengl-handson3/)
 
 <!--
-- [OpenGL Hands-on - Parte 1](classes/opengl-handson/) (11/08/2016)
-- [OpenGL Hands-on - Parte 2](classes/opengl-handson2/) (16/08/2016)
-- [OpenGL Hands-on - Parte 3](classes/opengl-handson3/) (18/08/2016)
 - [Cê](classes/c) (23/08/2016)
 - [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (23/08/2016)
 - [Geometria](classes/geometry) (25/08/2016)

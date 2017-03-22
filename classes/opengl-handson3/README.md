@@ -16,19 +16,19 @@
 
 ![](../../images/display-lists.png)
 
-- E se quisermos desenhar o polígono E as linhas ao mesmo tempo?
+- \#comofaz para desenhar linhas e o polígono ao mesmo tempo?
 
 ---
-## Tentativa 1
+## Opção 1
 
-- Desenha-se o polígono preenchido:
+- Desenha-se o polígono **preenchido**:
   ```c
   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
   glBegin(GL_TRIANGLE_STRIP);
     // 10 vértices aqui...
   glEnd();
   ```
-- Em seguida, desenha-se o polígono em modo _wire_:
+- Em seguida, desenha-se o polígono em modo **_wire_**:
   ```c
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   glBegin(GL_TRIANGLE_STRIP);
@@ -37,7 +37,7 @@
   ```
 
 ---
-## Tentativa 1 - discussão
+## Opção 1 - discussão
 
 - Temos um **_code smell_** - algo está errado
 - **Não devemos repetir código** para que não precisemos alterar mais de um
@@ -47,7 +47,7 @@
   - Esse processo se chama **refatorar o código**
 
 ---
-## Tentativa 2: Criamos uma função: `desenhaAnelQuadrado()`
+## Opção 2: Criamos uma função: `desenhaAnelQuadrado()`
   ```c
   void desenhaAnelQuadrado() {
     glBegin(GL_TRIANGLE_STRIP);
@@ -68,20 +68,20 @@
   ```
 
 ---
-## Tentativa 2 - discussão
+## Opção 2 - discussão
 
 - Resolvemos o _code smell_, mas não paramos por aí
-- Se, em vez de 10 vértices, nosso polígono tivesse 1 mil vértices?
+- E se, em vez de 10 vértices, nosso polígono tivesse 1 mil vértices?
   - Cada chamada a `glVertex` faz **uma viagem da CPU à GPU**
     - Em outras palavras, é uma **_draw call_**
-- O OpenGL pode **registrar um polígono** caso queiramos desenhá-lo
+- Solução: o OpenGL pode **registrar um polígono** caso queiramos desenhá-lo
   várias vezes
 
 ---
-## Tentativa 3 - usando **lista de visualização**
+## Opção 3 - usando **lista de visualização**
 
 - Em vez de chamar o método de desenho na _callback_ de desenho, vamos registar
-  os vértices **em tempo de inicialização do programa** e apenas instruir o
+  os vértices **em tempo de <u>inicialização</u> do programa** e apenas instruir o
   OpenGL a executar esses vértices em tempo de desenho
 - Assim, otimizamos bem as chamadas de desenho de vértices
 
@@ -90,20 +90,21 @@
   classes: two-column-code
 -->
 
-## Tentativa 3 (1/2)
+## Opção 3 (1/2)
 
 ```c
 int listaAnel;
 void criaListaAnelQuadrado() {
   listaAnel = glGenLists(1);
   glNewList(listaAnel,
-    GL_COMPILE);  // ou GL_COMPILE_AND_EXECUTE
+    GL_COMPILE);  
     glBegin(GL_TRIANGLE_STRIP);
       // os 10 vértices
       // ...
     glEnd();
   glEndList();
 }
+
 
 
 int main(int c, char** v) {
@@ -116,17 +117,17 @@ int main(int c, char** v) {
 ```
 
 ---
-## Tentativa 3 (2/2)
+## Opção 3 (2/2)
 
 ```c
 void desenhaCena() {
   glColor3f(0, 0, 1);       // azul
   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-  glCallList(listaAnel);    // chama lista
+  glCallList(listaAnel);    // chama a lista
 
   glColor3f(0, 0, 0);       // preto
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  glCallList(listaAnel);    // chama lista
+  glCallList(listaAnel);    // chama a lista
 }
 ```
 
@@ -143,7 +144,8 @@ void desenhaCena() {
   - **Desempenho**: muitas vezes desenhamos só o lado de fora/frente
   - **Flexibilidade**: alguns polígonos podem precisar ser desenhados
     diferentemente se o estamos pela frente ou por trás
-- Em OpenGL, definimos a orientação dos polígonos de forma implícita...
+- Em OpenGL, definimos a orientação dos polígonos de forma implícita,
+  **de acordo com a primitiva**...
 
 ---
 ## Orientação no OpenGL
@@ -160,20 +162,20 @@ void desenhaCena() {
 void desenhaMinhaCena()
 {
     //...
-    glPolygonMode(GL_BACK, GL_FILL);  // Lado de trás: preenchido
-    glPolygonMode(GL_FRONT, GL_LINE); // Da frente: contorno
+    glPolygonMode(GL_BACK, GL_FILL);  // Lado de trás: contorno
+    glPolygonMode(GL_FRONT, GL_LINE); // Da frente: preenchido
 
-    // Desenha um polígono por seus vértices
+    // Desenha um quadrado de lado 60
     glBegin(GL_TRIANGLE_FAN);
-        glVertex3f(20.0, 20.0, 0.0);
-        glVertex3f(80.0, 20.0, 0.0);
-        glVertex3f(80.0, 80.0, 0.0);
-        glVertex3f(20.0, 80.0, 0.0);
+        glVertex2i(-30, -30);
+        glVertex2i( 30, -30);
+        glVertex2i( 30,  30);
+        glVertex2i(-30,  30);
     glEnd();
     //...
 }
 ```
-- [Exemplo de Orientação](codeblocks:orientacao-poligono/CodeBlocks/orientacao-poligono.cbp)
+- [Exemplo de Orientação](codeblocks:orientacao-poligonos/CodeBlocks/orientacao-poligonos.cbp)
 
 ---
 # Posicionamento
@@ -184,10 +186,10 @@ void desenhaMinhaCena()
 - A forma como temos posicionado objetos não é legal:
   ```c
   glBegin(GL_TRIANGLE_FAN);
-      glVertex2f(per.x,             per.y);
-      glVertex2f(per.x + per.larg,  per.y);
-      glVertex2f(per.x + per.larg,  per.y + per.alt);
-      glVertex2f(per.x,             per.y + per.alt);
+      glVertex2f(nave.x,              nave.y);
+      glVertex2f(nave.x + nave.larg,  nave.y);
+      glVertex2f(nave.x + nave.larg,  nave.y + nave.alt);
+      glVertex2f(nave.x,              nave.y + nave.alt);
   glEnd();
   ```
   - Problema: e se houver muito mais do que 4 vértices?
@@ -203,10 +205,10 @@ void desenhaMinhaCena()
   glPushMatrix();                 // Importante!!
       glTranslatef(per.x, per.y, 0);
       glBegin(GL_TRIANGLE_FAN);
-          glVertex2f(0,         0);
-          glVertex2f(per.larg,  0);
-          glVertex2f(per.larg,  per.alt);
-          glVertex2f(0,         per.alt);
+          glVertex2f(0,          0);
+          glVertex2f(nave.larg,  0);
+          glVertex2f(nave.larg,  nave.alt);
+          glVertex2f(0,          nave.alt);
       glEnd();
   glPopMatrix();                  // Importante!!
   ```
@@ -313,14 +315,15 @@ void init() {
 _A wild TP1 appears..._
 
 ---
-## TP1: **GORILLAS.BAS**
+## TP1: **{Parad}oroids**
 
-<img alt="Jogo Gorillas (1981)" src="http://i.imgur.com/14a90Cv.gif"
+<img alt="Jogo Asteroids (1979)" src="http://i.imgur.com/bpCV09G.gif"
   style="float: right; width: 420px; margin: 0 0 5px 20px">
-  _"A ideia básica é lançar ~~bananas explosivas~~
-  projéteis nos ~~gorilas~~ adversários para ~~explodi-los~~ explodi-los."_
+  _O objetivo do jogador é atingir a maior pontuação possível, obtida ao se
+  atirar e destruir ~~maliciosos asteróides~~ paradas marotas colocado(a)s
+  ~~no espaço~~ nas proximidades pelo programador._
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-gorillas/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-asteroids/README.md)).
 
 ---
 # Referências
