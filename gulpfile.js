@@ -40,16 +40,12 @@ gulp.task('js', function() {
     .pipe(connect.reload());
 });
 
-// gulp.task('js-classes', function() {
-  // var destination = 'dist/scripts/classes';
-  // return gulp.src(['scripts/classes/**/*.js'])
-  //   .pipe(changed(destination))
-  //   .pipe(isDist ? through() : plumber())
-  //   .pipe(browserify({ debug: !isDist }))
-  //   .pipe(isDist ? uglify() : through())
-  //   .pipe(uglify())
-  //   .pipe(gulp.dest(destination));
-// });
+gulp.task('js-classes', function() {
+  var destination = 'dist/scripts/classes';
+  return gulp.src(['scripts/classes/**/*.js'])
+    .pipe(changed(destination))
+    .pipe(gulp.dest(destination));
+});
 
 gulp.task('html', function() {
   return gulp.src('html/index.html')
@@ -156,7 +152,7 @@ function getFolders(cwd, dir) {
     });
 }
 
-gulp.task('build', ['js', /*'js-classes',*/ 'html', 'md', 'css', 'css-classes',
+gulp.task('build', ['js', 'js-classes', 'html', 'md', 'css', 'css-classes',
   'images', 'videos', 'attachments', 'samples', 'favicon'], function() {
   var folders = getFolders('.', 'classes'),
       tasks = folders.map(function(folder) {

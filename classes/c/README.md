@@ -43,18 +43,6 @@
 </figure>
 
 ---
-## Partes da linguagem
-
-- Tipos e variáveis
-  - Definição de dados na memória
-- Expressões
-  - Aritmética, lógica
-- Declarações
-  - Sequências de condicionais, iteração e instruções de desvio (`if`)
-- Funções
-  - Grupos de declarações e variáveis
-
----
 ## Tipos de dados
 
 - Tipos básicos
@@ -116,7 +104,7 @@ int main(int argc, char* argv[]) {
 ```
 
 ---
-## Passando valores a funções **por referência**
+## Passando valores **por endereço de memória**
 
 - Contudo, às vezes precisamos alterar o valor das variáveis
   recebidas como argumento da função
@@ -132,7 +120,7 @@ int main(int argc, char* argv[]) {
   atendePessoaNoRangoDoRei(&fila);
   ```
   - Ainda assim o C está **copiando o valor** para a função. Contudo, ele
-    copiou o endereço de memória e não o valor
+    **<u>copiou o endereço de memória</u> e não o valor**
 
 ---
 # Imprimindo no terminal
@@ -141,8 +129,8 @@ int main(int argc, char* argv[]) {
 ## Entrada e saída (E/S)
 
 - E/S em C pode ser realizado de forma básica usando os utililtários da
-  biblioteca `stdio.h`
-  - O nome advém de _Standard in/out_
+  **biblioteca `stdio.h`**
+  - O nome advém de **_Standard in/out_**
 - Para escrever texto no terminal, tipicamente usamos a função de [impressão
   formatada (`printf`)](http://www.cplusplus.com/reference/cstdio/printf/)
   - Com ela, é possível facilmente formatar os dados a serem escritos
@@ -222,7 +210,7 @@ int main(int argc, char* argv[]) {
 ---
 ## Como usar uma estrutura (2/2)
 
-- Alternativamente, podemos **criar a estrutura de dados** <u>e</u> **definir
+- <u>Alternativamente</u>, podemos **criar a estrutura de dados** <u>e</u> **definir
   um novo tipo de dados** ao mesmo tempo usando o `typedef`:
   ```c
   typedef struct vetor2d {
@@ -235,6 +223,24 @@ int main(int argc, char* argv[]) {
   tipo_vetor2d posicao;
   tipo_vetor2d velocidade;
   ```
+
+
+---
+## Mas o quê agrupar?
+
+- Em um jogo de navinha, por exemplo:
+  - Tudo relacionado ao jogador:
+    ```c
+    struct navinha {
+        tipo_vetor2d posicao;   // posição do centro
+        float anguloDirecao;    // pra onde tá olhando
+        float largura, altura;  // dimensões
+        int vidas;
+        int pontuacao;
+        int identificadorTextura;
+        // ...
+    };
+    ```
 
 ---
 # Dividindo seu programa em módulos
@@ -253,7 +259,6 @@ int main(int argc, char* argv[]) {
     - Linkedição (ò.Ó)
 
 ---
-
 ## Pré-processador
 
 - Constantes
@@ -294,11 +299,11 @@ int main(int argc, char* argv[]) {
   1. Melhorar a **legibilidade** do código
 - Usamos os arquivos .h (de cabeçalho, _header_) para **compartilhar
   algumas informações entre vários arquivos** fonte (.c ou outros .h)
-  - Pense no <u>**.h** como a parte que queremos deixar **pública**</u> de um .c
+  - O <u>**.h** é a parte que queremos deixar **pública**</u> de um .c
 - Exemplo de informação que deve ser compartilhada:
   - Estruturas de dados
   - Algumas funções "públicas"
-  - Variáveis globais
+  - Variáveis globais (entre arquivos)
 
 ---
 ## Exemplão (.h e .c)
@@ -311,7 +316,7 @@ int main(int argc, char* argv[]) {
       return v;
   }
   ```
-- vetor.h (o que estamos "exportando")
+- vetor.h (o que estamos "exportando" para nossos clientes)
   ```c
   struct vetor {    // a estrutura de dados
       float x, y;
@@ -339,32 +344,25 @@ int main(int argc, char* argv[]) {
   struct vetor velocidade;
   velocidade.x = 1.0f;
   velocidade.y = 0.7f;
+  printf("vel: (%.2f, %.2f)\n", velocidade.x, velocidade.y);
 
   velocidade = multiEscalar(velocidade, 2);
-  printf("novaPosicao: %f, %f\n", velocidade.x, velocidade.y);
+  printf("vel * 2: (%.2f, %.2f)\n", velocidade.x, velocidade.y);
+
   return 0;
 }
 ```
+---
+# Compilador
 
 ---
-# ~~Makefiles~~ IDEs, pra que te quero
+<figure class="picture-steps">
+  <img class="bullet" src="../../images/programador-nutella-raiz.png">
+  <img class="bullet" src="../../images/programador-nutella-raiz-2.png">
+</figure>
 
 ---
-## Uma IDE
-
-- É um **ambiente de desenvolvimento integrado**
-- Exemplos:
-  - CodeBlocks
-  - Visual Studio
-  - Eclipse etc.
-- Reúne ferramentas e utilitários normalmente utilizados para a programação
-  - Um desses utilitários (o rei da floresta) é um compilador
-- Apesar da facilidade gratuita dos IDEs, como não precisamos usar
-  os compiladores diretamente, ficamos sem conhecer (e entender) como
-  ele funciona
-
----
-## O GCC
+## Compilando na mão
 
 - O GCC é o compilador da linguagem C (e de C++, Objective-C, Objective-C++...)
   mais famoso e utilizado
@@ -389,6 +387,56 @@ int main(int argc, char* argv[]) {
     gcc -o programa.exe arquivo1.o arquivo2.o -lglut32 -lm
     ```
 - [Referência sobre a invocação do GCC](https://gcc.gnu.org/onlinedocs/cpp/Invocation.html#Invocation)
+
+---
+## Processo de compilação
+
+![](../../images/compilacao-e-montagem.png)
+
+---
+## Como posso eu mesmo fazer isso?
+
+- Para instruir o compilador para gerar código **assembly**:
+  ```bash
+  $ g++ -S meuArquivo.c
+  ```
+  - Um arquivo com nome `meuArquivo.s` será gerado, contendo instruções em assembly
+- Para compilar normalmente (e gerar código de máquina):
+  ```bash
+  $ g++ meuArquivo.c
+  ```
+- Para visualizar o código de máquina (arquivo `.o` ou `.exe`)
+  ```bash
+  $ objdump -d meuArquivo.exe
+  ```
+
+---
+## Compilação e Ligação (_link-edition_)
+
+![](../../images/compiler-linker.gif)
+
+```bash
+gcc -o programa.exe arquivo1.o arquivo2.o -lglut32 -lm
+```
+**`-lglut32`** significa que existe um arquivo chamado `libglut32.a` em algum
+  lugar
+
+---
+# ~~Makefiles~~ IDEs, pra que te quero
+
+---
+## Uma IDE
+
+- É um **ambiente de desenvolvimento integrado**
+- Exemplos:
+  - CodeBlocks
+  - Visual Studio
+  - Eclipse etc.
+- Reúne ferramentas e utilitários normalmente utilizados para a programação
+  - Um desses utilitários (o rei da floresta) é um compilador
+- Apesar da facilidade gratuita dos IDEs, como não precisamos usar
+  os compiladores diretamente, ficamos sem conhecer (e entender) como
+  ele funciona
 
 ---
 ## Desmistificando o "arquivo de projeto" (.cbp)
@@ -428,7 +476,7 @@ clean:
   - Para executar o programa
 
 ---
-## Makefile (1/)
+## Makefile (1/3)
 
 - Makefile simples
   ```makefile
@@ -442,7 +490,7 @@ clean:
       última execução
 
 ---
-## Makefile (2/)
+## Makefile (2/3)
 
 - Makefile simples++
   ```
@@ -456,7 +504,7 @@ clean:
   - Problema: quando alteramos um arquivo `.h`, **o make não recompila**
 
 ---
-## Makefile (3/)
+## Makefile (3/3)
 
 - Makefile bacana
   ```
