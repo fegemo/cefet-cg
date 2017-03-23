@@ -137,6 +137,14 @@ mostrados a seguir:
      fossem asteróides, mas de forma aleatória
      - Para fins de colisão, você pode considerá-las como circulares
      ou retangulares
+- Relativas ~~aos asteróides~~ às **paradas**:
+  1. **Girando no próprio eixo (3%)**: faça os asteroids ficarem girando no 
+     próprio eixo para dar aquela sensação de inércia angular espacial
+  1. **Colisão inter-parada (6%)**: detecte colisão entre as paradas e mude suas
+     direções seguindo um vetor reflexão (requer um pouquinho de algebra linear)
+  1. **Tipos de paradas (até 8%)**: faça vários tipos (3, 4?) de paradas, não apenas uma.
+     Simplesmente usar texturas diferentes já é alguma coisa, mas para garantir estes
+     pontinhos você deve colocar comportamentos diferentes em cada tipo.
 - Relativas ao **jogo**:
   1. **Buraco negro (até 5%)**: crie um ou mais buracos negros que possuem
      uma gravidade e puxam o jogador para dentro deles. Para sair deles,
