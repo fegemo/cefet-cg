@@ -352,6 +352,8 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 ```
+- [Exemplo de divisão em módulos](codeblocks:divisao-modulos/CodeBlocks/divisao-modulos.cbp)
+
 ---
 # Compilador
 
