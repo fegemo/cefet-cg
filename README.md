@@ -32,9 +32,9 @@
 - [OpenGL Hands-on - Parte 1](classes/opengl-handson/)
 - [OpenGL Hands-on - Parte 2](classes/opengl-handson2/)
 - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/)
+- [Cê](classes/c)
 
 <!--
-- [Cê](classes/c) (23/08/2016)
 - [_Feedback_ do TP1 - turma anterior](classes/breakout-feedback) (23/08/2016)
 - [Geometria](classes/geometry) (25/08/2016)
 
