@@ -199,16 +199,17 @@ void desenhaMinhaCena()
 ---
 ## Posicionando Objetos - Do Jeito Top
 
-- Damos as coordenadas assumindo que estamos na origem, mas transladamos
-  o objeto para onde queremos que ele realmente seja desenhado:
+- Damos as coordenadas assumindo que estamos na origem, mas
+  transladamos o objeto para onde queremos que ele realmente seja
+  desenhado:
   ```c
   glPushMatrix();                 // Importante!!
-      glTranslatef(per.x, per.y, 0);
+      glTranslatef(nave.x, nave.y, 0);
       glBegin(GL_TRIANGLE_FAN);
-          glVertex2f(0,          0);
-          glVertex2f(nave.larg,  0);
-          glVertex2f(nave.larg,  nave.alt);
-          glVertex2f(0,          nave.alt);
+          glVertex2f(-nave.larg/2, -nave.alt/2); // v3---v2
+          glVertex2f( nave.larg/2, -nave.alt/2); // |     |
+          glVertex2f( nave.larg/2,  nave.alt/2); // |     |
+          glVertex2f(-nave.larg/2,  nave.alt/2); // v0---v1
       glEnd();
   glPopMatrix();                  // Importante!!
   ```
