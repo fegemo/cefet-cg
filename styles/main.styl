@@ -111,16 +111,22 @@ body
 
 .picture-steps
   position relative
-  img:not(:first-child)
+  & > *:not(:first-child)
     position absolute
     top 0
     left 0
-  img
+  & > *
     &:not(.bespoke-bullet-active)
       transform initial
   &.clean
-    img:not(:last-child):not(.bespoke-bullet-current)
+    & > *:not(:last-child):not(.bespoke-bullet-current)
       opacity 0
+
+  .katex-display
+    text-align left
+  .bullet.math
+  .bullet .math
+    padding-top 1px
 
 .inset-shadow
   position relative
