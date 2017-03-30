@@ -12,19 +12,6 @@
 1. Geometria Euclidiana
 1. Sistema de Coordenadas
 
-<!--
-# Motivação
-
-
-## Motivação
-
-- Muitas áreas na computação usam **programação geométrica**
-  - Computação Gráfica, Visão Computacional, Robótica,
-    <abbr title="Geographic Information Systems">GIS</abbr>
-- Computação Gráfica lida com geometria de retas e objetos lineares num espaço
-  bi ou tridimensional
-
--->
 ---
 ## Problemas Típicos (1/2)
 
@@ -124,7 +111,7 @@
     - **Transformação linear**: função entre dois espaços de vetores
       que preserva soma de vetores e multiplicação por escalares
       - Exemplo: rotação de um objeto
-    - **Transformação afim**: transformações lineares + transformação de
+    - **Transformação afim**: transformações lineares - transformação de
       translação
 
 ---

@@ -32,7 +32,9 @@
 ## Prática das transformações (em OpenGL)
 
 - Desenhamos quaisquer objetos em OpenGL **descrevendo seus vértices**:
-  - `glVertex3f(x, y, z)`
+  ```c
+  glVertex3f(x, y, z);
+  ```
 - Podemos alterar as coordenadas dos vértices sem alterar o valor de
   <span class="math">x, y</span> e <span class="math">z</span> de forma a:
   - Rotacioná-los (`glRotate`)
@@ -49,39 +51,66 @@
   forma:
   <div class="math">R = \alpha_0 F.\vec{e_0} + \alpha_1 F.\vec{e_1} + \alpha_2 F.\vec{e_2} + \alpha_3 F.O</div>
 
-  - Em que **<span class="math">\alpha_3</span>** é <span class="math">0</span>
-    para vetores ou <span class="math">1</span> para pontos (é a **coordenada
-    homogênea**), <span class="math">R</span> é um ponto ou um vetor
-    representado em termos do sistema de coordenadas <span class="math">F</span>
-  - Se usarmos o sistema de coordenadas cartesiano, podemos reescrever
+  - Em que <u><span class="math">R</span> é um ponto ou um vetor</u>
+    representado em termos do sistema de coordenadas <span class="math">F</span>, **<span class="math">\alpha_3</span>** é <span class="math">0</span>
+      para vetores ou <span class="math">1</span> para pontos (é a **coordenada
+      homogênea**)
+  - No sistema de coordenadas cartesiano, escrevemos
     <span class="math">R</span> como:
     <div class="math">R = \alpha_x \vec{x} + \alpha_y \vec{y} + \alpha_z \vec{z} + \alpha_w</div>
-- <div class="math" style="float:right;">R = \begin{bmatrix}\alpha_x & \alpha_y&\alpha_z&\alpha_w\end{bmatrix}</div>
+- <div class="math" style="float:right;">R = \begin{bmatrix}\alpha_x & \alpha_y&\alpha_z&\alpha_w\end{bmatrix}^T</div>
   Mais sucintamente, dizemos que:
+
 ---
-## Forma geral (cont.)
+## Forma matricial de ponto ou vetor
+
+- Podemos representar um ponto ou vetor <span class="math">R</span> na
+  forma matricial:
+  <figure class="picture-steps clean">
+    <div class="bullet">
+    <div class="math" style="padding-top: 1px;">R = \begin{bmatrix} F.\vec{e_0}\\\F.\vec{e_1}\\\F.\vec{e_2}\\\F.O \end{bmatrix} \times \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+    Cada linha da matriz é um vetor (as 3 primeiras) ou a origem de uma base (a última)
+    </div>
+    <div class="bullet">
+    <div class="math">R = \begin{bmatrix} F.\vec{e_0}[0] & F.\vec{e_0}[1] & F.\vec{e_0}[2] & 0\\\F.\vec{e_1}[0] & F.\vec{e_1}[1] & F.\vec{e_1}[2] & 0\\\F.\vec{e_2}[0] & F.\vec{e_2}[1] & F.\vec{e_2}[2] & 0\\\F.O[0] & F.O[1] & F.O[2] & 1 \end{bmatrix} \times
+    \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+    ...expandindo a matriz, mostrando as coordenadas de cada vetor da base/ponto de origem...
+    </div>
+    <div class="bullet">
+    <div class="math">R = \begin{bmatrix} 1 & 0 & 0 & 0\\\0 & 1 & 0 & 0\\\0 & 0 & 1 & 0\\\0 & 0 & 0 & 1 \end{bmatrix} \times
+    \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+    Exemplo: a base cartesiana, com origem em (0,0,0)
+    </div>
+  </figure>
+
+---
+## Uma função de <span class="math">T</span>ransformação
 
 - Das propriedades da geometria afim, podemos propor **uma função
   <span class="math">T</span>** que, se aplicada a cada componente da
   equação anterior, **se mantém uma equação afim**:
 
   <div class="math">R = \alpha_0 F.\vec{e_0} + \alpha_1 F.\vec{e_1} + \alpha_2 F.\vec{e_2} + \alpha_3 F.O</div>
-  <div class="math">T(R) = \alpha_0 T(F.\vec{e_0}) + \alpha_1 T(F.\vec{e_1}) + \alpha_2 T(F.\vec{e_2}) + \alpha_3 T(F.O)</div>
+  <div class="math">\color{blue}{T(}R\color{blue}{)} = \alpha_0 \color{blue}{T(}F.\vec{e_0}\color{blue}{)} + \alpha_1 \color{blue}{T(}F.\vec{e_1}\color{blue}{)} + \alpha_2 \color{blue}{T(}F.\vec{e_2}\color{blue}{)} + \alpha_3 \color{blue}{T(}F.O\color{blue}{)}</div>
   - Podemos chamar essa função <span class="math">T</span> de **transformação**
 
 ---
-## Forma matricial
+## Forma matricial da transformação
 
 - Podemos representar a equação anterior na forma matricial:
 
-  <div class="math">T(R) = \begin{bmatrix} T(F.\vec{e_0}) & T(F.\vec{e_1}) & T(F.\vec{e_2}) & T(F.O) \end{bmatrix}
+  <figure class="picture-steps clean" style="margin-left: 0;">
+    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0})\\\T(F.\vec{e_1})\\\T(F.\vec{e_2})\\\T(F.O) \end{bmatrix}
   \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0}[0]) & T(F.\vec{e_0}[1]) & T(F.\vec{e_0}[2]) & 0)\\\T(F.\vec{e_1}[0]) & T(F.\vec{e_1}[1]) & T(F.\vec{e_1}[2]) & 0)\\\T(F.\vec{e_2}[0]) & T(F.\vec{e_2}[1]) & T(F.\vec{e_2}[2]) & 0)\\\T(F.O[0]) & T(F.O[1]) & T(F.O[2]) & 1) \end{bmatrix} \times
+    \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+  </figure>
 
-  - As colunas representam as imagens dos elementos do sistema <span class="math">F</span> transformado
-    por <span class="math">T</span>
-  - Disso temos que **aplicar uma <u>transformação afim é equivalente a
-    multiplicar as coordenadas</u> (de um ponto ou vetor) <u>por uma matriz</u>**
-    - Em <span class="math">n</span> dimensões, isso equivale a uma matriz <span class="math">(n + 1)(n + 1)</span> por causa da coordenada homogênea
+- As linhas representam as imagens dos elementos do sistema <span class="math">F</span> transformado
+  por <span class="math">T</span>
+- Disso temos que **aplicar uma <u>transformação afim é equivalente a
+  multiplicar as coordenadas</u> (de um ponto ou vetor) <u>por uma matriz</u>**
+  - Em <span class="math">n</span> dimensões, isso equivale a uma matriz <span class="math">(n + 1)(n + 1)</span> por causa da coordenada homogênea
 
 ---
 ## Exemplo: Transformação Nula
@@ -91,7 +120,11 @@
     <div style="clear: right;"></div>
 
 - Supondo o sistema de coordenadas cartesiano e um ponto <span class="math">P=\begin{bmatrix} \alpha_x&\alpha_y&\alpha_z&1 \end{bmatrix}^{T}</span>, temos que:
-  <div class="math">T(P)=\begin{bmatrix} 1&0&0&0\\\0&1&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix} \begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\\\\alpha_w \end{bmatrix}=\begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\\\\alpha_w \end{bmatrix}</div>
+
+  <figure class="picture-steps clean">
+    <div class="bullet math">T(P)=\begin{bmatrix} 1&0&0&0\\\0&1&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix} \begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\1 \end{bmatrix}=?</div>
+    <div class="bullet math">T(P)=\begin{bmatrix} 1&0&0&0\\\0&1&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix} \begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\1 \end{bmatrix}=\begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\1 \end{bmatrix}</div>
+  </figure>
 
 ---
 ## A [Magnífica Matriz 2D](http://ncase.me/matrix/)
