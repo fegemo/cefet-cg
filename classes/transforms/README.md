@@ -243,7 +243,7 @@
 
 - Similarmente, as matrizes de rotação nos eixos <span class="math">x</span> e <span class="math">y</span>:
 
-  <div class="math" style="float:left;">R_x(\alpha)=\begin{bmatrix} 1&0&0&0\\\0&\cos\alpha&-\sin\alpha&0\\\0&\sin\alpha&\cos\alpha&0\\\0&0&1&0\end{bmatrix}</div>
+  <div class="math" style="float:left;">R_x(\alpha)=\begin{bmatrix} 1&0&0&0\\\0&\cos\alpha&-\sin\alpha&0\\\0&\sin\alpha&\cos\alpha&0\\\0&0&0&1\end{bmatrix}</div>
 
   <div class="math" style="float:right;">R_y(\alpha)=\begin{bmatrix} \cos\alpha&0&\sin\alpha&0\\\0&1&0&0\\\ -\sin\alpha&0&\cos\alpha&0\\\0&0&0&1\end{bmatrix}</div>
 
