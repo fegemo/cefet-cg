@@ -84,12 +84,15 @@
 ## Estágio de **aplicação** (cont.)
 
 - Como este estágio está **completamente em _software_**, geralmente ele
-  não é subdividido paralelizado
+  não é subdividido (paralelizado)
 - Atividades típicas que executamos neste estágio
   - Cálculo de colisão
   - Atualização de lógica de animação
-  - Atualização da cena de acordo com entradas (_mouse_, teclado etc.)
+  - Atualização da cena de acordo com entradas (_mouse_, teclado)
   - Inteligência artificial
+    - Movimentação de inimigos
+    - Determinação de trajetórias
+    - Tomada de decisão etc.
 
 ---
 # Estágio de **geometria**
@@ -103,11 +106,6 @@
 - Subdividido em:
 
   ![](../../images/pipeline-geometria-fases.png)
-  1. Transformação de modelo e visualização
-  1. Sombreamento de vértices
-  1. Projeção
-  1. Recorte
-  1. Mapeamento na tela
 
 
 ---
@@ -271,19 +269,8 @@
   determinar a cor final do pixel (`COLOR_BUFFER`)
 - Além disso, usa-se o valor do Z-buffer para determinar a visibilidade (ou a
   ordem) dos fragmentos (`DEPTH_BUFFER`)
-
----
-## Rasterização &gt;&gt; Fusão
-
 - Ao final do estágio, os pixels foram coloridos e temos a imagem renderizada
   na janela
-- Um efeito indesejável que pode acontecer é que a tela do monitor pode ser
-  atualizada no meio de uma operação de rasterização e a pintura dos pixels
-  fica visível
-  - Isso pode ser solucionado usando-se mais de um buffer
-    - _Double-buffer_: _front-buffer e back-buffer_
-
-    <!-- - [_Triple-buffer_](http://www.anandtech.com/show/2794/2) -->
 
 ---
 # Referências

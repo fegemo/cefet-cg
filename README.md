@@ -46,6 +46,8 @@
 - [Modelagem Hierárquica](classes/hierarchical)
 
 <!--
+- [Projeção](classes/projection) (15/09/2016)
+- [Modelagem Hierárquica](classes/hierarchical) (20/09/2016)
 - [Iluminação e Sombreamento](classes/lighting) (22 e 27/09/2016)
 - [Modelagem de Objetos](classes/modeling) (29/09/2016)
 - [Texturas](classes/textures) (04/10/2016)
