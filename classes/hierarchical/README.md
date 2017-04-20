@@ -16,8 +16,8 @@
 - Frequentemente é necessário fazer várias transformações
   geométricas para posicionar objetos
   - Exemplo: combinação de rotações e translações
-- A **ordem** com que transformações são aplicadas importa
-  - Multiplicação de matrizes não é comutativa
+- A **ordem com que transformações** são aplicadas importa...
+  - ...porque a multiplicação de matrizes <u>não é comutativa</u>
 
 <!--
 
@@ -46,14 +46,18 @@
 ## Compondo transformações - concatenação
 
 - Há duas formas de se concatenar duas matrizes de transformação
-  1. Pré-multiplicação
   1. Pós-multiplicação
-- Pré-multiplicação é multiplicar a nova matriz (<span class="math">B</span>) **à esquerda** da
-  matriz existente (<span class="math">A</span>) para receber o resultado (<span class="math">C</span>):
-  - <span class="math">C = B * A</span>
-- Pós-multiplicação é multiplicar a nova matriz (<span class="math">B</span>) **à direita** da
-  matriz existente (<span class="math">A</span>) para receber o resultado (<span class="math">C</span>):
-  - <span class="math">C = A * B</span>
+  1. Pré-multiplicação
+- **(1) Pós-multiplicação** é multiplicar a nova matriz
+  (<span class="math">B</span>) **à direita** da matriz existente
+  (<span class="math">A</span>) para receber o resultado
+  (<span class="math">C</span>):
+  - <span class="math">C = A \times B</span>
+- **(2) Pré-multiplicação** é multiplicar a nova matriz
+  (<span class="math">B</span>) **à esquerda** da matriz existente
+  (<span class="math">A</span>) para receber o resultado
+  (<span class="math">C</span>):
+  - <span class="math">C = B \times A</span>
 - Qual forma usar **depende de como você prefere pensar**
   - O OpenGL usa **pós-multiplicação**
 
@@ -65,21 +69,13 @@
 
 - Como você pensa na composição é a forma de determinar como
   você deveria concatenar as matrizes (pré ou pós)
-- Ambas as formas funcionam mas, dependendo da situação, uma forma
+- ![right](../../images/composicao-2-formas.png)
+  Ambas as formas funcionam mas, dependendo da situação, uma forma
   pode ser mais conveniente que a outra
-
-  ![](../../images/composicao-2-formas.png)
-
----
-## Transformando em relação ao **sistema global**
-
-- Tudo que é feito é relativo à origem e a base do sistema
-  de coordenadas global (do mundo)
-
-  ![](../../images/composicao-global-exemplo.png)
-- Neste caso, **pré-multplicamos** as matrizes para encontrar a
-  composta (<span class="math">M</span>):
-  - <span class="math">M = S * T * R</span>
+- Exemplo: suponha 3 transformações:
+  1. <span class="math">R(30)</span>: rotaciona 30°
+  1. <span class="math">T(2,0)</span>: translada 2u eixo x
+  1. <span class="math">S(0.5)</span>: escala por 0,5
 
 ---
 ## Transformando em relação ao **sistema local**
@@ -88,9 +84,21 @@
   sistema de coordenadas local
 
   ![](../../images/composicao-local-exemplo.png)
-- Neste caso, **pós-multplicamos** as matrizes para encontrar a
+- Neste caso, **pós-multiplicamos** as matrizes para encontrar a
   composta (<span class="math">M</span>):
-  - <span class="math">M = R * T * S</span>
+  - <span class="math">M = R \times T \times S</span>
+
+
+---
+## Transformando em relação ao **sistema global**
+
+- Tudo que é feito é relativo à origem e a base do sistema
+  de coordenadas global (do mundo)
+
+  ![](../../images/composicao-global-exemplo.png)
+- Neste caso, **pré-multiplicamos** as matrizes para encontrar a
+  composta (<span class="math">M</span>):
+  - <span class="math">M = S \times T \times R</span>
 
 ---
 ## Qual forma devo usar?
@@ -107,13 +115,13 @@
 
 - Para cada nova matriz de transformação, o OpenGL a pós-multiplica com
   a matriz no topo da pilha corrente:
-  - <span class="math">M' = M * T_{nova}</span>
-  - <span class="math">NovaNaPilha = AtualDaPilha * NovaTransformacao</span>
+  - <span class="math">M' = M \times T_{nova}</span>
+  - <span class="math">NovaNaPilha = AtualDaPilha \times NovaTransformacao</span>
 - Exemplo: fazer uma translação e então rotação
   - 0) <span class="math">M = Identidade</span>
-  - 1) Translação <span class="math">T(t_x, t_y)</span>: <span class="math">M = M * T</span>
-  - 2) Rotação <span class="math">R(\alpha)</span>: <span class="math">M = M * R</span>
-  - 3) Transformando um ponto <span class="math">P</span>: <span class="math">P' = M * P</span>
+  - 1) Translação <span class="math">T(t_x, t_y)</span>: <span class="math">M = M \times T</span>
+  - 2) Rotação <span class="math">R(\alpha)</span>: <span class="math">M = M \times R</span>
+  - 3) Transformando um ponto <span class="math">P</span>: <span class="math">P' = M \times P</span>
 
 ---
 ## Transformação em OpenGL
