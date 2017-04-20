@@ -41,11 +41,11 @@
 
 - [Transformações Geométricas](classes/transforms)
 - [Orientação e Mudança de Coordenadas](classes/baseorientation)
+- [O Pipeline Gráfico](classes/pipeline)
+- [Projeção](classes/projection)
+- [Modelagem Hierárquica](classes/hierarchical)
 
 <!--
-- [O Pipeline Gráfico](classes/pipeline) (13/09/2016)
-- [Projeção](classes/projection) (15/09/2016)
-- [Modelagem Hierárquica](classes/hierarchical) (20/09/2016)
 - [Iluminação e Sombreamento](classes/lighting) (22 e 27/09/2016)
 - [Modelagem de Objetos](classes/modeling) (29/09/2016)
 - [Texturas](classes/textures) (04/10/2016)
