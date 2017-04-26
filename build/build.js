@@ -14629,8 +14629,7 @@ function compileStyleMap(schema, map) {
     if (tag.slice(0, 2) === '!!') {
       tag = 'tag:yaml.org,2002:' + tag.slice(2);
     }
-
-    type = schema.compiledTypeMap[tag];
+    type = schema.compiledTypeMap['fallback'][tag];
 
     if (type && _hasOwnProperty.call(type.styleAliases, style)) {
       style = type.styleAliases[style];
@@ -15688,7 +15687,7 @@ function mergeMappings(state, destination, source, overridableKeys) {
   }
 }
 
-function storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valueNode) {
+function storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valueNode, startLine, startPos) {
   var index, quantity;
 
   keyNode = String(keyNode);
@@ -15709,6 +15708,8 @@ function storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valu
     if (!state.json &&
         !_hasOwnProperty.call(overridableKeys, keyNode) &&
         _hasOwnProperty.call(_result, keyNode)) {
+      state.line = startLine || state.line;
+      state.position = startPos || state.position;
       throwError(state, 'duplicated mapping key');
     }
     _result[keyNode] = valueNode;
@@ -15939,8 +15940,9 @@ function readSingleQuotedScalar(state, nodeIndent) {
       ch = state.input.charCodeAt(++state.position);
 
       if (ch === 0x27/* ' */) {
-        captureStart = captureEnd = state.position;
+        captureStart = state.position;
         state.position++;
+        captureEnd = state.position;
       } else {
         return true;
       }
@@ -16355,6 +16357,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
   var following,
       allowCompact,
       _line,
+      _pos,
       _tag          = state.tag,
       _anchor       = state.anchor,
       _result       = {},
@@ -16375,6 +16378,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
   while (ch !== 0) {
     following = state.input.charCodeAt(state.position + 1);
     _line = state.line; // Save the current line.
+    _pos = state.position;
 
     //
     // Explicit notation case. There are two separate blocks:
@@ -16469,7 +16473,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
       }
 
       if (!atExplicitKey) {
-        storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valueNode);
+        storeMappingPair(state, _result, overridableKeys, keyTag, keyNode, valueNode, _line, _pos);
         keyTag = keyNode = valueNode = null;
       }
 
@@ -16785,8 +16789,8 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
           break;
         }
       }
-    } else if (_hasOwnProperty.call(state.typeMap, state.tag)) {
-      type = state.typeMap[state.tag];
+    } else if (_hasOwnProperty.call(state.typeMap[state.kind || 'fallback'], state.tag)) {
+      type = state.typeMap[state.kind || 'fallback'][state.tag];
 
       if (state.result !== null && type.kind !== state.kind) {
         throwError(state, 'unacceptable node kind for !<' + state.tag + '> tag; it should be "' + type.kind + '", not "' + state.kind + '"');
@@ -17089,7 +17093,7 @@ function compileList(schema, name, result) {
 
   schema[name].forEach(function (currentType) {
     result.forEach(function (previousType, previousIndex) {
-      if (previousType.tag === currentType.tag) {
+      if (previousType.tag === currentType.tag && previousType.kind === currentType.kind) {
         exclude.push(previousIndex);
       }
     });
@@ -17104,16 +17108,20 @@ function compileList(schema, name, result) {
 
 
 function compileMap(/* lists... */) {
-  var result = {}, index, length;
+  var result = {
+        scalar: {},
+        sequence: {},
+        mapping: {},
+        fallback: {}
+      }, index, length;
 
   function collectType(type) {
-    result[type.tag] = type;
+    result[type.kind][type.tag] = result['fallback'][type.tag] = type;
   }
 
   for (index = 0, length = arguments.length; index < length; index += 1) {
     arguments[index].forEach(collectType);
   }
-
   return result;
 }
 
@@ -17440,7 +17448,10 @@ function constructYamlBinary(data) {
   }
 
   // Wrap into Buffer for NodeJS and leave Array for browser
-  if (NodeBuffer) return new NodeBuffer(result);
+  if (NodeBuffer) {
+    // Support node 6.+ Buffer API when available
+    return NodeBuffer.from ? NodeBuffer.from(result) : new NodeBuffer(result);
+  }
 
   return result;
 }
