@@ -17,9 +17,8 @@
 
 1. Iluminação em Computação Gráfica
 1. Tipos de modelos
-1. Modelos locais
+1. Modelo local de Phong
 1. Iluminação em OpenGL
-1. Modelos globais
 1. Sombreamento
 1. Atenuação
 1. _Fog_ (neblina)
@@ -387,23 +386,25 @@
     ```
     glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 1.0);
     ```
-- Por padrão, não há atenuação. Ou seja:
-  - <span class="math">k_c = 0</span>, <span class="math">k_l = 0</span>,
+- Por padrão, há uma atenuação de:
+  - <span class="math">k_c = 1</span>, <span class="math">k_l = 0</span>,
     <span class="math">k_q = 0</span>  
 
 ---
-## Juntando tudo
+## Cor resultante de um vértice: <span class="math">C</span>
 
-- A atenuação só é aplicada sobre às componentes difusa e especular.
+- A atenuação só é aplicada sobre às componentes difusa
+  <span class="math">D</span> e especular <span class="math">S</span>
+  - Não faz sentido para ambiente <span class="math">A</span>, nem
+    emissiva <span class="math">E</span>
 - A fórmula que calcula a cor de um vértice devida a uma **fonte luminosa
   <span class="math">i</span>** é dada por:
-
   <div class="math">C_i=A_i + aten(D_i + S_i)</div>
 - Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz)
   somada à luz emitida e às contribuições fonte luminosa
     <span class="math">C_i</span>:
 
-    <div class="math">C=Amb_{global} + E + \sum{A_i + aten(D_i + S_i)}</div>
+    <div class="math">C=A_{global} + E + \sum{A_i + aten(D_i + S_i)}</div>
 
 ---
 # Recapitulando iluminação
@@ -470,11 +471,10 @@
 
 ![](../../images/shading-flat-exemplo.png)
 
-- Usa (apenas) **01 vetor normal para cada polígono**
-  - Portanto, cada polígono tem apenas uma cor
+- **Uma única cor por primitiva** - é a cor do primeiro vértice
+- Precisa de (apenas) **01 vetor normal para cada polígono**
 - Extremamente rápido, mas produz imagens facetadas, pois a transição de um
   polígono para outro adjacente é nítida
-- Útil para objetos "facetados" como, por exemplo, um tabuleiro de xadrez
 
 ---
 <!--
@@ -488,7 +488,9 @@
 
 <figure class="picture-steps">
   <img class="bullet" src="../../images/lowpoly-octopus.jpg">
+  <img class="bullet" src="../../images/lowpoly-fox.jpg">
   <img class="bullet" src="../../images/lowpoly-scene.jpg">
+  <img class="bullet" src="../../images/lowpoly-trees-and-stones.jpg">
 </figure>
 
 ---
@@ -528,7 +530,7 @@
 ---
 ## _Phong shading_ (cont.)
 
-- Interpola as normais em vez das cores
+- <u>Interpola as normais</u> dos vértices para os pixels, em vez das cores
   - A função de iluminação deve ser avaliada **para cada pixel**
 - Significativamente mais caro
 - Não oferecido pelo OpenGL no _pipeline_ gráfico fixo
@@ -537,16 +539,16 @@
 ---
 ## Consertando o problema dos _highlights_ de Gouraud
 
-- Em _Gouraud_, temos uma amostragem de vértices muito menor
+<p style="text-align: right">
+  ![right](../../images/highlight-gouraud.png)
+  Em **_Gouraud_**, temos uma amostragem de vértices muito menor &rarr;
+</p>
 
-  ![](../../images/highlight-gouraud.png)
+<p style="clear: right;">
+  ![left](../../images/highlight-phong.png)
+  &larr; Em **_Phong_**, a amostragem é bem maior
+</p>
 
----
-## Consertando o problema dos _highlights_ de Gouraud
-
-- Em _Phong_, a amostragem é bem maior
-
-  ![](../../images/highlight-phong.png)
 
 ---
 ## Comparação dos três modelos de **sombreamento**
@@ -578,6 +580,21 @@
 </figure>
 
 ---
+## _Fog_ no Zelda 64
+
+<iframe src="https://www.youtube.com/embed/_9AcRhzV3qA?ecver=2" width="480" height="360" frameborder="0" allowfullscreen></iframe>
+
+---
+## _Fog_ no Turok 64
+
+<iframe src="https://www.youtube.com/embed/cOVpcC8GwXM?ecver=2" width="480" height="360" frameborder="0" allowfullscreen></iframe>
+
+---
+## _Fog_ com cor do _skybox_ no Temple Run 2
+
+<iframe src="https://www.youtube.com/embed/wTTrtp-yy4I?ecver=2" width="480" height="360" frameborder="0" allowfullscreen></iframe>
+
+---
 ## _Fog_ (cont.)
 
 ```c
@@ -593,6 +610,7 @@
   glEnable(GL_FOG);                   // Liga GL_FOG
 ```
 - [Referência do `glFog`](https://www.opengl.org/sdk/docs/man2/xhtml/glFog.xml)
+- Cor da neblina = cor do `glClearColor`
 
 ---
 # Referências
