@@ -56,13 +56,12 @@
 ---
 ## Fontes de luz
 
-- Alguns objetos podem emanar luz - eles são chamados **fontes de luz**
+- Alguns objetos podem emanar luz - são chamados **fontes de luz**
 - A luz das fontes afeta a superfície dos objetos de uma cena de acordo com as
   características da superfície do objeto - chamamos essas características de
   **material**
 - Há vários tipos de fonte de luz:
-  1. Ambiente
-  1. Pontual
+  1. Pontual (ou onidirecional)
   1. Direcional
   1. Holofote (_Spotlights_)
 
@@ -132,7 +131,7 @@
 
 
 ---
-# Montando um modelo local
+# Modelo de Iluminação de Phong ([1975](http://www.cs.northwestern.edu/~ago820/cs395/Papers/Phong_1975.pdf))
 
 ---
 ## Conceitos
@@ -142,9 +141,28 @@
 - Cada objeto da cena é feito por um **material** que:
   - Pode ser [0, 100%] fosco e reflete uma cor `RGB` (**difusa**)
   - Pode ser [0, 100%] polido e reflete a cor da luz (**especular**)
-  - Pode emitir [0, 100%] luz de uma cor (**emissiva**)
-  - É indiretamente [0, 100%] iluminado pelas infinitas interações da luz na cena (**ambiente**)
+  - É indiretamente [0, 100%] iluminado pelas "infinitas interações" da
+    luz na cena (**ambiente**)
+    - Pode emitir [0, 100%] luz de uma cor (**emissiva** - "extra Phong")
   - A cor final do vértice pode ser dada pelo **somatório dessas 4 componentes**
+
+---
+## Componentes do Modelo de Phong (cont.)
+
+![](../../images/phong-components.png)
+
+No OpenGL, (+) componente emissiva!!
+
+<!--
+## Componentes do Modelo de Phong
+
+- **Difusa**: contribuição correspondente ao  espalhamento da reflexão
+  lambertiana (independe da posição do observador)
+- **Especular**: contribuição referente ao comportamento de superfícies polidas
+- **Ambiente**: contribuição que não depende da geometria
+- **Emissão** (extra Phong): contribuição que não depende de fontes de
+  luz (fluorescência)
+ -->
 
 ---
 ## **Cor ambiente** de um objeto
@@ -161,10 +179,12 @@
 ---
 ## **Cor difusa** de um objeto
 
-- Objetos foscos refletem a luz em todas as direções uniformemente e possuem uma cor
+- Objetos foscos refletem a luz em todas as direções uniformemente e
+  possuem uma cor
 - Segundo a Lei de Lambert (fluxo de energia):
-  - a luminosidade aparente da superfície não depende da posição do observador, mas apenas do cosseno do
-    **ângulo entre a normal e a direção da luz**
+  - a **luminosidade** aparente da superfície não **depende** da posição do
+    observador, mas apenas do cosseno do **ângulo entre a normal e a
+    direção da luz**
 
     ![](../../images/modelo-lambertiano.png)
 
@@ -200,19 +220,6 @@
 ![](../../images/specular-coefficient.png)
 
 ---
-## Componentes do Modelo de Phong
-
-- **Emissão**: contribuição que não depende de fontes de luz (fluorescência)
-- **Ambiente**: contribuição que não depende da geometria
-- **Difusa**: contribuição correspondente ao  espalhamento da reflexão lambertiana (independe da posição do observador)
-- **Especular**: contribuição referente ao comportamento de superfícies polidas
-
----
-## Componentes do Modelo de Phong (cont.)
-
-![](../../images/phong-components.png)
-
----
 ## Demonstração do Modelo de Iluminação de Phong
 
 ![](../../images/exemplo-luz-e-materiais.png)
@@ -225,8 +232,8 @@
 ---
 ## Iluminação em OpenGL
 
-- Implementa o modelo de iluminação de _Phong_
-- O modelo é computado **apenas para os vértices** dos polígonos
+- Implementa o modelo de iluminação de _Phong_ + emissiva
+- O modelo é computado **<u>apenas para os vértices</u>** dos polígonos
   - Cor dos pixels no interior dos polígonos é obtida por interpolação linear
 - É possível configurar alguns efeitos atmosféricos:
   - Atenuação da luz
