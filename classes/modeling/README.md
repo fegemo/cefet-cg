@@ -194,11 +194,6 @@ backdrop: paradigma-universos
   - Evita transformações redundantes
 
 ---
-## Decomposição Poligonal
-
-![](../../images/malhas-poligonais.png)
-
----
 ## Operações sobre Malhas Poligonais
 
 - <img src="../../images/malha-arestas.png" style="float: right; margin-left: 20px">
@@ -208,6 +203,9 @@ backdrop: paradigma-universos
 - Achar as arestas na fronteira de uma face
 
 ---
+<!--
+backdrop: paradigma-universos
+-->
 # Implementação
 
 ---
