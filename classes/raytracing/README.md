@@ -230,10 +230,6 @@ public:
   - Veja como fazer para uma esfera no próximo slide...
 
 ---
-<!--
-  backdrop: raytracing-collision
--->
-
 ## Exemplo: Interseção com Esfera
 
 - Primeiramente, vamos **simplificar** o problema e assumir que a **esfera é
@@ -244,10 +240,6 @@ public:
 - (continua...)
 
 ---
-<!--
-  backdrop: raytracing-collision
--->
-
 ## Exemplo: Interseção com Esfera (2)
 
 - Logo,
