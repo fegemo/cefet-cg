@@ -45,16 +45,18 @@
 - [Projeção](classes/projection)
 - [Modelagem Hierárquica](classes/hierarchical)
 - [Iluminação e Sombreamento](classes/lighting)
+- [Modelagem de Objetos](classes/modeling)
+- [Texturas](classes/textures)
 
-<!--
-- [Modelagem de Objetos](classes/modeling) (29/09/2016)
-- [Texturas](classes/textures) (04/10/2016)
+---
 
 # Aulas (página 3)
 
-- [Efeitos Visuais](classes/visual-effects) (06/10/2016)
-- [Ray tracing 1](classes/raytracing) (01/11/2016)
-- [Ray tracing 2](classes/raytracing2) (08/11/2016)
+- [Efeitos Visuais](classes/visual-effects)
+- [Ray tracing 1](classes/raytracing)
+- [Ray tracing 2](classes/raytracing2)
+
+<!--
 - [Animações](http://fegemo.github.io/cefet-games/classes/animation) (17/11/2016)
 - [Pipeline Programável](classes/programmable-pipeline) (22/11/2016)
 
