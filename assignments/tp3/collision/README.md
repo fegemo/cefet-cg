@@ -4,7 +4,7 @@ Veja as instruções sobre a primeira parte do trabalho a seguir.
 
 ## Parte 1: Cálculo de **colisão entre raio e esfera**
 
-Faça _download_ do [código seminal do _ray tracer_](http://moodle.cefetmg.br/file.php/292/raytracer-colisao.zip).
+Faça _download_ do código seminal do _ray tracer_ no [Moodle](https://ava.cefetmg.br).
 Nesta parte, você deve fazer três exercícios:
 
 1. Instalar e se familiarizar com o código fonte do "esqueleto" de um
