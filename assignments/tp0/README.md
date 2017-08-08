@@ -78,7 +78,8 @@ você pode também ganhar **1 delicioso e importante ponto extra** se você:
 
 ### Envio do trabalho
 
-Envie a imagem com a _screenshot_ pelo [Moodle](http://moodle.cefetmg.br).
+Envie a imagem com a _screenshot_ pelo [Moodle](http://ava.cefetmg.br) da 
+nossa disciplina (procure o link da entrega lá).
 
 Envie o tutorial pelo
 [Sistema de Tutoriais OpenGL](http://opengl-tutorials.herokuapp.com/). Não
