@@ -225,7 +225,7 @@ void display(void)
 ```
 
 ---
-## [glBitmap](https://www.opengl.org/documentation/specs/glut/spec3/node76.html)
+## [glBitmap](https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glBitmap.xml)
 
 ```c
 void glBitmap(
@@ -238,7 +238,7 @@ void glBitmap(
   const GLubyte* bitmap);
 ```
 
-## [glRasterPosi](https://msdn.microsoft.com/en-us/library/windows/desktop/dd373990(v=vs.85).aspx)
+## [glRasterPosi](https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glRasterPos.xml)
 
 ```c
 void glRasterPos2i(GLint x, GLint y);
@@ -249,7 +249,7 @@ void glRasterPos2i(GLint x, GLint y);
 
 - GLUT já implementou algumas fontes (usando `glBitmap()`) e nos oferece **algumas
   opções mais simples**
-- Documentação da função [glutBitmapCharacter](https://www.opengl.org/documentation/specs/glut/spec3/node76.html)
+- Documentação da função [glutBitmapCharacter](http://freeglut.sourceforge.net/docs/api.php#FontRendering)
   ```c
   void glutBitmapCharacter(void* font, int character);
   ```
