@@ -6,8 +6,7 @@ Enunciado: Crie os programas descritos a seguir. Para todos eles:
 
 **Questão 1**: Escreva um programa em OpenGL (e.g, `quadrados_coloridos.c`)
 que desenha 9 quadrados na tela (3 linhas e 3 colunas), cada um de uma cor,
-usando as cores especificadas na aula
-[opengl-handson](http://fegemo.github.io/cefet-cg/classes/opengl-handson).
+usando as cores especificadas na [aula opengl-handson][opengl-handson].
 
 - _Importante_: procure não dar "Ctrl-C/Ctrl-V" no código. Se estiver
   repetindo o mesmo código várias vezes, quer dizer que você precisa
@@ -22,6 +21,8 @@ triângulos.
 Ao iniciar a aplicação, deve-se ver apenas o disco quadrado em azul - sem os
 traços (contornos pretos dos triângulos). Quando a tecla <key>`c`</key> for
 pressionada, devem surgir os traços pretos por cima do disco quadrado.
+
+Para avisar ao GLUT que ele precisa redesenhar a janela, você pode chamar `glutPostRedisplay()` assim que o usuário pressionar a tecla.
 
 - _Dikentinha_: Lembre-se que por padrão o OpenGL colore (ou melhor, preenche)
   o interior dos polígonos. Essa configuração é dada pelo **modo
@@ -42,10 +43,13 @@ se `NUM_LADOS=5`, um pentágono regular e assim por diante.
 
 ![](./images/circle-aprox2.png)
 
-- _Nota_: alunos super aplicados (99% da turma) costumam usar uma variável
-`int numLados` em vez de uma constante `#define NUM_LADOS` e ainda
-fazem com que as teclas `+` e `-` aumentem/reduzam o valor dessa variável.
-Incrível!!!
+- _Nota_: alunos com [qualidade super premium][super-premium] (99% da turma)
+costumam usar uma variável `int numLados` em vez de uma constante
+`#define NUM_LADOS` e ainda fazem com que as teclas `+` e `-`
+aumentem/reduzam o valor dessa variável. Incrível!!!
+
+[super-premium]: https://www.youtube.com/watch?v=4CooiNDnPHI
+[opengl-handson]: https://fegemo.github.io/cefet-cg/classes/opengl-handson/
 
 Você deve entregar esta atividade via **Moodle**.
 Valor: 4 pontos
