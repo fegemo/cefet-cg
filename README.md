@@ -12,14 +12,14 @@
 ## Trabalhos (61 pontos)
 
 - [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
-- [TP1: {Parad}oroids][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
-- [TP2: _CG Runner_][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
+- [TP1: tp.io][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP2: ??[][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
 - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
   - Primeira parte - colisão: no laboratório
   - Segunda parte - iluminação: no laboratório
 
 [tp0]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp0/README.md
-[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-asteroids/README.md
+[tp1]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp1-tp.io/README.md
 [tp2]: https://github.com/fegemo/cefet-cg/tree/master/assignments/tp2-runner/README.md
 [tp3]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp3/README.md#trabalho-prático-3---ray-tracer
 [tp3-collision]: https://github.com/fegemo/cefet-cg/blob/master/assignments/tp3/collision/README.md#trabalho-prático-3---ray-tracer
