@@ -318,13 +318,11 @@ _A wild TP1 appears..._
 ---
 ## TP1: **{Parad}oroids**
 
-<img alt="Jogo Asteroids (1979)" src="http://i.imgur.com/bpCV09G.gif"
+<img alt="" src="https://media.giphy.com/media/YWRcs7sERWnQc/giphy.gif"
   style="float: right; width: 420px; margin: 0 0 5px 20px">
-  _O objetivo do jogador é atingir a maior pontuação possível, obtida ao se
-  atirar e destruir ~~maliciosos asteróides~~ paradas marotas colocado(a)s
-  ~~no espaço~~ nas proximidades pelo programador._
+  _Esse jogo inaugurou os jogos do tipo snake que foram jogados por nossos pais e também inspira os que jogamos hoje, como o Agar.io, o Slither.io e o Wormax.io. Isso mesmo, tudo .io!_
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-asteroids/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-tp.io/README.md)).
 
 ---
 # Referências
