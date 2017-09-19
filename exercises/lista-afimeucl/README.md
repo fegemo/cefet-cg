@@ -24,11 +24,15 @@ respostas em termos de operações de alto nível como combinações afins, prod
 interno e produto vetorial em vez de manipulações de coordenadas de baixo
 nível ou funções trigonométricas.
 
-![](images/geoafim.png)
+![](images/geoafim-ab.png)
 
 1. Dado um triângulo `△pqr` no plano, explique como determinar um quarto
 ponto `s` tal que `{p, s, q, r}` defina um paralelogramo que tem pq como
 diagonal (veja Figura a).
+  <!--
+    Basta fazer s = q + rp, com rp = p-r, ou
+                s = p + rq, com rq = q-r
+   -->
 
 1. Um observador está localizado em um ponto `e` no espaço R<sup>3</sup> e
 ele enxerga um triângulo definido pelos vértices `p`, `q` e `r`. O lado da
@@ -36,12 +40,23 @@ frente desse triângulo é o lado para o qual `p`, `q` e `r` aparecem no
 sentido anti-horário e o outro lado é lado de trás. Assumindo que `e` não
 é co-planar com o triângulo, **discuta** se o observador vê o lado da
 frente do triângulo ou o de trás (veja Figura b).
+   <!--
+     Achamos a normal n fazendo pq x pr.
+     Achamos o vetor pe (e - p)
+     Se o ângulo entre n e pe for menor que 90, eles
+     o ponto e está olhando para o lado de cima. Se
+     o ângulo for maior que 90, está olhando por trás.
 
+     Para achar o ângulo, basta usar produto interno dos
+     vetores unitários de n e pe, encontrando o cosseno.
+    -->
 
 ---
-### **Questão 3** - 1 pontos:
+### **Questão 3: mudança de sistema de coordenadas** - 1 ponto
 
-Considere um cenário em que temos dois sistemas de coordenadas: da janela
+Nos itens a seguir - (a) e (b) - você deve efetuar a mudança de sistema de coordenadas.
+
+(a) Considere um cenário em que temos dois sistemas de coordenadas: da janela
 (`J`) e do mundo (`M`), definidos em OpenGL da seguinte forma:
 
 ```c
@@ -49,7 +64,8 @@ void reshape(int w, int h) {
   glViewport(0, 0, 800, 600);     // Define sistema J
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
-  glOrtho(0, 100, 0, 75, -1, 1);  // Define sistema M
+  // left, right, bottom, top, near, far
+  glOrtho(0, 800, 0, 600, -1, 1);  // Define sistema M
   glMatrixMode(GL_MODELVIEW);
 }
 ```
@@ -60,12 +76,118 @@ Dois cliques foram dados nos pontos `P` e `Q`, e suas coordenadas são
 capturadas no sistema da janela (`J`). Pede-se:
 
 1. Represente a base e a origem do sistema `J` (_i.e._, `O`<sub>J</sub>,
-  `x`<sub>J</sub>, `y`<sub>J</sub>) no sistema M.
+   `x`<sub>J</sub>, `y`<sub>J</sub>) no sistema M.
+   <!--
+     Pergunta-se: quantos Xm vale 1 Xj?
+     Raciocínio: 800Xm equivalem a 800Xj. Logo, Xj = Xm. Sendo assim,
+                 Xj[M] = (1, 0).
+
+                 e quantos Ym vale 1 Yj?
+                 600Ym equivalem a 600Yj, mas no sentido contrário. Logo,
+                 Yj = -1 Ym. Sendo assim, Yj[M] = (0, -1)
+
+                 e como chegamos em Oj a partir de Om?
+                 Precisamos deslocar no sentido Ym 75 vezes. Logo,
+                 Oj[M] = (0, 600)
+
+   -->
 1. Encontre a matriz de mudança de sistema de coordenadas que leva um ponto
-  ou vetor do sistema `J` para o sistema `M`.
+   ou vetor do sistema `J` para o sistema `M`.
+   <!--
+     Portanto, a matriz de transformação é:
+     |  1   0    0  |
+     |  0  -1   600 |
+     |  0   0    1  |
+   -->
 1. Use a matriz para calcular as coordenadas de `P` e `Q` no sistema `M`.
+   <!--
+     Basta multiplicar o vetor coluna de cada ponto pela matriz. Para P:
+     |  1   0    0 |   | 200 |   | 200 |
+     |  0  -1  600 | x | 100 | = | 500 |
+     |  0   0    1 |   |   1 |   |   1 |
+
+     Para Q:
+     |  1    0   0 |   | 400 |   | 400 |
+     |  0  -1  600 | x | 300 | = | 300 |
+     |  0   0    1 |   |   1 |   |   1 |
+
+   -->
+
+
+(b) Agora, considere que o sistema da janela é o mesmo, mas o sistema de coordenadas do mundo (`M`) está definido assim:
+
+```c
+void reshape(int w, int h) {
+ glViewport(0, 0, 800, 600);     // Define sistema J
+ glMatrixMode(GL_PROJECTION);
+ glLoadIdentity();
+ // left, right, bottom, top, near, far
+ glOrtho(0, 100, 0, 75, -1, 1);  // Define sistema M
+ glMatrixMode(GL_MODELVIEW);
+}
+```
+
+![Sistemas de coordenadas da janela e do mundo, com pontos P[J] = (200,100) e Q[J] = (400,300)](images/sistema-coordenadas-2.png)
+
+Dois cliques foram dados nos pontos `P` e `Q`, e suas coordenadas são
+capturadas no sistema da janela (`J`). Pede-se:
+
+1. Represente a base e a origem do sistema `J` (_i.e._, `O`<sub>J</sub>,
+   `x`<sub>J</sub>, `y`<sub>J</sub>) no sistema M.
+   <!--
+     Pergunta-se: quantos Xm vale 1 Xj?
+     Raciocínio: 100Xm equivalem a 800Xj. Logo, Xj = 1/8 Xm. Sendo assim,
+                 Xj[M] = (1/8, 0).
+
+                 e quantos Ym vale 1 Yj?
+                 75Ym equivalem a 600Yj, mas no sentido contrário. Logo,
+                 Yj = -1/8 Ym. Sendo assim, Yj[M] = (0, -1/8)
+
+                 e como chegamos em Oj a partir de Om?
+                 Precisamos deslocar no sentido Ym 75 vezes. Logo,
+                 Oj[M] = (0, 75)
+
+   -->
+1. Encontre a matriz de mudança de sistema de coordenadas que leva um ponto
+   ou vetor do sistema `J` para o sistema `M`.
+   <!--
+     Portanto, a matriz de transformação é:
+     | 1/8  0    0  |
+     |  0 -1/8  75  |
+     |  0   0    1  |
+   -->
+1. Use a matriz para calcular as coordenadas de `P` e `Q` no sistema `M`.
+   <!--
+     Basta multiplicar o vetor coluna de cada ponto pela matriz. Para P:
+     | 1/8  0    0  |   | 200 |   |   25 |
+     |  0 -1/8  75  | x | 100 | = | 62,5 |
+     |  0   0    1  |   |   1 |   |    1 |
+
+     Para Q:
+     | 1/8  0    0  |   | 400 |   |   50 |
+     |  0 -1/8  75  | x | 300 | = | 37,5 |
+     |  0   0    1  |   |   1 |   |    1 |
+
+   -->
+1. Encontre a matriz inversa daquela encontrada em (1). Se você já aprendeu
+   a fazer isso, você pode usar um dos métodos para matrizes 3x3, como
+   Gauss-Jordan. Ou, então, use uma calculadora de matrizes inversas online.
+   <!--
+     A matriz inversa M-¹ é:
+     | 8   0     0 |
+     | 0  -8   600 |
+     | 0   0     1 |
+   -->
 1. Considerando um ponto `R[M] = (4, 60)`, converta ele para o sistema `J`
-  para saber em que pixel ele será desenhado.
+   para saber em que pixel ele será desenhado dentro da tela.
+   <!--
+     Para encontrar R, dado em coordenadas do mundo, no sistema da janela,
+     basta multiplicar suas coordenadas pela matriz inversa da encontrada:
+     | 8   0     0 |   |  4 |   |         32 |   |  32 |
+     | 0  -8   600 | x | 60 | = | -480 + 600 | = | 120 |
+     | 0   0     1 |   |  1 |   | 1          |   |   1 |
+
+   -->
 
 ---
 ### **Questão 4** (prática) - 2 pontos:
