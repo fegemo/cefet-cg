@@ -325,12 +325,12 @@ void gluLookAt(double eyeX,     // posição do olho
                double upZ);
 ```
 
----
-# Trabalho Prático 2 \o/
+
+<!-- # Trabalho Prático 2 \o/
 
 _A wild TP2 appears..._
 
----
+
 ## TP2: Masmorras e Dragões
 
 <img alt="" src="../../images/tp2-keep-out.png"
@@ -341,7 +341,7 @@ _A wild TP2 appears..._
   tenho que ir"_<br>
   _"Rimos muito e encerramos a sessão de jogo naquele dia..."_
 
-- Enunciado **QUASE** no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-dandd/README.md)).
+- Enunciado **QUASE** no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-dandd/README.md)). -->
 
 ---
 # Referências
