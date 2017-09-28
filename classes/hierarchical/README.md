@@ -183,3 +183,18 @@
 
 - Vide slides do professor Moisés Pereira
 - Exemplo: [Braço do Robô](codeblocks:braco-robo/CodeBlocks/braco-robo.cbp)
+
+---
+# Trabalho Prático 2 \o/
+
+_A wild TP2 appears..._
+
+---
+## TP2: Casa na Árvore
+
+<img alt="" src="../../images/casa-arvore.png"
+  style="float: right; width: 450px; margin: 0 0 5px 20px">
+  -- _"Neste trabalho, vamos criar uma casinha na árvore. Ou uma casinha submarina. Ou uma casinha no chão mesmo - basta dar pra
+  morar."_
+
+- Enunciado **QUASE** no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-treehouse/README.md)).
