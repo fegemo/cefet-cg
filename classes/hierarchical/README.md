@@ -175,8 +175,8 @@
   - Pense nas transformações como movimentação de sistemas de coordenadas
   - Chame as funções de transformação nessa ordem
   - OpenGL faz pós-multiplicação de matrizes
-  - A matriz de acumulação multplicará os vértices dos objetos
-- Exemplo: [Composição de Tranformações](codeblocks:composicao-transformacao/CodeBlocks/composicao-transformacao.cbp)
+  - A matriz de acumulação multiplicará os vértices dos objetos
+- Exemplo: [Composição de Tranformações](codeblocks:composicao-transformacoes/CodeBlocks/composicao-transformacoes.cbp)
 
 ---
 # Modelagem Hierárquica
@@ -197,4 +197,4 @@ _A wild TP2 appears..._
   -- _"Neste trabalho, vamos criar uma casinha na árvore. Ou uma casinha submarina. Ou uma casinha no chão mesmo - basta dar pra
   morar."_
 
-- Enunciado **QUASE** no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-treehouse/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-treehouse/README.md)).

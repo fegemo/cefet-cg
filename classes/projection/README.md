@@ -53,12 +53,12 @@
 ## Elementos da projeção
 
 1. **Plano de projeção**:
-  - Definido pelo sistema de coordenadas da câmera (ou do olho)
+   - Definido pelo sistema de coordenadas da câmera (ou do olho)
 1. **Raios de projeção**:
-  - Raios que ligam um ponto no espaço tridimensional à imagem 2D
-    representada no plano de projeção
+   - Raios que ligam um ponto no espaço tridimensional à imagem 2D
+     representada no plano de projeção
 1. **Centro de projeção**:
-  - ponto fixo na cena de onde todos os raios de projeção surgem
+   - Ponto fixo na cena de onde todos os raios de projeção surgem
 
 ---
 ## Tipos de projeção
@@ -97,17 +97,27 @@
 
 - Queridíssimo `glOrtho` ([referência](http://earth.uni-muenster.de/~joergs/opengl/glOrtho.html))
 - <div>Assinatura da função:</div>
-  <img src="../../images/gl-ortho.png" style="float: right; margin-left: 10px; margin-top: 18px">
+  <div class="math" style="float: right; font-size: 20px;">\begin{bmatrix} \frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l}\\\0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b}\\\0 & 0 & \frac{-2}{f-n} & -\frac{f+n}{f-n}\\\0 & 0 & 0 & 1 \end{bmatrix}</div>
   ```c
-  void glOrtho(double left,
-               double right,
-               double bottom,
-               double top,
-               double near,
-               double far);
+  void glOrtho(double left,  //l
+               double right, //r
+               double bottom,//b
+               double top,   //t
+               double near,  //n
+               double far);  //f
   ```
 - A função multiplica a matriz corrente por uma matriz da forma acima (direita)
   - Devemos multiplicar a matriz **de projeção (`GL_PROJECTION`)**
+
+---
+## Projeção "Padrão"
+
+- Se você **não definir uma projeção**, existe a matriz identidade
+  previamente carregada
+- Isso é equivalente a `glOrtho(-1, 1, -1, 1, -1, 1)` (_exceto pelo -1_):
+  <div class="math" style="float: left;">\begin{bmatrix} \frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l}\\\0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b}\\\0 & 0 & \frac{-2}{f-n} & -\frac{f+n}{f-n}\\\0 & 0 & 0 & 1 \end{bmatrix}</div>
+  <div class="math" style="float: right;">\begin{bmatrix} \frac{2}{2} & 0 & 0 & -\frac{0}{2}\\\0 & \frac{2}{2} & 0 &  -\frac{0}{2}\\\0 & 0 & -\frac{2}{2} & -\frac{0}{2}\\\0 & 0 & 0 & 1 \end{bmatrix}</div>
+
 
 ---
 ## Projeção Paralela, Isométrica
@@ -208,19 +218,25 @@
                  double bottom, double top,
                  double near,   double far);
   ```
-  - **`near` e `far`** devem ser **positivos** e `near` &gt; `far`
+  - **`near` e `far`** devem ser **positivos** e `near` &lt; `far`
 
 ---
 ## glFrustum (cont.)
 
-- <img src="../../images/gl-frustum.gif" style="float: right; margin-left: 20px;">
+- <div class="math" style="float: right; font-size: 20px;">\begin{bmatrix} \frac{2n}{r-l} & 0 & \frac{r+l}{r-l} & 0\\\0 & \frac{2n}{t-b} & \frac{t+b}{t-b} & 0\\\0 & 0 & \frac{f+n}{f-n} & \frac{2fn}{f-n}\\\0 & 0 & -1 & 0 \end{bmatrix}</div>
   A função multiplica a matriz corrente por uma matriz da forma à direita
-- A matriz de projeção (independente se `glOrtho` ou `glFrustum`) deve ser
+  ```c
+  glFrustum(left, right,  // l, r
+            bottom, top,  // b, t
+            near, far);   // n, f
+  ```
+- **Lembre-se**: a matriz de projeção (`glOrtho` ou `glFrustum`) deve ser
   colocada na **pilha de matrizes de projeção do OpenGL**:
   ```c
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   glFrustum(-1, 1, -1, 1, 1, 20);
+
   ```
 
 ---
@@ -235,8 +251,8 @@
 ---
 ## **gluPerspective** ([referência](http://earth.uni-muenster.de/~joergs/opengl/gluPerspective.html))
 
-![](../../images/gl-frustum-diagram.gif)
-![](../../images/glu-perspective-diagram.gif)
+![](../../images/gl-frustum-diagram.png)
+![](../../images/glu-perspective-diagram.png)
 
 - Não é muito intuitivo configurar a perspectiva usando `glFrustum`
 - Uma forma mais comum para configurar perspectiva é usando dois parâmetros:
