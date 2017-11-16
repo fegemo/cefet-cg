@@ -309,7 +309,8 @@ int main(int argc, char* argv[])
   glutMainLoop();
 }
 ```
-- Exemplo `hello-world-modern.c` (130 <abbr title="Lines of code">LOC</abbr>)
+- [Exemplo `hello-world-modern.c`](codeblocks:hello-modern/CodeBlocks/hello-modern.cbp)
+  (130 <abbr title="Lines of code">LOC</abbr>)
 
 ---
 ## Resultado...
