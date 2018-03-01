@@ -261,30 +261,29 @@
 .page>li:nth-child(5)
   transition-duration: .6s
 
-@media screen and (min-width: 768px)
-  .book:hover>.hardcover_front
-    transform: rotateY(-145deg) translateZ(0)
-    z-index: 0
+.book:hover>.hardcover_front
+  transform: rotateY(-145deg) translateZ(0)
+  z-index: 0
 
-  .book:hover>.page li:nth-child(1)
-    transform: rotateY(-30deg)
-    transition-duration: 1.5s
+.book:hover>.page li:nth-child(1)
+  transform: rotateY(-30deg)
+  transition-duration: 1.5s
 
-  .book:hover>.page li:nth-child(2)
-    transform: rotateY(-35deg)
-    transition-duration: 1.8s
+.book:hover>.page li:nth-child(2)
+  transform: rotateY(-35deg)
+  transition-duration: 1.8s
 
-  .book:hover>.page li:nth-child(3)
-    transform: rotateY(-118deg)
-    transition-duration: 1.6s
+.book:hover>.page li:nth-child(3)
+  transform: rotateY(-118deg)
+  transition-duration: 1.6s
 
-  .book:hover>.page li:nth-child(4)
-    transform: rotateY(-130deg)
-    transition-duration: 1.4s
+.book:hover>.page li:nth-child(4)
+  transform: rotateY(-130deg)
+  transition-duration: 1.4s
 
-  .book:hover>.page li:nth-child(5)
-    transform: rotateY(-140deg)
-    transition-duration: 1.2s
+.book:hover>.page li:nth-child(5)
+  transform: rotateY(-140deg)
+  transition-duration: 1.2s
 
 .coverDesign
   position: absolute
@@ -384,30 +383,3 @@
 .book figcaption p
   color: black
   line-height: 1.3
-
-@media screen and (max-width: 767px)
-  .align>li
-    width:100%
-    min-height: 440px
-    height: auto
-    padding: 0
-    margin: 0 0 30px 0
-
-  .book
-    margin-left: 60px
-    display: block
-    margin-bottom: 280px
-
-  .book figcaption
-    min-width: 320px
-    top: 250px
-    padding-left: 0
-    left: -60px
-    display: block
-
-@media screen and (max-width: 550px)
-  .book
-    height:250px
-
-  .book figcaption
-    width: 320px
