@@ -11,9 +11,9 @@
 ---
 ## Trabalhos (61 pontos)
 
-- [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto, +1 extra)
-- [TP1: tp.io][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
-- [TP2: Casa na árvore][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP0: Ambiente de Desenvolvimento [][tp0] (1 ponto)
+- TP1: a definir ([tp.io][tp1]), grupos <span class="math">\leq</span> 2 (20 pontos)
+- TP2: a definir ([Casa na árvore][tp2]), grupos <span class="math">\leq</span> 2 (20 pontos)
 - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
   - Primeira parte - colisão: no laboratório
   - Segunda parte - iluminação: no laboratório
@@ -70,7 +70,7 @@
 ---
 ## Trabalhos Anteriores
 
-<iframe width="800" height="450" src="https://www.youtube.com/playlist?list=PLNaBD3CnN0--7AFIYx9O1lGYJLDh2dVCt" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLNaBD3CnN0--7AFIYx9O1lGYJLDh2dVCt&amp;ecver=2" width="800" height="450" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
 
 ---
 ## Interdisciplinaridades

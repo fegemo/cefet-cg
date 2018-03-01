@@ -70,11 +70,6 @@ computadores e periféricos gráficos.
 # Arte por Computador
 
 ---
-## Interação com outras áreas
-
-![Interação da Computação Gráfica com outras áreas](../../images/interacao-areas.png)
-
----
 # **Problemas abordados** na área
 
 ![](../../images/cg-overall-tasks.png)
@@ -144,7 +139,7 @@ computadores e periféricos gráficos.
 ---
 ## Foco deste curso
 
-- **Modelagem e síntese** de imagens
+- **Modelagem e <u>síntese</u>** de imagens
   - Processamento de imagens é uma área por si só
   - Visão computacional estuda a análise de imagens (e vídeos)
 - Teoria e prática das técnicas e algoritmos envolvidos em modelagem e síntese
@@ -177,27 +172,32 @@ computadores e periféricos gráficos.
 ---
 ## Dispositivos Gráficos
 
-- Monitores Raster
-  - CRT
-  - LCD
-  - Plasma
-- Monitores vetoriais (1963)
-  - Imagens desenhadas como uma caneta
+- Monitores **Raster**
+  - Raster é a discretização da imagem em pedacinhos,
+    os _picture elements_ (ou **pixels**)
+  - Exemplos:
+    - CRT
+    - Plasma
+    - LCD, LED
+- ![right](../../images/vector-asteroids.png)
+  Monitores vetoriais (1963)
+  - Desenham imagens como uma caneta (eg, osciloscópio)
+  - Em desuso desde 1970
 - Impressoras
+
 
 ---
 ## _Cathode Ray Tube_ (CRT)
 
 ![Diagrama de funcionamento de um tubo de raio catódico](../../images/crt.png)
 
-- Tubo de raio catódico
-- Baixo custo de produção
-- Bom ângulo de visão
+---
+<iframe width="800" height="450" src="https://www.youtube.com/embed/3BJU2drrtCM?start=70" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
 
 ---
 ## Outros monitores
 
-- _Liquid Cristal Display_ (LCD)
+- _Liquid Cristal Display_ (LCD) - e LED
   - Cada pixel são três (rgb) "orifícios" que permitem passagem de luz branca
   - Demonstração: [Desmontando um monitor de LCD (Enginner Guy)][lcd-teardown]
 - Plasma
@@ -211,51 +211,79 @@ computadores e periféricos gráficos.
 ---
 # Arquitetura de sistema gráfico raster
 
----
-## Modelo **Simples**
+- Um monitor raster precisa receber uma **matriz de valores para seus pixels**
+  - Costumamos chamar **matriz 2D de valores** de um **raster**
+- É necessário ter espaço para armazenar o raster
+  - Essa memória se chama **_frame buffer_** (ou _color buffer_)
 
 ![Diagrama da arquitetura de sistema gráfico simples](../../images/raster-architecture.png)
 
 ---
-## Modelo **Moderno**
+## Arquitetura **Simples** vs **Moderno**
 
+![Diagrama da arquitetura de sistema gráfico simples](../../images/raster-architecture.png)
 ![Diagrama da arquitetura de sistema gráfico moderno](../../images/raster-architecture-modern.png)
 
 ---
-## Representação de Cores
+# Representação de Cores
 
-![Sistema de cores aditivas e subtrativas](../../images/cmyk-rgb.png)
+- Radiação eletromagnética pode ser entendia como ondas ou um fluxo de
+  partículas sem massa chamadas de fótons
+- É caracterizada pela frequência/comprimento da onda
+
+  ![](../../images/electromagnetic-spectrum.png)
+
+---
+## Espectro da luz visível
+
+- As ondas eletromagnéticas raramente aparecem em apenas 1 frequência,
+  mas sim como uma **combinação**. Exemplo:
+
+    ![](../../images/light-frequency-distribution.png)
+- A luz é percebida como a **mistura (ou soma) das frequências** da onda
+  eletromagnética
+- Para representar no computador, precisamos de uma **forma discreta** para
+  representar a cor
 
 ---
 ## Representação de Cores
 
 - Depende da natureza do dispositivo gráfico: aditivo (monitores) ou subtrativo
   (impressoras)
+
+![Sistema de cores aditivas e subtrativas](../../images/cmyk-rgb.png)
+
+---
+## O modelo RGB de cores
+
 - Monitores: 24-bit RGB
   - 8 bits para vermelho (0 a 255)
   - 8 bits para verde
   - 8 bits para azul
   - Exemplo: <span class="color-portrait ffd5d5"> </span> (<span class="pure-red">255</span>, <span class="pure-green">213</span>, <span class="pure-blue">213</span>) ou (<span class="pure-red">1</span>, <span class="pure-green">0.84</span>, <span class="pure-blue">0.84</span>)
     - Seletor de cores: <input type="color">
+- Imagens digitais: 32-bit RGBA (em geral)
+  - +8 bits para alfa (opacidade)
+
 
 <!--
 - [Questionário Maroto - parte 1](https://moodle.cefetmg.br/mod/quiz/view.php?id=17597)
 -->
 
 ---
-# Representação de Imagens
+# Representação de Imagens Digitais
 
-Imagens podem ser representadas em duas formas principais:
-
-- Vetoriais
-  - Formulados por modelos geométricos
-  - Ocupam menos espaço de armazenamento
-  - Não perdem qualidade quando ampliados
-  - Extensões: [**svg, cdr**]
-- Raster (matricial ou matriz de pixels)
-  - Matriz de **pixels** (_picture elements_)
-  - Muito simples de gerar
-  - Extensões: [**gif, jpg, png, bmp**]
+- Imagens podem ser representadas em duas formas principais:
+  - Vetoriais
+    - Formuladas por modelos geométricos
+    - Ocupam menos espaço de armazenamento
+    - Não perdem qualidade quando ampliados
+    - Extensões: [**svg, cdr**]
+  - Raster (matriz de pixels)
+    - Matriz de **pixels** (_picture elements_)
+    - Muito simples de gerar e exibir
+    - Perdem qualidade se ampliadas
+    - Extensões: [**gif, jpg, png, bmp, ppm**]
 
 ---
 ## Imagem vetorial
@@ -268,8 +296,6 @@ Imagens podem ser representadas em duas formas principais:
 ![Imagem raster](../../images/raster-image.png)
 
 
----
-# Modelos usados em Computação Gráfica
 ---
 ## Modelos de Sistema Visual
 
@@ -284,7 +310,9 @@ Imagens podem ser representadas em duas formas principais:
 
 - ![left](../../images/eye-model.png)
   Fótons (raios de luz) entram pela pupila de forma reta até atingirem a retina
-- A imagem é formada pela contribuição da luz nos cones da retina
+- A imagem é formada pela contribuição da luz nos cones e bastonetes da retina
+  - Cones: bons identificadores de cores
+  - Bastonetes: identificam luz em baixa intensidade
 - Quanto mais próximo ao centro da retina, maior o nível de detalhes que
   percebemos
 - Este modelo é **complexo demais** para a Computação Gráfica
@@ -325,6 +353,20 @@ Imagens podem ser representadas em duas formas principais:
 
 - [Questionário Maroto - parte 2](https://moodle.cefetmg.br/mod/quiz/view.php?id=17596)
 -->
+
+---
+# Sumário das nossas decisões
+
+1. Modelo de **representação de imagens**
+   - Usamos monitores raster
+   - Vamos gerar imagens raster
+   - É possível usar imagens vetoriais, rasterizando-as
+1. Modelo de **cores**
+   - Discretizamos em RGB
+   - Representação com 8 bits por componente
+1. Modelo de **câmera**
+   - Vamos usar o modelo do _view frustum_
+   - É possível usar outros modelos mais complexos
 
 ---
 # Referências
