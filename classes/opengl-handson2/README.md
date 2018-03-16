@@ -74,11 +74,11 @@
     - Então, **basta avisar ao Freeglut** que, assim que possível, ele deve mandar **disparar um <u>evento _display_</u>**
 
 ---
-## A Solução
+## A Solução (neste caso)
 
 - Para avisar ao Freeglut que a janela deve ser redesenhada, usamos o comando `glutPostRedisplay()`:
   ```c
-  void teclaPressionada() {
+  void teclaPressionada(unsigned int key, int x, int y) {
     // ...
     glutPostRedisplay();
   }
@@ -104,7 +104,7 @@
 - Podemos registrar uma _callback_ para **ser invocada daí a `x` ms**.
 - Podemos usá-la p/ alterar parâmetros (cor, posição etc.) da cena
   ```c
-    void atualizaCena()
+    void atualizaCena(int valor)
     {
       // altera a cor do quadrado
       ...
@@ -122,7 +122,7 @@
 
 1. Criar um quadrado que muda de cor
    ```c
-   void timerColored() {
+   void timerColored(int valor) {
      color += colorIncrement;
      if (color > 1) {         // maior que
        color = 1; colorIncrement = colorIncrement * -1;
@@ -156,6 +156,7 @@
       // ...
   }
   ```
+  - Mas o que significa o símbolo `|`?
 1. Na _callback_ de _display_, **`glutSwapBuffers();`** <u>em vez
   de</u> `glFlush();`:
   ```c
@@ -328,22 +329,40 @@ void desenhaDisco(float raio, float x, float y, float z) {
 - E se alterarmos a ordem do branco com o vermelho?
 
 ---
-## **Depth Buffer**
+## O que aconteceu?
 
-- O OpenGL simplesmente desenha os triângulos, na ordem que pedimos
-- Para que ele faça um teste da coordenada `Z`, <u>precisamos ativar o **teste
-  de profundidade**</u>
+- Por padrão, o OpenGL usa o **algoritmo do pintor** para a **determinação da
+  visibilidade** dos polígonos
+
+  ![max](../../images/algoritmo-do-pintor.png)
+  - O que é desenhado por último aparece na frente
+  - O OpenGL simplesmente desenha os triângulos, na ordem que pedimos
+
+---
+## **Teste de profundidade**
+
+- Para que ele faça um teste da coordenada `Z`, (1) <u>precisamos ativar
+  o **teste de profundidade**</u>
   - ```c
     glEnable(GL_DEPTH_TEST);
     // desenha
     glDisable(GL_DEPTH_TEST);
     ```
-- Também precisamos <u>limpar o _depth buffer_</u>, da mesma forma que
+- Também precisamos (2) <u>limpar o _depth buffer_</u>, da mesma forma que
   limpamos a cor da janela
   ```c
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   ```
+- E (3) <u>avisar a freeglut</u> que vamos usar o _depth buffer_
+  ```c
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+  ```
 
+
+---
+## O _depth buffer_ (ou **z-buffer**)
+
+![](../../images/zbuffer-vs-colorbuffer.png)
 ---
 ## Experimento
 
