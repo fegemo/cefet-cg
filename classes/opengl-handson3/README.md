@@ -316,13 +316,13 @@ void init() {
 _A wild TP1 appears..._
 
 ---
-## TP1: **{Parad}oroids**
+## TP1: **Lander**
 
-<img alt="" src="https://media.giphy.com/media/YWRcs7sERWnQc/giphy.gif"
+<img alt="" src="https://i.imgur.com/utZznoE.gif"
   style="float: right; width: 420px; margin: 0 0 5px 20px">
-  _Esse jogo inaugurou os jogos do tipo snake que foram jogados por nossos pais e também inspira os que jogamos hoje, como o Agar.io, o Slither.io e o Wormax.io. Isso mesmo, tudo .io!_
+  _O jogo Lunar Lander foi criado pela Atari em 1979 e foi um terrível sucesso, sendo jogado em fliperamas de todo o mundo. Ele foi baseado no Moonlander (1973), que foi o primeiro jogo gráfico do gênero, e utilizou um monitor vetorial dentro do gabinete de madeira do arcade._
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-tp.io/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-lander/README.md)).
 
 ---
 # Referências
