@@ -17,14 +17,6 @@
 ![](../../images/proj-casa-foto.png)
 
 ---
-## Projeção
-
-- De forma geral, trata-se de representar objetos de <span class="math">R^n</span> em
-  <span class="math">R^{n-1}</span>
-
-![](../../images/proj-waze.jpg)
-
----
 ## Relembrando o pipeline gráfico
 
 ![](../../images/pipeline-grafico-fases.png)
@@ -47,12 +39,8 @@
 ---
 ## Elementos da projeção
 
-![](../../images/proj-conceitos.png)
-
----
-## Elementos da projeção
-
-1. **Plano de projeção**:
+1. <img src="../../images/proj-conceitos.png" style="float:right;margin-left:10px; max-width: 450px">
+   **Plano de projeção**:
    - Definido pelo sistema de coordenadas da câmera (ou do olho)
 1. **Raios de projeção**:
    - Raios que ligam um ponto no espaço tridimensional à imagem 2D
@@ -64,11 +52,6 @@
 ## Tipos de projeção
 
 ![](../../images/proj-tipos-principais.png)
-
----
-## Outros tipos de projeção
-
-![](../../images/tipos-projecao.png)
 
 ---
 # Projeção Paralela
@@ -118,7 +101,14 @@
   <div class="math" style="float: left;">\begin{bmatrix} \frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l}\\\0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b}\\\0 & 0 & \frac{-2}{f-n} & -\frac{f+n}{f-n}\\\0 & 0 & 0 & 1 \end{bmatrix}</div>
   <div class="math" style="float: right;">\begin{bmatrix} \frac{2}{2} & 0 & 0 & -\frac{0}{2}\\\0 & \frac{2}{2} & 0 &  -\frac{0}{2}\\\0 & 0 & -\frac{2}{2} & -\frac{0}{2}\\\0 & 0 & 0 & 1 \end{bmatrix}</div>
 
+---
+## E esse **z negativo**?
 
+![](../../images/ortho-right-handed-to-left.png)
+
+- ![right](../../left-vs-right-hand.gif)
+  O OpenGL nos permite trabalhar **right-handed**
+- Mas ele projeta num sistema **left-handed**
 ---
 ## Projeção Paralela, Isométrica
 
