@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 module.exports = function() {
   return function(deck) {
     var backdrops;
@@ -139,6 +139,13 @@ module.exports = function(options) {
 },{}],3:[function(require,module,exports){
 module.exports = function() {
   return function(deck) {
+    var activateSlide = function(index) {
+      var indexToActivate = -1 < index && index < deck.slides.length ? index : 0;
+      if (indexToActivate !== deck.slide()) {
+        deck.slide(indexToActivate);
+      }
+    };
+
     var parseHash = function() {
       var hash = window.location.hash.slice(1),
         slideNumberOrName = parseInt(hash, 10);
@@ -148,7 +155,7 @@ module.exports = function() {
           activateSlide(slideNumberOrName - 1);
         } else {
           deck.slides.forEach(function(slide, i) {
-            if (slide.getAttribute('data-bespoke-hash') === hash) {
+            if (slide.getAttribute('data-bespoke-hash') === hash || slide.id === hash) {
               activateSlide(i);
             }
           });
@@ -156,18 +163,11 @@ module.exports = function() {
       }
     };
 
-    var activateSlide = function(index) {
-      var indexToActivate = -1 < index && index < deck.slides.length ? index : 0;
-      if (indexToActivate !== deck.slide()) {
-        deck.slide(indexToActivate);
-      }
-    };
-
     setTimeout(function() {
       parseHash();
 
       deck.on('activate', function(e) {
-        var slideName = e.slide.getAttribute('data-bespoke-hash');
+        var slideName = e.slide.getAttribute('data-bespoke-hash') || e.slide.id;
         window.location.hash = slideName || e.index + 1;
       });
 
@@ -14307,7 +14307,7 @@ module.exports = function(hljs) {
 };
 },{}],154:[function(require,module,exports){
 /**
- * isMobile.js v0.4.0
+ * isMobile.js v0.4.1
  *
  * A simple library to detect Apple phones and tablets,
  * Android phones and tablets, other mobile devices (like blackberry, mini-opera and windows phone),
@@ -14326,7 +14326,7 @@ module.exports = function(hljs) {
         android_tablet      = /Android/i,
         amazon_phone        = /(?=.*\bAndroid\b)(?=.*\bSD4930UR\b)/i,
         amazon_tablet       = /(?=.*\bAndroid\b)(?=.*\b(?:KFOT|KFTT|KFJWI|KFJWA|KFSOWI|KFTHWI|KFTHWA|KFAPWI|KFAPWA|KFARWI|KFASWI|KFSAWI|KFSAWA)\b)/i,
-        windows_phone       = /IEMobile/i,
+        windows_phone       = /Windows Phone/i,
         windows_tablet      = /(?=.*\bWindows\b)(?=.*\bARM\b)/i, // Match 'Windows' AND 'ARM'
         other_blackberry    = /BlackBerry/i,
         other_blackberry_10 = /BB10/i,
@@ -14672,6 +14672,7 @@ function State(options) {
   this.lineWidth    = options['lineWidth'] || 80;
   this.noRefs       = options['noRefs'] || false;
   this.noCompatMode = options['noCompatMode'] || false;
+  this.condenseFlow = options['condenseFlow'] || false;
 
   this.implicitTypes = this.schema.compiledImplicit;
   this.explicitTypes = this.schema.compiledExplicit;
@@ -15018,11 +15019,21 @@ function foldLine(line, width) {
 // Escapes a double-quoted string.
 function escapeString(string) {
   var result = '';
-  var char;
+  var char, nextChar;
   var escapeSeq;
 
   for (var i = 0; i < string.length; i++) {
     char = string.charCodeAt(i);
+    // Check for surrogate pairs (reference Unicode 3.0 section "3.7 Surrogates").
+    if (char >= 0xD800 && char <= 0xDBFF/* high surrogate */) {
+      nextChar = string.charCodeAt(i + 1);
+      if (nextChar >= 0xDC00 && nextChar <= 0xDFFF/* low surrogate */) {
+        // Combine the surrogate pair and store it escaped.
+        result += encodeHex((char - 0xD800) * 0x400 + nextChar - 0xDC00 + 0x10000);
+        // Advance index one extra since we already used that char here.
+        i++; continue;
+      }
+    }
     escapeSeq = ESCAPE_SEQUENCES[char];
     result += !escapeSeq && isPrintable(char)
       ? string[i]
@@ -15041,7 +15052,7 @@ function writeFlowSequence(state, level, object) {
   for (index = 0, length = object.length; index < length; index += 1) {
     // Write only valid elements.
     if (writeNode(state, level, object[index], false, false)) {
-      if (index !== 0) _result += ', ';
+      if (index !== 0) _result += ',' + (!state.condenseFlow ? ' ' : '');
       _result += state.dump;
     }
   }
@@ -15062,7 +15073,14 @@ function writeBlockSequence(state, level, object, compact) {
       if (!compact || index !== 0) {
         _result += generateNextLine(state, level);
       }
-      _result += '- ' + state.dump;
+
+      if (state.dump && CHAR_LINE_FEED === state.dump.charCodeAt(0)) {
+        _result += '-';
+      } else {
+        _result += '- ';
+      }
+
+      _result += state.dump;
     }
   }
 
@@ -15081,7 +15099,7 @@ function writeFlowMapping(state, level, object) {
       pairBuffer;
 
   for (index = 0, length = objectKeyList.length; index < length; index += 1) {
-    pairBuffer = '';
+    pairBuffer = state.condenseFlow ? '"' : '';
 
     if (index !== 0) pairBuffer += ', ';
 
@@ -15094,7 +15112,7 @@ function writeFlowMapping(state, level, object) {
 
     if (state.dump.length > 1024) pairBuffer += '? ';
 
-    pairBuffer += state.dump + ': ';
+    pairBuffer += state.dump + (state.condenseFlow ? '"' : '') + ':' + (state.condenseFlow ? '' : ' ');
 
     if (!writeNode(state, level, objectValue, false, false)) {
       continue; // Skip this pair because of invalid value.
@@ -15367,6 +15385,11 @@ function YAMLException(reason, mark) {
   // Super constructor
   Error.call(this);
 
+  this.name = 'YAMLException';
+  this.reason = reason;
+  this.mark = mark;
+  this.message = (this.reason || '(unknown reason)') + (this.mark ? ' ' + this.mark.toString() : '');
+
   // Include stack trace in error object
   if (Error.captureStackTrace) {
     // Chrome and NodeJS
@@ -15375,11 +15398,6 @@ function YAMLException(reason, mark) {
     // FF, IE 10+ and Safari 6+. Fallback for others
     this.stack = (new Error()).stack || '';
   }
-
-  this.name = 'YAMLException';
-  this.reason = reason;
-  this.mark = mark;
-  this.message = (this.reason || '(unknown reason)') + (this.mark ? ' ' + this.mark.toString() : '');
 }
 
 
@@ -15492,6 +15510,7 @@ function fromDecimalCode(c) {
 }
 
 function simpleEscapeSequence(c) {
+  /* eslint-disable indent */
   return (c === 0x30/* 0 */) ? '\x00' :
         (c === 0x61/* a */) ? '\x07' :
         (c === 0x62/* b */) ? '\x08' :
@@ -15518,8 +15537,10 @@ function charFromCodepoint(c) {
   }
   // Encode UTF-16 surrogate pair
   // https://en.wikipedia.org/wiki/UTF-16#Code_points_U.2B010000_to_U.2B10FFFF
-  return String.fromCharCode(((c - 0x010000) >> 10) + 0xD800,
-                             ((c - 0x010000) & 0x03FF) + 0xDC00);
+  return String.fromCharCode(
+    ((c - 0x010000) >> 10) + 0xD800,
+    ((c - 0x010000) & 0x03FF) + 0xDC00
+  );
 }
 
 var simpleEscapeCheck = new Array(256); // integer, for fast access
@@ -15651,9 +15672,7 @@ function captureSegment(state, start, end, checkJson) {
     _result = state.input.slice(start, end);
 
     if (checkJson) {
-      for (_position = 0, _length = _result.length;
-           _position < _length;
-           _position += 1) {
+      for (_position = 0, _length = _result.length; _position < _length; _position += 1) {
         _character = _result.charCodeAt(_position);
         if (!(_character === 0x09 ||
               (0x20 <= _character && _character <= 0x10FFFF))) {
@@ -16402,7 +16421,7 @@ function readBlockMapping(state, nodeIndent, flowIndent) {
         allowCompact = true;
 
       } else {
-        throwError(state, 'incomplete explicit mapping pair; a key node is missed');
+        throwError(state, 'incomplete explicit mapping pair; a key node is missed; or followed by a non-tabulated empty line');
       }
 
       state.position += 1;
@@ -16771,9 +16790,7 @@ function composeNode(state, parentIndent, nodeContext, allowToSeek, allowCompact
 
   if (state.tag !== null && state.tag !== '!') {
     if (state.tag === '?') {
-      for (typeIndex = 0, typeQuantity = state.implicitTypes.length;
-           typeIndex < typeQuantity;
-           typeIndex += 1) {
+      for (typeIndex = 0, typeQuantity = state.implicitTypes.length; typeIndex < typeQuantity; typeIndex += 1) {
         type = state.implicitTypes[typeIndex];
 
         // Implicit resolving is not allowed for non-scalar types, and '?'
@@ -16962,6 +16979,10 @@ function loadDocuments(input, options) {
 function loadAll(input, iterator, options) {
   var documents = loadDocuments(input, options), index, length;
 
+  if (typeof iterator !== 'function') {
+    return documents;
+  }
+
   for (index = 0, length = documents.length; index < length; index += 1) {
     iterator(documents[index]);
   }
@@ -16982,7 +17003,11 @@ function load(input, options) {
 
 
 function safeLoadAll(input, output, options) {
-  loadAll(input, output, common.extend({ schema: DEFAULT_SAFE_SCHEMA }, options));
+  if (typeof output === 'function') {
+    loadAll(input, output, common.extend({ schema: DEFAULT_SAFE_SCHEMA }, options));
+  } else {
+    return loadAll(input, common.extend({ schema: DEFAULT_SAFE_SCHEMA }, options));
+  }
 }
 
 
@@ -17554,16 +17579,27 @@ var common = require('../common');
 var Type   = require('../type');
 
 var YAML_FLOAT_PATTERN = new RegExp(
-  '^(?:[-+]?(?:[0-9][0-9_]*)\\.[0-9_]*(?:[eE][-+][0-9]+)?' +
-  '|\\.[0-9_]+(?:[eE][-+][0-9]+)?' +
+  // 2.5e4, 2.5 and integers
+  '^(?:[-+]?(?:0|[1-9][0-9_]*)(?:\\.[0-9_]*)?(?:[eE][-+]?[0-9]+)?' +
+  // .2e4, .2
+  // special case, seems not from spec
+  '|\\.[0-9_]+(?:[eE][-+]?[0-9]+)?' +
+  // 20:59
   '|[-+]?[0-9][0-9_]*(?::[0-5]?[0-9])+\\.[0-9_]*' +
+  // .inf
   '|[-+]?\\.(?:inf|Inf|INF)' +
+  // .nan
   '|\\.(?:nan|NaN|NAN))$');
 
 function resolveYamlFloat(data) {
   if (data === null) return false;
 
-  if (!YAML_FLOAT_PATTERN.test(data)) return false;
+  if (!YAML_FLOAT_PATTERN.test(data) ||
+      // Quick hack to not allow integers end with `_`
+      // Probably should update regexp & check speed
+      data[data.length - 1] === '_') {
+    return false;
+  }
 
   return true;
 }
@@ -17708,7 +17744,7 @@ function resolveYamlInteger(data) {
         if (ch !== '0' && ch !== '1') return false;
         hasDigits = true;
       }
-      return hasDigits;
+      return hasDigits && ch !== '_';
     }
 
 
@@ -17722,7 +17758,7 @@ function resolveYamlInteger(data) {
         if (!isHexCode(data.charCodeAt(index))) return false;
         hasDigits = true;
       }
-      return hasDigits;
+      return hasDigits && ch !== '_';
     }
 
     // base 8
@@ -17732,10 +17768,13 @@ function resolveYamlInteger(data) {
       if (!isOctCode(data.charCodeAt(index))) return false;
       hasDigits = true;
     }
-    return hasDigits;
+    return hasDigits && ch !== '_';
   }
 
   // base 10 (except 0) or base 60
+
+  // value should not start with `_`;
+  if (ch === '_') return false;
 
   for (; index < max; index++) {
     ch = data[index];
@@ -17747,7 +17786,8 @@ function resolveYamlInteger(data) {
     hasDigits = true;
   }
 
-  if (!hasDigits) return false;
+  // Should have digits and should not end with `_`
+  if (!hasDigits || ch === '_') return false;
 
   // if !base60 - done;
   if (ch !== ':') return true;
@@ -18312,7 +18352,8 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
  * https://github.com/chjj/marked
  */
 
-;(function() {
+;(function(root) {
+'use strict';
 
 /**
  * Block-Level Grammar
@@ -18322,55 +18363,60 @@ var block = {
   newline: /^\n+/,
   code: /^( {4}[^\n]+\n*)+/,
   fences: noop,
-  hr: /^( *[-*_]){3,} *(?:\n+|$)/,
+  hr: /^ {0,3}((?:- *){3,}|(?:_ *){3,}|(?:\* *){3,})(?:\n+|$)/,
   heading: /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,
   nptable: noop,
-  lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
-  blockquote: /^( *>[^\n]+(\n(?!def)[^\n]+)*\n*)+/,
+  blockquote: /^( {0,3}> ?(paragraph|[^\n]*)(?:\n|$))+/,
   list: /^( *)(bull) [\s\S]+?(?:hr|def|\n{2,}(?! )(?!\1bull )\n*|\s*$)/,
-  html: /^ *(?:comment|closed|closing) *(?:\n{2,}|\s*$)/,
-  def: /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
+  html: /^ *(?:comment *(?:\n|\s*$)|closed *(?:\n{2,}|\s*$)|closing *(?:\n{2,}|\s*$))/,
+  def: /^ {0,3}\[(label)\]: *\n? *<?([^\s>]+)>?(?:(?: +\n? *| *\n *)(title))? *(?:\n+|$)/,
   table: noop,
-  paragraph: /^((?:[^\n]+\n?(?!hr|heading|lheading|blockquote|tag|def))+)\n*/,
+  lheading: /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
+  paragraph: /^([^\n]+(?:\n?(?!hr|heading|lheading| {0,3}>|tag)[^\n]+)+)/,
   text: /^[^\n]+/
 };
 
+block._label = /(?:\\[\[\]]|[^\[\]])+/;
+block._title = /(?:"(?:\\"|[^"]|"[^"\n]*")*"|'\n?(?:[^'\n]+\n?)*'|\([^()]*\))/;
+block.def = edit(block.def)
+  .replace('label', block._label)
+  .replace('title', block._title)
+  .getRegex();
+
 block.bullet = /(?:[*+-]|\d+\.)/;
 block.item = /^( *)(bull) [^\n]*(?:\n(?!\1bull )[^\n]*)*/;
-block.item = replace(block.item, 'gm')
-  (/bull/g, block.bullet)
-  ();
+block.item = edit(block.item, 'gm')
+  .replace(/bull/g, block.bullet)
+  .getRegex();
 
-block.list = replace(block.list)
-  (/bull/g, block.bullet)
-  ('hr', '\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))')
-  ('def', '\\n+(?=' + block.def.source + ')')
-  ();
-
-block.blockquote = replace(block.blockquote)
-  ('def', block.def)
-  ();
+block.list = edit(block.list)
+  .replace(/bull/g, block.bullet)
+  .replace('hr', '\\n+(?=\\1?(?:(?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$))')
+  .replace('def', '\\n+(?=' + block.def.source + ')')
+  .getRegex();
 
 block._tag = '(?!(?:'
   + 'a|em|strong|small|s|cite|q|dfn|abbr|data|time|code'
   + '|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo'
-  + '|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|[^\\w\\s@]*@)\\b';
+  + '|span|br|wbr|ins|del|img)\\b)\\w+(?!:|[^\\w\\s@]*@)\\b';
 
-block.html = replace(block.html)
-  ('comment', /<!--[\s\S]*?-->/)
-  ('closed', /<(tag)[\s\S]+?<\/\1>/)
-  ('closing', /<tag(?:"[^"]*"|'[^']*'|[^'">])*?>/)
-  (/tag/g, block._tag)
-  ();
+block.html = edit(block.html)
+  .replace('comment', /<!--[\s\S]*?-->/)
+  .replace('closed', /<(tag)[\s\S]+?<\/\1>/)
+  .replace('closing', /<tag(?:"[^"]*"|'[^']*'|\s[^'"\/>\s]*)*?\/?>/)
+  .replace(/tag/g, block._tag)
+  .getRegex();
 
-block.paragraph = replace(block.paragraph)
-  ('hr', block.hr)
-  ('heading', block.heading)
-  ('lheading', block.lheading)
-  ('blockquote', block.blockquote)
-  ('tag', '<' + block._tag)
-  ('def', block.def)
-  ();
+block.paragraph = edit(block.paragraph)
+  .replace('hr', block.hr)
+  .replace('heading', block.heading)
+  .replace('lheading', block.lheading)
+  .replace('tag', '<' + block._tag)
+  .getRegex();
+
+block.blockquote = edit(block.blockquote)
+  .replace('paragraph', block.paragraph)
+  .getRegex();
 
 /**
  * Normal Block Grammar
@@ -18383,15 +18429,16 @@ block.normal = merge({}, block);
  */
 
 block.gfm = merge({}, block.normal, {
-  fences: /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/,
-  paragraph: /^/
+  fences: /^ *(`{3,}|~{3,})[ \.]*(\S+)? *\n([\s\S]*?)\n? *\1 *(?:\n+|$)/,
+  paragraph: /^/,
+  heading: /^ *(#{1,6}) +([^\n]+?) *#* *(?:\n+|$)/
 });
 
-block.gfm.paragraph = replace(block.paragraph)
-  ('(?!', '(?!'
+block.gfm.paragraph = edit(block.paragraph)
+  .replace('(?!', '(?!'
     + block.gfm.fences.source.replace('\\1', '\\2') + '|'
     + block.list.source.replace('\\1', '\\3') + '|')
-  ();
+  .getRegex();
 
 /**
  * GFM + Tables Block Grammar
@@ -18454,17 +18501,18 @@ Lexer.prototype.lex = function(src) {
  * Lexing
  */
 
-Lexer.prototype.token = function(src, top, bq) {
-  var src = src.replace(/^ +$/gm, '')
-    , next
-    , loose
-    , cap
-    , bull
-    , b
-    , item
-    , space
-    , i
-    , l;
+Lexer.prototype.token = function(src, top) {
+  src = src.replace(/^ +$/gm, '');
+  var next,
+      loose,
+      cap,
+      bull,
+      b,
+      item,
+      space,
+      i,
+      tag,
+      l;
 
   while (src) {
     // newline
@@ -18496,7 +18544,7 @@ Lexer.prototype.token = function(src, top, bq) {
       this.tokens.push({
         type: 'code',
         lang: cap[2],
-        text: cap[3]
+        text: cap[3] || ''
       });
       continue;
     }
@@ -18544,17 +18592,6 @@ Lexer.prototype.token = function(src, top, bq) {
       continue;
     }
 
-    // lheading
-    if (cap = this.rules.lheading.exec(src)) {
-      src = src.substring(cap[0].length);
-      this.tokens.push({
-        type: 'heading',
-        depth: cap[2] === '=' ? 1 : 2,
-        text: cap[1]
-      });
-      continue;
-    }
-
     // hr
     if (cap = this.rules.hr.exec(src)) {
       src = src.substring(cap[0].length);
@@ -18577,7 +18614,7 @@ Lexer.prototype.token = function(src, top, bq) {
       // Pass `top` to keep the current
       // "toplevel" state. This is exactly
       // how markdown.pl works.
-      this.token(cap, top, true);
+      this.token(cap, top);
 
       this.tokens.push({
         type: 'blockquote_end'
@@ -18646,7 +18683,7 @@ Lexer.prototype.token = function(src, top, bq) {
         });
 
         // Recurse.
-        this.token(item, false, bq);
+        this.token(item, false);
 
         this.tokens.push({
           type: 'list_item_end'
@@ -18667,19 +18704,24 @@ Lexer.prototype.token = function(src, top, bq) {
         type: this.options.sanitize
           ? 'paragraph'
           : 'html',
-        pre: cap[1] === 'pre' || cap[1] === 'script' || cap[1] === 'style',
+        pre: !this.options.sanitizer
+          && (cap[1] === 'pre' || cap[1] === 'script' || cap[1] === 'style'),
         text: cap[0]
       });
       continue;
     }
 
     // def
-    if ((!bq && top) && (cap = this.rules.def.exec(src))) {
+    if (top && (cap = this.rules.def.exec(src))) {
       src = src.substring(cap[0].length);
-      this.tokens.links[cap[1].toLowerCase()] = {
-        href: cap[2],
-        title: cap[3]
-      };
+      if (cap[3]) cap[3] = cap[3].substring(1, cap[3].length - 1);
+      tag = cap[1].toLowerCase();
+      if (!this.tokens.links[tag]) {
+        this.tokens.links[tag] = {
+          href: cap[2],
+          title: cap[3]
+        };
+      }
       continue;
     }
 
@@ -18717,6 +18759,17 @@ Lexer.prototype.token = function(src, top, bq) {
       continue;
     }
 
+    // lheading
+    if (cap = this.rules.lheading.exec(src)) {
+      src = src.substring(cap[0].length);
+      this.tokens.push({
+        type: 'heading',
+        depth: cap[2] === '=' ? 1 : 2,
+        text: cap[1]
+      });
+      continue;
+    }
+
     // top-level paragraph
     if (top && (cap = this.rules.paragraph.exec(src))) {
       src = src.substring(cap[0].length);
@@ -18741,8 +18794,7 @@ Lexer.prototype.token = function(src, top, bq) {
     }
 
     if (src) {
-      throw new
-        Error('Infinite loop on byte: ' + src.charCodeAt(0));
+      throw new Error('Infinite loop on byte: ' + src.charCodeAt(0));
     }
   }
 
@@ -18755,31 +18807,39 @@ Lexer.prototype.token = function(src, top, bq) {
 
 var inline = {
   escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
-  autolink: /^<([^ >]+(@|:\/)[^ >]+)>/,
+  autolink: /^<(scheme:[^\s\x00-\x1f<>]*|email)>/,
   url: noop,
-  tag: /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
+  tag: /^<!--[\s\S]*?-->|^<\/?[a-zA-Z0-9\-]+(?:"[^"]*"|'[^']*'|\s[^<'">\/\s]*)*?\/?>/,
   link: /^!?\[(inside)\]\(href\)/,
   reflink: /^!?\[(inside)\]\s*\[([^\]]*)\]/,
-  nolink: /^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,
+  nolink: /^!?\[((?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]])*)\]/,
   strong: /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
-  em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
-  code: /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
+  em: /^_([^\s_](?:[^_]|__)+?[^\s_])_\b|^\*((?:\*\*|[^*])+?)\*(?!\*)/,
+  code: /^(`+)\s*([\s\S]*?[^`]?)\s*\1(?!`)/,
   br: /^ {2,}\n(?!\s*$)/,
   del: noop,
-  text: /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/
+  text: /^[\s\S]+?(?=[\\<!\[`*]|\b_| {2,}\n|$)/
 };
 
-inline._inside = /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/;
+inline._scheme = /[a-zA-Z][a-zA-Z0-9+.-]{1,31}/;
+inline._email = /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/;
+
+inline.autolink = edit(inline.autolink)
+  .replace('scheme', inline._scheme)
+  .replace('email', inline._email)
+  .getRegex()
+
+inline._inside = /(?:\[[^\[\]]*\]|\\[\[\]]|[^\[\]]|\](?=[^\[]*\]))*/;
 inline._href = /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;
 
-inline.link = replace(inline.link)
-  ('inside', inline._inside)
-  ('href', inline._href)
-  ();
+inline.link = edit(inline.link)
+  .replace('inside', inline._inside)
+  .replace('href', inline._href)
+  .getRegex();
 
-inline.reflink = replace(inline.reflink)
-  ('inside', inline._inside)
-  ();
+inline.reflink = edit(inline.reflink)
+  .replace('inside', inline._inside)
+  .getRegex();
 
 /**
  * Normal Inline Grammar
@@ -18801,13 +18861,16 @@ inline.pedantic = merge({}, inline.normal, {
  */
 
 inline.gfm = merge({}, inline.normal, {
-  escape: replace(inline.escape)('])', '~|])')(),
-  url: /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
+  escape: edit(inline.escape).replace('])', '~|])').getRegex(),
+  url: edit(/^((?:ftp|https?):\/\/|www\.)(?:[a-zA-Z0-9\-]+\.?)+[^\s<]*|^email/)
+    .replace('email', inline._email)
+    .getRegex(),
+  _backpedal: /(?:[^?!.,:;*_~()&]+|\([^)]*\)|&(?![a-zA-Z0-9]+;$)|[?!.,:;*_~)]+(?!$))+/,
   del: /^~~(?=\S)([\s\S]*?\S)~~/,
-  text: replace(inline.text)
-    (']|', '~]|')
-    ('|', '|https?://|')
-    ()
+  text: edit(inline.text)
+    .replace(']|', '~]|')
+    .replace('|', '|https?://|ftp://|www\\.|[a-zA-Z0-9.!#$%&\'*+/=?^_`{\\|}~-]+@|')
+    .getRegex()
 });
 
 /**
@@ -18815,8 +18878,8 @@ inline.gfm = merge({}, inline.normal, {
  */
 
 inline.breaks = merge({}, inline.gfm, {
-  br: replace(inline.br)('{2,}', '*')(),
-  text: replace(inline.gfm.text)('{2,}', '*')()
+  br: edit(inline.br).replace('{2,}', '*').getRegex(),
+  text: edit(inline.gfm.text).replace('{2,}', '*').getRegex()
 });
 
 /**
@@ -18827,12 +18890,11 @@ function InlineLexer(links, options) {
   this.options = options || marked.defaults;
   this.links = links;
   this.rules = inline.normal;
-  this.renderer = this.options.renderer || new Renderer;
+  this.renderer = this.options.renderer || new Renderer();
   this.renderer.options = this.options;
 
   if (!this.links) {
-    throw new
-      Error('Tokens array requires a `links` property.');
+    throw new Error('Tokens array requires a `links` property.');
   }
 
   if (this.options.gfm) {
@@ -18866,11 +18928,11 @@ InlineLexer.output = function(src, links, options) {
  */
 
 InlineLexer.prototype.output = function(src) {
-  var out = ''
-    , link
-    , text
-    , href
-    , cap;
+  var out = '',
+      link,
+      text,
+      href,
+      cap;
 
   while (src) {
     // escape
@@ -18884,10 +18946,8 @@ InlineLexer.prototype.output = function(src) {
     if (cap = this.rules.autolink.exec(src)) {
       src = src.substring(cap[0].length);
       if (cap[2] === '@') {
-        text = cap[1].charAt(6) === ':'
-          ? this.mangle(cap[1].substring(7))
-          : this.mangle(cap[1]);
-        href = this.mangle('mailto:') + text;
+        text = escape(this.mangle(cap[1]));
+        href = 'mailto:' + text;
       } else {
         text = escape(cap[1]);
         href = text;
@@ -18898,9 +18958,19 @@ InlineLexer.prototype.output = function(src) {
 
     // url (gfm)
     if (!this.inLink && (cap = this.rules.url.exec(src))) {
+      cap[0] = this.rules._backpedal.exec(cap[0])[0];
       src = src.substring(cap[0].length);
-      text = escape(cap[1]);
-      href = text;
+      if (cap[2] === '@') {
+        text = escape(cap[0]);
+        href = 'mailto:' + text;
+      } else {
+        text = escape(cap[0]);
+        if (cap[1] === 'www.') {
+          href = 'http://' + text;
+        } else {
+          href = text;
+        }
+      }
       out += this.renderer.link(href, null, text);
       continue;
     }
@@ -18914,8 +18984,10 @@ InlineLexer.prototype.output = function(src) {
       }
       src = src.substring(cap[0].length);
       out += this.options.sanitize
-        ? escape(cap[0])
-        : cap[0];
+        ? this.options.sanitizer
+          ? this.options.sanitizer(cap[0])
+          : escape(cap[0])
+        : cap[0]
       continue;
     }
 
@@ -18965,7 +19037,7 @@ InlineLexer.prototype.output = function(src) {
     // code
     if (cap = this.rules.code.exec(src)) {
       src = src.substring(cap[0].length);
-      out += this.renderer.codespan(escape(cap[2], true));
+      out += this.renderer.codespan(escape(cap[2].trim(), true));
       continue;
     }
 
@@ -18986,13 +19058,12 @@ InlineLexer.prototype.output = function(src) {
     // text
     if (cap = this.rules.text.exec(src)) {
       src = src.substring(cap[0].length);
-      out += escape(this.smartypants(cap[0]));
+      out += this.renderer.text(escape(this.smartypants(cap[0])));
       continue;
     }
 
     if (src) {
-      throw new
-        Error('Infinite loop on byte: ' + src.charCodeAt(0));
+      throw new Error('Infinite loop on byte: ' + src.charCodeAt(0));
     }
   }
 
@@ -19004,8 +19075,8 @@ InlineLexer.prototype.output = function(src) {
  */
 
 InlineLexer.prototype.outputLink = function(cap, link) {
-  var href = escape(link.href)
-    , title = link.title ? escape(link.title) : null;
+  var href = escape(link.href),
+      title = link.title ? escape(link.title) : null;
 
   return cap[0].charAt(0) !== '!'
     ? this.renderer.link(href, title, this.output(cap[1]))
@@ -19020,7 +19091,9 @@ InlineLexer.prototype.smartypants = function(text) {
   if (!this.options.smartypants) return text;
   return text
     // em-dashes
-    .replace(/--/g, '\u2014')
+    .replace(/---/g, '\u2014')
+    // en-dashes
+    .replace(/--/g, '\u2013')
     // opening singles
     .replace(/(^|[-\u2014/(\[{"\s])'/g, '$1\u2018')
     // closing singles & apostrophes
@@ -19038,10 +19111,11 @@ InlineLexer.prototype.smartypants = function(text) {
  */
 
 InlineLexer.prototype.mangle = function(text) {
-  var out = ''
-    , l = text.length
-    , i = 0
-    , ch;
+  if (!this.options.mangle) return text;
+  var out = '',
+      l = text.length,
+      i = 0,
+      ch;
 
   for (; i < l; i++) {
     ch = text.charCodeAt(i);
@@ -19174,11 +19248,14 @@ Renderer.prototype.link = function(href, title, text) {
         .replace(/[^\w:]/g, '')
         .toLowerCase();
     } catch (e) {
-      return '';
+      return text;
     }
-    if (prot.indexOf('javascript:') === 0) {
-      return '';
+    if (prot.indexOf('javascript:') === 0 || prot.indexOf('vbscript:') === 0 || prot.indexOf('data:') === 0) {
+      return text;
     }
+  }
+  if (this.options.baseUrl && !originIndependentUrl.test(href)) {
+    href = resolveUrl(this.options.baseUrl, href);
   }
   var out = '<a href="' + href + '"';
   if (title) {
@@ -19189,6 +19266,9 @@ Renderer.prototype.link = function(href, title, text) {
 };
 
 Renderer.prototype.image = function(href, title, text) {
+  if (this.options.baseUrl && !originIndependentUrl.test(href)) {
+    href = resolveUrl(this.options.baseUrl, href);
+  }
   var out = '<img src="' + href + '" alt="' + text + '"';
   if (title) {
     out += ' title="' + title + '"';
@@ -19196,6 +19276,36 @@ Renderer.prototype.image = function(href, title, text) {
   out += this.options.xhtml ? '/>' : '>';
   return out;
 };
+
+Renderer.prototype.text = function(text) {
+  return text;
+};
+
+/**
+ * TextRenderer
+ * returns only the textual part of the token
+ */
+
+function TextRenderer() {}
+
+// no need for block level renderers
+
+TextRenderer.prototype.strong =
+TextRenderer.prototype.em =
+TextRenderer.prototype.codespan =
+TextRenderer.prototype.del =
+TextRenderer.prototype.text = function (text) {
+  return text;
+}
+
+TextRenderer.prototype.link =
+TextRenderer.prototype.image = function(href, title, text) {
+  return '' + text;
+}
+
+TextRenderer.prototype.br = function() {
+  return '';
+}
 
 /**
  * Parsing & Compiling
@@ -19205,7 +19315,7 @@ function Parser(options) {
   this.tokens = [];
   this.token = null;
   this.options = options || marked.defaults;
-  this.options.renderer = this.options.renderer || new Renderer;
+  this.options.renderer = this.options.renderer || new Renderer();
   this.renderer = this.options.renderer;
   this.renderer.options = this.options;
 }
@@ -19214,8 +19324,8 @@ function Parser(options) {
  * Static Parse Method
  */
 
-Parser.parse = function(src, options, renderer) {
-  var parser = new Parser(options, renderer);
+Parser.parse = function(src, options) {
+  var parser = new Parser(options);
   return parser.parse(src);
 };
 
@@ -19224,7 +19334,12 @@ Parser.parse = function(src, options, renderer) {
  */
 
 Parser.prototype.parse = function(src) {
-  this.inline = new InlineLexer(src.links, this.options, this.renderer);
+  this.inline = new InlineLexer(src.links, this.options);
+  // use an InlineLexer with a TextRenderer to extract pure text
+  this.inlineText = new InlineLexer(
+    src.links,
+    merge({}, this.options, {renderer: new TextRenderer()})
+  );
   this.tokens = src.reverse();
 
   var out = '';
@@ -19281,7 +19396,7 @@ Parser.prototype.tok = function() {
       return this.renderer.heading(
         this.inline.output(this.token.text),
         this.token.depth,
-        this.token.text);
+        unescape(this.inlineText.output(this.token.text)));
     }
     case 'code': {
       return this.renderer.code(this.token.text,
@@ -19289,18 +19404,16 @@ Parser.prototype.tok = function() {
         this.token.escaped);
     }
     case 'table': {
-      var header = ''
-        , body = ''
-        , i
-        , row
-        , cell
-        , flags
-        , j;
+      var header = '',
+          body = '',
+          i,
+          row,
+          cell,
+          j;
 
       // header
       cell = '';
       for (i = 0; i < this.token.header.length; i++) {
-        flags = { header: true, align: this.token.align[i] };
         cell += this.renderer.tablecell(
           this.inline.output(this.token.header[i]),
           { header: true, align: this.token.align[i] }
@@ -19324,7 +19437,7 @@ Parser.prototype.tok = function() {
       return this.renderer.table(header, body);
     }
     case 'blockquote_start': {
-      var body = '';
+      body = '';
 
       while (this.next().type !== 'blockquote_end') {
         body += this.tok();
@@ -19333,8 +19446,8 @@ Parser.prototype.tok = function() {
       return this.renderer.blockquote(body);
     }
     case 'list_start': {
-      var body = ''
-        , ordered = this.token.ordered;
+      body = '';
+      var ordered = this.token.ordered;
 
       while (this.next().type !== 'list_end') {
         body += this.tok();
@@ -19343,7 +19456,7 @@ Parser.prototype.tok = function() {
       return this.renderer.list(body, ordered);
     }
     case 'list_item_start': {
-      var body = '';
+      body = '';
 
       while (this.next().type !== 'list_item_end') {
         body += this.token.type === 'text'
@@ -19354,7 +19467,7 @@ Parser.prototype.tok = function() {
       return this.renderer.listitem(body);
     }
     case 'loose_item_start': {
-      var body = '';
+      body = '';
 
       while (this.next().type !== 'list_item_end') {
         body += this.tok();
@@ -19391,7 +19504,8 @@ function escape(html, encode) {
 }
 
 function unescape(html) {
-  return html.replace(/&([#\w]+);/g, function(_, n) {
+  // explicitly match decimal, hex, and named HTML entities
+  return html.replace(/&(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig, function(_, n) {
     n = n.toLowerCase();
     if (n === 'colon') return ':';
     if (n.charAt(0) === '#') {
@@ -19403,25 +19517,53 @@ function unescape(html) {
   });
 }
 
-function replace(regex, opt) {
+function edit(regex, opt) {
   regex = regex.source;
   opt = opt || '';
-  return function self(name, val) {
-    if (!name) return new RegExp(regex, opt);
-    val = val.source || val;
-    val = val.replace(/(^|[^\[])\^/g, '$1');
-    regex = regex.replace(name, val);
-    return self;
+  return {
+    replace: function(name, val) {
+      val = val.source || val;
+      val = val.replace(/(^|[^\[])\^/g, '$1');
+      regex = regex.replace(name, val);
+      return this;
+    },
+    getRegex: function() {
+      return new RegExp(regex, opt);
+    }
   };
 }
+
+function resolveUrl(base, href) {
+  if (!baseUrls[' ' + base]) {
+    // we can ignore everything in base after the last slash of its path component,
+    // but we might need to add _that_
+    // https://tools.ietf.org/html/rfc3986#section-3
+    if (/^[^:]+:\/*[^/]*$/.test(base)) {
+      baseUrls[' ' + base] = base + '/';
+    } else {
+      baseUrls[' ' + base] = base.replace(/[^/]*$/, '');
+    }
+  }
+  base = baseUrls[' ' + base];
+
+  if (href.slice(0, 2) === '//') {
+    return base.replace(/:[\s\S]*/, ':') + href;
+  } else if (href.charAt(0) === '/') {
+    return base.replace(/(:\/*[^/]*)[\s\S]*/, '$1') + href;
+  } else {
+    return base + href;
+  }
+}
+var baseUrls = {};
+var originIndependentUrl = /^$|^[a-z][a-z0-9+.-]*:|^[?#]/i;
 
 function noop() {}
 noop.exec = noop;
 
 function merge(obj) {
-  var i = 1
-    , target
-    , key;
+  var i = 1,
+      target,
+      key;
 
   for (; i < arguments.length; i++) {
     target = arguments[i];
@@ -19435,12 +19577,20 @@ function merge(obj) {
   return obj;
 }
 
-
 /**
  * Marked
  */
 
 function marked(src, opt, callback) {
+  // throw error in case of non string input
+  if (typeof src === 'undefined' || src === null) {
+    throw new Error('marked(): input parameter is undefined or null');
+  }
+  if (typeof src !== 'string') {
+    throw new Error('marked(): input parameter is of type '
+      + Object.prototype.toString.call(src) + ', string expected');
+  }
+
   if (callback || typeof opt === 'function') {
     if (!callback) {
       callback = opt;
@@ -19449,10 +19599,10 @@ function marked(src, opt, callback) {
 
     opt = merge({}, marked.defaults, opt || {});
 
-    var highlight = opt.highlight
-      , tokens
-      , pending
-      , i = 0;
+    var highlight = opt.highlight,
+        tokens,
+        pending,
+        i = 0;
 
     try {
       tokens = Lexer.lex(src, opt)
@@ -19462,8 +19612,13 @@ function marked(src, opt, callback) {
 
     pending = tokens.length;
 
-    var done = function() {
-      var out, err;
+    var done = function(err) {
+      if (err) {
+        opt.highlight = highlight;
+        return callback(err);
+      }
+
+      var out;
 
       try {
         out = Parser.parse(tokens, opt);
@@ -19492,6 +19647,7 @@ function marked(src, opt, callback) {
           return --pending || done();
         }
         return highlight(token.text, token.lang, function(err, code) {
+          if (err) return done(err);
           if (code == null || code === token.text) {
             return --pending || done();
           }
@@ -19510,7 +19666,7 @@ function marked(src, opt, callback) {
   } catch (e) {
     e.message += '\nPlease report this to https://github.com/chjj/marked.';
     if ((opt || marked.defaults).silent) {
-      return '<p>An error occured:</p><pre>'
+      return '<p>An error occurred:</p><pre>'
         + escape(e.message + '', true)
         + '</pre>';
     }
@@ -19534,14 +19690,17 @@ marked.defaults = {
   breaks: false,
   pedantic: false,
   sanitize: false,
+  sanitizer: null,
+  mangle: true,
   smartLists: false,
   silent: false,
   highlight: null,
   langPrefix: 'lang-',
   smartypants: false,
   headerPrefix: '',
-  renderer: new Renderer,
-  xhtml: false
+  renderer: new Renderer(),
+  xhtml: false,
+  baseUrl: null
 };
 
 /**
@@ -19552,6 +19711,7 @@ marked.Parser = Parser;
 marked.parser = Parser.parse;
 
 marked.Renderer = Renderer;
+marked.TextRenderer = TextRenderer;
 
 marked.Lexer = Lexer;
 marked.lexer = Lexer.lex;
@@ -19561,17 +19721,14 @@ marked.inlineLexer = InlineLexer.output;
 
 marked.parse = marked;
 
-if (typeof exports === 'object') {
+if (typeof module !== 'undefined' && typeof exports === 'object') {
   module.exports = marked;
 } else if (typeof define === 'function' && define.amd) {
   define(function() { return marked; });
 } else {
-  this.marked = marked;
+  root.marked = marked;
 }
-
-}).call(function() {
-  return this || (typeof window !== 'undefined' ? window : global);
-}());
+})(this || (typeof window !== 'undefined' ? window : global));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
