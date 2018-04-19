@@ -1,6 +1,6 @@
-# Composição de Transformações
-## +
+# Composição de Transformações e
 # Modelagem Hieráquica
+
 ---
 # Objetivos
 
@@ -19,53 +19,27 @@
 - A **ordem com que transformações** são aplicadas importa...
   - ...porque a multiplicação de matrizes <u>não é comutativa</u>
 
-<!--
-
-![](../../images/composicao-transformacoes-grafico-1.png)
-
-## Exemplo
-
-- Translação (5,0) e depois rotação (60°) ou
-- Rotação (60°) e depois translação (5,0)?
-- Rotação e depois translação!!  
-
-<figure style="position: relative;width:100%;height:100px;left:50%;margin-left:-50px">
-  <img src="../../images/composicao-transformacoes-grafico-1.png" class="bullet bullet-no-anim" style="position:absolute;top:0;left:0;">
-  <img src="../../images/composicao-transformacoes-grafico-2.png" class="bullet bullet-no-anim" style="position:absolute;top:0;left:0;">
-</figure>
-
--->
 ---
 ## Compondo transformações
 
-- Vamos considerar uma transformação genérica de um ponto
-
-  ![](../../images/transformacao-equacao.png)
-
----
-## Compondo transformações - concatenação
-
-- Há duas formas de se concatenar duas matrizes de transformação
-  1. Pós-multiplicação
-  1. Pré-multiplicação
-- **(1) Pós-multiplicação** é multiplicar a nova matriz
-  (<span class="math">B</span>) **à direita** da matriz existente
-  (<span class="math">A</span>) para receber o resultado
-  (<span class="math">C</span>):
+- Há 02 formas para compor transformações. Sejam:
+  - <span class="math">A</span> a matriz que já tínhamos
+  - <span class="math">B</span> a matriz com a nova transformação
+  - <span class="math">C</span> a matriz resultante
+- (1) **<u>Pós</u>-multiplicação**: nova matriz à <u>direita</u> da existente
   - <span class="math">C = A \times B</span>
-- **(2) Pré-multiplicação** é multiplicar a nova matriz
-  (<span class="math">B</span>) **à esquerda** da matriz existente
-  (<span class="math">A</span>) para receber o resultado
-  (<span class="math">C</span>):
+- (2) **<u>Pré</u>-multiplicação**: nova matriz à <u>esquerda</u> da existente
   - <span class="math">C = B \times A</span>
-- Qual forma usar **depende de como você prefere pensar**
-  - O OpenGL usa **pós-multiplicação**
+- O OpenGL faz **<u>pós</u>-multiplicação** com suas funções de
+  multiplicação de matriz (_e.g._, `glTranslate`, `glOrtho`)
 
----
-# Marotinho: [Transformação em OpenGL](https://moodle.cefetmg.br/mod/quiz/view.php?id=18346)
 
----
-## Duas formas de se pensar
+<!-- - Contudo, se invertermos a ordem com que invocamos as transformações,
+  podemos "fazer o OpenGL" pré-multiplicar
+  - Qual forma usar **depende de como você prefere pensar** -->
+
+
+<!-- ## Duas formas de se pensar
 
 - Como você pensa na composição é a forma de determinar como
   você deveria concatenar as matrizes (pré ou pós)
@@ -76,29 +50,63 @@
   1. <span class="math">R(30)</span>: rotaciona 30°
   1. <span class="math">T(2,0)</span>: translada 2u eixo x
   1. <span class="math">S(0.5)</span>: escala por 0,5
+ -->
 
 ---
-## Transformando em relação ao **sistema local**
+## Exemplo: <u>pós</u>-multiplicação
 
-- Tudo que é feito altera a posição e orientação do
+- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
+glRotate(30);
+glTranslate(2, 0);
+glScale(0.5);
+desenhaNaOrigem();</code></pre>
+  Exemplo: suponha 3 transformações:
+  1. <span class="math">R(30)</span>: rotaciona 30°
+  1. <span class="math">T(2,0)</span>: translada 2u eixo x
+  1. <span class="math">S(0.5)</span>: escala por 0,5
+- <span class="math">M = I \times R \times T \times S</span>
+- Devemos considerar que estamos transformando o sistema de coordenadas
+  ("cursor onde desenhar"), e não os objetos
+
+---
+## <u>Pós</u>-multiplicação: sistema **local**
+
+- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
+glRotate(30);
+glTranslate(2, 0);
+glScale(0.5);
+desenhaNaOrigem();</code></pre>
+  Tudo que é feito altera a posição e orientação do
   sistema de coordenadas local
 
-  ![](../../images/composicao-local-exemplo.png)
-- Neste caso, **pós-multiplicamos** as matrizes para encontrar a
-  composta (<span class="math">M</span>):
-  - <span class="math">M = R \times T \times S</span>
 
+<figure class="picture-steps clean">
+  <img class="bullet" src="../../images/composicao-pos-multiplicacao-1.png" style="height: 250px">
+  <img class="bullet" src="../../images/composicao-pos-multiplicacao-2.png" style="height: 250px">
+  <img class="bullet" src="../../images/composicao-pos-multiplicacao-3.png" style="height: 250px">
+  <img class="bullet" src="../../images/composicao-pos-multiplicacao-4.png" style="height: 250px">
+  <img class="bullet" src="../../images/composicao-pos-multiplicacao-5.png" style="height: 250px">
+  <img class="bullet" src="../../images/composicao-pos-multiplicacao-6.png" style="height: 250px">
+</figure>
 
 ---
-## Transformando em relação ao **sistema global**
+## <u>Pré</u>-multiplicação: sistema **global**
 
-- Tudo que é feito é relativo à origem e a base do sistema
+- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
+glScale(0.5);
+glTranslate(2, 0);
+glRotate(30);
+desenhaNaOrigem();</code></pre>
+  Tudo que é feito é relativo à origem e a base do sistema
   de coordenadas global (do mundo)
 
-  ![](../../images/composicao-global-exemplo.png)
-- Neste caso, **pré-multiplicamos** as matrizes para encontrar a
-  composta (<span class="math">M</span>):
-  - <span class="math">M = S \times T \times R</span>
+<figure class="picture-steps clean">
+  <img class="bullet" src="../../images/composicao-pre-multiplicacao-1.png" style="height: 250px">
+  <img class="bullet" src="../../images/composicao-pre-multiplicacao-2.png" style="height: 250px">
+  <img class="bullet" src="../../images/composicao-pre-multiplicacao-3.png" style="height: 250px">
+  <img class="bullet" src="../../images/composicao-pre-multiplicacao-4.png" style="height: 250px">
+</figure>
+
 
 ---
 ## Qual forma devo usar?
@@ -187,7 +195,7 @@
 ---
 # Trabalho Prático 2 \o/
 
-_A wild TP2 appears..._
+_A wild TP2 ~~appears~~is about to appear..._
 
 ---
 ## TP2: Casa na Árvore
