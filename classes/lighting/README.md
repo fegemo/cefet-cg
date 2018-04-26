@@ -565,16 +565,6 @@ No OpenGL, (+) componente emissiva!!
 ![](../../images/shading-comparacao-exemplo.png)
 
 ---
-## (a) Sem iluminação, (b) _flat_, (c) _gouraud_, (d) _phong_
-
-<figure class="picture-steps">
-  <img class="bullet" src="../../images/shading-cena-exemplo-sem-luz.png">
-  <img class="bullet" src="../../images/shading-cena-exemplo-flat.png">
-  <img class="bullet" src="../../images/shading-cena-exemplo-gouraud.png">
-  <img class="bullet" src="../../images/shading-cena-exemplo-phong.png">
-</figure>
-
----
 # _Fog_
 
 ---
@@ -587,19 +577,16 @@ No OpenGL, (+) componente emissiva!!
 </figure>
 
 ---
-## _Fog_ no Zelda 64
+## Zelda 64 e Turok 64
 
-<iframe src="https://www.youtube.com/embed/_9AcRhzV3qA?ecver=2" width="480" height="360" frameborder="0" allowfullscreen></iframe>
 
----
-## _Fog_ no Turok 64
+<div style="display: block"><iframe src="https://www.youtube.com/embed/_9AcRhzV3qA?ecver=2&start=3" width="380" height="285" style="float: left;" frameborder="0" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/cOVpcC8GwXM?ecver=2&start=42" width="380" height="285" style="float: right;" frameborder="0" allowfullscreen></iframe></div>
 
-<iframe src="https://www.youtube.com/embed/cOVpcC8GwXM?ecver=2" width="480" height="360" frameborder="0" allowfullscreen></iframe>
 
 ---
 ## _Fog_ com cor do _skybox_ no Temple Run 2
 
-<iframe src="https://www.youtube.com/embed/wTTrtp-yy4I?ecver=2" width="480" height="360" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/wTTrtp-yy4I?ecver=2&start=55" width="600" height="450" frameborder="0" allowfullscreen></iframe>
 
 ---
 ## _Fog_ (cont.)
