@@ -130,18 +130,19 @@
 ---
 ## Textura **2D**
 
-![](../../images/textura-2d.png)
-
-- Exatamente como 1D, porém o espaço da textura é
-  <span class="math">T(s,t)</span> em vez de <span class="math">T(s)</span>
-
----
-## Textura 2D (cont.)
-
 ![](../../images/texture-space.png)
 
 - Tipicamente, representamos qualquer textura 2D no espaço bidimensional com
   <span class="math">0 \le s,t \le 1</span>
+- Matematicamente análogo a 1D, porém o espaço da textura é
+<span class="math">T(s,t)</span> em vez de <span class="math">T(s)</span>
+
+
+---
+## Textura 2D para objetos 3D
+
+![](../../images/textura-2d.png)
+
 
 ---
 ## Parametrização de superfície
@@ -156,25 +157,31 @@
 ---
 ## Função de mapeamento
 
-- Retorna o ponto do objeto correspondente a cada ponto do espaço de textura
+- Retorna o **ponto do objeto correspondente a cada ponto do da textura**
   <span class="math">(x, y, z) = F (s, t)</span>
-- Corresponde à forma com que a textura é usada para "embrulhar" (_wrap_)
-  o objeto
-  - Na verdade, na maioria dos casos, precisamos de uma função que nos
-    permita "desembrulhar" (_unwrap_) a textura do objeto, isto é, a
-    inversa da função de mapeamento
+  - Corresponde à forma com que a textura é usada para "embrulhar" (_wrap_)
+    o objeto
+- Contudo, precisamos associar um ponto da textura, dado um ponto no objeto <span class="math">(s, t) = G (x, y, z)</span>
+  - Dizemos que vamos "desembrulhar" (_unwrap_) a textura do objeto
+  - Essa função é a **inversa da função de mapeamento**
 - Se a superfície do objeto pode ser descrita em forma paramétrica, esta pode
   servir como base para função de mapeamento
+
+---
+## Parametrização do Cilindro
+
+- ![left](../../images/textura-parametrizacao-cilindro-formula.png)
+  <div style="float:right;clear:right;">Função de <strong>mapeamento</strong>:<br><span class="math">x = cos(\theta)</span><span class="math" style="float:right;">\theta = 2 \pi s</span><br>
+  <span class="math" style="clear:right">y = sin(\theta)</span><span class="math" style="float:right">z = t</span><br><span class="math" style="clear:right">z = z</span></div>
+  <div style="float:right;margin-top:1em;">Função <strong>inversa</strong>:<br><span class="math">\theta = arctan(\frac{y}{x})</span>
+  <span class="math" style="float:right;">s = \frac{\theta}{2 \pi}</span><br><span class="math" style="clear:right;">z = z</span>
+  <span class="math" style="float:right;">t = z</span></div>
 
 ---
 ## Parametrização da Esfera
 
 ![](../../images/textura-parametrizacao-esfera-formula.png)
 
----
-## Parametrização do Cilindro
-
-![](../../images/textura-parametrizacao-cilindro-formula.png)
 
 ---
 ## Parametrização de Objetos Genéricos
@@ -407,12 +414,12 @@ void makeCheckImage()
   - Cor (coeficientes de reflexão difusa)
   - Coeficientes de reflexão especular e difusa
     - Mapeamento de ambiente
-  - Perturbação do vetor normal
-    - _Bump Mapping_
-  - Definição do vetor normal
-    - _Normal Mapping_
-  - Perturbação da superfície na direção da normal
-    - _Displacement Mapping_
+  - _Bump Mapping_
+    - Perturbação do vetor normal
+  - _Normal Mapping_
+    - Definição do vetor normal
+  - _Displacement Mapping_
+    - Perturbação da superfície (posição) na direção da normal
   - Transparência / opacidade
 
 ---
@@ -428,14 +435,11 @@ void makeCheckImage()
 ![right](../../images/texture-moon-normals.png)
 
 - [Demonstração](http://coryg89.github.io/MoonDemo/) do
-  [Cory Gross](http://coryg89.github.io/)
-- [Explicação](http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/)
-  sobre como a demonstração foi feita
-- Pergunta: por que o _normal map_ é azulado? :3
+  [Cory Gross](http://coryg89.github.io/) e  [explicação](http://coryg89.github.io/technical/2013/06/01/photorealistic-3d-moon-demo-in-webgl-and-javascript/) sobre a demo
+- Pergunta difícil: por que o _normal map_ é azulado? :3
 
 ---
 ## Exemplo de **bump mapping**
-
 
 ![left](../../images/texture-bump-mapping-1.png)
 ![left](../../images/seta-direita.png)
