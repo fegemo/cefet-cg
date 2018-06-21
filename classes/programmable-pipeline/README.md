@@ -128,14 +128,14 @@ backdrop: big-code
 #include <iostream>
 #include <fstream>
 
-#include <GL\glew.h>
-#include <GL\freeglut.h>
+#include "GL\glew.h"
+#include "GL\freeglut.h"
 
 using namespace std;
 
 struct Vertex {
-  float coords[4];
-  float colors[4];
+  float position[4];
+  float color[4];
 };
 
 struct Matrix4x4 {
@@ -154,7 +154,9 @@ static const Matrix4x4 IDENTITY_MATRIX4x4 = {
 enum buffer {SQUARE_VERTICES};
 enum object {SQUARE};
 
-// Globals
+// informações sobre os vértices dos quadrados:
+// { { posicao }, { cor } },    - v0
+// { { posicao }, { cor } }...  - v1...
 static Vertex squareVertices[] = {
   { { 20.0, 20.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
   { { 80.0, 20.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
@@ -231,7 +233,7 @@ void setup(void)
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,
                         sizeof(squareVertices[0]),
-                        (GLvoid*)sizeof(squareVertices[0].coords));
+                        (GLvoid*)sizeof(squareVertices[0].position));
   glEnableVertexAttribArray(1);
   ///////////////////////////////////////
 
@@ -323,16 +325,16 @@ int main(int argc, char* argv[])
 - `vertexShader.glsl`
   ```glsl
   #version 430
-  layout(location=0) in vec4 squareCoords;
-  layout(location=1) in vec4 squareColors;  
+  layout(location=0) in vec4 position;
+  layout(location=1) in vec4 color;  
   uniform mat4 projMat;
   uniform mat4 modelViewMat;
-  out vec4 colorsExport;
+  out vec4 calculatedColor;
 
   void main(void)
   {
-     gl_Position = projMat * modelViewMat * squareCoords;
-     colorsExport = squareColors;
+     gl_Position = projMat * modelViewMat * position;
+     calculatedColor = color;
   }
   ```
 
@@ -342,12 +344,12 @@ int main(int argc, char* argv[])
 - `fragmentShader.glsl`
   ```glsl
   #version 430
-  in vec4 colorsExport;
-  out vec4 colorsOut;
+  in vec4 calculatedColor;
+  out vec4 finalColor;
 
   void main(void)
   {
-     colorsOut = colorsExport;
+     finalColor = calculatedColor;
   }
   ```
 
@@ -356,7 +358,7 @@ int main(int argc, char* argv[])
 
 - Não existem mais:
   - As pilhas de matrizes
-    -  `glIdentity, glRotate, glOrtho, gluOrtho`...
+    - `glIdentity, glRotate, glOrtho, gluOrtho`...
   - O modo imediatista de criação de primitivas
     - `glVertex, glGenList, glCallList`...
   - Informações sobre vértices
