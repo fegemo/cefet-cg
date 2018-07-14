@@ -30,7 +30,8 @@ jogador por meio do teclado**. O personagem fica posicionado em algum lugar fixo
     
 1. O personagem volta para o inicío do jogo (ou da fase), que reinicia;
 
-Quando o personagem perde todas as vidas, o jogo mostra ao jogador uma **tela de _"game over"_**.
+Quando o personagem perde todas as vidas, o jogo mostra ao jogador uma **tela de _"game over"_** 
+com a pontuação do jogador.
 
 À medida em que o tempo passa, o jogo se torna mais difícil, com uma maior concentração de objetos se 
 aproximando e/ou com um aumento da velocidade de aproximação. 
@@ -60,7 +61,7 @@ do trabalho!
 Exemplos de funcionalidades com suas respectivas pontuações **máximas** são
 mostrados a seguir:
 
-- **Texturas animadas**: você pode criar animações para as texturas tanto
+- :star: **Texturas animadas**: você pode criar animações para as texturas tanto
   para o cenário quanto para os objetos e o personagem. **#dicaquentinha**: busque
   por _sprite sequence_ na Internet (**até 14%**)
   - Personagem andando (**até 6%**)
@@ -81,24 +82,27 @@ mostrados a seguir:
 - **Pulo com gravidade**: faça o dinossaurinho pular considerando a gravidade
   (e também um ponto de saturação da velocidade). (**até 5%**)
   
-- **Esquivar se abaixando**: o dinossaurinho poderá, além de pular, ter também a opção de se abaixar para se 
-desviar dos pterodátilos que venham em sua direção voando. (**até 10%**) 
+- :star: **Esquivar se abaixando**: o dinossaurinho poderá, além de pular, ter também a opção de se abaixar para se 
+desviar dos pterodátilos que venham em sua direção voando. (**até 8%**) 
 
-- **Efeito Parallax**: você pode fazer um cenário composto, em que as partes se movimentam com velocidades diferentes,
+- :bomb: **Efeito Parallax**: você pode fazer um cenário composto, em que as partes se movimentam com velocidades diferentes,
 criando a sensação de profundidade. (mais sobre esse efeito [aqui](https://en.wikipedia.org/wiki/Parallax_scrolling) e 
 [aqui](http://forum.jogos.uol.com.br/curiosidade-efeito-parallax_t_1921012)) (**até 10%**) 
   
-- **Manter razão de aspecto**: faça com que a razão de aspecto do jogo
+- :star: **Manter razão de aspecto**: faça com que a razão de aspecto do jogo
   seja sempre mantida, independente das dimensões da janela. (**4%**)
   
 - **Fases**: A princípio, o jogo é um endless running, ou seja, a dificuldade aumenta gradativamente e o 
 jogo não tem fim. Porém a ideia de fases pode ser implementada, à medida em que o jogador avança, com mudanças 
 acontecendo aos poucos no cenário e nos tipos de objetos. (**até 10%**)
  
-- **Telas**: faça um jogo completo, ou seja, implemente telas de  _splash screen_, menu inicial,
+- :star: **Telas**: faça um jogo completo, ou seja, implemente telas de  _splash screen_, menu inicial,
  créditos, opções, _game over_, etc.   (**até 8%**);
  
-- **Sons**: Colocar efeitos sonoros e música de fundo no seu jogo **(até 8%)**
+- :star: **Sons**: Colocar efeitos sonoros e música de fundo no seu jogo **(até 8%)**
+
+- **Highscore salvo em arquivo**: faça a pontuação dos n melhores jogadores ser salva em um arquivo 
+(e.g., pontuacao.txt) e coloque uma tela no jogo para mostrar isso. **(até 10%)**
 
 - **Implementação criativa**: qualquer implementação que não fuja muito do pedido,
   mas que traga elementos novos e interessantes para o seu jogo é
@@ -113,19 +117,17 @@ e funcionando.
 
 ## Instruções gerais
 
-O seu código deve estar comentado e, principalmente, **organizado**: ao
-construí-lo, pense que outra pessoa irá ler o código e você não estará lá
-para explicar seu raciocínio, portanto, organize-o! Também não é necessário
-comentar o código inteiro, mas o faça quando sentir necessidade de uma
-explicação adicional à sua lógica.
+O seu código deve estar comentado e, principalmente, organizado: ao construí-lo, pense que outra pessoa 
+irá ler o código e você não estará lá para explicar seu raciocínio, portanto, organize-o! Também não é 
+necessário comentar o código inteiro, mas o faça quando sentir necessidade de uma explicação adicional à sua lógica.
 
-Seu trabalho deve ser feito **individualmente** e produzido integralmente
-por você. A discussão e troca de ideias com os colegas é bem-vinda e estimulada,
- mas cada aluno deve ter seu próprio trabalho.
+Seu trabalho pode ser feito individual ou em duplas e produzido integralmente por você/dupla. Se recursos de 
+terceiros forem usados (e.g., imagens, músicas, efeitos sonoros), coloque links para elas na documentação. 
+A discussão e troca de ideias com os colegas é bem-vinda e estimulada, mas cada aluno/dupla deve ter seu próprio trabalho.
 
-**Trabalhos muito semelhantes receberão nota 0**, independente de quem
-copiou quem. E claro, trabalhos semelhantes aos de outras pessoas ou
-retirados da Internet, também receberão nota 0.
+Trabalhos muito semelhantes receberão nota 0, independente de quem copiou quem. E claro, trabalhos semelhantes 
+aos de outras pessoas ou retirados da Internet, também receberão nota 0. Além da nota redonda, eles serão encaminhados 
+ao colegiado para apreciação.
 
 Outros descuidos também o farão **perder pontos no trabalho**, como:
 
@@ -148,17 +150,13 @@ Outros descuidos também o farão **perder pontos no trabalho**, como:
 
 ## O que deve ser entregue
 
-Você deve entregar um **arquivo .tar.gz, .7z ou .zip** via **Moodle** contendo
-os seguintes itens:
+Você deve entregar um arquivo .tar.gz, .7z ou .zip via Moodle contendo os seguintes itens:
 
-1. Pelo menos três _screenshots_ de diferentes cenas de seu jogo;
-2. Todo o programa fonte, com _makefiles_ e bibliotecas necessárias para a
-  compilação e execução do programa;
+1. Pelo menos três screenshots de diferentes cenas de seu jogo;
+2. Todo o programa fonte, com makefiles e bibliotecas necessárias para a compilação e execução do programa;
 3. O arquivo executável do jogo;
-4. Um arquivo **README** contendo (a) instruções para a compilação e
-  execução, e (b) a lista de itens adicionais implementados em seu jogo.
-5. (Opcional bônus, **3%**) Um _link_ para um **vídeo curto** no YouTube,
-  Vimeo, etc. mostrando seu jogo implementado!
+4. Um arquivo README contendo (a) instruções para a compilação e execução, e (b) a lista de itens adicionais implementados em seu jogo.
+5. Um link para um vídeo curto (30 a 60s) no YouTube mostrando seu jogo implementado!
+Faça um vídeo curto!
 
-Qualquer dúvida, entre em contato com o professor ou com o monitor. Ou então
-acrescente a sua interpretação no arquivo README e mãos à obra!
+Qualquer dúvida, entre em contato com o professor ou com o monitor. Ou então acrescente a sua interpretação no arquivo README e mãos à obra!
