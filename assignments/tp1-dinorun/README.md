@@ -6,7 +6,7 @@ para passar essas horas de desespero e tédio.
 
 ![chrome_dinossaur](images/dino-run.gif)
 
-~~(Por que logo um-dinossauro? Tá me chamando de jurássico é?)~~
+~~(Por que logo um dinossauro? Tá me chamando de jurássico?)~~
 
 Agora que você conhece um pouco mais sobre OpenGL, vamos implementar um jogo
 digital simples usando seus conhecimentos sobre ele e uma linguagem de
