@@ -1,15 +1,24 @@
 # Trabalho Prático 1 - Dino Run
 
-![Jogo em que objetos vem em sua direção e o personagem precisa evitá-los](../../images/dino-run.gif)
+Acredito que todos já passaram por esse belo momento: a conexão de internet caiu e você ficou indagando 
+o que fazer da vida enquanto ela não volta. Pensando nisso, o Chrome disponibilizou esse amigável jogo 
+para passar essas horas de desespero e tédio.
+
+![chrome_dinossaur](../../images/dino-run.gif)
+~~(Por que logo um-dinossauro? Tá me chamando de jurássico, por que to sem internet?)~~
 
 Agora que você conhece um pouco mais sobre OpenGL, vamos implementar um jogo
 digital simples usando seus conhecimentos sobre ele e uma linguagem de
 programação a sua escolha¹ (**C/C++**, Java, etc.).
 
---historia aqui--
-
 Neste trabalho, vamos criar um jogo em que o jogador controla um personagem
-que precisa se desviar de objetos vindo em sua direção, pulando ou se abaixando.
+que precisa se desviar de objetos vindo em sua direção pulando.
+
+O gênero Endless Runner 
+
+Ancestrais desse gênero incluem include the early endless scrolling platformers Jump Bug 
+(1981) and Moon Patrol (1982), the third-person special stages in Sonic 2 (1992), and the Sega Master 
+System version of Aladdin (1994).
 
 ¹ Se optar por outra linguagem diferente de C ou C++, converse como professor
 sobre isso **antes de começar** ;)
