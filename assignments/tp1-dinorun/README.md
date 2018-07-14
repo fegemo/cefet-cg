@@ -4,28 +4,33 @@ Acredito que todos já passaram por esse belo momento: a conexão de internet ca
 o que fazer da vida enquanto ela não volta. Pensando nisso, o Chrome disponibilizou esse amigável jogo 
 para passar essas horas de desespero e tédio.
 
-![chrome_dinossaur](../../images/dino-run.gif)
-~~(Por que logo um-dinossauro? Tá me chamando de jurássico, por que to sem internet?)~~
+![chrome_dinossaur](images/dino-run.gif)
+~~(Por que logo um-dinossauro? Tá me chamando de jurássico é?)~~
 
 Agora que você conhece um pouco mais sobre OpenGL, vamos implementar um jogo
 digital simples usando seus conhecimentos sobre ele e uma linguagem de
 programação a sua escolha¹ (**C/C++**, Java, etc.).
 
 Neste trabalho, vamos criar um jogo em que o jogador controla um personagem
-que precisa se desviar de objetos vindo em sua direção pulando.
+que precisa se desviar de objetos vindo em sua direção pulando. 
 
-O gênero Endless Runner 
+O gênero Endless Runner é definido basicamente por um personagem correndo eternamente em um caminho com obstáculos.
+Bem simples não?  As origens do gênero remetem à jogos como  Scramble (1981), Moon Patrol (1982) e B.C.'s Quest for Tires (1983), 
+considerado o primeiro jogo do gênero, com uma menção honrosa às fases especiais do Sonic 2 (1992). Exemplares mais atuais incluem Canabalt (2009), 
+Temple Run (2011) e Subway Surfers (2012).
 
-Ancestrais desse gênero incluem include the early endless scrolling platformers Jump Bug 
-(1981) and Moon Patrol (1982), the third-person special stages in Sonic 2 (1992), and the Sega Master 
-System version of Aladdin (1994).
+![quest](images/quest-for-tires.png)
+B.C.'s Quest for Tires (1983)
 
-¹ Se optar por outra linguagem diferente de C ou C++, converse como professor
+![canabalt](images/canabalt.png)
+Canabalt (2009)
+
+¹ Se optar por outra linguagem diferente de C ou C++, converse com o professor
 sobre isso **antes de começar** ;)
 
 ## Instruções sobre o jogo
 
-O jogo consiste em uma **câmera fixa** em um ambiente 2D e um **personagem controlado pelo 
+O jogo consiste em uma **câmera fixa** em um **ambiente 2D** e um **personagem controlado pelo 
 jogador por meio do teclado**. O personagem fica posicionado em algum lugar fixo na tela.
  Vários objetos do cenário vão se aproximando pelo chão, a uma certa velocidade,  e o personagem 
  deve se esquivar deles pulando.  
@@ -101,7 +106,7 @@ criando a sensação de profundidade. (mais sobre esse efeito [aqui](https://en.
 - :star: **Manter razão de aspecto**: faça com que a razão de aspecto do jogo
   seja sempre mantida, independente das dimensões da janela. (**4%**)
   
-- **Fases**: A princípio, o jogo é um endless running, ou seja, a dificuldade aumenta gradativamente e o 
+- **Fases**: como o jogo é um endless running, a dificuldade aumenta gradativamente e o 
 jogo não tem fim. Porém a ideia de fases pode ser implementada, à medida em que o jogador avança, com mudanças 
 acontecendo aos poucos no cenário e nos tipos de objetos. (**até 10%**)
  
