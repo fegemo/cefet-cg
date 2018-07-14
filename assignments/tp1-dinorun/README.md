@@ -5,6 +5,7 @@ o que fazer da vida enquanto ela não volta. Pensando nisso, o Chrome disponibil
 para passar essas horas de desespero e tédio.
 
 ![chrome_dinossaur](images/dino-run.gif)
+
 ~~(Por que logo um-dinossauro? Tá me chamando de jurássico é?)~~
 
 Agora que você conhece um pouco mais sobre OpenGL, vamos implementar um jogo
@@ -20,9 +21,11 @@ considerado o primeiro jogo do gênero, com uma menção honrosa às fases espec
 Temple Run (2011) e Subway Surfers (2012).
 
 ![quest](images/quest-for-tires.png)
+
 B.C.'s Quest for Tires (1983)
 
 ![canabalt](images/canabalt.png)
+
 Canabalt (2009)
 
 ¹ Se optar por outra linguagem diferente de C ou C++, converse com o professor
