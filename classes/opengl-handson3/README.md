@@ -316,13 +316,13 @@ void init() {
 _A wild TP1 appears..._
 
 ---
-## TP1: **Lander**
+## TP1: **Dino Run**
 
-<img alt="" src="https://i.imgur.com/utZznoE.gif"
+<img alt="" src="https://raw.githubusercontent.com/fegemo/cefet-cg/master/assignments/tp1-dinorun/images/dino-run.gif"
   style="float: right; width: 420px; margin: 0 0 5px 20px">
-  _O jogo Lunar Lander foi criado pela Atari em 1979 e foi um terrível sucesso, sendo jogado em fliperamas de todo o mundo. Ele foi baseado no Moonlander (1973), que foi o primeiro jogo gráfico do gênero, e utilizou um monitor vetorial dentro do gabinete de madeira do arcade._
+  _É certo que todos já passaram por esse belo momento: a conexão de Internet caiu e você ficou indagando o que fazer da vida enquanto ela não voltava. Pensando nisso, o Chrome disponibilizou um joguinho maroto para passar essas horas de desespero e tédio._
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-lander/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-dinorun/README.md)).
 
 ---
 # Referências

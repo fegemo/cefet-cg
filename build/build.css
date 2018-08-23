@@ -1554,6 +1554,10 @@ a[href^="codeblocks:"]:before {
     height: 150px !important;
   }
 }
+.cube .bespoke-slide {
+  -webkit-transition-duration: 400ms;
+          transition-duration: 400ms;
+}
 @-webkit-keyframes bounce {
   from {
     right: 20px;
