@@ -454,14 +454,14 @@ OPCOES_COMPILADOR= -Wall
 main.o: main.c
     gcc -o main.o -c main.c $(OPCOES_COMPILADOR)
 
-all: $(TODOS_ARQUIVOS_OBJ)
-    gcc -o main main.o -lglut32 -lm
+all:
+    gcc -o main.exe main.o -lglut32 -lm
 
 run: all
     main.exe
 
 clean:
-    del *.o main
+    del *.o main.exe
 ```
 
 ---
