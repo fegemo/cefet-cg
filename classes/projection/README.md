@@ -106,9 +106,9 @@
 
 ![](../../images/ortho-right-handed-to-left.png)
 
-- ![right](../../left-vs-right-hand.gif)
-  O OpenGL nos permite trabalhar **right-handed**
-- Mas ele projeta num sistema **left-handed**
+- ![right](../../images/left-vs-right-hand.png)
+  O OpenGL nos permite trabalhar _**right**-handed_
+- Mas ele projeta num sistema _**left**-handed_
 ---
 ## Projeção Paralela, Isométrica
 
@@ -232,7 +232,7 @@
 ---
 ## Exemplo
 
-- [Projeção Ortogonal _vs_ Perpsectiva](codeblocks:ortho-vs-perspective2/CodeBlocks/ortho-vs-perspective2.cbp)
+- [Projeção Ortogonal vs Perpsectiva](codeblocks:ortho-vs-perspective2/CodeBlocks/ortho-vs-perspective2.cbp)
   - Pressionar <key>barra de espaço</key> para alternar de
     projeção perspectiva para ortogonal
 
@@ -314,7 +314,10 @@ void gluLookAt(double eyeX,     // posição do olho
                double upY,
                double upZ);
 ```
-
+- A transformação de visualização deve acontecer **ANTES das transformações
+  de modelo**
+  - Ou seja, `gluLookAt(...)` deve ser chamada na função `desenhaCena` **antes**
+    de começarmos a desenhar os objetos da cena
 
 <!-- # Trabalho Prático 2 \o/
 
