@@ -189,20 +189,61 @@ desenhaNaOrigem();</code></pre>
 ---
 # Modelagem Hierárquica
 
-- Vide slides do professor Moisés Pereira
+![](../../images/bicicleta.jpg)
+
+---
+## Exemplo do carro (1)
+
+```c
+void desenhaCarroTodo(struct chassi_t chassi) {
+  glPushMatrix();
+    glTranslatefv(chassi.posicaoCentro);
+    desenhaChassi();
+
+    for (int i = 0; i < NUM_RODAS; i++) {
+      glPushMatrix();
+        glTranslatefv(chassi.roda[i].posicaoCentro)
+        desenhaRodaEPneu();
+      glPopMatrix();      
+    }
+  glPopMatrix();
+}
+```
+
+---
+## Exemplo do carro (2)
+
+```c
+void desenhaRodaEPneu() {
+  desenhaRoda();
+
+  for (int i = 0; i < NUM_PARAFUSOS; i++) {
+    glPushMatrix();
+      float angulo = ((float)i) / NUM_PARAFUSOS;
+      glRotatef(angulo, 0, 0, 1);
+      glTranslatefv(RAIO_PARAFUSO)
+      desenhaParafuso();
+    glPopMatrix();      
+  }
+  desenhaPneu();
+}
+```
+
 - Exemplo: [Braço do Robô](codeblocks:braco-robo/CodeBlocks/braco-robo.cbp)
 
 ---
 # Trabalho Prático 2 \o/
 
-_A wild TP2 ~~appears~~is about to appear..._
+_A wild TP2 appears..._
 
 ---
-## TP2: Casa na Árvore
+## TP2: Zeppelin
 
-<img alt="" src="../../images/casa-arvore.png"
+<img alt="" src="https://raw.githubusercontent.com/fegemo/cefet-cg/master/assignments/tp2-zeppelin/images/zeppelin.png"
   style="float: right; width: 450px; margin: 0 0 5px 20px">
-  -- _"Neste trabalho, vamos criar uma casinha na árvore. Ou uma casinha submarina. Ou uma casinha no chão mesmo - basta dar pra
-  morar."_
+  -- _Neste trabalho, vamos criar um zeppelin sobrevoando uma pequena cidade._
+  _Ou um [DeLorean](https://pt.wikipedia.org/wiki/Back_to_the_Future)_
+  _sobrevoando a futurista Hill Valley. Ou um OVNI sobrevoando uma fazenda_
+  _para abduzir vaquinhas._
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-treehouse/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-zeppelin/README.md)).
