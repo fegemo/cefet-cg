@@ -133,13 +133,13 @@ backdrop: big-code
 
 using namespace std;
 
-struct Vertex {
-  float position[4];
-  float color[4];
+struct Vertice {
+  float coords[4];
+  float cor[4];
 };
 
-struct Matrix4x4 {
-  float entries[16];
+struct Matriz4x4 {
+  float valores[16];
 };
 
 static const Matrix4x4 IDENTITY_MATRIX4x4 = {
@@ -151,20 +151,20 @@ static const Matrix4x4 IDENTITY_MATRIX4x4 = {
   }
 };
 
-enum buffer {SQUARE_VERTICES};
-enum object {SQUARE};
+enum buffer {VERTICES_QUADRADO};
+enum object {QUADRADO};
 
 // informações sobre os vértices dos quadrados:
 // { { posicao }, { cor } },    - v0
 // { { posicao }, { cor } }...  - v1...
-static Vertex squareVertices[] = {
+static Vertex verticesQuadrado[] = {
   { { 20.0, 20.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
   { { 80.0, 20.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
-  { { 20.0, 80.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
-  { { 80.0, 80.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } }
+  { { 80.0, 80.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } },
+  { { 20.0, 80.0, 0.0, 1.0 }, { 0.0, 0.0, 0.0, 1.0 } }
 };
 
-static Matrix4x4
+static Matriz4x4
   modelViewMat = IDENTITY_MATRIX4x4,
   projMat = IDENTITY_MATRIX4x4;
 
@@ -177,9 +177,8 @@ static unsigned int
   buffer[1],
   vao[1];
 
-// Function to read text file.
-char* readTextFile(char* aTextFile)
-{
+// Apenas lê um arquivo e retorna seu conteúdo em uma string
+char* readTextFile(char* aTextFile) {
   FILE* filePointer = fopen(aTextFile, "rb");
   char* content = NULL;
   long numVal = 0;
@@ -194,12 +193,12 @@ char* readTextFile(char* aTextFile)
   return content;
 }
 
-// Initialization routine.
+// Inicializa tudo
 void setup(void)
 {
   glClearColor(1.0, 1.0, 1.0, 0.0);
 
-  // Create shader program executable.
+  // Cria um programa shader
   char* vertexShader = readTextFile("vertexShader.glsl");
   vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(vertexShaderId, 1,
@@ -219,7 +218,8 @@ void setup(void)
   glUseProgram(programId);
   ///////////////////////////////////////
 
-  // Create VAO and VBO and associate data with vertex shader.
+  // Cria um VAO e um VBO para representar as informações
+  // dos vértices
   glGenVertexArrays(1, vao);
   glGenBuffers(1, buffer);
   glBindVertexArray(vao[SQUARE]);
@@ -237,8 +237,10 @@ void setup(void)
   glEnableVertexAttribArray(1);
   ///////////////////////////////////////
 
-  // Obtain projection matrix uniform location and set value.
-  Matrix4x4 projMat = {
+  // Define o valor das matrizes de projeção e modelView
+  // Esta matriz é o resultado de se chamar:
+  // glOrtho(0, 100, 0, 100, -1, 1);
+  Matriz4x4 projMat = {
       {
           0.02, 0.0,  0.0, -1.0,
           0.0,  0.02, 0.0, -1.0,
@@ -246,24 +248,27 @@ void setup(void)
           0.0,  0.0,  0.0,  1.0
       }
   };
-  projMatLoc = glGetUniformLocation(programId,"projMat");
-  glUniformMatrix4fv(projMatLoc, 1, GL_TRUE, projMat.entries);
+  projMatLoc = glGetUniformLocation(programId, "projMat");
+  glUniformMatrix4fv(projMatLoc, 1, GL_TRUE, projMat.valores);
   ///////////////////////////////////////
 
-  // Obtain modelview matrix uniform location and set value.
+  // Como não há transformação modelView, passamos uma
+  // identidade
   Matrix4x4 modelViewMat = IDENTITY_MATRIX4x4;
   modelViewMatLoc = glGetUniformLocation(programId, "modelViewMat");
   glUniformMatrix4fv(modelViewMatLoc, 1, GL_TRUE,
-                     modelViewMat.entries);
+                     modelViewMat.valores);
   ///////////////////////////////////////
 }
 
-// Drawing routine.
-void drawScene(void)
-{
+// Callback de desenho
+void drawScene() {
   glClear(GL_COLOR_BUFFER_BIT);
 
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+  // simplesmente desenha o VAO que está ativo (desde o setup())
+  // e manda desenhar seus 4 vértices, começando do primeiro,
+  // como um leque de triângulos
+  glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
   glFlush();
 }
@@ -286,7 +291,6 @@ void keyInput(unsigned char key, int x, int y)
   }
 }
 
-// Main routine.
 int main(int argc, char* argv[])
 {
   glutInit(&argc, argv);
@@ -312,7 +316,7 @@ int main(int argc, char* argv[])
 }
 ```
 - [Exemplo `hello-world-modern.c`](codeblocks:hello-modern/CodeBlocks/hello-modern.cbp)
-  (130 <abbr title="Lines of code">LOC</abbr>)
+  (133 linhas de código)
 
 ---
 ## Resultado...
@@ -320,56 +324,153 @@ int main(int argc, char* argv[])
 ![](../../images/modern-hello-world.png)
 
 ---
-## E esse arquivo **.glsl**?
+## Hello World em OpenGL 4.3+ (**modesto**)
 
-- `vertexShader.glsl`
-  ```glsl
-  #version 430
-  layout(location=0) in vec4 position;
-  layout(location=1) in vec4 color;  
-  uniform mat4 projMat;
-  uniform mat4 modelViewMat;
-  out vec4 calculatedColor;
 
-  void main(void)
-  {
-     gl_Position = projMat * modelViewMat * position;
-     calculatedColor = color;
-  }
-  ```
+```cpp
+#include "GL/glew.h"
+#include "GL/freeglut.h"
+#include "glm/glm.hpp"
+#include "glm/ext/matrix_transform.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "shader.h"
+#include "object.h"
+
+Object* square;
+Shader* colorShader;
+
+// Inicializa configurações do OpenGL
+void setup(void) {
+    glClearColor(1.0, 1.0, 1.0, 0.0);
+
+    // configura o programa sombreador a ser usado
+    colorShader = new Shader(
+        "shaders/vertexShader.glsl",
+        "shaders/fragmentShader.glsl");
+    colorShader->use();
+
+    // configura o objeto que queremos desenhar
+    square = new Object(4);
+    square->addVertex(Vertex{{20, 20, 0, 1}, {0, 1, 0, 1}});
+    square->addVertex(Vertex{{80, 20, 0, 1}, {0, 1, 0, 1}});
+    square->addVertex(Vertex{{80, 80, 0, 1}, {0, 1, 0, 1}});
+    square->addVertex(Vertex{{20, 80, 0, 1}, {0, 1, 0, 1}});
+    square->initialize();
+
+    // define o valor das variáveis uniformes do shader
+    colorShader->setUniformMatrixVariable("projMat",
+        glm::ortho(0.0f, 100.0f, 0.0f, 100.0f));
+    colorShader->setUniformMatrixVariable("modelViewMat",
+        glm::mat4(1.0));
+}
+
+// Desenha a cena
+void drawScene(void) {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // simplesmente manda desenhar o VAO corrente usando a
+    // conectividade de GL_TRIANGLE_FAN
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
+    glFlush();
+}
+
+void resize(int w, int h) {
+    glViewport(0, 0, w, h);
+}
+
+void keyInput(unsigned char key, int x, int y) {
+    switch(key)
+    {
+    case 27:
+        exit(0);
+        break;
+    default:
+        break;
+    }
+}
+
+int main(int argc, char* argv[]) {
+    glutInit(&argc, argv);
+
+    glutInitContextVersion(4, 3);
+    glutInitContextProfile(GLUT_CORE_PROFILE);
+    glutInitContextFlags(GLUT_FORWARD_COMPATIBLE);
+
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+    glutInitWindowSize(500, 500);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("Hello World - Pipeline Programável");
+    glutDisplayFunc(drawScene);
+    glutReshapeFunc(resize);
+    glutKeyboardFunc(keyInput);
+
+    glewExperimental = GL_TRUE;
+    glewInit();
+
+    setup();
+
+    glutMainLoop();
+
+    return 0;
+}
+```
+- [Exemplo `hello-world-modest`](codeblocks:hello-modest/CodeBlocks/hello-modest.cbp)
+  (62 linhas de código)
 
 ---
-## E esse outro **.glsl**?
+## E esse arquivo **`vertexShader.glsl`**?
 
-- `fragmentShader.glsl`
-  ```glsl
-  #version 430
-  in vec4 calculatedColor;
-  out vec4 finalColor;
+```glsl
+#version 430 core
+#pragma debug(on)
+#pragma optimize(off)
 
-  void main(void)
-  {
-     finalColor = calculatedColor;
-  }
-  ```
+layout(location=0) in vec4 position;
+layout(location=1) in vec4 color;  
+uniform mat4 projMat;
+uniform mat4 modelViewMat;
+out vec4 calculatedColor;
+
+void main() {
+   gl_Position = projMat * modelViewMat * position;
+   calculatedColor = color;
+}
+```
+
+---
+## E esse outro **`fragmentShader.glsl`**?
+
+```glsl
+#version 430 core
+#pragma debug(on)
+#pragma optimize(off)
+
+in vec4 calculatedColor;
+out vec4 finalColor;
+
+void main() {
+   finalColor = calculatedColor;
+}
+```
 
 ---
 ## O que mudou?
 
 - Não existem mais:
-  - As pilhas de matrizes
-    - `glIdentity, glRotate, glOrtho, gluOrtho`...
+  - As matrizes e suas pilhas
+    - `glLoadIdentity, glRotate, glOrtho, glTranslate`...
   - O modo imediatista de criação de primitivas
     - `glVertex, glGenList, glCallList`...
   - Informações sobre vértices
-    - `glTexCoord, glNormal, glNormalPointer, glColor`
+    - `glTexCoord, glNormal, glNormal, glColor`
   - Iluminação :O
-    - `glLight, glShadeModel, glLightModel, glMaterial`...
+    - `glLight, glShadeModel, glMaterial`...
 
 ---
 ## Então #comofaz?
 
-- **Pilhas de matrizes**: crie e gerencie você mesmo, caso precise
+- **Matrizes**: crie e gerencie você mesmo, caso precise
   - Crie você mesmo uma classe matriz com as operações e com as matrizes
     de transformação
   - Ou então use uma biblioteca. Exemplo: [glm](http://glm.g-truc.net/0.9.6/index.html)
