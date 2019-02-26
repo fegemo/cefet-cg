@@ -96,7 +96,7 @@ _Screen-aligned_
 
 - Renderização de anotações explicativas
 
-  <video width="484" height="380" class="left-aligned" poster="../../images/screen-aligned-billboard.jpg" controls>
+  <video width="484" height="380" class="push-left" poster="../../images/screen-aligned-billboard.jpg" controls>
     <source src="../../videos/screen-aligned-billboard.mp4" type="video/mp4" />
   </video>
 

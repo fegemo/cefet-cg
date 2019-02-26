@@ -1,0 +1,116 @@
+
+.picture-steps
+  position relative
+  & > *:not(:first-child)
+    position absolute
+    top 0
+    left 0
+  & > *
+    &:not(.bespoke-bullet-active)
+      transform initial
+  &.clean
+    & > *:not(:last-child):not(.bespoke-bullet-current)
+      opacity 0
+
+  .katex-display
+    text-align left
+  .bullet.math
+  .bullet .math
+    padding-top 1px
+
+.inset-shadow
+  position relative
+  &:before,
+  &:after
+    content attr(title)
+    position absolute
+    color rgba(white, 0.1)
+  &:before
+    top 1px
+    left 1px
+  &:after
+    top 2px
+    left 2px
+
+.two-column-code code
+  column-count 2
+  column-rule 3px double rgba(white,.3)
+  column-gap 2em
+.floating-right-code pre
+  float right
+  width auto
+  margin-left 1em
+
+
+.layered-paragraph
+  background-color rgba(215, 215, 250, 0.5);
+
+.pure-red
+  color #ff0000
+.pure-green
+  color #00ff00
+.pure-blue
+  color #0000ff
+
+.color-portrait
+  display inline-block
+  width 20px
+  height 20px
+  border 1px solid black
+
+  &.ffd5d5
+    background-color #ffd5d5
+  &.black
+    background-color #000
+  &.red
+    background-color #f00
+  &.green
+    background-color #0f0
+  &.blue
+    background-color #00f
+  &.yellow
+    background-color #ff0
+  &.magenta
+    background-color #f0f
+  &.ciano
+    background-color #0ff
+  &.gray
+    background-color #777
+  &.white
+    background-color #fff
+
+
+$portrait-size = 100px
+.portrait,
+.portrait img
+  display inline-block
+  width $portrait-size
+  height $portrait-size
+  border-radius ($portrait-size / 2)
+  figcaption
+    background-color transparent
+
+.portrait.right
+  float right
+
+.appear-right
+  position absolute
+  left inherit
+  bottom 100%
+  transition bottom 200ms ease-out
+  &.bespoke-bullet-active
+    bottom 0
+    left inherit
+    right 0
+
+.phong-vectors
+  .reveal-on-complete
+    opacity 0
+    transition opacity 100ms ease-out
+  &.complete
+    .reveal-on-complete
+      opacity 1
+
+img[alt$="max"]
+  max-width 100%
+  max-height 100%
