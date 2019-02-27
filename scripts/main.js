@@ -21,6 +21,7 @@ const tutorial = require('./tutorial'),
 bespoke.from('article', [
   markdown(markdownItConfig.config, markdownItConfig.extensions),
   sandy({ insertFonts: false }),
+  scale('transform'),
   keys(),
   touch(),
   overview({ insertStyles: false }),
@@ -31,9 +32,12 @@ bespoke.from('article', [
   hash(),
   math(),
   state(),
-  scale('transform'),
   backdrop(),
   //search()
   qrcode(),
-  tutorial(document.getElementsByClassName('tutorial')[0])
+  tutorial(document.getElementsByClassName('tutorial')[0]),
+  deck => {
+    // waits 200ms to avoid FoUC
+    setTimeout(() => deck.parent.closest('#presentation-container').style.visibility = 'visible', 200);
+  }
 ]);

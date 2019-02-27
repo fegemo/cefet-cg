@@ -29,7 +29,7 @@
     "bespoke-keys": "^1.1.0",
     "bespoke-math": "^1.2.0",
     "bespoke-markdownit": "^1.1.0",
-    "bespoke-progress": "^1.0.0",
+    "bespoke-progress": "github:fegemo/bespoke-progress#slide-number",
     "bespoke-qrcode": "^1.0.0",
     "bespoke-scale": "github:fegemo/bespoke-scale#use-current-slide",
     "bespoke-simple-overview": "^1.0.0",

@@ -3,13 +3,21 @@
 ## Conceitos importantes
 
 ---
-<!-- {"layout": "centered-horizontal"} -->
+<!-- {"layout": "centered"} -->
 # Roteiro
 
-1. Conceitos
-1. Dispositivos Gráficos
+1. Conceitos básicos
+1. Dispositivos gráficos
 1. Representação de Imagens
 1. Modelos usados em Computação Gráfica
+
+---
+<!-- {"layout": "section-header"} -->
+# Conceitos básicos
+
+- Definição
+- Usos comuns
+- Áreas envolvidas
 
 ---
 <!-- {"layout": "stripe"} -->
@@ -26,13 +34,18 @@ computadores e periféricos gráficos.
 <!-- {"layout": "centered-horizontal"} -->
 ## Quem usa Computação Gráfica?
 
-1. Jogos
-1. Filmes e TV
-1. CAD (_Computer Aided Design_)
-1. Educação e Treinamento
-1. Arte por Computador
-1. Apresentações Gráficas
-1. Simulação Científica
+1. ## Jogos <!-- {ol:.card-list.cover} -->
+   ![](../../images/cg-area-games.jpg)
+1. ## Entretenimento
+   ![](../../images/cg-area-entertainment.jpg)
+1. ## CAD
+   ![](../../images/cg-area-cad.jpg)
+1. ## Educação e Treinamento
+   ![](../../images/cg-area-education.jpg)
+1. ## Arte
+   ![](../../images/cg-area-art.jpg)
+
+*[CAD]: Computer Aided Design*
 
 ---
 <!-- {"backdrop": "area-games"} -->
@@ -46,79 +59,67 @@ computadores e periféricos gráficos.
 <iframe src="https://player.vimeo.com/video/172374044" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 ---
-<!--
-  backdrop: area-cad
--->
-
+<!-- {"backdrop": "area-cad"} -->
 # CAD (_Computer Aided Design_)
 
 ---
-<!--
-  backdrop: area-education
--->
-
+<!-- {"backdrop": "area-education"} -->
 # Educação e Treinamento
 
-
 ---
-<!--
-  backdrop: area-art
--->
-
+<!-- {"backdrop": "area-art"} -->
 # Arte por Computador
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 # **Problemas abordados** na área
 
 ![](../../images/cg-overall-tasks.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Processamento Digital de Imagens
 
-- Área que envolve as **técnicas de transformação de imagens**, em que tanto
+- ![](../../images/pdi-lena.png) <!-- {.push-right} -->
+  Área que envolve as **técnicas de transformação de imagens**, em que tanto
   a imagem original quanto a imagem resultado apresentam-se **sob uma
   representação visual** (geralmente matricial)
-- Estas transformações **visam melhorar as características visuais da imagem**,
+- Estas transformações **visam melhorar as características visuais da imagem** em geral,
   _e.g._:
   - aumentar o contraste
   - alterar o foco
   - diminuir ruídos e algumas distorções
 
 ---
-## Exemplo: Processamento Digital de Imagens
-
-![](../../images/pdi-lena.png)
-
----
+<!-- {"layout": "regular"} -->
 ## Análise de Imagens
 
-- Área que procura **obter a especificação dos componentes de uma imagem a
+- ![](../../images/reconhecimento-padores.jpg) <!-- {.push-right} -->
+  Área que procura **obter a especificação dos componentes de uma imagem a
   partir de sua representação visual**
 - Por exemplo, reconstrução de primitivas elementares
   (cubos, esferas, etc.) que aproximam um objeto visualizado em uma imagem
-
+  - Ou reconhecimento de caracteres em fotos ➡️
 ---
-## Exemplo: Análise de Imagens
+<!-- {"layout": "centered-horizontal"} -->
+## Outro exemplo de Análise de Imagens
 
 ![](../../images/juiz-virtual.jpg)
 
 ---
-## Exemplo 2: Análise de Imagens
-
-![](../../images/reconhecimento-padores.jpg)
-
----
+<!-- {"layout": "regular"} -->
 ## Modelagem
 
-- A modelagem geométrica consiste de um **conjunto de métodos que visam
+- ![](../../images/modeling.png) <!-- {.push-right} -->
+  A modelagem geométrica consiste de um **conjunto de métodos que visam
   descrever a forma e as características geométricas de um objeto**
 - Ela provê uma descrição ou modelo muito mais analítico,
   matemático e abstrato que o real
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Exemplo: Modelagem
 
-![](../../images/modeling.png)
 
 ---
 ## Síntese (ou renderização)
@@ -151,14 +152,19 @@ computadores e periféricos gráficos.
 - Contudo, o foco do curso está em conhecer e entender como funcionam as
   ferramentas utilizadas na criação de imagens e animações 3D
 - Algumas ferramentas para criar cenas 3D:
-  - [3ds Max](3ds-max) (licença de estudante gratuita)
-  - [Maya lt](maya-lt) (licença de estudante gratuita)
-  - [blender](blender) (gratuito)
+  - [3ds Max](3ds-max) (~5 GB, licença de estudante gratuita)
+  - [Maya lt](maya-lt) (~5 GB, licença de estudante gratuita)
+  - [blender](blender) (~300 MB, gratuito)
   - [ZBrush](z-brush) (comercial)
-  - [clara.io](claraio) (tem uma versão gratuita, programa limitado)
+  - [clara.io](claraio) (tem versão gratuita, programa limitado)
 
 ---
-# Dispositivos Gráficos
+<!-- {"layout": "section-header"} -->
+# Dispositivos gráficos
+
+- Interface gráfica
+- Monitores
+- Arquiteturas de sistemas gráficos
 
 ---
 ## Interfaces Gráficas
@@ -223,6 +229,13 @@ computadores e periféricos gráficos.
 ![Diagrama da arquitetura de sistema gráfico moderno](../../images/raster-architecture-modern.png)
 
 ---
+<!-- {"layout": "section-header"} -->
+# Cores e imagens
+
+- Representação de cores
+- Imagens digitais
+
+---
 # Representação de Cores
 
 - Radiação eletromagnética pode ser entendia como ondas ou um fluxo de
@@ -263,11 +276,6 @@ computadores e periféricos gráficos.
 - Imagens digitais: 32-bit RGBA (em geral)
   - +8 bits para alfa (opacidade)
 
-
-<!--
-- [Questionário Maroto - parte 1](https://moodle.cefetmg.br/mod/quiz/view.php?id=17597)
--->
-
 ---
 # Representação de Imagens Digitais
 
@@ -293,6 +301,14 @@ computadores e periféricos gráficos.
 
 ![Imagem raster](../../images/raster-image.png)
 
+
+---
+<!-- {"layout": "section-header"} -->
+# Modelos de sistema visual
+
+- Olho humano
+- Câmera estenopeica
+- Frustum de visualização
 
 ---
 ## Modelos de Sistema Visual
@@ -346,11 +362,6 @@ computadores e periféricos gráficos.
 - **_Frustum_**: sólido geométrico que é um **tronco de pirâmide** formado pelo
   plano próximo e plano distante
 - Apenas o que está dentro do _frustum_ é retratado
-
-<!--
-
-- [Questionário Maroto - parte 2](https://moodle.cefetmg.br/mod/quiz/view.php?id=17596)
--->
 
 ---
 # Sumário das nossas decisões

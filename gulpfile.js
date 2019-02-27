@@ -80,7 +80,7 @@ function md() {
 
 function css() {
   return src("styles/main.styl")
-    // .pipe(changed("dist/build"))
+    .pipe(changed("dist/build"))
     .pipe(
       stylus({
         "include css": true,
@@ -88,7 +88,7 @@ function css() {
       })
     )
     .pipe(autoprefixer("last 2 versions", { map: false }))
-    // .pipe(isDist ? csso() : through())
+    .pipe(isDist ? csso() : through())
     .pipe(rename("build.css"))
     .pipe(dest("dist/build"));
 }

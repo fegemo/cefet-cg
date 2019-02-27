@@ -1,9 +1,7 @@
-<!-- {"layout": "title"} -->
+<!-- {"layout": "title", "state": "transition-book"} -->
 # Computação Gráfica
 
-## *Professor:* Flávio Coutinho ![Foto do Flávio](images/flavio-avatar.jpg) <!-- {.portrait style="vertical-align: middle"} -->
-
-<!--  -->
+## Material de aula do professor **Flávio Coutinho** ![Foto do Flávio](images/flavio-avatar.jpg) <!-- {.portrait style="vertical-align: middle"} --> <!-- {h2:style="color: #333"} -->
 
 ---
 <!-- {"layout": "regular"} -->
@@ -69,7 +67,7 @@
 <!-- {"layout": "centered-horizontal"} -->
 # Trabalhos Anteriores
 
-<iframe src="https://www.youtube.com/embed/videoseries?list=PLNaBD3CnN0--7AFIYx9O1lGYJLDh2dVCt&amp;ecver=2" width="800" height="450" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/videoseries?list=PLNaBD3CnN0--7AFIYx9O1lGYJLDh2dVCt" width="853" height="480" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 <!-- {"layout": "stripe"} -->
