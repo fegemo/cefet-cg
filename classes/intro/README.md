@@ -1,9 +1,10 @@
-<!-- {"layout": "title"} -->
+<!--
+  backdrop: introduction
+-->
+
 # Introdução à Computação Gráfica
-## Conceitos importantes
 
 ---
-<!-- {"layout": "centered-horizontal"} -->
 # Roteiro
 
 1. Conceitos
@@ -12,10 +13,7 @@
 1. Modelos usados em Computação Gráfica
 
 ---
-<!-- {"layout": "stripe"} -->
-# Computação Gráfica
-
-![](../images/forest-stroke.png) <!-- {.stripe} -->
+## Computação Gráfica
 
 Definição: *s.f.* conjunto de **algoritmos, técnicas e metodologias** para
 o **tratamento e a representação gráfica de informações** por meio da
@@ -23,7 +21,6 @@ criação, armazenamento e manipulação de desenhos por meio de
 computadores e periféricos gráficos.
 
 ---
-<!-- {"layout": "centered-horizontal"} -->
 ## Quem usa Computação Gráfica?
 
 1. Jogos
@@ -35,11 +32,16 @@ computadores e periféricos gráficos.
 1. Simulação Científica
 
 ---
-<!-- {"backdrop": "area-games"} -->
+<!--
+  backdrop: area-games
+-->
+
 # Jogos
 
 ---
-<!-- {"backdrop": "area-entertainment"} -->
+<!--
+  backdrop: area-entertainment
+-->
 
 # Entretenimento
 

@@ -191,7 +191,7 @@
 ## **_Bitmaps_ e fontes** (OpenGL puro)
 
 - O OpenGL provê primitivas de nível baixo para a escrita de caracteres na tela
-- <img src="../../images/bitmap-f.gif" class="push-right">
+- <img src="../../images/bitmap-f.gif" class="right-aligned">
   Os comandos `glRasterPos*()` e `glBitmap()` posicionam e desenham um _bitmap_
 - Pode-se usar _display lists_ (próxima aula) para armazenar o _bitmap_ de cada letra e apenas
   usá-lo por seu índice posteriormente
