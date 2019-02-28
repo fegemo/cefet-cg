@@ -364,20 +364,23 @@ computadores e periféricos gráficos.
 - Apenas o que está dentro do _frustum_ é retratado
 
 ---
-# Sumário das nossas decisões
+<!-- {"layout": "regular"} -->
+# Sumário das opções
 
+1. Foco em **renderização** de imagens tridimensionais em tempo real
 1. Modelo de **representação de imagens**
-   - Usamos monitores raster
-   - Vamos gerar imagens raster
+   - Usamos monitores _raster_
+   - Vamos gerar imagens _raster_
    - É possível usar imagens vetoriais, rasterizando-as
 1. Modelo de **cores**
-   - Discretizamos em RGB
+   - Discretizamos em RGB (opcionalmente com A)
    - Representação com 8 bits por componente
 1. Modelo de **câmera**
    - Vamos usar o modelo do _view frustum_
    - É possível usar outros modelos mais complexos
 
 ---
+<!-- {"layout": "centered"} -->
 # Referências
 
 - [Programa de modelagem 3D blender][blender]
