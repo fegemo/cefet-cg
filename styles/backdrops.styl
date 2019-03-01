@@ -40,6 +40,7 @@ full-dimension-backdrop(repeat)
 .area-cad.bespoke-backdrop-active
   background-image url(../images/cg-area-cad.jpg)
   full-dimension-backdrop(false)
+  background-position 50% 80%
 
 .area-education.bespoke-backdrop-active
   background-image url(../images/cg-area-education.jpg)
@@ -60,6 +61,38 @@ full-dimension-backdrop(repeat)
     padding .3em
     border-radius 10px
     transition opacity 200ms ease-out
+
+
+// $spred = red
+// $spgreen = green
+// $spblue = blue
+
+$spred = rgb(171, 2, 0)
+$spgreen = rgb(37, 255, 4)
+$spblue = rgb(1, 44, 165)
+
+.subpixel.bespoke-backdrop-active
+  full-dimension-backdrop(false)
+  background-image url(../images/subpixel-red-bottom.png), url(../images/subpixel-red-top.png), url(../images/subpixel-green-bottom.png), url(../images/subpixel-green-top.png), url(../images/subpixel-blue-bottom.png), url(../images/subpixel-blue-top.png)
+  background-repeat repeat
+  --subpixel-size: 2px
+  background-size var(--subpixel-size)
+
+.vector-vs-raster-bottom.bespoke-backdrop-active
+  full-dimension-backdrop(false)
+  background-image url(../images/vector-image.svg), url(../images/raster-image.png)
+  background-position 5% 150%, 95% 150%
+  background-size 400px
+  animation floatingvectorraster 10s ease-in-out 0s infinite alternate-reverse
+
+@keyframes floatingvectorraster
+  0%
+    background-position 5% 148%, 95% 152%
+  50%
+    background-position 5% 152%, 95% 148%
+  100%
+    background-position 5% 148%, 95% 152%
+
 
 .c-jump-boardgame.bespoke-backdrop-active
   background-image url(../images/c-jump-boardgame.jpg)

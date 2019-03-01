@@ -35,15 +35,15 @@ computadores e periféricos gráficos.
 ## Quem usa Computação Gráfica?
 
 1. ## Jogos <!-- {ol:.card-list.cover} -->
-   ![](../../images/cg-area-games.jpg)
+   ![](../../images/cg-area-games.jpg) <!-- {style="width: 300px"} -->
 1. ## Entretenimento
-   ![](../../images/cg-area-entertainment.jpg)
+   ![](../../images/cg-area-entertainment.jpg)  <!-- {style="width: 300px"} -->
 1. ## CAD
-   ![](../../images/cg-area-cad.jpg)
+   ![](../../images/cg-area-cad.jpg)  <!-- {style="width: 300px"} -->
 1. ## Educação e Treinamento
-   ![](../../images/cg-area-education.jpg)
+   ![](../../images/cg-area-education.jpg)  <!-- {style="width: 300px"} -->
 1. ## Arte
-   ![](../../images/cg-area-art.jpg)
+   ![](../../images/cg-area-art.jpg)  <!-- {style="width: 300px"} -->
 
 *[CAD]: Computer Aided Design*
 
@@ -107,22 +107,21 @@ computadores e periféricos gráficos.
 ![](../../images/juiz-virtual.jpg)
 
 ---
-<!-- {"layout": "regular"} -->
+<!-- {"layout": "2-column-highlight-and-list"} -->
 ## Modelagem
 
-- ![](../../images/modeling.png) <!-- {.push-right} -->
-  A modelagem geométrica consiste de um **conjunto de métodos que visam
+![](../../images/modeling.png)
+
+- A modelagem geométrica consiste de um **conjunto de métodos que visam
   descrever a forma e as características geométricas de um objeto**
 - Ela provê uma descrição ou modelo muito mais analítico,
   matemático e abstrato que o real
 
 ---
-<!-- {"layout": "centered-horizontal"} -->
-## Exemplo: Modelagem
-
-
----
+<!-- {"layout": "2-column-highlight-and-list"} -->
 ## Síntese (ou renderização)
+
+![](../../images/image-synthesis.png)
 
 - A síntese de imagem designa o **processo de geração de imagens
   digitais a partir da descrição dos elementos que compõem uma cena 3D**,
@@ -131,11 +130,7 @@ computadores e periféricos gráficos.
   **a própria Computação Gráfica de hoje em dia**.
 
 ---
-## Exemplo: Síntese
-
-![](../../images/image-synthesis.png)
-
----
+<!-- {"layout": "regular"} -->
 ## Foco deste curso
 
 - **Modelagem e <u>síntese</u>** de imagens
@@ -145,7 +140,13 @@ computadores e periféricos gráficos.
 - Geração de imagens em tempo real
   - Mas também veremos geração *offline*
 
+1. ## Modelagem
+   ![](../../images/modeling.png) <!-- {ol:.card-list.centered style="max-width: 400px"} -->
+1. ## Renderização
+   ![](../../images/image-synthesis.png)
+
 ---
+<!-- {"layout": "centered"} -->
 ## Professor, mas eu quero fazer desenhos em 3D!
 
 - Você pode fazer isso e ganhar pontinhos extras nos trabalhos
@@ -158,6 +159,12 @@ computadores e periféricos gráficos.
   - [ZBrush](z-brush) (comercial)
   - [clara.io](claraio) (tem versão gratuita, programa limitado)
 
+[blender]: http://www.blender.org/
+[claraio]: https://clara.io/
+[3ds-max]: http://www.autodesk.com/education/free-software/3ds-max
+[maya-lt]: http://www.autodesk.com/education/free-software/maya-lt
+[z-brush]: http://pixologic.com/
+
 ---
 <!-- {"layout": "section-header"} -->
 # Dispositivos gráficos
@@ -167,38 +174,46 @@ computadores e periféricos gráficos.
 - Arquiteturas de sistemas gráficos
 
 ---
-## Interfaces Gráficas
+<!-- {"layout": "regular"} -->
+## Interfaces gráficas
 
-- Interfaces baseadas em texto (~1980)
+- ![Tela do Apple Lisa - interface WIMP](../../images/wimp.png) <!-- {.push-right} -->
+  Interfaces baseadas em texto (~1980)
 - Interface WIMP: Windows, Icons, Menus and Pointers
-  ![Tela do Apple Lisa - interface WIMP](../../images/wimp.png)
+
+*[WIMP]: Windows, Icons, Menus and Pointers*
 
 ---
-## Dispositivos Gráficos
+<!-- {"layout": "regular"} -->
+## Dispositivos gráficos
 
-- Monitores **Raster**
+- Monitores **raster**
   - Raster é a discretização da imagem em pedacinhos,
     os _picture elements_ (ou **pixels**)
-  - Exemplos:
+  - Tecnologias diferentes:
     - CRT
     - Plasma
-    - LCD, LED
+    - LCD, LED <!-- {ul^0:.multi-column-list-3} -->
 - ![right](../../images/vector-asteroids.png)
   Monitores vetoriais (1963)
-  - Desenham imagens como uma caneta (eg, osciloscópio)
+  - Desenham como uma caneta, eg osciloscópio ➡️
   - Em desuso desde 1970
 - Impressoras
 
-
 ---
+<!-- {"layout": "centered"} -->
 ## _Cathode Ray Tube_ (CRT)
 
 ![Diagrama de funcionamento de um tubo de raio catódico](../../images/crt.png)
 
 ---
+<!-- {"backdrop": "subpixel"} -->
 <iframe width="800" height="450" src="https://www.youtube.com/embed/3BJU2drrtCM?start=70" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
 
+<input type="range" id="subpixel-size" value="2" min="2" max="80" oninput="document.querySelector('.subpixel').style.setProperty('--subpixel-size', `${this.value}px`)">
+
 ---
+<!-- {"layout": "regular"} -->
 ## Outros monitores
 
 - _Liquid Cristal Display_ (LCD) - e LED
@@ -213,6 +228,7 @@ computadores e periféricos gráficos.
 [lcd-teardown]: http://www.engineerguy.com/videos/video-lcd.htm
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 # Arquitetura de sistema gráfico raster
 
 - Um monitor raster precisa receber uma **matriz de valores para seus pixels**
@@ -223,10 +239,11 @@ computadores e periféricos gráficos.
 ![Diagrama da arquitetura de sistema gráfico simples](../../images/raster-architecture.png)
 
 ---
-## Arquitetura **Simples** vs **Moderno**
+<!-- {"layout": "centered-horizontal"} -->
+## Arquitetura **simples** vs **moderna**
 
 ![Diagrama da arquitetura de sistema gráfico simples](../../images/raster-architecture.png)
-![Diagrama da arquitetura de sistema gráfico moderno](../../images/raster-architecture-modern.png)
+![Diagrama da arquitetura de sistema gráfico moderno](../../images/raster-architecture-modern.png) <!-- {.push-right} -->
 
 ---
 <!-- {"layout": "section-header"} -->
@@ -236,15 +253,17 @@ computadores e periféricos gráficos.
 - Imagens digitais
 
 ---
-# Representação de Cores
+<!-- {"layout": "regular"} -->
+# Representação de cores
 
-- Radiação eletromagnética pode ser entendia como ondas ou um fluxo de
-  partículas sem massa chamadas de fótons
+- Radiação eletromagnética pode ser entendida como ondas ou um fluxo de
+  partículas sem massa, chamadas de fótons
 - É caracterizada pela frequência/comprimento da onda
 
-  ![](../../images/electromagnetic-spectrum.png)
+  ![](../../images/electromagnetic-spectrum.png) <!-- {.centered} -->
 
 ---
+<!-- {"layout": "regular"} -->
 ## Espectro da luz visível
 
 - As ondas eletromagnéticas raramente aparecem em apenas 1 frequência,
@@ -257,14 +276,24 @@ computadores e periféricos gráficos.
   representar a cor
 
 ---
-## Representação de Cores
+<!-- {"layout": "centered-horizontal"} -->
+## Representação de cores
 
-- Depende da natureza do dispositivo gráfico: aditivo (monitores) ou subtrativo
-  (impressoras)
+Depende da natureza do dispositivo gráfico:
 
-![Sistema de cores aditivas e subtrativas](../../images/cmyk-rgb.png)
+1. ## Modelos **subtrativos** <!-- {ol:.card-list.title-top} -->
+   ![Sistema de cores aditivas e subtrativas](../../images/cmyk.png) <!-- {.medium-width} -->
+      ~ baseados em tinta
+      ~ usado para impressão
+      ~ ⬅️ CMYK
+1. ## Modelos **aditivos**
+   ![Sistema de cores aditivas e subtrativas](../../images/rgb.png)  <!-- {.medium-width} -->
+    ~ baseados em luz visível
+    ~ usado em telas
+    ~ ↖️ RGB, HSL
 
 ---
+<!-- {"layout": "regular"} -->
 ## O modelo RGB de cores
 
 - Monitores: 24-bit RGB
@@ -273,33 +302,53 @@ computadores e periféricos gráficos.
   - 8 bits para azul
   - Exemplo: <span class="color-portrait ffd5d5"> </span> (<span class="pure-red">255</span>, <span class="pure-green">213</span>, <span class="pure-blue">213</span>) ou (<span class="pure-red">1</span>, <span class="pure-green">0.84</span>, <span class="pure-blue">0.84</span>)
     - Seletor de cores: <input type="color">
-- Imagens digitais: 32-bit RGBA (em geral)
+- Variação: 32-bit RGBA
   - +8 bits para alfa (opacidade)
 
 ---
-# Representação de Imagens Digitais
+<!-- {"layout": "regular", "backdrop": "vector-vs-raster-bottom"} -->
+# Representação de imagens digitais
 
-- Imagens podem ser representadas em duas formas principais:
-  - Vetoriais
-    - Formuladas por modelos geométricos
-    - Ocupam menos espaço de armazenamento
-    - Não perdem qualidade quando ampliados
-    - Extensões: [**svg, cdr**]
-  - Raster (matriz de pixels)
-    - Matriz de **pixels** (_picture elements_)
-    - Muito simples de gerar e exibir
-    - Perdem qualidade se ampliadas
-    - Extensões: [**gif, jpg, png, bmp, ppm**]
-
----
-## Imagem vetorial
-
-![Exemplo de imagem vetorial](../../images/vector-image.svg)
+Imagens podem ser representadas em duas formas principais:
+- **Vetoriais** <!-- {.alternate-color} --> <!-- {ul^0:.multi-column-list-2} -->
+  - Descritas por modelos geométricos
+  - Ocupam menos espaço
+  - Não perdem qualidade se ampliadas
+  - Formatos comuns: [**svg, cdr, ai**] <!-- {.alternate-color} -->
+- **Raster**
+  - Matriz de **pixels** (_picture elements_)
+  - Muito simples de gerar e exibir
+  - Perdem qualidade se ampliadas
+  - Formatos comuns: [**gif, jpg, png, bmp**]
 
 ---
-## Imagem raster
+<!-- {"layout": "centered"} -->
+## Comparação: **vetorial** <!-- {.alternate-color} --> _vs_ **raster**
 
-![Imagem raster](../../images/raster-image.png)
+- ::: zoomable .inline display: inline-block
+  ![Exemplo de imagem vetorial](../../images/vector-image.svg) <!-- {style="width: 500px;" draggable="false"} -->
+  :::
+  Arquivo
+    ~ 6,4 kB
+
+  Resolução
+    ~ ∞
+
+  Formato
+    ~ .svg
+- ::: zoomable .inline display: inline-block
+  ![Imagem raster](../../images/raster-image.png) <!-- {style="width: 500px;" draggable="false"} -->
+  :::
+  Arquivo
+    ~ 142 kB
+
+  Resolução
+    ~ 1200x1200
+
+  Formato
+    ~ .png
+
+<!-- {ul:.card-list} -->
 
 
 ---
@@ -311,7 +360,8 @@ computadores e periféricos gráficos.
 - Frustum de visualização
 
 ---
-## Modelos de Sistema Visual
+<!-- {"layout": "centered"} -->
+## Modelos de sistema visual
 
 - Há várias formas de tentar reproduzir o sistema visual:
   1. Modelo do olho humano
@@ -320,6 +370,7 @@ computadores e periféricos gráficos.
 - Vamos escolher um \o/
 
 ---
+<!-- {"layout": "regular"} -->
 ## (1) Modelo do olho humano
 
 - ![left](../../images/eye-model.png)
@@ -334,6 +385,7 @@ computadores e periféricos gráficos.
     [mesmo psicológicos da percepção de luminosidade](http://web.mit.edu/persci/gaz/)
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Qual é mais escuro? A ou B?
 
 <figure class="picture-steps">
@@ -342,18 +394,17 @@ computadores e periféricos gráficos.
 </figure>
 
 ---
-## (2) Modelo da câmera escura
+<!-- {"layout": "2-column-content"} -->
+## (2) Modelo da câmera estenopeica
 
 ![O modelo da câmera escura](../../images/pinhole-camera.png)
-
----
-## A Câmera _"pinhole"_
 
 - Versão mais simples de um modelo de visão
 - Imagens mais próximas são retratadas maiores
 - Modelo bastante semelhante ao que usamos
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## (3) O modelo de _View Frustum_
 
 ![O view frustum](../../images/view-frustum.gif)

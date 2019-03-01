@@ -13,8 +13,8 @@
   - La provita (15 pontos)
 - **Trabalhos**
   - [TP0: Ambiente de Desenvolvimento][tp0] (1 ponto)
-  - [TP1: Dino Run][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
-  - [TP2: Zeppelin][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
+  - TP1[][tp1], grupos <span class="math">\leq</span> 2 (20 pontos)
+  - TP2[][tp2], grupos <span class="math">\leq</span> 2 (20 pontos)
   - TP3: Ray-tracer, duplas (20 pontos, em duas entregas)
     - Primeira parte - colisão: no laboratório
     - Segunda parte - iluminação: no laboratório

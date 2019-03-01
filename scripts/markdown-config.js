@@ -261,6 +261,69 @@ const extensions = [
       }
     }
   ],
+  [
+    markdownItContainer,
+    'zoomable',
+    {
+      validate: (params) => params.trim().match(/^zoomable\s+([^\s]*)\s*(.*)?$/);
+      render: (tokens, idx, options, env, self) => {
+        // formato:
+        // ::: gallery [1, 2, 4, 8, 16]
+        // ![Descricao](imagem)
+        // :::
+        const m = tokens[idx].info.trim().match(/^zoomable\s$/);
+        let className = '',
+          styleString = '';
+
+        if (tokens[idx].nesting === 1) {
+          // opening tag
+          if (!!m && Array.isArray(m) && m[1]) {
+            className = (m[1] || '').trim().replace(/\./g, ' ');
+            styleString = (m[2] || '').trim();
+          }
+
+          window.zoom = e => {
+            if (e.button !== 0) return;
+            const containerEl = e.currentTarget;
+            const zoomedEls = containerEl.children;
+            if (e.type === 'mousedown') {
+
+              containerEl.dataset.zooming = 'true';
+              Array.from(zoomedEls).forEach(el => {
+                el.classList.add('zoomed-in');
+              });
+            } else {
+              containerEl.dataset.zooming = 'false';
+              Array.from(zoomedEls).forEach(el => {
+                el.classList.remove('zoomed-in');
+              });
+            }
+          };
+
+          window.moveZoom = e => {
+            const containerEl = e.currentTarget;
+            if (containerEl.dataset.zooming === 'true') {
+              const zoomedEls = containerEl.children;
+              const parentRectangle = containerEl.getBoundingClientRect();
+              const click = {
+                x: e.clientX - parentRectangle.left,
+                y: e.clientY - parentRectangle.top
+              };
+
+              Array.from(zoomedEls).forEach(el => {
+                el.style.transformOrigin = `${100*click.x/parentRectangle.width}% ${100*click.y/parentRectangle.height}%`
+              });
+            }
+          };
+
+          return `<div class="zoomable ${className}" style="${styleString}" onmousedown="window.zoom(event)" onmouseup="window.zoom(event)" onmousemove="window.moveZoom(event)">\n`;
+        } else {
+          // closing tag
+          return '</div>\n';
+        }
+      }
+    }
+  ],
   markdownItDefList,
   markdownItAbbr,
   markdownItDecorate,

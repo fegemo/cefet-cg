@@ -114,3 +114,15 @@ $portrait-size = 100px
 img[alt$="max"]
   max-width 100%
   max-height 100%
+
+
+
+.zoomable
+  overflow hidden
+  cursor zoom-in
+  user-select no
+  *
+    user-select inherit
+    transition: transform 300ms ease-out
+    &.zoomed-in
+      transform scale(12)
