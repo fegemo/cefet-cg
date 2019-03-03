@@ -1,3 +1,4 @@
+// default stylish images
 .layout-title h1
   &::before
     background-image url(../images/sky-stellar.jpg)
@@ -7,3 +8,32 @@
 
 .layout-stripe .stripe
   background-image url(../images/stripe-forest.jpg)
+
+
+// stylish images by class
+.intro
+  .layout-title h1::before
+    background-image url(../images/cg-area-art.jpg)
+
+  .conceitos-basicos.layout-section-header::after
+    background-image url(../images/cg-area-games.jpg)
+    animation movingbg-x 60s linear 0s infinite alternate-reverse
+
+  .pixels-gradient.layout-section-header::after
+    background-image url(../images/pixels-gradient.jpg)
+    background-repeat repeat
+    animation movingbg-x 20s ease-in-out 0s infinite alternate-reverse
+
+  .rainbow-picture.layout-section-header::after
+    background-image url(../images/rainbow-picture.jpg)
+    animation movingbg-x 20s ease-in-out 0s infinite alternate-reverse
+
+
+
+
+
+@keyframes movingbg-x
+  from
+    background-position 0 100%
+  to
+    background-position 100% 100%

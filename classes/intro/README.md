@@ -12,7 +12,7 @@
 1. Modelos usados em Computação Gráfica
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "conceitos-basicos"} -->
 # Conceitos básicos
 
 - Definição
@@ -23,7 +23,7 @@
 <!-- {"layout": "stripe"} -->
 # Computação Gráfica
 
-![](../images/forest-stroke.png) <!-- {.stripe} -->
+![](../../images/forest-stroke.png) <!-- {.stripe} -->
 
 Definição: *s.f.* conjunto de **algoritmos, técnicas e metodologias** para
 o **tratamento e a representação gráfica de informações** por meio da
@@ -31,8 +31,8 @@ criação, armazenamento e manipulação de desenhos por meio de
 computadores e periféricos gráficos.
 
 ---
-<!-- {"layout": "centered-horizontal"} -->
-## Quem usa Computação Gráfica?
+<!-- {"layout": "centered"} -->
+# Quem usa Computação Gráfica?
 
 1. ## Jogos <!-- {ol:.card-list.cover} -->
    ![](../../images/cg-area-games.jpg) <!-- {style="width: 300px"} -->
@@ -166,7 +166,7 @@ computadores e periféricos gráficos.
 [z-brush]: http://pixologic.com/
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "pixels-gradient"} -->
 # Dispositivos gráficos
 
 - Interface gráfica
@@ -228,15 +228,30 @@ computadores e periféricos gráficos.
 [lcd-teardown]: http://www.engineerguy.com/videos/video-lcd.htm
 
 ---
-<!-- {"layout": "centered-horizontal"} -->
+<!-- {"layout": "regular", "embeddedStyles": ".diagrama-arquitetura-e-calculo-framebuffer li {font-size: 0.85em}"} -->
 # Arquitetura de sistema gráfico raster
 
 - Um monitor raster precisa receber uma **matriz de valores para seus pixels**
-  - Costumamos chamar **matriz 2D de valores** de um **raster**
-- É necessário ter espaço para armazenar o raster
+  - Costumamos chamar **matriz 2D de valores que representam cores** de um **raster**
+- É necessário ter espaço em memória primária (eg, RAM) para armazenar o raster
   - Essa memória se chama **_frame buffer_** (ou _color buffer_)
 
-![Diagrama da arquitetura de sistema gráfico simples](../../images/raster-architecture.png)
+
+<div class="layout-split-2 diagrama-arquitetura-e-calculo-framebuffer">
+
+![Diagrama da arquitetura de sistema gráfico simples](../../images/raster-architecture.png) <!-- {.push-left} -->
+
+1. Quanto de espaço ocupa o _framebuffer_? <!-- {li:.note.info style="list-style-type: none"} -->
+   1. Identificar (a) resolução do monitor e (b) quantos bytes por cor  <!-- {ol^0:.bulleted} -->
+      1. 800 x 600 (largura x altura) <!-- {ol^0:style="list-style-type: lower-latin"} -->
+      1. 24 bits (3 bytes)
+   1. Multiplicar e converter para MB
+      1. <span class="math">tam = (800 \times 600) \times 3</span> bytes <!-- {ol^0:style="list-style-type: lower-latin"} -->
+      1. <span class="math">tam = 1,37</span> MB
+
+</div>
+
+*[MB]: mega bytes*
 
 ---
 <!-- {"layout": "centered-horizontal"} -->
@@ -246,7 +261,7 @@ computadores e periféricos gráficos.
 ![Diagrama da arquitetura de sistema gráfico moderno](../../images/raster-architecture-modern.png) <!-- {.push-right} -->
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "rainbow-picture"} -->
 # Cores e imagens
 
 - Representação de cores

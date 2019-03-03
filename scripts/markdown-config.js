@@ -59,6 +59,8 @@ const config = {
 
   layout: (slide, value) => slide.classList.add('layout-' + value),
 
+  slideClass: (slideEl, value) => slideEl.classList.add(value),
+
   state: (slide, value) => slide.setAttribute('data-bespoke-state', value),
 
   preventSelection: (slide, unselectableElementsSelector) => {
@@ -265,13 +267,13 @@ const extensions = [
     markdownItContainer,
     'zoomable',
     {
-      validate: (params) => params.trim().match(/^zoomable\s+([^\s]*)\s*(.*)?$/);
+      validate: (params) => params.trim().match(/^zoomable.*$/),
       render: (tokens, idx, options, env, self) => {
         // formato:
         // ::: gallery [1, 2, 4, 8, 16]
         // ![Descricao](imagem)
         // :::
-        const m = tokens[idx].info.trim().match(/^zoomable\s$/);
+        const m = tokens[idx].info.trim().match(/^zoomable\s+([^\s]*)\s*(.*)?$/)
         let className = '',
           styleString = '';
 

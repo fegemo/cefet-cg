@@ -35,9 +35,18 @@ bespoke.from('article', [
   backdrop(),
   //search()
   qrcode(),
-  tutorial(document.getElementsByClassName('tutorial')[0]),
+  tutorial(document.querySelector('.tutorial')),
   deck => {
     // waits 200ms to avoid FoUC
     setTimeout(() => deck.parent.closest('#presentation-container').style.visibility = 'visible', 200);
+  },
+  deck => {
+    // adds a class to the presentation parent with the name of the class, from
+    // the URL
+    const path = location.pathname;
+    const startOfClassName = path.indexOf('/classes/') === -1 ? 0 : path.indexOf('/classes/') + '/classes/'.length;
+    const className = path.substring(startOfClassName, path.indexOf('/', startOfClassName));
+
+    deck.parent.classList.add(className || 'syllabus');
   }
 ]);
