@@ -324,11 +324,11 @@
 ---
 ## Exemplo de _Mipmaps_ e filtragem
 
-<div class="side-by-side-children">
-  <video width="380" height="383" class="left-aligned" controls loop>
+<div class="horizontal-list-flex">
+  <video width="380" height="383" class="push-left" controls loop>
     <source src="../../videos/texture-nearest.mp4" type="video/mp4" />
   </video>
-  <video width="380" height="383" class="right-aligned" controls loop>
+  <video width="380" height="383" class="push-right" controls loop>
     <source src="../../videos/texture-mipmaps.mp4" type="video/mp4" />
   </video>
 </div>
@@ -458,7 +458,7 @@ void makeCheckImage()
 ---
 ## Exemplo de **height map** ([Explicação](http://www.lighthouse3d.com/opengl/terrain/index.php?heightmap))
 
-<video width="496" height="496" class="left-aligned" poster="../../images/height-map-poster.png" controls loop>
+<video width="496" height="496" class="push-left" poster="../../images/height-map-poster.png" controls loop>
   <source src="../../videos/height-map.mp4" type="video/mp4" />
 </video>
 
