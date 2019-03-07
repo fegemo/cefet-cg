@@ -754,13 +754,13 @@ int main(int argc, char** argv) {
 ## _Headers_ do OpenGL/freeglut
 
 ```c
-#include "GL/freeglut.h"
+#include <GL/freeglut.h>
 ```
 O Freeglut já inclui automaticamente os _headers_ do OpenGL. Logo, **não
   é necessário** incluir o `gl.h` e o `glu.h`:
   ```c
-  #include "GL/gl.h"
-  #include "GL/glu.h"
+  #include <GL/gl.h>
+  #include <GL/glu.h>
   ```
 
 Se freeglut não for usado, os _headers_ OpenGL têm que ser incluídos
