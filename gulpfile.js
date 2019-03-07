@@ -102,11 +102,19 @@ function cssClasses() {
     .pipe(dest(destination));
 }
 
-function copierTaskGenerator(source, destination) {
-  return () =>
-    src(source)
-      .pipe(changed(destination))
-      .pipe(dest(destination));
+function copierTaskGenerator(taskName, folder) {
+  const source = `${folder}/**/*`;
+  const destination = `dist/${folder}`;
+
+  const name = Symbol(taskName);
+  const obj = {
+    [name]: () =>
+      src(source)
+        .pipe(changed(destination))
+        .pipe(dest(destination))
+  };
+
+  return obj[name];
 }
 
 const images = copierTaskGenerator("images/**/*", "dist/images");
