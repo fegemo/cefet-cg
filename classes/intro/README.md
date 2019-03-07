@@ -399,6 +399,8 @@ Imagens podem ser representadas em duas formas principais:
   - Basicamente porque o sistema visual humano envolve fatores até
     [mesmo psicológicos da percepção de luminosidade](http://web.mit.edu/persci/gaz/)
 
+[optics-illusion]: http://web.mit.edu/persci/people/adelson/checkershadow_description.html
+
 ---
 <!-- {"layout": "centered-horizontal"} -->
 ## Qual é mais escuro? A ou B?

@@ -1,85 +1,70 @@
 /*
 
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
 
 */
-
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #23241f;
+  background: white;
+  color: black;
 }
 
-.hljs,
-.hljs-tag,
-.hljs-subst {
-  color: #f8f8f2;
-}
-
-.hljs-strong,
-.hljs-emphasis {
-  color: #a8a8a2;
-}
-
-.hljs-bullet,
+.hljs-comment,
 .hljs-quote,
-.hljs-number,
-.hljs-regexp,
-.hljs-literal,
-.hljs-link {
-  color: #ae81ff;
+.hljs-variable {
+  color: #008000;
 }
 
-.hljs-code,
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #00f;
+}
+
+.hljs-string,
 .hljs-title,
 .hljs-section,
-.hljs-selector-class {
-  color: #a6e22e;
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: #a31515;
 }
 
-.hljs-strong {
-  font-weight: bold;
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+  color: #2b91af;
 }
+
+.hljs-doctag {
+  color: #808080;
+}
+
+.hljs-attr {
+  color: #f00;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #00b0e8;
+}
+
 
 .hljs-emphasis {
   font-style: italic;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-name,
-.hljs-attr {
-  color: #f92672;
-}
-
-.hljs-symbol,
-.hljs-attribute {
-  color: #66d9ef;
-}
-
-.hljs-params,
-.hljs-class .hljs-title {
-  color: #f8f8f2;
-}
-
-.hljs-string,
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-variable {
-  color: #e6db74;
-}
-
-.hljs-comment,
-.hljs-deletion,
-.hljs-meta {
-  color: #75715e;
+.hljs-strong {
+  font-weight: bold;
 }
 
 html,
@@ -187,8 +172,12 @@ a[href^="codeblocks:"]:before {
   height: 16px;
   background-image: url("../images/icon-codeblocks.png");
   background-repeat: no-repeat;
+  background-size: contain;
   vertical-align: middle;
   margin-right: 5px;
+}
+.hljs {
+  padding: 1em;
 }
 .picture-steps {
   position: relative;
@@ -228,19 +217,6 @@ a[href^="codeblocks:"]:before {
 .inset-shadow:after {
   top: 2px;
   left: 2px;
-}
-.two-column-code code {
-  -webkit-column-count: 2;
-          column-count: 2;
-  -webkit-column-rule: 3px double rgba(255,255,255,0.3);
-          column-rule: 3px double rgba(255,255,255,0.3);
-  -webkit-column-gap: 2em;
-          column-gap: 2em;
-}
-.floating-right-code pre {
-  float: right;
-  width: auto;
-  margin-left: 1em;
 }
 .layered-paragraph {
   background-color: rgba(215,215,250,0.5);
@@ -354,6 +330,98 @@ img[alt$="max"] {
 .zoomable *.zoomed-in {
   -webkit-transform: scale(12);
           transform: scale(12);
+}
+.gallery,
+.gallery > p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.gallery img,
+.gallery > p img {
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
+.flex-equal > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.fold-2 {
+  -webkit-perspective: 400;
+          perspective: 400;
+}
+.fold-2 > *:nth-child(1) {
+  -webkit-transform: rotateY(4deg) scale(0.95);
+          transform: rotateY(4deg) scale(0.95);
+  -webkit-transform-origin: right top;
+          transform-origin: right top;
+}
+.fold-2 > *:nth-child(2) {
+  -webkit-transform: rotateY(-4deg) scale(0.95);
+          transform: rotateY(-4deg) scale(0.95);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+}
+.smaller-text-80 {
+  font-size: 80%;
+}
+.smaller-text-70 {
+  font-size: 70%;
+}
+.surprise {
+  display: inline-block;
+  -webkit-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.surprise:not(.revealed) {
+  cursor: pointer;
+  animation: pulsating 1s ease-in-out 0s infinite alternate-reverse;
+}
+.surprise.transitioning {
+  -webkit-animation: none;
+          animation: none;
+  -webkit-transform: scale(1) rotateZ(1turn);
+          transform: scale(1) rotateZ(1turn);
+}
+.surprise.revealed {
+  -webkit-transform: scale(1) rotateZ(0turn);
+          transform: scale(1) rotateZ(0turn);
+}
+.dl-6 > dt {
+  width: 6em;
+}
+.dl-6 > dd {
+  margin-left: 6em;
+}
+@-webkit-keyframes pulsating {
+  from {
+    -webkit-transform: scale(1) rotateZ(1turn);
+            transform: scale(1) rotateZ(1turn);
+  }
+  to {
+    -webkit-transform: scale(1.1) rotateZ(1turn);
+            transform: scale(1.1) rotateZ(1turn);
+  }
+}
+@keyframes pulsating {
+  from {
+    -webkit-transform: scale(1) rotateZ(1turn);
+            transform: scale(1) rotateZ(1turn);
+  }
+  to {
+    -webkit-transform: scale(1.1) rotateZ(1turn);
+            transform: scale(1.1) rotateZ(1turn);
+  }
 }
 .book-btn {
   display: inline-block;
@@ -1329,6 +1397,38 @@ background-color #ababab h1,
 .intro .rainbow-picture.layout-section-header::after {
   background-image: url("../images/rainbow-picture.jpg");
   animation: movingbg-x 20s ease-in-out 0s infinite alternate-reverse;
+}
+.opengl .layout-title {
+  background-color: #dc143c;
+}
+.opengl .layout-title h1 {
+  color: #000;
+  text-shadow: 0.025em 0.025em #dc143c;
+}
+.opengl .layout-title h1::before {
+  background-image: url("../images/pusheen-window.gif");
+  background-repeat: no-repeat;
+  background-size: 270px;
+  background-position: 100%;
+  background-color: #fcf0e4;
+}
+.opengl .layout-title h2 {
+  color: #fff;
+  margin-right: 1em;
+}
+.opengl .hello-world.layout-section-header::after {
+  background-image: url("../images/pusheen-coding.gif");
+  background-repeat: no-repeat;
+  background-size: 250px;
+  background-color: #fcf0e4;
+  background-position: 50%;
+}
+.opengl .window-system.layout-section-header::after {
+  background-image: url("../images/pusheen-window2.gif");
+  background-repeat: no-repeat;
+  background-size: 250px;
+  background-color: #fcf0e4;
+  background-position: 50%;
 }
 @-webkit-keyframes movingbg-x {
   from {
