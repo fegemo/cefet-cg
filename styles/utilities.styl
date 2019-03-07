@@ -32,15 +32,6 @@
     top 2px
     left 2px
 
-.two-column-code code
-  column-count 2
-  column-rule 3px double rgba(white,.3)
-  column-gap 2em
-.floating-right-code pre
-  float right
-  width auto
-  margin-left 1em
-
 
 .layered-paragraph
   background-color rgba(215, 215, 250, 0.5);
@@ -129,3 +120,55 @@ img[alt$="max"]
     transition: transform 300ms ease-out
     &.zoomed-in
       transform scale(12)
+
+.gallery,
+.gallery > p
+  display flex
+  flex-direction row
+  img
+    max-height 100%
+    object-fit contain
+    object-position center
+
+.flex-equal > *
+  flex 1
+
+.fold-2
+  perspective 400
+  & > *:nth-child(1)
+    transform rotateY( 4deg)  scale(0.95)
+    transform-origin right top
+  & > *:nth-child(2)
+    transform rotateY(-4deg) scale(0.95)
+    transform-origin left top
+
+.smaller-text-80
+  font-size 80%
+.smaller-text-70
+  font-size 70%
+
+.surprise
+  display inline-block
+  transition all 200ms ease-in
+  transform scale(1)
+  &:not(.revealed)
+    cursor pointer
+    animation pulsating 1s ease-in-out 0s infinite alternate-reverse
+  &.transitioning
+    animation none
+    transform scale(1) rotateZ(1turn)
+  &.revealed
+    transform scale(1) rotateZ(0turn)
+
+@keyframes pulsating
+  from
+    transform scale(1) rotateZ(1turn)
+  to
+    transform scale(1.1) rotateZ(1turn)
+
+
+.dl-6
+  & > dt
+    width 6em
+  & > dd
+    margin-left 6em

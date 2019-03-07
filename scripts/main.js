@@ -1,5 +1,6 @@
 // bespoke and its plugins
 const bespoke = require('bespoke'),
+  vis = require('bespoke-vis'),
   keys = require('bespoke-keys'),
   hash = require('bespoke-hash'),
   math = require('bespoke-math'),
@@ -31,6 +32,7 @@ bespoke.from('article', [
   progress(),
   hash(),
   math(),
+  vis(),
   state(),
   backdrop(),
   //search()

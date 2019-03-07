@@ -129,6 +129,35 @@ const config = {
 const extensions = [
   [
     markdownItContainer,
+    'div',
+    {
+      validate: params => params.trim().match(/^div.*$/),
+
+      render: (tokens, idx, options, env, self) => {
+        // formato:
+        // ::: div .primeira-classe.segunda.terceira background-color: white; color: black;
+        // ...conteúdo markdown...
+        // :::
+        let m = tokens[idx].info.trim().match(/^div\s+([^\s]*)\s*(.*)?$/),
+          className = '',
+          styleString = '';
+
+        if (tokens[idx].nesting === 1) {
+          // opening tag
+          if (!!m && Array.isArray(m)) {
+            className = (m[1] || '').trim().replace(/\./g, ' ');
+            styleString = (m[2] || '').trim();
+          }
+          return '<div class="' + className + '" style="' + styleString + '">\n';
+        } else {
+          // closing tag
+          return '</div>\n';
+        }
+      }
+    }
+  ],
+  [
+    markdownItContainer,
     'figure',
     {
       validate: params => params.trim().match(/^figure.*$/),
@@ -319,6 +348,37 @@ const extensions = [
           };
 
           return `<div class="zoomable ${className}" style="${styleString}" onmousedown="window.zoom(event)" onmouseup="window.zoom(event)" onmousemove="window.moveZoom(event)">\n`;
+        } else {
+          // closing tag
+          return '</div>\n';
+        }
+      }
+    }
+  ],
+  [
+    markdownItContainer,
+    'vis',
+    {
+      validate: (params) => params.trim().match(/^vis.*$/),
+      render: (tokens, idx, options, env, self) => {
+        // formato:
+        // ::: vis timeline file.json .timeline background-color: white; color: black;
+        // ![](../../images/cover-image.png)
+        // :::
+        const m = tokens[idx].info.trim().match(/^vis\s+([^\s]+)\s+([^\s]*)\s*([^\s]*)\s*(.*)?$/);
+        let type = '';
+        let url = '';
+        let className = '', styleString = '';
+
+        if (tokens[idx].nesting === 1) {
+          // opening tag
+          if (!!m && Array.isArray(m)) {
+            type = (m[1] || '').trim();
+            url = (m[2] || '').trim();
+            className = (m[3] || '').trim().replace(/\./g, ' ');
+            styleString = (m[4] || '').trim();
+          }
+          return `<div class="vis ${className}" style="${styleString}" data-vis="${type}" data-vis-url="${url}">\n`;
         } else {
           // closing tag
           return '</div>\n';

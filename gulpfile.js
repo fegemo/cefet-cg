@@ -43,7 +43,9 @@ function js() {
 
 function jsClasses() {
   const destination = "dist/scripts/classes";
-  return src(["scripts/classes/**/*.js"]).pipe(changed(destination));
+  return src(["scripts/classes/**/*.js"])
+    .pipe(changed(destination))
+    .pipe(dest(destination));
 }
 
 function html() {
@@ -111,7 +113,9 @@ const images = copierTaskGenerator("images/**/*", "dist/images");
 const attachments = copierTaskGenerator("attachments/**/*", "dist/attachments");
 const samples = copierTaskGenerator("samples/**/*", "dist/samples");
 const videos = copierTaskGenerator("videos/**/*", "dist/videos");
+const audios = copierTaskGenerator("audios/**/*", "dist/audios");
 const favicon = copierTaskGenerator("favicon/**/*", "dist/favicon");
+const classesStuff = copierTaskGenerator(["classes/**/*", "!classes/**/*.md"], "dist/classes");
 
 function getFolders(cwd, dir) {
   const targetDirectory = path.join(cwd, dir);
@@ -156,6 +160,7 @@ function dev() {
 
   watch("scripts/*.js", js);
   watch("videos/**/*", videos);
+  watch("audios/**/*", audios);
   watch("images/**/*", images);
   watch("samples/**/*", samples);
   watch("html/**/*.html", html);
@@ -164,6 +169,7 @@ function dev() {
   watch("scripts/classes/*.js", jsClasses);
   watch("styles/classes/*.css", cssClasses);
   watch(["README.md", "classes/**/*.md"], md);
+  watch(["classes/**/*", "!classes/**/*.md"], classesStuff);
 
   return src("dist").pipe(
     webserver({
@@ -182,16 +188,18 @@ exports.clean = clean;
 exports.build = series(
   parallel(
     js,
-    jsClasses,
-    html,
     md,
     css,
-    cssClasses,
+    html,
     images,
+    audios,
     videos,
-    attachments,
+    favicon,
     samples,
-    favicon
+    jsClasses,
+    cssClasses,
+    attachments,
+    classesStuff
   ),
   build
 );

@@ -28,10 +28,38 @@
     background-image url(../images/rainbow-picture.jpg)
     animation movingbg-x 20s ease-in-out 0s infinite alternate-reverse
 
+.opengl
+  .layout-title
+    background-color crimson
+    h1
+      color black
+      text-shadow 0.025em 0.025em crimson
+      &::before
+        background-image url(../images/pusheen-window.gif)
+        background-repeat no-repeat
+        background-size 270px
+        background-position 100%
+        background-color #fcf0e4
+    h2
+      color white
+      margin-right 1em
+
+  .hello-world.layout-section-header::after
+    background-image url(../images/pusheen-coding.gif)
+    background-repeat no-repeat
+    background-size 250px
+    background-color #fcf0e4
+    background-position 50%
+
+  .window-system.layout-section-header::after
+    background-image url(../images/pusheen-window2.gif)
+    background-repeat no-repeat
+    background-size 250px
+    background-color #fcf0e4
+    background-position 50%
 
 
-
-
+// animations
 @keyframes movingbg-x
   from
     background-position 0 100%

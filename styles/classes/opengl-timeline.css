@@ -1,0 +1,27 @@
+.timeline {
+  font-size: 0.5em;
+}
+
+.timeline .vulkan .vis-item {
+  background-color: #d3c0ff;
+  border-color: #35005d;
+  color: #690069;
+}
+
+.timeline .webgl .vis-item {
+  background-color: #b5eeff;
+  border-color: #007979;
+  color: #024040;
+}
+
+.timeline .opengl-es .vis-item {
+  background-color: #aeff7b;
+  border-color: #00690d;
+  color: #0d4200;
+}
+
+.timeline .opengl .vis-item {
+  background-color: #e8d25c;
+  border-color: #fdd835;
+  color: #403b00;
+}

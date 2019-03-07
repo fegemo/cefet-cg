@@ -1,4 +1,4 @@
-@import 'highlight.js/styles/monokai-sublime.css'
+@import 'highlight.js/styles/vs.css'
 
 // variables
 $page-header-height = 0.75vw
@@ -89,9 +89,12 @@ a[href^="codeblocks:"]
     height 16px
     background-image url(../images/icon-codeblocks.png)
     background-repeat no-repeat
+    background-size contain
     vertical-align middle
     margin-right 5px
 
+.hljs
+  padding 1em
 
 @import utilities
 @import book

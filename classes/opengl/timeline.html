@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linha do tempo do OpenGL - Computação Gráfica no CEFET-MG</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Maitree:400,700|Roboto:400,700|Cousine">
+    <style>
+      body {
+        font-family: Roboto, sans-serif;
+        font-size: 36px;
+      }
+      article {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+    <link rel="stylesheet" href="../../styles/classes/opengl-timeline.css">
+    <link rel="apple-touch-icon-precomposed" href="../../favicon/favicon-152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../favicon/favicon-152.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../favicon/favicon-144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../../favicon/favicon-120.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../favicon/favicon-114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../favicon/favicon-72.png">
+    <link rel="apple-touch-icon-precomposed" href="../../favicon/favicon-57.png">
+    <link rel="icon" sizes="32x32" href="../../favicon/favicon-32.png">
+    <link rel="icon" href="../../favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#D7D7FA">
+    <meta name="msapplication-TileImage" content="../../favicon/favicon-144.png">
+  </head>
+  <body>
+    <article class="timeline"></article>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      const container = document.getElementsByClassName('timeline')[0];
+      const containerStyle = getComputedStyle(container);
+
+      fetch('opengl-versions.json')
+        .then(r => r.json())
+        .then(data => {
+          const items = data.items;
+          const groups = data.groups;
+          const options = data.options;
+          options.width = containerStyle.width;
+          options.height = containerStyle.height;
+
+          new vis.Timeline(container, items, groups, options);
+        });
+    </script>
+  </body>
+</html>
