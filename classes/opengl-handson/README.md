@@ -91,7 +91,7 @@ int main(int argc, char** argv)
    glutInitWindowSize(500, 500);
    glutInitWindowPosition(100, 100);
 
-   glutCreateWindow("Quadrado");
+   glutCreateWindow("Hello World");
 
    // Registra callbacks para alguns eventos
    glutDisplayFunc(desenhaMinhaCena);
@@ -107,7 +107,7 @@ int main(int argc, char** argv)
 }
 ```
 
-- Exemplo: [quadrado-callbacks](codeblocks:quadrado-callbacks/CodeBlocks/quadrado-callbacks.cbp)
+- Exemplo: [hello-world-callbacks](codeblocks:hello-world-callbacks/CodeBlocks/hello-world-callbacks.cbp)
 
 ---
 ## Apenas a função de desenho
@@ -215,7 +215,7 @@ glOrtho(left, right, bottom, top, near, far);
 - **Tudo que está dentro é desenhado**, tudo que está fora é descartado
 
 ---
-## O cubo de Visualização do quadrado.c
+## O cubo de Visualização do hello-world.c
 
 ![](../../images/glortho-square.png)
 
@@ -252,7 +252,7 @@ glOrtho(left, right, bottom, top, near, far);
   para projeção perspectiva)
 - Tudo o que colocarmos na nossa cena deve ser definido nesse sistema de
   coordenadas
-  - Em `quadrado.c`, nossa cena contém apenas os 4 vértices do quadrado
+  - Em `hello-world.c`, nossa cena contém apenas os 4 vértices do quadrado
 
 ---
 ## Sistema de coordenadas global (cont.)
