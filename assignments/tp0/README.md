@@ -41,7 +41,7 @@ sendo elas:
 Para testar se o ambiente está funcionando, você deve usar o programa
 `main.c` com nosso _hello world_. Siga os passos:
 
-1. Baixar o [código fonte](https://raw.githubusercontent.com/fegemo/cefet-cg-exemplos-opengl/master/quadrado-callbacks/main.c)
+1. Baixar o [código fonte](https://raw.githubusercontent.com/fegemo/cefet-cg-exemplos-opengl/master/hello-world-callbacks/main.c)
 1. Criar um projeto no seu IDE/editor de texto e configurá-lo devidamente
 1. **Modificar o título** da janela para **mostrar o seu nome**
 1. Compilar e executar
