@@ -102,10 +102,7 @@ function cssClasses() {
     .pipe(dest(destination));
 }
 
-function copierTaskGenerator(taskName, folder) {
-  const source = `${folder}/**/*`;
-  const destination = `dist/${folder}`;
-
+function copierTaskGenerator(taskName, source, destination) {
   const name = Symbol(taskName);
   const obj = {
     [name]: () =>
@@ -117,13 +114,13 @@ function copierTaskGenerator(taskName, folder) {
   return obj[name];
 }
 
-const images = copierTaskGenerator("images/**/*", "dist/images");
-const attachments = copierTaskGenerator("attachments/**/*", "dist/attachments");
-const samples = copierTaskGenerator("samples/**/*", "dist/samples");
-const videos = copierTaskGenerator("videos/**/*", "dist/videos");
-const audios = copierTaskGenerator("audios/**/*", "dist/audios");
-const favicon = copierTaskGenerator("favicon/**/*", "dist/favicon");
-const classesStuff = copierTaskGenerator(["classes/**/*", "!classes/**/*.md"], "dist/classes");
+const images = copierTaskGenerator("images", "images/**/*", "dist/images");
+const attachments = copierTaskGenerator("attachments", "attachments/**/*", "dist/attachments");
+const samples = copierTaskGenerator("samples", "samples/**/*", "dist/samples");
+const videos = copierTaskGenerator("videos", "videos/**/*", "dist/videos");
+const audios = copierTaskGenerator("audios", "audios/**/*", "dist/audios");
+const favicon = copierTaskGenerator("favicon", "favicon/**/*", "dist/favicon");
+const classesStuff = copierTaskGenerator("classes-stuff", ["classes/**/*", "!classes/**/*.md"], "dist/classes");
 
 function getFolders(cwd, dir) {
   const targetDirectory = path.join(cwd, dir);
