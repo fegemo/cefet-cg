@@ -25,7 +25,7 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 
-void desenharMinhaCena() {
+void desenhaMinhaCena() {
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(0.0, 1.0, 0.0);
@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
     glutInitDisplayMode(GLUT_SINGLE);
     glutInitWindowSize(500, 500);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("Quadrado");
+    glutCreateWindow("Hello World");
 
     glutDisplayFunc(desenharMinhaCena);
 
@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
 
 ---
 <!-- {"layout": "centered", "state": "show-active-slide-and-previous"} -->
-Executando nosso [_Hello World_](codeblocks:quadrado/CodeBlocks/quadrado.cbp)...
+Executando nosso [_Hello World_](codeblocks:hello-world/CodeBlocks/hello-world.cbp)...
 
 
 ![Uma tela preta com um quadrado branco](../../images/opengl-hw-inicial.png) <!-- {style="border: 1px solid gray; border-radius: 3px;"} -->
@@ -737,7 +737,7 @@ int main(int argc, char** argv) {
     glutInitWindowSize(500, 500);
 
     // abre a janela
-    glutCreateWindow("Quadrado");
+    glutCreateWindow("Hello World");
 
     // registro de callbacks de eventos
     glutDisplayFunc(desenhaMinhaCena);
@@ -754,13 +754,13 @@ int main(int argc, char** argv) {
 ## _Headers_ do OpenGL/freeglut
 
 ```c
-#include "GL/freeglut.h"
+#include <GL/freeglut.h>
 ```
 O Freeglut já inclui automaticamente os _headers_ do OpenGL. Logo, **não
   é necessário** incluir o `gl.h` e o `glu.h`:
   ```c
-  #include "GL/gl.h"
-  #include "GL/glu.h"
+  #include <GL/gl.h>
+  #include <GL/glu.h>
   ```
 
 Se freeglut não for usado, os _headers_ OpenGL têm que ser incluídos

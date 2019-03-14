@@ -304,6 +304,9 @@ img[alt$="max"] {
   max-width: 100%;
   max-height: 100%;
 }
+.subtly-round {
+  border-radius: 8px;
+}
 .inverted-text-colors {
   background: #333;
   color: #eee;
@@ -1428,6 +1431,45 @@ background-color #ababab h1,
   background-repeat: no-repeat;
   background-size: 250px;
   background-color: #fcf0e4;
+  background-position: 50%;
+}
+.opengl-handson .layout-title h1::before {
+  background-image: url("../images/red-bricks.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #f7f7f7;
+}
+.opengl-handson .layout-title h2 {
+  background-color: #333;
+  color: #fff;
+  margin-right: 1em;
+}
+.opengl-handson .coordinate-system.layout-section-header::after {
+  background-image: url("../images/coordinate-system.gif");
+  background-repeat: no-repeat;
+  background-size: fit;
+  background-color: #fcf0e4;
+  background-position: 50%;
+}
+.opengl-handson .clipping.layout-section-header::after {
+  background-image: url("../images/clipping-plane-house.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #fcf0e4;
+  background-position: 50%;
+}
+.opengl-handson .colors.layout-section-header::after {
+  background-image: url("../images/rgb-cube.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #808080;
+  background-position: 50%;
+}
+.opengl-handson .primitives.layout-section-header::after {
+  background-image: url("../images/red-bricks.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #f7f7f7;
   background-position: 50%;
 }
 @-webkit-keyframes movingbg-x {

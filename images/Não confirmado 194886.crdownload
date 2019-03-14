@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="-200 0 640 640">
+ <title>Comparison of double and triple buffering</title>
+ <desc>Comparison of double and triple buffering with vsync enabled, with and without a delayed frame, by CMG Lee.</desc>
+ <defs>
+  <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+   <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+   <stop offset="100%" stop-color="#ffffff" stop-opacity="1"/>
+  </linearGradient>
+  <clipPath id="clip"><rect x="-200" y="0" width="638" height="640"/></clipPath>
+  <text id="vram" x="-40" y="20" stroke="none"><tspan>Video</tspan><tspan x="-40" y="35">memory</tspan></text>
+  <text id="buffer" x="-40" y="25" stroke="none">Buffer</text>
+  <text id="buffer1" x="-40" y="25" stroke="none">Buffer 1</text>
+  <text id="buffer2" x="-40" y="25" stroke="none">Buffer 2</text>
+  <g id="vsync">
+   <rect x="0" y="0" width="20" height="640" stroke="none" fill="#cccccc"/>
+   <text x="10" y="20" stroke="none"><tspan>vertical</tspan><tspan x="10" y="35">retrace</tspan></text>
+   <!-- <text transform="rotate(-90)" x="-24" y="14" stroke="none">vsync</text> -->
+  </g>
+  <g id="clear">
+   <rect x="0" y="0" width="20" height="45" fill="#000000"/>
+   <text transform="rotate(-90)" x="-21" y="15" stroke="none" fill="#ffffff">clear</text>
+  </g>
+  <g id="a_copy_normal">
+   <rect x="0" y="0" width="20" height="45" fill="#ffcc00"/>
+   <rect x="20" y="0" width="999" height="45" fill="#ffff99"/>
+   <text x="10" y="20" stroke="none"><tspan>copy</tspan><tspan x="10" y="40">A</tspan></text>
+  </g>
+  <g id="b_copy_normal">
+   <rect x="0" y="0" width="20" height="45" fill="#9999ff"/>
+   <rect x="20" y="0" width="999" height="45" fill="#ccccff"/>
+   <text x="10" y="20" stroke="none"><tspan>copy</tspan><tspan x="10" y="40">B</tspan></text>
+  </g>
+  <g id="c_copy_normal">
+   <rect x="0" y="0" width="20" height="45" fill="#99ffff"/>
+   <rect x="20" y="0" width="999" height="45" fill="#ccffff"/>
+   <text x="10" y="20" stroke="none"><tspan>copy</tspan><tspan x="10" y="40">C</tspan></text>
+  </g>
+  <g id="d_copy_normal">
+   <rect x="0" y="0" width="20" height="45" fill="#99ff99"/>
+   <rect x="20" y="0" width="999" height="45" fill="#ccffcc"/>
+   <text x="10" y="20" stroke="none"><tspan>copy</tspan><tspan x="10" y="40">D</tspan></text>
+  </g>
+  <g id="e_copy_normal">
+   <rect x="0" y="0" width="20" height="45" fill="#ff9999"/>
+   <rect x="20" y="0" width="999" height="45" fill="#ffcccc"/>
+   <text x="10" y="20" stroke="none"><tspan>copy</tspan><tspan x="10" y="40">E</tspan></text>
+  </g>
+  <g id="abcde_copy_normal">
+   <use xlink:href="#a_copy_normal" transform="translate(0,0)"/>
+   <use xlink:href="#b_copy_normal" transform="translate(100,0)"/>
+   <use xlink:href="#c_copy_normal" transform="translate(200,0)"/>
+   <use xlink:href="#d_copy_normal" transform="translate(300,0)"/>
+   <use xlink:href="#e_copy_normal" transform="translate(400,0)"/>
+  </g>
+  <g id="a_draw_normal">
+   <use xlink:href="#clear" transform="translate(20,0)"/>
+   <rect x="40" y="0" width="50" height="45" fill="#ffcc00"/>
+   <rect x="90" y="0" width="999" height="45" fill="#ffff99"/>
+   <text x="65" y="20" stroke="none"><tspan>draw</tspan><tspan x="65" y="40">A</tspan></text>
+  </g>
+  <g id="b_draw_normal">
+   <use xlink:href="#clear" transform="translate(20,0)"/>
+   <rect x="40" y="0" width="50" height="45" fill="#9999ff"/>
+   <rect x="90" y="0" width="999" height="45" fill="#ccccff"/>
+   <text x="65" y="20" stroke="none"><tspan>draw</tspan><tspan x="65" y="40">B</tspan></text>
+  </g>
+  <g id="c_draw_normal">
+   <use xlink:href="#clear" transform="translate(20,0)"/>
+   <rect x="40" y="0" width="50" height="45" fill="#99ffff"/>
+   <rect x="90" y="0" width="999" height="45" fill="#ccffff"/>
+   <text x="65" y="20" stroke="none"><tspan>draw</tspan><tspan x="65" y="40">C</tspan></text>
+  </g>
+  <g id="d_draw_normal">
+   <use xlink:href="#clear" transform="translate(20,0)"/>
+   <rect x="40" y="0" width="50" height="45" fill="#99ff99"/>
+   <rect x="90" y="0" width="999" height="45" fill="#ccffcc"/>
+   <text x="65" y="20" stroke="none"><tspan>draw</tspan><tspan x="65" y="40">D</tspan></text>
+  </g>
+  <g id="e_draw_normal">
+   <use xlink:href="#clear" transform="translate(20,0)"/>
+   <rect x="40" y="0" width="50" height="45" fill="#ff9999"/>
+   <rect x="90" y="0" width="999" height="45" fill="#ffcccc"/>
+   <text x="65" y="20" stroke="none"><tspan>draw</tspan><tspan x="65" y="40">E</tspan></text>
+  </g>
+  <g id="abcde_draw_normal">
+   <use xlink:href="#a_draw_normal" transform="translate(0,0)"/>
+   <use xlink:href="#b_draw_normal" transform="translate(100,0)"/>
+   <use xlink:href="#c_draw_normal" transform="translate(200,0)"/>
+   <use xlink:href="#d_draw_normal" transform="translate(300,0)"/>
+   <use xlink:href="#e_draw_normal" transform="translate(400,0)"/>
+  </g>
+  <g id="b_draw_abnormal">
+   <use xlink:href="#clear" transform="translate(20,0)"/>
+   <rect x="40" y="0" width="80" height="45" fill="#9999ff"/>
+   <rect x="120" y="0" width="999" height="45" fill="#ccccff"/>
+   <text x="80" y="15" stroke="none"><tspan>draw</tspan><tspan x="80" y="40">B</tspan></text>
+  </g>
+  <g id="arrow1" transform="translate(10,22)" stroke-width="2" stroke="#ff0000" fill="#ff0000">
+   <circle cx="0" cy="0" r="2"/>
+   <path d="M 0 0 v 35 m -5 -5 l 5 5 l 5 -5" fill="none"/>
+  </g>
+  <g id="arrow2" transform="translate(10,22)" stroke-width="2" stroke="#ff0000" fill="#ff0000">
+   <circle cx="0" cy="0" r="2"/>
+   <path d="M 0 0 v 85 m -5 -5 l 5 5 l 5 -5" fill="none"/>
+  </g>
+  <g id="arrows">
+   <use xlink:href="#arrow2" transform="translate(100,0)"/>
+   <use xlink:href="#arrow1" transform="translate(200,50)"/>
+   <use xlink:href="#arrow2" transform="translate(300,0)"/>
+   <use xlink:href="#arrow1" transform="translate(400,50)"/>
+   <use xlink:href="#arrow2" transform="translate(500,0)"/>
+  </g>
+ </defs>
+ <g font-size="16" font-family="sans-serif" letter-spacing="-1" text-anchor="middle" stroke="#000000" fill="#000000" clip-path="url(#clip)">
+  <g id="grid">
+   <use xlink:href="#vsync" transform="translate(0,0)"/>
+   <use xlink:href="#vsync" transform="translate(100,0)"/>
+   <use xlink:href="#vsync" transform="translate(200,0)"/>
+   <use xlink:href="#vsync" transform="translate(300,0)"/>
+   <text x="400" y="20" stroke="none">Time</text>
+   <path d="M 380 30 h 45 m -5 -5 l 5 5 l -5 5" fill="none"/>
+  </g>
+  <g id="single_buffering" transform="translate(0,50)">
+   <text x="-200" y="20" font-weight="bold" text-anchor="start" stroke="none"><tspan>1. Single-</tspan><tspan x="-180" y="40">buffering</tspan></text>
+   <path d="M -70 0 h -10 v 45 h 10" fill="none"/>
+   <use xlink:href="#vram" transform="translate(0,0)"/>
+   <use xlink:href="#abcde_draw_normal" transform="translate(-20,0)"/>
+  </g>
+  <g id="double_buffering_normal" transform="translate(0,110)">
+   <text x="-200" y="20" font-weight="bold" text-anchor="start" stroke="none"><tspan>2. Double-</tspan><tspan x="-180" y="40">buffering</tspan></text>
+   <path d="M -70 0 h -10 v 95 h 10" fill="none"/>
+   <use xlink:href="#buffer" transform="translate(0,0)"/>
+   <use xlink:href="#vram" transform="translate(0,50)"/>
+   <use xlink:href="#abcde_draw_normal"/>
+   <use xlink:href="#abcde_copy_normal" transform="translate(100,50)"/>
+   <use xlink:href="#arrow1" transform="translate(100,0)"/>
+   <use xlink:href="#arrow1" transform="translate(200,0)"/>
+   <use xlink:href="#arrow1" transform="translate(300,0)"/>
+   <use xlink:href="#arrow1" transform="translate(400,0)"/>
+   <use xlink:href="#arrow1" transform="translate(500,0)"/>
+  </g>
+  <g id="triple_buffering_normal" transform="translate(0,220)">
+   <text x="-200" y="20" font-weight="bold" text-anchor="start" stroke="none"><tspan>3. Triple-</tspan><tspan x="-180" y="40">buffering</tspan></text>
+   <path d="M -70 0 h -10 v 145 h 10" fill="none"/>
+   <use xlink:href="#buffer1" transform="translate(0,0)"/>
+   <use xlink:href="#buffer2" transform="translate(0,50)"/>
+   <use xlink:href="#vram" transform="translate(0,100)"/>
+   <use xlink:href="#a_draw_normal" transform="translate(0,0)"/>
+   <use xlink:href="#b_draw_normal" transform="translate(70,50)"/>
+   <use xlink:href="#c_draw_normal" transform="translate(140,0)"/>
+   <use xlink:href="#d_draw_normal" transform="translate(210,50)"/>
+   <use xlink:href="#e_draw_normal" transform="translate(300,0)"/>
+   <use xlink:href="#clear" transform="translate(420,50)"/>
+   <use xlink:href="#abcde_copy_normal" transform="translate(100,100)"/>
+   <use xlink:href="#arrows"/>
+  </g>
+  <g id="double_buffering_abnormal" transform="translate(0,380)">
+   <text x="-200" y="20" font-weight="bold" text-anchor="start" stroke="none"><tspan>4. Double-</tspan><tspan x="-180" y="40">buffering</tspan><tspan x="-180" y="60">with frame</tspan><tspan x="-180" y="80">B delayed</tspan></text>
+   <path d="M -70 0 h -10 v 95 h 10" fill="none"/>
+   <use xlink:href="#buffer" transform="translate(0,0)"/>
+   <use xlink:href="#vram" transform="translate(0,50)"/>
+   <use xlink:href="#a_draw_normal" transform="translate(0,0)"/>
+   <use xlink:href="#b_draw_abnormal" transform="translate(100,0)"/>
+   <use xlink:href="#c_draw_normal" transform="translate(300,0)"/>
+   <use xlink:href="#d_draw_normal" transform="translate(400,0)"/>
+   <use xlink:href="#e_draw_normal" transform="translate(500,0)"/>
+   <use xlink:href="#a_copy_normal" transform="translate(100,50)"/>
+   <use xlink:href="#b_copy_normal" transform="translate(300,50)"/>
+   <use xlink:href="#c_copy_normal" transform="translate(400,50)"/>
+   <use xlink:href="#d_copy_normal" transform="translate(500,50)"/>
+   <use xlink:href="#e_copy_normal" transform="translate(600,50)"/>
+   <use xlink:href="#arrow1" transform="translate(100,0)"/>
+   <use xlink:href="#arrow1" transform="translate(300,0)"/>
+   <use xlink:href="#arrow1" transform="translate(400,0)"/>
+   <use xlink:href="#arrow1" transform="translate(500,0)"/>
+   <use xlink:href="#arrow1" transform="translate(600,0)"/>
+  </g>
+  <g id="triple_buffering_abnormal" transform="translate(0,490)">
+   <text x="-200" y="20" font-weight="bold" text-anchor="start" stroke="none"><tspan>5. Triple-</tspan><tspan x="-180" y="40">buffering</tspan><tspan x="-180" y="60">with frame</tspan><tspan x="-180" y="80">B delayed</tspan></text>
+   <path d="M -70 0 h -10 v 145 h 10" fill="none"/>
+   <use xlink:href="#buffer1" transform="translate(0,0)"/>
+   <use xlink:href="#buffer2" transform="translate(0,50)"/>
+   <use xlink:href="#vram" transform="translate(0,100)"/>
+   <use xlink:href="#a_draw_normal" transform="translate(0,0)"/>
+   <use xlink:href="#b_draw_abnormal" transform="translate(70,50)"/>
+   <use xlink:href="#c_draw_normal" transform="translate(170,0)"/>
+   <use xlink:href="#d_draw_normal" transform="translate(240,50)"/>
+   <use xlink:href="#e_draw_normal" transform="translate(310,0)"/>
+   <use xlink:href="#clear" transform="translate(420,50)"/>
+   <use xlink:href="#abcde_copy_normal" transform="translate(100,100)"/>
+   <use xlink:href="#arrows"/>
+  </g>
+  <rect x="420" y="0" width="20" height="640" stroke="none" fill="url(#grad)"/>
+ </g>
+</svg>
