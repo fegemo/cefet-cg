@@ -1,6 +1,9 @@
-# Introdução a OpenGL **_hands on_** - Parte 2
+<!-- {"layout": "title"} -->
+# Introdução a OpenGL **_hands on_**
+## parte 2
 
 ---
+<!-- {"layout": "centered"} -->
 # Roteiro
 
 1. **Tipos** de dados
@@ -10,9 +13,14 @@
 1. Ordem de desenho (**_depth buffer_** e coordenada Z)
 
 ---
-# **Tipos de Dados** em OpenGL
+<!-- {"layout": "section-header"} -->
+# **Tipos de dados** em OpenGL
+
+- Por que ter "tipos" de dados?
+- Tipos do OpenGL
 
 ---
+<!-- {"layout": "regular"} -->
 ## Tipos em C
 
 - A linguagem C possui diversos tipos de dados primitivos
@@ -30,6 +38,7 @@
   - Um `double`, 64 bits
 
 ---
+<!-- {"layout": "regular"} -->
 ## Tipos em OpenGL
 
 - Contudo, compiladores (e plataformas) diferentes **podem** usar uma
@@ -44,6 +53,7 @@
   tipos sugeridos pelo OpenGL**
 
 ---
+<!-- {"layout": "regular"} -->
 ## Tabela de tipos do OpenGL
 
 | Tipo em C                       | Descrição do tipo         | Tipo do OpenGL                | Sufixo |
@@ -58,10 +68,15 @@
 | `unsigned int or unsigned long` | 32-bit inteiro sem sinal  | `GLuint, GLenum, GLbitfield`  | ui     |
 
 ---
+<!-- {"layout": "section-header"} -->
 # **Re**-desenhando a Tela
 
+- Alterando o estado do programa
+- Avisando o sistema de janelas
+
 ---
-## O Problema
+<!-- {"layout": "regular"} -->
+## O problema
 
 - Mesmo quando altera-se alguma característica da cena via código, a janela continua da mesma forma, _e.g._:
   ```c
@@ -74,7 +89,8 @@
     - Então, **basta avisar ao Freeglut** que, assim que possível, ele deve mandar **disparar um <u>evento _display_</u>**
 
 ---
-## A Solução (neste caso)
+<!-- {"layout": "regular"} -->
+## A solução
 
 - Para avisar ao Freeglut que a janela deve ser redesenhada, usamos o comando `glutPostRedisplay()`:
   ```c
@@ -87,58 +103,78 @@
   - Tipicamente chamamos `glutPostRedisplay()` várias vezes/segundo
 
 ---
+<!-- {"layout": "section-header"} -->
 # Criando uma pequena animação
 
----
-## Animando uma Cor
+- Usando freeglut, precisamos do evento _timer_ ou _idle_
+  (`glutTimerFunc` ou `glutIdleFund`)
+- A _callback_ deve alterar o estado da aplicação
+- A função de desenho simplesmente desenha **o estado atual**
 
-<video width="413" height="430"  poster="../../images/animacao-cor-video-preview.png" controls loop>
-  <source src="../../videos/animacao-cor.mp4" type="video/mp4" />
-</video>
-
-[Exemplo: Animação de cor](codeblocks:animacao-cor/CodeBlocks/animacao-cor.cbp)
+> **Animação** é alterar o valor de algo **ao longo do tempo**
 
 ---
-## glutTimerFunc(msecs, func, value)
+<!-- {"layout": "regular"} -->
+## glutTimerFunc(msecs, func, value) [🌐](https://www.opengl.org/resources/libraries/glut/spec3/node64.html)
 
 - Podemos registrar uma _callback_ para **ser invocada daí a `x` ms**.
 - Podemos usá-la p/ alterar parâmetros (cor, posição etc.) da cena
   ```c
-    void atualizaCena(int valor)
-    {
-      // altera a cor do quadrado
+  void atualizaCena(int valorQualquer) {
+      // altera algo na cena
       ...
       // atualiza a tela (desenha() será invocada novamente)
       glutPostRedisplay();
-      // registra a callback novamente
-      // por quê 25? 1000/25 = 40fps
-      glutTimerFunc(25, atualizaCena, 0);
-    }
-    glutTimerFunc(0, atualizaCena, 0); // lá no int main()
+      // registra a callback novamente...
+      glutTimerFunc(33, atualizaCena, 0); // por quê 33? 1000/33 = 30fps
+  }
   ```
 
 ---
-## Experimento
+<!-- {"layout": "3-column-content", "playMediaOnActivation": {"selector": "#color-animation" }, "slideClass": "compact-code-more"} -->
+## Animando uma cor
 
-1. Criar um quadrado que muda de cor
-   ```c
-   void timerColored(int valor) {
-     color += colorIncrement;
-     if (color > 1) {         // maior que
-       color = 1; colorIncrement = colorIncrement * -1;
-     } else if (color < 0) {  // menor que
-       color = 0; colorIncrement = colorIncrement * -1;
-     }
-     glutPostRedisplay();
-     glutTimerFunc(25, timerColored, 0);
-   }
-   ```
+- <video width="100%" preload="auto" controls loop src="../../videos/animacao-cor.mp4" id="color-animation" class="bordered subtly-round"></video>
+  [Animação de cor](codeblocks:animacao-cor/CodeBlocks/animacao-cor.cbp) <!-- {ul:.no-bullet.no-margin.no-padding.center-aligned} -->
+
+```c
+float tom = 0.5;
+float incremento = 0.01;
+
+void mudaCor(int valor) {
+  tom += incremento;
+  if (tom > 1 || tom < 0) {
+    // inverte o sinal
+    incremento *= -1;
+  }
+  glutPostRedisplay();
+
+  glutTimerFunc(33, mudaCor, 0);
+}
+```
+
+```c
+void desenhaCena() {
+  glClear(GL_COLOR_BUFFER_BIT);
+
+  glColor3f(tom, tom, tom);
+  glBegin(GL_TRIANGLE_FAN);
+      glVertex3f(20, 20, 0);
+      glVertex3f(80, 20, 0);
+      glVertex3f(80, 80, 0);
+      glVertex3f(20, 80, 0);
+  glEnd();
+
+  // ...
+}
+```
 
 ---
-## Usando **2 _Buffers_**
+<!-- {"layout": "regular"} -->
+## Usando **2 _frame buffers_**
 
 - Quando estamos criando uma animação - **atualizando a tela várias
-  vezes por segundo**, podemos um problema de **"imagens" estateladas** (_flickering_)
+  vezes por segundo**, podemos um problema de **"imagens" estateladas** (_flickering_) <!-- {ul:.bulleted} -->
 - Isso acontece porque estamos escrevendo no COLOR_BUFFER ao mesmo tempo que
   ele é enviado ao monitor
 - Para evitar, usamos um _**double buffer**_:
@@ -287,7 +323,10 @@ void display() {
 - [Mesmo exemplo, em OpenGL puro](codeblocks:fontes-opengl/CodeBlocks/fontes-opengl.cbp)
 
 ---
-# Ordem de Desenho
+<!-- {"layout": "section-header"} -->
+# Ordem de desenho
+
+- A ordem dos comandos de desenho importa?
 
 ---
 ## Atividade
@@ -360,11 +399,13 @@ void desenhaDisco(float raio, float x, float y, float z) {
 
 
 ---
+<!-- {"layout": "regular"} -->
 ## O _depth buffer_ (ou **z-buffer**)
 
 ![](../../images/zbuffer-vs-colorbuffer.png)
+
 ---
-## Experimento
+### Experimento
 
 - Alterar o código para usar o _depth buffer_
 - O segundo anel é desenhado de forma correta independente da ordem de desenho
@@ -372,6 +413,7 @@ void desenhaDisco(float raio, float x, float y, float z) {
   ![](../../images/aneis-vermelhos.png)
 
 ---
+<!-- {"layout": "centered"} -->
 # Referências
 
 - Capítulo 4 do livro **Computer Graphics with OpenGL 4th edition**
