@@ -13,7 +13,7 @@
 1. Ordem de desenho (**_depth buffer_** e coordenada Z)
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "data-types"} -->
 # **Tipos de dados** em OpenGL
 
 - Por que ter "tipos" de dados?
@@ -68,7 +68,7 @@
 | `unsigned int or unsigned long` | 32-bit inteiro sem sinal  | `GLuint, GLenum, GLbitfield`  | ui     |
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "redrawing"} -->
 # **Re**-desenhando a Tela
 
 - Alterando o estado do programa
@@ -103,7 +103,7 @@
   - Tipicamente chamamos `glutPostRedisplay()` várias vezes/segundo
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "animation"} -->
 # Criando uma pequena animação
 
 - Usando freeglut, precisamos do evento _timer_ ou _idle_
@@ -174,43 +174,50 @@ void desenhaCena() {
 ## Usando **2 _frame buffers_**
 
 - Quando estamos criando uma animação - **atualizando a tela várias
-  vezes por segundo**, podemos um problema de **"imagens" estateladas** (_flickering_) <!-- {ul:.bulleted} -->
-- Isso acontece porque estamos escrevendo no COLOR_BUFFER ao mesmo tempo que
+  vezes por segundo**, podemos ter um problema de
+  **"imagens" estateladas** (_flickering_) <!-- {ul:.bulleted} -->
+- Isso acontece porque estamos escrevendo no `COLOR_BUFFER` ao mesmo tempo que
   ele é enviado ao monitor
-- Para evitar, usamos um _**double buffer**_:
+- ![](../../images/front-back-buffer.svg) <!-- {.push-right.half-width} -->
+  Para evitar, usamos um _**double buffer**_:
   1. _front-buffer_: é quem está sendo mostrado pelo monitor
   1. _back-buffer_: é onde estamos "pintando" o próximo quadro
 - Após terminar de desenhar no _back buffer_, invertemos quem é _front_ com o _back_
 
 ---
+<!-- {"layout": "regular"} -->
 ## Usando **2 _Buffers_** com Freeglut
 
-1. Configuramos o Freeglut com **`GLUT_DOUBLE`** <u>em vez de</u> `GLUT_SINGLE`:
-  ```c
-  int main(int argc, char** argv) {
-      glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
-      // ...
-  }
-  ```
-  - Mas o que significa o símbolo `|`?
-1. Na _callback_ de _display_, **`glutSwapBuffers();`** <u>em vez
-  de</u> `glFlush();`:
-  ```c
-  void desenha() {
-      // ...
-      glutSwapBuffers();
-  }
-  ```
+1. Configuramos o freeglut com **`GLUT_DOUBLE`** <u>em vez de</u> `GLUT_SINGLE`:
+   ```c
+   int main(int argc, char** argv) {
+       glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+   }
+   ```
+1. Na _callback_ de _display_, **`glutSwapBuffers()`** <u>em vez de</u>
+   `glFlush()`:
+   ```c
+   void desenha() {
+       glutSwapBuffers();
+   }
+   ```
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Outra animação: **segue o mouse**
 
-- [Exemplo de quadrado seguindo o mouse](codeblocks:animacao-segue-mouse/CodeBlocks/animacao-segue-mouse.cbp)
+![](../../images/animacao-segue-mouse.png) <!-- {.medium-width.centered.bordered.subtly-round} -->
+
+Exemplo: [animacao-segue-mouse](codeblocks:animacao-segue-mouse/CodeBlocks/animacao-segue-mouse.cbp)
 
 ---
+<!-- {"layout": "section-header", "slideClass": "text"} -->
 # Escrevendo Texto
 
+- Como desenhar texto com OpenGL
+
 ---
+<!-- {"layout": "regular"} -->
 ## Gráficos _raster_
 
 - Até agora, vimos como desenhar primitivas geométricas em OpenGL
@@ -221,48 +228,45 @@ void desenhaCena() {
     1. Escrever texto
 - Veremos duas formas para escrever texto na tela
   1. OpenGL puro
-  1. GLUT _to the rescue_ \o/
+  1. Freeglut _to the rescue_ \o/
 
 ---
+<!-- {"layout": "regular"} -->
 ## **_Bitmaps_ e fontes** (OpenGL puro)
 
 - O OpenGL provê primitivas de nível baixo para a escrita de caracteres na tela
-- <img src="../../images/bitmap-f.gif" class="push-right">
-  Os comandos `glRasterPos*()` e `glBitmap()` posicionam e desenham um _bitmap_
+- ![](../../images/bitmap-f.gif) <!-- {.push-right} -->
+  Os comandos `glRasterPos()` e `glBitmap()` posicionam e desenham um _bitmap_
 - Pode-se usar _display lists_ (próxima aula) para armazenar o _bitmap_ de cada letra e apenas
   usá-lo por seu índice posteriormente
 - O restante é com a gente =)
   - [Exemplo de desenho de texto **em OpenGL "puro"**](codeblocks:fontes-opengl-f/CodeBlocks/fontes-opengl-f.cbp)
 
 ---
+<!-- {"layout": "regular"} -->
 ## **Exemplo** de texto na tela em OpenGL puro
 
 ```c
-GLubyte rasters[24] = {
-   0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00,
-   0xff, 0x00, 0xff, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00,
-   0xff, 0xc0, 0xff, 0xc0};
-
-void init(void)
-{
-   glPixelStorei (GL_UNPACK_ALIGNMENT, 1);
-   glClearColor (0.0, 0.0, 0.0, 0.0);
+GLubyte matrizDePixels[24] = {
+    0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xff, 0x00,
+    0xff, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xc0, 0x00, 0xff, 0xc0, 0xff, 0xc0 };
+void inicializa() {
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 }
-
-void display(void)
-{
-   glClear(GL_COLOR_BUFFER_BIT);
-   glColor3f (1.0, 1.0, 1.0);
-   glRasterPos2i (20, 20);
-   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
-   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
-   glBitmap (10, 12, 0.0, 0.0, 11.0, 0.0, rasters);
-   glFlush();
+void desenha() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1, 1, 1);
+    glRasterPos2i(20, 20);
+    glBitmap(10, 12, 0.0, 0.0, 11.0, 0.0, matrizDePixels);
+    glBitmap(10, 12, 0.0, 0.0, 11.0, 0.0, matrizDePixels);
+    glBitmap(10, 12, 0.0, 0.0, 11.0, 0.0, matrizDePixels);
+    glFlush();
 }
 ```
 
 ---
-## [glBitmap](https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glBitmap.xml)
+<!-- {"layout": "2-column-content"} -->
+## glBitmap [🌐](https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glBitmap.xml)
 
 ```c
 void glBitmap(
@@ -275,18 +279,19 @@ void glBitmap(
   const GLubyte* bitmap);
 ```
 
-## [glRasterPosi](https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glRasterPos.xml)
+## glRasterPosi [🌐](https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/glRasterPos.xml)
 
 ```c
 void glRasterPos2i(GLint x, GLint y);
 ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## **_Bitmaps_ e fontes** (usando GLUT)
 
-- GLUT já implementou algumas fontes (usando `glBitmap()`) e nos oferece **algumas
+- Freeglut já implementou algumas fontes (usando `glBitmap()`) e nos oferece **algumas
   opções mais simples**
-- Documentação da função [glutBitmapCharacter](http://freeglut.sourceforge.net/docs/api.php#FontRendering)
+- Documentação da função [`glutBitmapCharacter`](http://freeglut.sourceforge.net/docs/api.php#FontRendering)
   ```c
   void glutBitmapCharacter(void* font, int character);
   ```
@@ -299,60 +304,57 @@ void glRasterPos2i(GLint x, GLint y);
     ```
 
 ---
+<!-- {"layout": "centered-horizontal", "slideClass": "compact-code-more"} -->
 ## **Exemplo** de texto na tela em GLUT
 
 ```c
-void texto(void* font, char* s, float x, float y) {
-  unsigned int i;
+void escreve(void* fonte, char* texto, float x, float y) {
   glRasterPos2f(x, y);
 
-  for (i = 0; i < strlen (s); i++) {// menor que
-     glutBitmapCharacter(font, s[i]);
+  for (int i = 0; i < strlen(texto); i++) {
+     glutBitmapCharacter(fonte, texto[i]);
   }
 }
 
-void display() {
+void desenha() {
   glClear(GL_COLOR_BUFFER_BIT);
   glColor3f (1.0, 1.0, 1.0);
   texto(GLUT_BITMAP_HELVETICA_18, "FFF", 20, 20);
   glFlush();
 }
-
 ```
-- [Exemplo de texto usando GLUT](codeblocks:fontes-glut/CodeBlocks/fontes-glut.cbp)
-- [Mesmo exemplo, em OpenGL puro](codeblocks:fontes-opengl/CodeBlocks/fontes-opengl.cbp)
+- Exemplo: [texto com freeglut](codeblocks:fontes-glut/CodeBlocks/fontes-glut.cbp)
+- Exemplo: [texto com em OpenGL puro](codeblocks:fontes-opengl/CodeBlocks/fontes-opengl.cbp)
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "draw-order"} -->
 # Ordem de desenho
 
 - A ordem dos comandos de desenho importa?
 
 ---
+<!-- {"layout": "2-column-content"} -->
 ## Atividade
 
-- Desenhar um anel vermelho
+1. Desenhar um anel vermelho <!-- {ol:.no-bullet.center-aligned} -->
+   ![](../../images/anel-vermelho.png)
 
-![](../../images/anel-vermelho.png)
-
----
-## **Três** formas
-
-1. Desenha um círculo vermelho grande, depois um branco pequeno
-1. Igual anterior, mas coloca o branco mais próximo da tela
-1. Desenha um círculo furado
+- Há pelo menos 03 formas:  
+  1. Desenhar um círculo vermelho grande, depois um branco pequeno
+  1. Igual anterior, mas coloca o branco mais próximo da tela
+  1. Desenhar um círculo furado
 
 ---
-## Função: desenhaDisco(R, x, y, z)
+<!-- {"layout": "regular"} -->
+## Função: desenhaCirculo(R, x, y, z)
 
 ```c
-void desenhaDisco(float raio, float x, float y, float z) {
+void desenhaCirculo(float raio, float x, float y, float z) {
   float t;
-  int i;
 
   glBegin(GL_TRIANGLE_FAN);
     glVertex3f(x, y, z);
-      for(i = 0; i <= NUM_LADOS; ++i) {//menor ou igual
+      for(int i = 0; i <= NUM_LADOS; ++i) {
         t = 2 * M_PI * i / NUM_LADOS;
         glVertex3f(x + cos(t) * raio, y + sin(t) * raio, z);
       }
@@ -360,35 +362,34 @@ void desenhaDisco(float raio, float x, float y, float z) {
 }
 ```
 
-- [Exemplo do Disco](codeblocks:discos/CodeBlocks/discos.cbp)
-
----
-## Experimento
-
+- Exemplo: [discos](codeblocks:discos/CodeBlocks/discos.cbp)
 - E se alterarmos a ordem do branco com o vermelho?
 
+
 ---
+<!-- {"layout": "regular"} -->
 ## O que aconteceu?
 
 - Por padrão, o OpenGL usa o **algoritmo do pintor** para a **determinação da
   visibilidade** dos polígonos
 
-  ![max](../../images/algoritmo-do-pintor.png)
+  ![](../../images/algoritmo-do-pintor.png) <!-- {.large-width} -->
   - O que é desenhado por último aparece na frente
   - O OpenGL simplesmente desenha os triângulos, na ordem que pedimos
 
 ---
-## **Teste de profundidade**
+<!-- {"layout": "regular"} -->
+## Ativando: **teste de profundidade**
 
-- Para que ele faça um teste da coordenada `Z`, (1) <u>precisamos ativar
+- Para que o OpenGL teste a coordenada `Z`, (1) <u>precisamos ativar
   o **teste de profundidade**</u>
-  - ```c
-    glEnable(GL_DEPTH_TEST);
-    // desenha
-    glDisable(GL_DEPTH_TEST);
-    ```
-- Também precisamos (2) <u>limpar o _depth buffer_</u>, da mesma forma que
-  limpamos a cor da janela
+  ```c
+  glEnable(GL_DEPTH_TEST);
+  // desenha
+  glDisable(GL_DEPTH_TEST);
+  ```
+- Também precisamos (2) <u>limpar o _depth buffer_</u>, ao limparmos a cor
+  da janela
   ```c
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   ```
@@ -397,20 +398,11 @@ void desenhaDisco(float raio, float x, float y, float z) {
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
   ```
 
-
 ---
-<!-- {"layout": "regular"} -->
+<!-- {"layout": "centered-horizontal"} -->
 ## O _depth buffer_ (ou **z-buffer**)
 
 ![](../../images/zbuffer-vs-colorbuffer.png)
-
----
-### Experimento
-
-- Alterar o código para usar o _depth buffer_
-- O segundo anel é desenhado de forma correta independente da ordem de desenho
-
-  ![](../../images/aneis-vermelhos.png)
 
 ---
 <!-- {"layout": "centered"} -->
