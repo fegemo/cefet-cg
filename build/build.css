@@ -1472,6 +1472,56 @@ background-color #ababab h1,
   background-color: #f7f7f7;
   background-position: 50%;
 }
+.opengl-handson2 .layout-title {
+  background-color: #fff;
+}
+.opengl-handson2 .layout-title h1 {
+  color: #c0c0c0;
+}
+.opengl-handson2 .layout-title h1::before {
+  background-image: url("../images/ping-pong.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.opengl-handson2 .layout-title h2 {
+  background-color: #333;
+  color: #fff;
+  margin-right: 1em;
+}
+.opengl-handson2 .data-types.layout-section-header::after {
+  background-image: url("../images/c-language-source-code.jpg");
+  background-repeat: no-repeat;
+  background-size: fit;
+  background-position: 0%;
+}
+.opengl-handson2 .redrawing.layout-section-header::after {
+  background-image: url("../images/single-double-triple-buffering.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  opacity: 0.85;
+}
+.opengl-handson2 .animation.layout-section-header::after {
+  background-image: url("../images/ping-pong.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #808080;
+  background-position: 50%;
+}
+.opengl-handson2 .text.layout-section-header::after {
+  background-image: url("../images/font-kerning.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #fff;
+  background-position: 50%;
+}
+.opengl-handson2 .draw-order.layout-section-header::after {
+  background-image: url("../images/algoritmo-do-pintor.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: #f7f7f7;
+  background-position: 50%;
+}
 @-webkit-keyframes movingbg-x {
   from {
     background-position: 0 100%;
