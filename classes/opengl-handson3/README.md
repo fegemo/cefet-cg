@@ -1,17 +1,25 @@
-# Introdução a OpenGL **_hands on_** - Parte 3
+<!-- {"layout": "title"} -->
+# Introdução a OpenGL **_hands on_**
+## parte 3
 
 ---
+<!-- {"layout": "centered"} -->
 # Roteiro
 
-1. Display Lists
-1. Orientação dos Polígonos
-1. Usando Texturas
+1. Display lists
+1. Orientação dos polígonos
+1. Usando texturas
 1. **Trabalho Prático 1**
 
 ---
+<!-- {"layout": "section-header"} -->
 # Display Lists
 
+- Revendo o exercício
+- Como armazenar objetos para desenho
+
 ---
+<!-- {"layout": "regular"} -->
 ## Exercício 2 da lista
 
 ![](../../images/display-lists.png)
@@ -19,44 +27,45 @@
 - \#comofaz para desenhar linhas e o polígono ao mesmo tempo?
 
 ---
+<!-- {"layout": "2-column-content", "slideClass": "compact-code-more"} -->
 ## Opção 1
 
-- Desenha-se o polígono **preenchido**:
+- Desenha-se o polígono **preenchido** e, **em seguida, em _wire_**: <!-- {ul:.bullet} -->
   ```c
+  glColor3f(0, 0, 1);     // azul
   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
   glBegin(GL_TRIANGLE_STRIP);
-    // 10 vértices aqui...
+      // 10 vértices aqui...
   glEnd();
-  ```
-- Em seguida, desenha-se o polígono em modo **_wire_**:
-  ```c
+
+  glColor3f(0, 0, 0);     // preto
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   glBegin(GL_TRIANGLE_STRIP);
-    // os mesmos 10 vértices aqui...
+      // os mesmos 10 vértices aqui...
   glEnd();
   ```
 
----
-## Opção 1 - discussão
-
-- Temos um **_code smell_** - algo está errado
-- **Não devemos repetir código** para que não precisemos alterar mais de um
-  lugar caso precisemos no futuro
-  - Princípio DRY - _Don't Repeat Yourself_
-- Podemos resolver isso extraindo o código repetido para uma função...
-  - Esse processo se chama **refatorar o código**
+1. **Discussão**: <!-- {ol:.no-bullet.bullet} -->
+   - Temos um **_code smell_** - algo está errado
+   - **Não devemos repetir código** para que não precisemos alterar mais de um
+     lugar caso precisemos no futuro
+     - Princípio DRY - _Don't Repeat Yourself_
+   - Podemos resolver isso extraindo o código repetido para uma função...
+     - Esse processo se chama **refatorar o código**
 
 ---
-## Opção 2: Criamos uma função: `desenhaAnelQuadrado()`
-  ```c
-  void desenhaAnelQuadrado() {
+<!-- {"layout": "2-column-content", "slideClass": "compact-code-more"} -->
+## Opção 2: uma função: `desenhaAnelQuadrado()`
+
+```c
+void desenhaAnelQuadrado() {
     glBegin(GL_TRIANGLE_STRIP);
-      // 10 vértices aqui...
+        // 10 vértices aqui...
     glEnd();
-  }
-  //...
+}
+//...
 
-  void desenhaCena() {
+void desenhaCena() {
     glColor3f(0, 0, 1);     // azul
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     desenhaAnelQuadrado();
@@ -64,20 +73,18 @@
     glColor3f(0, 0, 0);     // preto
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     desenhaAnelQuadrado();
-  }
-  ```
+}
+```
+
+1. **Discussão**: <!-- {ol:.bulleted.no-bullet} -->
+   - Resolvemos o _code smell_, mas não paramos por aí
+   - E se, em vez de 10 vértices, nosso polígono tivesse 1 mil vértices?
+     - Cada chamada a `glVertex` faz **uma viagem da CPU à GPU**
+   - Solução: o OpenGL pode **registrar um polígono** caso queiramos desenhá-lo
+     várias vezes
 
 ---
-## Opção 2 - discussão
-
-- Resolvemos o _code smell_, mas não paramos por aí
-- E se, em vez de 10 vértices, nosso polígono tivesse 1 mil vértices?
-  - Cada chamada a `glVertex` faz **uma viagem da CPU à GPU**
-    - Em outras palavras, é uma **_draw call_**
-- Solução: o OpenGL pode **registrar um polígono** caso queiramos desenhá-lo
-  várias vezes
-
----
+<!-- {"layout": "regular"} -->
 ## Opção 3 - usando **lista de visualização**
 
 - Em vez de chamar o método de desenho na _callback_ de desenho, vamos registar
@@ -86,40 +93,12 @@
 - Assim, otimizamos bem as chamadas de desenho de vértices
 
 ---
-<!--
-  classes: two-column-code
--->
-
-## Opção 3 (1/2)
+<!-- {"layout": "regular", "slideClass": "two-column-code compact-code-more"} -->
+## Opção 3: implementação
 
 ```c
 int listaAnel;
-void criaListaAnelQuadrado() {
-  listaAnel = glGenLists(1);
-  glNewList(listaAnel,
-    GL_COMPILE);  
-    glBegin(GL_TRIANGLE_STRIP);
-      // os 10 vértices
-      // ...
-    glEnd();
-  glEndList();
-}
 
-
-
-int main(int c, char** v) {
-  glutInit(argc, argv);
-  //...
-  criaListaAnelQuadrado();
-  //...
-  glutMainLoop();
-}
-```
-
----
-## Opção 3 (2/2)
-
-```c
 void desenhaCena() {
   glColor3f(0, 0, 1);       // azul
   glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -129,6 +108,27 @@ void desenhaCena() {
   glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   glCallList(listaAnel);    // chama a lista
 }
+
+
+
+
+
+void criaListaAnelQuadrado() {
+  listaAnel = glGenLists(1);
+  glNewList(listaAnel,
+    GL_COMPILE);  
+    glBegin(GL_TRIANGLE_STRIP);
+      // os 10 vértices
+    glEnd();
+  glEndList();
+}
+
+int main(int c, char** v) {
+  //...
+  criaListaAnelQuadrado();
+  glutMainLoop();
+}
+
 ```
 
 ---
@@ -316,13 +316,16 @@ void init() {
 _A wild TP1 appears..._
 
 ---
-## TP1: **Dino Run**
+<!-- {"layout": "2-column-content"} -->
+## TP1: **Pescaria Ridícula**
 
-<img alt="" src="https://raw.githubusercontent.com/fegemo/cefet-cg/master/assignments/tp1-dinorun/images/dino-run.gif"
-  style="float: right; width: 420px; margin: 0 0 5px 20px">
-  _É certo que todos já passaram por esse belo momento: a conexão de Internet caiu e você ficou indagando o que fazer da vida enquanto ela não voltava. Pensando nisso, o Chrome disponibilizou um joguinho maroto para passar essas horas de desespero e tédio._
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp1-dinorun/README.md)).
+> "Muito mal falado é o pescador. Ninguém acredita nele. Eu mesmo, quando
+> chasqueei um matreiro e a vara embodocou com a força desse bruto,
+> tive que [...] -- Relato pseudoverdadeiro de um pescador desconhecido
+
+![](../../images/ridiculous-fishing.gif) <!-- {.push-right style="width: 180px; margin-left: 1em"} -->
+- Enunciado no Moodle
 
 ---
 # Referências

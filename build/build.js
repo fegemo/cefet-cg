@@ -15076,7 +15076,7 @@ const config = {
 
   layout: (slide, value) => slide.classList.add('layout-' + value),
 
-  slideClass: (slideEl, value) => slideEl.classList.add(value),
+  slideClass: (slideEl, value) => value.split(' ').forEach(v => slideEl.classList.add(v)),
 
   state: (slide, value) => slide.setAttribute('data-bespoke-state', value),
 
