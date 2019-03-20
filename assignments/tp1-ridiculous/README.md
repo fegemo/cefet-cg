@@ -1,6 +1,7 @@
 # Trabalho Prático 1 - Pescando Ridiculamente
 
 <img src="../../images/ridiculous-fishing.gif" style="float: right">
+
 > "Muito mal falado é o pescador. Ninguém acredita nele. Eu mesmo, quando
 > chasqueei um matreiro e a vara embodocou com a força desse bruto, tive que
 > pegar a espingarda e atirar nele antes que ele avançasse em mim. Se eu
