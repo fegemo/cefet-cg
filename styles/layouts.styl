@@ -11,6 +11,12 @@
 
 
 // stylish images by class
+.syllabus
+  .layout-title
+    background-color white
+    h1::before
+      background-image url(../images/forest-mountain.jpg)
+
 .intro
   .layout-title h1::before
     background-image url(../images/cg-area-art.jpg)
@@ -60,8 +66,7 @@
 
 .opengl-handson
   .layout-title
-    h1
-      &::before
+    h1::before
         background-image url(../images/red-bricks.jpg)
         background-repeat no-repeat
         background-size contain
@@ -148,6 +153,27 @@
     background-position 50%
     // animation movingbg-x 20s linear 0s infinite alternate-reverse
 
+
+// aulas sobre C e feedback tp
+.c
+  .layout-title
+    background linear-gradient(to right bottom, goldenrod, darkgoldenrod)
+    h1
+      color #b80b0b
+      font-size 10em
+      &::before
+        background-image url(../images/c-jump-boardgame.jpg)
+        background-position 50% 50%
+    h2
+      color #efefef
+      margin-right 1em
+
+.breakout-feedback
+  .layout-title
+    background-color blue
+    h1
+      &::before
+        background-image url(../images/breakout-stylized.png)
 
 // animations
 @keyframes movingbg-x
