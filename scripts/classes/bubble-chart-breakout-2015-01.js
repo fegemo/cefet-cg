@@ -24,7 +24,7 @@ nv.addGraph(function() {
 
   //var myData = randomData(4,40);
   var myData = getData();
-  d3.select('#bubble-chart-os svg')
+  d3.select('.bubble-chart-os svg')
     .datum(myData)
     .call(chart);
 
@@ -85,7 +85,7 @@ function getData() {
       "sexo": "Masculino"
     },
     {
-      "aluno": "Gabriel Pires de Miranda Magalhães",
+      "aluno": "Gabriel Pires de Miranda Magalhï¿½es",
       "notaPercentual": 1.7743750000000005,
       "linhas": 1306,
       "arquivos": 15,
@@ -101,7 +101,7 @@ function getData() {
       "sexo": "Masculino"
     },
     {
-      "aluno": "Larissa de Cássia Nazaré Bicalho",
+      "aluno": "Larissa de Cï¿½ssia Nazarï¿½ Bicalho",
       "notaPercentual": 0.42000000000000004,
       "linhas": 256,
       "arquivos": 1,
@@ -133,7 +133,7 @@ function getData() {
       "sexo": "Masculino"
     },
     {
-      "aluno": "Lucas Nascimento Huati Corrêa",
+      "aluno": "Lucas Nascimento Huati Corrï¿½a",
       "notaPercentual": 1.2400000000000002,
       "linhas": 1077,
       "arquivos": 20,
@@ -157,7 +157,7 @@ function getData() {
       "sexo": "Masculino"
     },
     {
-      "aluno": "Luiz Flávio Costa de Lima",
+      "aluno": "Luiz Flï¿½vio Costa de Lima",
       "notaPercentual": 0.44062500000000004,
       "linhas": 137,
       "arquivos": 3,
@@ -165,7 +165,7 @@ function getData() {
       "sexo": "Masculino"
     },
     {
-      "aluno": "Maria Verônica Santos Soares",
+      "aluno": "Maria Verï¿½nica Santos Soares",
       "notaPercentual": 1.0700000000000003,
       "linhas": 608,
       "arquivos": 13,
@@ -189,7 +189,7 @@ function getData() {
       "sexo": "Masculino"
     },
     {
-      "aluno": "Nícolas Arruda Maduro",
+      "aluno": "Nï¿½colas Arruda Maduro",
       "notaPercentual": 1.2143750000000002,
       "linhas": 610,
       "arquivos": 1,
@@ -261,7 +261,7 @@ function getData() {
       "sexo": "Masculino"
     },
     {
-      "aluno": "Vinícius Henrique Silveira",
+      "aluno": "Vinï¿½cius Henrique Silveira",
       "notaPercentual": 0.8243750000000002,
       "linhas": 483,
       "arquivos": 4,
@@ -269,7 +269,7 @@ function getData() {
       "sexo": "Feminino"
     },
     {
-      "aluno": "Vinicius Magalhães D' Assunção",
+      "aluno": "Vinicius Magalhï¿½es D' Assunï¿½ï¿½o",
       "notaPercentual": 1.2543750000000002,
       "linhas": 1117,
       "arquivos": 14,

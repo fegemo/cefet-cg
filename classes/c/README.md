@@ -1,34 +1,26 @@
-<!--
-  backdrop: c-jump-boardgame
--->
-
+<!-- {"layout": "title"} -->
 # Cê
+## Uma revisão marotinha
 
 ---
+<!-- {"layout": "centered"} -->
 # Roteiro
 
 1. Breve descrição da linguagem
-1. Alterando valores dentro de funções
-  - Passagem por valor e por referência
-1. Imprimindo no terminal
-  - `printf`
 1. Agrupando informação
-  - `struct, enum`
+   - `struct, enum`
 1. Dividindo seu programa em módulos
-  - `#include "meuProgramaFavorito.h"`
-1. ~~Makefiles~~ IDEs, pra que te quero
+   - `#include "meuProgramaFavorito.h"`
+1. Variáveis globais
+1. Compilação e Makefiles
 1. Depuração
 
 ---
-# Revisão de PC1
-
----
-## História do C
+<!-- {"layout": "regular"} -->
+# História do C
 
 - Desenvolvida entre 1969 e 1973, juntamente com o Unix
-  <figure class="portrait right">
-    <img src="../../images/dennis-ritchie-avatar.png" alt="Foto de Dennis Ritchie">
-  </figure>
+  ![](../../images/dennis-ritchie-avatar.png) <!-- {.portrait.push-right} -->
   Feita por Dennis Ritchie praticamente sozinho
 - Projetada para programação de:
   - Sistemas operacionais
@@ -37,46 +29,50 @@
 - Evoluiu a partir da linguagem B
 
 ---
-<figure class="picture-steps">
-  <img class="bullet" src="../../images/dennis-ritchie.jpg">
-  <img class="bullet" src="../../images/dennis-ritchie-alter.jpg">
-</figure>
+<!-- {"layout": "centered"} -->
+::: figure .figure-slides.opacity-only
+![](../../images/dennis-ritchie.jpg) <!-- {.bullet.figure-step.full-width} -->
+![](../../images/dennis-ritchie-alter.jpg) <!-- {.bullet.figure-step.full-width} -->
+:::
 
 ---
-## Tipos de dados
+<!-- {"layout": "2-column-content", "slideClass": "compact-code-more"} -->
+# Tipos de dados
 
 - Tipos básicos
   - `char, int, float, double`...
 - Feitos para se equiparar à capacidade do processador
   - Tradução natural para a linguagem assembly
 - Fundamentalmente não-portáteis
-
----
-## Exemplos dos tipos
+- É possível definir novos tipos com `typedef`
+  ```c
+  typedef GLfloat float;  // o gl.h faz isto
+  ```
+- Exemplo de [Ponteiro para Função](codeblocks:c-ponteiro-para-funcao/CodeBlocks/c-ponteiro-para-funcao.cbp)
 
 ```c
-int i;                      // inteiro
+int i;              // inteiro
 
-int *j, k;                  // ponteiro para inteiro j, inteiro k
+int *j, k;          // ponteiro para int, int
 
-unsigned char *ch;          // ponteiro para char sem sinal
+unsigned char *ch;  // ponteiro char sem sinal
 
-int a[3][5];                // vetor de 3 posições de 5 inteiros
+int a[3][5];        // vetor de vetores
 
-float f[10];                // vetor de 10 floats
+float f[10];        // vetor de 10 floats
 
-char nextChar(int, char*);  // função de 2 parâmetros
+char a(int, char*); // função de 2 parâmetros
 
-int *func1(float);          // função que retorna int*
+int *func1(float);  // função que retorna int*
 
-int (*func2)(void);         // ponteiro para função que ret. int
+int (*func2)(void); // ponteiro função que ret. int
 ```
-Exemplo de [Ponteiro para Função](codeblocks:c-ponteiro-para-funcao/CodeBlocks/c-ponteiro-para-funcao.cbp)
 
----
+<!--
+|||
 # Alterando valores dentro de funções
 
----
+|||
 ## Passando valores a funções **por cópia**
 
 - Em C, quando uma função recebe um argumento, tipicamente ela
@@ -85,7 +81,7 @@ Exemplo de [Ponteiro para Função](codeblocks:c-ponteiro-para-funcao/CodeBlocks
     o valor da variável será o mesmo valor de antes da alteração
 - Veja o exemplão na próxima página.
 
----
+|||
 ## Exemplo de passagem de valores por cópia
 
 ```c
@@ -103,7 +99,7 @@ int main(int argc, char* argv[]) {
 }
 ```
 
----
+|||
 ## Passando valores **por endereço de memória**
 
 - Contudo, às vezes precisamos alterar o valor das variáveis
@@ -122,10 +118,10 @@ int main(int argc, char* argv[]) {
   - Ainda assim o C está **copiando o valor** para a função. Contudo, ele
     **<u>copiou o endereço de memória</u> e não o valor**
 
----
+|||
 # Imprimindo no terminal
 
----
+|||
 ## Entrada e saída (E/S)
 
 - E/S em C pode ser realizado de forma básica usando os utililtários da
@@ -142,7 +138,7 @@ int main(int argc, char* argv[]) {
       ```
   - [Referência sobre a `stdio.h`](http://www.cplusplus.com/reference/cstdio/)
 
----
+|||
 ## Identificadores de tipos de variáveis para o printf
 
 <table>
@@ -158,7 +154,7 @@ int main(int argc, char* argv[]) {
   </tbody>
 </table>
 
----
+|||
 ## Modificadores (apenas alguns)
 
 - De precisão: especificamos quantas casas decimais queremos mostrar
@@ -171,13 +167,13 @@ int main(int argc, char* argv[]) {
     ```c
     printf("%+d, %+f", 45, 8.35);   // imprime +45, +8.35
     ```
+-->
+---
+<!-- {"layout": "section-header"} -->
+# Agrupando informação com **estruturas de dados**
 
 ---
-# Agrupando informação
-## com
-# Estruturas de Dados
-
----
+<!-- {"layout": "regular"} -->
 ## Motivação
 
 - Às vezes precisamos reunir informações variadas sobre um mesmo objeto
@@ -187,12 +183,13 @@ int main(int argc, char* argv[]) {
   usamos a sintaxe:
   ```c
   struct vetor2d {
-    float x;
-    float y;
+      float x;
+      float y;
   };
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Como usar uma estrutura (1/2)
 
 - Uma vez definida, podemos usar a estrutura para criar objetos que têm
@@ -208,6 +205,7 @@ int main(int argc, char* argv[]) {
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Como usar uma estrutura (2/2)
 
 - <u>Alternativamente</u>, podemos **criar a estrutura de dados** <u>e</u> **definir
@@ -224,12 +222,11 @@ int main(int argc, char* argv[]) {
   tipo_vetor2d velocidade;
   ```
 
-
 ---
+<!-- {"layout": "regular"} -->
 ## Mas o quê agrupar?
 
-- Em um jogo de navinha, por exemplo:
-  - Tudo relacionado ao jogador:
+- Em um jogo de navinha, por exemplo, tudo **relacionado ao jogador**:
     ```c
     struct navinha {
         tipo_vetor2d posicao;   // posição do centro
@@ -243,9 +240,37 @@ int main(int argc, char* argv[]) {
     ```
 
 ---
-# Dividindo seu programa em módulos
+<!-- {"layout": "regular"} -->
+## Mas o que mais agrupar?
+
+- Se o jogo possui várias coisas que são retângulos (`x, y, larg, alt`)
+  texturizados, por que não criar uma **estrutura mais geral** chamada `sprite`,
+  ou até uma `sprite_animada`: <!-- {li:.two-column-code} -->
+  ```c
+  struct sprite {
+      tipo_vetor2d posicao;
+      tipo_vetor2d dimensoes;
+      int textura;
+  };
+
+
+
+  struct sprite_animada {
+      tipo_vetor2d posicao;
+      tipo_vetor2d dimensoes;
+      int textura;
+      int quadroAtual;
+      tipo_vetor2d tamanhoQuadro;
+      int[] sequenciaQuadros;
+  };
+  ```
 
 ---
+<!-- {"layout": "section-header"} -->
+# Dividindo seu programa em **módulos**
+
+---
+<!-- {"layout": "regular"} -->
 ## Pré-processador
 
 - Foi uma adição tardia à linguagem (que, na verdade, está **fora** dela)
@@ -255,13 +280,14 @@ int main(int argc, char* argv[]) {
 - Quando compilamos um programa em C, três grandes etapas são executadas, na
   seguinte ordem:
     - Pré-processamento
-    - Compilação
-    - Linkedição (ò.Ó)
+    - Compilação (propriamente dita)
+    - Linkedição (ou ligação)
 
 ---
-## Pré-processador
+<!-- {"layout": "regular"} -->
+## Pré-processador: diretivas comuns
 
-- Constantes
+- Constantes <!-- {ul:.compact-code} -->
   ```c
   #define NUM_LADOS 25
   ```
@@ -271,7 +297,7 @@ int main(int argc, char* argv[]) {
   ```
 - Compilação condicional
   ```c
-  #ifdef ESTOU_COMPILANDO_NUM_RWINDOWS
+  #ifdef ESTOU_COMPILANDO_NUM_WINDOWS
     ...
   #elif
     ...
@@ -279,7 +305,8 @@ int main(int argc, char* argv[]) {
   ```
 
 ---
-## Pré-processador
+<!-- {"layout": "regular"} -->
+## Pré-processador: inclusão
 
 - Inclusão de arquivos: &lt; &gt; ou áspas
   - **`#include <arquivo1.h>`** <br>
@@ -292,6 +319,7 @@ int main(int argc, char* argv[]) {
     - Ela procura pelo arquivo **no mesmo diretório** do arquivo que estamos compilando
 
 ---
+<!-- {"layout": "regular"} -->
 ## Dividindo em .h e .c
 
 - Por que dividir?
@@ -302,17 +330,19 @@ int main(int argc, char* argv[]) {
   - O <u>**.h** é a parte que queremos deixar **pública**</u> de um .c
 - Exemplo de informação que deve ser compartilhada:
   - Estruturas de dados
-  - Algumas funções "públicas"
+  - Funções "públicas"
   - Variáveis globais (entre arquivos)
 
 ---
+<!-- {"layout": "regular", "slideClass": "compact-code"} -->
 ## Exemplão (.h e .c)
 
 - vetor.c
   ```c
   #include "vetor.h"
-  struct vetor multiEscalar(struct vetor v, float escalar) {
-      v.x *= escalar;   v.y *= escalar;
+  struct vetor multiplicaPorEscalar(struct vetor v, float escalar) {
+      v.x *= escalar;
+      v.y *= escalar;
       return v;
   }
   ```
@@ -321,20 +351,22 @@ int main(int argc, char* argv[]) {
   struct vetor {    // a estrutura de dados
       float x, y;
   };
-  struct vetor multiEscalar(struct vetor, float);
+  struct vetor multiplicaPorEscalar(struct vetor, float);
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Exemplão (continuação)
 
 - **Para usar** o seu módulo `vetor` em outro arquivo do seu programa
   (_e.g._, `main.c`), você **deve incluir o arquivo `vetor.h`**
   - Fazendo isso, seu outro arquivo (_e.g._, `main.c`) saberá:
     1. o que é um `struct vetor`
-    1. que existe uma função `somaEscalar`
-      - que recebe um `struct vetor` e um `float`
+    1. que existe uma função `multiplicaPorEscalar`
+       - que recebe um `struct vetor` e um `float`
 
 ---
+<!-- {"layout": "regular"} -->
 ## Exemplo de utilização
 
 ```c
@@ -348,22 +380,26 @@ int main(int argc, char* argv[]) {
 
   velocidade = multiEscalar(velocidade, 2);
   printf("vel * 2: (%.2f, %.2f)\n", velocidade.x, velocidade.y);
-
   return 0;
 }
 ```
-- [Exemplo de divisão em módulos](codeblocks:divisao-modulos/CodeBlocks/divisao-modulos.cbp)
+[Exemplo de divisão em módulos](codeblocks:divisao-modulos/CodeBlocks/divisao-modulos.cbp)
 
 ---
-# Compilador
+<!-- {"layout": "section-header"} -->
+# Compilação e Makefiles
+
+- Etapas de compilação
+- Como compilar "na mão"
+- IDEs e Makefiles
+
+::: figure .figure-slides.opacity-only height: 100%; padding: 0;
+![](../../images/programador-nutella-raiz.png) <!-- {.bullet.figure-step} -->
+![](../../images/programador-nutella-raiz-2.png) <!-- {.bullet.figure-step} -->
+:::
 
 ---
-<figure class="picture-steps">
-  <img class="bullet" src="../../images/programador-nutella-raiz.png">
-  <img class="bullet" src="../../images/programador-nutella-raiz-2.png">
-</figure>
-
----
+<!-- {"layout": "regular"} -->
 ## Compilando na mão
 
 - O GCC é o compilador da linguagem C (e de C++, Objective-C, Objective-C++...)
@@ -376,26 +412,32 @@ int main(int argc, char* argv[]) {
 - Vamos entender como usar o compilador diretamente \o/
 
 ---
+<!-- {"layout": "regular"} -->
 ## Usando o GCC
 
-- Fazemos o processo em dois passos: (1) compilação e (2) linkedição
-  1. Para compilar um programa com dois arquivos .c:
-    ```shell
-    gcc -o arquivo1.o -c arquivo1.c -Wall
-    gcc -o arquivo2.o -c arquivo2.c -Wall
-    ```
-  1. Para fazer a linkedição e gerar o executável
-    ```shell
-    gcc -o programa.exe arquivo1.o arquivo2.o -lglut32 -lm
-    ```
+- Fazemos o processo em dois passos: (1) compilação separada e
+  (2) compilação final
+  1. Para compilar separadamente dois arquivos .c:
+     ```shell
+     gcc -o arquivo1.o -c arquivo1.c -Wall
+     gcc -o arquivo2.o -c arquivo2.c -Wall
+     ```
+  1. Para fazer compilação final e gerar o executável
+     ```shell
+     gcc -o programa.exe arquivo1.o arquivo2.o -lfreeglut -lGL -lm
+     ```
 - [Referência sobre a invocação do GCC](https://gcc.gnu.org/onlinedocs/cpp/Invocation.html#Invocation)
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Processo de compilação
 
 ![](../../images/compilacao-e-montagem.png)
 
+Código fonte ▶️ código em assembly ▶️ código de máquina
+
 ---
+<!-- {"layout": "regular"} -->
 ## Como posso eu mesmo fazer isso?
 
 - Para instruir o compilador para gerar código **assembly**:
@@ -407,77 +449,100 @@ int main(int argc, char* argv[]) {
   ```bash
   $ g++ meuArquivo.c
   ```
-- Para visualizar o código de máquina (arquivo `.o` ou `.exe`)
+- Para visualizar o código de máquina (arquivo `.o` ou executável)
   ```bash
   $ objdump -d meuArquivo.exe
   ```
 
 ---
+<!-- {"layout": "centered-horizontal", "slideClass": "compact-code-more"} -->
 ## Compilação e Ligação (_link-edition_)
 
-![](../../images/compiler-linker.gif)
+![](../../images/compiler-linker.gif) <!-- {style="max-height: 280px"} -->
 
 ```bash
-gcc -o programa.exe arquivo1.o arquivo2.o -lglut32 -lm
+gcc -o programa.exe arquivo1.o arquivo2.o -lSOIL -lGL -lm
 ```
-**`-lglut32`** significa que existe um arquivo chamado `libglut32.a` em algum
+**`-lSOIL`** significa que existe um arquivo chamado `libSOIL.a` em algum
   lugar
 
 ---
-# ~~Makefiles~~ IDEs, pra que te quero
-
----
+<!-- {"layout": "regular"} -->
 ## Uma IDE
 
 - É um **ambiente de desenvolvimento integrado**
 - Exemplos:
   - CodeBlocks
   - Visual Studio
-  - Eclipse etc.
+  - Eclipse, NetBeans etc.
 - Reúne ferramentas e utilitários normalmente utilizados para a programação
   - Um desses utilitários (o rei da floresta) é um compilador
 - Apesar da facilidade gratuita dos IDEs, como não precisamos usar
   os compiladores diretamente, ficamos sem conhecer (e entender) como
   ele funciona
 
+*[IDE]: Integrated Development Environment*
+
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Desmistificando o "arquivo de projeto" (.cbp)
 
-![](../../images/arquivo-cbp.png)
+![](../../images/arquivo-cbp.png) <!-- {.full-height} -->
 
 ---
+<!-- {"layout": "regular", "slideClass": "two-column-code"} -->
 ## E o tal Makefile?
 
 ```makefile
-OPCOES_COMPILADOR= -Wall
+OPCOES= -Wall
 
 main.o: main.c
-    gcc -o main.o -c main.c $(OPCOES_COMPILADOR)
+    gcc -o main.o -c main.c $(OPCOES)
 
 all:
-    gcc -o main.exe main.o -lglut32 -lm
+    gcc -o programa main.o -lGL
 
 run: all
-    main.exe
+    ./programa
 
 clean:
-    del *.o main.exe
+    rm *.o programa
+
+# Cria uma variável OPCOES
+
+# Um target main.o, que depende main.c
+# Comando para compilação separada
+
+# Um target: all
+# O comando para compilação final
+
+# Um target: run
+# Comando para executar o programa
+
+# Um target: clean
+# Comando para apagar temporários
 ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Como usar o Makefile?
 
-- Tendo o aplicativo **make** instalado e visível em seu terminal, você pode:
+- Tendo o aplicativo **make** instalado e acessível em seu terminal, você pode:
   ```shell
-  $ make all
+  $ make
   ```
-  - Para compilar, ou apenas `make` (`all` é o _target_ padrão)
+  - Para compilar (o 1º _target_ é o padrão)
 - ```shell
   $ make run
   ```
   - Para executar o programa
+- ```shell
+  $ make clean
+  ```
+  - Para apagar o executável e os temporários da compilação (arquivos .o)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Makefile (1/3)
 
 - Makefile simples
@@ -486,12 +551,15 @@ clean:
       gcc -o aplicacao aplicacao.c vetor.c -I.
   ```
   1. Coloque esse conteúdo em um **arquivo `Makefile` ou `makefile`**
-  1. **Digite `make`** na pasta e o GCC compilará o programa
+  1. **Digite `make`** na pasta e o `gcc` compilará o programa
     - `make` (sem argumentos) executa a primeira regra do arquivo
     - a regra só será executada se os arquivos à direita tiverem mudado desde a
       última execução
+  1. O parâmetro `-I.` instrui o `gcc` a considerar a própria pasta do Makefile
+     ao procurar por arquivos `.h`
 
 ---
+<!-- {"layout": "regular"} -->
 ## Makefile (2/3)
 
 - Makefile simples++
@@ -504,29 +572,35 @@ clean:
   - `CC` e `CFLAGS` são constantes
   - Usamos as constantes na forma `$(CC)` e `$(CFLAGS)`
   - Problema: quando alteramos um arquivo `.h`, **o make não recompila**
+    - ...precisamos declarar os arquivos `.h` como dependências
 
 ---
+<!-- {"layout": "regular"} -->
 ## Makefile (3/3)
 
-- Makefile bacana
-  ```
+- Makefile bacana <!-- {ul:.compact-code} -->
+  ```makefile
   CC=gcc
   CFLAGS=-I.
   DEPS=vetor.h
-  %.o: %.c $(DEPS)
-      $(CC) -c -o $@ $< $(CFLAGS)
-
   aplicacao: aplicacao.o vetor.o
       $(CC) -o aplicacao aplicacao.o vetor.o $(CFLAGS)
+
+  %.o: %.c $(DEPS)
+      $(CC) -c -o $@ $< $(CFLAGS)
   ```
   - `DEPS` é o conjunto de todos os arquivos `.h`
   - `%.o`: regra se aplica a todos os arquivos `.o`
   - `$@` e `$<` representam o lado esquerdo e direito
 
 ---
-# Depuração de Programas
+<!-- {"layout": "section-header"} -->
+# Depuração de programas
+
+Existe vida além do `printf`.
 
 ---
+<!-- {"layout": "regular"} -->
 ## Depuração
 
 - Quando temos um problema no código que não conseguimos explicar,
@@ -541,6 +615,7 @@ clean:
     junto com o `gcc`
 
 ---
+<!-- {"layout": "regular"} -->
 ## Depurando no CodeBlocks
 
 - ![right](../../images/debugging-breakpoint.png)
@@ -552,7 +627,8 @@ clean:
   - O programa começará a ser executado, mas pausará no _breakpoint_
 
 ---
-## Referências da linguagem C
+<!-- {"layout": "centered"} -->
+# Referências da linguagem C
 
 - Guia sobre o _linker_ (linkeditor)
   - http://www.lurklurk.org/linkers/linkers.html
@@ -560,3 +636,5 @@ clean:
   - https://gcc.gnu.org/onlinedocs/cpp/
 - Tudo sobre o compilador mais utilizado (gcc):
   - https://gcc.gnu.org/onlinedocs/gcc-4.9.2/gcc/index.html
+- Referência sobre o utilitário make:
+  - https://swcarpentry.github.io/make-novice/reference.html

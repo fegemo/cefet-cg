@@ -1030,19 +1030,6 @@ img[alt$="max"] {
   background-size: 400px;
   animation: floatingvectorraster 10s ease-in-out 0s infinite alternate-reverse;
 }
-.c-jump-boardgame.bespoke-backdrop-active {
-  background-image: url("../images/c-jump-boardgame.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  background-position: 50% 50%;
-  opacity: 0.3;
-}
-.bespoke-slide[data-bespoke-backdrop="c-jump-boardgame"] h1 {
-  font-weight: bolder;
-  text-shadow: 2px 2px #000;
-}
 .affine-geometry.bespoke-backdrop-active {
   background-image: url("../images/affine-geometry.svg");
   background-size: cover;
@@ -1385,6 +1372,12 @@ background-color #ababab h1,
 .layout-stripe .stripe {
   background-image: url("../images/stripe-forest.jpg");
 }
+.syllabus .layout-title {
+  background-color: #fff;
+}
+.syllabus .layout-title h1::before {
+  background-image: url("../images/forest-mountain.jpg");
+}
 .intro .layout-title h1::before {
   background-image: url("../images/cg-area-art.jpg");
 }
@@ -1521,6 +1514,28 @@ background-color #ababab h1,
   background-size: auto;
   background-color: #f7f7f7;
   background-position: 50%;
+}
+.c .layout-title {
+  background: -webkit-gradient(linear, left top, right bottom, from(#daa520), to(#b8860b));
+  background: linear-gradient(to right bottom, #daa520, #b8860b);
+}
+.c .layout-title h1 {
+  color: #b80b0b;
+  font-size: 10em;
+}
+.c .layout-title h1::before {
+  background-image: url("../images/c-jump-boardgame.jpg");
+  background-position: 50% 50%;
+}
+.c .layout-title h2 {
+  color: #efefef;
+  margin-right: 1em;
+}
+.breakout-feedback .layout-title {
+  background-color: #00f;
+}
+.breakout-feedback .layout-title h1::before {
+  background-image: url("../images/breakout-stylized.png");
 }
 @-webkit-keyframes movingbg-x {
   from {
