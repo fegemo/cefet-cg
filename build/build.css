@@ -1537,6 +1537,28 @@ background-color #ababab h1,
 .breakout-feedback .layout-title h1::before {
   background-image: url("../images/breakout-stylized.png");
 }
+.geometry .layout-title {
+  background-color: #fdc771;
+}
+.geometry .layout-title h1 {
+  color: #251b0a;
+  text-shadow: 2px 2px #bf4049;
+  font-size: 4em;
+}
+.geometry .layout-title h1::before {
+  background-repeat: repeat-x;
+  background-size: contain;
+  background-image: url("../images/notebook-math.jpg");
+}
+.geometry .layout-title h2 {
+  padding-right: 1em;
+}
+.geometry .euclidean-geometry.layout-section-header::after {
+  background-image: url("../images/euclid.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+}
 @-webkit-keyframes movingbg-x {
   from {
     background-position: 0 100%;
