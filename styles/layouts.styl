@@ -151,7 +151,6 @@
     background-size auto
     background-color #f7f7f7
     background-position 50%
-    // animation movingbg-x 20s linear 0s infinite alternate-reverse
 
 
 // aulas sobre C e feedback tp
@@ -174,6 +173,26 @@
     h1
       &::before
         background-image url(../images/breakout-stylized.png)
+
+.geometry
+  .layout-title
+    background-color #fdc771
+    h1
+      color #251b0a
+      text-shadow 2px 2px #bf4049
+      font-size 4em
+      &::before
+        background-repeat repeat-x
+        background-size contain
+        background-image url(../images/notebook-math.jpg)
+    h2
+      padding-right 1em
+  .euclidean-geometry.layout-section-header::after
+    background-image url(../images/euclid.jpg)
+    background-repeat no-repeat
+    background-size cover
+    background-position 50%
+
 
 // animations
 @keyframes movingbg-x
