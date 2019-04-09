@@ -1,6 +1,6 @@
+<!-- {"layout": "title"} -->
 # Transformações Geométricas
-
-![](../../images/transformations.png)
+## Translação, Escala, Rotação e mais
 
 ---
 # Roteiro
@@ -14,9 +14,11 @@
 1. Push, Pop
 
 ---
+<!-- {"layout": "section-header"} -->
 # Introdução a transformações
 
 ---
+<!-- {"layout": "regular"} -->
 ## Teoria geométrica das transformações
 
 - Transformação é uma função que **mapeia pontos de um espaço Euclidiano em
@@ -29,6 +31,7 @@
     <span class="math">R</span>, então essa relação de distância é mantida.
 
 ---
+<!-- {"layout": "regular"} -->
 ## Prática das transformações (em OpenGL)
 
 - Desenhamos quaisquer objetos em OpenGL **descrevendo seus vértices**:
@@ -45,6 +48,7 @@
     - Inclinação (_shearing_)
 
 ---
+<!-- {"layout": "regular"} -->
 ## **Forma geral** de ponto ou vetor
 
 - Na geometria afim, vimos que podemos representar um ponto ou um vetor na
@@ -58,32 +62,34 @@
   - No sistema de coordenadas cartesiano, escrevemos
     <span class="math">R</span> como:
     <div class="math">R = \alpha_x \vec{x} + \alpha_y \vec{y} + \alpha_z \vec{z} + \alpha_w</div>
-- <div class="math" style="float:right;">R = \begin{bmatrix}\alpha_x & \alpha_y&\alpha_z&\alpha_w\end{bmatrix}^T</div>
+- <div class="math" style="float:right;">R = \begin{bmatrix}\alpha_x & \alpha_y & \alpha_z & \alpha_w\end{bmatrix}^T</div>
   Mais sucintamente, dizemos que:
 
 ---
+<!-- {"layout": "regular"} -->
 ## Forma matricial de ponto ou vetor
 
 - Podemos representar um ponto ou vetor <span class="math">R</span> na
   forma matricial:
   <figure class="picture-steps clean">
     <div class="bullet">
-    <div class="math" style="padding-top: 1px;">R = \begin{bmatrix} F.\vec{e_0}\\\F.\vec{e_1}\\\F.\vec{e_2}\\\F.O \end{bmatrix} \times \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+    <div class="math" style="padding-top: 1px;">R = \begin{bmatrix} F.\vec{e_0} \\ F.\vec{e_1} \\ F.\vec{e_2} \\ F.O \end{bmatrix} \times \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
     Cada linha da matriz é um vetor (as 3 primeiras) ou a origem de uma base (a última)
     </div>
     <div class="bullet">
-    <div class="math">R = \begin{bmatrix} F.\vec{e_0}[0] & F.\vec{e_0}[1] & F.\vec{e_0}[2] & 0\\\F.\vec{e_1}[0] & F.\vec{e_1}[1] & F.\vec{e_1}[2] & 0\\\F.\vec{e_2}[0] & F.\vec{e_2}[1] & F.\vec{e_2}[2] & 0\\\F.O[0] & F.O[1] & F.O[2] & 1 \end{bmatrix} \times
-    \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+    <div class="math">R = \begin{bmatrix} F.\vec{e_0}[0] & F.\vec{e_0}[1] & F.\vec{e_0}[2] & 0 \\ F.\vec{e_1}[0] & F.\vec{e_1}[1] & F.\vec{e_1}[2] & 0 \\ F.\vec{e_2}[0] & F.\vec{e_2}[1] & F.\vec{e_2}[2] & 0 \\ F.O[0] & F.O[1] & F.O[2] & 1 \end{bmatrix} \times
+    \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
     ...expandindo a matriz, mostrando as coordenadas de cada vetor da base/ponto de origem...
     </div>
     <div class="bullet">
-    <div class="math">R = \begin{bmatrix} 1 & 0 & 0 & 0\\\0 & 1 & 0 & 0\\\0 & 0 & 1 & 0\\\0 & 0 & 0 & 1 \end{bmatrix} \times
-    \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+    <div class="math">R = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} \times
+    \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
     Exemplo: a base cartesiana, com origem em (0,0,0)
     </div>
   </figure>
 
 ---
+<!-- {"layout": "regular"} -->
 ## Uma função de <span class="math">T</span>ransformação
 
 - Das propriedades da geometria afim, podemos propor **uma função
@@ -92,18 +98,19 @@
 
   <div class="math">R = \alpha_0 F.\vec{e_0} + \alpha_1 F.\vec{e_1} + \alpha_2 F.\vec{e_2} + \alpha_3 F.O</div>
   <div class="math">\color{blue}{T(}R\color{blue}{)} = \alpha_0 \color{blue}{T(}F.\vec{e_0}\color{blue}{)} + \alpha_1 \color{blue}{T(}F.\vec{e_1}\color{blue}{)} + \alpha_2 \color{blue}{T(}F.\vec{e_2}\color{blue}{)} + \alpha_3 \color{blue}{T(}F.O\color{blue}{)}</div>
-  - Podemos chamar essa função <span class="math">T</span> de **transformação**
+- Podemos chamar essa função <span class="math">T</span> de **transformação**
 
 ---
+<!-- {"layout": "regular"} -->
 ## Forma matricial da transformação
 
 - Podemos representar a equação anterior na forma matricial:
 
   <figure class="picture-steps clean" style="margin-left: 0;">
-    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0})\\\T(F.\vec{e_1})\\\T(F.\vec{e_2})\\\T(F.O) \end{bmatrix}
-  \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
-    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0}[0]) & T(F.\vec{e_0}[1]) & T(F.\vec{e_0}[2]) & 0)\\\T(F.\vec{e_1}[0]) & T(F.\vec{e_1}[1]) & T(F.\vec{e_1}[2]) & 0)\\\T(F.\vec{e_2}[0]) & T(F.\vec{e_2}[1]) & T(F.\vec{e_2}[2]) & 0)\\\T(F.O[0]) & T(F.O[1]) & T(F.O[2]) & 1) \end{bmatrix} \times
-    \begin{bmatrix} \alpha_0\\\\\\alpha_1\\\\\\alpha_2\\\\\alpha_3 \end{bmatrix}</div>
+    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0}) \\ T(F.\vec{e_1}) \\ T(F.\vec{e_2}) \\ T(F.O) \end{bmatrix}
+  \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
+    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0}[0]) & T(F.\vec{e_0}[1]) & T(F.\vec{e_0}[2]) & 0) \\ T(F.\vec{e_1}[0]) & T(F.\vec{e_1}[1]) & T(F.\vec{e_1}[2]) & 0) \\ T(F.\vec{e_2}[0]) & T(F.\vec{e_2}[1]) & T(F.\vec{e_2}[2]) & 0) \\ T(F.O[0]) & T(F.O[1]) & T(F.O[2]) & 1) \end{bmatrix} \times
+    \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
   </figure>
 
 - As linhas representam as imagens dos elementos do sistema <span class="math">F</span> transformado
@@ -113,28 +120,37 @@
   - Em <span class="math">n</span> dimensões, isso equivale a uma matriz <span class="math">(n + 1)(n + 1)</span> por causa da coordenada homogênea
 
 ---
+<!-- {"layout": "regular"} -->
 ## Exemplo: Transformação Nula
 
-- <div class="math" style="float: right;">T=\begin{bmatrix} 1&0&0&0\\\0&1&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix}</div>
-  **A transformação nula** é aquela que mantém as coordenadas dos pontos e vetores inalterada - ou seja, dada pela **matriz identidade**:
+- <div class="math" style="float: right;">T=\begin{bmatrix} 1&0&0&0 \\ 0&1&0&0 \\ 0&0&1&0 \\ 0&0&0&1 \end{bmatrix}</div>
+  <strong>A transformação nula</strong> é aquela que mantém as coordenadas dos pontos e vetores inalterada - ou seja, dada pela <strong>matriz identidade</strong>:
     <div style="clear: right;"></div>
 
 - Supondo o sistema de coordenadas cartesiano e um ponto <span class="math">P=\begin{bmatrix} \alpha_x&\alpha_y&\alpha_z&1 \end{bmatrix}^{T}</span>, temos que:
 
   <figure class="picture-steps clean">
-    <div class="bullet math">T(P)=\begin{bmatrix} 1&0&0&0\\\0&1&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix} \begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\1 \end{bmatrix}=?</div>
-    <div class="bullet math">T(P)=\begin{bmatrix} 1&0&0&0\\\0&1&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix} \begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\1 \end{bmatrix}=\begin{bmatrix} \alpha_x\\\\\\alpha_y\\\\\\alpha_z\\\1 \end{bmatrix}</div>
+    <div class="bullet math">T(P)=\begin{bmatrix} 1&0&0&0 \\ 0&1&0&0 \\ 0&0&1&0 \\ 0&0&0&1 \end{bmatrix} \begin{bmatrix} \alpha_x \\ \alpha_y \\ \alpha_z \\ 1 \end{bmatrix}=?</div>
+    <div class="bullet math">T(P)=\begin{bmatrix} 1&0&0&0 \\ 0&1&0&0 \\ 0&0&1&0 \\ 0&0&0&1 \end{bmatrix} \begin{bmatrix} \alpha_x \\ \alpha_y \\ \alpha_z \\ 1 \end{bmatrix}=\begin{bmatrix} \alpha_x \\ \alpha_y \\ \alpha_z \\ 1 \end{bmatrix}</div>
   </figure>
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## A [Magnífica Matriz 2D](http://ncase.me/matrix/)
 
 <iframe src="http://ncase.me/matrix/" width="800" height="537"></iframe>
 
 ---
+<!-- {"layout": "section-header"} -->
 # Tipos comuns de transformações
 
+- Translação
+- Rotação
+- Escala
+- Inclinação
+
 ---
+<!-- {"layout": "regular"} -->
 ## **Translação**
 
 - A transformação de translação move um objeto de uma posição para outra.
@@ -142,25 +158,16 @@
   ![](../../images/translacao-exemplo.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Translação (cont.)
 
 - Mantém os ângulos e comprimentos
 - Pode ser representada por uma matriz <span class="math">T(\vec{t})</span>, em que <span class="math">\vec{t}</span> é o vetor de deslocamento:
 
-  <div class="math">
-  \begin{bmatrix}
-  1&0&0&t_x\\\0&1&0&t_y\\\0&0&1&t_z\\\0&0&0&1
-  \end{bmatrix}
-  \begin{bmatrix}
-  p_x\\\p_y\\\p_z\\\1
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-  p_x+t_x\\\p_y+t_y\\\p_z+t_z\\\1
-  \end{bmatrix}
-  </div>
+  <div class="math">\begin{bmatrix} 1 & 0 & 0 & t_x \\ 0 & 1 & 0 & t_y \\ 0 & 0 & 1 & t_z \\ 0 & 0 & 0 & 1\end{bmatrix} \begin{bmatrix}p_x \\ p_y \\ p_z \\ 1 \end{bmatrix} = \begin{bmatrix}p_x + t_x \\ p_y+t_y \\ p_z+t_z \\ 1 \end{bmatrix}</div>
 
 ---
+<!-- {"layout": "regular"} -->
 ## Translação em OpenGL
 
 - Em OpenGL, usamos o método `glTranslate` para multiplicar a matriz atual pela
@@ -172,6 +179,7 @@
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Translação em OpenGL (cont.)
 
 - Dentro de uma função de desenho:
@@ -190,6 +198,7 @@
     estão definidos em um sistema local e transladá-los em qualquer posição
 
 ---
+<!-- {"layout": "regular"} -->
 ## Matriz inversa da translação
 
 - Pode-se usar a matriz inversa de uma transformação para **se desfazer a
@@ -200,6 +209,7 @@
     matriz inversa
 
 ---
+<!-- {"layout": "regular"} -->
 ## **Rotação**
 
 - A rotação de um objeto é especificada por:
@@ -209,6 +219,7 @@
   da rotação dos pontos em um ângulo especificado com **relação à origem**.
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rotação (cont.)
 
 - Equações para a rotação de um ponto <span class="math">(x, y)</span>
@@ -217,6 +228,7 @@
   ![](../../images/rotacao-exemplo.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rotação (cont.)
 
 - Podemos rotacionar objetos **ao longo dos três eixos** da base do
@@ -231,23 +243,20 @@
       eixo Z
 
 ---
-## Rotação no **eixo Z**
+<!-- {"layout": "regular"} -->
+## Rotação em **cada eixo**
 
 - Pode ser representada por uma matriz <span class="math">R_{z}(\alpha)</span>, em que <span class="math">\alpha</span> é o ângulo de
   rotação.
 
-  <div class="math">R_{z}(\alpha)=\begin{bmatrix} \cos\alpha&- \sin\alpha&0&0\\\ \sin\alpha&\cos\alpha&0&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix}</div>
+  <div class="math">R_{z}(\alpha)=\begin{bmatrix} \cos\alpha&- \sin\alpha&0&0 \\ \sin\alpha&\cos\alpha&0&0 \\ 0&0&1&0 \\ 0&0&0&1 \end{bmatrix}</div>
+
+  <div class="math" style="float:left;">R_x(\alpha)=\begin{bmatrix} 1&0&0&0 \\ 0&\cos\alpha&-\sin\alpha&0 \\ 0&\sin\alpha&\cos\alpha&0 \\ 0&0&0&1\end{bmatrix}</div>
+
+  <div class="math" style="float:right;">R_y(\alpha)=\begin{bmatrix} \cos\alpha&0&\sin\alpha&0 \\ 0&1&0&0 \\ -\sin\alpha&0&\cos\alpha&0 \\ 0&0&0&1\end{bmatrix}</div>
 
 ---
-## Rotação nos **eixos X e Y**
-
-- Similarmente, as matrizes de rotação nos eixos <span class="math">x</span> e <span class="math">y</span>:
-
-  <div class="math" style="float:left;">R_x(\alpha)=\begin{bmatrix} 1&0&0&0\\\0&\cos\alpha&-\sin\alpha&0\\\0&\sin\alpha&\cos\alpha&0\\\0&0&0&1\end{bmatrix}</div>
-
-  <div class="math" style="float:right;">R_y(\alpha)=\begin{bmatrix} \cos\alpha&0&\sin\alpha&0\\\0&1&0&0\\\ -\sin\alpha&0&\cos\alpha&0\\\0&0&0&1\end{bmatrix}</div>
-
----
+<!-- {"layout": "regular"} -->
 ## Rotação em OpenGL
 
 - Em OpenGL, usamos o método `glRotate` para multiplicar a matriz atual pela
@@ -259,6 +268,7 @@
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rotação em OpenGL (cont.)
 
 - Dentro de uma função de desenho:
@@ -272,6 +282,7 @@
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Matriz inversa da rotação
 
 - A matriz de rotação é ortogonal, ou seja, **sua inversa é sua
@@ -285,6 +296,7 @@
 
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rotação em torno de um ponto
 
 - Quando rotacionamos um objeto, o fazemos em relação à origem
@@ -292,6 +304,7 @@
 ![](../../images/rotacao-exemplo.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rotação em torno de um ponto (cont.)
 
 - Para rotacionar **um objeto que não está na origem em torno de si mesmo**,
@@ -303,6 +316,7 @@
   - <span class="math">M = T(\vec{p})R_z(45)T(-\vec{p})</span>
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rotações em geral (quaisquer eixos)
 
 - Uma rotação em **eixos arbitrários** pode ser definida pela multiplicação das
@@ -313,10 +327,8 @@
 - É a matriz gerada pelo `glRotate`
 
 ---
+<!-- {"layout": "regular"} -->
 # Escala
-
----
-## Escala
 
 - A transformação de escala altera o tamanho do objeto
   - Além de alterar o tamanho do objeto (espaço entre vértices), a operação
@@ -325,15 +337,17 @@
     ![](../../images/escala-exemplo.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Escala (cont.)
 
 - Uma transformação de escala simples é realizada pela multiplicação das
   posições <span class="math">(x,y,z)</span> de um objeto por fatores escalares <span class="math">s_x, s_y, s_z</span>
 - A transformação de escala pode ser representada por uma matriz <span class="math">S</span> tal que:
 
-  <div class="math" style="float: right;">S(\vec{s})=\begin{bmatrix} s_x&0&0&0\\\0&s_y&0&0\\\0&0&s_z&0\\\0&0&0&1 \end{bmatrix}</div>
+  <div class="math" style="float: right;">S(\vec{s})=\begin{bmatrix} s_x&0&0&0 \\ 0&s_y&0&0 \\ 0&0&s_z&0 \\ 0&0&0&1 \end{bmatrix}</div>
 
 ---
+<!-- {"layout": "regular"} -->
 ## Escala em OpenGL
 
 - Em OpenGL, usamos o método `glScale` para multiplicar a matriz atual pela
@@ -345,6 +359,7 @@
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Escala em OpenGL (cont.)
 
 - Dentro de uma função de desenho:
@@ -362,6 +377,7 @@
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 # Inclinação
 
 - Equivale a "entortar" um objeto (seus vértices) em certo eixo
@@ -369,15 +385,15 @@
   ![](../../images/shear-exemplo.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Inclinação (cont.)
 
 - Em 3D, pode ocorrer em 1 de 6 combinações de planos de coordenadas
 - <div class="math" style="float: right;">H_{xy}(\vec{sh})=\begin{bmatrix} 1&0&sh_x&0\\\0&1&sh_y&0\\\0&0&1&0\\\0&0&0&1 \end{bmatrix}</div>
   Matriz da transformação no plano <span class="math">xy</span>
 
-
-
 ---
+<!-- {"layout": "regular"} -->
 ## Inclinação em OpenGL
 
 - **<u>Não existe um `glShear`</u>**, portanto precisamos implementar a matriz nós mesmos
@@ -419,6 +435,7 @@
 # Push, Pop
 
 ---
+<!-- {"layout": "regular"} -->
 ## Push, Pop
 
 - Quando chamamos uma **função de multiplicação de matriz**, estamos **alterando o
@@ -427,6 +444,7 @@
   da cena a `10u` em cada chamada
 
 ---
+<!-- {"layout": "regular"} -->
 ## Push, Pop (cont.)
 
 - Em particular, existem 4 variáveis de estado que são matrizes
@@ -440,6 +458,7 @@
 - Usamos **`glMatrixMode(GL_...)`** para escolher com qual pilha de matrizes queremos aplicar transformações
 
 ---
+<!-- {"layout": "regular"} -->
 ## Push, Pop (cont.)
 
 - **`glPushMatrix`** empilha a matriz corrente e a duplica no topo da pilha.
@@ -451,6 +470,7 @@
   transformação correspondente
 
 ---
+<!-- {"layout": "regular"} -->
 # Exemplo de Rotação com Animação
 
 Veja este exemplo de [quadrado girando](codeblocks:tranformacao-rotacao/CodeBlocks/tranformacao-rotacao.cbp)

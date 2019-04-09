@@ -28,7 +28,7 @@
     "bespoke-hash": "^1.1.0",
     "bespoke-keys": "^1.1.0",
     "bespoke-markdownit": "^1.1.0",
-    "bespoke-math": "^1.3.1",
+    "bespoke-math": "^1.3.2",
     "bespoke-progress": "github:fegemo/bespoke-progress#slide-number",
     "bespoke-qrcode": "^1.0.0",
     "bespoke-scale": "github:fegemo/bespoke-scale#use-current-slide",
