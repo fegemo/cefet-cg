@@ -201,16 +201,26 @@
       text-shadow 2px 2px #bf4049
       &::before
         background-repeat no-repeat
-        background-size contain
+        background-size 37%
         background-image url(../images/transformations.png)
+        background-position center top
     h2
       padding-right 1em
       background-color: silver
-  .euclidean-geometry.layout-section-header::after
-    background-image url(../images/euclid.jpg)
+  .intro-transformacoes.layout-section-header::after
+    background-image url(../images/notebook-math.jpg)
     background-repeat no-repeat
-    background-size cover
-    background-position 50%
+    background-position center center
+  .tipos-comuns.layout-section-header::after
+    background-image url(../images/translacao-exemplo.svg), url(../images/rotacao-exemplo.svg), url(../images/escala-exemplo.svg)
+    background-repeat no-repeat
+    background-size 250px
+    background-position center 0, center 50%, center 100%
+  .push-pop.layout-section-header::after
+    background-image url(../images/pilha-de-livros.png)
+    background-repeat no-repeat
+    background-size contain
+    background-position bottom right
 
 
 // animations
