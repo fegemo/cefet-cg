@@ -55,7 +55,7 @@ coordenadas de cada vértice "na mão"?
 
 E se quisermos fazer uma animação?
 
-<iframe src="../../samples/rotate/rotate-anim.htm" width="100%" height="500" frameborder="0"></iframe>
+<iframe src="../../samples/rotate/rotate-anim.htm" width="400" height="400" frameborder="0"></iframe>
 
 ---
 <!-- {"layout": "regular"} -->

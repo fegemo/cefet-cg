@@ -1559,6 +1559,40 @@ background-color #ababab h1,
   background-size: cover;
   background-position: 50%;
 }
+.transforms .layout-title {
+  background-color: #fff;
+}
+.transforms .layout-title h1 {
+  color: #251b0a;
+  text-shadow: 2px 2px #bf4049;
+}
+.transforms .layout-title h1::before {
+  background-repeat: no-repeat;
+  background-size: 37%;
+  background-image: url("../images/transformations.png");
+  background-position: center top;
+}
+.transforms .layout-title h2 {
+  padding-right: 1em;
+  background-color: #c0c0c0;
+}
+.transforms .intro-transformacoes.layout-section-header::after {
+  background-image: url("../images/notebook-math.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.transforms .tipos-comuns.layout-section-header::after {
+  background-image: url("../images/translacao-exemplo.svg"), url("../images/rotacao-exemplo.svg"), url("../images/escala-exemplo.svg");
+  background-repeat: no-repeat;
+  background-size: 250px;
+  background-position: center 0, center 50%, center 100%;
+}
+.transforms .push-pop.layout-section-header::after {
+  background-image: url("../images/pilha-de-livros.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom right;
+}
 @-webkit-keyframes movingbg-x {
   from {
     background-position: 0 100%;
