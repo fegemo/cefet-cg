@@ -559,7 +559,7 @@ a pilha de matrizes atual.
 <!-- {"layout": "regular"} -->
 # Exemplo de Rotação com Animação
 
-Veja este exemplo de [quadrado girando](codeblocks:tranformacao-rotacao/CodeBlocks/tranformacao-rotacao.cbp)
+Veja este exemplo de [quadrado girando](codeblocks:transformacao-rotacao/CodeBlocks/transformacao-rotacao.cbp)
 ao longo do tempo - ou seja, uma rotação no eixo Z de pequenos ângulos a cada
 quadro.
 
