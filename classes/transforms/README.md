@@ -75,11 +75,11 @@
   <div class="math">R = \alpha_0 F.\vec{e_0} + \alpha_1 F.\vec{e_1} + \alpha_2 F.\vec{e_2} + \alpha_3 F.O</div>
   <figure class="picture-steps clean">
     <div class="bullet full-width">
-    <div class="math" style="padding-top: 1px;">R = \begin{bmatrix} F.\vec{e_0} \\ F.\vec{e_1} \\ F.\vec{e_2} \\ F.O \end{bmatrix} \times \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
+    <div class="math" style="padding-top: 1px;">R = \begin{bmatrix} F.\vec{e_0} & F.\vec{e_1} & F.\vec{e_2} & F.O \end{bmatrix} \times \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
     Cada linha da matriz é um vetor (as 3 primeiras) ou a origem de uma base (a última)
     </div>
     <div class="bullet full-width">
-    <div class="math">R = \begin{bmatrix} F.\vec{e_0}[0] & F.\vec{e_0}[1] & F.\vec{e_0}[2] & 0 \\ F.\vec{e_1}[0] & F.\vec{e_1}[1] & F.\vec{e_1}[2] & 0 \\ F.\vec{e_2}[0] & F.\vec{e_2}[1] & F.\vec{e_2}[2] & 0 \\ F.O[0] & F.O[1] & F.O[2] & 1 \end{bmatrix} \times
+    <div class="math">R = \begin{bmatrix} F.\vec{e_0}[0] & F.\vec{e_1}[0] & F.\vec{e_2}[0] & F.O[0] \\ F.\vec{e_0}[1] & F.\vec{e_1}[1] & F.\vec{e_2}[1] & F.O[1] \\ F.\vec{e_0}[2] & F.\vec{e_1}[2] & F.\vec{e_2}[2] & F.O[2] \\ 0 & 0 & 0 & 1 \end{bmatrix} \times
     \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
     ...expandindo a matriz, mostrando as coordenadas de cada vetor da base/ponto de origem...
     </div>
@@ -108,9 +108,9 @@
 
 - Podemos representar a equação anterior na forma matricial:
   <figure class="picture-steps clean" style="margin-left: 0;">
-    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0}) \\ T(F.\vec{e_1}) \\ T(F.\vec{e_2}) \\ T(F.O) \end{bmatrix}
+    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0}) & T(F.\vec{e_1}) & T(F.\vec{e_2}) & T(F.O) \end{bmatrix}
   \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
-    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0}[0]) & T(F.\vec{e_0}[1]) & T(F.\vec{e_0}[2]) & 0) \\ T(F.\vec{e_1}[0]) & T(F.\vec{e_1}[1]) & T(F.\vec{e_1}[2]) & 0) \\ T(F.\vec{e_2}[0]) & T(F.\vec{e_2}[1]) & T(F.\vec{e_2}[2]) & 0) \\ T(F.O[0]) & T(F.O[1]) & T(F.O[2]) & 1) \end{bmatrix} \times
+    <div class="bullet math">T(R) = \begin{bmatrix} T(F.\vec{e_0}[0]) & T(F.\vec{e_1}[0]) & T(F.\vec{e_2}[0]) & T(F.O[0]) \\ T(F.\vec{e_0}[1]) & T(F.\vec{e_1}[1]) & T(F.\vec{e_2}[1]) & T(F.O[1]) \\ T(F.\vec{e_0}[2]) & T(F.\vec{e_1}[2]) & T(F.\vec{e_2}[2]) & T(F.O[2]) \\ 0 & 0 & 0 & 1 \end{bmatrix} \times
     \begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{bmatrix}</div>
   </figure>
 - As linhas representam as imagens dos elementos do sistema <span class="math">F</span> transformado
@@ -559,7 +559,7 @@ a pilha de matrizes atual.
 <!-- {"layout": "regular"} -->
 # Exemplo de Rotação com Animação
 
-Veja este exemplo de [quadrado girando](codeblocks:tranformacao-rotacao/CodeBlocks/tranformacao-rotacao.cbp)
+Veja este exemplo de [quadrado girando](codeblocks:transformacao-rotacao/CodeBlocks/transformacao-rotacao.cbp)
 ao longo do tempo - ou seja, uma rotação no eixo Z de pequenos ângulos a cada
 quadro.
 
