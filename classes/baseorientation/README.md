@@ -1,37 +1,40 @@
+<!-- {"layout": "title"} -->
 # Mudança de Base e Orientação
+## Mais algumas operações geométricas
 
 ---
+<!-- {"layout": "centered"} -->
 # Roteiro
 
 1. Orientação
-1. Produto Vetorial
-1. Mudança de Sistema de Coordenadas
+1. Produto vetorial
+1. Mudança de sistema de coordenadas
 1. Exercícios
 
 ---
-# Orientação
+<!-- {"layout": "regular"} -->
+# Orientação (1/2)
 
----
-## Orientação
-
-- Orientação de 2 pontos em 1D
+- Orientação de 2 pontos em 1D <!-- {.bullet} -->
   - <span class="math">P_1 < P_2</span>, <span class="math">P_1 = P_2</span> ou <span class="math">P_1 > P_2</span>
-- Orientação de 3 pontos em 2D
+- Orientação de 3 pontos em 2D <!-- {.bullet} -->
   - O percurso <span class="math">P_1, P_2, P_3</span>  é feito no sentido dos ponteiros do relógio, no
     sentido contrário ou são colineares
 
     ![](../../images/orientacao.png)
 
 ---
-## Orientação
+<!-- {"layout": "regular"} -->
+## Orientação (2/2)
 
 - Orientação de 4 pontos em 3D
   - O percurso <span class="math">P_1, P_2, P_3, P_4</span>  está definido segundo a regra da mão direita,
     mão esquerda ou são coplanares
 
-    ![](../../images/orientacao3d.png)
+    ![](../../images/orientacao3d.png) <!-- {.centered} -->
 
 ---
+<!-- {"layout": "regular"} -->
 ## Computando a orientação
 
 - A orientação de <span class="math">n+1</span> pontos em um espaço
@@ -39,29 +42,22 @@
   do determinante da matriz** cujas colunas são as coordenadas homogêneas
   dos pontos **com o 1 vindo primeiro**
 
-  <span class="math">
-    Or_2(P_1,P_2,P_3)=sign\left(\begin{vmatrix}1&1&1\\\x_1&x_2&x_3\\\y_1&y_2&y_3\end{vmatrix}\right)
+  <span class="math" style="font-size: 0.8em;">
+    Or_2(P_1,P_2,P_3)=sign\left(\begin{vmatrix} 1 & 1 & 1 \\ x_1 & x_2 & x_3 \\ y_1 & y_2 & y_3\end{vmatrix}\right)
   </span>
-  <span class="math">
-    Or_3(P_1,P_2,P_3,P_4)=sign\left(\begin{vmatrix}1&1&1&1\\\x_1&x_2&x_3&x_4\\\y_1&y_2&y_3&y_4\\\z_1&z_2&z_3&z_4\end{vmatrix}\right)
-  </span>
-
----
-# Produto Vetorial
-
----
-## Produto Vetorial
-
-- Da geometria Euclidiana, permite achar um vetor perpendicular a outros dois
-- ![right](../../images/prod-vetorial-grafico.png)
-  Útil na construção de sistemas de coordenadas
-  <div class="math" style="display: inline-block;">
-    \vec{u} \times \vec{v} = \begin{bmatrix}u_y v_z - u_z v_y\\\u_z v_x - u_x v_z\\\u_x v_y - u_y v_x\end{bmatrix}
+  <div class="math push-right" style="font-size: 0.8em">
+    Or_3(P_1,P_2,P_3,P_4)=sign\left(\begin{vmatrix} 1 & 1 & 1 & 1 \\ x_1 & x_2 & x_3 & x_4 \\ y_1 & y_2 & y_3 & y_4 \\ z_1 & z_2 & z_3 & z_4\end{vmatrix}\right)
   </div>
 
 ---
-## Produto Vetorial (cont.)
+<!-- {"layout": "regular"} -->
+# Produto vetorial
 
+- ![right](../../images/prod-vetorial-grafico.png)
+  Encontra um vetor perpendicular a outros dois
+  <div class="math push-right" style="font-size: 0.8em;">
+    \vec{u} \times \vec{v} = \begin{bmatrix}u_y v_z - u_z v_y \\ u_z v_x - u_x v_z \\ u_x v_y - u_y v_x\end{bmatrix}
+  </div>  
 - Propriedades (assume-se <span class="math">\vec{u}</span>, <span class="math">\vec{v}</span> linearmente independentes):
   - Antissimetria: <span class="math">\vec{u} \times \vec{v} = -\vec{v} \times \vec{u}</span>
   - Bilinearidade:
@@ -71,10 +67,12 @@
   - O comprimento de <span class="math">\vec{u} \times \vec{v}</span> é igual à área do paralelogramo definido por  <span class="math">\vec{u}</span> e <span class="math">\vec{v}</span>, isto é, <span class="math">\lVert \vec{u} \times \vec{v} \rVert = \lVert \vec{u} \rVert \lVert \vec{v} \rVert \sin \theta</span>
 
 ---
+<!-- {"layout": "section-header"} -->
 # Mudança de Sistema de Coordenadas
 
 ---
-## Sistema de Coordenadas (**revisão**)
+<!-- {"layout": "regular"} -->
+## Sistema de coordenadas (**revisão**)
 
 - Um sistema de coordenadas para <span class="math">R^n</span> é definido por um ponto (origem) e <span class="math">n</span> vetores
 - Por exemplo: Seja um sistema de coordenadas para <span class="math">R^2</span> definido pelo ponto <span class="math">O</span> e
@@ -87,18 +85,22 @@
     <div class="math">\vec{v} = x_v . \vec{x} + y_v . \vec{y}</div>
 
 ---
-## Mudança de Sistema
+<!-- {"layout": "regular"} -->
+## Mudança de sistema (em <span class="math">R^2</span>)
 
-- Se estabelecemos um outro sistema (ex.: <span class="math">Q</span>/
-  <span class="math">\vec{t}</span>/<span class="math">\vec{u}</span>), como computar
-  as coordenadas nesse novo sistema?
+Dados dois sistemas (eg., <span class="math">Q</span>/
+<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span>
+<span class="math">O</span>/
+<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span>), como computar
+as coordenadas de P dadas em um sistema no outro? <!-- {style="margin-bottom: 0;"} -->
 
-  ![](../../images/coord-grafico.png)
+![](../../images/coord-grafico.svg) <!-- {style="max-height: 400px;"} --> <!-- {p:.centered} -->
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Mudança: um problema prático
 
-![](../../images/mudanca-de-sistema-coordenadas-exemplo-basico.png);
+![](../../images/mudanca-de-sistema-coordenadas-exemplo-basico.svg) <!-- {.large-width.centered} -->
 
 ```c
 glViewport(0, 0, 800, 600);
@@ -107,18 +109,20 @@ glOrtho(0, 80, 60, 0, -1, 1);
 ```
 
 ---
-## Mudança de Sistema (cont.)
+<!-- {"layout": "regular"} -->
+## Mudança de sistema (cont.)
 
 - Problema: dadas as coordenadas do ponto <span class="math">P</span> no sistema <span class="math">Q</span>/<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span> <span class="math">(t_P, u_P)</span>, como encontrar as coordenadas de <span class="math">P</span> no sistema <span class="math">O</span>/<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span> <span class="math">(x_P, y_P)</span>?
 
-  <ul class="steps-base-change">
-    <li>Defina <span class="math">P</span> como um ponto no sistema <span class="math">Q</span>/<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span></li>
-    <li>Defina as componentes do sistema <span class="math">Q</span>/<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span> no sistema <span class="math">O</span>/<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span></li>
-    <li>Fatore a fórmula para isolar as componentes de <span class="math">O</span>/<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span></li>
-    <li>Você achou <span class="math">P = (x_P, y_P)</span> :)</li>
-  </ul>
+<ul class="steps-base-change">
+  <li>Defina <span class="math">P</span> como um ponto no sistema <span class="math">Q</span>/<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span></li>
+  <li>Defina as componentes do sistema <span class="math">Q</span>/<span class="math">\vec{t}</span>/<span class="math">\vec{u}</span> no sistema <span class="math">O</span>/<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span></li>
+  <li>Fatore a fórmula para isolar as componentes de <span class="math">O</span>/<span class="math">\vec{x}</span>/<span class="math">\vec{y}</span></li>
+  <li>Você achou <span class="math">P = (x_P, y_P)</span> :)</li>
+</ul>
 
 ---
+<!-- {"layout": "regular"} -->
 ## Algebricamente...
 
 <style>
@@ -168,7 +172,7 @@ glOrtho(0, 80, 60, 0, -1, 1);
   </li>
   <li>
     <span class="math bullet">P[Q]=t_P \color{blue}{\left(x_t \vec{x} + y_t \vec{y}\right)} + u_P \color{green}{\left(x_u \vec{x} + y_u \vec{y}\right)} + \color{red}{\left(x_Q \vec{x} + y_Q \vec{y} + O\right)}</span>
-    <span class="math bullet">P[Q]=\vec{x} \left(t_P x_t + u_P x_u + x_Q\right) + \vec{y} \left(t_P y_t + u_P y_u + y_Q\right) + O</span>
+    <span class="math bullet" style="display: block">P[Q]=\vec{x} \left(t_P x_t + u_P x_u + x_Q\right) + \vec{y} \left(t_P y_t + u_P y_u + y_Q\right) + O</span>
   </li>
   <li>
     <div class="math bullet">x_P=t_P x_t + u_P x_u + x_Q</div>
@@ -177,41 +181,48 @@ glOrtho(0, 80, 60, 0, -1, 1);
 </ul>
 
 ---
-## Mudança de Sistema (cont.)
+<!-- {"layout": "regular"} -->
+## Mudança de sistema (cont.)
 
 - <div class="math" style="float: right;">
-    \begin{bmatrix}x_P\\\y_P\end{bmatrix}=
-    \begin{bmatrix}x_T&x_U\\\y_T&y_U\end{bmatrix}\times
-    \begin{bmatrix}t_P\\\u_P\end{bmatrix}+
-    \begin{bmatrix}x_Q\\\y_Q\end{bmatrix}
+    \begin{bmatrix}x_P \\ y_P\end{bmatrix}=
+    \begin{bmatrix}x_T&x_U \\ y_T&y_U\end{bmatrix}\times
+    \begin{bmatrix}t_P \\ u_P\end{bmatrix}+
+    \begin{bmatrix}x_Q \\ y_Q\end{bmatrix}
   </div>
-  A equação anterior, vista **de forma matricial**:
+  A equação anterior, vista <strong>de forma matricial</strong>:
 - Usando **coordenadas homogêneas**, podemos usar
   **apenas uma multiplicação** de matriz com vetor:
 
   <div class="math">
-    \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=
-    \begin{bmatrix}x_t&x_u&x_Q\\\y_t&y_u&y_Q\\\0&0&1\end{bmatrix}\times
-    \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}
+    \begin{bmatrix}x_P \\ y_P \\ 1\end{bmatrix}=
+    \begin{bmatrix}x_t&x_u&x_Q \\ y_t&y_u&y_Q \\ 0&0&1\end{bmatrix}\times
+    \begin{bmatrix}t_P \\ u_P \\ 1\end{bmatrix}
   </div>
-- Ou seja, dadas as coordenadas de um ponto ou vetor em um sistema <span class="math">Q/\vec{t}/\vec{u}</span>,
-  podemos **achar suas coordenadas em um sistema <span class="math">O/\vec{x}/\vec{y}</span> <u>multiplicando as
-  coordenadas por uma matriz</u>**
+
+Ou seja, dadas as coordenadas de um ponto ou vetor em um sistema
+<span class="math">Q/\vec{t}/\vec{u}</span>, podemos **achar suas coordenadas
+em um sistema <span class="math">O/\vec{x}/\vec{y}</span>
+<u>multiplicando-as por uma matriz</u>** <!-- {p:.note.info} -->
 
 ---
-## Mudança de Sistema (cont.)
+<!-- {"layout": "regular"} -->
+## Mudança de sistema (cont.)
 
-- Se quiser passar uma coordenada do sistema <span class="math">O/\vec{x}/\vec{y}</span> para <span class="math">Q/\vec{t}/\vec{u}</span>, basta
-  **resolver o problema inverso**:
+- Se quiser passar uma coordenada do sistema
+<span class="math">O/\vec{x}/\vec{y}</span> para
+<span class="math">Q/\vec{t}/\vec{u}</span>, basta **resolver o
+problema inverso**:
 
   <div class="math">
-    \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}=
-    \begin{bmatrix}x_t&x_U&x_Q\\\y_t&y_u&y_Q\\\0&0&1\end{bmatrix}^{-1}\times
-    \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}
+    \begin{bmatrix}t_P \\ u_P \\ 1\end{bmatrix}=
+    \begin{bmatrix}x_t&x_u&x_Q \\ y_t&y_u&y_Q \\ 0&0&1\end{bmatrix}^{-1}\times
+    \begin{bmatrix}x_P \\ y_P \\ 1\end{bmatrix}
   </div>
 
 ---
-## Exemplo Concreto
+<!-- {"layout": "regular"} -->
+## Exemplo concreto
 
 - Calcule as coordenadas de <span class="math">P</span> no sistema
   <span class="math">O/\vec{x}/\vec{y}</span>.
@@ -224,19 +235,21 @@ glOrtho(0, 80, 60, 0, -1, 1);
     - <span class="math">\vec{u}[O]= (-0.25, -1)</span>
 
 ---
-## Resolvendo o Exercício
+<!-- {"layout": "regular", "state": "show-active-slide-and-previous"} -->
+## Resolvendo o exercício
 
 - Matriz de mudança de sistemas de coordenadas:
   <div class="math">
-    \begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=
-    \begin{bmatrix}x_T&x_U&x_Q\\\y_T&y_U&y_Q\\\0&0&1\end{bmatrix}\times
-    \begin{bmatrix}t_P\\\u_P\\\1\end{bmatrix}
+    \begin{bmatrix}x_P \\ y_P \\ 1\end{bmatrix}=
+    \begin{bmatrix}x_t&x_u&x_Q \\ y_t&y_u&y_Q \\ 0&0&1\end{bmatrix}\times
+    \begin{bmatrix}t_P \\ u_P \\ 1\end{bmatrix}
   </div>
 - Materializando para o <span class="math">P</span>
-  <div class="math">\begin{bmatrix}x_P\\\y_P\\\1\end{bmatrix}=\begin{bmatrix}-1&-0.25&3.5\\\0.25&-1&1.25\\\0&0&1\end{bmatrix} \times \begin{bmatrix}2.5\\\1\\\1\end{bmatrix}</div>
+  <div class="math">\begin{bmatrix}x_P \\ y_P \\ 1\end{bmatrix}=\begin{bmatrix}-1&-0.25&3.5 \\ 0.25&-1&1.25 \\ 0&0&1\end{bmatrix} \times \begin{bmatrix}2.5 \\ 1 \\ 1\end{bmatrix}</div>
 - Resultado: <span class="math">P[O] = (0.75, 0.875)</span>
 
 ---
+<!-- {"layout": "centered"} -->
 # Referências
 
 1. Lições 6 e 7 das anotações do prof. David Mount

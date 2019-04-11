@@ -412,10 +412,14 @@ dimensional consiste de um **ponto origem** e um conjunto de
 - Juntando uma **base ortonormal** e um **ponto de origem**, formamos um
   **sistema de coordenadas**
 - Consideremos o seguinte sistema... parece com alguma coisa?
-  - <span class="math">\vec{e}_0 = (1, 0, 0, 0)</span>
+  - <figure class="picture-steps clean push-right" style="margin: 0;">
+      <div class="math bullet">\begin{bmatrix} \vec{e}_0 & \vec{e}_1 & \vec{e}_2 & O \end{bmatrix}</div>
+      <div class="math bullet">\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}</div>
+    </figure>
+    <span class="math">\vec{e}_0 = (1, 0, 0, 0)</span>
   - <span class="math">\vec{e}_1 = (0, 1, 0, 0)</span>
   - <span class="math">\vec{e}_2 = (0, 0, 1, 0)</span>
-  - <span class="math">O = (0, 0, 0, 1)</span>
+  - <span class="math">O = (0, 0, 0, 1)^T</span> <!-- {ul^0:.bullet} -->
 
 ---
 <!-- {"layout": "centered"} -->
