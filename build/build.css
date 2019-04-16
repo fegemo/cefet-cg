@@ -1593,6 +1593,19 @@ background-color #ababab h1,
   background-size: contain;
   background-position: bottom right;
 }
+.pipeline .layout-title h1::before {
+  background-image: url("../images/assembly-line.jpg");
+  background-position: center top;
+}
+.pipeline .layout-title h2 {
+  padding-right: 1em;
+  background-color: #c0c0c0;
+}
+.pipeline .o-pipeline-grafico.layout-section-header::after {
+  background-image: url("../images/pipeline-subway.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 @-webkit-keyframes movingbg-x {
   from {
     background-position: 0 100%;

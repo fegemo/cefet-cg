@@ -1,19 +1,17 @@
-<!--
-  backdrop: assembly-line
--->
-
+<!-- {"layout": "title"} -->
 # Pipeline Gráfico
 
 ---
+<!-- {"layout": "regular"} -->
 # Objetivos
 
 1. Entender o que acontece desde um `glVertex3f(x,y,z)` até a imagem renderizada
    na tela
-1. Conhecer o que o OpenGL (e o DirectX) fazem com a geometria que estamos
-   vendo
+1. Conhecer o que o OpenGL (e o DirectX, e outras APIs gráficas) fazem
+   com a geometria criada até que uma imagem seja gerada
 
 ---
-
+<!-- {"layout": "centered"} -->
 # Roteiro
 
 1. O _pipeline_ gráfico
@@ -22,9 +20,11 @@
 1. Estágio de **Rasterização**
 
 ---
+<!-- {"layout": "section-header", "slideClass": "o-pipeline-grafico"} -->
 # O _pipeline_ gráfico
 
 ---
+<!-- {"layout": "regular"} -->
 ## Um _pipeline_
 
 1. **Divisão** de trabalho **em etapas**
@@ -35,16 +35,10 @@
     mais lenta**
 
 ---
-<!--
-  backdrop: pipeline-subway
--->
-
-## Pipeline na _Real-Life_
-
----
+<!-- {"layout": "regular"} -->
 ## O _pipeline_ **gráfico**
 
-![](../../images/pipeline-grafico-fases.png)
+![](../../images/pipeline-grafico-fases.png) <!-- {p:.centered} -->
 
 - É o **processo de transformação de um modelo de descrição de objetos** (vértices)
   **em uma imagem digital** (imagem renderizada na tela)
@@ -54,6 +48,7 @@
   1. Rasterização
 
 ---
+<!-- {"layout": "regular"} -->
 ## O _pipeline_ gráfico
 
 - Cada etapa pode ser, por si só, outro _pipeline_
@@ -67,12 +62,10 @@
     ou _hardware_**
 
 ---
+<!-- {"layout": "regular"} -->
 # Estágio de **aplicação**
 
----
-## Estágio de **aplicação**
-
-![](../../images/pipeline-grafico-fases-aplicacao.png)
+![](../../images/pipeline-grafico-fases-aplicacao.png) <!-- {p:.centered} -->
 
 - Controlado pelo desenvolvedor
 - É onde define-se a descrição dos objetos da cena
@@ -81,6 +74,7 @@
   entregues para o próximo estágio, de geometria
 
 ---
+<!-- {"layout": "regular"} -->
 ## Estágio de **aplicação** (cont.)
 
 - Como este estágio está **completamente em _software_**, geralmente ele
@@ -95,20 +89,23 @@
     - Tomada de decisão etc.
 
 ---
+<!-- {"layout": "centered"} -->
 # Estágio de **geometria**
 
 ![](../../images/pipeline-grafico-fases-geometria.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Estágio de **geometria**
 
 - Responsável pela grande maioria das operações em polígonos e vértices
 - Subdividido em:
 
-  ![](../../images/pipeline-geometria-fases.png)
+  ![](../../images/pipeline-geometria-fases.png) <!-- {.centered} -->
 
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
 
 - Tipicamente, descrevemos os objetos em um sistema de coordenadas local a eles
@@ -120,14 +117,16 @@
   ela são exibidos
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
 
-![](../../images/view-transform.png)
+![](../../images/view-transform.png) <!-- {p:.centered} -->
 
 - A câmera e os objetos da cena sofrem uma **tranformação de vizualização**
   - Espaço da câmera ou do olho
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
 
 - A **transformação de modelo e visualização**, então, se trata da
@@ -136,9 +135,10 @@
   coordenadas
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (2) Sombreamento de vértices
 
-- <img src="../../images/cena-3d.png" style="float: right; margin-left: 10px; width: 200px;">
+- ![](../../images/cena-3d.png) <!-- {.push-right style="width: 200px"} -->
   Para produzir uma cena realística, precisamos usar um conceito de
   **iluminação dinâmica**
   - [Exemplo de cubo iluminado](http://www.mathematik.uni-marburg.de/~thormae/lectures/graphics1/code/WebGLShaderLightMat/ShaderLightMat.html)
@@ -150,22 +150,21 @@
   - Essa informação será passada para o sub-estágio seguinte
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (3) Projeção
 
-- Após o sombreamento, o sistema de renderização realiza uma projeção
+- ![](../../images/proj-tipos.png) <!-- {.push-right style="max-height: 350px"} -->
+  Após o sombreamento, o sistema de renderização realiza uma projeção
   - Transforma o volume de visualização em um cubo com extremos em
-    (-1, -1, -1) e (1, 1, 1)
+    <span class="math">(-1, -1, -1)</span> e <span class="math">(1, 1, 1)</span>
   - Esse cubo é chamado de **volume de visualização canônico**
 - Dois métodos de projeção:
-  1. Paralelo
-  1. Perspectivo
+  1. Paralela
+  1. Perspectiva
+
 
 ---
-## Geometria &gt;&gt; (3) Projeção
-
-![](../../images/proj-tipos.png)
-
----
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (3) Projeção
 
 - Projeção paralela
@@ -183,6 +182,7 @@
       coordenada Z para determinar quem está na frente :O
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (4) Recorte
 
 - Apenas as primitivas **dentro do volume de visualização** precisam
@@ -194,9 +194,10 @@
   - Primitivas **parcialmente representadas**: precisam ser **recortadas**
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (4) Recorte
 
-![](../../images/pipeline-recorte.png)
+![](../../images/pipeline-recorte.png) <!-- {p:.centered} -->
 
 - Como toda nossa cena está representada no cubo de visualização (da etapa de
   projeção), para fazer o recorte calculamos a intersecção das primitivas com
@@ -205,9 +206,10 @@
 - Na etapa de recorte, novos vértices podem ser criados
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria &gt;&gt; (5) Mapeamento de tela
 
-![](../../images/pipeline-tela.png)
+![](../../images/pipeline-tela.png) <!-- {p:.centered} -->
 
 - As coordenadas das primitivas devem ser agora mapeadas para coordenadas da
   tela (ou da janela)
@@ -215,20 +217,23 @@
 - A partir deste momento, estamos **quase** podendo falar em _**pixels**_
 
 ---
+<!-- {"layout": "centered"} -->
 # Estágio de **Rasterização**
 
 ![](../../images/pipeline-grafico-fases-rasterizacao.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Estágio de **Rasterização**
 
-![](../../images/pipeline-rasterizador-fases.png)
+![](../../images/pipeline-rasterizador-fases.png)  <!-- {p:.centered} -->
 
 - Recebemos vértices tranformados e projetados e suas informações de cor e
   textura provenientes do estágio de geometria
 - Entregaremos a cor a ser definida para cada pixel da janela
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rasterização &gt;&gt; (1) Configuração de Triângulos
 
 - ![right](../../images/triangle-assembly.png)
@@ -237,6 +242,7 @@
   - Basicamente, determina-se a conectividade das primitivas
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rasterização &gt;&gt; (2) _Scan Conversion_
 
 - ![right](../../images/scan-conversion-triangle.png)
@@ -248,6 +254,7 @@
   advém da interpolação dos três vértices do triângulo
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rasterização &gt;&gt; (3) Sombreamento de ~~Pixels~~ Fragmentos
 
 - ![right](../../images/shading-triangle.png)
@@ -261,6 +268,7 @@
 
 
 ---
+<!-- {"layout": "regular"} -->
 ## Rasterização &gt;&gt; (4) Fusão
 
 - Do estágio anterior, podemos ter vários fragmentos por pixel (e.g.,
@@ -273,6 +281,7 @@
   na janela
 
 ---
+<!-- {"layout": "centered"} -->
 # Referências
 
 - Capítulo 2 do livro Real-Time Rendering
