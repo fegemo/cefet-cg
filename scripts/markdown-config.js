@@ -123,6 +123,36 @@ const config = {
         }, delay);
       }
     });
+  },
+
+  embedSVG: (slide, selector) => {
+    const svgs = slide.querySelectorAll(selector);
+    svgs.forEach(el => {
+      // pega o id da <img>
+      const id = el.id;
+      const classes = el.className.split(' ').filter(c => c.trim() !== '');
+      const style = el.style.cssText;
+
+      // faz requisição para pegar o conteúdo SVG
+      fetch(el.src)
+        .then(r => r.text())
+        .then(svg => {
+
+          // cria o documento svg
+          const svgContainerEl = document.createElement('span');
+          svgContainerEl.innerHTML = svg;
+          const svgEl = svgContainerEl.querySelector('svg');
+          svgEl.id = id;
+          if (classes.length > 0) {
+            svgEl.classList.add(...classes);
+          }
+          svgEl.style.cssText = style;
+
+          // substitui a <img src="...svg"> pelo documento
+          el.parentElement.replaceChild(svgContainerEl, el);
+        })
+        .catch(console.error);
+    });
   }
 }
 

@@ -38,14 +38,15 @@
 <!-- {"layout": "regular"} -->
 ## O _pipeline_ **gráfico**
 
-![](../../images/pipeline-grafico-fases.png) <!-- {p:.centered} -->
+![](../../images/pipeline-grafico-fases.svg) <!-- {p:.centered} -->
 
 - É o **processo de transformação de um modelo de descrição de objetos** (vértices)
   **em uma imagem digital** (imagem renderizada na tela)
+  - Pense como o processo que acontece assim que `glFlush()` é executado
 - Dividido em três etapas conceituais:
   1. Aplicação
   1. Geometria
-  1. Rasterização
+  1. Rasterização <!-- {ol:.multi-column-list-3} -->
 
 ---
 <!-- {"layout": "regular"} -->
@@ -62,10 +63,10 @@
     ou _hardware_**
 
 ---
-<!-- {"layout": "regular"} -->
+<!-- {"layout": "regular", "embeddedStyles": "#fases-aplicacao .rasterizacao, #fases-aplicacao .geometria { fill: #ddd !important; stroke: #999 !important;}", "embedSVG": "img[src$='.svg']"} -->
 # Estágio de **aplicação**
 
-![](../../images/pipeline-grafico-fases-aplicacao.png) <!-- {p:.centered} -->
+![](../../images/pipeline-grafico-fases.svg) <!-- {p:.centered} --> <!-- {#fases-aplicacao} -->
 
 - Controlado pelo desenvolvedor
 - É onde define-se a descrição dos objetos da cena
@@ -89,54 +90,57 @@
     - Tomada de decisão etc.
 
 ---
-<!-- {"layout": "centered"} -->
+<!-- {"layout": "regular", "embeddedStyles": "#fases-geometria .rasterizacao, #fases-geometria .aplicacao { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "#fases-geometria"} -->
 # Estágio de **geometria**
 
-![](../../images/pipeline-grafico-fases-geometria.png)
+![](../../images/pipeline-grafico-fases.svg) <!-- {p:.centered} --> <!-- {#fases-geometria} -->
 
----
-<!-- {"layout": "regular"} -->
-## Estágio de **geometria**
-
-- Responsável pela grande maioria das operações em polígonos e vértices
+- Responsável pela grande maioria das operações em polígonos e vértices <!-- {ul:.full-width} -->
 - Subdividido em:
-
-  ![](../../images/pipeline-geometria-fases.png) <!-- {.centered} -->
+  ![](../../images/pipeline-geometria-fases.svg) <!-- {.centered style="display: block;"} -->
 
 
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
+<!-- {"layout": "regular", "embeddedStyles": ".geo-etapa1 .etapa2, .geo-etapa1 .etapa3, .geo-etapa1 .etapa4, .geo-etapa1 .etapa5 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": ".geo-etapa1"} -->
 
-- Tipicamente, descrevemos os objetos em um sistema de coordenadas local a eles
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa1 style="display: block;"} --> <!-- {p:.full-width} -->
+
+- ![](../../images/transformacao-modelo.svg) <!-- {.push-right style="max-width: 500px; height: unset;"} -->
+  Tipicamente, descrevemos os objetos em um sistema de coordenadas local a eles
   - Espaço do objeto
 - Mas todos os objetos de uma cena precisam ser descritos usando um sistema
-  comum, da cena
+  comum
   - Espaço do mundo
-- Também há um conceito de câmera, em que apenas os objetos da cena visíveis a
-  ela são exibidos
+
 
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
+<!-- {"layout": "regular", "embedSVG": "img[src$='.svg']"} -->
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa1 style="display: block;"} --> <!-- {p:.full-width} -->
+
+- Também há um conceito de câmera: apenas os objetos da cena visíveis a
+  ela são exibidos
+- A câmera e os objetos da cena sofrem uma **transformação de vizualização**
+  - Espaço da câmera ou do olho
 
 ![](../../images/view-transform.png) <!-- {p:.centered} -->
 
-- A câmera e os objetos da cena sofrem uma **tranformação de vizualização**
-  - Espaço da câmera ou do olho
-
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (1) Transf. de Modelo e visualização
+<!-- {"layout": "regular", "embedSVG": "img[src$='.svg']"} -->
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa1 style="display: block;"} --> <!-- {p:.full-width} -->
 
 - A **transformação de modelo e visualização**, então, se trata da
   transformação de **diversos sistemas de coordenadas em um sistema comum**
+  - Sistema de cada objeto ➡️ sistema da câmera ➡️ sistema do mundo
+  - Lembre que mudar o sistema de coordenadas é equivalente a multiplicar
+    as coordenadas <span class="math">(x,y,z,1)</span> por uma matriz
+    de transformação
 - Passa para a etapa seguinte, as primitivas gráficas em apenas um sistema de
   coordenadas
 
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (2) Sombreamento de vértices
+<!-- {"layout": "regular", "embeddedStyles": ".geo-etapa2 .etapa1, .geo-etapa2 .etapa3, .geo-etapa2 .etapa4, .geo-etapa2 .etapa5 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "img[src$='.svg']"} -->
+
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa2 style="display: block;"} --> <!-- {p:.full-width} -->
 
 - ![](../../images/cena-3d.png) <!-- {.push-right style="width: 200px"} -->
   Para produzir uma cena realística, precisamos usar um conceito de
@@ -150,8 +154,9 @@
   - Essa informação será passada para o sub-estágio seguinte
 
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (3) Projeção
+<!-- {"layout": "regular", "embeddedStyles": ".geo-etapa3 .etapa1, .geo-etapa3 .etapa2, .geo-etapa3 .etapa4, .geo-etapa3 .etapa5 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "img[src$='.svg']"} -->
+
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa3 style="display: block;"} --> <!-- {p:.full-width} -->
 
 - ![](../../images/proj-tipos.png) <!-- {.push-right style="max-height: 350px"} -->
   Após o sombreamento, o sistema de renderização realiza uma projeção
@@ -164,38 +169,41 @@
 
 
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (3) Projeção
+<!-- {"layout": "regular", "embedSVG": "img[src$='.svg']"} -->
 
-- Projeção paralela
-  - Linhas paralelas continuam paralelas
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa3 style="display: block;"} --> <!-- {p:.full-width} -->
+
+- Projeção **paralela**: linhas paralelas continuam paralelas
   - Uma transformação composta de escala e translação
-- Projeção perspectiva
-  - Linhas paralelas se encontram no infinito
+- Projeção **perspectiva**: linhas paralelas se encontram no infinito
   - Também é representada por uma matriz 4x4, mas não é uma transformação
     linear
 - Após a transformação de projeção
-  - Dizemos que temos **coordenadas de dispositivo normalizadas**
+  - Dizemos que temos **coordenadas de dispositivo normalizadas** (NDC)
   - A coordenada Z dos vértices é removida (3D -> 2D), porém armazenada em um
     espaço chamado _Z-buffer_
     - É por isso precisamos usar `glEnable(GL_DEPTH_TEST)` para usar a
       coordenada Z para determinar quem está na frente :O
 
+*[NDC]: normalized device coordinates*
+
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (4) Recorte
+<!-- {"layout": "regular", "embeddedStyles": ".geo-etapa4 .etapa1, .geo-etapa4 .etapa2, .geo-etapa4 .etapa3, .geo-etapa4 .etapa5 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "img[src$='.svg']"} -->
+
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa4 style="display: block;"} --> <!-- {p:.full-width} -->
 
 - Apenas as primitivas **dentro do volume de visualização** precisam
   ser renderizadas
 - Esta etapa recebe os vértices no espaço de coordenadas de dispositivo
-  normalizadas (2D, -1 &le; x, y &le; 1) e remove os vértices desnecessários:
+  normalizadas (em 2D, <span class="math">-1 \leq x, y \leq 1</span>) e remove os vértices desnecessários:
   - Primitivas totalmente dentro: passadas adiante
   - Primitivas totalmente fora: removidas
   - Primitivas **parcialmente representadas**: precisam ser **recortadas**
 
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (4) Recorte
+<!-- {"layout": "regular", "embedSVG": "img[src$='.svg']"} -->
+
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa4 style="display: block;"} --> <!-- {p:.full-width} -->
 
 ![](../../images/pipeline-recorte.png) <!-- {p:.centered} -->
 
@@ -206,21 +214,21 @@
 - Na etapa de recorte, novos vértices podem ser criados
 
 ---
-<!-- {"layout": "regular"} -->
-## Geometria &gt;&gt; (5) Mapeamento de tela
+<!-- {"layout": "regular", "embeddedStyles": ".geo-etapa5 .etapa1, .geo-etapa5 .etapa2, .geo-etapa5 .etapa3, .geo-etapa5 .etapa4 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "img[src$='.svg']"} -->
 
-![](../../images/pipeline-tela.png) <!-- {p:.centered} -->
+![](../../images/pipeline-geometria-fases.svg) <!-- {.centered.geo-etapa5 style="display: block;"} --> <!-- {p:.full-width} -->
 
-- As coordenadas das primitivas devem ser agora mapeadas para coordenadas da
-  tela (ou da janela)
+![](../../images/pipeline-tela.png) <!-- {p:.centered style="height: 200px"} -->
+
+- As coordenadas das primitivas devem ser agora mapeadas para coordenadas da janela
 - Esta operação é uma transformação composta de translação e escala
 - A partir deste momento, estamos **quase** podendo falar em _**pixels**_
 
 ---
-<!-- {"layout": "centered"} -->
+<!-- {"layout": "centered", "embeddedStyles": ".fase-rasterizacao .aplicacao, .fase-rasterizacao .geometria { fill: #eee !important; stroke: #333 !important;}", "embedSVG": ".fase-rasterizacao"} -->
 # Estágio de **Rasterização**
 
-![](../../images/pipeline-grafico-fases-rasterizacao.png)
+![](../../images/pipeline-grafico-fases.svg) <!-- {.fase-rasterizacao} -->
 
 ---
 <!-- {"layout": "regular"} -->
@@ -264,8 +272,7 @@
   - Sombreamento de _Goraud_
   - Sombreamento _flat_
   - <img src="../../images/texturizacao.png" style="float:right;">
-    Texturização etc.
-
+    Texturização etc
 
 ---
 <!-- {"layout": "regular"} -->
