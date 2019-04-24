@@ -234,15 +234,16 @@
 <!-- {"layout": "regular"} -->
 ## Estágio de **Rasterização**
 
-![](../../images/pipeline-rasterizador-fases.png)  <!-- {p:.centered} -->
+![](../../images/pipeline-rasterizacao-fases.svg)  <!-- {p:.centered} -->
 
 - Recebemos vértices tranformados e projetados e suas informações de cor e
   textura provenientes do estágio de geometria
 - Entregaremos a cor a ser definida para cada pixel da janela
 
 ---
-<!-- {"layout": "regular"} -->
-## Rasterização &gt;&gt; (1) Configuração de Triângulos
+<!-- {"layout": "regular", "embeddedStyles": ".ras-etapa1 .etapa2, .ras-etapa1 .etapa3, .ras-etapa1 .etapa4 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "img[src$='.svg']"} -->
+
+![](../../images/pipeline-rasterizacao-fases.svg) <!-- {.centered.ras-etapa1 style="display: block;"} --> <!-- {p:.full-width} -->
 
 - ![right](../../images/triangle-assembly.png)
   Neste estágio, informações sobre os triângulos definidos pelos vértices são
@@ -250,8 +251,9 @@
   - Basicamente, determina-se a conectividade das primitivas
 
 ---
-<!-- {"layout": "regular"} -->
-## Rasterização &gt;&gt; (2) _Scan Conversion_
+<!-- {"layout": "regular", "embeddedStyles": ".ras-etapa2 .etapa1, .ras-etapa2 .etapa3, .ras-etapa2 .etapa4 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "img[src$='.svg']"} -->
+
+![](../../images/pipeline-rasterizacao-fases.svg) <!-- {.centered.ras-etapa2 style="display: block;"} --> <!-- {p:.full-width} -->
 
 - ![right](../../images/scan-conversion-triangle.png)
   Cada pixel que tem seu centro "coberto" por um triângulo é verificado e um
@@ -262,8 +264,9 @@
   advém da interpolação dos três vértices do triângulo
 
 ---
-<!-- {"layout": "regular"} -->
-## Rasterização &gt;&gt; (3) Sombreamento de ~~Pixels~~ Fragmentos
+<!-- {"layout": "regular", "embeddedStyles": ".ras-etapa3 .etapa1, .ras-etapa3 .etapa2, .ras-etapa3 .etapa4 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "img[src$='.svg']"} -->
+
+![](../../images/pipeline-rasterizacao-fases.svg) <!-- {.centered.ras-etapa3 style="display: block;"} --> <!-- {p:.full-width} -->
 
 - ![right](../../images/shading-triangle.png)
   Para cada fragmento, devemos obter sua cor
@@ -275,8 +278,9 @@
     Texturização etc
 
 ---
-<!-- {"layout": "regular"} -->
-## Rasterização &gt;&gt; (4) Fusão
+<!-- {"layout": "regular", "embeddedStyles": ".ras-etapa4 .etapa1, .ras-etapa4 .etapa2, .ras-etapa4 .etapa3 { fill: #eee !important; stroke: #333 !important;}", "embedSVG": "img[src$='.svg']"} -->
+
+![](../../images/pipeline-rasterizacao-fases.svg) <!-- {.centered.ras-etapa4 style="display: block;"} --> <!-- {p:.full-width} -->
 
 - Do estágio anterior, podemos ter vários fragmentos por pixel (e.g.,
   triângulos sobrepostos)
