@@ -272,7 +272,7 @@
   Para cada fragmento, devemos obter sua cor
 - Várias técnicas podem ser usadas aqui
   - Sombreamento de _Phong_
-  - Sombreamento de _Goraud_
+  - Sombreamento de _Gouraud_
   - Sombreamento _flat_
   - <img src="../../images/texturizacao.png" style="float:right;">
     Texturização etc
