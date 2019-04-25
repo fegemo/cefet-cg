@@ -406,6 +406,11 @@ img[alt$="max"] {
 .dl-6 > dd {
   margin-left: 6em;
 }
+.corner-bottom-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 @-webkit-keyframes pulsating {
   from {
     -webkit-transform: scale(1) rotateZ(1turn);
