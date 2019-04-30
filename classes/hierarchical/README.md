@@ -53,13 +53,16 @@
  -->
 
 ---
+<!-- {"layout": "regular", "slideClass": "compact-code-more"} -->
 ## Exemplo: <u>pós</u>-multiplicação
 
-- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
-glRotate(30);
-glTranslate(2, 0);
-glScale(0.5);
-desenhaNaOrigem();</code></pre>
+- ```c
+  glLoadIdentity();
+  glRotate(30);
+  glTranslate(2, 0);
+  glScale(0.5);
+  desenhaNaOrigem();
+  ```
   Exemplo: suponha 3 transformações:
   1. <span class="math">R(30)</span>: rotaciona 30°
   1. <span class="math">T(2,0)</span>: translada 2u eixo x
@@ -69,13 +72,16 @@ desenhaNaOrigem();</code></pre>
   ("cursor onde desenhar"), e não os objetos
 
 ---
+<!-- {"layout": "regular", "slideClass": "compact-code-more"} -->
 ## <u>Pós</u>-multiplicação: sistema **local**
 
-- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
-glRotate(30);
-glTranslate(2, 0);
-glScale(0.5);
-desenhaNaOrigem();</code></pre>
+- ```c
+  glLoadIdentity();
+  glRotate(30);
+  glTranslate(2, 0);
+  glScale(0.5);
+  desenhaNaOrigem();
+  ```
   Tudo que é feito altera a posição e orientação do
   sistema de coordenadas local
 
@@ -90,13 +96,16 @@ desenhaNaOrigem();</code></pre>
 </figure>
 
 ---
+<!-- {"layout": "regular", "slideClass": "compact-code-more"} -->
 ## <u>Pré</u>-multiplicação: sistema **global**
 
-- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
-glScale(0.5);
-glTranslate(2, 0);
-glRotate(30);
-desenhaNaOrigem();</code></pre>
+- ```c
+  glLoadIdentity();
+  glScale(0.5);
+  glTranslate(2, 0);
+  glRotate(30);
+  desenhaNaOrigem();
+  ```
   Tudo que é feito é relativo à origem e a base do sistema
   de coordenadas global (do mundo)
 
