@@ -27,7 +27,7 @@ valendo 70% da nota, deve ter os seguintes itens:
      (eg, uma cerquinha) e (c) algumas instâncias de um tipo de animal
      dentro do cercado
      - Esses objetos podem ser desenhados usando composições de sólidos
-       GLU e GLUT ou podem ser arquivos `.obj` importados (vide extras)
+       GLU e Freeglut ou podem ser arquivos `.obj` importados (vide extras)
   1. Além dos objetos principais, devem haver objetos para compor o cenário,
      como árvores, pedregulhos etc.
      - Devem haver pelo menos 02 tipos de objetos diferentes e
@@ -42,6 +42,13 @@ valendo 70% da nota, deve ter os seguintes itens:
      - Eles não devem sair do cercado em sua movimentação - a menos que eles
        saibam saltar =)
      - Não é necessário detectar colisão entre os animais
+  1. Os animais podem ser desenhados como uma composição de objetos 3D da
+     GLU/Freeglut, tipo este cachorrinho de balão:
+
+     ![](images/balloon-dog.png)
+  1. O animal não precisa ter uma animação de movimento, mas deve ser
+     rotacionado para apontar na direção em que está andando
+     - Se fizer uma animação ganha extras
 - **Câmera**:
   1. Você deve usar projeção perspectiva via `glFrustum` ou `gluPerspective`
   1. Devem haver 2 câmeras e o usuário pode alternar entre elas via as teclas
@@ -59,8 +66,9 @@ valendo 70% da nota, deve ter os seguintes itens:
        possuam um material associado
     1. Deve ser possível ativar/desativar o modelo de iluminação a partir de uma
        tecla (eg, <kbd>L</kbd>)
-    1. Todos (ou a grande maioria) dos objetos devem conter texturas,
-       com materiais devidamente configurados
+    1. Mais da metade dos objetos devem conter texturas,
+       mas todos devem ter materiais devidamente
+       configurados
 
 Para se obter o restante dos pontos do trabalho (ou até mesmo mais pontos
 extras, até um limite de 125% da pontuação original) funcionalidades adicionais
@@ -69,8 +77,30 @@ conforme a **dificuldade da implementação**, o **efeito obtido** com ela no
 trabalho e a **qualidade da implementação**. Exemplos de funcionalidades
 extras com suas respectivas pontuações **máximas**:
 
-- Relativas ao **Mundo**:
-  1. **Relevo usando textura (10%)**: você pode usar uma
+- Relativas aos **animais**:
+  1. **Animação de andar**: faça uma animação de movimento para o animalzinho
+     que pode ser realista (10%), em que ele movimenta suas patas, balança o
+     rabo etc. ou apenas dando uns pulinhos (5%), como no
+     [jogo Equilinox][equilinox]
+
+     ![](images/equilinox.gif)
+     - Observação: um arquivo .obj não possui animações! Um arquivo .fbx sim.
+       Contudo, é muito mais complexo trabalhar (carregar, desenhar e atualizar)
+       objetos no formato FBX
+  1. **Animação de _idle_ (3%)**: faça uma animação do animal "parado"
+     (eg, respirando) que pode ser simplesmente ele aumentando/diminuindo de
+     tamanho **sutilmente**
+  1. **Máquina de estados (até 12%)**: crie uma máquina de estados para o
+     animal para que ele possa ter comportamentos diferentes: andando, parado,
+     dormindo, fazendo cocô (etc). O animal pode trocar de estado a cada x
+     segundos e o novo estado pode ser sorteado. Em cada estado o animal deve
+     ter um comportamento diferente.
+  1. **Interação entre animais (até 10%)**: verifique a colisão entre os animais
+     e, em caso de proximidade, faça com que eles interajam de alguma forma
+     - (5%) Mudar direção
+     - (10%) Mudar para um estado de acasalamento e, quem sabe, gerar prole
+- Relativas ao **mundo**:
+  1. **Relevo usando textura (10%)**: em vez de um plano, você pode usar uma
      textura em escala de cinza representando o relevo do chão: um ponto branco,
      representa altura 100% e um ponto preto representa altura 0. Esta é uma
      técnica de uso de texturas chamada _height map_. Veja um
@@ -89,21 +119,14 @@ extras com suas respectivas pontuações **máximas**:
      seu programa. Há alguns tutoriais disponíveis nas _interwebs_ sobre
      como abrir um arquivo `.obj`, ler a informação sobre os vértices e
      desenhá-los... aqui estão alguns: [tutorial 1][obj-tut-1],
-     [tutorial 2][obj-tut-2], [tutorial 3][obj-tut-3]. Também há os exemplos
-     do Nate Robins que possuem código para carregar arquivos `.obj`
+     [tutorial 2][obj-tut-2], [tutorial 3][obj-tut-3]. Também há os **exemplos
+     do Nate Robins** que possuem código para carregar arquivos `.obj`
      - Apenas carregar modelos prontos (6%)
      - Modelar e carregar modelos (10%)
-  1. **Fontes de luz pontuais (4%)**: coloque fontes de luz pontuais em
-     alguns objetos do cenário (eg, postes, holofotes, _outdoors_ de LED)
-  1. **Objetos animados (até 8%)**: crie objetos que têm algum tipo de
-     movimentação autônoma (carros, aviões, moinhos)
-     - Aqui vale ressaltar que criar cabem algoritmos de inteligência
-       artificial para determinação de caminhos dos objetos. Implementações
-       mais rebuscadas atingem os 8%
   1. **Mais tipos de objetos (até 8%)**: em vez de compor o cenário com apenas
      03 tipos de objetos, crie uns 7 tipos diferentes (ou seja, +2% por novo
      tipo, limitado a 4 novos tipos)
-- Relativas ao **Gráfico**:
+- Relativas ao **gráfico**:
   1. :star2: **Dia/noite (até 10%)**: você pode fazer o tempo passar ao longo do dia
      e fazer com que isso reflita na forma como o cenário é renderizado. Isso
      pode ser feito configurando-se a fonte de luz direcional com cores
@@ -115,33 +138,22 @@ extras com suas respectivas pontuações **máximas**:
   1. :star2: **Neblina (_fog_) (4%)**: funcionalidade acrescentada por
      comando do teclado (<kbd>N</kbd>), podendo ser habilitada e
      desabilitada durante a execução
-- Relativas ao **Zeppelin**:  
-  1. **Cabine com vidros (5%)**: em vez de "deixar a janela aberta", use
-     um material semelhante a um vidro semitransparente para a cabine do
-     zeppelin
-     - Todo objeto semitransparente precisa ser desenhado por último (ie, ser
-       enviado pro _pipeline_ depois dos objetos opacos)
-  1. **Faça o zeppelin pousar (6%)**: determine uma região em que o zeppelin
-     poderá pousar. Ele deverá estar posicionado logo acima de uma região
-     específica - um zeppeliporto - e pousar (com animação para a descida)
-     ao pressionar uma tecla
+  1. :star: **Fontes de luz pontuais (4%)**: coloque fontes de luz pontuais em
+     alguns objetos do cenário (eg, lampiões, fogueira, holofotes)
 - Relativas à **Câmera**:
-  1. **Terceira câmera (5%)**: posicionada dentro da cabine, possibilitando
-     uma observação panorâmica da cidade, e que pode ser alterada via
-     setinhas do teclado (<kbd>➡️</kbd> e <kbd>⬅️</kbd>), fazendo com que a
-     câmera, sem sair de onde está, altere para onde ela está olhando
-- Relativas a **Recursos do OpenGL**:
+  1. **Terceira câmera (5%)**: faça uma "câmera FPS/TPS" que o usuário pode
+     controlar como se fosse um animal
+- Relativas a **recursos do OpenGL**:
   1. :bomb: **Usar VBOs e VAOs (até 12%)** em vez de `glVertex(...)`: para ter
      um desempenho altíssimo e fazer as coisas do jeito do OpenGL 3+
-     - Obs: os sólidos GLU/GLUT usam `glVertex`, logo, são incompatíveis com
+     - Obs: os sólidos GLU/Freeglut usam `glVertex`, logo, são incompatíveis com
        este adicional (você não pode usá-los)
      - A nota é variável de acordo com a variedade do formato dos objetos
-  1. :bomb::bomb: **Criar _shaders_ (4%, 6% ou 12%)**: usando GLSL
+  1. :bomb::bomb: **Usar _shaders_ (4%, 6% ou 12%)**: usando GLSL
      (um _vertex_ e um _fragment shader_)
      - Modelo de iluminação de Phong, sombreamento Gouraud (4%)
-     - Modelo de iluminação de Phong, sombreamento também (6%)
-     - Modelo igual ao anterior, usando textura para _bump_ ou _normal mapping_
-       (12%)
+     - Modelo de iluminação de Phong, sombreamento também (8%)
+     - Modelo igual ao anterior, usando textura para _normal mapping_ (12%)
 - Outros adicionais:
   1. :star: **Música (3%)**: você pode incluir uma música de fundo para
      seu sistema estelar (ou de outra coisa)
@@ -203,7 +215,7 @@ Deve ser entregue **um arquivo .tar.gz ou .zip** via **Moodle** contendo:
 Qualquer dúvida, entre em contato comigo. Ou acrescente a sua interpretação no
 arquivo README e mãos à obra.
 
-
+[equilinox]: https://store.steampowered.com/app/853550/Equilinox/?l=portuguese
 [lighting-directional]: http://fegemo.github.io/cefet-cg/classes/lighting/#37
 [obj-tut-1]: http://www.opengl-tutorial.org/beginners-tutorials/tutorial-7-model-loading/
 [obj-tut-2]: http://netization.blogspot.in/2014/10/loading-obj-files-in-opengl.html
