@@ -53,13 +53,16 @@
  -->
 
 ---
+<!-- {"layout": "regular", "slideClass": "compact-code-more"} -->
 ## Exemplo: <u>pós</u>-multiplicação
 
-- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
-glRotate(30);
-glTranslate(2, 0);
-glScale(0.5);
-desenhaNaOrigem();</code></pre>
+- ```c
+  glLoadIdentity();
+  glRotate(30);
+  glTranslate(2, 0);
+  glScale(0.5);
+  desenhaNaOrigem();
+  ```
   Exemplo: suponha 3 transformações:
   1. <span class="math">R(30)</span>: rotaciona 30°
   1. <span class="math">T(2,0)</span>: translada 2u eixo x
@@ -69,13 +72,16 @@ desenhaNaOrigem();</code></pre>
   ("cursor onde desenhar"), e não os objetos
 
 ---
+<!-- {"layout": "regular", "slideClass": "compact-code-more"} -->
 ## <u>Pós</u>-multiplicação: sistema **local**
 
-- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
-glRotate(30);
-glTranslate(2, 0);
-glScale(0.5);
-desenhaNaOrigem();</code></pre>
+- ```c
+  glLoadIdentity();
+  glRotate(30);
+  glTranslate(2, 0);
+  glScale(0.5);
+  desenhaNaOrigem();
+  ```
   Tudo que é feito altera a posição e orientação do
   sistema de coordenadas local
 
@@ -90,13 +96,16 @@ desenhaNaOrigem();</code></pre>
 </figure>
 
 ---
+<!-- {"layout": "regular", "slideClass": "compact-code-more"} -->
 ## <u>Pré</u>-multiplicação: sistema **global**
 
-- <pre style="float: right; margin-left: 1em;"><code class="hljs lang-c">glLoadIdentity();
-glScale(0.5);
-glTranslate(2, 0);
-glRotate(30);
-desenhaNaOrigem();</code></pre>
+- ```c
+  glLoadIdentity();
+  glScale(0.5);
+  glTranslate(2, 0);
+  glRotate(30);
+  desenhaNaOrigem();
+  ```
   Tudo que é feito é relativo à origem e a base do sistema
   de coordenadas global (do mundo)
 
@@ -237,13 +246,10 @@ void desenhaRodaEPneu() {
 _A wild TP2 appears..._
 
 ---
-## TP2: Zeppelin
+## TP2: Gado
 
-<img alt="" src="https://raw.githubusercontent.com/fegemo/cefet-cg/master/assignments/tp2-zeppelin/images/zeppelin.png"
+<img alt="" src="https://raw.githubusercontent.com/fegemo/cefet-cg/master/assignments/tp2-cattle/images/farm2.png"
   style="float: right; width: 450px; margin: 0 0 5px 20px">
-  -- _Neste trabalho, vamos criar um zeppelin sobrevoando uma pequena cidade._
-  _Ou um [DeLorean](https://pt.wikipedia.org/wiki/Back_to_the_Future)_
-  _sobrevoando a futurista Hill Valley. Ou um OVNI sobrevoando uma fazenda_
-  _para abduzir vaquinhas._
+  -- _Neste trabalho, vamos nos tornar os reis/rainhas do gado e criar, em OpenGL, um cenário com vaquinhas, bezerros, bois, cavalos e presidentes da república - basta ter quatro patas. Vamos criar uma cena que tem algo como um estábulo, um espaço cercado e seres vivendo calmamente (ou não) nesse espaço._
 
 - Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-zeppelin/README.md)).
