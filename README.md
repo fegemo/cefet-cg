@@ -30,7 +30,7 @@
 # Aulas
 
 - [Introdução à Computação Gráfica](classes/intro/) <!-- {ul:.multi-column-list-2} -->
-- [OpenGL, Sistemas de Janelas](classes/opengl/)
+- [OpenGL, Sistemas de Janelas e gatos 😸](classes/opengl/)
 - [OpenGL Hands-on - Parte 1](classes/opengl-handson/)
 - [OpenGL Hands-on - Parte 2](classes/opengl-handson2/)
 - [OpenGL Hands-on - Parte 3](classes/opengl-handson3/)
@@ -42,6 +42,7 @@
 - [O Pipeline Gráfico](classes/pipeline)
 - [Projeção](classes/projection)
 - [Modelagem Hierárquica](classes/hierarchical)
+- [Especificação de vértices e dragões 🐉](classes/vertex-spec)
 - [Iluminação e Sombreamento](classes/lighting)
 - [Modelagem de Objetos](classes/modeling)
 - [Texturas](classes/textures)
