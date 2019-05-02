@@ -1611,6 +1611,23 @@ background-color #ababab h1,
   background-repeat: no-repeat;
   background-position: center center;
 }
+.vertex-spec .layout-title {
+  background-color: #c0c0c0;
+}
+.vertex-spec .layout-title h1::before {
+  background-image: url("../images/dragon-3d.jpg");
+  background-position: center bottom;
+  background-size: cover;
+  background-color: #3b3b3b;
+}
+.vertex-spec .layout-title h2 {
+  padding-right: 1em;
+}
+.vertex-spec .o-pipeline-grafico.layout-section-header::after {
+  background-image: url("../images/pipeline-subway.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 @-webkit-keyframes movingbg-x {
   from {
     background-position: 0 100%;
