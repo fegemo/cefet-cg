@@ -1628,6 +1628,25 @@ background-color #ababab h1,
   background-repeat: no-repeat;
   background-position: center center;
 }
+.lighting .layout-title {
+  background-color: #c0c0c0;
+}
+.lighting .layout-title h1::before {
+  background-image: url("../images/illuminated-vs-non-illuminated-spheres.png");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #fff;
+}
+.lighting .layout-title h2 {
+  padding-right: 1em;
+}
+.lighting .shading.layout-section-header::after {
+  background-color: #fff;
+  background-image: url("../images/shading-sumo.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
 @-webkit-keyframes movingbg-x {
   from {
     background-position: 0 100%;
