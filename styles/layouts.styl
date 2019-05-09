@@ -254,6 +254,24 @@
     background-repeat no-repeat
     background-position center center
 
+.lighting
+  .layout-title
+    background-color: silver
+    h1
+      &::before
+        background-image url(../images/illuminated-vs-non-illuminated-spheres.png)
+        background-position center bottom
+        background-repeat no-repeat
+        background-size contain
+        background-color white
+    h2
+      padding-right 1em
+  .shading.layout-section-header::after
+    background-color white
+    background-image url(../images/shading-sumo.jpg)
+    background-repeat no-repeat
+    background-position center center
+
 
 // animations
 @keyframes movingbg-x
