@@ -1,6 +1,8 @@
+<!-- {"layout": "title"} -->
 # Modelagem de Objetos
 
 ---
+<!-- {"layout": "centered"} -->
 # Objetivos
 
 1. Parar de desenhar retângulos :)
@@ -9,87 +11,87 @@
    renderização
 
 ---
-# Motivação
-
-![](../../images/obj-vaca.png)
-
----
+<!-- {"layout": "tall-figure-right"} -->
 ## Um arquivo .obj
 
-1. Vamos instalar o **programa "Obj Model Viewer"**
-1. **Abrir um modelo** descrito em um arquivo `.obj`
+::: figure .no-margin
+![](../../images/finn-blender.png) <!-- {style="max-width: 220px"} -->
+![](../../images/finn-editor-texto.png) <!-- {style="max-width: 220px"} -->
+:::
+
+1. Vamos usar um **visualizador de arquivos .obj**. Sugestões:
+
+   Windows <!-- {dl:.dl-6} -->
+     ~ Obj Model Viewer ([download][omv])
+
+   Linux/OSX
+     ~ ctmviewer (`sudo apt install openctm-tools`)
+     ~ view3dscene (loja do Ubuntu)
+
+1. **Abrir um modelo** descrito em um arquivo .obj
 1. Após visualizar o modelo, vamos **abrir** o arquivo `.obj` **usando um
    editor de texto** e entender o que está acontencendo ali
 
----
-## Histórico
-
-- Modelagem por arames (_wireframes_)
-  - ![right](../../images/wireframe-ambiguous.png)
-    Representa os objetos por arestas e pontos sobre a sua superfície
-  - Gera **modelos ambíguos**
-  - Ainda é usado como uma forma barata para visualização (mas não para
-    representação)
+[omv]: https://sourceforge.net/projects/objmodelviewer/
 
 ---
-## Histórico
+<!-- {"layout": "2-column-highlight-and-list"} -->
+## Formato Wavefront (.obj - <small>[🌐 especificação][obj-spec]</small>)
 
-- Modelagem por **superfícies** (década de 60)
-  - Fornece a descrição matemática das superfícies que delimitam o objeto
-  - Poucos testes de integridade do modelo
-- Modelagem de **sólidos** (década de 70)
-  - Implícita ou explicitamente contém informações do fechamento e
-    conectividade dos objetos
-  - Garante a realização física
-  - Sistemas <abbr title="Computer Aided Design">CAD</abbr>-
-    <abbr title="Computer Aided Manufacture">CAM</abbr>
-    utilizados pela indústria
+::: figure .no-margin width: 50%
+![](../../images/finn-editor-texto.png) <!-- {style="width: calc(100% - 42px); margin-left:42px"} -->
+:::
 
----
-## Paradigmas de Abstração
+- Descreve em cada linha: <!-- {ul:.no-bullet style="width: 40%; margin-left: 3em"} -->
 
-![](../../images/paradigma-universos.png)
+  `v` <!-- {dl:.dl-3} -->
+    ~ Coordenadas de um vértice <span class="math">(x, y, z)</span>
 
-- Paradigma dos universos
-  - Físico F
-  - Matemático M
-  - Representação R
-  - Implementação I
+  `vt`
+    ~ Coordenada de textura <span class="math">(s, t)</span>
 
----
-<!--
-backdrop: paradigma-universos
--->
+  `vn`
+    ~ Coordenada de vet. normal <span class="math">(x, y, z)</span>
 
-## Do mundo físico (real) ao mundo matemático
+  `f`
+    ~ Uma face (polígono) <span class="math">(i_v \/\/ i_{vt} \/\/ i_{vn})</span>
 
-![](../../images/paradigmas-real-matematico.png)
+- Coeficientes do material, textura
+
+[obj-spec]: ../../attachments/obj-spec.pdf
 
 ---
-<!--
-backdrop: paradigma-universos
--->
+<!-- {"layout": "regular"} -->
+# Paradigmas de Abstração
 
+![](../../images/paradigma-universos.png) <!-- {p:.centered} -->
+
+- Exemplo: uma serra o mundo físico (F) ao mundo matemático (M)
+  ![](../../images/paradigmas-real-matematico.png) <!-- {.centered} --> <!-- {ul:.full-width} -->
+
+---
+<!-- {"layout": "regular", "backdrop": "paradigma-universos"} -->
 ## Paradigma dos Universos
 
-- FÍSICO
-  - Contém **objetos do mundo real** que pretendemos estudar
-- MATEMÁTICO
-  - Contém uma **descrição abstrata** dos objetos do mundo físico
-- REPRESENTAÇÃO
-  - Constituído por **representações simbólicas e finitas** associadas a
+FÍSICO
+  ~ Contém **objetos do mundo real** que pretendemos estudar
+
+MATEMÁTICO
+  ~ Contém uma **descrição abstrata** dos objetos do mundo físico
+
+REPRESENTAÇÃO
+  ~ Constituído por **representações simbólicas e finitas** associadas a
     objetos do universo matemático
-- IMPLEMENTAÇÃO
-  - Associamos às descrições simbólicas e finitas do universo de
+
+IMPLEMENTAÇÃO
+  ~ Associamos às descrições simbólicas e finitas do universo de
     representação com **estrutura de dados**, com a finalidade de se
     obter uma representação do objeto no computador
-- Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
+
+Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
 
 ---
-<!--
-backdrop: paradigma-universos
--->
-
+<!-- {"layout": "regular", "backdrop": "paradigma-universos"} -->
 ## Problemas da Área
 
 - Estudar fenômenos em F
@@ -100,17 +102,15 @@ backdrop: paradigma-universos
 - Comparar estratégias em I
 
 ---
-<!--
-backdrop: paradigma-universos
--->
-
+<!-- {"layout": "section-header", "backdrop": "paradigma-universos"} -->
 # Representação
 
----
-<!--
-backdrop: paradigma-universos
--->
+- Perguntas: <!-- {ul:.content} -->
+  1. Como representar superfícies e sólidos de uma forma finita?
+  1. Como representar objetos concretos (volumes)?
 
+---
+<!-- {"layout": "regular", "backdrop": "paradigma-universos"} -->
 ## Tipos de **Representação**
 
 - Pontos
@@ -125,11 +125,12 @@ backdrop: paradigma-universos
       - <span class="math">0 \leq x,y,z \leq 1</span>
 
 ---
+<!-- {"layout": "regular"} -->
 ## Descrição dos **Sólidos**
 
-- Assuma que um **sólido é um conjunto tridimensional de pontos**
+- Um **sólido é um conjunto tridimensional de pontos**
 - Conjuntos de pontos podem ser descritos
-  - Por suas fronteiras (superfícies)
+  - Por suas fronteiras com o universo
   - Por composição de sólidos mais simples
   - Por um conjunto de escalares
     - Definidos por equações
@@ -140,6 +141,7 @@ backdrop: paradigma-universos
   - Por particionamento do espaço (_BSP-trees_, _Octrees_, etc.)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Representação Linear por Partes
 
 - <img src="../../images/esfera-triangulada.png" style="float: right; margin-left: 20px">
@@ -152,20 +154,24 @@ backdrop: paradigma-universos
 - Abordagens: (a) sopa de polígonos e (b) malha poligonal
 
 ---
+<!-- {"layout": "2-column-content"} -->
 ## Sopa de Polígonos
 
-- ![right](../../images/polygon-soup1.png)
-  Organização aleatória (caos)
+![](../../images/polygon-soup1.png)
+
+- Organização aleatória (caos)
 - Não estruturado (`GL_TRIANGLES`)
   – A única ordem garantida é de lado de dentro/fora
 - Não contém informação sobre a conectividade dos triângulos
 - Muita informação (vértices) redundante
 
 ---
+<!-- {"layout": "2-column-content"} -->
 ## _Pros/Cons_ da Sopa de Polígonos
 
-- ![right](../../images/polygon-soup2.png)
-  Vantagens:
+![](../../images/polygon-soup2.png)
+
+- Vantagens:
   - Fácil de implementar
 - Problemas:
   - Redundância
@@ -174,41 +180,40 @@ backdrop: paradigma-universos
   - Risco de _cracking_
 
 ---
+<!-- {"layout": "2-column-content"} -->
 ## Malhas Poligonais
 
-- Do inglês _polygonal mesh_ ou apenas **_mesh_**
-- Gera uma malha poligonal, definida por um (a) conjunto de vértices, um (b)
-  conjunto de arestas e um (c) conjunto de faces
+- Do inglês _polygonal mesh_ ou apenas **_mesh_** <!-- {ul:.bullet} -->
+- Gera uma malha poligonal, definida por um (i) conjunto de vértices, um (ii)
+  conjunto de arestas e um (iii) conjunto de faces
   - Cada aresta é compartilhada por no máximo duas faces
   - A interseção de duas faces é uma aresta, um vértice ou vazia
 - Adjacência de vértices, arestas e faces é chamada de **topologia** da superfície
 
----
-## Malhas Uniformes
-
-- ![right](../../images/mesh1.png)
-  _grids_, **_fans_**, **_strips_**
-  - Conectividade é implícita
-  - Muito eficiente
-  - Processamento fácil
-  - Evita transformações redundantes
+1. ![right](../../images/mesh1.png) <!-- {li:.bullet style="list-style: none"} -->
+   #### Malhas Uniformes:
+   _grids_, **_fans_**, **_strips_**
+   - Conectividade é implícita
+   - Muito eficiente
+   - Processamento fácil
+   - Evita transformações redundantes
 
 ---
+<!-- {"layout": "regular"} -->
 ## Operações sobre Malhas Poligonais
 
-- <img src="../../images/malha-arestas.png" style="float: right; margin-left: 20px">
+- ![](../../images/malha-arestas.png) <!-- {.push-right} --> <!-- {ul:.full-width} -->
   **Desenhar a malha**
 - Achar todas as arestas que incidem em um vértice
 - Achar as faces que incidem numa aresta ou vértice
 - Achar as arestas na fronteira de uma face
 
 ---
-<!--
-backdrop: paradigma-universos
--->
+<!-- {"layout": "section-header", "backdrop": "paradigma-universos"} -->
 # Implementação
 
 ---
+<!-- {"layout": "centered"} -->
 ## Tipos de **Codificação de Malhas**
 
 1. Explícita
@@ -219,6 +224,7 @@ backdrop: paradigma-universos
 1. ~~Radial-Edge~~
 
 ---
+<!-- {"layout": "regular"} -->
 ## (1) Codificação Explícita
 
 - A **mais simples**
@@ -226,11 +232,12 @@ backdrop: paradigma-universos
   seus vértices**:
   <div class="math">P={(x_1,y_1,z_1),(x_2,y_2,z_2),\cdots,(x_n,y_n,z_n)}</div>
 - Muita redundância de informação
-- Consultas são complicadas
-  - Obriga a execução de algoritmos geométricos para determinar adjacências
+- Consultas de adjacência são complicadas
+  - São necessários algoritmos geométricos para determinar adjacências
     entre faces, arestas ou mesmo vértices
 
 ---
+<!-- {"layout": "regular"} -->
 ## (2) Ponteiros para Lista de Vértices
 
 - Vértices são armazenados separadamente em uma lista (ou _array_). _E.g._:
@@ -247,15 +254,17 @@ backdrop: paradigma-universos
   ```
 
 ---
+<!-- {"layout": "regular"} -->
 ## Exemplo de **(2) Ponteiros para Lista de Vértices**
 
-![](../../images/malha-ponteiro-lista-vertices.png)
+![](../../images/malha-ponteiro-lista-vertices.png) <!-- {p:.centered} -->
 
 - <span class="math">V = \left\\{ V_1 = (x_1, y_1, z_1), V_2 = (x_2, y_2, z_2), \cdots, V_4 = (x_4, y_4, z_4) \\right\\}</span>
 - <span class="math">P_1 = \left\\{ V_1, V_2, V_4 \\right\\}</span>
 - <span class="math">P_2 = \\left\\{ V_4, V_2, V_3 \\right\\}</span>
 
 ---
+<!-- {"layout": "regular"} -->
 ## _Pros/Cons_ (2) Ponteiros para Lista de Vértices
 
 - Vantagens:
@@ -265,6 +274,7 @@ backdrop: paradigma-universos
   - Arestas ainda são desenhadas duas vezes
 
 ---
+<!-- {"layout": "regular"} -->
 ## (3) Ponteiros para Lista de Arestas
 
 - Há também uma lista de arestas
@@ -283,10 +293,11 @@ backdrop: paradigma-universos
   - Facilita a determinação das duas faces incidentes na aresta
 
 ---
+<!-- {"layout": "regular"} -->
 ## Exemplo de **(3) Ponteiros para Lista de Arestas**
 
 - <span class="math">V = \left\\{ V_1 = (x_1, y_1, z_1), V_2 = (x_2, y_2, z_2), ..., V_4 = (x_4, y_4, z_4) \\right\\}</span>
-- <img src="../../images/malha-ponteiro-lista-vertices.png" style="float: right; margin-left: 20px; cursor: crosshair">
+- ![](../../images/malha-ponteiro-lista-vertices.png) <!-- {.push-right} -->
   <span class="math">E_1 = \left\\{ V_1, V_2, P_1, \lambda \\right\\}</span>
 - <span class="math">E_2 = \left\\{ V_2, V_3, P_2, \lambda \\right\\}</span>
 - <span class="math">E_3 = \left\\{ V_3, V_4, P_2, \lambda \\right\\}</span>
@@ -296,6 +307,7 @@ backdrop: paradigma-universos
 - <span class="math">P_2 = \\left\\{ E_2, E_3, E_4 \\right\\}</span>
 
 ---
+<!-- {"layout": "regular"} -->
 ## _Pros/Cons_ (3) Ponteiros para Lista de Arestas
 
 - Vantagens:
@@ -309,30 +321,27 @@ backdrop: paradigma-universos
     - <q>Me dê todas as faces adjacentes a <span class="math">V_1</span></q>
       - Para cada face, visitar cada aresta e ver se o vértice está lá:
         <span class="math">O(F\*3\*2) = O(6F) = O(F)</span>
+
 ---
+<!-- {"layout": "tall-figure-left"} -->
 ## (4) _Winged-Edge_ (Aresta Alada)
 
-![](../../images/malha-aresta-alada.png)
-
----
-## (4) _Winged-Edge_ (cont.)
+![](../../images/malha-aresta-alada.png) <!-- {p:.centered} -->
 
 - Criada em 1974 por Baumgart
 - Foi um marco na representação por fronteira
 - Armazena informação na estrutura associada às arestas (número de campos é fixo)
-- Todos os 9 tipos de adjacência entre vértices, arestas e faces
-  são determinados em tempo constante
-- Atualizada com o uso de operadores de Euler, que garantem: V – A + F = 2
-  - V: número de vértices
-  - A: número de arestas
-  - F: número de faces
+- Ao todo, 9 tipos de adjacência entre vértices, arestas e faces
+  podem ser calculados em tempo constante
 
 ---
+<!-- {"layout": "centered"} -->
 ## 9 tipos de Relacionamentos de Adjacência
 
 ![](../../images/malha-aresta-alada-2.png)
 
 ---
+<!-- {"layout": "centered"} -->
 ## Exemplo
 
 [![](../../images/winged-edge-example.jpg)](../../images/winged-edge-example-big.jpg)

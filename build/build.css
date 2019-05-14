@@ -406,6 +406,12 @@ img[alt$="max"] {
 .dl-6 > dd {
   margin-left: 6em;
 }
+.dl-3 > dt {
+  width: 3em;
+}
+.dl-3 > dd {
+  margin-left: 3em;
+}
 .corner-bottom-right {
   position: absolute;
   right: 0;
