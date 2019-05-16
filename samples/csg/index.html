@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exemplo de CSG</title>
+    <style media="screen">
+      main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      figure {
+        margin: 0 1em;
+      }
+
+      figcaption {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <figure>
+        <div id="a"></div>
+        <figcaption><code>a</code></figcaption>
+      </figure>
+      <figure>
+        <div id="b"></div>
+        <figcaption><code>b</code></figcaption>
+      </figure>
+      <figure>
+        <div id="a-union-b"></div>
+        <figcaption><code>a.union(b)</code></figcaption>
+      </figure>
+      <figure>
+        <div id="a-subtract-b"></div>
+        <figcaption><code>a.subtract(b)</code></figcaption>
+      </figure>
+      <figure>
+        <div id="a-intersect-b"></div>
+        <figcaption><code>a.intersect(b)</code></figcaption>
+      </figure>
+    </main>
+    <script src="lightgl.js" charset="utf-8"></script>
+    <script src="csg.js" charset="utf-8"></script>
+    <script src="viewer.js" charset="utf-8"></script>
+    <script src="exemplo.js" charset="utf-8"></script>
+  </body>
+</html>
