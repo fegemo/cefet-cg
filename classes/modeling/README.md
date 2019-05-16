@@ -26,7 +26,7 @@
 
    Linux/OSX
      ~ ctmviewer (`sudo apt install openctm-tools`)
-     ~ view3dscene (loja do Ubuntu)
+     ~ view3dscene (loja do Ubuntu), blender etc.
 
 1. **Abrir um modelo** descrito em um arquivo .obj
 1. Após visualizar o modelo, vamos **abrir** o arquivo `.obj` **usando um
@@ -342,78 +342,86 @@ Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
 
 ---
 <!-- {"layout": "centered"} -->
-## Exemplo
-
-[![](../../images/winged-edge-example.jpg)](../../images/winged-edge-example-big.jpg)
+![](../../images/winged-edge-example-big.jpg) <!-- {style="max-height: 600px;"} -->
 
 ---
-# Representação <abbr title="Constructive Solid Geometry">CSG</abbr>
+# Representação CSG
+
+*[CSG]: Constructive Solid Geometry*
 
 ---
-## _Constructive Solid Geometry_
+<!-- {"layout": "regular"} -->
+# _Constructive Solid Geometry_
 
 - Operações CSG definem objetos através de operações regularizadas de
   conjuntos de pontos
   - União, Interseção e Diferença
 - Possibilita uma codificação bastante simples e concisa
-- Requer mais computação para renderizar do que _b-rep_
+- Requer mais computação para renderizar do que _boundary representation_ (_b-rep_)
 
-  ![](../../images/csg-exemplo.png)
+![](../../images/csg-exemplo.png) <!-- {p:.centered} -->
+
+*[CSG]: Constructive Solid Geometry*
 
 ---
+<!-- {"layout": "regular"} -->
 ## Codificação do CSG: Árvore
 
-- <img src="../../images/csg-exemplo2.png" style="float:right;margin-left:20px;">
-  Um modelo CSG é codificado por uma árvore
-  - Os **nós internos** contêm **operações** de conjunto ou transformações
-    lineares afim
+- ![](../../images/csg-exemplo2.png) <!-- {.push-right style="max-height: 200px;"} -->
+  Um modelo CSG é codificado por uma árvore <!-- {ul:.full-width} -->
   - **Folhas** contêm objetos **primitivos**
-    - Cubóides, cilindros, prismas, pirâmides, esferas, cones etc.
+    - Paralelepípedos, cilindros, prismas, pirâmides, esferas, cones etc.
+  - Os **nós internos** contêm **operações de conjunto** ou transformações
+
+<iframe src="../../samples/csg/index.html" width="100%" height="400" frameborder="0"></iframe>
+
+*[CSG]: Constructive Solid Geometry*
 
 ---
-## Exemplo: SolidWorks
+<!-- {"layout": "centered"} -->
+## Exemplo (🌐 [tutorial no blender](https://www.youtube.com/watch?v=ViGTkjW997E))
 
-![](../../images/csg-solidworks.png)
-
----
-## Exemplo _divertido_: o jogo Spore
-
-![](../../images/spore-creature-creator.jpg)
+![](../../images/csg-cheese.png)
 
 ---
 # Representações por Células
 
 ---
+<!-- {"layout": "regular"} -->
 ## Representações por Células
 
 - Dividem o espaço em sub-regiões convexas
-  - **Grades**: Cubos de tamanho igual
+  - **Grids**: cubos de tamanho igual
   - **_Octrees_**: Cubos cujos lados são potências de 2 (1980)
-  - _BSP-trees_: Poliedros convexos
-
-<!--
-- Às células são atribuídas valores de um campo escalar F(x, y, z)
-  - Campo é assumido constante dentro de cada célula
-- Sólido é definido como o conjunto de pontos tais que A < F(x, y, z) < B
-  para valores A e B estipulados
--->
+  <!-- - _BSP-trees_: Poliedros convexos
+  - _kd-trees_: -->
+- Cada célula do espaço tem um valor, que é constante dentro dela
+1. Em 2D: <!-- {ol:.layout-split-2} -->
+   - _Grids_ (matriz 2D)
+   - _Quadtrees_
+1. Em 3D:
+   - _Grids_ (matriz 3D)
+   - _Octrees_
 
 ---
+<!-- {"layout": "regular"} -->
 ## Grids vs Quadtrees (2D)
 
-![](../../images/grid-vs-quadtrees.png)
+![](../../images/grid-vs-quadtrees.png) <!-- {p:.centered} -->
 
 - Objeto bidimensional (esquerda), sua representação usando um grid (centro)
   e sua representação usando uma quadtree (direita)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Representação de uma **Quadtree** (2D)
 
-![](../../images/quadtree-representacao.png)
+![](../../images/quadtree-representacao.png) <!-- {p:.centered} -->
 
 - Neste exemplo, o objeto é formado apenas por um ponto (vinho)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Representação de uma **Quadtree** (2D) - cont.
 
 - ![right](../../images/quadtree-exemplo-complexo.png)
@@ -423,6 +431,7 @@ Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
   ocuparão espaço na memória)
 
 ---
+<!-- {"layout": "regular"} -->
 ## Octrees
 
 - São úteis para a visualização de objetos que podem ser particionados:
@@ -432,19 +441,28 @@ Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
     Imagens obtidas por meio de sensores de densidade
 - Cada elemeto de um quadrante em um _grid_ é chamado de **voxel**
 
----
-## Voxels
+<!-- ## Voxels
 
 ![](../../images/octree-minecraft.png)
 
 - Um **voxel** representa um valor em um _grid_ tridimensional
-  - Pixel = _picture element_; Voxel = _volume element_
+  - Pixel = _picture element_; Voxel = _volume element_ -->
 
 ---
-## Exemplos
+## Exemplo: _octree_
 
 ![](../../images/octree-dragon.png)
 
+
+---
+<!-- {"layout": "2-column-content"} -->
+# Como desenhar?
+
+- Para converter da representação por campos escalares para _b-rep_:
+  - Algoritmo **_marching cubes_**
+- Com o objeto em _b-rep_, basta desenhar
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/B_xk71YopsA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 # Referências
