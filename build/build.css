@@ -1653,6 +1653,15 @@ background-color #ababab h1,
   background-repeat: no-repeat;
   background-position: center center;
 }
+.textures .layout-title h1 {
+  font-family: Aladin, cursive;
+  color: #000;
+  font-size: 8em;
+}
+.textures .layout-title h1::before {
+  background-image: url("../images/tf2-woodwall-texture.jpg");
+  background-size: cover;
+}
 @-webkit-keyframes movingbg-x {
   from {
     background-position: 0 100%;

@@ -1,7 +1,4 @@
-<!--
-  backdrop: tf2-texture
--->
-
+<!-- {"layout": "title"} -->
 <link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
 <h1 class="inset-shadow" title="Texturas">Texturas</h1>
 
