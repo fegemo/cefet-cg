@@ -12,6 +12,8 @@ Nesta parte, você deve fazer três exercícios:
 2. Alterar a cor do fundo da tela para preto (10 min)
 3. Implementar a interseção de raio com esfera (60 min)
 
+Sobre (2), saiba que a cor de fundo está descrita no código (e não nos arquivos txt de cena). O código em questão está localizado dentro do método que lança um raio e precisa verificar se esse raio atingiu algum objeto da cena (você precisa encontrar esse método). Sugestão: comece pela classe Main.java para entender o fluxo de execução.
+
 Sobre (3), a função `RayResponse intersectsWith(Ray ray)` deve: 
 
 - Retornar um objeto do tipo `RayResponse` com um campo `intersected` igual a `true`/`false` informando se houve colisão do raio com a esfera ou não
