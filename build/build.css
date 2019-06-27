@@ -1662,6 +1662,10 @@ background-color #ababab h1,
   background-image: url("../images/tf2-woodwall-texture.jpg");
   background-size: cover;
 }
+.programmable-pipeline .layout-title h1::before {
+  background-image: url("../images/ni-no-kuni.jpg");
+  background-size: cover;
+}
 @-webkit-keyframes movingbg-x {
   from {
     background-position: 0 100%;
