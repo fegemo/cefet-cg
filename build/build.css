@@ -283,12 +283,12 @@ a[href^="codeblocks:"]:before {
 .appear-right {
   position: absolute;
   left: inherit;
-  bottom: 100%;
-  -webkit-transition: bottom 200ms ease-out;
-  transition: bottom 200ms ease-out;
+  top: -100%;
+  -webkit-transition: top 200ms ease-out;
+  transition: top 200ms ease-out;
 }
 .appear-right.bespoke-bullet-active {
-  bottom: 0;
+  top: 100%;
   left: inherit;
   right: 0;
 }
@@ -1212,14 +1212,14 @@ background-color #ababab h1,
 .bespoke-slide[data-bespoke-backdrop="particles"] h1 {
   color: #bfbb08;
 }
-.raytraced-teapot.bespoke-backdrop-active {
-  background-image: url("../images/raytraced-teapot.jpg");
+.raytraced-realism.bespoke-backdrop-active {
+  background-image: url("../images/raytraced-high-realism.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
 }
-.bespoke-slide[data-bespoke-backdrop="raytraced-teapot"] {
+.bespoke-slide[data-bespoke-backdrop="raytraced-realism"] {
   color: #fff;
 }
 .raytracing-collision.bespoke-backdrop-active {
@@ -1505,21 +1505,50 @@ background-color #ababab h1,
   background-position: 0%;
   opacity: 0.85;
 }
-.opengl-handson2 .animation.layout-section-header::after {
-  background-image: url("../images/ping-pong.gif");
+.opengl-handson3 .layout-title {
+  background-color: #333;
+}
+.opengl-handson3 .layout-title h1 {
+  color: #fff;
+}
+.opengl-handson3 .layout-title h1::before {
+  background-image: url("../images/game-texture.jpg");
+  background-repeat: repeat;
+  background-size: contain;
+}
+.opengl-handson3 .layout-title h2 {
+  background-color: #333;
+  color: #fff;
+  margin-right: 1em;
+}
+.opengl-handson3 .display-list.layout-section-header::after {
+  background-image: url("../images/display-list.png");
+  background-color: #ffe6d5;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: 50%;
+}
+.opengl-handson3 .orientacao-de-poligonos.layout-section-header::after {
+  background-image: url("../images/primitives-part2.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 0%;
+}
+.opengl-handson3 .posicionamento-de-objetos.layout-section-header::after {
+  background-image: url("../images/snake-polygon.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #808080;
   background-position: 50%;
 }
-.opengl-handson2 .text.layout-section-header::after {
-  background-image: url("../images/font-kerning.jpg");
+.opengl-handson3 .usando-texturas.layout-section-header::after {
+  background-image: url("../images/game-texture.jpg");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #fff;
   background-position: 50%;
 }
-.opengl-handson2 .draw-order.layout-section-header::after {
+.opengl-handson3 .draw-order.layout-section-header::after {
   background-image: url("../images/algoritmo-do-pintor.png");
   background-repeat: no-repeat;
   background-size: auto;
@@ -1664,6 +1693,10 @@ background-color #ababab h1,
 }
 .programmable-pipeline .layout-title h1::before {
   background-image: url("../images/ni-no-kuni.jpg");
+  background-size: cover;
+}
+.raytracing .layout-title h1::before {
+  background-image: url("../images/raytraced-teapot.jpg");
   background-size: cover;
 }
 @-webkit-keyframes movingbg-x {
