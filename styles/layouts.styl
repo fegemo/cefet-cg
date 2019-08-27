@@ -131,15 +131,42 @@
     background-position 0%
     opacity 0.85
 
-  .animation.layout-section-header::after
-    background-image url(../images/ping-pong.gif)
+.opengl-handson3
+  .layout-title
+    background-color #333
+    h1
+      color white
+      &::before
+        background-image url(../images/game-texture.jpg)
+        background-repeat repeat
+        background-size contain
+    h2
+      background-color #333
+      color white
+      margin-right 1em
+
+  .display-list.layout-section-header::after
+    background-image url(../images/display-list.png)
+    background-color #ffe6d5
+    background-repeat no-repeat
+    background-size auto
+    background-position 50%
+
+  .orientacao-de-poligonos.layout-section-header::after
+    background-image url(../images/primitives-part2.svg)
+    background-repeat no-repeat
+    background-size contain
+    background-position 0%
+
+  .posicionamento-de-objetos.layout-section-header::after
+    background-image url(../images/snake-polygon.png)
     background-repeat no-repeat
     background-size cover
     background-color #808080
     background-position 50%
 
-  .text.layout-section-header::after
-    background-image url(../images/font-kerning.jpg)
+  .usando-texturas.layout-section-header::after
+    background-image url(../images/game-texture.jpg)
     background-repeat no-repeat
     background-size contain
     background-color #fff

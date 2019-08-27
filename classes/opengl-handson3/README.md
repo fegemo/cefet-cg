@@ -6,13 +6,14 @@
 <!-- {"layout": "centered"} -->
 # Roteiro
 
-1. Display lists
-1. Orientação dos polígonos
-1. Usando texturas
-1. **Trabalho Prático 1**
+1. [Display lists](#display-lists)
+1. [Orientação dos polígonos](#orientacao-dos-poligonos)
+1. [Posicionamento de objetos](#posicionamento-de-objetos)
+1. [Usando texturas](#usando-texturas)
+1. **[Trabalho Prático 1](#tp1)**
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "display-list", "slideHash": "display-lists"} -->
 # Display Lists
 
 - Revendo o exercício
@@ -22,7 +23,7 @@
 <!-- {"layout": "regular"} -->
 ## Exercício 2 da lista
 
-![](../../images/display-lists.png)
+![](../../images/display-lists.png) <!-- {p:.centered} -->
 
 - \#comofaz para desenhar linhas e o polígono ao mesmo tempo?
 
@@ -132,10 +133,13 @@ int main(int c, char** v) {
 ```
 
 ---
+<!-- { "layout": "section-header", "slideClass": "orientacao-de-poligonos", "slideHash": "orientacao-de-poligonos" } -->
 # Orientação de Polígonos
+## Lado da frente e de trás
 
 ---
-## Orientação
+<!-- { "layout": "regular" } -->
+# Orientação
 
 - Todo polígono convexo possui um lado de fora e um lado de dentro
   - Ou lado da frente e lado de trás
@@ -148,23 +152,27 @@ int main(int c, char** v) {
   **de acordo com a primitiva**...
 
 ---
-## Orientação no OpenGL
+<!-- { "layout": "regular" } -->
+# Orientação no OpenGL
 
 - O lado de fora/frente de um polígono em OpenGL é dado **<u>pela ordem</u>
   em que declaramos seus vértices**
+  ![](../../images/primitives-part2.svg) <!-- {.centered style="margin-bottom: 1em;"} -->
+- 🔄 (CCW), vemos o lado da frente
+- 🔃 (CW), vemos o lado de trás
 
-  ![](../../images/opengl-primitive-orientation.png)
+*[CCW]: Counterclockwise*
+*[CW]: Clockwise*
 
 ---
-## Exemplo de Orientação
+<!-- { "layout": "regular", "slideClass": "compact-code-more" } -->
+# Exemplo de Orientação
 
 ```c
-void desenhaMinhaCena()
-{
+void desenhaMinhaCena() {
     //...
     glPolygonMode(GL_BACK, GL_FILL);  // Lado de trás: contorno
     glPolygonMode(GL_FRONT, GL_LINE); // Da frente: preenchido
-
     // Desenha um quadrado de lado 60
     glBegin(GL_TRIANGLE_FAN);
         glVertex2i(-30, -30);
@@ -176,14 +184,21 @@ void desenhaMinhaCena()
 }
 ```
 - [Exemplo de Orientação](codeblocks:orientacao-poligonos/CodeBlocks/orientacao-poligonos.cbp)
+  - É possível inverter: `glFrontFace(GL_CW)` (mas não há muito motivo)
 
 ---
-# Posicionamento
+<!-- { "layout": "section-header", "slideClass": "posicionamento", "slideHash": "posicionamento-de-objetos" } -->
+# Posicionamento de objetos
+
+- O jeito ruim
+- O jeito bão <sup>(c)</sup>
 
 ---
-## Posicionando Objetos - O Jeito Ruim
+<!-- { "layout": "regular" } -->
+# Posicionando Objetos - O Jeito Ruim <!-- {.bullet} -->
 
-- A forma como temos posicionado objetos não é legal:
+- ![](../../images/snake-polygon.png) <!-- {.push-right.bullet style="max-height: 300px;"} -->
+  A forma como temos posicionado objetos não é legal:
   ```c
   glBegin(GL_TRIANGLE_FAN);
       glVertex2f(nave.x,              nave.y);
@@ -192,16 +207,19 @@ void desenhaMinhaCena()
       glVertex2f(nave.x,              nave.y + nave.alt);
   glEnd();
   ```
-  - Problema: e se houver muito mais do que 4 vértices?
+  - Problema: e se houver muito mais do que 4 vértices? *➡️*
   - Questão: não seria bem mais fácil definir as coordenadas se **pudéssemos
     assumir que estamos <u>sempre na origem</u>?**
 
 ---
-## Posicionando Objetos - Do Jeito Top
+<!-- { "layout": "regular" } -->
+# Posicionando Objetos - Do Jeito Bão <sup>(c)</sup>
 
 - Damos as coordenadas assumindo que estamos na origem, mas
   transladamos o objeto para onde queremos que ele realmente seja
   desenhado:
+  - Na aula sobre [transformações](../transforms/) veremos
+    como o `glTranslate`, `glPushMatrix` e o `glPopMatrix` funcionam <!-- {ul^0:.push-right style="max-width: 220px;"} -->
   ```c
   glPushMatrix();                 // Importante!!
       glTranslatef(nave.x, nave.y, 0);
@@ -215,12 +233,14 @@ void desenhaMinhaCena()
   ```
 
 ---
+<!-- { "layout": "section-header", "slideClass": "usando-texturas", "slideHash": "usando-texturas" } -->
 # Usando Texturas
 
 ---
-## Texturas
+<!-- { "layout": "regular" } -->
+# Texturas
 
-- Teremos uma aula sobre o tópico texturas mais a frente
+- Teremos uma [aula sobre texturas](../textures) mais a frente
 - Contudo, vamos começar a aprender para já ir usando
 - As funções básicas são:
   - `glEnable(GL_TEXTURE_2D);`, para **habilitar texturas**
@@ -230,7 +250,8 @@ void desenhaMinhaCena()
   - [Textura simples usando SOIL](codeblocks:textura-simples-soil/CodeBlocks/textura-simples-soil.cbp)
 
 ---
-## Variável global
+<!-- { "layout": "regular" } -->
+# Variável global
 
 - Temos uma variável global que armazenará um **identificador de textura**, que é
   um número inteiro que será gerado pelo OpenGL
@@ -241,26 +262,28 @@ void desenhaMinhaCena()
     reservou espaço para a **matriz de cores da imagem**
 
 ---
-## Na _callback_ de desenho
+<!-- { "layout": "regular" } -->
+# Na _callback_ de desenho
 
 ```c
 void desenhaMinhaCena() {
-  //...
-  glEnable(GL_TEXTURE_2D);
-  glBindTexture(GL_TEXTURE_2D, texturaDoMario);
-  glBegin(GL_TRIANGLE_FAN);
-    glTexCoord2f(0, 0); glVertex3f(-1, -1,  0);
-    glTexCoord2f(1, 0); glVertex3f( 1, -1,  0);
-    glTexCoord2f(1, 1); glVertex3f( 1,  1,  0);
-    glTexCoord2f(0, 1); glVertex3f(-1,  1,  0);
-  glEnd();
-  glDisable(GL_TEXTURE_2D);
+    //...
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texturaDoMario);
+    glBegin(GL_TRIANGLE_FAN);
+        glTexCoord2f(0, 0); glVertex3f(-1, -1,  0);
+        glTexCoord2f(1, 0); glVertex3f( 1, -1,  0);
+        glTexCoord2f(1, 1); glVertex3f( 1,  1,  0);
+        glTexCoord2f(0, 1); glVertex3f(-1,  1,  0);
+    glEnd();
+    glDisable(GL_TEXTURE_2D);
   //...
 }
 ```
 
 ---
-## Explicando o uso das funções
+<!-- { "layout": "regular" } -->
+# Explicando o uso das funções
 
 - Ao desenhar o polígono que queremos texturizar, devemos seguir **3 passos**:
   1. **Habilitar** o uso de texturas bidimensionais
@@ -269,7 +292,8 @@ void desenhaMinhaCena() {
 - Agora, falta saber como carregar uma imagem no OpenGL para servir de textura
 
 ---
-## Carregando texturas
+<!-- { "layout": "regular" } -->
+# Carregando texturas
 
 - O OpenGL não possui funções para carregar texturas
 - Basicamente, precisamos abrir o arquivo de imagem nós mesmos (`fopen` e amigos) e
@@ -281,7 +305,8 @@ void desenhaMinhaCena() {
   diretamente
 
 ---
-## <abbr title="Simple OpenGL Image Library">SOIL</abbr>
+<!-- { "layout": "regular" } -->
+# SOIL
 
 - Biblioteca para carregar arquivos de imagem no formato esperado pelo OpenGL
 - Suporta diversos formatos de imagem:
@@ -290,41 +315,52 @@ void desenhaMinhaCena() {
   - bmp etc.
 - Para baixar e ler a documentação: http://lonesock.net/soil.html
 
+*[SOIL]: Simple OpenGL Image Library*
+
 ---
-## Em alguma função de inicialização
+<!-- { "layout": "regular" } -->
+# Em alguma função de inicialização
 
 ```c
 GLuint texturaDoMario;    // id da textura
 
-void init() {
-  texturaDoMario = SOIL_load_OGL_texture(
-    "mario.png",
-    SOIL_LOAD_AUTO,
-    SOIL_CREATE_NEW_ID,
-    SOIL_FLAG_INVERT_Y
-  );
+GLuint carregaTextura(char* arquivo) {
+    GLuint idTextura = SOIL_load_OGL_texture(
+        arquivo,        // ⬅️ do parâmetro
+        SOIL_LOAD_AUTO,
+        SOIL_CREATE_NEW_ID,
+        SOIL_FLAG_INVERT_Y
+    );
 
-  if (texturaDoMario == 0) {
-    printf("Erro carregando textura: '%s'\n", SOIL_last_result());
-  }
+    if (idTextura == 0) {
+      printf("Erro carregando a textura: '%s'\n", SOIL_last_result());
+    }
+
+    return idTextura;
+}
+
+void inicializa() {
+  texturaDoMario = carregaTextura("mario.png");
 }
 ```
 
 ---
+<!-- { "layout": "centered", "slideHash": "tp1" } -->
 # Trabalho Prático 1 \o/
 
 _A wild TP1 appears..._
 
 ---
 <!-- {"layout": "2-column-content"} -->
-## TP1: **Pescaria Ridícula**
+# TP1: **Ping Phong**
 
 
-> "Muito mal falado é o pescador. Ninguém acredita nele. Eu mesmo, quando
-> chasqueei um matreiro e a vara embodocou com a força desse bruto,
-> tive que [...] -- Relato pseudoverdadeiro de um pescador desconhecido
+> Considerado, por muitos, o primeiro jogo eletrônico da história,
+> "Pong" não só deu início à Atari, mas a toda a industria de jogos.
+> Às vezes é necessário voltar às origens para buscar inspiração,
+> sendo assim, nos inspiraremos na raiz de todo o mal.
 
-![](../../images/ridiculous-fishing.gif) <!-- {.push-right style="width: 180px; margin-left: 1em"} -->
+![](../../images/tp1-ping-phong.gif) <!-- {.push-right style="width: 210px; margin-left: 1em"} -->
 - Enunciado no Moodle
 
 ---

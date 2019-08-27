@@ -487,7 +487,7 @@ gcc -o programa.exe arquivo1.o arquivo2.o -lSOIL -lGL -lm
 <!-- {"layout": "centered-horizontal"} -->
 ## Desmistificando o "arquivo de projeto" (.cbp)
 
-![](../../images/arquivo-cbp.png) <!-- {.full-height} -->
+![](../../images/arquivo-cbp.png) <!-- {style="width: 850px;"} -->
 
 ---
 <!-- {"layout": "regular", "slideClass": "two-column-code"} -->
