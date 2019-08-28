@@ -212,8 +212,8 @@ int main(int argc, char* argv[]) {
   um novo tipo de dados** ao mesmo tempo usando o `typedef`:
   ```c
   typedef struct vetor2d {
-    float x;
-    float y;
+      float x;
+      float y;
   } tipo_vetor2d;
   ```
 - Daí, na hora de declarar variáveis, **podemos omitir a palavra `struct`**:
@@ -297,7 +297,7 @@ int main(int argc, char* argv[]) {
   ```
 - Compilação condicional
   ```c
-  #ifdef ESTOU_COMPILANDO_NUM_WINDOWS
+  #ifdef WIN32
     ...
   #elif
     ...
@@ -373,14 +373,14 @@ int main(int argc, char* argv[]) {
 #include "vetor.h"
 
 int main(int argc, char* argv[]) {
-  struct vetor velocidade;
-  velocidade.x = 1.0f;
-  velocidade.y = 0.7f;
-  printf("vel: (%.2f, %.2f)\n", velocidade.x, velocidade.y);
+    struct vetor velocidade;
+    velocidade.x = 1.0f;
+    velocidade.y = 0.7f;
+    printf("vel: (%.2f, %.2f)\n", velocidade.x, velocidade.y);
 
-  velocidade = multiEscalar(velocidade, 2);
-  printf("vel * 2: (%.2f, %.2f)\n", velocidade.x, velocidade.y);
-  return 0;
+    velocidade = multiEscalar(velocidade, 2);
+    printf("vel * 2: (%.2f, %.2f)\n", velocidade.x, velocidade.y);
+    return 0;
 }
 ```
 [Exemplo de divisão em módulos](codeblocks:divisao-modulos/CodeBlocks/divisao-modulos.cbp)
