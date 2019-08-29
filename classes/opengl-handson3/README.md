@@ -333,7 +333,7 @@ GLuint carregaTextura(char* arquivo) {
     );
 
     if (idTextura == 0) {
-      printf("Erro carregando a textura: '%s'\n", SOIL_last_result());
+        printf("Erro carregando a textura: '%s'\n", SOIL_last_result());
     }
 
     return idTextura;
