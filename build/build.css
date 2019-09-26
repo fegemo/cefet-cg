@@ -1646,6 +1646,27 @@ background-color #ababab h1,
   background-repeat: no-repeat;
   background-position: center center;
 }
+.hierarchical .layout-title {
+  background-color: #8d82e0;
+}
+.hierarchical .layout-title h1 {
+  color: #639;
+  text-shadow: 2px 2px #000;
+}
+.hierarchical .layout-title h1::before {
+  background-image: url("../images/sample-matrix-multiplication.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: #fff;
+}
+.hierarchical .modelagem-hierarquica.layout-section-header::after {
+  background-image: url("../images/bicicleta.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-color: #000;
+}
 .vertex-spec .layout-title {
   background-color: #c0c0c0;
 }

@@ -45,7 +45,7 @@
 
 - Desenhar uma curva
   - Algoritmo de Casteljau
-- ![](../../flavioro-galaxian.gif) <!-- {.push-right} -->
+- ![](../../images/flavioro-galaxian.gif) <!-- {.push-right} -->
   Modelar uma curva
   - Para a trajetória da câmera
   - Trajetória de um objeto

@@ -326,6 +326,8 @@ da rotação dos pontos em um ângulo especificado com **relação à origem**:
   ângulo de rotação**:
   - <span class="math">R^{-1}(\alpha)=R(-\alpha)</span>
 
+Sugestão: sempre definir objetos em um sistema de coordenadas local a ela (ou seja, usar transformações para posicioná-lo). Exemplo: [rotacao-ao-redor-de-um-ponto](codeblocks:rotacao-ao-redor-de-um-ponto/CodeBlocks/rotacao-ao-redor-de-um-ponto.cbp) <!-- {p:.note.info} -->
+
 ---
 <!-- {"layout": "regular"} -->
 ## Rotação em torno de um ponto: **fora da** origem
@@ -334,9 +336,11 @@ da rotação dos pontos em um ângulo especificado com **relação à origem**:
   precisamos, primeiro  (1) movê-lo até a origem, (2) rotacionar e (3) movê-lo
   de volta
 
-  ![](../../images/rotacao-ponto.png)
+  ![](../../images/rotacao-ponto.png) <!-- {.centered} -->
 - Assim, fazemos uma **transformação composta** dada pela matriz obtida pela multiplicação:
   - <span class="math">M = T(\vec{p})R_z(45)T(-\vec{p})</span>
+
+
 
 ---
 <!-- {"layout": "regular"} -->
