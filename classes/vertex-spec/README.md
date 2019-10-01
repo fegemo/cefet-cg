@@ -104,10 +104,10 @@ dos vértices em um único _arrayzão_, usando _vertex arrays_ <!-- {p:.note.inf
 # _Vertex Arrays_
 
 1. Em tempo de inicialização, montamos um _arrayzão_ com tudo
-1. Ao desenhar
-  - Especificamos como o OpenGL vai encontrar
-  a cor, as coordenadas de textura, a normal e as coordenadas de cada vértice
-  - Em vez de desenhar com `glBegin(...)/glEnd`, usamos `glDrawArrays(...)`
+1. Ao desenhar:
+   - Especificamos como o OpenGL vai encontrar
+     a cor, as coordenadas de textura, a normal e as coordenadas de cada vértice
+   - Em vez de desenhar com `glBegin(...)/glEnd`, usamos `glDrawArrays(...)`
 
 ---
 <!-- {"layout": "regular"} -->
@@ -116,36 +116,36 @@ dos vértices em um único _arrayzão_, usando _vertex arrays_ <!-- {p:.note.inf
 ```c
 void inicializaVertexArrayTriangulos(int quantosTris, struct tri *triangulos) {
                     // coords, cor, textura, normal
-  int quantosFloatsPorVertice = 3 + 4 + 2 + 3;
-  char *arrayzao = (char*) malloc(
-    quantosTris * 3 *
-    quantosFloatsPorVertice *
-    sizeof(GLfloat)
-  );
-  GLfloat* p = arrayzao;
+    int quantosFloatsPorVertice = 3 + 4 + 2 + 3;
+    char *arrayzao = (char*) malloc(
+        quantosTris * 3 *
+        quantosFloatsPorVertice *
+        sizeof(GLfloat)
+    );
+    GLfloat* p = arrayzao;
 
-  // para cada triângulo, colocar dados de seus vértices
-  for (int i = 0; i < quantosTris; i++, p += quantosFloatsPorVertice * 3) {
-    struct tri* t = &triangulos[i];
+    // para cada triângulo, colocar dados de seus vértices
+    for (int i = 0; i < quantosTris; i++, p += quantosFloatsPorVertice * 3) {
+        struct tri* t = &triangulos[i];
 
-    // vértice 0
-    memcpy(&p[0], t->coordenadas, sizeof(GLfloat) * 3);
-    memcpy(&p[3], t->cor, sizeof(GLfloat) * 4);
-    memcpy(&p[7], t->textura, sizeof(GLfloat) * 2);
-    memcpy(&p[9], t->normal, sizeof(GLfloat) * 3);
+        // vértice 0
+        memcpy(&p[0], t->coordenadas, sizeof(GLfloat) * 3);
+        memcpy(&p[3], t->cor, sizeof(GLfloat) * 4);
+        memcpy(&p[7], t->textura, sizeof(GLfloat) * 2);
+        memcpy(&p[9], t->normal, sizeof(GLfloat) * 3);
 
-    // vértice 1
-    memcpy(&p[12], t->coordenadas, sizeof(GLfloat) * 3);
-    memcpy(&p[15], t->cor, sizeof(GLfloat) * 4);
-    memcpy(&p[19], t->textura, sizeof(GLfloat) * 2);
-    memcpy(&p[21], t->normal, sizeof(GLfloat) * 3);
+        // vértice 1
+        memcpy(&p[12], t->coordenadas, sizeof(GLfloat) * 3);
+        memcpy(&p[15], t->cor, sizeof(GLfloat) * 4);
+        memcpy(&p[19], t->textura, sizeof(GLfloat) * 2);
+        memcpy(&p[21], t->normal, sizeof(GLfloat) * 3);
 
-    // vértice 2
-    memcpy(&p[24], t->coordenadas, sizeof(GLfloat) * 3);
-    memcpy(&p[27], t->cor, sizeof(GLfloat) * 4);
-    memcpy(&p[31], t->textura, sizeof(GLfloat) * 2);
-    memcpy(&p[33], t->normal, sizeof(GLfloat) * 3);
-  }
+        // vértice 2
+        memcpy(&p[24], t->coordenadas, sizeof(GLfloat) * 3);
+        memcpy(&p[27], t->cor, sizeof(GLfloat) * 4);
+        memcpy(&p[31], t->textura, sizeof(GLfloat) * 2);
+        memcpy(&p[33], t->normal, sizeof(GLfloat) * 3);
+    }
 
   return arrayzao;
 }
@@ -157,23 +157,23 @@ void inicializaVertexArrayTriangulos(int quantosTris, struct tri *triangulos) {
 
 ```c
 void desenhaComVertexArrays(int quantos, struct tri *triangulos) {
-  char *arrayzao = inicializaVertexArrayTriangulos(quantos, triangulos);
-  const GLfloat *p = (const GLfloat*) arrayzao;
-  int stride = sizeof(GLfloat) * (3+4+2+3); // XYZ, RGBA, ST, XYZ: 12 floats
+    char *arrayzao = inicializaVertexArrayTriangulos(quantos, triangulos);
+    const GLfloat *p = (const GLfloat*) arrayzao;
+    int stride = sizeof(GLfloat)*(3+4+2+3); //XYZ, RGBA, ST, XYZ: 12 floats
 
-  glVertexPointer(/*xyz*/3, GL_FLOAT, stride, p+0);
-  glColorPointer(/*rgba*/4, GL_FLOAT, stride, p+3);
-  glTexCoordPointer(/*st*/2, GL_FLOAT, stride, p+7);
-  glNormalPointer(/*xyz*/3, GL_FLOAT, stride, p+9);
+    glVertexPointer(/*xyz*/3, GL_FLOAT, stride, p+0);
+    glColorPointer(/*rgba*/4, GL_FLOAT, stride, p+3);
+    glTexCoordPointer(/*st*/2, GL_FLOAT, stride, p+7);
+    glNormalPointer(/*xyz*/3, GL_FLOAT, stride, p+9);
 
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_COLOR_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-  glEnableClientState(GL_NORMAL_ARRAY);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
 
-  glDrawArrays(GL_TRIANGLES, /*firstIndex*/0, /*quantosVertices*/quantos*3);
+    glDrawArrays(GL_TRIANGLES, /*firstIndex*/0, /*quantosVertices*/quantos*3);
 
-  free(arrayzao);
+    free(arrayzao);
 }
 ```
 
@@ -195,15 +195,17 @@ void desenhaComVertexArrays(int quantos, struct tri *triangulos) {
 # _Vertex Buffer Objects_ (VBOs)
 
 ```c
-void inicializaComVBO(GLuint idBuffer,
-  int quantosTris, struct tri *triangles) {
-  char *arrayzao = inicializaVertexArrayTriangulos(quantosTris, triangles);
-  int stride = sizeof(GLfloat)* (3 + 4 + 2 + 3); // XYZ, RBGA, ST, XYZ: 12 floats
-  int quantosVertices = 3 * quantosTris;
-  int tamanhoBuffer = stride * quantosVertices;
-  glBindBuffer(GL_ARRAY_BUFFER, idBuffer);
-  glBufferData(GL_ARRAY_BUFFER, tamanhoBuffer, arrayzao, GL_STATIC_DRAW);
-  free(arrayzao);
+void inicializaComVBO(GLuint idBuffer, int quantosTris, struct tri *triangles) {
+    char *arrayzao = inicializaVertexArrayTriangulos(quantosTris, triangles);
+
+    int stride = sizeof(GLfloat)*(3 + 4 + 2 + 3); //XYZ, RBGA, ST, XYZ: 12 floats
+    int quantosVertices = 3 * quantosTris;
+    int tamanhoBuffer = stride * quantosVertices;
+
+    glBindBuffer(GL_ARRAY_BUFFER, idBuffer);
+    glBufferData(GL_ARRAY_BUFFER, tamanhoBuffer, arrayzao, GL_STATIC_DRAW);
+
+    free(arrayzao);
 }
 ```
 
@@ -213,28 +215,26 @@ void inicializaComVBO(GLuint idBuffer,
 
 ```c
 void desenhaComVBOs(int idBuffer, int quantos) {
-  int stride = sizeof(GLfloat) * (3+4+2+3); // XYZ, RGBA, ST, XYZ: 12 floats
-  // início do buffer
-  char* base = NULL;
-  glBindBuffer(GL_ARRAY_BUFFER, idBuffer);
+    int stride = sizeof(GLfloat)*(3+4+2+3); //XYZ, RGBA, ST, XYZ: 12 floats
+    // início do buffer
+    char* base = NULL;
+    glBindBuffer(GL_ARRAY_BUFFER, idBuffer);
 
-  glVertexPointer(/*xyz*/3, GL_FLOAT, stride, base+0*sizeof(GLfloat));
-  glColorPointer(/*rgba*/4, GL_FLOAT, stride, base+3*sizeof(GLfloat));
-  glTexCoordPointer(/*st*/2, GL_FLOAT, stride, base+7*sizeof(GLfloat));
-  glNormalPointer(/*xyz*/3, GL_FLOAT, stride, base+9*sizeof(GLfloat));
+    glVertexPointer(/*xyz*/3, GL_FLOAT, stride, base+0*sizeof(GLfloat));
+    glColorPointer(/*rgba*/4, GL_FLOAT, stride, base+3*sizeof(GLfloat));
+    glTexCoordPointer(/*st*/2, GL_FLOAT, stride, base+7*sizeof(GLfloat));
+    glNormalPointer(/*xyz*/3, GL_FLOAT, stride, base+9*sizeof(GLfloat));
 
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_COLOR_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-  glEnableClientState(GL_NORMAL_ARRAY);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY);
 
-  glDrawArrays(GL_TRIANGLES, /*firstIndex*/0, /*quantosVertices*/quantos*3);
-
-  free(arrayzao);
+    glDrawArrays(GL_TRIANGLES, /*firstIndex*/0, /*quantosVertices*/quantos*3);
 }
 ```
 
 ---
 # Exemplo: [cubo-vbo](codeblocks:cubo-vbo/CodeBlocks/cubo-vbo.cbp)
 
-![](https://github.com/fegemo/cefet-cg-exemplos-opengl/raw/master/docs/cubo-vbo.gif)
+![](https://github.com/fegemo/cefet-cg-exemplos-opengl/raw/master/docs/cubo-vbo.gif) <!-- {style="height: 400px;"} -->
