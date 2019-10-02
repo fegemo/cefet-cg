@@ -45,8 +45,8 @@ multiplicação de matriz (_e.g._, `glTranslate`, `glRotate`, `glOrtho`). <!-- {
    desenhaUnicornioNaOrigem(); // 🦄
    ```
    <!-- {ol:.no-margin.no-bullet style="padding-left: 0;"} -->
-1. <div class="math bullet" style="font-size: 14px;">M = \begin{vmatrix}1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}0.5 & -0.87 & 0 \\0.87 & 0.5 & 0 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}1 & 0 & 2 \\0 & 1 & 0 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}0.5 & 0 & 0 \\0 & 0.5 & 0 \\0 & 0 & 1\end{vmatrix}</div>
-1. <div class="math bullet" style="font-size: 14px;">M = \begin{vmatrix}0.25 & -0.435 & 1 \\0.435 & 0.25 & 1.74 \\0 & 0 & 1\end{vmatrix}</div>
+1. <div class="math bullet" style="font-size: 14px;">M = \begin{vmatrix}1 & 0 & 0 \\0 & 1 & 0 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}0.87 & -0.5 & 0 \\0.5 & 0.87 & 0 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}1 & 0 & 2 \\0 & 1 & 0 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}0.5 & 0 & 0 \\0 & 0.5 & 0 \\0 & 0 & 1\end{vmatrix}</div>
+1. <div class="math bullet" style="font-size: 14px;">M = \begin{vmatrix}0.43 & -0.25 & 1.73 \\0.25 & 0.43 & 1 \\0 & 0 & 1\end{vmatrix}</div>
 
 - Suponha 3 transformações:
   1. <span class="math">R(30)</span>: rotaciona 30°
@@ -73,7 +73,7 @@ multiplicação de matriz (_e.g._, `glTranslate`, `glRotate`, `glOrtho`). <!-- {
   ```
   Tudo que é feito altera a posição e orientação do
   sistema de coordenadas local <!-- {ul:.no-bullet style="padding: 0;"} -->
-- <div class="math bullet" style="font-size: 14px;">M = \begin{vmatrix}0.25 & -0.435 & 1 \\0.435 & 0.25 & 1.74 \\0 & 0 & 1\end{vmatrix}</div>
+- <div class="math bullet" style="font-size: 14px;">M = \begin{vmatrix}0.43 & -0.25 & 1.73 \\0.25 & 0.43 & 1 \\0 & 0 & 1\end{vmatrix}</div>
 
 1. <figure class="picture-steps clean">
      <img class="bullet" src="../../images/composicao-pos-multiplicacao-1.png" style="height: 250px">
@@ -84,10 +84,10 @@ multiplicação de matriz (_e.g._, `glTranslate`, `glRotate`, `glOrtho`). <!-- {
      <img class="bullet" src="../../images/composicao-pos-multiplicacao-6.png" style="height: 250px">
    </figure>
 1. <!-- {ol:.no-bullet.bulleted.no-margin style="padding-left: 0"} -->
-   Supondo 4 vértices indo de 0 a 4 em <span class="math">x, y</span>:
-   - <div class="math" style="font-size: 14px;">M \times v_0 = \begin{vmatrix}0.25 & -0.435 & 1 \\0.435 & 0.25 & 1.74 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}0 \\ 0 \\ 1\end{vmatrix} = \begin{vmatrix}1 \\ 1.74 \\ 1\end{vmatrix}</div>
-   - <div class="math" style="font-size: 14px;">M \times v_1 = \begin{vmatrix}0.25 & -0.435 & 1 \\0.435 & 0.25 & 1.74 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}2 \\ 0 \\ 1\end{vmatrix} = \begin{vmatrix}1.5 \\ 2.61 \\ 1\end{vmatrix}</div>
-   - <div class="math" style="font-size: 14px;">M \times v_2 = \begin{vmatrix}0.25 & -0.435 & 1 \\0.435 & 0.25 & 1.74 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}2 \\ 2 \\ 1\end{vmatrix} = \begin{vmatrix}0.63 \\ 3.11 \\ 1\end{vmatrix}</div>
+   Supondo 4 vértices indo de 0 a 2 em <span class="math">x, y</span>:
+   - <div class="math" style="font-size: 14px;">M \times v_0 = \begin{vmatrix}0.43 & -0.25 & 1.73 \\0.25 & 0.43 & 1 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}0 \\ 0 \\ 1\end{vmatrix} = \begin{vmatrix}1.73 \\ 1 \\ 1\end{vmatrix}</div>
+   - <div class="math" style="font-size: 14px;">M \times v_1 = \begin{vmatrix}0.43 & -0.25 & 1.73 \\0.25 & 0.43 & 1 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}2 \\ 0 \\ 1\end{vmatrix} = \begin{vmatrix}2.6 \\ 1.5 \\ 1\end{vmatrix}</div>
+   - <div class="math" style="font-size: 14px;">M \times v_2 = \begin{vmatrix}0.43 & -0.25 & 1.73 \\0.25 & 0.43 & 1 \\0 & 0 & 1\end{vmatrix} \times \begin{vmatrix}2 \\ 2 \\ 1\end{vmatrix} = \begin{vmatrix}2.10 \\ 2.37 \\ 1\end{vmatrix}</div>
 
 
 ---
@@ -116,6 +116,11 @@ multiplicação de matriz (_e.g._, `glTranslate`, `glRotate`, `glOrtho`). <!-- {
    <img class="bullet" src="../../images/composicao-pos-multiplicacao-6.png" style="height: 250px">
    </figure>
 
+---
+<!-- { "layout": "centered-horizontal" } -->
+## Exemplo: [pós vs pré-multiplicação](codeblocks:pos-pre-multiplicacao/CodeBlocks/pos-pre-multiplicacao.cbp)
+
+![](../../images/pos-pre-multiplicacao.png)
 
 ---
 <!-- { "layout": "regular" } -->
@@ -127,24 +132,6 @@ multiplicação de matriz (_e.g._, `glTranslate`, `glRotate`, `glOrtho`). <!-- {
   transformações como **alterando o sistema de coordenadas local**
   - O OpenGL funciona com **pós-multiplicação**, então é mais
     fácil pensar assim
-
----
-<!-- { "layout": "regular" } -->
-## Pós-multiplicação em OpenGL
-
-- Para cada nova matriz de transformação, o OpenGL a pós-multiplica com
-  a matriz no topo da pilha corrente:
-  - <span class="math">M' = M \times T_{nova}</span>
-  - <span class="math">NovaNaPilha = AtualDaPilha \times NovaTransformacao</span>
-- Exemplo: fazer uma translação e então rotação
-  - 0) <span class="math">M = Identidade</span>
-  - 1) Translação <span class="math">T(t_x, t_y)</span>: <span class="math">M = M \times T</span>
-  - 2) Rotação <span class="math">R(\alpha)</span>: <span class="math">M = M \times R</span>
-  - 3) Transformando um ponto <span class="math">P</span>: <span class="math">P' = M \times P</span>
-- Ao usar OpenGL, devemos pensar na transformação de objetos
-  como uma alteração do sistema de coordenadas local
-- Todas as transformações são executadas **relativas ao sistema
-  de coordenadas corrente**
 
 ---
 <!-- { "layout": "regular" } -->
@@ -167,37 +154,39 @@ multiplicação de matriz (_e.g._, `glTranslate`, `glRotate`, `glOrtho`). <!-- {
 
 ```c
 void desenhaCarroTodo(struct chassi_t chassi) {
-  glPushMatrix();
-    glTranslatefv(chassi.posicaoCentro);
-    desenhaChassi();
+    glPushMatrix();
+        float* centroChassi = chassi.posicao;
+        glTranslatef(centroChassi[0], centroChassi[1], centroChassi[2]);
+        desenhaChassi();
 
-    for (int i = 0; i < NUM_RODAS; i++) {
-      glPushMatrix();
-        glTranslatefv(chassi.roda[i].posicaoCentro)
-        desenhaRodaEPneu();
-      glPopMatrix();      
-    }
-  glPopMatrix();
+        for (int i = 0; i < NUM_RODAS; i++) {
+            float* centroRoda = chassi.rodas[i].posicao;
+            glPushMatrix();
+                glTranslatef(centroRoda[0], centroRoda[1], centroRoda[2]);
+                desenhaRodaEPneu();
+            glPopMatrix();      
+        }
+    glPopMatrix();
 }
 ```
 
 ---
-<!-- { "layout": "regular" } -->
+<!-- { "layout": "regular", "slideClass": "compact-code" } -->
 ## Exemplo do carro (2/2)
 
 ```c
 void desenhaRodaEPneu() {
-  desenhaRoda();
+    desenhaRoda();
 
-  for (int i = 0; i < NUM_PARAFUSOS; i++) {
-    glPushMatrix();
-      float angulo = ((float)i) / NUM_PARAFUSOS;
-      glRotatef(angulo, 0, 0, 1);
-      glTranslatefv(RAIO_PARAFUSO)
-      desenhaParafuso();
-    glPopMatrix();      
-  }
-  desenhaPneu();
+    for (int i = 0; i < NUM_PARAFUSOS; i++) {
+        glPushMatrix();
+            float angulo = ((float)i) / NUM_PARAFUSOS;
+            glRotatef(angulo, 0, 0, 1);
+            glTranslatef(RAIO_PARAFUSO, 0, 0);
+            desenhaParafuso();
+        glPopMatrix();      
+    }
+    desenhaPneu();
 }
 ```
 
