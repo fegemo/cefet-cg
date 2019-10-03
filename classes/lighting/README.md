@@ -186,6 +186,9 @@ Em um modelo local (CG de tempo real), **objetos não projetam sombras**! <!-- {
 - A quantidade de luz ambiente é constante em todo o ambiente
 - A quantidade de luz ambiente refletida por um objeto independe da geometria
   do objeto
+  <div class="math centered">C(V) = k_aL_a</div>
+  ...onde <span class="math">k_a</span> é o coeficiente ambiente do material<br>
+  e <span class="math">L_a</span> é a cor da luz ambiente.
 
 ---
 <!-- {"layout": "regular"} -->
@@ -194,7 +197,7 @@ Em um modelo local (CG de tempo real), **objetos não projetam sombras**! <!-- {
 - Objetos foscos refletem a luz em todas as direções uniformemente e
   possuem uma cor
 - Segundo a Lei de Lambert (fluxo de energia):
-  - a **luminosidade** aparente da superfície não **depende** da posição do
+  - A **luminosidade** aparente da superfície não **depende** da posição do
     observador, mas apenas do cosseno do **ângulo entre a normal e a
     direção da luz**
 
@@ -205,9 +208,16 @@ Em um modelo local (CG de tempo real), **objetos não projetam sombras**! <!-- {
 <!-- {"layout": "regular"} -->
 ## Calculando a contribuição **difusa**
 
-- Intensidade da luz em um ponto p é dada por:
+- ![](../../images/modelo-difuso.png) <!-- {.push-right} -->
+  A componente difusa (+ambiente) de um vértice <span class="math">V</span> é dada por:
 
-  ![](../../images/modelo-difuso.png)
+  <div class="math">C(V) = k_aL_a + k_d\sum_iL_i(\vec{s}_i \cdot \vec{n})</div>
+  ...onde  <span class="math">k_d</span> é o coeficiente difuso do material,<br>
+  o somatório itera somando a contribuição de cada fonte de luz,<br>
+  <span class="math">L_i</span> é a cor da fonte de luz atual,<br>
+  <span class="math">\vec{s}_i</span> é a incidência da luz (apontando para ela),<br>
+  <span class="math">\vec{n}</span> é o vetor normal de <span class="math">V</span>.
+
 
 ---
 <!-- {"layout": "regular"} -->
@@ -222,9 +232,15 @@ Em um modelo local (CG de tempo real), **objetos não projetam sombras**! <!-- {
 <!-- {"layout": "regular"} -->
 ## Calculando a contribuição **especular**
 
-- A intensidade da contribuição especular em um ponto p é dada por:
+- ![](../../images/modelo-phong.png) <!-- {.push-right} -->
+  A intensidade da contribuição especular em um ponto p é dada por:
 
-  ![](../../images/modelo-phong.png)
+  <div class="math">C(V) = k_aL_a + k_d\sum_iL_i(\vec{s}_i \cdot \vec{n}) + k_s\sum_iL_i(\vec{r} \cdot \vec{v})^{k_e}</div>
+  ...onde  <span class="math">k_s</span> é o coeficiente especular do material,<br>
+  o somatório itera somando a contribuição de cada fonte de luz,<br>
+  <span class="math">L_i</span> é a cor da fonte de luz atual,<br>
+  <span class="math">\vec{r}_i</span> é a direção da reflexão perfeita da luz,<br>
+  <span class="math">\vec{v}</span> é o vetor que aponta de <span class="math">V</span> até a câmera.
 
 ---
 <!-- {"layout": "regular"} -->
@@ -234,15 +250,15 @@ Em um modelo local (CG de tempo real), **objetos não projetam sombras**! <!-- {
   - Espelho ideal tem especularidade infinita
   - Na prática, usam-se valores entre 5 e 100
 
-![](../../images/specular-coefficient.png)
+![](../../images/specular-coefficient.png) <!-- {p:.centered} -->
 
 ---
 <!-- {"layout": "regular"} -->
-## Demonstração do Modelo de Iluminação de Phong
+## Demonstração do Modelo de Phong
 
-![](../../images/exemplo-luz-e-materiais.png)
+![](../../images/exemplo-luz-e-materiais.png) <!-- {p:.centered} --> <!-- {style="max-height: 300px;"} -->
 
-- Exemplo: [luz-e-material](codeblocks:luz-e-material/CodeBlocks/luz-e-material.cbp)
+- Exemplo: [luz-e-material-marte](codeblocks:luz-e-material/CodeBlocks/luz-e-material-marte.cbp)
 
 ---
 <!-- {"layout": "section-header"} -->
@@ -265,11 +281,11 @@ Em um modelo local (CG de tempo real), **objetos não projetam sombras**! <!-- {
   - A cor dos pixels no interior dos polígonos é obtida por interpolação linear
 - É possível configurar alguns efeitos atmosféricos:
 
-  Atenuação da luz
-    ~ perde força quanto mais distante
+Atenuação da luz
+  ~ perde força quanto mais distante
 
-  Neblina
-    ~ uma névoa a partir de uma distância da câmera
+Neblina
+  ~ uma névoa a partir de uma distância da câmera
 
 ---
 <!-- {"layout": "regular"} -->
