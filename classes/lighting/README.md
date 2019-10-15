@@ -463,13 +463,13 @@ Neblina
     ```
     glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 1.0);
     ```
-- Por padrão, há uma atenuação de:
+- Por padrão, os valores das contantes são:
   - <span class="math">k_c = 1</span>, <span class="math">k_l = 0</span>,
-    <span class="math">k_q = 0</span>  
+    <span class="math">k_q = 0</span>
 
 ---
 <!-- {"layout": "regular"} -->
-## Cor resultante de um vértice: <span class="math">C</span>
+## Cor resultante de um vértice: <span class="math">C(V)</span>
 
 - A atenuação só é aplicada sobre as componentes difusa
   <span class="math">D</span> e especular <span class="math">S</span>
@@ -477,12 +477,10 @@ Neblina
     emissiva <span class="math">E</span>
 - A fórmula que calcula a cor de um vértice devida a uma **fonte luminosa
   <span class="math">i</span>** é dada por:
-  <div class="math">C_i=A_i + aten(D_i + S_i)</div>
+  <div class="math">C_i(V)=A_i + aten(D_i + S_i)</div>
 - Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz)
-  somada à luz emitida e às contribuições fonte luminosa
-    <span class="math">C_i</span>:
-
-    <div class="math">C=A_{global} + E + \sum{(A_i + aten(D_i + S_i))}</div>
+  somada à luz emitida e às contribuições de todas fontes luminosas:
+    <div class="math">C(V)=A_{global} + E + \sum_{i=0}^{fontes}{(A_i + aten(D_i + S_i))}</div>
 
 ---
 <!-- {"layout": "regular"} -->
@@ -566,7 +564,6 @@ Neblina
 
 <figure class="picture-steps">
   <img class="bullet full-width" src="../../images/lowpoly-octopus.jpg">
-  <img class="bullet full-width" src="../../images/lowpoly-fox.jpg">
   <img class="bullet full-width" src="../../images/lowpoly-scene.jpg">
   <img class="bullet full-width" src="../../images/lowpoly-trees-and-stones.jpg">
 </figure>
@@ -579,23 +576,26 @@ Neblina
 
 - ![](../../images/normal-media-faces.png) <!-- {.push-right} -->
   Usa a cor calculada **em cada vértice** pelo modelo de iluminação
-- Para colorir o polígono, **interpola a cor dos vértices** em seu interior
+- Para o interior do polígono, **interpola a cor dos vértices**
 - Qualidade da imagem é muito maior, mas o custo é maior
 - Deve haver **01 vetor normal por vértice** (e não por face)
-  - Ele precisa ser fornecido como a média das normais das faces
-  adjacentes ao vértice de volta
-
+  - Ele deve ser fornecido como a média das normais das faces
+    adjacentes ao vértice
 
 ---
+<!-- { "layout": "regular" } -->
 ## Limitações do _Gouraud shading_
 
-- Realces da luz especular (**_highlights_**) sofrem por baixa amostragem de
-  vértices
+- Se houver poucos vértices no objeto, os realces da componente especular
+  (**_highlights_**) podem ficar estranhos:
 
-  ![](../../images/shading-gouraud-low-anim.gif)
-  ![](../../images/shading-gouraud-high.gif)
+::: figure .centered
+![](../../images/shading-gouraud-low-anim.gif)
+![](../../images/shading-gouraud-high.gif)
+:::
 
 ---
+<!-- { "layout": "regular" } -->
 # 3. _Phong shading_
 
 ![](../../images/shading-phong-exemplo.png)
@@ -603,6 +603,7 @@ Neblina
 - Não confundir com o **modelo de iluminação de _Phong_**
 
 ---
+<!-- { "layout": "regular" } -->
 # _Phong shading_ (cont.)
 
 - <u>Interpola as normais</u> dos vértices para os pixels, em vez das cores
