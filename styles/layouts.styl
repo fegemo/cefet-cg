@@ -302,8 +302,9 @@
 
 .lighting
   .layout-title
-    background-color: silver
+    background-color silver
     h1
+      color #7e5dff
       &::before
         background-image url(../images/illuminated-vs-non-illuminated-spheres.png)
         background-position center bottom
@@ -312,9 +313,20 @@
         background-color white
     h2
       padding-right 1em
+  .modelos-de-iluminacao.layout-section-header::after
+    background-color white
+    background-image url(../images/luz-modelo-fisico.png)
+    background-repeat no-repeat
+    background-position center center
+    background-size contain
   .shading.layout-section-header::after
     background-color white
     background-image url(../images/shading-sumo.jpg)
+    background-repeat no-repeat
+    background-position center center
+  .fog.layout-section-header::after
+    background-color white
+    background-image url(../images/fog.jpg)
     background-repeat no-repeat
     background-position center center
 
