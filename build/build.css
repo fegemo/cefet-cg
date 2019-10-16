@@ -179,26 +179,33 @@ a[href^="codeblocks:"]:before {
 .hljs {
   padding: 1em;
 }
-.picture-steps {
+.picture-steps,
+.picture-steps > p {
   position: relative;
 }
-.picture-steps > *:not(:first-child) {
+.picture-steps > *:not(:first-child),
+.picture-steps > p > *:not(:first-child) {
   position: absolute;
   top: 0;
   left: 0;
 }
-.picture-steps > *:not(.bespoke-bullet-active) {
+.picture-steps > *:not(.bespoke-bullet-active),
+.picture-steps > p > *:not(.bespoke-bullet-active) {
   -webkit-transform: initial;
           transform: initial;
 }
-.picture-steps.clean > *:not(:last-child):not(.bespoke-bullet-current) {
+.picture-steps.clean > *:not(:last-child):not(.bespoke-bullet-current),
+.picture-steps > p.clean > *:not(:last-child):not(.bespoke-bullet-current) {
   opacity: 0;
 }
-.picture-steps .katex-display {
+.picture-steps .katex-display,
+.picture-steps > p .katex-display {
   text-align: left;
 }
 .picture-steps .bullet.math,
-.picture-steps .bullet .math {
+.picture-steps > p .bullet.math,
+.picture-steps .bullet .math,
+.picture-steps > p .bullet .math {
   padding-top: 1px;
 }
 .inset-shadow {
@@ -416,6 +423,14 @@ img[alt$="max"] {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+.horizontal-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.horizontal-list > li {
+  width: auto;
 }
 @-webkit-keyframes pulsating {
   from {
@@ -1687,6 +1702,9 @@ background-color #ababab h1,
 .lighting .layout-title {
   background-color: #c0c0c0;
 }
+.lighting .layout-title h1 {
+  color: #7e5dff;
+}
 .lighting .layout-title h1::before {
   background-image: url("../images/illuminated-vs-non-illuminated-spheres.png");
   background-position: center bottom;
@@ -1697,9 +1715,22 @@ background-color #ababab h1,
 .lighting .layout-title h2 {
   padding-right: 1em;
 }
+.lighting .modelos-de-iluminacao.layout-section-header::after {
+  background-color: #fff;
+  background-image: url("../images/luz-modelo-fisico.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
 .lighting .shading.layout-section-header::after {
   background-color: #fff;
   background-image: url("../images/shading-sumo.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.lighting .fog.layout-section-header::after {
+  background-color: #fff;
+  background-image: url("../images/fog.jpg");
   background-repeat: no-repeat;
   background-position: center center;
 }

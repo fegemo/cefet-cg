@@ -84,7 +84,7 @@
   - Coeficientes: o quão polido, o quão áspero etc.
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "modelos-de-iluminacao"} -->
 # Modelos de Iluminação
 
 ---
@@ -587,73 +587,90 @@ Neblina
 ## Limitações do _Gouraud shading_
 
 - Se houver poucos vértices no objeto, os realces da componente especular
-  (**_highlights_**) podem ficar estranhos:
+  (**_highlights_**) podem ficar estranhos ([gouraud-highlights](codeblocks:gouraud-highlights/CodeBlocks/gouraud-highlights.cbp )):
 
-::: figure .centered
-![](../../images/shading-gouraud-low-anim.gif)
-![](../../images/shading-gouraud-high.gif)
-:::
+![](../../images/gouraud-highlights-issue.gif) <!-- {p:.centered} -->
+
+---
+<!-- { "layout": "regular" } -->
+## O que acontece?
+
+- ![](../../images/highlight-gouraud.png) <!-- {.push-right} -->
+  Quando há poucos vértices e objetos rotacionando em relação à luz,
+  o brilho (_highlight_) da luz especular pode provocar um **artefato visual**:
+  - Brilho some/aparece
+  - Brilho muda de posição
+- Isso acontece porque a cor é calculada apenas por vértice e pode ser que não
+  haja nenhum vértice recebendo o _highlight_ em um momento, mas haja no próximo
 
 ---
 <!-- { "layout": "regular" } -->
 # 3. _Phong shading_
 
-![](../../images/shading-phong-exemplo.png)
+![](../../images/shading-phong-exemplo.png) <!-- {p:.centered} -->
 
-- Não confundir com o **modelo de iluminação de _Phong_**
+Não confundir com o **modelo de <u>iluminação</u> de _Phong_** <!-- {p:.note.info} -->
 
 ---
 <!-- { "layout": "regular" } -->
 # _Phong shading_ (cont.)
 
 - <u>Interpola as normais</u> dos vértices para os pixels, em vez das cores
-  - A função de iluminação deve ser avaliada **para cada pixel**
+  - A equação de iluminação deve ser avaliada **para cada pixel**
 - Significativamente mais caro
 - Não oferecido pelo OpenGL no _pipeline_ gráfico fixo
   - É possível implementar usando versões mais novas do OpenGL
+- Consertando o problema dos _highlights_ de Gouraud
+
+1. <!-- {ol:.no-bullet.horizontal-list} -->
+   ![](../../images/highlight-gouraud.png) <!-- {style="width: 200px"} -->
+1. &larr; Em **_Gouraud_**, temos uma amostragem de vértices muito menor
+1. Em **_Phong_**, a amostragem é bem maior &rarr;  <!-- {li:.push-right} -->
+1. ![](../../images/highlight-phong.png)<!-- {style="width: 200px"} -->
 
 ---
-## Consertando o problema dos _highlights_ de Gouraud
+<!-- { "layout": "regular" } -->
+## Comparação dos modelos de **sombreamento**
 
-![right](../../images/highlight-gouraud.png)
-Em **_Gouraud_**, temos uma amostragem de vértices muito menor &rarr;
-
-![left](../../images/highlight-phong.png)
-&larr; Em **_Phong_**, a amostragem é bem maior
-
-
----
-## Comparação dos três modelos de **sombreamento**
-
+::: figure .centered width:700px
 ![](../../images/shading-comparacao-normais.png)
-
 ![](../../images/shading-comparacao-exemplo.png)
+:::
+
+Exemplo: [flat-gouraud-phong](codeblocks:flat-gouraud-phong/CodeBlocks/flat-gouraud-phong.cbp) (usa pipeline programável) <!-- {p:.centered} -->
 
 ---
+<!-- { "layout": "section-header", "slideClass": "fog" } -->
 # _Fog_
 
+- Colocando neblina na cena
+
 ---
+<!-- { "layout": "centered-horizontal" } -->
 ## Neblina (_Fog_)
 
-<figure class="picture-steps">
-  <img class="bullet" src="../../images/fog.jpg">
-  <img class="bullet" src="../../images/fog-game.jpg">
-  <img class="bullet" src="../../images/fog-peixes.jpg">
-</figure>
+::: figure .picture-steps
+![](../../images/fog.jpg) <!-- {.bullet} -->
+![](../../images/fog-game.jpg) <!-- {.bullet} -->
+![](../../images/fog-peixes.jpg) <!-- {.bullet} -->
+:::
 
 ---
+<!-- { "layout": "centered-horizontal" } -->
 ## Zelda 64 e Turok 64
 
 
-<div style="display: block"><iframe src="https://www.youtube.com/embed/_9AcRhzV3qA?ecver=2&start=3" width="380" height="285" style="float: left;" frameborder="0" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/cOVpcC8GwXM?ecver=2&start=42" width="380" height="285" style="float: right;" frameborder="0" allowfullscreen></iframe></div>
+<div style="display: block"><iframe src="https://www.youtube.com/embed/_9AcRhzV3qA?ecver=2&start=3" width="450" height="337" style="float: left;" frameborder="0" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/cOVpcC8GwXM?ecver=2&start=42" width="450" height="337" style="float: right;" frameborder="0" allowfullscreen></iframe></div>
 
 
 ---
-## _Fog_ com cor do _skybox_ no Temple Run 2
+<!-- { "layout": "centered-horizontal" } -->
+# _Fog_ com cor do _skybox_ no Temple Run 2
 
-<iframe src="https://www.youtube.com/embed/wTTrtp-yy4I?ecver=2&start=55" width="600" height="450" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/wTTrtp-yy4I?ecver=2&start=55" width="800" height="600" frameborder="0" allowfullscreen></iframe>
 
 ---
+<!-- { "layout": "regular" } -->
 ## _Fog_ (cont.)
 
 ```c
