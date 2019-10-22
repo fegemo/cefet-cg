@@ -130,15 +130,15 @@ Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
 
 - Um **sólido é um conjunto tridimensional de pontos**
 - Conjuntos de pontos podem ser descritos
-  - Por suas fronteiras com o universo
-  - Por composição de sólidos mais simples
-  - Por um conjunto de escalares
-    - Definidos por equações
-    - Amostrados
+  1. Por suas fronteiras com o universo
+  1. Por um conjunto de escalares
+     - Definidos por equações
+     - Amostrados
+  1. Por composição de sólidos mais simples
 - Originam três tipos de representação:
-  - Por bordo ou fronteira (B-rep – _Boundary Representation_)
-  - Operações de conjuntos (CSG – _Constructive Solid Geometry_)
-  - Por particionamento do espaço (_BSP-trees_, _Octrees_, etc.)
+  1. Por bordo ou fronteira (B-rep – _Boundary Representation_)
+  1. Por particionamento do espaço (_grids_, _quadtrees_, _Octrees_ etc.)
+  1. Operações de conjuntos (CSG – _Constructive Solid Geometry_)
 
 ---
 <!-- {"layout": "regular"} -->
@@ -219,9 +219,7 @@ Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
 1. Explícita
 1. Ponteiros para lista de vértices
 1. Ponteiros para lista de arestas
-1. _Winged-Edge_ (_Half-Edge_, _Face-Edge_)
-1. ~~Quad-Edge (Guibas-Stolfi)~~
-1. ~~Radial-Edge~~
+1. _Winged-Edge_
 
 ---
 <!-- {"layout": "regular"} -->
@@ -345,45 +343,6 @@ Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
 ![](../../images/winged-edge-example-big.jpg) <!-- {style="max-height: 600px;"} -->
 
 ---
-# Representação CSG
-
-*[CSG]: Constructive Solid Geometry*
-
----
-<!-- {"layout": "regular"} -->
-# _Constructive Solid Geometry_
-
-- Operações CSG definem objetos através de operações regularizadas de
-  conjuntos de pontos
-  - União, Interseção e Diferença
-- Possibilita uma codificação bastante simples e concisa
-- Requer mais computação para renderizar do que _boundary representation_ (_b-rep_)
-
-![](../../images/csg-exemplo.png) <!-- {p:.centered} -->
-
-*[CSG]: Constructive Solid Geometry*
-
----
-<!-- {"layout": "regular"} -->
-## Codificação do CSG: Árvore
-
-- ![](../../images/csg-exemplo2.png) <!-- {.push-right style="max-height: 200px;"} -->
-  Um modelo CSG é codificado por uma árvore <!-- {ul:.full-width} -->
-  - **Folhas** contêm objetos **primitivos**
-    - Paralelepípedos, cilindros, prismas, pirâmides, esferas, cones etc.
-  - Os **nós internos** contêm **operações de conjunto** ou transformações
-
-<iframe src="../../samples/csg/index.html" width="100%" height="400" frameborder="0"></iframe>
-
-*[CSG]: Constructive Solid Geometry*
-
----
-<!-- {"layout": "centered"} -->
-## Exemplo (🌐 [tutorial no blender](https://www.youtube.com/watch?v=ViGTkjW997E))
-
-![](../../images/csg-cheese.png)
-
----
 # Representações por Células
 
 ---
@@ -392,9 +351,7 @@ Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
 
 - Dividem o espaço em sub-regiões convexas
   - **Grids**: cubos de tamanho igual
-  - **_Octrees_**: Cubos cujos lados são potências de 2 (1980)
-  <!-- - _BSP-trees_: Poliedros convexos
-  - _kd-trees_: -->
+  - **_Octrees_**: cubos cujos lados são potências de 2
 - Cada célula do espaço tem um valor, que é constante dentro dela
 1. Em 2D: <!-- {ol:.layout-split-2} -->
    - _Grids_ (matriz 2D)
@@ -463,6 +420,48 @@ Vamos focar nos universos da **REPRESENTAÇÃO** e da **IMPLEMENTAÇÃO**
 - Com o objeto em _b-rep_, basta desenhar
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/B_xk71YopsA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+<iframe width="100%" height="100%" src="https://fegemo.github.io/marching-squares/" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+# Representação CSG
+
+*[CSG]: Constructive Solid Geometry*
+
+---
+<!-- {"layout": "regular"} -->
+# _Constructive Solid Geometry_
+
+- Operações CSG definem objetos através de operações regularizadas de
+  conjuntos de pontos
+  - União, Interseção e Diferença
+- Possibilita uma codificação bastante simples e concisa
+- Requer mais computação para renderizar do que _boundary representation_ (_b-rep_)
+
+![](../../images/csg-exemplo.png) <!-- {p:.centered} -->
+
+*[CSG]: Constructive Solid Geometry*
+
+---
+<!-- {"layout": "regular"} -->
+## Codificação do CSG: Árvore
+
+- ![](../../images/csg-exemplo2.png) <!-- {.push-right style="max-height: 200px;"} -->
+  Um modelo CSG é codificado por uma árvore <!-- {ul:.full-width} -->
+  - **Folhas** contêm objetos **primitivos**
+    - Paralelepípedos, cilindros, prismas, pirâmides, esferas, cones etc.
+  - Os **nós internos** contêm **operações de conjunto** ou transformações
+
+<iframe src="../../samples/csg/index.html" width="100%" height="400" frameborder="0"></iframe>
+
+*[CSG]: Constructive Solid Geometry*
+
+---
+<!-- {"layout": "centered"} -->
+## Exemplo (🌐 [tutorial no blender](https://www.youtube.com/watch?v=ViGTkjW997E))
+
+![](../../images/csg-cheese.png)
 
 ---
 # Referências
