@@ -84,7 +84,7 @@
   - Coeficientes: o quão polido, o quão áspero etc.
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "modelos-de-iluminacao"} -->
 # Modelos de Iluminação
 
 ---
@@ -463,13 +463,13 @@ Neblina
     ```
     glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 1.0);
     ```
-- Por padrão, há uma atenuação de:
+- Por padrão, os valores das contantes são:
   - <span class="math">k_c = 1</span>, <span class="math">k_l = 0</span>,
-    <span class="math">k_q = 0</span>  
+    <span class="math">k_q = 0</span>
 
 ---
 <!-- {"layout": "regular"} -->
-## Cor resultante de um vértice: <span class="math">C</span>
+## Cor resultante de um vértice: <span class="math">C(V)</span>
 
 - A atenuação só é aplicada sobre as componentes difusa
   <span class="math">D</span> e especular <span class="math">S</span>
@@ -477,12 +477,10 @@ Neblina
     emissiva <span class="math">E</span>
 - A fórmula que calcula a cor de um vértice devida a uma **fonte luminosa
   <span class="math">i</span>** é dada por:
-  <div class="math">C_i=A_i + aten(D_i + S_i)</div>
+  <div class="math">C_i(V)=A_i + aten(D_i + S_i)</div>
 - Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz)
-  somada à luz emitida e às contribuições fonte luminosa
-    <span class="math">C_i</span>:
-
-    <div class="math">C=A_{global} + E + \sum{(A_i + aten(D_i + S_i))}</div>
+  somada à luz emitida e às contribuições de todas fontes luminosas:
+    <div class="math">C(V)=A_{global} + E + \sum_{i=0}^{fontes}{(A_i + aten(D_i + S_i))}</div>
 
 ---
 <!-- {"layout": "regular"} -->
@@ -566,7 +564,6 @@ Neblina
 
 <figure class="picture-steps">
   <img class="bullet full-width" src="../../images/lowpoly-octopus.jpg">
-  <img class="bullet full-width" src="../../images/lowpoly-fox.jpg">
   <img class="bullet full-width" src="../../images/lowpoly-scene.jpg">
   <img class="bullet full-width" src="../../images/lowpoly-trees-and-stones.jpg">
 </figure>
@@ -579,80 +576,101 @@ Neblina
 
 - ![](../../images/normal-media-faces.png) <!-- {.push-right} -->
   Usa a cor calculada **em cada vértice** pelo modelo de iluminação
-- Para colorir o polígono, **interpola a cor dos vértices** em seu interior
+- Para o interior do polígono, **interpola a cor dos vértices**
 - Qualidade da imagem é muito maior, mas o custo é maior
 - Deve haver **01 vetor normal por vértice** (e não por face)
-  - Ele precisa ser fornecido como a média das normais das faces
-  adjacentes ao vértice de volta
-
+  - Ele deve ser fornecido como a média das normais das faces
+    adjacentes ao vértice
 
 ---
+<!-- { "layout": "regular" } -->
 ## Limitações do _Gouraud shading_
 
-- Realces da luz especular (**_highlights_**) sofrem por baixa amostragem de
-  vértices
+- Se houver poucos vértices no objeto, os realces da componente especular
+  (**_highlights_**) podem ficar estranhos ([gouraud-highlights](codeblocks:gouraud-highlights/CodeBlocks/gouraud-highlights.cbp )):
 
-  ![](../../images/shading-gouraud-low-anim.gif)
-  ![](../../images/shading-gouraud-high.gif)
+![](../../images/gouraud-highlights-issue.gif) <!-- {p:.centered} -->
 
 ---
+<!-- { "layout": "regular" } -->
+## O que acontece?
+
+- ![](../../images/highlight-gouraud.png) <!-- {.push-right} -->
+  Quando há poucos vértices e objetos rotacionando em relação à luz,
+  o brilho (_highlight_) da luz especular pode provocar um **artefato visual**:
+  - Brilho some/aparece
+  - Brilho muda de posição
+- Isso acontece porque a cor é calculada apenas por vértice e pode ser que não
+  haja nenhum vértice recebendo o _highlight_ em um momento, mas haja no próximo
+
+---
+<!-- { "layout": "regular" } -->
 # 3. _Phong shading_
 
-![](../../images/shading-phong-exemplo.png)
+![](../../images/shading-phong-exemplo.png) <!-- {p:.centered} -->
 
-- Não confundir com o **modelo de iluminação de _Phong_**
+Não confundir com o **modelo de <u>iluminação</u> de _Phong_** <!-- {p:.note.info} -->
 
 ---
+<!-- { "layout": "regular" } -->
 # _Phong shading_ (cont.)
 
 - <u>Interpola as normais</u> dos vértices para os pixels, em vez das cores
-  - A função de iluminação deve ser avaliada **para cada pixel**
+  - A equação de iluminação deve ser avaliada **para cada pixel**
 - Significativamente mais caro
 - Não oferecido pelo OpenGL no _pipeline_ gráfico fixo
   - É possível implementar usando versões mais novas do OpenGL
+- Consertando o problema dos _highlights_ de Gouraud
+
+1. <!-- {ol:.no-bullet.horizontal-list} -->
+   ![](../../images/highlight-gouraud.png) <!-- {style="width: 200px"} -->
+1. &larr; Em **_Gouraud_**, temos uma amostragem de vértices muito menor
+1. Em **_Phong_**, a amostragem é bem maior &rarr;  <!-- {li:.push-right} -->
+1. ![](../../images/highlight-phong.png)<!-- {style="width: 200px"} -->
 
 ---
-## Consertando o problema dos _highlights_ de Gouraud
+<!-- { "layout": "regular" } -->
+## Comparação dos modelos de **sombreamento**
 
-![right](../../images/highlight-gouraud.png)
-Em **_Gouraud_**, temos uma amostragem de vértices muito menor &rarr;
-
-![left](../../images/highlight-phong.png)
-&larr; Em **_Phong_**, a amostragem é bem maior
-
-
----
-## Comparação dos três modelos de **sombreamento**
-
+::: figure .centered width:700px
 ![](../../images/shading-comparacao-normais.png)
-
 ![](../../images/shading-comparacao-exemplo.png)
+:::
+
+Exemplo: [flat-gouraud-phong](codeblocks:flat-gouraud-phong/CodeBlocks/flat-gouraud-phong.cbp) (usa pipeline programável) <!-- {p:.centered} -->
 
 ---
+<!-- { "layout": "section-header", "slideClass": "fog" } -->
 # _Fog_
 
+- Colocando neblina na cena
+
 ---
+<!-- { "layout": "centered-horizontal" } -->
 ## Neblina (_Fog_)
 
-<figure class="picture-steps">
-  <img class="bullet" src="../../images/fog.jpg">
-  <img class="bullet" src="../../images/fog-game.jpg">
-  <img class="bullet" src="../../images/fog-peixes.jpg">
-</figure>
+::: figure .picture-steps
+![](../../images/fog.jpg) <!-- {.bullet} -->
+![](../../images/fog-game.jpg) <!-- {.bullet} -->
+![](../../images/fog-peixes.jpg) <!-- {.bullet} -->
+:::
 
 ---
+<!-- { "layout": "centered-horizontal" } -->
 ## Zelda 64 e Turok 64
 
 
-<div style="display: block"><iframe src="https://www.youtube.com/embed/_9AcRhzV3qA?ecver=2&start=3" width="380" height="285" style="float: left;" frameborder="0" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/cOVpcC8GwXM?ecver=2&start=42" width="380" height="285" style="float: right;" frameborder="0" allowfullscreen></iframe></div>
+<div style="display: block"><iframe src="https://www.youtube.com/embed/_9AcRhzV3qA?ecver=2&start=3" width="450" height="337" style="float: left;" frameborder="0" allowfullscreen></iframe><iframe src="https://www.youtube.com/embed/cOVpcC8GwXM?ecver=2&start=42" width="450" height="337" style="float: right;" frameborder="0" allowfullscreen></iframe></div>
 
 
 ---
-## _Fog_ com cor do _skybox_ no Temple Run 2
+<!-- { "layout": "centered-horizontal" } -->
+# _Fog_ com cor do _skybox_ no Temple Run 2
 
-<iframe src="https://www.youtube.com/embed/wTTrtp-yy4I?ecver=2&start=55" width="600" height="450" frameborder="0" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/wTTrtp-yy4I?ecver=2&start=55" width="800" height="600" frameborder="0" allowfullscreen></iframe>
 
 ---
+<!-- { "layout": "regular" } -->
 ## _Fog_ (cont.)
 
 ```c
