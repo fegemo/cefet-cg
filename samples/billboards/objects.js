@@ -49,23 +49,20 @@ export class Billboard extends Sprite {
 
   update(dt) {
     if (this.lookingAt) {
-      const isOrbitCamera = this.lookingAt instanceof OrbitCamera;
-      const theta = isOrbitCamera ? this.lookingAt.thetaAngleInRadians : Math.PI - this.lookingAt.thetaAngleInRadians;
-      const phi = this.lookingAt.phiAngleInRadians;
-      const tilt = Math.PI - this.lookingAt.upTiltAngleInRadians;
+      const { theta, phi, tilt } = this.lookingAt.rotations;
 
       switch (this.type) {
         case 'screen':
-          m4.rotateZ(this.originalModelMatrix, theta + degToRad(isOrbitCamera ? -90 : 0), this.modelMatrix);
-          m4.rotateX(this.modelMatrix, phi / (isOrbitCamera ? 1 : 2) + degToRad(isOrbitCamera ? -90 : 0), this.modelMatrix);
-          m4.rotateY(this.modelMatrix, tilt + degToRad(isOrbitCamera ? 180 : -180), this.modelMatrix);
+          m4.rotateZ(this.originalModelMatrix, theta, this.modelMatrix);
+          m4.rotateX(this.modelMatrix, phi, this.modelMatrix);
+          m4.rotateY(this.modelMatrix, tilt, this.modelMatrix);
           break;
         case 'world':
-          m4.rotateZ(this.originalModelMatrix, theta + degToRad(isOrbitCamera ? -90 : 0), this.modelMatrix);
-          m4.rotateX(this.modelMatrix, phi / (isOrbitCamera ? 1 : 2) + degToRad(isOrbitCamera ? -90 : 0), this.modelMatrix);
+          m4.rotateZ(this.originalModelMatrix, theta, this.modelMatrix);
+          m4.rotateX(this.modelMatrix, phi, this.modelMatrix);
           break;
         case 'axial':
-          m4.rotateZ(this.originalModelMatrix, theta + degToRad(isOrbitCamera ? -90 : 0), this.modelMatrix);
+          m4.rotateZ(this.originalModelMatrix, theta, this.modelMatrix);
           break;
       };
     }

@@ -2,6 +2,7 @@ import { m4 } from './twgl-full.module.js';
 import { v3 } from './twgl-full.module.js';
 import { v2, degToRad, clamp } from './math-utils.js';
 
+// TODO: dividir em Camera e CameraController
 export class Camera {
   constructor() {
     this._eye = v3.create(0, 0, 1);
@@ -84,6 +85,10 @@ export class Camera {
       const lateralVector = v3.normalize(v3.cross(v3.create(0, 1, 0), direction));
       this._up = v3.cross(direction, lateralVector);
     }
+  }
+
+  get rotations() {
+    throw new Error('Camera.rotations is abstract and should be implemented in children.');
   }
 }
 
@@ -248,6 +253,15 @@ export class OrbitCamera extends Camera {
       this.updateEye();
     }
   }
+
+  get rotations() {
+    return {
+      theta: this.thetaAngleInRadians - degToRad(90),
+      phi: this.phiAngleInRadians - degToRad(90),
+      tilt: this.upTiltAngleInRadians
+    };
+  }
+
 }
 
 class FreeCamera extends Camera {
@@ -269,6 +283,10 @@ class FreeCamera extends Camera {
     this.startMoveCamera = this.startMoveCamera.bind(this);
     this.stopMoveCamera = this.stopMoveCamera.bind(this);
     this.rotateCamera = this.rotateCamera.bind(this);
+    this.captureCursor = this.captureCursor.bind(this);
+    this.stopCaptureCursor = this.stopCaptureCursor.bind(this);
+
+    this.cursorCaptured = false;
   }
 
   attach(window, canvasEl) {
@@ -277,15 +295,21 @@ class FreeCamera extends Camera {
     window.addEventListener('keyup', this.stopMoveCamera);
     window.addEventListener('mousemove', this.rotateCamera);
     window.addEventListener('touchmove', this.rotateCamera);
-    this.canvasEl.requestPointerLock();
+    window.addEventListener('keydown', this.stopCaptureCursor);
+    window.document.addEventListener('pointerlockchange', this.stopCaptureCursor);
+    canvasEl.addEventListener('click', this.captureCursor);
+    canvasEl.style.cursor = 'pointer';
   }
 
   dettach() {
-    window.removeEventListener('keydown', this.startMoveCamera);
-    window.removeEventListener('keyup', this.stopMoveCamera);
-    window.removeEventListener('mousemove', this.rotateCamera);
-    window.removeEventListener('touchmove', this.rotateCamera);
-    this.canvasEl.requestPointerLock();
+    this.window.removeEventListener('keydown', this.stopCaptureCursor);
+    this.window.removeEventListener('keydown', this.startMoveCamera);
+    this.window.removeEventListener('keyup', this.stopMoveCamera);
+    this.window.removeEventListener('mousemove', this.rotateCamera);
+    this.window.removeEventListener('touchmove', this.rotateCamera);
+    this.window.document.removeEventListener('pointerlockchange', this.stopCaptureCursor);
+    this.canvasEl.removeEventListener('click', this.captureCursor);
+    this.canvasEl.style.cursor = 'inherit';
     super.dettach();
   }
 
@@ -322,17 +346,38 @@ class FreeCamera extends Camera {
       e.preventDefault();
     }
 
-    // const mousePosition = this.getRelativeMousePosition(e.clientX, e.clientY);
-    // this.lastMousePosition = this.lastMousePosition || mousePosition;
+    if (!this.cursorCaptured) {
+      return;
+    }
+
     const size = [this.window.devicePixelRatio / 150, this.window.devicePixelRatio / 150];
-    // const delta = v2.mult(v2.sub(this.lastMousePosition, mousePosition), size);
     const delta = v2.mult([-e.movementX, -e.movementY], size);
 
     // theta: azimute; phi: sul a norte
     this.thetaAngleInRadians += delta[0];
     this.phiAngleInRadians = clamp(this.phiAngleInRadians + delta[1], degToRad(-90), degToRad(90));
+  }
 
-    // this.lastMousePosition = mousePosition;
+  captureCursor(force) {
+    if (typeof force === 'boolean') {
+      this.cursorCaptured = force;
+    } else {
+      this.cursorCaptured = !this.cursorCaptured;
+    }
+
+    if (this.cursorCaptured) {
+      this.canvasEl.requestPointerLock();
+    } else {
+      this.window.document.exitPointerLock();
+    }
+  }
+
+  stopCaptureCursor(e) {
+    const canceledThroughKeydown = e.type === 'keydown' && e.key.toLowerCase() === 'escape';
+    const canceledThroughPointerLock = (e.type === 'pointerlockchange' && this.window.document.pointerLockElement !== this.canvasEl);
+    if (canceledThroughKeydown || canceledThroughPointerLock) {
+      this.captureCursor(false);
+    }
   }
 
   moveForward(dt) {
@@ -408,8 +453,6 @@ class FreeCamera extends Camera {
     this.isCameraDirty = true;
     this.up[0] = Math.sin(this.upTiltAngleInRadians);
     this.up[1] = Math.cos(this.upTiltAngleInRadians);
-    // this.up[2] = 0;
-    // v3.normalize(this.up, this.up);
   }
 
   set viewDirection(vector) {
@@ -458,6 +501,14 @@ class FreeCamera extends Camera {
 
   get upTiltAngleInRadians() {
     return this._upTiltAngleInRadians;
+  }
+
+  get rotations() {
+    return {
+      theta: Math.PI - this.thetaAngleInRadians,
+      phi: this.phiAngleInRadians / 2,
+      tilt: -this.upTiltAngleInRadians
+    };
   }
 }
 
