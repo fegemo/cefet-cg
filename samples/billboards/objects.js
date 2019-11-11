@@ -1,18 +1,19 @@
 import * as twgl from './twgl-full.module.js';
-import { degToRad, radToDeg } from './math-utils.js';
-import { OrbitCamera } from './camera.js';
 
 const m4 = twgl.m4;
 const v3 = twgl.v3;
 
-class AnObject {
-  constructor(modelMatrix = m4.identity(), bufferInfo, texture) {
+export class AnObject {
+  constructor(modelMatrix = m4.identity(), bufferInfo, texture, color = [1, 1, 1, 1]) {
     this.modelMatrix = modelMatrix;
     this.bufferInfo = bufferInfo;
     this.texture  = texture;
+    this.color = color;
+    this.black = [0, 0, 0, 0.85];
 
     this.objectUniforms = {
       u_diffuse: this.texture,
+      u_alphaThreshold: 0.7
     };
   }
 
@@ -23,9 +24,17 @@ class AnObject {
   render(gl, programInfo, sceneUniforms, isWireframe = false) {
     const uniforms = Object.assign({}, sceneUniforms, this.objectUniforms);
     uniforms.u_modelView = m4.multiply(uniforms.u_viewMatrix, this.modelMatrix);
+    uniforms.u_isWire = false;
+    uniforms.u_color = isWireframe ? [this.color[0], this.color[1], this.color[2], this.color[3]-0.3] : this.color;
     twgl.setUniforms(programInfo, uniforms);
     twgl.setBuffersAndAttributes(gl, programInfo, this.bufferInfo);
-    twgl.drawBufferInfo(gl, this.bufferInfo, isWireframe ? gl.LINES : gl.TRIANGLES);
+    twgl.drawBufferInfo(gl, this.bufferInfo, gl.TRIANGLES);
+    if (isWireframe) {
+      uniforms.u_color = this.black;
+      uniforms.u_isWire = true;
+      twgl.setUniforms(programInfo, uniforms);
+      twgl.drawBufferInfo(gl, this.bufferInfo, gl.LINE_LOOP);
+    }
   }
 
   setUniform(name, value) {
@@ -79,5 +88,12 @@ export class Billboard extends Sprite {
 
   get isTracking() {
     return this.lookingAt !== null;
+  }
+}
+
+
+export class Cube extends AnObject {
+  constructor(gl, texture, modelMatrix = m4.identity(), size = v3.create(1, 1, 1)) {
+    super(modelMatrix, twgl.primitives.createCubeBufferInfo(gl, size), texture);
   }
 }

@@ -1,3 +1,5 @@
+import { v3 } from "./twgl-full.module.js";
+
 export function degToRad(angleInDegrees) {
   return angleInDegrees / 180 * Math.PI;
 }
@@ -10,10 +12,46 @@ export function lerp(a, b, t) {
   return a + (b - a) * t;
 }
 
+export function lerpV3(a, b, t) {
+  return v3.lerp(a, b, t);
+}
+
 export function clamp(v, min, max) {
   return v < min ? min : (v > max ? max : v);
 }
 
+
+export const randBetween = function (min, max, isGaussian = true) {
+  const rand = isGaussian ? randomFromGaussian() : Math.random();
+  return rand * (max - min) + min;
+};
+
+export const randWithDelta = function (value, delta, isGaussian = true) {
+  const rand = (isGaussian ? randomFromGaussian() : Math.random()) - 0.5;
+  return value + (rand * delta);
+}
+
+export const randWithDeltaV3 = function(value, delta, isGaussian = true) {
+  return v3.create(
+    randWithDelta(value[0], delta, isGaussian),
+    randWithDelta(value[1], delta, isGaussian),
+    randWithDelta(value[2], delta, isGaussian)
+  );
+}
+
+// retorna entre 0 e 1 com distribuição normal (pico em 0.5)
+export const randomFromGaussian = function () {
+  let u = 0;
+  let v = 0;
+  while (u === 0) u = Math.random();
+  while (v === 0) v = Math.random();
+
+  let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+  num = num / 10.0 + 0.5;
+  if (num > 1 || num < 0) return randomFromGaussian();
+
+  return num;
+}
 
 export const v2 = (function () {
   // adds 1 or more v2s
