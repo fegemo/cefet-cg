@@ -6,13 +6,19 @@ import { randWithDelta, randWithDeltaV3 } from './math-utils.js';
 
 const m4 = twgl.m4;
 const v3 = twgl.v3;
+const blendModes = {
+  additive: gl => [gl.SRC_ALPHA, gl.ONE, gl.ONE, gl.ONE],
+  multiply: gl => [gl.DST_COLOR, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA],
+  normal: gl => [gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA]
+};
 
 export class ParticleEmitter extends AnObject {
-  constructor(gl, modelMatrix = m4.identity(), options = {
+  constructor(gl, textures, modelMatrix = m4.identity(), options = {
     texture,
     numParticles,
     billboardType,
     particlesPerSecond,
+    blendMode,
     remainingLife: {
       value,
       delta
@@ -45,6 +51,7 @@ export class ParticleEmitter extends AnObject {
   }) {
     super(modelMatrix, null, options.texture);
     this.gl = gl;
+    this.textures = textures;
     this.options = options;
     this.unbornParticles = [];
     this.liveParticles = [];
@@ -98,7 +105,12 @@ export class ParticleEmitter extends AnObject {
   }
 
   render(gl, programInfo, sceneUniforms, isWireframe = false) {
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+    const blendMode = blendModes[this.blendModeName](gl);
+    if (blendMode.length === 2) {
+      gl.blendFunc(blendMode[0], blendMode[1]);
+    } else if (blendMode.length === 4) {
+      gl.blendFuncSeparate(blendMode[0], blendMode[1], blendMode[2], blendMode[3]);
+    }
     gl.depthMask(false);
     this.liveParticles.forEach(p => {
       const uniforms = Object.assign({}, sceneUniforms);
@@ -146,6 +158,16 @@ export class ParticleEmitter extends AnObject {
     particle.position = m4.getTranslation(this.modelMatrix);
     if (particle.billboard && particle.billboard.type !== o.billboardType) {
       particle.billboard.type = o.billboardType;
+    }
+    if (this.texture !== this.textures[o.texture]) {
+      this.texture = this.textures[o.texture];
+    }
+    if (particle.billboard) {
+      particle.billboard.texture = this.texture;
+    }
+
+    if (this.blendModeName !== o.blendMode) {
+      this.blendModeName = o.blendMode;
     }
 
     return particle;

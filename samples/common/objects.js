@@ -7,7 +7,7 @@ export class AnObject {
   constructor(modelMatrix = m4.identity(), bufferInfo, texture, color = [1, 1, 1, 1]) {
     this.modelMatrix = modelMatrix;
     this.bufferInfo = bufferInfo;
-    this.texture  = texture;
+    this._texture = texture;
     this.color = color;
     this.black = [0, 0, 0, 0.85];
 
@@ -39,6 +39,17 @@ export class AnObject {
 
   setUniform(name, value) {
     this.objectUniforms[name] = value;
+  }
+
+  get texture() {
+    return this._texture;
+  }
+
+  set texture(value) {
+    if (this._texture !== value) {
+      this._texture = value;
+      this.objectUniforms.u_diffuse = value;
+    }
   }
 }
 

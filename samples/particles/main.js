@@ -12,16 +12,14 @@ const programInfo = twgl.createProgramInfo(gl, ['vs', 'fs']);
 
 const textures = twgl.createTextures(gl, {
   grass: { src: 'images/grass.jpg', mag: gl.LINEAR, min: gl.LINEAR_MIPMAP_LINEAR },
-  tree: { src: 'images/tree.png', mag: gl.LINEAR, min: gl.LINEAR },
-  title: { src: 'images/title.png', mag: gl.LINEAR, min: gl.LINEAR },
+  bubble: { src: 'images/bubble.png', mag: gl.LINEAR, min: gl.LINEAR },
   fire: { src: 'images/fire.png', mag: gl.LINEAR, min: gl.LINEAR },
-  box: { src: 'images/box.jpg', mag: gl.LINEAR, min: gl.LINEAR },
+  ember: { src: 'images/ember.png', mag: gl.LINEAR, min: gl.LINEAR },
 });
 
 
 const displayOptions = {
   isWireframe: false,
-  billboardingOn: true,
   currentCamera: 0
 };
 
@@ -118,47 +116,25 @@ function initialize() {
 
   // câmeras
   cameras = [
-    new OrbitCamera(degToRad(90), degToRad(75), 7, v3.create(0, 1, -5)),
-    new FlyCamera(),
-    new FpsCamera()
+    new OrbitCamera(degToRad(90), degToRad(75), 2, v3.create(0, 1, -5))
   ];
   cameras[0].attach(window, gl.canvas);
 
   // objetos da cena
   const floor = new Sprite(gl, textures.grass, m4.identity(), 100, 100, 100);
   floor.setUniform('u_textureMatrix', m4.scale(m4.identity(), [50, 50, 1, 1]));
-  const tree = new Billboard(gl, textures.tree, m4.scale(m4.rotateX(m4.translate(m4.identity(), [0, 1.5, -5]), degToRad(90)), [3, 3, 3]), 'axial');
-  tree.track(cameras[0]);
-  const title = new Billboard(gl, textures.title, m4.scale(m4.rotateX(m4.translate(m4.identity(), [0, 4, -5]), degToRad(90)), [3, 3, 3]), 'screen');
-  title.track(cameras[0]);
-  const fire = new ParticleEmitter(gl, textures, m4.translate(m4.identity(), [-1, 0, -3]), particleEffectOptions);
-  fire.track(cameras[0]);
+  const emissor = new ParticleEmitter(gl, textures, m4.translate(m4.identity(), [0, 0, -5]), particleEffectOptions);
+  emissor.track(cameras[0]);
 
   scene.push(floor);
-  scene.push(tree);
-  scene.push(title);
-
-  for (let c = 0; c < 200; c++) {
-    const position = v3.create(
-      Math.cos(Math.random() * Math.PI * 2) * (Math.random() * 10 + 40),
-      1.5,
-      Math.sin(Math.random() * Math.PI * 2) * (Math.random() * 10 + 40 - 5)
-    );
-    const modelMatrix = m4.scale(m4.rotateX(m4.translate(m4.identity(), position), degToRad(90)), [3, 3, 3]);
-    const otherTree = new Billboard(gl, textures.tree, modelMatrix, 'axial');
-    otherTree.track(cameras[0]);
-    scene.push(otherTree);
-  }
-  scene.push(fire);
+  scene.push(emissor);
 
 
-    // gui para definir parâmetros
-    const gui = new dat.GUI();
-    const sceneFolder = gui.addFolder('Scene');
-    const particleEffectFolder = gui.addFolder('Particle Effect');
-    sceneFolder.add(displayOptions, 'isWireframe').name('Wireframe mode');
-    const billboardingOnController = sceneFolder.add(displayOptions, 'billboardingOn').name('Billboarding');
-    const currentCameraController = sceneFolder.add(displayOptions, 'currentCamera', { Orbit: 0, 'Fly Camera': 1, 'FPS Camera': 2 }).name('Camera');
+  // gui para definir parâmetros
+  const gui = new dat.GUI();
+  const sceneFolder = gui.addFolder('Scene');
+  const particleEffectFolder = gui.addFolder('Particle Effect');
+  sceneFolder.add(displayOptions, 'isWireframe').name('Wireframe mode');
 
   const particleEffectSubFolder1 = particleEffectFolder.addFolder('Remaining Life');
   const particleEffectSubFolder2 = particleEffectFolder.addFolder('Color');
@@ -173,6 +149,8 @@ function initialize() {
     particleEffectFolder.add(particleEffectOptions, 'numParticles', 1, 1500).name('Max. particles'),
     particleEffectFolder.add(particleEffectOptions, 'particlesPerSecond', 0.0001, 1500).name('Particles/s'),
     particleEffectFolder.add(particleEffectOptions, 'billboardType', ['screen', 'world', 'axial']).name('Billboard type'),
+    particleEffectFolder.add(particleEffectOptions, 'texture', ['fire', 'bubble', 'ember']).name('Texture'),
+    particleEffectFolder.add(particleEffectOptions, 'blendMode', ['additive', 'multiply', 'normal']).name('Blend mode'),
     particleEffectSubFolder1.add(particleEffectOptions.remainingLife, 'value', 0, 50).name('Value'),
     particleEffectSubFolder1.add(particleEffectOptions.remainingLife, 'delta', 0, 50).name('Delta'),
     particleEffectSubFolder2.addColor(particleEffectOptions.color, 'begin').name('Begin'),
@@ -198,18 +176,8 @@ function initialize() {
   ];
 
 
-  billboardingOnController.onChange(value => {
-    scene.filter(o => typeof o.track !== 'undefined').forEach(b => b.track(b.isTracking ? null : cameras[displayOptions.currentCamera]));
-  });
-  currentCameraController.onChange(value => {
-    cameras.forEach(c => c.dettach());
-    cameras[+value].attach(window, gl.canvas);
-    if (displayOptions.billboardingOn) {
-      scene.filter(o => typeof o.track !== 'undefined').forEach(b => b.track(cameras[+value]));
-    }
-  });
   const updateParticleEffectOptions = () => {
-    fire.setOptions(particleEffectOptions);
+    emissor.setOptions(particleEffectOptions);
   };
   particleEffectControllers.forEach(controller => controller.onChange(updateParticleEffectOptions));
 
