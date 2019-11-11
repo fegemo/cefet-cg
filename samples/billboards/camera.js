@@ -123,6 +123,9 @@ export class OrbitCamera extends Camera {
   }
 
   dettach() {
+    if (!this.canvasEl || !this.window) {
+      return;
+    }
     this.canvasEl.removeEventListener('mousedown', this.startRotateCamera);
     this.window.removeEventListener('mouseup', this.stopRotateCamera);
     this.window.removeEventListener('mousemove', this.rotateCamera);
@@ -302,6 +305,9 @@ class FreeCamera extends Camera {
   }
 
   dettach() {
+    if (!this.canvasEl || !this.window) {
+      return;
+    }
     this.window.removeEventListener('keydown', this.stopCaptureCursor);
     this.window.removeEventListener('keydown', this.startMoveCamera);
     this.window.removeEventListener('keyup', this.stopMoveCamera);

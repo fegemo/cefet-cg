@@ -25,7 +25,7 @@ export class AnObject {
     const uniforms = Object.assign({}, sceneUniforms, this.objectUniforms);
     uniforms.u_modelView = m4.multiply(uniforms.u_viewMatrix, this.modelMatrix);
     uniforms.u_isWire = false;
-    uniforms.u_color = isWireframe ? [this.color[0], this.color[1], this.color[2], this.color[3]-0.3] : this.color;
+    uniforms.u_color = isWireframe ? [this.color[0], this.color[1], this.color[2], this.color[3]-0.15] : this.color;
     twgl.setUniforms(programInfo, uniforms);
     twgl.setBuffersAndAttributes(gl, programInfo, this.bufferInfo);
     twgl.drawBufferInfo(gl, this.bufferInfo, gl.TRIANGLES);
@@ -52,7 +52,7 @@ export class Sprite extends AnObject {
 export class Billboard extends Sprite {
   constructor(gl, texture, modelMatrix = m4.identity(), type = 'axial') {
     super(gl, texture, modelMatrix);
-    this.type = type;
+    this._type = type;
     this.originalModelMatrix = m4.copy(modelMatrix);
   }
 
@@ -88,6 +88,14 @@ export class Billboard extends Sprite {
 
   get isTracking() {
     return this.lookingAt !== null;
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  set type(value) {
+    this._type = value;
   }
 }
 

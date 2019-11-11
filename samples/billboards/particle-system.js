@@ -1,7 +1,7 @@
 import * as twgl from './twgl-full.module.js';
 import { degToRad, lerp, lerpV3 } from './math-utils.js';
 import { AnObject, Billboard } from './objects.js';
-import { range } from './js-util.js';
+import { range, byteColorToFloat } from './js-util.js';
 import { randWithDelta, randWithDeltaV3 } from './math-utils.js';
 
 const m4 = twgl.m4;
@@ -49,7 +49,7 @@ export class ParticleEmitter extends AnObject {
     this.unbornParticles = [];
     this.liveParticles = [];
     this.emissionPeriod = 1 / options.particlesPerSecond;
-    for (let i of range(0, options.numParticles - 1)) {
+    for (let i of range(0, 1500)) {
       const newlyBornParticle = this.createParticle();
       newlyBornParticle.attachBillboard(gl, this.texture, this.modelMatrix, options.billboardType);
       this.unbornParticles.push(newlyBornParticle);
@@ -66,6 +66,7 @@ export class ParticleEmitter extends AnObject {
       // se houver partículas disponíveis, emite nova
       if (this.unbornParticles.length > 0) {
         const newlyBornParticle = this.unbornParticles.splice(0, 1)[0];
+        this.resetParticle(newlyBornParticle);
         bornParticles.push(newlyBornParticle);
       }
     }
@@ -90,7 +91,6 @@ export class ParticleEmitter extends AnObject {
     for (let i = bornParticles.length - 1; i >= 0; i--) {
       let particle = bornParticles[i];
       if (!particle.hasLife()) {
-        particle = this.resetParticle(particle);
         bornParticles.splice(i, 1);
         this.unbornParticles.push(particle);
       }
@@ -126,26 +126,33 @@ export class ParticleEmitter extends AnObject {
     particle.initialLife = randWithDelta(o.remainingLife.value, o.remainingLife.delta);
     particle.remainingLife = particle.initialLife;
     particle.color = {
-      begin: randWithDeltaV3(o.color.begin, o.color.delta),
-      end: randWithDeltaV3(o.color.end, o.color.delta)
+      begin: randWithDeltaV3(v3.create(...byteColorToFloat(o.color.begin)), o.color.delta),
+      end: randWithDeltaV3(v3.create(...byteColorToFloat(o.color.end)), o.color.delta)
     };
     particle.alpha = {
       begin: randWithDelta(o.alpha.begin, o.alpha.delta),
       end: randWithDelta(o.alpha.end, o.alpha.delta)
     };
     particle.size = {
-      begin: randWithDeltaV3(o.size.begin, o.size.delta),
-      end: randWithDeltaV3(o.size.end, o.size.delta)
+      begin: randWithDeltaV3(v3.create(o.size.begin, o.size.begin, o.size.begin), o.size.delta),
+      end: randWithDeltaV3(v3.create(o.size.end, o.size.end, o.size.end), o.size.delta)
     };
-    particle.speed = randWithDeltaV3(o.speed.value, o.speed.delta);
+    particle.speed = randWithDeltaV3(v3.create(o.speed.value.x, o.speed.value.y, o.speed.value.z), o.speed.delta);
     particle.acceleration = {
-      begin: randWithDeltaV3(o.acceleration.begin, o.acceleration.delta),
-      end: randWithDeltaV3(o.acceleration.end, o.acceleration.delta)
+      begin: randWithDeltaV3(v3.create(o.acceleration.begin.x, o.acceleration.begin.y, o.acceleration.begin.z), o.acceleration.delta),
+      end: randWithDeltaV3(v3.create(o.acceleration.end.x, o.acceleration.end.y, o.acceleration.end.z), o.acceleration.delta)
     };
     particle.wasBorn = false;
     particle.position = m4.getTranslation(this.modelMatrix);
+    if (particle.billboard && particle.billboard.type !== o.billboardType) {
+      particle.billboard.type = o.billboardType;
+    }
 
     return particle;
+  }
+
+  setOptions(opt) {
+    this.options = opt;
   }
 
   track(camera) {
