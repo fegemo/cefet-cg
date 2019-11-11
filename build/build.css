@@ -225,6 +225,13 @@ a[href^="codeblocks:"]:before {
   top: 2px;
   left: 2px;
 }
+.crispy-image {
+  -ms-interpolation-mode: nearest-neighbor;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: -o-pixelated;
+      image-rendering: pixelated;
+}
 .layered-paragraph {
   background-color: rgba(215,215,250,0.5);
 }
@@ -1742,6 +1749,27 @@ background-color #ababab h1,
 .textures .layout-title h1::before {
   background-image: url("../images/tf2-woodwall-texture.jpg");
   background-size: cover;
+}
+.visual-effects .layout-title h1::before {
+  background-image: url("../images/sistema-particulas-infamous.jpg");
+}
+.visual-effects .skybox.layout-section-header::after {
+  background-image: url("../images/skybox.jpg");
+}
+.visual-effects .billboarding.layout-section-header::after {
+  background-image: url("../images/billboarded-trees.jpg");
+}
+.visual-effects .sombras-em-tempo-real.layout-section-header::after {
+  background-image: url("../images/cars-with-shadows.png");
+}
+.visual-effects .sistema-de-particulas.layout-section-header::after {
+  background-image: url("../images/sistema-particulas-infamous.jpg");
+}
+.visual-effects .environment-mapping.layout-section-header::after {
+  background-image: url("../images/environment-mapping-knot.png");
+}
+.visual-effects .efeitos-de-camera.layout-section-header::after {
+  background-image: url("../images/depth-of-field-unreal.png");
 }
 .programmable-pipeline .layout-title h1::before {
   background-image: url("../images/ni-no-kuni.jpg");

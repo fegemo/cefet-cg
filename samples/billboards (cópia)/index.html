@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de billboards</title>
+  <link rel="stylesheet" href="dat.gui.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <canvas id="main-canvas"></canvas>
+  <script id="vs" type="text/glsl">
+    attribute vec4 position;
+    attribute vec2 texcoord;
+    varying vec2 v_texCoord;
+
+    uniform mat4 u_projection;
+    uniform mat4 u_modelView;
+    uniform mat4 u_textureMatrix;
+
+    void main() {
+      gl_Position = u_projection * u_modelView * position;
+      v_texCoord = mat2(u_textureMatrix) * texcoord;
+    }
+  </script>
+  <script id="fs" type="text/glsl">
+    precision mediump float;
+
+    varying vec2 v_texCoord;
+    uniform vec4 u_color;
+    uniform bool u_isWire;
+    uniform float u_alphaThreshold;
+    uniform sampler2D u_diffuse;
+    //uniform vec2 resolution;
+    //uniform float time;
+
+    void main() {
+      vec4 color = u_isWire == true ? u_color : (texture2D(u_diffuse, v_texCoord) * u_color);
+
+      if (color.a < u_alphaThreshold) {
+        discard;
+      }
+      gl_FragColor = color;
+    }
+  </script>
+  <script src="main.js" type="module"></script>
+</body>
+</html>
