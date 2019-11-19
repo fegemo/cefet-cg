@@ -1241,7 +1241,7 @@ background-color #ababab h1,
   width: 100%;
   height: 100%;
 }
-.bespoke-slide[data-bespoke-backdrop="raytraced-realism"] {
+.bespoke-slide[data-bespoke-backdrop="raytraced-realism"] h1 {
   color: #fff;
 }
 .raytracing-collision.bespoke-backdrop-active {
@@ -1771,12 +1771,19 @@ background-color #ababab h1,
 .visual-effects .efeitos-de-camera.layout-section-header::after {
   background-image: url("../images/depth-of-field-unreal.png");
 }
-.programmable-pipeline .layout-title h1::before {
-  background-image: url("../images/ni-no-kuni.jpg");
-  background-size: cover;
-}
 .raytracing .layout-title h1::before {
   background-image: url("../images/raytraced-teapot.jpg");
+  background-size: cover;
+}
+.raytracing .modelos-de-iluminacao.layout-section-header::after {
+  background-image: url("../images/raytraced-high-realism.jpg");
+}
+.raytracing .ray-tracing.layout-section-header::after {
+  background-image: url("../images/cena-empilhadas.jpg");
+  background-position: center center;
+}
+.programmable-pipeline .layout-title h1::before {
+  background-image: url("../images/ni-no-kuni.jpg");
   background-size: cover;
 }
 @-webkit-keyframes movingbg-x {

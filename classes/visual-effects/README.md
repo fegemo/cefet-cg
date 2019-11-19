@@ -45,7 +45,7 @@
 - É possível implementar usando texturas do tipo `CUBEMAP`
 
 ---
-<iframe src="http://stemkoski.github.io/Three.js/Skybox.html" width="100%" height="100%" frameborder="0"></iframe>
+<iframe src="https://stemkoski.github.io/Three.js/Skybox.html" width="100%" height="100%" frameborder="0"></iframe>
 
 ---
 <!-- { "layout": "section-header", "slideClass": "billboarding", "slideHash": "sprites-e-billboarding" } -->
