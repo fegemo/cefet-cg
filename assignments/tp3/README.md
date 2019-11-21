@@ -91,11 +91,9 @@ O código seminal está disponibilizado em C++ e Java. Você tem a liberdade de 
 
 ### C++
 
-Para gerar imagens no formato ppm, a biblioteca SOIL foi usada e ela está incluída no código fonte. Como ambiente de desenvolvimento do projeto em C++, está disponível:
+Como ambiente de desenvolvimento do projeto em C++, está disponível:
 
   - Um **arquivo de projeto do CodeBlocks** na pasta `cpp/CodeBlocks` devidamente configurado tanto para Windows quanto para Linux.
-    - Para alternar entre a configuração de Linux e Windows:
-      ![](images/codeblocks-configuration-change.png)
     - Para alterar qual imagem de entrada será usada, basta passar o nome do arquivo desejado como argumento de linha de comando para o programa. Para fazer isso no CodeBlocks:
       ![](images/codeblocks-input-change.png)
   - Um **Makefile** configurado para compilação **no Linux** na pasta `cpp/Makefile` com os seguintes _targets_:
