@@ -2,12 +2,18 @@
 
 ![Esquema de um ray tracer](../../images/ray-tracing.png)
 
-Neste trabalho, vamos completar a implementação de um _ray tracer_ simples, não recursivo, para
-compreendermos bem como funciona um modelo de iluminação global. Ele deve
-ser feito em duplas (tipicamente a mesma dos outros trabalhos).
+Neste trabalho, vamos completar a implementação de um _ray tracer_ simples, que pode se tornar recursivo ou até distribuído, para
+compreendermos bem como funciona um modelo de iluminação global. Ele pode
+ser feito em duplas.
 
 A implementação está dividida nas duas partes descritas a seguir.
 **Vocês <u>precisam da primeira parte feita</u> para fazer a segunda.** Cada parte do trabalho vale a metade da pontuação.
+
+Após ler este enunciado geral do TP3, **leia também o enunciado** da [primeira parte (colisão)][enunciado-colisao] ou da
+[segunda parte (sombreamento)][enunciado-sombreamento].
+
+[enunciado-colisao]: collision/README.md
+[enunciado-sombreamento]: shading/README.md
 
 ## Funcionamento do Programa
 
@@ -44,7 +50,7 @@ Para a descrição da cena, o que é relevante para o trabalho é:
 
   ```java
   Pygment pigmento = objetoAtingido.pygment;
-  Vector3 corDoPigmento = pigmento.color;
+  Vector3 corDoPigmento = pigmento.getColorAt(pontoDeIntersecao);
   ```
 - Coeficientes (de Phong) dos **materiais**:
 
@@ -58,7 +64,7 @@ Para a descrição da cena, o que é relevante para o trabalho é:
 - Posição, raio, pigmento e material das **esferas** (classe `Object`):
 
   ```java
-  Vector3 posicaoDaEsfera = esfera.position;
+  Vector3 posicaoDaEsfera = esfera.center;
   double raioDaEsfera = esfera.radius;
   Pygment pigmento = esfera.pygment;
   Material material = esfera.material;
@@ -66,14 +72,18 @@ Para a descrição da cena, o que é relevante para o trabalho é:
 
 ## Entradas para Teste
 
-Há 4 arquivos de entrada disponibilizados para teste e eles estão listados em ordem de complexidade da cena descrita:
+Há 7 arquivos de entrada disponibilizados para teste:
 
-  1. `cena-simples.txt`, uma fonte de luz e uma esfera verde no centro da cena, com material que responde à luz ambiente e difusa apenas
-  1. `cena-2-fontes-luz.txt`, duas fontes de luz e uma esfera azul no centro, com material que também responde à luz especular
-  1. `cena-3-esferas.txt`, duas fontes de luz, três esferas lado a lado, e duas esferinhas na mesma posição das fontes de luz; há algumas sombras provocadas por um objeto ao outro
-  1. `cena-esferas.txt`, uma fonte de luz e cinco esferas com tamanhos diferentes com algumas sobrepondo outras em relação à câmera
+| Cena                    | Descrição                                                                                         | Primitivas                                  | Sombras? |     Recursivo?     | Objetivo                                   |
+|-------------------------|---------------------------------------------------------------------------------------------------|---------------------------------------------|:--------:|:------------------:|--------------------------------------------|
+| `cena-simples.txt`      | Uma fonte de luz e uma esfera verde no centro da cena.                                            | Esfera                                      |    Não   |         Não        | ![](images/cena-simples.png)      |
+| `cena-primitivas.txt`   | Uma fonte de luz e uma de cada primitiva geométrica suportada.                                    | Esfera, Plano, Círculo, Cilindro, Triângulo |    Sim   |         Não        | ![](images/cena-primitivas.png)   |
+| `cena-2-fontes-luz.txt` | Duas fontes de luz e uma esfera azul no centro, com material que também responde à luz especular. | Esfera                                      |    Não   |         Não        | ![](images/cena-2-fontes-luz.png) |
+| `cena-arvore.txt`       | Uma árvore, um chão e um cubo em xadrez, com um céu.                                              | Esfera, Plano, Cilindro, Triângulo          | Sim      | Não                | ![](images/cena-arvore.png)       |
+| `cena-empilhadas.txt`   | Três fontes de luz, dez esferas empilhadas que são reflexivas, assim como o chão.                 | Esfera                                      |    Sim   |      Reflexão      | ![](images/cena-empilhadas.png)   |
+| `cena-whitted.txt`      | Uma fonte de luz, uma esfera transparente e outra reflexiva e uma esfera para o chão.             | Esfera                                      |    Sim   | Reflexão, Refração | ![](images/cena-whitted.png)      |
+| `cena-cornell-box.txt`  | Uma fonte de luz, três esferas em uma sala, sendo uma opaca, uma reflexiva e outra transparente.  | Esfera                                      |    Sim   | Reflexão, Refração | ![](images/cena-cornell-box.png)  |
 
-![](images/cenas-objetivo.png)
 
 ## Opções de Desenvolvimento
 
@@ -81,7 +91,7 @@ O código seminal está disponibilizado em C++ e Java. Você tem a liberdade de 
 
 ### C++
 
-Para gerar imagens nos formatos ppm e bmp, a biblioteca SOIL foi usada e ela está incluída no código fonte. Como ambiente de desenvolvimento do projeto em C++, está disponível:
+Para gerar imagens no formato ppm, a biblioteca SOIL foi usada e ela está incluída no código fonte. Como ambiente de desenvolvimento do projeto em C++, está disponível:
 
   - Um **arquivo de projeto do CodeBlocks** na pasta `cpp/CodeBlocks` devidamente configurado tanto para Windows quanto para Linux.
     - Para alternar entre a configuração de Linux e Windows:
@@ -92,9 +102,12 @@ Para gerar imagens nos formatos ppm e bmp, a biblioteca SOIL foi usada e ela est
     - `make clean`, para limpar arquivos temporários e executáveis
     - `make all`, para compilar
     - `make run-simples`, para executar com `cena-simples.txt`
+    - `make run-primitivas`, idem para `cena-primitivas.txt`
     - `make run-2-fontes-luz`, idem para `cena-2-fontes-luz.txt`
-    - `make run-3-esferas`, idem para `cena-3-esferas.txt`
-    - `make run-esferas`, idem para `cena-esferas.txt`
+    - `make run-arvore`, idem para `cena-arvore.txt`
+    - `make run-empilhadas`, idem para `cena-empilhadas.txt`
+    - `make run-whitted`, idem para `cena-whitted.txt`
+    - `make run-cornell-box`, idem para `cena-cornell-box.txt`
 
 
 ### Java
@@ -108,7 +121,12 @@ Para alterar o arquivo de entrada, basta selecionar a "Configuração de Execuç
 
 ## Entrega do Trabalho
 
-Você deve entregar no Moodle um **arquivo compactado contendo seu código fonte**.
-O trabalho deve ser entregue preferencialmente
-em sala, mas a atividade permanecerá **aberta até imediatamente <u>antes da próxima
-aula</u> da matéria**.
+Você deve entregar no Moodle um **arquivo compactado contendo**:
+1. O código fonte (apenas a pasta da linguagem escolhida)
+1. Os arquivos de projeto (eg do Netbeans, ou do CodeBlocks ou Makefile - que já estão no lugar certo)
+1. O executável gerado automaticamente ao compilar/executar
+
+O trabalho deve ser entregue em sala (professor dará "visto") mas, caso aconteça de não terminar a tempo, a atividade permanecerá **aberta até imediatamente <u>antes da próxima aula</u> da matéria**.
+Se o trabalho for entregue depois da aula de laboratório, ele valerá 90% da nota.
+
+
