@@ -482,6 +482,8 @@ Casa haja dois valores positivos diferentes, pegamos o menor (que será <span cl
 
 **Atenção**: só interessa o valor de <span class="math">t</span> que seja <span class="math">t>0</span>. <!-- {p:.note.warning.bullet} -->
 
+**Atenção 2**: se raio atingiu "as costas" do plano (ângulo raio/normal>90), precisamos inverter a normal na resposta de colisão <small style="color: gray">(para fins de iluminação)</small>. <!-- {p:.note.warning.bullet style="max-width: 55%"} -->
+
 ---
 # Colisão com círculo
 1. Acha se colide com plano do círculo
