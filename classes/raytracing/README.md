@@ -320,7 +320,7 @@ esferas unitárias na origem. <!-- {p:.note.warning style="max-width: 70%; align
 # Interpretando a interseção com esfera
 
 - Seja <span class="math">\Delta = b^2 - 4ac</span>
-  - Então:<br><span class="math">t = \frac{-b \pm \sqrt(\Delta)}{2a}</span> <!-- {ul^1:.no-margin.no-padding.full-width.layout-split-2 style="justify-content: space-around; align-items: center;"} -->
+  - Então:<br><div class="math">t = \frac{-b \pm \sqrt(\Delta)}{2a}</div> <!-- {ul^1:.no-margin.no-padding.full-width.layout-split-2 style="justify-content: space-around; align-items: center;"} -->
 - ![](../../images/raytracing-raio-esfera.png) <!-- {li:.no-bullet} -->
 
 Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
@@ -328,7 +328,7 @@ Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
 
 ---
 <!-- {"layout": "regular"} -->
-# Para **esferas genéricas** (1/3)
+# Para **esferas genéricas** (1/4)
 
 - Dada uma esfera com centro <span class="math">C</span> e raio <span class="math">r</span>
   - Nosso raio: <span class="math">P+t\vec{u}</span>
@@ -344,7 +344,7 @@ Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
 
 ---
 <!-- {"layout": "regular"} -->
-# Para **esferas genéricas** (2/3)
+# Para **esferas genéricas** (2/4)
 
 - Conhecemos <span class="math">\vec{u}, \vec{p}</span> e <span class="math">r</span> e queremos encontrar <span class="math">t</span>. Pelo produto interno: <!-- {ul:.bulleted} -->
   <div class="math">(t\vec{u}-\vec{p})\cdot(t\vec{u}-\vec{p})=r^2</div>
@@ -358,7 +358,7 @@ Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
 
 ---
 <!-- {"layout": "regular", "state": "show-active-slide-and-previous"} -->
-(3/3) <!-- {.centered} -->
+(3/4) <!-- {.centered} -->
 
 - Da equação quadrática, temos que: <!-- {ul:.bullet style="width: 62%; margin-left: 25%; clear: right;"} -->
   <ul>
@@ -372,18 +372,37 @@ Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
   o ponto de interseção <span class="math">Q</span>** na esfera
 
 Esta é a fórmula que deve ser usada, porque serve para esferas posicionadas em qualquer lugar e com qualquer tamanho. <!-- {p:.note.info.bullet style="max-width: 75%;margin-left:17%;"} -->
+
+---
+<!-- { "layout": "regular" } -->
+# Estudando o sinal de <span class="math">\Delta</span> e das raízes (4/4)
+
+- <div class="math push-right">t_1=\frac{-b-\sqrt{\Delta}}{2a}</div>
+  <div class="math push-right clear-both">t_2=\frac{-b+\sqrt{\Delta}}{2a}</div>
+  Se não há raiz real (<span class="math">\Delta<0</span>), não há interseção do raio com a esfera
+- Se há uma ou duas raízes reais (<span class="math">\Delta\ge0</span>) <!-- {ul:.bullet} -->
+  - Se <span class="math">t_1</span> e <span class="math">t_2</span> são negativas, a esfera está atrás do raio
+    - logo, não há interseção
+  - Se <span class="math">t_1</span> é negativa e <span class="math">t_2</span> positiva, o raio foi lançado por dentro
+    - <span class="math">t = t_2</span> e a normal precisa ser invertida
+  - Se <span class="math">t_1</span> e <span class="math">t_2</span> são positivas, a esfera foi atingida pelo raio e
+    - <span class="math">t=t_1</span>
+
+**Ou seja**, estamos interessados apenas nos valores de <span class="math">t</span> positivos.
+Casa haja dois valores positivos diferentes, pegamos o menor (que será <span class="math">t_1</span>). <!-- {p:.note.info.no-margin.bullet} -->
+
 ---
 <!-- {"layout": "regular"} -->
 # Outras informações da colisão
 
 - Além de determinar se houve colisão ou não, também é necessário descobrir:
-  - O ponto de interseção (basta substituir <span class="math">t</span> com o valor encontrado)
+  - O ponto de interseção <span class="math">Q=P+t\vec{u} \quad</span> <small style="color: gray">(usando o <span class="math">t</span> encontrado na equação do raio)</small>
   - O vetor normal do objeto nesse ponto
 - ![](../../images/raytracing-raio-esfera-normal.png) <!-- {.push-right style="max-width: 450px"} -->
   A normal no ponto de interseção <span class="math">P</span> é
   dada pelo gradiente no ponto de interseção:
-- No caso da esfera, **podemos simplesmente** fazer o vetor<br><div class="math">\vec{n} = \frac{P - C}{\left|P-C\right|},</div>
-  onde <span class="math">C</span> é o centro da esfera.
+- No caso da esfera, **podemos simplesmente** fazer o vetor<div style="display: flex; justify-content: center;"><div class="math bullet">\vec{n}=P-C,</div><div class="math bullet">\quad \hat{n}=\frac{\vec{n}}{\left|\vec{n}\right|}</div></div>
+  <div class="bullet">onde <span class="math">C</span> é o centro da esfera.</div>
 
 ---
 <!-- {"layout": "regular"} -->
