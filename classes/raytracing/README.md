@@ -439,20 +439,29 @@ Esta é a fórmula que deve ser usada, porque serve para esferas posicionadas em
 - Um ponto <span class="math">Q</span> está no plano se o vetor <span class="math">Q-C</span> for perpendicular a <span class="math">\vec{n}</span>. Ou seja:
   <div class="math">(Q-C)\cdot\vec{n}=0</div>
 - Substituindo <span class="math">Q</span> pela equação do raio:
-  <div class="math bullet">(P+t\vec{u}-C)\cdot\vec{n}=0</div>
-  <div class="math bullet">(t\vec{u}-\vec{p})\cdot\vec{n}=0</div>
-  <div class="math bullet">t(\vec{u}\cdot\vec{n})+\vec{p}\cdot\vec{n}=0</div>
+  <div class="full-width" style="display: grid; grid-template-rows: auto auto auto auto; grid-template-columns: auto 1fr; grid-column-gap: 1em;">
+    <div style="display: flex; justify-content: flex-start; grid-row: 1/2; grid-column: 1/2">
+      <span class="math bullet">(P+t\vec{u}-C)\cdot\vec{n}=0</span>
+      <span class="math bullet">\textrm{,} \quad \vec{p}=C-P</span>
+    </div>
+    <small class="bullet" style="color: gray; grid-row: 1/2; grid-column: 2/3">⬅️ fazendo um truque algébrico</small>
+    <span class="math bullet" style="grid-row: 2/3; grid-column: 1/2">(t\vec{u}-\vec{p})\cdot\vec{n}=0</span>
+    <small class="bullet" style="color: gray; grid-row: 2/3; grid-column: 2/3">⬅️ distribuindo o produto escalar</small>
+    <span class="math bullet" style="grid-row: 3/4; grid-column: 1/2">t(\vec{u}\cdot\vec{n})-\vec{p}\cdot\vec{n}=0</span>
+    <small class="bullet" style="color: gray; grid-row: 3/4; grid-column: 2/3">⬅️ isolando <span class="math">t</span></small>
+    <div class="math bullet no-margin left-aligned" style="grid-row: 4/5; grid-column: 1/2;">t=\frac{\vec{p}\cdot\vec{n}}{\vec{u}\cdot\vec{n}}</div>
+  </div>
 
 ---
 <!-- { "layout": "centered", "state": "show-active-slide-and-previous" } -->
-
-<div class="math">t=\frac{-\vec{p}\cdot\vec{n}}{\vec{u}\cdot\vec{n}}</div>
 
 - Se: <!-- {ul:.bulleted} -->
   - <span class="math">\vec{u}\cdot\vec{n}\neq0</span>, há 1 interseção
   - <span class="math">\vec{u}\cdot\vec{n}=0</span>,
     - Se <span class="math">\vec{p}\cdot\vec{n}\neq0</span>, sem interseção
     - Se <span class="math">\vec{p}\cdot\vec{n}=0</span>, infinitas interseções
+
+**Atenção**: só interessa o valor de <span class="math">t</span> que seja <span class="math">t>0</span>. <!-- {p:.note.warning.bullet} -->
 
 ---
 # Colisão com círculo
