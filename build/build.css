@@ -195,8 +195,12 @@ a[href^="codeblocks:"]:before {
           transform: initial;
 }
 .picture-steps.clean > *:not(:last-child):not(.bespoke-bullet-current),
-.picture-steps > p.clean > *:not(:last-child):not(.bespoke-bullet-current) {
-  opacity: 0;
+.picture-steps > p.clean > *:not(:last-child):not(.bespoke-bullet-current),
+.picture-steps.clean > p > *:not(:last-child):not(.bespoke-bullet-current),
+.picture-steps > p.clean > p > *:not(:last-child):not(.bespoke-bullet-current),
+.picture-steps.clean > p > span:not(:last-child) > :not(.bespoke-bullet-current),
+.picture-steps > p.clean > p > span:not(:last-child) > :not(.bespoke-bullet-current) {
+  opacity: 0 !important;
 }
 .picture-steps .katex-display,
 .picture-steps > p .katex-display {
@@ -449,6 +453,14 @@ img[alt$="max"] {
 }
 .horizontal-list > li {
   width: auto;
+}
+.second-half-width-slide > * {
+  margin-left: 50%;
+  max-width: 50%;
+}
+.one-third-half-width-slide > * {
+  margin-left: 34%;
+  max-width: 50%;
 }
 @-webkit-keyframes pulsating {
   from {
