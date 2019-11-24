@@ -10,8 +10,10 @@
     &:not(.bespoke-bullet-active)
       transform initial
   &.clean
-    & > *:not(:last-child):not(.bespoke-bullet-current)
-      opacity 0
+    & > *:not(:last-child):not(.bespoke-bullet-current),
+    & > p > *:not(:last-child):not(.bespoke-bullet-current),
+    & > p > span:not(:last-child) > :not(.bespoke-bullet-current)
+      opacity 0 !important
 
   .katex-display
     text-align left
@@ -202,3 +204,11 @@ img[alt$="max"]
   display flex
 .horizontal-list > li
   width auto
+
+.second-half-width-slide > *
+  margin-left 50%
+  max-width 50%
+
+.one-third-half-width-slide > *
+  margin-left 34%
+  max-width 50%
