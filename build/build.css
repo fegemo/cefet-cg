@@ -1805,6 +1805,17 @@ background-color #ababab h1,
   background-image: url("../images/cena-empilhadas.jpg");
   background-position: center center;
 }
+.raytracing2 .layout-title h1::before {
+  background-image: url("../images/path-tracer-stacked-spheres.png");
+  background-size: cover;
+}
+.raytracing2 .modelos-de-iluminacao.layout-section-header::after {
+  background-image: url("../images/raytraced-high-realism.jpg");
+}
+.raytracing2 .ray-tracing.layout-section-header::after {
+  background-image: url("../images/cena-empilhadas.jpg");
+  background-position: center center;
+}
 .programmable-pipeline .layout-title h1::before {
   background-image: url("../images/ni-no-kuni.jpg");
   background-size: cover;
