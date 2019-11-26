@@ -1,12 +1,12 @@
 <!-- {"layout": "title"} -->
-# _Ray tracing_ parte 2
+# _Ray tracing_
+## Parte 2: sombreamento
 
 ---
 <!-- {"layout": "regular"} -->
 # Objetivos
 
-- ![](../../images/hitch-whale.png) <!-- {.appear-right.bullet} --> <!-- {ul:.bulleted} -->
-  Relembrar as duas grandes perguntas fundamentais para ~~a vida, o universo e tudo o mais~~ se criar um _ray tracer_
+- Relembrar as duas grandes perguntas fundamentais para ~~a vida, o universo e tudo o mais~~ se criar um _ray tracer_
   - Entender **como retornar uma cor do polígono atingido** pelo raio
   - Revisitar o modelo de iluminação local de **phong**
   - Mais efeitos com **_ray tracing_ distribuído**
@@ -44,19 +44,12 @@ perguntas:
 
 - Assim como temos diferentes modelos de iluminação local, também podemos
   **ter formas diferentes para se colorir um pixel** usando um _ray tracer_
-- ![right](../../images/raytracer-shading-lights.png)
+- ![](../../images/raytracer-shading-lights.png) <!-- {.push-right} -->
   Se o objetivo for realismo, podemos pegar emprestado **os modelos
   de iluminação e de sombreamento de Phong**
 - Se o objetivo for não-realista, podemos, por exemplo, desenhar apenas as
   silhuetas dos objetos (<span class="math">\Delta = 0</span> na equação de interseção)
 
-<!-- # Objetivo não-realista
-
-- Chamado de NPR: _non-photorrealistic rendering_
-- Exemplo: [Choudhury e Parker, 08](http://www.sci.utah.edu/~roni/research/projects/NPR-lines-poster/)
-
-  ![](../../images/raytracing-npr.png)
- -->
 ---
 <!-- {"layout": "regular"} -->
 # Objetivo não-realista (Zelda Wind Waker)
@@ -240,27 +233,113 @@ Para o _ray tracer_ recursivo, a equação de Phong para materiais reflexivos ou
 
 ---
 <!-- { "layout": "regular" } -->
-Mostrar imagens geradas
+# Imagens com objetos reflexivos/transparentes
+
+- ![](../../images/cena-empilhadas.png) <!-- {ul:.card-list.polaroid} -->
+- ![](../../images/cena-whitted.png)
+- ![](../../images/cena-cornell-box.png)
+
+---
+<!-- { "layout": "2-column-content" } -->
+# Problema: baixa amostragem
+
+- A cena descreve objetos "infinitos", mas a imagem gerada não (eg, 800x600 valores)
+- Representar coisas usando pouca informação pode acarretar em problemas de 
+  **baixa amostragem** (_aliasing_):
+  - ![](../../images/serrilhado.svg) <!-- {.push-right style="max-width: 200px;"} -->
+    Serrilhado ➡️
+  - ![](../../images/moire.png) <!-- {.push-right.clear style="max-width: 212px;"} -->
+    Interferência ↘️
+
+::: zoomable .inline display: inline-block; position: relative
+![](../../images/cena-whitted-recursivo.png) <!-- {style="max-width: 100%; image-rendering: pixelated" draggable="false"} -->
+:::
+
+---
+<!-- { "layout": "2-column-content" } -->
+# Corrigindo serrilhados (↙️com _vs_ sem⬇️)
+
+::: zoomable .inline display: inline-block;
+![](../../images/cena-whitted-recursivo.png) <!-- {style="max-width: 100%; image-rendering: pixelated" draggable="false"} -->
+:::
+
+::: zoomable .inline.bullet display: inline-block;
+![](../../images/cena-whitted-distribuido.png) <!-- {style="max-width: 100%; image-rendering: pixelated" draggable="false"} -->
+:::
+
+Mas como fazer?? <!-- {.bullet style="width: 100%; margin: 0; text-align: right"} -->
+
+---
+<!-- { "layout": "regular", "embedSVG": "img[src$='.svg']" } -->
+# _Ray tracer_ **distribuído**
+
+- Raio não possui volume (é uma semirreta). Ideias: <!-- {ul:.full-width} -->
+  - _Cone tracing_ ([1984][cone])
+  - _Beam tracing_ ([1984][beam])
+  - Mais caros, complexos e introduzem outros problemas
+- ![](../../images/raytracing-distribuido-pixel.svg) <!-- {.push-right} -->
+  E se lançarmos mais de um raio por pixel (<span class="math">r/p</span>)?
+  - _Ray tracing_ distribuído:
+    1. Superamostragem
+    1. Amostragem adaptável
+    1. Estocástico (_jittering_)
+    1. Estocástico uniforme
+
+[cone]: https://dl.acm.org/citation.cfm?doid=964965.808589
+[beam]: https://my.eng.utah.edu/~cs6958/papers/p119-heckbert.pdf
 
 ---
 <!-- { "layout": "regular" } -->
-Mostrar problemas e explicar baixa amostragem
+# Comparação de _ray tracers_
+
+- Simples <!-- {ul:.card-list} -->
+  ::: zoomable .inline display: inline-block;
+  ![](../../images/cena-whitted-simples.png) <!-- {style="max-width: 100%; image-rendering: pixelated" draggable="false"} -->
+  :::
+- Recursivo
+  ::: zoomable .inline display: inline-block;
+  ![](../../images/cena-whitted-recursivo.png) <!-- {style="max-width: 100%; image-rendering: pixelated" draggable="false"} -->
+  :::
+- Distribuído (estocástico 10r/p)
+  ::: zoomable .inline display: inline-block;
+  ![](../../images/cena-whitted-distribuido.png) <!-- {style="max-width: 100%; image-rendering: pixelated" draggable="false"} -->
+  :::
 
 ---
 <!-- { "layout": "regular" } -->
-Mostrar formas de distribuir: cone, beam, jitter
+# Limitações do _ray tracer_
+
+- Apesar de bem interessante, o _ray tracer_ ainda não é capaz de:
+  1. ![](../../images/soft-shadows.gif) <!-- {ol:.card-list.polaroid.bulleted.center-aligned} -->
+     **Sombras com penumbra**<br>Precisamos de uma "luz" com área
+  1. ![](../../images/iluminacao-indireta.gif) 
+     **Iluminação indireta**<br>_Ray tracer_ depende muito da componente ambiente
+  1. ![](../../images/color-bleeding.png) 
+    **Sangramento de cor**<br>Objetos não impregnam sua cor em outros
+  1. ![](../../images/waterpool.gif) 
+     **Cáustica**<br>Fenômeno não é retratado
 
 ---
 <!-- { "layout": "regular" } -->
-Mostrar problemas do distribuído
+# _Path tracer_
+
+- ![](../../images/path-tracing-rays.gif) <!-- {.push-right style="max-width: 332px;"} -->
+  Inspirado no _ray tracer_, a ideia é: 
+  1. Para cada pixel, verificar 1 caminho (aleatório) da luz
+  1. Assim que terminar a imagem, lança +1 vez (outro caminho daluz) 
+     e combina com a primeira imagem
+  1. Vai lançando raios indefinidamente (rerrenderizando a imagem) até que o resultado seja satisfatório
+- [Apresentação][apresentacao-path-tracer] <!-- {.push-right} -->
+  Premissas:
+  1. Luzes têm área
+  1. Todo material reflete luz
+  1. Todo objeto pode ser uma fonte de luz
+
+[apresentacao-path-tracer]: https://docs.google.com/presentation/d/1aZSXNZwEPaFbBjiZbhGy4GC5gey3SoANouqnAUmLQhs/edit?usp=sharing
 
 ---
-<!-- { "layout": "regular" } -->
-Mostrar path tracer
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT56peHi4tLsCdTnffjQ85HJTZDb4Ly_AiF2by6WIpfXOb2aTmMZuaBpRJ1vRuVH9IJ97hJrL7GQ6Qc/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
----
-<!-- { "layout": "regular" } -->
-Mostrar photton mapping
 
 ---
 # Referências
