@@ -15,14 +15,17 @@ As saídas para os arquivos de entrada de exemplo devem ser idênticas a estas:
 |---------------------------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------|-------------------------------------------------------------|
 |  ![](../images/cena-empilhadas.png)  `cena-empilhadas.txt` | ![](../images/cena-whitted.png)  `cena-whitted.txt`        | ![](../images/cena-cornell-box.png)  `cena-cornell-box.txt`   |                                                             |
 
-Eis uma sugestão da ordem de implementação do exercício:
+Os exercícios desta segunda parte são:
 
-1. Implementar a componente ambiente da fórmula de Phong (5 min)
-1. Implementar a componente difusa (20 min)
-1. Implementar a componente especular (20 min)
-1. Implementar a verificação de sombras (10 min)
-1. (+15%) Transformar o raytracer em recursivo (chamando `castRay(scene, ray)` recursivamente para raios de reflexão e de refração)
-1. (+10%) Transformar o raytracer em distribuído (lançando eg. 10 raios por pixel e tirando a média, feito na `renderScene(scene)`)
+- Exercício 1: Implementar a componente ambiente da fórmula de Phong (5 min)
+- Exercício 2: Implementar a componente difusa (20 min)
+- Exercício 3: Implementar a componente especular (20 min)
+- Exercício 4: Implementar a verificação de sombras (10 min)
+  - É a função `vis` da equação de Phong, que está no código sempre retornando true (1).
+- Exercício 5 e 6 (+15%): Transformar o raytracer em recursivo (chamando `castRay(scene, ray)` recursivamente para raios de reflexão e de refração)
+   - (7%) materiais reflexivos
+   - (8%) materiais refratários (transparentes)
+- Exercício 7 (+10%): Transformar o raytracer em distribuído (lançando eg. 10 raios por pixel e tirando a média, feito na `renderScene(scene)`)
    - Ideia: em vez de lançar apenas 1 raio, lançar 10 para cada pixel. 
      Para calcular uma leve perturbação no raio, você pode lançar o raio para um pixel não inteiro.
      Por exemplo, para o primeiro pixel (i,j) = (0,0), poderia escolher aleatoriamente números 
