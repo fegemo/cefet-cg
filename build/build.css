@@ -1169,6 +1169,7 @@ img[alt$="max"] {
   width: 100%;
   height: 100%;
   background-size: cover;
+  background-position: center center;
 }
 .bespoke-slide[data-bespoke-backdrop="lighting-balloons"],
 .bespoke-slide[data-bespoke-backdrop="shading"],
@@ -1752,7 +1753,13 @@ background-color #ababab h1,
   background-position: center center;
   background-size: contain;
 }
-.lighting .shading.layout-section-header::after {
+.lighting .iluminacao-em-opengl.layout-section-header::after {
+  background-image: url("../images/c-language-source-code.jpg");
+  background-repeat: no-repeat;
+  background-size: fit;
+  background-position: 0%;
+}
+.lighting .sombreamento.layout-section-header::after {
   background-color: #fff;
   background-image: url("../images/shading-sumo.jpg");
   background-repeat: no-repeat;
