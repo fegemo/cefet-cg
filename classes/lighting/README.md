@@ -3,7 +3,7 @@
 ## iluminando e colorindo objetos dinamicamente
 
 ---
-<!-- {"layout": "centered-horizontal"} -->
+<!-- {"layout": "centered"} -->
 # Objetivos
 
 1. Gerar imagens com maior realismo
@@ -12,16 +12,16 @@
 
 
 ---
-<!-- {"layout": "centered-horizontal"} -->
+<!-- {"layout": "centered"} -->
 # Roteiro
 
 1. Iluminação em Computação Gráfica
-1. Tipos de modelos
-1. Modelo local de Phong
-1. Iluminação em OpenGL
-1. Sombreamento
-1. Atenuação
-1. _Fog_ (neblina)
+1. [Modelos de iluminação](#modelos-de-iluminacao)
+   - Modelo local de Phong
+1. [Iluminação em OpenGL](#iluminacao-em-opengl)
+   - Atenuação
+1. [Sombreamento](#sombreamento)
+1. [_Fog_ (neblina)](#fog)
 
 ---
 <!-- {"layout": "regular", "embedSVG": "img[src$='.svg']", "embeddedStyles": ".geometria-sombreamento .etapa1, .geometria-sombreamento .etapa3, .geometria-sombreamento .etapa4, .geometria-sombreamento .etapa5 {fill: #ddd !important; stroke: #333 !important;} .rasterizacao-sombreamento .etapa1, .rasterizacao-sombreamento .etapa2, .rasterizacao-sombreamento .etapa4 {fill: #ddd !important; stroke: #333 !important;}"} -->
@@ -84,7 +84,7 @@
   - Coeficientes: o quão polido, o quão áspero etc.
 
 ---
-<!-- {"layout": "section-header", "slideClass": "modelos-de-iluminacao"} -->
+<!-- {"layout": "section-header", "slideClass": "modelos-de-iluminacao", "slideHash": "modelos-de-iluminacao"} -->
 # Modelos de Iluminação
 
 ---
@@ -156,13 +156,12 @@ Em um modelo local (CG de tempo real), **objetos não projetam sombras**! <!-- {
     - Pode emitir [0, 100%] luz de uma cor (**emissiva** - "extra Phong")
   - A cor final do vértice pode ser dada pelo **somatório dessas 4 componentes**
 
-![](../../images/phong-components.png) <!-- {style="max-height: 168px"} -->  <!-- {p:.center-aligned.no-margin.full-width} -->
+![](../../images/phong-components-and-emissive.png) <!-- {style="max-height: 168px"} -->  <!-- {p:.center-aligned.no-margin.full-width} -->
 *[RGB]: Red, Green e Blue*
 
 ---
 <!-- {"layout": "regular"} -->
-## Componentes do Modelo de Phong (cont.)
-
+## Componentes do modelo de Phong (cont.)
 
 ![](../../images/reflexoes.svg) <!-- {style="max-height: 200px"} --> <!-- {p:.centered } -->
 
@@ -176,101 +175,110 @@ Em um modelo local (CG de tempo real), **objetos não projetam sombras**! <!-- {
 
 ---
 <!-- {"layout": "regular"} -->
-## **Cor ambiente** de um objeto
+## **Componente ambiente** de um objeto
 
-- Ainda que um objeto não esteja diretamente iluminado, ele deve
+- ![](../../images/phong-components-only-ambient.png) <!-- {.push-right} -->
+  Ainda que um objeto não esteja diretamente iluminado, ele deve
   aparecer na cena
-  - Por causa da iluminação indireta, refletida por todos os objetos da cena
+  - Devido à iluminação indireta, refletida pelos objetos da cena
 - Não possui características espaciais nem direcionais
-- Pode possuir cor
-- A quantidade de luz ambiente é constante em todo o ambiente
-- A quantidade de luz ambiente refletida por um objeto independe da geometria
-  do objeto
-  <div class="math centered">C(V) = k_aL_a</div>
-  ...onde <span class="math">k_a</span> é o coeficiente ambiente do material<br>
-  e <span class="math">L_a</span> é a cor da luz ambiente.
+  - A quantidade de luz ambiente é constante em todo o ambiente
+  - A quantidade de luz ambiente refletida por um objeto independe da sua forma e é dada por:
+  <div class="math centered">C_{amb}(V) = \rho_aL_a</div>
+  ...onde <span class="math">\rho_a</span> é a cor ambiente do material <span class="math">(r,g,b)</span><br>
+  e <span class="math">L_a</span> é a cor da luz ambiente global.
 
 ---
 <!-- {"layout": "regular"} -->
-## **Cor difusa** de um objeto
+## **Componente difusa** de um objeto
 
-- Objetos foscos refletem a luz em todas as direções uniformemente e
+- ![](../../images/phong-components-only-diffuse.png) <!-- {.push-right} -->
+  Objetos foscos refletem a luz em todas as direções uniformemente e
   possuem uma cor
 - Segundo a Lei de Lambert (fluxo de energia):
-  - A **luminosidade** aparente da superfície não **depende** da posição do
-    observador, mas apenas do cosseno do **ângulo entre a normal e a
-    direção da luz**
-
-    ![](../../images/especular-vs-difusa.png) <!-- {.push-right} -->
-    ![](../../images/modelo-lambertiano.png)
-
+  - A **luminosidade** da superfície **não depende da posição do observador**,
+    apenas do **ângulo entre a normal e a direção da luz**
+    ::: figure .centered align-items: flex-end;
+    ![](../../images/phong-diffuse-reflection.svg) <!-- {p:.full-width style="display: flex; justify-content: space-between; align-items: flex-end"} -->
+    ![](../../images/phong-diffuse-reflection-larger-angle.svg)
+    ![](../../images/phong-diffuse-reflection-smaller-angle.svg)
+    :::
 ---
-<!-- {"layout": "regular"} -->
+<!-- {"layout": "regular", "embedSVG": "img[src$='.svg']"} -->
 ## Calculando a contribuição **difusa**
 
-- ![](../../images/modelo-difuso.png) <!-- {.push-right} -->
-  A componente difusa (+ambiente) de um vértice <span class="math">V</span> é dada por:
+- ![](../../images/phong-vectors-diffuse.svg) <!-- {#phong-vectors-2.push-right style="max-width: 350px"} --> <!-- {ul:.full-width} -->
+  A componente difusa de um vértice <span class="math">P</span> é dada por:
 
-  <div class="math">C(V) = k_aL_a + k_d\sum_iL_i(\vec{s}_i \cdot \vec{n})</div>
-  ...onde  <span class="math">k_d</span> é o coeficiente difuso do material,<br>
-  o somatório itera somando a contribuição de cada fonte de luz,<br>
+  <div class="math">C_{dif}(P) = \rho_d\sum_iL_i(\vec{n} \cdot \vec{l}_i)</div>
+  ...onde  <span class="math">\rho_d</span> é a cor difusa do material <span class="math">(r,g,b)</span>,<br>
+  o somatório itera somando a contribuição de cada fonte de luz na cena,<br>
   <span class="math">L_i</span> é a cor da fonte de luz atual,<br>
-  <span class="math">\vec{s}_i</span> é a incidência da luz (apontando para ela),<br>
-  <span class="math">\vec{n}</span> é o vetor normal de <span class="math">V</span>.
-
+  <span class="math">\vec{n}</span> é o vetor normal do objeto em <span class="math">P</span>,<br>
+  <span class="math">\vec{l}_i</span> é a incidência da luz (apontando para ela).
 
 ---
 <!-- {"layout": "regular"} -->
 ## **Iluminação especular** em um objeto
 
-- Simula a reflexão à maneira de um espelho (objetos altamente polidos)
+- ![](../../images/phong-components-only-specular.png) <!-- {.push-right} -->
+  Simula a reflexão à maneira de um espelho (objetos altamente polidos)
 - Depende da disposição entre observador, objeto e fonte de luz
 - Em um espelho perfeito, a reflexão se dá em ângulos iguais
   - Observador só enxergaria a reflexão de uma fonte pontual se estivesse na direção certa
 
+![](../../images/phong-specular-reflection.svg) <!-- {p:.full-width.centered style=""} --> <!-- {.centered} -->
+
 ---
-<!-- {"layout": "regular"} -->
+<!-- {"layout": "regular", "embedSVG": "img[src$='.svg']"} -->
 ## Calculando a contribuição **especular**
 
-- ![](../../images/modelo-phong.png) <!-- {.push-right} -->
-  A intensidade da contribuição especular em um ponto p é dada por:
+- ![](../../images/phong-vectors.svg) <!-- {#phong-vectors-2.push-right style="max-width: 350px"} --> <!-- {ul:.full-width} -->
+  A intensidade da contribuição especular em um vértice <span class="math">P</span> é dada por:
 
-  <div class="math">C(V) = k_aL_a + k_d\sum_iL_i(\vec{s}_i \cdot \vec{n}) + k_s\sum_iL_i(\vec{r} \cdot \vec{v})^{k_e}</div>
-  ...onde  <span class="math">k_s</span> é o coeficiente especular do material,<br>
-  o somatório itera somando a contribuição de cada fonte de luz,<br>
+  <div class="math">C_{esp}(P) = \rho_s\sum_iL_i(\vec{r}_i \cdot \vec{v})^{\alpha}</div>
+  ...onde  <span class="math">\rho_s</span> é a cor especular do material <span class="math">(r,g,b)</span>,<br>
+  o somatório itera somando a contribuição de cada luz,<br>
   <span class="math">L_i</span> é a cor da fonte de luz atual,<br>
   <span class="math">\vec{r}_i</span> é a direção da reflexão perfeita da luz,<br>
-  <span class="math">\vec{v}</span> é o vetor que aponta de <span class="math">V</span> até a câmera.
+  <span class="math">\vec{v}</span> é o vetor que aponta de <span class="math">P</span> até a câmera (normalizado),<br>
+  <span class="math">\alpha</span> é o expoente de especularidade do material.
 
 ---
 <!-- {"layout": "regular"} -->
-## Expoente de Especularidade
+## Expoente de especularidade
 
-- Indica quão polida é a superfície
+- Indica quão polida é a superfície <!-- {ul:.no-margin} -->
   - Espelho ideal tem especularidade infinita
   - Na prática, usam-se valores entre 5 e 100
 
+::: figure .centered margin-top: 0;
 ![](../../images/specular-coefficient.png) <!-- {p:.centered} -->
-
+<div style="display: flex; justify-content: space-between; width: 100%">
+  <span class="math">\alpha=5</span>
+  <span class="math">\alpha=50</span>
+  <span class="math">\alpha=100</span>
+</div>
+:::
 ---
-<!-- {"layout": "regular"} -->
-## Demonstração do Modelo de Phong
+<!-- {"layout": "centered-horizontal"} -->
+## Demonstração do modelo de Phong
 
 ![](../../images/exemplo-luz-e-materiais.png) <!-- {p:.centered} --> <!-- {style="max-height: 300px;"} -->
 
 - Exemplo: [luz-e-material-marte](codeblocks:luz-e-material/CodeBlocks/luz-e-material-marte.cbp)
 
 ---
-<!-- {"layout": "section-header"} -->
+<!-- {"layout": "section-header", "slideClass": "iluminacao-em-opengl", "slideHash": "iluminacao-em-opengl"} -->
 # Iluminação em OpenGL
-## com **pipeline fixo** (v1, v2)
+## com **pipeline fixo** (OpenGL 1, 2)
 
-1. Algumas funções usadas: <!-- {ol:.content} --> <!-- {li:.no-bullet} -->
+1. Algumas funções usadas:
    - `glEnable`
-   - `glMaterial`
    - `glLight`
-   - `glFog`,
+   - `glMaterial`
    - `glNormal`
+   - `glFog`
 
 ---
 <!-- {"layout": "regular"} -->
@@ -332,7 +340,7 @@ Neblina
 
 ---
 <!-- {"layout": "regular"} -->
-## Passo 2: Ativando **fontes de luz**
+## Passo 2: ativando **fontes de luz**
 
 - Para ativar uma fonte:
   ```c
@@ -347,60 +355,63 @@ Neblina
 
 ---
 <!-- {"layout": "regular"} -->
-## Passo 2: Configurando **fontes de luz**
+## Passo 2: configurando **fontes de luz**
 
 - Para configurar as propriedades de cada fonte:
   ```c
-  glLightfv(source, property, value);
+  glLightf (source, property, value);   // se value é um float
+  glLightfv(source, property, value);   // se value for um *vetor* de floats
   ```
-  - `property` é uma constante designando:
+  - `property` é uma constante que pode ter os valores:
     - Coeficientes de cor usados no modelo de iluminação:
-      `GL_AMBIENT,` **`GL_DIFFUSE,`** `GL_SPECULAR`
+      **`GL_AMBIENT`**, **`GL_DIFFUSE`**, **`GL_SPECULAR`**
     - Geometria da fonte
-     **`GL_POSITION,`** `GL_SPOT_DIRECTION, GL_SPOT_CUTOFF,  GL_SPOT_EXPONENT`
+     **`GL_POSITION`**, `GL_SPOT_DIRECTION`, `GL_SPOT_CUTOFF`,  `GL_SPOT_EXPONENT` (3 últimas são para holofotes)
     - Coeficientes de atenuação
-      `GL_CONSTANT_ATTENUATION, GL_LINEAR_ATTENUATION, GL_QUADRATIC_ATTENUATION`
+      `GL_CONSTANT_ATTENUATION`, `GL_LINEAR_ATTENUATION`, `GL_QUADRATIC_ATTENUATION`
 
 ---
 <!-- {"layout": "regular"} -->
-## Passo 3: Configurando o **material**
+## Passo 3: configurando o **material**
 
 - Especificados por:
   ```c
-  glMaterialfv (face, property, value);
+  glMaterialf (face, property, value);    // se value for um float
+  glMaterialfv(face, property, value);    // se value for um *vetor* de floats
   ```
   - `face` designa quais lados da superfície se quer configurar:
     ```c
     GL_FRONT, GL_BACK, GL_FRONT_AND_BACK;
     ```
-  - `property` designa a propriedade do modelo de iluminação:
+  - `property` é qual propriedade do material queremos definir:
     ```c
-    GL_AMBIENT, GL_DIFFUSE, GL_SPECULAR,
-    GL_EMISSION, GL_SHININESS;
+    GL_AMBIENT, GL_DIFFUSE, GL_SPECULAR, GL_EMISSION              // <- cores
+    GL_SHININESS                             // <- expoente de especularidade
     ```
 
 ---
 <!-- {"layout": "regular"} -->
-## Geometria
+## Propriedades geométricas do objeto
 
 - Além das propriedades da luz e do material, a **geometria do objeto** também
-  é importante
-  - A posição dos vértices com relação ao olho e à fonte luminosa
+  é importante:
+  - A **posição dos vértices** com relação ao olho e à fonte luminosa
     contribui no cálculo dos efeitos atmosféricos
     - _e.g._, atenuação da energia da luz
-  - A _normal_ dos polígonos é fundamental
+  - A **_normal_ dos polígonos** também é fundamental:
     - Não é calculada automaticamente
-    - Precisa ser especificada com `glNormal()`
-    - Mas como calculamos o vetor normal de cada face?
+    - Precisa ser especificada com `glNormal3f(...)`
+    - Mas como calculamos o vetor normal de cada face? <!-- {ul:.bullet} -->
+
+Ao usar sólidos GLU/GLUT, as bibliotecas já estão chamando `glNormal()` internamente. Mas se você for definir vértices (_ie._, `glVertex()`), é necessário chamar `glNormal()`. <!-- {p:.note.info.no-margin.bullet} -->
 
 ---
 <!-- {"layout": "regular"} -->
 ## Computando o vetor normal
 
-- <img src="../../images/tri-normal.png" style="float:right; margin-left: 20px;">
-  Triângulo
-  - Dados três vértices, podemos:
-    <div class="math">\vec{n} = normalizar((A-B)\times(C-A))</div>
+- ![](../../images/tri-normal.svg) <!-- {.push-right} -->
+  **Triângulo**: dados três vértices, podemos:
+  <div class="math">\vec{n} = normalizar((A-B)\times(C-A))</div>
 - Polígono planar
   - Uma opção é usar a fórmula do triângulo para quaisquer 3 vértices
   - Outra opção é determinar a equação do plano:
@@ -430,9 +441,9 @@ Neblina
   glLightMaterialfv (GL_LIGHT_MODEL_AMBIENT, color);
   ```
 - Contribuição da luz ambiente global para um vértice é dada por:
-  <span class="math">A = I_ak_a</span>, onde:
-  - <span class="math">I_a</span> é a cor da luz ambiente global
-  - <span class="math">k_a</span> é a cor ambiente do material
+  <span class="math">C_{amb_{global}}=\rho_aL_{a_{global}}</span>, onde:
+  - <span class="math">\rho_a</span> é a cor ambiente do material,
+  - <span class="math">L_{a_{global}}</span> é a cor da luz ambiente global.
 
 ---
 <!-- {"layout": "regular"} -->
@@ -453,34 +464,33 @@ Neblina
 
 ---
 <!-- {"layout": "regular"} -->
-## **Atenuação**
+## **Atenuação** <sub>(dissipação da luz)</sub>
 
 - A atenuação de uma fonte de luz é calculada como:
-  <div class="math">aten = \frac{1}{k_c+k_ld+k_qd^2}</div>
+  <div class="math">aten = \frac{1}{a+bd+cd^2}, \text{onde d é a distância da luz até o ponto}</div>
 - Os coeficientes são definidos pela função `glLight()`, usando os parâmetros
-  `GL_CONSTANT_ATTENUATION, GL_LINEAR_ATTENUATION` e `GL_QUADRATIC_ATTENUATION`
+  `GL_CONSTANT_ATTENUATION`, `GL_LINEAR_ATTENUATION` e `GL_QUADRATIC_ATTENUATION`
   - Exemplo:
     ```
     glLightf(GL_LIGHT0, GL_LINEAR_ATTENUATION, 1.0);
     ```
 - Por padrão, os valores das contantes são:
-  - <span class="math">k_c = 1</span>, <span class="math">k_l = 0</span>,
-    <span class="math">k_q = 0</span>
+  - <span class="math">a=1, b=0, c=0</span>.
 
 ---
 <!-- {"layout": "regular"} -->
-## Cor resultante de um vértice: <span class="math">C(V)</span>
+## Cor resultante de um vértice: <span class="math">Cor\(P\)</span>
 
 - A atenuação só é aplicada sobre as componentes difusa
-  <span class="math">D</span> e especular <span class="math">S</span>
-  - Não faz sentido para ambiente <span class="math">A</span>, nem
-    emissiva <span class="math">E</span>
+  (<span class="math">C_{dif}</span>) e especular (<span class="math">C_{esp}</span>)
+  - Não faz sentido para ambiente (<span class="math">C_{amb}</span>), nem
+    emissiva (<span class="math">C_{emi}</span>)
 - A fórmula que calcula a cor de um vértice devida a uma **fonte luminosa
   <span class="math">i</span>** é dada por:
-  <div class="math">C_i(V)=A_i + aten(D_i + S_i)</div>
+  <div class="math">Cor_i(P)=C_{amb_i} + aten(C_{dif_i} + C_{esp_i})</div>
 - Portanto, no total, a cor é dada pela contribuição da iluminação ambiente (parcela não associada com fontes de luz)
   somada à luz emitida e às contribuições de todas fontes luminosas:
-    <div class="math">C(V)=A_{global} + E + \sum_{i=0}^{fontes}{(A_i + aten(D_i + S_i))}</div>
+    <div class="math">Cor(P)=C_{amb_{global}} + C_{emi} + \sum_{i=0}^{fontes}{(C_{amb_i} + aten(C_{dif_i} + C_{esp_i}))}</div>
 
 ---
 <!-- {"layout": "regular"} -->
@@ -517,7 +527,7 @@ Neblina
     de um objeto, possamos **determinar a cor para cada fragmento**
 
 ---
-<!-- {"layout": "section-header", "slideClass": "shading"} -->
+<!-- {"layout": "section-header", "slideClass": "sombreamento", "slideHash": "sombreamento"} -->
 # Sombreamento
 
 - Formas de colorir a parte interna dos objetos:
@@ -530,16 +540,20 @@ Neblina
 ## Tipos de Sombreamento
 
 - Há três tipos principais de sombreadores:
-  - 1. Constante (_flat_)
-    ```c
+  
+  Constante (_flat_)
+
+  ~ ```c
     glShadeModel(GL_FLAT);
     ```
-  - 2. Gouraud
-    ```c
+  
+  Gouraud
+  ~ ```c
     glShadeModel(GL_SMOOTH);    // é o valor padrão
     ```
-  - 3. Phong
-    ```c
+  
+  Phong
+  ~ ```c
     glShadeModel(GL_PHONG);    // não existe no pipeline fixo
     ```
 
@@ -547,10 +561,11 @@ Neblina
 <!-- {"layout": "regular"} -->
 # _Flat shading_ (sombreamento constante)
 
-![](../../images/shading-flat-exemplo.png) <!-- {p:.centered} -->
+![](../../images/shading-flat-exemplo.png) <!-- {p:.centered style="margin-top: 0; margin-bottom: 0"} -->
 
-- **Todos os fragmentos** da primitiva têm **a mesma cor**
-  - Mas e se for um triângulo (3x vértice)? É a cor do _provoking_ vértice (tipicamente o primeiro declarado)
+- **Todos os fragmentos** da primitiva (_eg_, ponto, linha, triângulo) têm **a mesma cor** <!-- {ul:.no-margin} -->
+  - Mas e se cada vértice tiver uma cor diferente?
+    - É usada a cor do _provoking_ vértice (tipicamente o primeiro declarado)
 - Requer a especificação de **01 vetor normal para cada polígono**
 - Extremamente rápido, mas produz imagens facetadas, pois a transição de um
   polígono para outro adjacente é nítida
@@ -562,19 +577,19 @@ Neblina
 ---
 ## Desenhos com _flat shading_
 
-<figure class="picture-steps">
-  <img class="bullet full-width" src="../../images/lowpoly-octopus.jpg">
-  <img class="bullet full-width" src="../../images/lowpoly-scene.jpg">
-  <img class="bullet full-width" src="../../images/lowpoly-trees-and-stones.jpg">
-</figure>
+::: figure .picture-steps
+![](../../images/lowpoly-octopus.jpg) <!-- {.bullet.full-width} -->
+![](../../images/lowpoly-scene.jpg) <!-- {.bullet.full-width} -->
+![](../../images/lowpoly-trees-and-stones.jpg) <!-- {.bullet.full-width} -->
+:::
 
 ---
 <!-- {"layout": "regular"} -->
 # 2. _Gouraud shading_
 
-![](../../images/shading-gouraud-exemplo.png) <!-- {p:.centered} -->
+![](../../images/shading-gouraud-exemplo.png) <!-- {p:.centered style="margin-top: 0; margin-bottom: 0;"} -->
 
-- ![](../../images/normal-media-faces.png) <!-- {.push-right} -->
+- ![](../../images/normal-media-faces.svg) <!-- {.push-right} -->
   Usa a cor calculada **em cada vértice** pelo modelo de iluminação
 - Para o interior do polígono, **interpola a cor dos vértices**
 - Qualidade da imagem é muito maior, mas o custo é maior
@@ -604,7 +619,7 @@ Neblina
   haja nenhum vértice recebendo o _highlight_ em um momento, mas haja no próximo
 
 ---
-<!-- { "layout": "regular" } -->
+<!-- { "layout": "centered-horizontal" } -->
 # 3. _Phong shading_
 
 ![](../../images/shading-phong-exemplo.png) <!-- {p:.centered} -->
@@ -629,18 +644,18 @@ Não confundir com o **modelo de <u>iluminação</u> de _Phong_** <!-- {p:.note.
 1. ![](../../images/highlight-phong.png)<!-- {style="width: 200px"} -->
 
 ---
-<!-- { "layout": "regular" } -->
+<!-- { "layout": "centered-horizontal" } -->
 ## Comparação dos modelos de **sombreamento**
 
-::: figure .centered width:700px
-![](../../images/shading-comparacao-normais.png)
+::: figure .centered width:700px; margin-top: 0; margin-bottom: 0;
+![](../../images/shading-comparacao-normais.svg) <!-- {p:.no-margin} -->
 ![](../../images/shading-comparacao-exemplo.png)
 :::
 
-Exemplo: [flat-gouraud-phong](codeblocks:flat-gouraud-phong/CodeBlocks/flat-gouraud-phong.cbp) (usa pipeline programável) <!-- {p:.centered} -->
+Exemplo: [flat-gouraud-phong](codeblocks:flat-gouraud-phong/CodeBlocks/flat-gouraud-phong.cbp) (usa pipeline programável) <!-- {p:.no-margin} -->
 
 ---
-<!-- { "layout": "section-header", "slideClass": "fog" } -->
+<!-- { "layout": "section-header", "slideClass": "fog", "slideHash": "fog" } -->
 # _Fog_
 
 - Colocando neblina na cena
@@ -670,25 +685,26 @@ Exemplo: [flat-gouraud-phong](codeblocks:flat-gouraud-phong/CodeBlocks/flat-gour
 <iframe src="https://www.youtube.com/embed/wTTrtp-yy4I?ecver=2&start=55" width="800" height="600" frameborder="0" allowfullscreen></iframe>
 
 ---
-<!-- { "layout": "regular" } -->
+<!-- { "layout": "centered-horizontal" } -->
 ## _Fog_ (cont.)
 
 ```c
-  float[] cor = { .5f, .5f, .5f };
-  glClearColor(cor[0], cor[1], cor[2], 1.0f);
+float[] cor = { .5f, .5f, .5f };
+glClearColor(cor[0], cor[1], cor[2], 1.0f);
 
-  glFogi(GL_FOG_MODE, GL_EXP);        // Linear, exp. ou exp²
-  glFogfv(GL_FOG_COLOR, cor);         // Cor
-  glFogf(GL_FOG_DENSITY, 0.35f);      // Densidade
-  glHint(GL_FOG_HINT, GL_DONT_CARE);  // Não aplicar se não puder
-  glFogf(GL_FOG_START, 1.0f);         // Profundidade inicial
-  glFogf(GL_FOG_END, 5.0f);           // Profundidade final
-  glEnable(GL_FOG);                   // Liga GL_FOG
+glFogi(GL_FOG_MODE, GL_EXP);        // Linear, exp. ou exp²
+glFogfv(GL_FOG_COLOR, cor);         // Cor
+glFogf(GL_FOG_DENSITY, 0.35f);      // Densidade
+glHint(GL_FOG_HINT, GL_DONT_CARE);  // Não aplicar se não puder
+glFogf(GL_FOG_START, 1.0f);         // Profundidade inicial
+glFogf(GL_FOG_END, 5.0f);           // Profundidade final
+glEnable(GL_FOG);                   // Liga GL_FOG
 ```
 - [Referência do `glFog`](https://www.opengl.org/sdk/docs/man2/xhtml/glFog.xml)
 - Cor da neblina = cor do `glClearColor`
 
 ---
+<!-- { "layout": "centered" } -->
 # Referências
 
 - Livro _Real-Time Rendering (3<sup>rd</sup> edition)_
