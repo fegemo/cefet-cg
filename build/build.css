@@ -176,9 +176,6 @@ a[href^="codeblocks:"]:before {
   vertical-align: middle;
   margin-right: 5px;
 }
-.hljs {
-  padding: 1em;
-}
 .picture-steps,
 .picture-steps > p {
   position: relative;
@@ -201,27 +198,6 @@ a[href^="codeblocks:"]:before {
 .picture-steps.clean > p > span:not(:last-child) > :not(.bespoke-bullet-current),
 .picture-steps > p.clean > p > span:not(:last-child) > :not(.bespoke-bullet-current) {
   opacity: 0 !important;
-}
-.picture-steps .katex-display,
-.picture-steps > p .katex-display {
-  text-align: left;
-}
-.picture-steps .bullet.math,
-.picture-steps > p .bullet.math,
-.picture-steps .bullet .math,
-.picture-steps > p .bullet .math {
-  padding-top: 1px;
-}
-.no-margin .katex-display {
-  margin: 0;
-}
-.left-aligned,
-.left-aligned .katex-display,
-.left-aligned .katex {
-  text-align: left !important;
-}
-.clear-both {
-  clear: both;
 }
 .inset-shadow {
   position: relative;
@@ -336,10 +312,6 @@ img[alt$="max"] {
 .subtly-round {
   border-radius: 8px;
 }
-.inverted-text-colors {
-  background: #333;
-  color: #eee;
-}
 .zoomable {
   overflow: hidden;
   cursor: -webkit-zoom-in;
@@ -401,12 +373,6 @@ img[alt$="max"] {
           transform: rotateY(-4deg) scale(0.95);
   -webkit-transform-origin: left top;
           transform-origin: left top;
-}
-.smaller-text-80 {
-  font-size: 80%;
-}
-.smaller-text-70 {
-  font-size: 70%;
 }
 .surprise {
   display: inline-block;
