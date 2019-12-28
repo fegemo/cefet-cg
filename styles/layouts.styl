@@ -1,0 +1,410 @@
+// default stylish images
+.layout-title h1
+  &::before
+    background-image url(../images/sky-stellar.jpg)
+
+.layout-section-header::after
+  background-image url(../images/constellation.jpg)
+
+.layout-stripe .stripe
+  background-image url(../images/stripe-forest.jpg)
+
+
+// stylish images by class
+.syllabus
+  .layout-title
+    background-color white
+    h1::before
+      background-image url(../images/forest-mountain.jpg)
+
+.intro
+  .layout-title h1::before
+    background-image url(../images/cg-area-art.jpg)
+
+  .conceitos-basicos.layout-section-header::after
+    background-image url(../images/cg-area-games.jpg)
+    animation movingbg-x 60s linear 0s infinite alternate-reverse
+
+  .pixels-gradient.layout-section-header::after
+    background-image url(../images/pixels-gradient.jpg)
+    background-repeat repeat
+    animation movingbg-x 20s ease-in-out 0s infinite alternate-reverse
+
+  .rainbow-picture.layout-section-header::after
+    background-image url(../images/rainbow-picture.jpg)
+    animation movingbg-x 20s ease-in-out 0s infinite alternate-reverse
+
+.opengl
+  .layout-title
+    background-color crimson
+    h1
+      color black
+      text-shadow 0.025em 0.025em crimson
+      &::before
+        background-image url(../images/pusheen-window.gif)
+        background-repeat no-repeat
+        background-size 270px
+        background-position 100%
+        background-color #fcf0e4
+    h2
+      color white
+      margin-right 1em
+
+  .hello-world.layout-section-header::after
+    background-image url(../images/pusheen-coding.gif)
+    background-repeat no-repeat
+    background-size 250px
+    background-color #fcf0e4
+    background-position 50%
+
+  .window-system.layout-section-header::after
+    background-image url(../images/pusheen-window2.gif)
+    background-repeat no-repeat
+    background-size 250px
+    background-color #fcf0e4
+    background-position 50%
+
+.opengl-handson
+  .layout-title
+    h1::before
+        background-image url(../images/red-bricks.jpg)
+        background-repeat no-repeat
+        background-size contain
+        background-color #f7f7f7
+    h2
+      background-color #333
+      color white
+      margin-right 1em
+
+  .coordinate-system.layout-section-header::after
+    background-image url(../images/coordinate-system.gif)
+    background-repeat no-repeat
+    background-size fit
+    background-color #fcf0e4
+    background-position 50%
+
+  .clipping.layout-section-header::after
+    background-image url(../images/clipping-plane-house.gif)
+    background-repeat no-repeat
+    background-size cover
+    background-color #fcf0e4
+    background-position 50%
+
+  .colors.layout-section-header::after
+    background-image url(../images/rgb-cube.gif)
+    background-repeat no-repeat
+    background-size contain
+    background-color #808080
+    background-position 50%
+
+  .primitives.layout-section-header::after
+    background-image url(../images/red-bricks.jpg)
+    background-repeat no-repeat
+    background-size contain
+    background-color #f7f7f7
+    background-position 50%
+
+.opengl-handson2
+  .layout-title
+    background-color white
+    h1
+      color silver
+      &::before
+        background-image url(../images/ping-pong.gif)
+        background-repeat no-repeat
+        background-size contain
+    h2
+      background-color #333
+      color white
+      margin-right 1em
+
+  .data-types.layout-section-header::after
+    background-image url(../images/c-language-source-code.jpg)
+    background-repeat no-repeat
+    background-size fit
+    background-position 0%
+
+  .redrawing.layout-section-header::after
+    background-image url(../images/single-double-triple-buffering.svg)
+    background-repeat no-repeat
+    background-size cover
+    background-position 0%
+    opacity 0.85
+
+.opengl-handson3
+  .layout-title
+    background-color #333
+    h1
+      color white
+      &::before
+        background-image url(../images/game-texture.jpg)
+        background-repeat repeat
+        background-size contain
+    h2
+      background-color #333
+      color white
+      margin-right 1em
+
+  .display-list.layout-section-header::after
+    background-image url(../images/display-list.png)
+    background-color #ffe6d5
+    background-repeat no-repeat
+    background-size auto
+    background-position 50%
+
+  .orientacao-de-poligonos.layout-section-header::after
+    background-image url(../images/primitives-part2.svg)
+    background-repeat no-repeat
+    background-size contain
+    background-position 0%
+
+  .posicionamento-de-objetos.layout-section-header::after
+    background-image url(../images/snake-polygon.png)
+    background-repeat no-repeat
+    background-size cover
+    background-color #808080
+    background-position 50%
+
+  .usando-texturas.layout-section-header::after
+    background-image url(../images/game-texture.jpg)
+    background-repeat no-repeat
+    background-size contain
+    background-color #fff
+    background-position 50%
+
+  .draw-order.layout-section-header::after
+    background-image url(../images/algoritmo-do-pintor.png)
+    background-repeat no-repeat
+    background-size auto
+    background-color #f7f7f7
+    background-position 50%
+
+
+// aulas sobre C e feedback tp
+.c
+  .layout-title
+    background linear-gradient(to right bottom, goldenrod, darkgoldenrod)
+    h1
+      color #b80b0b
+      font-size 10em
+      &::before
+        background-image url(../images/c-jump-boardgame.jpg)
+        background-position 50% 50%
+    h2
+      color #efefef
+      margin-right 1em
+
+.breakout-feedback
+  .layout-title
+    background-color blue
+    h1
+      &::before
+        background-image url(../images/breakout-stylized.png)
+
+.geometry
+  .layout-title
+    background-color #fdc771
+    h1
+      color #251b0a
+      text-shadow 2px 2px #bf4049
+      font-size 4em
+      &::before
+        background-repeat repeat-x
+        background-size contain
+        background-image url(../images/notebook-math.jpg)
+    h2
+      padding-right 1em
+  .euclidean-geometry.layout-section-header::after
+    background-image url(../images/euclid.jpg)
+    background-repeat no-repeat
+    background-size cover
+    background-position 50%
+
+.transforms
+  .layout-title
+    background-color white
+    h1
+      color #251b0a
+      text-shadow 2px 2px #bf4049
+      &::before
+        background-repeat no-repeat
+        background-size 37%
+        background-image url(../images/transformations.png)
+        background-position center top
+    h2
+      padding-right 1em
+      background-color: silver
+  .intro-transformacoes.layout-section-header::after
+    background-image url(../images/notebook-math.jpg)
+    background-repeat no-repeat
+    background-position center center
+  .tipos-comuns.layout-section-header::after
+    background-image url(../images/translacao-exemplo.svg), url(../images/rotacao-exemplo.svg), url(../images/escala-exemplo.svg)
+    background-repeat no-repeat
+    background-size 250px
+    background-position center 0, center 50%, center 100%
+  .push-pop.layout-section-header::after
+    background-image url(../images/pilha-de-livros.png)
+    background-repeat no-repeat
+    background-size contain
+    background-position bottom right
+
+
+.pipeline
+  .layout-title
+    h1
+      &::before
+        background-image url(../images/assembly-line.jpg)
+        background-position center top
+    h2
+      padding-right 1em
+      background-color: silver
+  .o-pipeline-grafico.layout-section-header::after
+    background-image url(../images/pipeline-subway.jpg)
+    background-repeat no-repeat
+    background-position center center
+
+.hierarchical
+  .layout-title
+    background-color #8d82e0
+    h1
+      color rebeccapurple
+      text-shadow 2px 2px black
+      &::before
+        background-image url(../images/sample-matrix-multiplication.png)
+        background-position center top
+        background-repeat no-repeat
+        background-size auto
+        background-color white
+  .modelagem-hierarquica.layout-section-header::after
+    background-image url(../images/bicicleta.jpg)
+    background-repeat no-repeat
+    background-position center center
+    background-size contain
+    background-color black
+
+
+.vertex-spec
+  .layout-title
+    background-color: silver
+    h1
+      &::before
+        background-image url(../images/dragon-3d.jpg)
+        background-position center bottom
+        background-size cover
+        background-color #3b3b3b
+    h2
+      padding-right 1em
+  .o-pipeline-grafico.layout-section-header::after
+    background-image url(../images/pipeline-subway.jpg)
+    background-repeat no-repeat
+    background-position center center
+
+.lighting
+  .layout-title
+    background-color silver
+    h1
+      color #7e5dff
+      &::before
+        background-image url(../images/illuminated-vs-non-illuminated-spheres.png)
+        background-position center bottom
+        background-repeat no-repeat
+        background-size contain
+        background-color white
+    h2
+      padding-right 1em
+  .modelos-de-iluminacao.layout-section-header::after
+    background-color white
+    background-image url(../images/luz-modelo-fisico.png)
+    background-repeat no-repeat
+    background-position center center
+    background-size contain
+  .iluminacao-em-opengl.layout-section-header::after
+    background-image url(../images/c-language-source-code.jpg)
+    background-repeat no-repeat
+    background-size fit
+    background-position 0%
+  .sombreamento.layout-section-header::after
+    background-color white
+    background-image url(../images/shading-sumo.jpg)
+    background-repeat no-repeat
+    background-position center center
+  .fog.layout-section-header::after
+    background-color white
+    background-image url(../images/fog.jpg)
+    background-repeat no-repeat
+    background-position center center
+
+.textures
+  .layout-title
+    h1
+      font-family Aladin, cursive
+      color black
+      font-size 8em
+      &::before
+        background-image url(../images/tf2-woodwall-texture.jpg)
+        background-size cover
+
+.visual-effects
+  .layout-title
+    h1
+      &::before
+        background-image url(../images/sistema-particulas-infamous.jpg)
+  .skybox.layout-section-header::after
+    background-image url(../images/skybox.jpg)
+  .billboarding.layout-section-header::after
+    background-image url(../images/billboarded-trees.jpg)
+  .sombras-em-tempo-real.layout-section-header::after
+    background-image url(../images/cars-with-shadows.png)
+  .sistema-de-particulas.layout-section-header::after
+    background-image url(../images/sistema-particulas-infamous.jpg)
+  .environment-mapping.layout-section-header::after
+    background-image url(../images/environment-mapping-knot.png)
+  .efeitos-de-camera.layout-section-header::after
+    background-image url(../images/depth-of-field-unreal.png)
+
+
+.raytracing
+  .layout-title
+    h1
+      // color black
+      // font-size 8em
+      &::before
+        background-image url(../images/raytraced-teapot.jpg)
+        background-size cover
+  .modelos-de-iluminacao.layout-section-header::after
+    background-image url(../images/raytraced-high-realism.jpg)
+  .ray-tracing.layout-section-header::after
+    background-image url(../images/cena-empilhadas.jpg)
+    background-position center center
+
+.raytracing2
+  .layout-title
+    h1
+      // color black
+      // font-size 8em
+      &::before
+        background-image url(../images/path-tracer-stacked-spheres.png)
+        background-size cover
+  .modelos-de-iluminacao.layout-section-header::after
+    background-image url(../images/raytraced-high-realism.jpg)
+  .ray-tracing.layout-section-header::after
+    background-image url(../images/cena-empilhadas.jpg)
+    background-position center center
+
+
+
+
+.programmable-pipeline
+  .layout-title
+    h1::before
+      background-image url(../images/ni-no-kuni.jpg)
+      background-size cover
+
+
+// animations
+@keyframes movingbg-x
+  from
+    background-position 0 100%
+  to
+    background-position 100% 100%

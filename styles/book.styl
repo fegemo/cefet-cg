@@ -21,9 +21,7 @@
   height: 220px
   perspective: 1000px
   transform-style: preserve-3d
-  margin: 20px
-  margin-bottom: 40px
-  margin-left: 60px
+  margin: 0 auto
 
 .book ul
   list-style: none
@@ -383,3 +381,34 @@
 .book figcaption p
   color: black
   line-height: 1.3
+
+
+$book-gutter-width = 30px
+$book-height = 250px
+
+.book-cover-container
+  position relative
+  perspective 400px
+  transform-style preserve-3d
+  transform rotateY(0)
+  transform-origin center center
+  transition transform 300ms ease-out
+
+  &:hover
+    transform rotateY(40deg)
+
+
+.book-cover
+  height $book-height
+
+.book-left
+  position absolute
+  top 0
+  left - $book-gutter-width
+  width $book-gutter-width
+  height $book-height
+  transform rotateY(-90deg)
+  background-color black
+  transform-origin right center 0
+  &.book-light
+    background-color beige

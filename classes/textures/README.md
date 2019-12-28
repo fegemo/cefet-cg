@@ -1,9 +1,7 @@
-<!--
-  backdrop: tf2-texture
--->
-
+<!-- {"layout": "title"} -->
 <link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
-<h1 class="inset-shadow" title="Texturas">Texturas</h1>
+
+# Texturas
 
 ---
 # Objetivos
@@ -292,6 +290,50 @@
   ```
 
 ---
+## Modos de Repetição
+
+- Exemplo:
+  ```c
+  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP );
+  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
+  ```
+
+  ![](../../images/texturas-modo-repeticao.png)
+
+---
+## Modos de Repetição: Exemplo
+
+![](../../images/texturas-modo-repeticao-gatinho.png)
+- `GL_REPEAT`
+- `GL_MIRRORED_REPEAT`
+- `GL_CLAMP_TO_EDGE`: Coordenada presa (_clamped_) entre 0 e 1
+- `GL_CLAMP_TO_BORDER`: Coordenadas fora de [0,1] recebem a "cor da borda"
+
+---
+## Exemplo: [mapeamento-textura](codeblocks:mapeamento-textura/CodeBlocks/mapeamento-textura.cbp)
+
+![](../../images/mapeamento-textura.png) <!-- {p:.centered} -->
+
+---
+## Animação das coordenadas de textura ([exemplo](codeblocks:animacao-textura/CodeBlocks/animacao-textura.cbp))
+
+- ![](../../images/animacao-textura.png) <!-- {.push-right style="height: 300px"} -->
+  É possível animar (alterar ao longo do tempo)
+  as coordenadas de textura
+  - Pode ser um efeito aplicado para a superfície da água,
+    lava etc.
+  - No pipeline fixo existe a pilha de matrizes `GL_TEXTURE`:
+    ```c
+    glMatrixMode(GL_TEXTURE);
+    glLoadIdentity();
+    glTranslate(posicaoS, posicaoT, 0);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    // desenha...
+    ```
+
+---
 ## Filtragem
 
 ![](../../images/filtragem-textura.png)
@@ -324,49 +366,14 @@
 ---
 ## Exemplo de _Mipmaps_ e filtragem
 
-<div class="side-by-side-children">
-  <video width="380" height="383" class="left-aligned" controls loop>
+<div class="horizontal-list-flex">
+  <video width="380" height="383" class="push-left" controls loop>
     <source src="../../videos/texture-nearest.mp4" type="video/mp4" />
   </video>
-  <video width="380" height="383" class="right-aligned" controls loop>
+  <video width="380" height="383" class="push-right" controls loop>
     <source src="../../videos/texture-mipmaps.mp4" type="video/mp4" />
   </video>
 </div>
-
----
-## Modos de Repetição
-
-- Exemplo:
-  ```c
-  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP );
-  glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT );
-  ```
-
-  ![](../../images/texturas-modo-repeticao.png)
-
----
-## Modos de Repetição: Exemplo
-
-![](../../images/texturas-modo-repeticao-gatinho.png)
-- `GL_REPEAT`
-- `GL_MIRRORED_REPEAT`
-- `GL_CLAMP_TO_EDGE`: Coordenada presa (_clamped_) entre 0 e 1
-- `GL_CLAMP_TO_BORDER`: Coordenadas fora de [0,1] recebem a "cor da borda"
-
-<!--
-## Modos de Aplicação de Textura
-
-- Controla como a cor da textura afeta a cor do pixel
-  ```c
-  glTexEnv{fi}[v](GL_TEXTURE_ENV, prop, param );
-  ```
-- Modos (`prop = TEXTURE_ENV_MODE`)
-  - `GL_MODULATE`
-  - `GL_BLEND`
-  - `GL_REPLACE`
-- Cor a ser misturada (`GL_BLEND`)
-  - Especificada com `prop = GL_TEXTURE_ENV_COLOR`
--->
 
 ---
 # Texturas Procedurais
@@ -456,11 +463,9 @@ void makeCheckImage()
     ```
 
 ---
-## Exemplo de **height map** ([Explicação](http://www.lighthouse3d.com/opengl/terrain/index.php?heightmap))
+## Exemplo de **height map** ([Explicação](http://www.lighthouse3d.com/opengl/terrain/index.php?heightmap), [exemplo](codeblocks:mapa-altura/CodeBlocks/mapa-altura.cbp))
 
-<video width="496" height="496" class="left-aligned" poster="../../images/height-map-poster.png" controls loop>
-  <source src="../../videos/height-map.mp4" type="video/mp4" />
-</video>
+![](../../images/mapa-altura.png) <!-- {style="height: 400px"} -->
 
 ---
 # Referências

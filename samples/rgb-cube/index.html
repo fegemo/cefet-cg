@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Cubo de cores RGB</title>
+    <style>
+      body {
+        margin: 0;
+        width: 100%;
+        padding: 1em;
+        box-sizing: border-box;
+      }
+      canvas {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
+      }
+
+      #reload {
+        border: 2px solid currentColor;
+        padding: 0.5em;
+        font-size: 2em;
+        border-radius: 4px;
+        color: #4CAF50;
+        background: #F5F5F5;
+        box-shadow: 2px 2px 2px #0004;
+        font-family: monospace;
+        display: block;
+        margin: 0 auto;
+        transition: all 120ms ease;
+        width: 10em;
+        box-sizing: border-box;
+        position: absolute;
+        left: calc(50% - 5em);
+        top: calc(50% - 1em);
+      }
+
+      #reload:hover {
+        box-shadow: 0px 0px 20px #0004;
+        color: #3e9541;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.min.js"></script>
+    <script src="tw.js"></script>
+    <script src="OrbitControls.js"></script>
+  </head>
+  <body>
+    <button id="reload" onclick="window.location.reload();">Carregar</button>
+    <script>
+      // We always need a scene.
+      const scene = new THREE.Scene();
+
+      // ====================================================================
+      TW.clearColor = '#f7f9fb';
+      const colorcube = TW.createColorCube();
+      scene.add(colorcube);
+
+      // ================================================================
+
+
+      const renderer = new THREE.WebGLRenderer();
+
+      TW.debug = true;
+      TW.mainInit(renderer, scene);
+      TW.cameraSetup(renderer, scene, {
+        minx: 0,
+        maxx: 1,
+        miny: 0,
+        maxy: 1,
+        minz: 0,
+        maxz: 1
+      });
+      TW.viewFromAboveFrontSide();
+
+      // const isShared = false;
+      // TW.setKeyboardCallback("?",TW.showKeyboardCallbacks,"show keyboard callbacks",isShared);
+      // TW.setKeyboardCallback("a",TW.toggleAxes,"toggle axes",isShared);
+      // TW.setKeyboardCallback("b",TW.toggleBoundingBox,"toggle scene bounding box",isShared);
+      // TW.setKeyboardCallback("g",TW.toggleGroundPlane,"toggle ground plane",isShared);
+      // TW.setKeyboardCallback("x",TW.viewFromSide, "view from side (+X)",isShared);
+      // TW.setKeyboardCallback("y",TW.viewFromAbove,"view from above (+Y)",isShared);
+      // TW.setKeyboardCallback("z",TW.viewFromFront,"view from front (+Z)",isShared);
+      // TW.setKeyboardCallback("o",TW.viewFromAboveFrontSide,"view obliquely, from above front side (+XYZ)",isShared);
+
+      (window.parent || window).addEventListener('keypress',TW.onkeypress);
+
+    </script>
+  </body>
+</html>

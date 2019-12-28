@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="635.24731"
+   height="397.93539"
+   viewBox="200 -250 110.88293 397.93539"
+   id="svg1658"
+   sodipodi:docname="single-double-triple-buffering.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata1662">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Comparação de single, double e triple buffering</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1841"
+     inkscape:window-height="1018"
+     id="namedview1660"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-global="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     viewbox-height="400"
+     viewbox-y="-250"
+     viewbox-width="300"
+     viewbox-x="200"
+     inkscape:zoom="0.90598056"
+     inkscape:cx="262.56227"
+     inkscape:cy="134.87199"
+     inkscape:window-x="79"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1658">
+    <sodipodi:guide
+       position="12.722368,272.36881"
+       orientation="0,1"
+       id="guide5458"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <title
+     id="title1276">Comparação de single, double e triple buffering</title>
+  <desc
+     id="desc1278">Comparação de single, double e triple buffering</desc>
+  <defs
+     id="defs1486">
+    <linearGradient
+       id="grad"
+       x1="2375.8789"
+       y1="0"
+       x2="2489.0159"
+       y2="0"
+       gradientTransform="matrix(0.1767767,0,0,5.6568542,138.08346,-241.80065)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#ffffff"
+         stop-opacity="0"
+         id="stop1280" />
+      <stop
+         offset="100%"
+         stop-color="#ffffff"
+         stop-opacity="1"
+         id="stop1282" />
+    </linearGradient>
+    <clipPath
+       id="clip">
+      <rect
+         x="-200"
+         y="0"
+         width="638"
+         height="640"
+         id="rect1285" />
+    </clipPath>
+    <text
+       id="vram"
+       x="-40"
+       y="20"
+       style="stroke:none">
+      <tspan
+         id="tspan1288">Memória</tspan>
+      <tspan
+         x="-40"
+         y="35"
+         id="tspan1290">de vídeo</tspan>
+    </text>
+    <text
+       id="buffer"
+       x="-40"
+       y="25"
+       style="stroke:none">Buffer</text>
+    <text
+       id="buffer1"
+       x="-40"
+       y="25"
+       style="stroke:none">Buffer 1</text>
+    <text
+       id="buffer2"
+       x="-40"
+       y="25"
+       style="stroke:none">Buffer 2</text>
+    <g
+       id="vsync">
+      <rect
+         x="0"
+         y="0"
+         width="20"
+         height="365"
+         id="rect1296"
+         style="fill:#cccccc;stroke:none" />
+      <text
+         x="10"
+         y="20"
+         id="text1302"
+         style="stroke:none">
+        <tspan
+           id="tspan1298">retrace</tspan>
+        <tspan
+           x="10"
+           y="35"
+           id="tspan1300">vertical</tspan>
+      </text>
+      <!-- <text transform="rotate(-90)" x="-24" y="14" stroke="none">vsync</text> -->
+    </g>
+    <g
+       id="clear">
+      <rect
+         x="0"
+         y="0"
+         width="20"
+         height="45"
+         id="rect1305"
+         style="fill:#000000" />
+      <text
+         transform="rotate(-90)"
+         x="-21"
+         y="15"
+         id="text1307"
+         style="fill:#ffffff;stroke:none">apaga</text>
+    </g>
+    <g
+       id="a_copy_normal">
+      <rect
+         x="0"
+         y="0"
+         width="20"
+         height="45"
+         id="rect1310"
+         style="fill:#ffcc00" />
+      <rect
+         x="20"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1312"
+         style="fill:#ffff99" />
+      <text
+         x="10"
+         y="20"
+         id="text1318"
+         style="stroke:none">
+        <tspan
+           id="tspan1314">copia</tspan>
+        <tspan
+           x="10"
+           y="40"
+           id="tspan1316">A</tspan>
+      </text>
+    </g>
+    <g
+       id="b_copy_normal">
+      <rect
+         x="0"
+         y="0"
+         width="20"
+         height="45"
+         id="rect1321"
+         style="fill:#9999ff" />
+      <rect
+         x="20"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1323"
+         style="fill:#ccccff" />
+      <text
+         x="10"
+         y="20"
+         id="text1329"
+         style="stroke:none">
+        <tspan
+           id="tspan1325">copia</tspan>
+        <tspan
+           x="10"
+           y="40"
+           id="tspan1327">B</tspan>
+      </text>
+    </g>
+    <g
+       id="c_copy_normal">
+      <rect
+         x="0"
+         y="0"
+         width="20"
+         height="45"
+         id="rect1332"
+         style="fill:#99ffff" />
+      <rect
+         x="20"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1334"
+         style="fill:#ccffff" />
+      <text
+         x="10"
+         y="20"
+         id="text1340"
+         style="stroke:none">
+        <tspan
+           id="tspan1336">copia</tspan>
+        <tspan
+           x="10"
+           y="40"
+           id="tspan1338">C</tspan>
+      </text>
+    </g>
+    <g
+       id="d_copy_normal">
+      <rect
+         x="0"
+         y="0"
+         width="20"
+         height="45"
+         id="rect1343"
+         style="fill:#99ff99" />
+      <rect
+         x="20"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1345"
+         style="fill:#ccffcc" />
+      <text
+         x="10"
+         y="20"
+         id="text1351"
+         style="stroke:none">
+        <tspan
+           id="tspan1347">copia</tspan>
+        <tspan
+           x="10"
+           y="40"
+           id="tspan1349">D</tspan>
+      </text>
+    </g>
+    <g
+       id="e_copy_normal">
+      <rect
+         x="0"
+         y="0"
+         width="20"
+         height="45"
+         id="rect1354"
+         style="fill:#ff9999" />
+      <rect
+         x="20"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1356"
+         style="fill:#ffcccc" />
+      <text
+         x="10"
+         y="20"
+         id="text1362"
+         style="stroke:none">
+        <tspan
+           id="tspan1358">copia</tspan>
+        <tspan
+           x="10"
+           y="40"
+           id="tspan1360">E</tspan>
+      </text>
+    </g>
+    <g
+       id="abcde_copy_normal">
+      <use
+         xlink:href="#a_copy_normal"
+         id="use1365"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#b_copy_normal"
+         transform="translate(100)"
+         id="use1367"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#c_copy_normal"
+         transform="translate(200)"
+         id="use1369"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#d_copy_normal"
+         transform="translate(300)"
+         id="use1371"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#e_copy_normal"
+         transform="translate(400)"
+         id="use1373"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <g
+       id="a_draw_normal">
+      <use
+         xlink:href="#clear"
+         transform="translate(20)"
+         id="use1376"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <rect
+         x="40"
+         y="0"
+         width="50"
+         height="45"
+         id="rect1378"
+         style="fill:#ffcc00" />
+      <rect
+         x="90"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1380"
+         style="fill:#ffff99" />
+      <text
+         x="65"
+         y="20"
+         id="text1386"
+         style="stroke:none">
+        <tspan
+           id="tspan1382">desenha</tspan>
+        <tspan
+           x="65"
+           y="40"
+           id="tspan1384">A</tspan>
+      </text>
+    </g>
+    <g
+       id="b_draw_normal">
+      <use
+         xlink:href="#clear"
+         transform="translate(20)"
+         id="use1389"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <rect
+         x="40"
+         y="0"
+         width="50"
+         height="45"
+         id="rect1391"
+         style="fill:#9999ff" />
+      <rect
+         x="90"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1393"
+         style="fill:#ccccff" />
+      <text
+         x="65"
+         y="20"
+         id="text1399"
+         style="stroke:none">
+        <tspan
+           id="tspan1395">desenha</tspan>
+        <tspan
+           x="65"
+           y="40"
+           id="tspan1397">B</tspan>
+      </text>
+    </g>
+    <g
+       id="c_draw_normal">
+      <use
+         xlink:href="#clear"
+         transform="translate(20)"
+         id="use1402"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <rect
+         x="40"
+         y="0"
+         width="50"
+         height="45"
+         id="rect1404"
+         style="fill:#99ffff" />
+      <rect
+         x="90"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1406"
+         style="fill:#ccffff" />
+      <text
+         x="65"
+         y="20"
+         id="text1412"
+         style="stroke:none">
+        <tspan
+           id="tspan1408">desenha</tspan>
+        <tspan
+           x="65"
+           y="40"
+           id="tspan1410">C</tspan>
+      </text>
+    </g>
+    <g
+       id="d_draw_normal">
+      <use
+         xlink:href="#clear"
+         transform="translate(20)"
+         id="use1415"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <rect
+         x="40"
+         y="0"
+         width="50"
+         height="45"
+         id="rect1417"
+         style="fill:#99ff99" />
+      <rect
+         x="90"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1419"
+         style="fill:#ccffcc" />
+      <text
+         x="65"
+         y="20"
+         id="text1425"
+         style="stroke:none">
+        <tspan
+           id="tspan1421">desenha</tspan>
+        <tspan
+           x="65"
+           y="40"
+           id="tspan1423">D</tspan>
+      </text>
+    </g>
+    <g
+       id="e_draw_normal">
+      <use
+         xlink:href="#clear"
+         transform="translate(20)"
+         id="use1428"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <rect
+         x="40"
+         y="0"
+         width="50"
+         height="45"
+         id="rect1430"
+         style="fill:#ff9999" />
+      <rect
+         x="90"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1432"
+         style="fill:#ffcccc" />
+      <text
+         x="65"
+         y="20"
+         id="text1438"
+         style="stroke:none">
+        <tspan
+           id="tspan1434">desenha</tspan>
+        <tspan
+           x="65"
+           y="40"
+           id="tspan1436">E</tspan>
+      </text>
+    </g>
+    <g
+       id="abcde_draw_normal">
+      <use
+         xlink:href="#a_draw_normal"
+         id="use1441"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#b_draw_normal"
+         transform="translate(100)"
+         id="use1443"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#c_draw_normal"
+         transform="translate(200)"
+         id="use1445"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#d_draw_normal"
+         transform="translate(300)"
+         id="use1447"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#e_draw_normal"
+         transform="translate(400)"
+         id="use1449"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+    <g
+       id="b_draw_abnormal">
+      <use
+         xlink:href="#clear"
+         transform="translate(20)"
+         id="use1452"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <rect
+         x="40"
+         y="0"
+         width="80"
+         height="45"
+         id="rect1454"
+         style="fill:#9999ff" />
+      <rect
+         x="120"
+         y="0"
+         width="999"
+         height="45"
+         id="rect1456"
+         style="fill:#ccccff" />
+      <text
+         x="80"
+         y="15"
+         id="text1462"
+         style="stroke:none">
+        <tspan
+           id="tspan1458">desenha</tspan>
+        <tspan
+           x="80"
+           y="40"
+           id="tspan1460">B</tspan>
+      </text>
+    </g>
+    <g
+       id="arrow1"
+       transform="translate(10,22)"
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:2">
+      <circle
+         cx="0"
+         cy="0"
+         r="2"
+         id="circle1465" />
+      <path
+         d="m 0,0 v 35 m -5,-5 5,5 5,-5"
+         id="path1467"
+         inkscape:connector-curvature="0"
+         style="fill:none" />
+    </g>
+    <g
+       id="arrow2"
+       transform="translate(10,22)"
+       style="fill:#ff0000;stroke:#ff0000;stroke-width:2">
+      <circle
+         cx="0"
+         cy="0"
+         r="2"
+         id="circle1470" />
+      <path
+         d="m 0,0 v 85 m -5,-5 5,5 5,-5"
+         id="path1472"
+         inkscape:connector-curvature="0"
+         style="fill:none" />
+    </g>
+    <g
+       id="arrows">
+      <use
+         xlink:href="#arrow2"
+         transform="translate(100)"
+         id="use1475"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#arrow1"
+         transform="translate(200,50)"
+         id="use1477"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#arrow2"
+         transform="translate(300)"
+         id="use1479"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#arrow1"
+         transform="translate(400,50)"
+         id="use1481"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+      <use
+         xlink:href="#arrow2"
+         transform="translate(500)"
+         id="use1483"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+  </defs>
+  <g
+     style="font-size:medium;font-family:sans-serif;letter-spacing:-1;text-anchor:middle;fill:#000000;stroke:#000000"
+     id="grid"
+     transform="translate(138.08346,-241.80065)">
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1488"
+       xlink:href="#vsync"
+       style="stroke-width:1.00157475;stroke-miterlimit:4;stroke-dasharray:none" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1490"
+       transform="translate(100)"
+       xlink:href="#vsync" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1492"
+       transform="translate(200)"
+       xlink:href="#vsync" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1494"
+       transform="translate(300)"
+       xlink:href="#vsync" />
+    <text
+       style="stroke:none"
+       id="text1496"
+       y="20"
+       x="400">Tempo</text>
+    <path
+       style="fill:none"
+       inkscape:connector-curvature="0"
+       id="path1498"
+       d="m 380,30 h 45 m -5,-5 5,5 -5,5" />
+  </g>
+  <g
+     style="font-size:medium;font-family:sans-serif;letter-spacing:-1;text-anchor:middle;fill:#000000;stroke:#000000"
+     transform="translate(138.08346,-191.80065)"
+     id="single_buffering">
+    <text
+       style="font-weight:bold;text-anchor:start;stroke:none"
+       id="text1505"
+       font-weight="bold"
+       y="20"
+       x="-200">
+      <tspan
+         id="tspan1501">1. Single-</tspan>
+      <tspan
+         id="tspan1503"
+         y="40"
+         x="-180">buffering</tspan>
+    </text>
+    <path
+       style="fill:none"
+       inkscape:connector-curvature="0"
+       id="path1507"
+       d="m -70,0 h -10 v 45 h 10" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1509"
+       xlink:href="#vram" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1511"
+       transform="translate(-20)"
+       xlink:href="#abcde_draw_normal" />
+  </g>
+  <g
+     style="font-size:medium;font-family:sans-serif;letter-spacing:-1;text-anchor:middle;fill:#000000;stroke:#000000"
+     transform="translate(138.08346,-131.80065)"
+     id="double_buffering_normal">
+    <text
+       style="font-weight:bold;text-anchor:start;stroke:none"
+       id="text1518"
+       font-weight="bold"
+       y="20"
+       x="-200">
+      <tspan
+         id="tspan1514">2. Double-</tspan>
+      <tspan
+         id="tspan1516"
+         y="40"
+         x="-180">buffering</tspan>
+    </text>
+    <path
+       style="fill:none"
+       inkscape:connector-curvature="0"
+       id="path1520"
+       d="m -70,0 h -10 v 95 h 10" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1522"
+       xlink:href="#buffer" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1524"
+       transform="translate(0,50)"
+       xlink:href="#vram" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1526"
+       xlink:href="#abcde_draw_normal" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1528"
+       transform="translate(100,50)"
+       xlink:href="#abcde_copy_normal" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1530"
+       transform="translate(100)"
+       xlink:href="#arrow1" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1532"
+       transform="translate(200)"
+       xlink:href="#arrow1" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1534"
+       transform="translate(300)"
+       xlink:href="#arrow1" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1536"
+       transform="translate(400)"
+       xlink:href="#arrow1" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1538"
+       transform="translate(500)"
+       xlink:href="#arrow1" />
+  </g>
+  <g
+     style="font-size:medium;font-family:sans-serif;letter-spacing:-1;text-anchor:middle;fill:#000000;stroke:#000000"
+     transform="translate(138.08346,-21.800651)"
+     id="triple_buffering_normal">
+    <text
+       style="font-weight:bold;text-anchor:start;stroke:none"
+       id="text1545"
+       font-weight="bold"
+       y="20"
+       x="-200">
+      <tspan
+         id="tspan1541">3. Triple-</tspan>
+      <tspan
+         id="tspan1543"
+         y="40"
+         x="-180">buffering</tspan>
+    </text>
+    <path
+       style="fill:none"
+       inkscape:connector-curvature="0"
+       id="path1547"
+       d="m -70,0 h -10 v 145 h 10" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1549"
+       xlink:href="#buffer1" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1551"
+       transform="translate(0,50)"
+       xlink:href="#buffer2" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1553"
+       transform="translate(0,100)"
+       xlink:href="#vram" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1555"
+       xlink:href="#a_draw_normal" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1557"
+       transform="translate(70,50)"
+       xlink:href="#b_draw_normal" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1559"
+       transform="translate(140)"
+       xlink:href="#c_draw_normal" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1561"
+       transform="translate(210,50)"
+       xlink:href="#d_draw_normal" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1563"
+       transform="translate(300)"
+       xlink:href="#e_draw_normal" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1565"
+       transform="translate(420,50)"
+       xlink:href="#clear" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1567"
+       transform="translate(100,100)"
+       xlink:href="#abcde_copy_normal" />
+    <use
+       height="100%"
+       width="100%"
+       y="0"
+       x="0"
+       id="use1569"
+       xlink:href="#arrows" />
+  </g>
+  <rect
+     style="font-size:medium;font-family:sans-serif;letter-spacing:-1;text-anchor:middle;fill:url(#grad);stroke:none"
+     id="rect1654"
+     height="640"
+     width="20"
+     y="-241.80064"
+     x="558.08344" />
+</svg>

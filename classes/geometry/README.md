@@ -1,18 +1,18 @@
-<!--
-  backdrop: affine-geometry
--->
-
+<!-- {"layout": "title"} -->
 # Geometria
+## Uma breve revisão
 
 ---
+<!-- {"layout": "centered"} -->
 # Roteiro
 
-1. História da Geometria
-1. Geometria Afim
-1. Geometria Euclidiana
-1. Sistema de Coordenadas
+1. História da geometria
+1. Geometria afim
+1. Geometria euclidiana
+1. Sistemas de coordenadas
 
 ---
+<!-- {"layout": "regular"} -->
 ## Problemas Típicos (1/2)
 
 - **Interseção** (ou colisão)
@@ -26,6 +26,7 @@
     - Ou então se mudarmos a câmera de posição
 
 ---
+<!-- {"layout": "regular"} -->
 ## Problemas Típicos (2/2)
 
 - **Orientação**
@@ -37,25 +38,27 @@
     (_e.g._, cartesiano)?
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Exemplo de problema: **rotação**
 
-- Para gerar a segunda figura a partir da primeira, preciso reescrever as
-  coordenadas de cada vértice "na mão"?
+Para gerar a segunda figura a partir da primeira, precisamos reescrever as
+coordenadas de cada vértice "na mão"?
 
 ![Figura mostrando um quadrado](../../images/geometry-square-transform1.png)
 ![Figura mostrando o mesmo quadrado da figura anterior, porém girado em 45º](../../images/geometry-square-transform2.png)
 
-- Sim, é possível!
-  - Mas dá muito trabalho e **bons programadores são preguiçosos**!
+É possível! Mas dá muito trabalho e **bons programadores são preguiçosos**!
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Exemplo de problema: **rotação** (cont.)
 
-- E se quisermos fazer uma animação?
+E se quisermos fazer uma animação?
 
-<iframe src="../../samples/rotate/rotate-anim.htm" width="100%" height="500" frameborder="0"></iframe>
+<iframe src="../../samples/rotate/rotate-anim.htm" width="400" height="400" frameborder="0"></iframe>
 
 ---
+<!-- {"layout": "regular"} -->
 # Objetivos de hoje
 
 - Vamos supor que estamos na década de 90 e **vamos inventar uma peça de
@@ -72,6 +75,7 @@
 # Geometria
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria
 
 - Um dos mais antigos ramos da matemática
@@ -84,6 +88,7 @@
   - **300 a.C.** na Grécia
 
 ---
+<!-- {"layout": "regular"} -->
 ## Surgimento da **Geometria Afim**
 
 - Somente por volta de **1600 d.C.**, com Descartes, as coordenadas
@@ -99,22 +104,29 @@
   - Geometria projetiva (1900 d.C., _en passant_)
 
 ---
+<!-- {"layout": "section-header"} -->
 # Geometria Afim
 
+1. Definição
+1. Elementos
+1. Operações
+
 ---
+<!-- {"layout": "regular"} -->
 ## **Definição** de Geometria Afim
 
 - Estudo de propriedades geométricas preservadas por
   transformações afim
   - Informalmente chamada de "estudo das linhas paralelas"
 - Conceitos:
-    - **Transformação linear**: função entre dois espaços de vetores
-      que preserva soma de vetores e multiplicação por escalares
-      - Exemplo: rotação de um objeto
-    - **Transformação afim**: transformações lineares - transformação de
-      translação
+  - **Transformação linear**: função entre dois espaços de vetores
+    que preserva soma de vetores e multiplicação por escalares
+    - Exemplo: rotação de um objeto
+  - **Transformação afim**: transformações lineares - transformação de
+    translação
 
 ---
+<!-- {"layout": "regular"} -->
 ## Elementos da Geometria Afim
 
 - Elementos fundamentais:
@@ -128,67 +140,51 @@
 - Premissa da geometria afim: preservar **paralelismo** e **colinearidade**
 
 ---
-## **Escalar**
+<!-- {"layout": "regular"} -->
+## **Escalar**, **Ponto** e **Vetor**
 
-- Números reais
-- Representa uma **grandeza não geométrica**
-- Notação típica:
-  - Letras minúsculas (inclusive gregas):
+- **Escalar** <!-- {ul:.layout-split-3.card-list} -->
+  - Um número real
+  - Representa uma **grandeza não geométrica**
+  - Notação típica:
     - <span class="math">\alpha, \beta, \gamma, x, t</span>
-
----
-## **Ponto** e **Vetor**
-
-- Podem ser representados por um conjunto de coordenadas no espaço
-  (<span class="math">R^2, R^3, R^n</span>)
 - **Ponto**
   - Representa uma localização no espaço
-  - Notação típica: letras maíusculas
+  - Notação típica:
     - <span class="math">P, Q, R</span>
 - **Vetor**
   - Representa uma grandeza geométrica. Entendido como um deslocamento.
-  - Notação típica: letras minúsculas com setinha
+  - Notação típica:
     - <span class="math">\vec{u}, \vec{v}, \vec{w}</span>
 
+Pontos e vetores podem ser representados por um conjunto de coordenadas
+(escalares) no espaço (<span class="math">R^2, R^3, R^n</span>) <!-- {p:.note} -->
+
 ---
-## Operações (1/4)
+<!-- {"layout": "regular"} -->
+## Operações básicas
 
-![](../../images/afim-multiplicacao-escalar.png)
-
-- Multiplicação escalar-vetor
+- Multiplicação escalar-vetor <!-- {ul:.card-list.polaroid.bulleted} -->
+  ![](../../images/afim-multiplicacao-escalar.png) <!-- {style="width: 220px"} -->
   - <span class="math">\vec{v} = \alpha \times \vec{u}</span>
-
----
-## Operações (2/4)
-
-![](../../images/afim-soma-vetores.png)
-
 - Adição vetor-vetor
+  ![](../../images/afim-soma-vetores.png)  <!-- {style="width: 220px"} -->
   - <span class="math">\vec{w} = \vec{u} + \vec{v}</span>
   - <span class="math">\vec{w} = \vec{u} - \vec{v}</span>
     - <span class="math">\vec{w} = \vec{u} + (-1 \times \vec{v})</span>
-
----
-## Operações (3/4)
-
-![](../../images/afim-subtracao-pontos.png)
-
 - Diferença ponto-ponto
+  ![](../../images/afim-subtracao-pontos.png)  <!-- {style="width: 170px"} -->
   - <span class="math">\vec{v} = P - Q</span>
-
----
-## Operações (4/4)
-
-![](../../images/afim-soma-vetor-ponto.png)
-
 - Adição ponto-vetor
+  ![](../../images/afim-soma-vetor-ponto.png)  <!-- {style="width: 220px"} -->
   - <span class="math">Q = P + \vec{u}</span>
   - <span class="math">Q = P - \vec{u}</span>
 
 ---
-## **Combinação Afim**
+<!-- {"layout": "regular"} -->
+## Operação: combinação afim
 
-- ![right](../../images/combinacao-afim.png)
+- ![](../../images/combinacao-afim.png) <!-- {.push-right style="width: 220px"} -->
   Dados dois pontos <span class="math">P</span> e <span class="math">Q</span>,
   um ponto entre <span class="math">P</span> e <span class="math">Q</span> que
   divide o segmento <span class="math">PQ</span> em
@@ -203,7 +199,8 @@
   <div class="math bullet">R = (1 - \alpha) Q + \alpha P</div>
 
 ---
-## Combinação Afim (cont.)
+<!-- {"layout": "regular"} -->
+## Combinação afim (cont.)
 
 - Observe que na medida em que <span class="math">\alpha</span> varia entre
   <span class="math">0</span> e <span class="math">1</span>,
@@ -214,48 +211,56 @@
   - Aí temos uma **combinação linear**
 - No caso particular em que <span class="math">\alpha \in [0,1]</span>,
   chamamos a combinação afim de **combinação convexa**
-- Vimos uma combinação afim entre dois pontos, mas pode haver mais pontos...
+- Vimos uma combinação afim entre dois pontos, mas pode haver mais pontos... <!-- {ul:.bullet} -->
+
+Como podemos definir uma combinação afim para <span class="math">n</span>
+pontos? <!-- {.center-aligned.note.info.bullet} -->
 
 ---
-## **Definição Geral** da Combinação Afim
+<!-- {"layout": "regular"} -->
+## **Definição geral** da combinação afim
 
-- Dada uma sequência de pontos <span class="math">P_1, P_2, ..., P_n</span>,
-  uma combinação afim seria uma soma da forma:
-  <div class="math">\alpha_1 P_1 + \alpha_2 P_2 + ... + \alpha_n P_n</div>
+Dada uma sequência de pontos <span class="math">P_1, P_2, ..., P_n</span>,
+uma combinação afim seria uma soma:
+  <div class="math centered">\alpha_1 P_1 + \alpha_2 P_2 + ... + \alpha_n P_n</div>
 
-  ...onde os escalares satisfazem a regra:
+  ...onde os escalares satisfazem a regra: <!-- {p:.no-margin} -->
 
-  <div class="math">\sum_{i=1}^{n} {\alpha} = 1</div>
+  <div class="math centered" style="margin-top: 0; margin-bottom: 0">\sum_{i=1}^{n} {\alpha} = 1</div>
 
-- Para combinação convexa, <span class="math">0 \le \alpha_i < 1</span>
+- Para combinação convexa, <span class="math">\alpha_i \ge 0</span>
 - O que seria uma combinação afim de 3 pontos? E uma combinação convexa?
 
 ---
-## Combinação de 3 pontos
+<!-- {"layout": "regular"} -->
+## Exemplo: combinação de 3 pontos
 
-![](../../images/combinacao-afim-3.png)
+- ![](../../images/combinacao-afim-3.png) <!-- {.push-right} -->
+  Combinação afim: <!-- {ul:.bulleted} -->
+  - É o plano
+- Combinação convexa:
+  - O triângulo
 
-- Combinação afim: o plano
-- Combinação convexa: o triângulo
-- Nota: o OpenGL usa uma combinação convexa para determinar a cor dos polígonos
-  quando os vértices possuem cores diferentes
+Nota: o OpenGL usa uma combinação convexa para determinar a cor dos polígonos
+quando os vértices possuem cores diferentes <!-- {p:.note.info.large-width} -->
 
 ---
+<!-- {"layout": "section-header", "slideClass": "euclidean-geometry"} -->
 # Geometria Euclidiana
 
-<blockquote style="font-style: italic">
-  Um ponto é aquele que não tem partes.<br>
-  Uma linha é um comprimento sem espessura.<br>
-  As extremidades de uma linha são pontos.<br>
-  Uma linha reta é a linha que percorre uniformemente os pontos nela mesma.
-</blockquote>
-As primeiras quatro definições do livro _Elementos_ do poeta Euclides
+>  Um ponto é aquele que não tem partes.<br>
+>  Uma linha é um comprimento sem espessura.<br>
+>  As extremidades de uma linha são pontos.<br>
+>  Uma linha reta é a linha que percorre uniformemente os pontos nela mesma. <!-- {blockquote:style="width: 42%; margin: 0.5em 2em;"} -->
+
+-- As primeiras quatro definições do livro _Elementos_ do poeta Euclides
 
 ---
+<!-- {"layout": "regular"} -->
 ## Geometria Euclidiana
 
 - Não existem elementos para expressar ângulos e distâncias em geometria afim
-- Acrescenta-se uma operação: **Produto Interno**
+- Acrescenta-se uma operação: **produto interno**
   - Definição
     - Transforma dois vetores em um escalar
     - Expressa como <span class="math">(\vec{u}, \vec{v})</span> ou
@@ -270,6 +275,7 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
       <span class="math">(\vec{u}, \alpha \vec{v}) = \alpha (\vec{u}, \vec{v})</span>
 
 ---
+<!-- {"layout": "regular"} -->
 ## Produto Interno
 
 - Há duas definições:
@@ -281,6 +287,7 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
     <div class="math">\vec{u} \cdot \vec{v} = \lVert \vec{u} \rVert \lVert \vec{v} \rVert cos \theta</div >
 
 ---
+<!-- {"layout": "regular"} -->
 ## Conceitos derivados
 
 - **Comprimento (norma)**:
@@ -293,13 +300,14 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
     vetor original, porém com comprimento unitário
 
 ---
+<!-- {"layout": "regular"} -->
 ## Conceitos derivados (cont.)
 
 - <span class="math" style="float: right;">dist(P,Q) = \lVert P-Q \rVert</span>
   **Distância entre dois pontos**:
   - Corresponde ao comprimento do vetor diferença
 - **Ângulo**:
-  - ![right](../../images/angle.png)
+  - ![](../../images/angle.svg) <!-- {.push-right} -->
     O ângulo entre dois vetores corersponde ao arco-cosseno do produto interno
     dos dois vetores normalizados    
     <div class="math" style="float: left">ang(\vec{u}, \vec{v}) = \cos^{-1} \left(\frac{\vec{u} \cdot \vec{v}}{\lVert \vec{u} \rVert \lVert \vec{v} \rVert} \right) = \cos^{-1} \left( \hat{u} \cdot \hat{v} \right)</div>
@@ -308,6 +316,7 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
   - Dois vetores são ditos ortogonais (perpendiculares) se o produto interno é 0
 
 ---
+<!-- {"layout": "regular"} -->
 ## Conceitos derivados (cont.)
 
 - **Decomposição ortogonal**:
@@ -318,12 +327,14 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
     <span class="math">\vec{u}_1</span> é paralelo a
     <span class="math">\vec{v}</span> e
     <span class="math">\vec{u}_2</span> é perpendicular
-    ![](../../images/ortho-projection.png)
+    ![](../../images/ortho-projection.svg)
 - **Projeção ortogonal**:
   - <span class="math">\vec{u}_1</span> é chamado a projeção ortogonal de
     <span class="math">\vec{u}</span> em <span class="math">\vec{v}</span>
-    <div class="math" style="float: left">proj_{\vec{v}} \vec{u} = \vec{u_1} = \frac{\vec{u} \cdot \vec{v}}{\vec{v} \cdot \vec{v}} \vec{v}</div>
+    <div class="math" style="">proj_{\vec{v}} \vec{u} = \vec{u_1} = \frac{\vec{u} \cdot \vec{v}}{\vec{v} \cdot \vec{v}} \vec{v}</div>
+
 ---
+<!-- {"layout": "regular"} -->
 ## Representação de objetos
 
 - Se a geometria afim não define uma origem, não temos como representar objetos
@@ -337,7 +348,8 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
     <div class="math">\vec{v} = \alpha_1 \vec{u}_1 + \alpha_2 \vec{u}_2</div>
 
 ---
-## Representação de vetores (cont.)
+<!-- {"layout": "regular"} -->
+## Representação de objetos: **vetores**
 
 ![](../../images/ortho-basis.png)
 ![](../../images/ortho-vectors.png)
@@ -349,7 +361,8 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
     contém as **coordenadas cartesianas** do vetor <span class="math">\vec{v}</span>
 
 ---
-## Representação de pontos (cont.)
+<!-- {"layout": "regular"} -->
+## Representação de objetos: **pontos**
 
 - Vamos considerar um ponto arbitrário O como o centro do nosso espaço
 - Consideremos, também, uma base (<span class="math">\vec{e}_x</span>,
@@ -365,6 +378,7 @@ As primeiras quatro definições do livro _Elementos_ do poeta Euclides
       as coordenadas cartesianas de <span class="math">P</span>
 
 ---
+<!-- {"layout": "regular"} -->
 # Sistema de Coordenadas
 
 Um sistema de coordenadas para um espaço afim <span class="math">n</span>-
@@ -372,11 +386,13 @@ dimensional consiste de um **ponto origem** e um conjunto de
 **<span class="math">n</span> vetores de base linearmente independentes**
 
 ---
+<!-- {"layout": "centered-horizontal"} -->
 ## Exemplo
 
 ![](../../images/sample-frame.png)
 
 ---
+<!-- {"layout": "regular"} -->
 ## **Coordenadas Homogêneas**
 
 - Vetores e pontos no espaço <span class="math">R^n</span> são normalmente
@@ -390,17 +406,23 @@ dimensional consiste de um **ponto origem** e um conjunto de
   - outros valores, operação ilegal
 
 ---
+<!-- {"layout": "regular"} -->
 ## Sistema de Coordenadas Padrão
 
 - Juntando uma **base ortonormal** e um **ponto de origem**, formamos um
   **sistema de coordenadas**
 - Consideremos o seguinte sistema... parece com alguma coisa?
-  - <span class="math">\vec{e}_0 = (1, 0, 0, 0)</span>
+  - <figure class="picture-steps clean push-right" style="margin: 0;">
+      <div class="math bullet">\begin{bmatrix} \vec{e}_0 & \vec{e}_1 & \vec{e}_2 & O \end{bmatrix}</div>
+      <div class="math bullet">\begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix}</div>
+    </figure>
+    <span class="math">\vec{e}_0 = (1, 0, 0, 0)</span>
   - <span class="math">\vec{e}_1 = (0, 1, 0, 0)</span>
   - <span class="math">\vec{e}_2 = (0, 0, 1, 0)</span>
-  - <span class="math">O = (0, 0, 0, 1)</span>
+  - <span class="math">O = (0, 0, 0, 1)^T</span> <!-- {ul^0:.bullet} -->
 
 ---
+<!-- {"layout": "centered"} -->
 # Referências
 
 1. Apêndice A do livro Real-Time Rendering

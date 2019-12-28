@@ -12,17 +12,30 @@ usando as cores especificadas na [aula opengl-handson][opengl-handson].
   repetindo o mesmo código várias vezes, quer dizer que você precisa
   **refatorá-lo**. Neste caso, que tal uma função
   "`desenhaQuadrado(x, y, cor)`" que você possa chamá-la várias vezes?
+- _Mais importante ainda_: a função que desenha a cena **nunca deve alterar o
+  estado da aplicação**. Vejamos um contra-exemplo: logo antes de desenhar
+  um quadrado (`glBegin(...)...glEnd()`), você sorteia 3 números e chama
+  `glColor3f(...)` com eles. Parece certo. Aí você pega e redimensiona a janela.
+  Assim que o faz, seu programa vira um boite e seus quadrados começam a piscar
+  de várias cores. Explico: enquanto você está redimensionando a janela, o
+  evento de display é disparado várias vezes, fazendo com que a cor do quadrado
+  seja novamente sorteada a cada redesenho (e isso é indesejável). Se quiser
+  fazer as cores aleatórias, precisa sorteá-las na inicialização do programa
+  e armazená-las para serem usadas na função de desenho.
 
 **Questão 2**: Escreva um programa em OpenGL (e.g, `disco_quad.c`) que desenha
 no centro da janela um "disco quadrado" (um quadrado furado), como na figura
 abaixo. Você deve fazer uma triangulação, _i.e._, use uma primitiva que envolva
-triângulos.
+triângulos (qual seria a melhor: `GL_TRIANGLES`, `GL_TRIANGLE_FAN` ou
+`GL_TRIANGLE_STRIP`?).
 
 Ao iniciar a aplicação, deve-se ver apenas o disco quadrado em azul - sem os
-traços (contornos pretos dos triângulos). Quando a tecla <key>`c`</key> for
-pressionada, devem surgir os traços pretos por cima do disco quadrado.
+traços (contornos pretos dos triângulos). Quando a tecla <key>c</key> for
+pressionada, devem surgir os traços pretos por cima do disco quadrado (e
+tanto o azul preenchido quanto o contorno preto devem ser mostrados).
 
-Para avisar ao GLUT que ele precisa redesenhar a janela, você pode chamar `glutPostRedisplay()` assim que o usuário pressionar a tecla.
+Para avisar ao GLUT que ele precisa redesenhar a janela, você pode chamar
+`glutPostRedisplay()` assim que o usuário pressionar a tecla.
 
 - _Dikentinha_: Lembre-se que por padrão o OpenGL colore (ou melhor, preenche)
   o interior dos polígonos. Essa configuração é dada pelo **modo

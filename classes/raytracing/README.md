@@ -1,10 +1,9 @@
-<!--
-backdrop: raytraced-teapot
--->
-
+<!-- {"layout": "title"} -->
 # _Ray tracing_
+## Parte 1: verificando colisões
 
 ---
+<!-- {"layout": "centered"} -->
 # Objetivos
 
 1. Relembrar das **limitações de modelos de iluminação local**
@@ -13,11 +12,24 @@ backdrop: raytraced-teapot
    _ray tracing_
 
 ---
-## Modelo de iluminação local
+<!-- { "layout": "section-header", "slideClass": "modelos-de-iluminacao", "slideHash": "modelos-de-iluminacao" } -->
+# Modelos de iluminação
+
+- Modelos locais (vimos Phong)
+- Modelos globais (veremos hoje)
+  - Radiosidade
+  - _Ray tracing_
+  - _Path tracing_
+  - _Photon Mapping_
+
+---
+<!-- {"layout": "regular"} -->
+# Modelo de iluminação local
 
 - Por ser **mais barato**, é usado para **renderização em tempo real**
   - Exemplos de uso: OpenGL, DirectX
 - Apenas caminhos do tipo fonte luminosa → superfície → olho são considerados
+  - Interação entre objetos é ignorada, iluminação indireta também
 - Como funciona, no _pipeline_ gráfico:
   - No **estágio de geometria**:
     - Para cada vértice de uma cena, a contribuição de cada fonte de luz é
@@ -28,33 +40,25 @@ backdrop: raytraced-teapot
       (modelo de sombreamento de Gouraud)
 
 ---
-## Efeitos necessários para atingir realismo
+<!-- {"layout": "regular"} -->
+# Efeitos necessários para atingir realismo
 
-- Sombras (com penumbra e tudo o mais)
-- Reflexões (espelhos e superfícies brilhantes)
-- Transparência (água, vidro)
-- Interreflexões ("sangramento" de cor)
-- Iluminação complexa (natural, luz de área)
+- ![](../../images/soft-shadows.jpg) <!-- {.push-right style="width: 460px"} --> <!-- {ul:.full-width} -->
+  Sombras (com penumbra e tudo o mais) ➡️ <!-- {.push-right} -->
 - Materiais realísticos (pinturas, vidro) etc.
+- Iluminação complexa (natural, luz de área)
+- ![](../../images/color-bleeding.png) <!-- {.push-right style="width: 460px; clear: right;"} -->
+  Interreflexões ("sangramento" de cor) ↘️
+- Reflexão, refração, transparência ⬇️
+  ![](../../images/reflection-refraction.png) <!-- {style="height: 250px;"} -->
 
 ---
-## _Soft shadows_ (sombras com **penumbra**)
-
-![](../../images/soft-shadows.jpg)
-
----
-## _Color bleeding_ ("sangramento" de cor)
-
-![](../../images/color-bleeding.png)
-
----
+<!-- {"layout": "centered", "backdrop": "raytraced-realism"} -->
 # Modelo de iluminação global
 
 ---
-![](../../images/raytraced-high-realism.png)
-
----
-## Modelo de iluminação global
+<!-- {"layout": "regular"} -->
+# Modelo de iluminação global
 
 - Num modelo de iluminação global, consideramos também **a relação
   entre objetos** no cálculo da iluminação
@@ -62,33 +66,54 @@ backdrop: raytraced-teapot
     efeitos necessários para a criação de imagens com alto realismo
   - O _pipeline_ gráfico das placas de vídeo não suportam modelos globais
     - Isso porque ele é focado em renderização em tempo real
+- Algoritmos para implementar iluminação global:
+  1. [1968][ray-tracing] **_Ray tracing_**
+  1. [1986][radiosity] Radiosidade <!-- {ol:.layout-split-4.no-bullet style="justify-content: space-around; white-space: nowrap;"} -->
+  1. [1986][path-tracing] _Path tracing_
+  1. [1996][photon-mapping] _Photon mapping_ 
+
+[radiosity]: https://dl.acm.org/citation.cfm?id=808601
+[ray-tracing]: https://dl.acm.org/citation.cfm?id=1468082
+[path-tracing]: https://dl.acm.org/citation.cfm?id=15902
+[photon-mapping]: https://link.springer.com/chapter/10.1007/978-3-7091-7484-5_3
 
 ---
+<!-- { "layout": "section-header", "slideClass": "ray-tracing", "slideHash": "ray-tracing" } -->
 # _Ray tracing_
----
-## _Ray tracing_
 
-- É uma técnica de geração de imagens com alto realismo
-  - Usa um modelo de iluminação global
-  - Geração "espontânea" de:
-    - Objetos transparentes
-    - Reflexões
-    - Sombras
-    - Refração
+- Tipos:
+  1. Simples
+  1. Recursivo
+  1. Distribuído
+- Geração "espontânea" de:
+  - Sombras (1/2/3)
+  - Objetos transparentes (2/3)
+  - Refração (2/3)
+  - Reflexões (2/3)
+
+---
+<!-- {"layout": "regular"} -->
+# _Ray tracing_
+
+- É uma técnica de geração de imagens com alto realismo <!-- {ul:style="margin-bottom: 0"} -->
 - Funcionamento **basicão**:
   - Raios são lançados do olho para cada pixel da imagem a ser gerada
   - Raios que acertam objetos
-    - são coloridos com sua cor se estiverem iluminados
-    - não são colorido se estiverem na sombra
+    - são coloridos com sua cor, se estiverem iluminados
+    - não são coloridos, se estiverem na sombra
   - Raios que não atingem nada, são pintados com a cor do fundo
+  ::: figure .center-aligned
+  ![](../../images/raytracer-anim-3.gif) <!-- {.bullet style="height: 200px;"} -->
+  ![](../../images/raytracer-anim-1.gif) <!-- {.bullet style="height: 200px;"} --> <!-- {p:.no-margin} -->
+  ![](../../images/raytracer-anim-2.gif) <!-- {.bullet style="height: 200px;"} -->
+  :::
 
 ---
-## Lançamento de raios
-
 ![](../../images/ray-tracing.png)
 
 ---
-## Algoritmo basicão
+<!-- {"layout": "regular"} -->
+# Algoritmo basicão
 
 - `pixels[] renderScene(scene)`:
   1. Dada uma configuração de câmera, gerar um raio
@@ -105,21 +130,26 @@ backdrop: raytraced-teapot
   1. Combine as cores retornadas para cada fonte e retorne a resultante
 
 ---
-## História do _Ray tracing_
+<!-- {"layout": "regular"} -->
+# História do _Ray tracing_
 
-- <img src="../../images/raytraced-image-whitted.png" style="float:right;margin:0 0 15px 15px">
-  Trabalhos Seminais
+- ![](../../images/raytraced-image-whitted.png) <!-- {.push-right style="height: 200px"} --> <!-- {ul:.full-width} -->
+  Trabalhos seminais:
   - [Appel 68](http://graphics.stanford.edu/courses/Appel.pdf), _ray casting_
-  - [Whitted 80](http://dl.acm.org/citation.cfm?id=358882), _ray tracing_ recursivo
+  - ![](../../images/raytracer-anim-4.gif) <!-- {.push-right style="height: 250px; clear: right;"} -->
+    [Whitted 80](http://dl.acm.org/citation.cfm?id=358882), _ray tracing_ recursivo ➡️
 - Pesquisa
   - Uso de diferentes primitivas geométricas
   - Técnicas de aceleração
+  - Modelos de iluminação mais realistas
+  - Interferência do meio (propagação)
 - Pesquisas recentes:
   - _Ray tracing_ em tempo real
-  - Arquiteturas para _Ray tracing_ em _hardware_
+  - Arquiteturas para _ray tracing_ em _hardware_
 
 ---
-## Algoritmo do _ray tracing_ recursivo
+<!-- {"layout": "regular"} -->
+# Algoritmo do _ray tracing_ **recursivo**
 
 - Mantém o método `renderScene(scene)` como está e modifica o
   `castRay(R, scene)` para:
@@ -137,81 +167,93 @@ backdrop: raytraced-teapot
     a retorne
 
 ---
-## Implementação
+<!-- { "layout": "regular" } -->
+# _Ray tracer_ simples _vs_ recursivo
 
-- Para implementar um _ray tracing_, precisamos **responder a pelo menos 2
+
+- ![](../../images/cena-whitted-simples.png) <!-- {.large-width} -->
+  Simples (Appel 68)
+- ![](../../images/cena-whitted-recursivo.png) <!-- {.large-width} -->
+  Recursivo (Whitted 80) <!-- {ul:.card-list.center-aligned} -->
+
+---
+<!-- {"layout": "regular"} -->
+# Implementação: perguntas...
+
+- Para implementar um _ray tracer_, precisamos **responder a pelo menos 2
   perguntas**:
   1. Como determinar se um raio atinge um objeto (e em qual)?
-    - Semana 1
+     - Semana 1
   1. Dado que um raio atingiu um objeto, como devemos calcular a cor retornada?
-    - Semana 2
+     - Semana 2
 - Vejamos, primeiro, a representação de raios e sua interseção com objetos
 
 ---
-## Interseção Raio / Objeto
+<!-- {"layout": "regular"} -->
+# Interseção de raio com objeto
 
 - É o coração de um _ray tracer_ (onde ele passa o maior tempo de execução)
   - Foi uma das primeiras áreas de pesquisa
-  - Existem rotinas otimizadas para vários tipos de primitivas (esferas, toróides, triângulos etc.)
-- Devem calcular diversos tipos de informação:
+  - Existem rotinas otimizadas para várias primitivas (esferas, toróides, triângulos etc.)
+- É necessário calcular diversos tipos de informação:
   - Para **raios primários**: ponto de interseção, material, normal
   - Para _shadow rays_: intercepta/não intercepta
   - Coordenadas de textura
 - Mas como **representar um raio**?
 
 ---
-## **Representação** de um **raio**
+<!-- {"layout": "regular"} -->
+# **Representação** de um **raio**
 
-![](../../images/raytracing-ray.png)
-
-- **Raio é modelado** como uma **reta** em forma **paramétrica**:
+![](../../images/raytracing-ray.png) <!-- {style="height: 200px;"} -->
+<!-- {p:.centered} -->
+- **Raio** é como uma **reta** em forma **paramétrica**:
   <span class="math">R(t) = P_0 + t(P_1 - P_0)</span>, ou seja
   <div class="math">R(t) = P_0 + t\vec{u}</div>
 - Computa-se para quais valores do parâmetro <span class="math">t</span> a
-  reta o intercepta
+  reta intercepta o objeto
 
 
 ---
-## Como representar um raio **em C/C++ ou Java**?
+<!-- {"layout": "regular"} -->
+# **Estrutura de dados** para representar raio
 
-<div class="layout-split-3" style="height: auto;">
-  <section style="border-right: 4px dotted silver; background: cornflowerblue;">
-    <h3>Em C:</h3>
-    <pre style="text-align: left; ">
-      <code class="hljs">struct ray {
-  Vector3 p0;
-  Vector3 v;
-};</code>
-    </pre>
-  </section>
-  <section style="border-right: 4px dotted silver; background: aliceblue;">
-    <h3>Em C++:</h3>
-    <pre style="text-align: left; ">
-      <code class="hljs">class ray {
-public:      
-  Vector3 p0;
-  Vector3 v;
-};</code>
-    </pre>
-  </section>
-  <section style="background: darkseagreen;">
-    <h3>Em Java:</h3>
-    <pre style="text-align: left;">
-      <code class="hljs">public class Ray {
-  public Vector3 p0;
-  public Vector3 v;
-}</code>
-    </pre>
-  </section>
-</div>
+- Em C:
+  ```c
+  struct Ray {
+    Vector3 P;
+    Vector3 u;
+  };
+
+  ```
+- Em C++:
+  ```cpp
+  class Ray {
+    public:
+    Vector3 P;
+    Vector3 u;
+  };
+  ```
+- Em Java:
+  ```java
+  public class Ray {
+    Vector3 P;
+    Vector3 u;
+  }
+
+  ```
+  <!-- {ul:.layout-split-3.no-bullet style="justify-content: space-around"} -->
+
+E os objetos, como podemos representá-los?
 
 ---
-## Objetos Implícitos
+<!-- {"layout": "regular"} -->
+# Objetos implícitos
 
-- Um **objeto implícito** é dado por uma **equação da forma <span class="math">f(x, y, z) = 0</span>**
-- Muitas superfícies importantes podem ser modeladas como objetos implícitos,
-  principalmente os dados por equações polinomiais:
-  - Planos (grau 1)
+- Um **objeto implícito** é dado por uma 
+  **equação da forma <span class="math">f(x, y, z) = 0</span>**
+- Várias superfícies podem ser modeladas como objetos implícitos:
+  - Planos, círculos, triângulos (grau 1)
     - _i.e._, <span class="math">ax + by + cz + d = 0</span>
   - Quádricas (grau 2)
     - Elipsóide: <span class="math">\frac{x^2}{a^2}+\frac{y^2}{b^2}+\frac{z^2}{c^2} = 1</span>
@@ -219,95 +261,152 @@ public:
   - Quárticas (grau 4)
     - Toróides (_dunkin donuts_)
 
----
-## Interseção Raio / Objeto Implícito
+Na vida real: triângulos 👍 <!-- {p:.note.info.centered} -->
 
-- Raio é modelado em forma paramétrica:
-  - <span class="math">R(t) = [R_x(t) R_y(t) R_z(t)]</span>
-- Logo, os pontos de interseção satisfazem
-  - <span class="math">f(R_x(t),R_y(t),R_z(t)) = 0</span>
-- Basta resolver a equação para determinar o(s) valor(es) de <span class="math">t</span> que a satisfazem
-  - Veja como fazer para uma esfera no próximo slide...
 
 ---
-## Exemplo: Interseção com Esfera
+<!-- {"layout": "regular"} -->
+# Interseção de raio _vs_ objeto implícito
+
+1. Modelamos o **raio** <span class="math">R(t)</span> de forma paramétrica:
+   - <span class="math">R(t) = [R_x(t) R_y(t) R_z(t)]</span>
+1. Se <span class="math">f(x,y,z)</span> é uma função que representa **um objeto**,
+   os pontos de interseção entre o raio e o objeto satisfazem:
+   - <span class="math">f(R_x(t),R_y(t),R_z(t)) = 0</span>
+   - Repare que substituímos as coordenadas do objeto pelas do raio
+1. Com a equação resultante, achamos suas raízes para determinar
+   o(s) valor(es) de <span class="math">t</span> que a satisfazem
+   - Veja um exemplo com **<span class="math">f(x,y,z)</span> de uma esfera**
+     no próximo slide...
+
+---
+<!-- {"layout": "regular"} -->
+# Exemplo: interseção com esfera
 
 - Primeiramente, vamos **simplificar** o problema e assumir que a **esfera é
-  unitária e está centrada na origem**:
+  unitária e está centrada na origem**: <!-- {ul:style="max-width: 70%"} -->
   <div class="math">x^2+y^2+z^2 - 1 = 0</div>
 - Raio parametrizado como:
-  <div class="math">[P_x+t\vec{u}_x \;\;\; P_y+t\vec{u}_y \;\;\; P_z+t\vec{u}_z]^T</div>
-- (continua...)
+  <div class="math">[P_x+t\vec{u}_x \;\;\; P_y+t\vec{u}_y \;\;\; P_z+t\vec{u}_z]</div>
+
+**Atenção**: você NÃO vai usar esta fórmula no trabalho, porque ela serve apenas para
+esferas unitárias na origem. <!-- {p:.note.warning style="max-width: 70%; align-self: flex-start;"} -->
 
 ---
-## Exemplo: Interseção com Esfera (2)
+<!-- {"layout": "regular", "state": "show-active-slide-and-previous"} -->
 
-- Logo,
-  <div class="math">(P_x+t\vec{u}_x)^2 + (P_y+t\vec{u}_y)^2 + (P_z+t\vec{u}_z)^2-1=0</div>
-  <ul>
-    <li>ou<ul><li>
-      <span class="math">at^2+bt+c=0</span></li></ul>
-    </li>
-    <li>onde<ul>
-      <li><span class="math">a = \vec{u}_x^2 + \vec{u}_y^2 + \vec{u}_z^2</span></li>
-      <li><span class="math">b = 2(\vec{u}_xP_x + \vec{u}_yP_y + \vec{u}_zP_z)</span></li>
-      <li><span class="math">c = P_x^2 + P_y^2 + P_z^2 - 1</span></li></ul>
-    </li>
-  </ul>
+- Substituindo, <!-- {ul:.bulleted style="max-width: 86%; align-self: center;"} -->
+  <div class="math bullet">(P_x+t\vec{u}_x)^2 + (P_y+t\vec{u}_y)^2 + (P_z+t\vec{u}_z)^2-1=0</div>
+  <div class="math bullet" style="font-size: 80%;">(P_x^2+2P_xt\vec{u}_x+t^2\vec{u}_x^2) + (P_y^2+2P_yt\vec{u}_y+t^2\vec{u}_y^2) + (P_z^2+2P_zt\vec{u}_z+t^2\vec{u}_z^2)-1=0</div>
+  <div class="math bullet" style="font-size: 80%;">(\vec{u}_x^2+\vec{u}_y^2+\vec{u}_z^2)t^2 + 2(\vec{u}_xP_x+\vec{u}_yP_y+\vec{u}_zP_z)t + (P_x^2+P_y^2+P_z^2-1)=0</div>
+
+  - ou
+    - <span class="math">at^2+bt+c=0</span>
+  - ::: result .note.push-right width: 250px;
+    - <span class="math bullet">\vec{u}</span> é conhecido
+    - <span class="math bullet">P</span> é conhecido
+    - <span class="math bullet">t</span> é a variável
+    :::
+    onde
+    - <span class="math bullet">a = \vec{u}_x^2 + \vec{u}_y^2 + \vec{u}_z^2</span>
+    - <span class="math bullet">b = 2(\vec{u}_xP_x + \vec{u}_yP_y + \vec{u}_zP_z)</span>
+    - <span class="math bullet">c = P_x^2 + P_y^2 + P_z^2 - 1</span>
+- Com os **coeficientes da equação de 2º grau** (<span class="math">a, b, c</span>),
+  podemos encontrar o **<span class="math">\Delta</span>** e **as raízes** (valores 
+  de <span class="math">t</span>) <!-- {li:.bullet} -->
 
 ---
-## Interpretando a interseção com esfera
+<!-- {"layout": "centered"} -->
+# Interpretando a interseção com esfera
 
-- Seja <span class="math">\Delta = b^2 - 4ac</span>, então <span class="math">t = \frac{-b \pm \sqrt(\Delta)}{2a}</span>
-
-![](../../images/raytracing-raio-esfera.png)
+- Seja <span class="math">\Delta = b^2 - 4ac</span>
+  - Então:<br><div class="math">t = \frac{-b \pm \sqrt(\Delta)}{2a}</div> <!-- {ul^1:.no-margin.no-padding.full-width.layout-split-2 style="justify-content: space-around; align-items: center;"} -->
+- ![](../../images/raytracing-raio-esfera.png) <!-- {li:.no-bullet} -->
 
 Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
   uma equação de 2º grau** ;)
 
 ---
-## Para **esferas genéricas**
+<!-- {"layout": "regular"} -->
+# Para **esferas genéricas** (1/4)
 
 - Dada uma esfera com centro <span class="math">C</span> e raio <span class="math">r</span>
   - Nosso raio: <span class="math">P+t\vec{u}</span>
-- Um ponto <span class="math">Q</span> está superfície da esfera se sua distância ao seu centro é igual a <span class="math">r</span>. Ou seja, <span class="math">\left| Q-C \right|=r</span>
+- Um ponto <span class="math">Q</span> está superfície da esfera se sua distância até o centro é igual a <span class="math">r</span>. Ou seja, <span class="math">\left| Q-C \right|=r</span>. Substituindo, temos:
   <div class="math">\left| (P+t\vec{u})-C \right|=r</div>
-- Se chamarmos <span class="math">\vec{p}=C-P</span>, podemos:
+- ::: result .note.info width: 320px; position: absolute; right: 0;
+  Se elevarmos a equação ao quadrado:
+  <div class="math">\left| \vec{v} \right|^2=\vec{v}\cdot\vec{v}</div>
+  ::: 
+  Para facilitar a álgebra criamos <span class="math">\vec{p}=C-P</span>:
   <div class="math">\left| t\vec{u}-(C-P)\right|=r</div>
   <div class="math">\left| t\vec{u}-\vec{p} \right|=r</div>
 
 ---
-## Para **esferas genéricas** (2)
+<!-- {"layout": "regular"} -->
+# Para **esferas genéricas** (2/4)
 
-- Conhecemos <span class="math">\vec{u}, \vec{p}</span> e <span class="math">r</span> e queremos encontrar <span class="math">t</span>. Pelo produto interno:
-  <div class="math">(t\vec{u}-\vec{p}).(t\vec{u}-\vec{p})=r^2</div>
+- Conhecemos <span class="math">\vec{u}, \vec{p}</span> e <span class="math">r</span> e queremos encontrar <span class="math">t</span>. Pelo produto interno: <!-- {ul:.bulleted} -->
+  <div class="math">(t\vec{u}-\vec{p})\cdot(t\vec{u}-\vec{p})=r^2</div>
 - Sabendo que o lado esquerdo resulta em um escalar, podemos:
-  <div class="math">t^2(\vec{u}.\vec{u})-2t(\vec{u}.\vec{p})+(\vec{p}.\vec{p})-r^2=0</div>
-- ...que é uma equação do 2º grau e podemos resolver para <span class="math">t</span>
+  <div class="math">t^2(\vec{u}\cdot\vec{u})-2t(\vec{u}\cdot\vec{p})+(\vec{p}\cdot\vec{p})-r^2=0</div>
+- ...que é uma equação do 2º grau e podemos resolver para <span class="math">t</span>, afinal:
+  - <span class="math">\vec{u}</span> é conhecido
+  - <span class="math">\vec{p} = C-P</span> é conhecido
+  - <span class="math">r</span> é conhecido
+  - <span class="math">t</span> é a variável
 
 ---
-## Para **esferas genéricas** (3)
+<!-- {"layout": "regular", "state": "show-active-slide-and-previous"} -->
+(3/4) <!-- {.centered} -->
 
-- Da equação quadrática, temos que:
+- Da equação quadrática, temos que: <!-- {ul:.bullet style="width: 62%; margin-left: 25%; clear: right;"} -->
   <ul>
     <li><span class="math">a = (\vec{u}.\vec{u})=1</span> (já que <span class="math">\vec{u}</span> está normalizado)</li>
     <li><span class="math">b = -2(\vec{u}.\vec{p})</span></li>
     <li><span class="math">c = (\vec{p}.\vec{p})-r^2</span></li>
   </ul>
-- Disto, podemos estudar o sinal do <span class="math">\Delta</span> para saber se há interseção(ões) (raiz(es)) e, caso exista(m), com o valor encontrado para <span class="math">t</span> podemos determinar o ponto de interseção <span class="math">Q</span> na esfera
+- Disto, podemos **estudar o sinal do <span class="math">\Delta</span>** para
+  saber se há interseção(ões) (raiz(es)) e, caso exista(m), com o
+  valor encontrado para <span class="math">t</span> podemos **determinar
+  o ponto de interseção <span class="math">Q</span>** na esfera
+
+Esta é a fórmula que deve ser usada, porque serve para esferas posicionadas em qualquer lugar e com qualquer tamanho. <!-- {p:.note.info.bullet style="max-width: 75%;margin-left:17%;"} -->
 
 ---
-## Exemplo: Normal do ponto <span class="math">P</span>
+<!-- { "layout": "regular" } -->
+# Estudando o sinal de <span class="math">\Delta</span> e das raízes (4/4)
 
-- A normal no ponto de interseção <span class="math">P</span> é dada pelo gradiente no ponto de
-  interseção:
+- <div class="math push-right">t_1=\frac{-b-\sqrt{\Delta}}{2a}</div>
+  <div class="math push-right clear-both">t_2=\frac{-b+\sqrt{\Delta}}{2a}</div>
+  Se não há raiz real (<span class="math">\Delta<0</span>), não há interseção do raio com a esfera
+- Se há uma ou duas raízes reais (<span class="math">\Delta\ge0</span>) <!-- {ul:.bullet} -->
+  - Se <span class="math">t_1</span> e <span class="math">t_2</span> são negativas, a esfera está atrás do raio
+    - logo, não há interseção
+  - Se <span class="math">t_1</span> é negativa e <span class="math">t_2</span> positiva, o raio foi lançado por dentro
+    - <span class="math">t = t_2</span> e a normal precisa ser invertida
+  - Se <span class="math">t_1</span> e <span class="math">t_2</span> são positivas, a esfera foi atingida pelo raio e
+    - <span class="math">t=t_1</span>
 
-![](../../images/raytracing-raio-esfera-normal.png)
-- No caso da esfera, podemos simplesmente fazer o vetor <span class="math">N = P - C</span>,
-  onde <span class="math">C</span> é o centro da esfera
+**Ou seja**, estamos interessados apenas nos valores de <span class="math">t</span> positivos.
+Casa haja dois valores positivos diferentes, pegamos o menor (que será <span class="math">t_1</span>). <!-- {p:.note.info.no-margin.bullet} -->
 
 ---
-## Implementando um _ray tracer_
+<!-- {"layout": "regular"} -->
+# Outras informações da colisão
+
+- Além de determinar se houve colisão ou não, também é necessário descobrir:
+  - O ponto de interseção <span class="math">Q=P+t\vec{u} \quad</span> <small style="color: gray">(usando o <span class="math">t</span> encontrado na equação do raio)</small>
+  - O vetor normal do objeto nesse ponto
+- ![](../../images/raytracing-raio-esfera-normal.png) <!-- {.push-right style="max-width: 450px"} -->
+  A normal no ponto de interseção <span class="math">P</span> é
+  dada pelo gradiente no ponto de interseção:
+- No caso da esfera, **podemos simplesmente** fazer o vetor<div style="display: flex; justify-content: center;"><div class="math bullet">\vec{n}=P-C,</div><div class="math bullet">\quad \hat{n}=\frac{\vec{n}}{\left|\vec{n}\right|}</div></div>
+  <div class="bullet">onde <span class="math">C</span> é o centro da esfera.</div>
+
+---
+<!-- {"layout": "regular"} -->
+# Implementando um _ray tracer_
 
 - Precisamos de
   1. Uma classe **Vetor**
@@ -334,16 +433,14 @@ Ou seja, para descobrir se o raio interceptou a esfera, **basta resolver
 ---
 ## Saída
 
-- Arquivo da imagem renderizada (png, ppm, bmp)
+- Arquivo da imagem renderizada (formato .ppm)
 
 ![](../../images/raytracer-output-file.png)
 
 ---
-<!--
-backdrop: cpp-vs-java
--->
+<!-- {"backdrop": "cpp-vs-java"} -->
 
-<h1 style="margin-bottom: 4em; font-weight: bold;">_Choose your side_</h1>
+# _Choose your side_ <!-- {style="margin-bottom: 4em; font-weight: bold;"} -->
 
 ---
 # Para a próxima aula
@@ -352,6 +449,48 @@ backdrop: cpp-vs-java
   - Fazer isto = certeza de sucesso, TP resolvido durante a aula
   - Não fazer = TPs incompletos, trabalho no final de semana :/
 
+---
+<!-- { "layout": "regular" } -->
+# Colisão com plano
+
+- ![](../../images/colisao-raio-plano.png) <!-- {.push-right style="max-width: 240px"} --> <!-- {ul:.bulleted style="max-width: 80%"} -->
+  Seja <span class="math">C</span> um ponto qualquer no plano e <span class="math">\vec{n}</span> a normal do plano
+- Um ponto <span class="math">Q</span> está no plano se o vetor <span class="math">Q-C</span> for perpendicular a <span class="math">\vec{n}</span>. Ou seja:
+  <div class="math">(Q-C)\cdot\vec{n}=0</div>
+- Substituindo <span class="math">Q</span> pela equação do raio:
+  <div class="full-width" style="display: grid; grid-template-rows: auto auto auto auto; grid-template-columns: auto 1fr; grid-column-gap: 1em;">
+    <div style="display: flex; justify-content: flex-start; grid-row: 1/2; grid-column: 1/2">
+      <span class="math bullet">(P+t\vec{u}-C)\cdot\vec{n}=0</span>
+      <span class="math bullet">\textrm{,} \quad \vec{p}=C-P</span>
+    </div>
+    <small class="bullet" style="color: gray; grid-row: 1/2; grid-column: 2/3">⬅️ fazendo um truque algébrico</small>
+    <span class="math bullet" style="grid-row: 2/3; grid-column: 1/2">(t\vec{u}-\vec{p})\cdot\vec{n}=0</span>
+    <small class="bullet" style="color: gray; grid-row: 2/3; grid-column: 2/3">⬅️ distribuindo o produto escalar</small>
+    <span class="math bullet" style="grid-row: 3/4; grid-column: 1/2">t(\vec{u}\cdot\vec{n})-\vec{p}\cdot\vec{n}=0</span>
+    <small class="bullet" style="color: gray; grid-row: 3/4; grid-column: 2/3">⬅️ isolando <span class="math">t</span></small>
+    <div class="math bullet no-margin left-aligned" style="grid-row: 4/5; grid-column: 1/2;">t=\frac{\vec{p}\cdot\vec{n}}{\vec{u}\cdot\vec{n}}</div>
+  </div>
+
+---
+<!-- { "layout": "centered", "state": "show-active-slide-and-previous" } -->
+
+- Se: <!-- {ul:.bulleted} -->
+  - <span class="math">\vec{u}\cdot\vec{n}\neq0</span>, há 1 interseção
+  - <span class="math">\vec{u}\cdot\vec{n}=0</span>,
+    - Se <span class="math">\vec{p}\cdot\vec{n}\neq0</span>, sem interseção
+    - Se <span class="math">\vec{p}\cdot\vec{n}=0</span>, infinitas interseções
+
+**Atenção**: só interessa o valor de <span class="math">t</span> que seja <span class="math">t>0</span>. <!-- {p:.note.warning.bullet} -->
+
+**Atenção 2**: se raio atingiu "as costas" do plano (ângulo raio/normal>90), precisamos inverter a normal na resposta de colisão <small style="color: gray">(para fins de iluminação)</small>. <!-- {p:.note.warning.bullet style="max-width: 55%"} -->
+
+---
+# Colisão com círculo
+1. Acha se colide com plano do círculo
+1. Verifica se está dentro do raio
+
+# [Colisão com triângulo](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/ray-triangle-intersection-geometric-solution)
+# [Colisão com cilindro](http://illusioncatalyst.com/notes_files/mathematics/line_cylinder_intersection.php)
 ---
 # Referências
 

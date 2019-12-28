@@ -1,6 +1,11 @@
 {
   "name": "cefet-cg",
-  "version": "0.1.0",
+  "description": "Material de aula do professor Flávio Coutinho sobre Computação Gráfica",
+  "version": "1.0.0",
+  "keywords": [
+    "computer-graphics",
+    "opengl"
+  ],
   "homepage": "https://github.com/fegemo/cefet-class-template",
   "bugs": {
     "url": "https://github.com/fegemo/cefet-cg/issues"
@@ -10,6 +15,7 @@
     "name": "Flávio Coutinho",
     "url": "https://github.com/fegemo"
   },
+  "contributors": [],
   "repository": {
     "type": "git",
     "url": "git://github.com/fegemo/cefet-cg.git"
@@ -18,47 +24,53 @@
   "dependencies": {
     "bespoke": "^1.1.0",
     "bespoke-backdrop": "^1.0.0",
-    "bespoke-bullets": "github:fegemo/bespoke-bullets#deactivate-using-events",
-    "bespoke-classes": "^1.0.0",
+    "bespoke-bullets": "^1.1.0",
     "bespoke-hash": "^1.1.0",
     "bespoke-keys": "^1.1.0",
-    "bespoke-math": "^1.2.0",
-    "bespoke-meta-markdown": "1.0.0",
-    "bespoke-progress": "^1.0.0",
+    "bespoke-markdownit": "^1.1.0",
+    "bespoke-math": "^1.3.2",
+    "bespoke-progress": "github:fegemo/bespoke-progress#slide-number",
     "bespoke-qrcode": "^1.0.0",
     "bespoke-scale": "github:fegemo/bespoke-scale#use-current-slide",
     "bespoke-simple-overview": "^1.0.0",
     "bespoke-state": "^1.0.0",
-    "bespoke-theme-fancy": "^0.6.0",
+    "bespoke-theme-sandy": "^1.1.1",
     "bespoke-touch": "^1.0.0",
-    "d3": "^4.13.0",
-    "ismobilejs": "^0.4.1",
-    "marked": "^0.3.17"
+    "bespoke-vis": "github:fegemo/bespoke-vis",
+    "d3": "^5.14.2",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-anchor": "^5.2.5",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-decorate": "^1.2.2",
+    "markdown-it-deflist": "^2.0.3",
+    "markdown-it-emoji": "^1.4.0"
   },
   "devDependencies": {
-    "browserify": "^16.1.0",
-    "del": "^3.0.0",
-    "gh-pages": "^1.1.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-changed": "^3.2.0",
-    "gulp-connect": "~5.5.0",
-    "gulp-csso": "^3.0.1",
-    "gulp-plumber": "^1.2.0",
-    "gulp-preprocess": "^2.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "~0.6.1",
-    "gulp-sourcemaps": "^2.6.4",
+    "browserify": "^16.5.0",
+    "delete": "^1.1.0",
+    "gh-pages": "^2.1.1",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-changed": "^4.0.2",
+    "gulp-connect": "~5.7.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-preprocess": "^3.0.3",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "~1.0.0",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-stylus": "^2.7.0",
-    "gulp-uglify": "^3.0.0",
+    "gulp-terser": "^1.2.0",
+    "gulp-uglify": "^3.0.2",
     "gulp-util": "^3.0.8",
-    "merge-stream": "~1.0.1",
-    "opn": "^5.2.0",
+    "gulp-webserver": "^0.9.1",
+    "merge-stream": "~2.0.0",
+    "opn": "^6.0.0",
     "through": "^2.3.8",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
   "engines": {
-    "node": ">=5.4.0"
+    "node": ">=10.0.0"
   }
 }

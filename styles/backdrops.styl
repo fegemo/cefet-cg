@@ -1,0 +1,308 @@
+// each backdrop background fades in/out
+.bespoke-backdrop
+  opacity 0
+  will-change opacity
+  transition opacity 200ms ease-out 0ms
+  pointer-events none
+  &.bespoke-backdrop-active
+    opacity 1
+    transition-delay 200ms
+
+// backdrop + bespoke-overview: should be less visible (low opacity)
+.bespoke-overview
+  .bespoke-backdrop
+    transition-delay 0ms
+    opacity .1
+
+.bespoke-slide[data-bespoke-backdrop]
+  z-index 2
+
+// common properties for background backdrops
+full-dimension-backdrop(repeat)
+  if repeat
+    background-size initial
+    background-repeat repeat
+  else
+    background-size cover
+    background-repeat no-repeat
+  width 100%
+  height 100%
+
+
+.area-games.bespoke-backdrop-active
+  background-image url(../images/cg-area-games.jpg)
+  full-dimension-backdrop(false)
+
+.area-entertainment.bespoke-backdrop-active
+  background-image url(../images/cg-area-entertainment.jpg)
+  full-dimension-backdrop(false)
+
+.area-cad.bespoke-backdrop-active
+  background-image url(../images/cg-area-cad.jpg)
+  full-dimension-backdrop(false)
+  background-position 50% 80%
+
+.area-education.bespoke-backdrop-active
+  background-image url(../images/cg-area-education.jpg)
+  full-dimension-backdrop(false)
+
+.area-art.bespoke-backdrop-active
+  background-image url(../images/cg-area-art.jpg)
+  full-dimension-backdrop(false)
+
+.bespoke-slide[data-bespoke-backdrop="area-games"]
+.bespoke-slide[data-bespoke-backdrop="area-entertainment"]
+.bespoke-slide[data-bespoke-backdrop="area-cad"]
+.bespoke-slide[data-bespoke-backdrop="area-education"]
+.bespoke-slide[data-bespoke-backdrop="area-art"]
+  h1
+    text-shadow 1px 1px black
+    background-color rgba(white,.5)
+    padding .3em
+    border-radius 10px
+    transition opacity 200ms ease-out
+
+
+// $spred = red
+// $spgreen = green
+// $spblue = blue
+
+$spred = rgb(171, 2, 0)
+$spgreen = rgb(37, 255, 4)
+$spblue = rgb(1, 44, 165)
+
+.subpixel.bespoke-backdrop-active
+  full-dimension-backdrop(false)
+  background-image url(../images/subpixel-red-bottom.png), url(../images/subpixel-red-top.png), url(../images/subpixel-green-bottom.png), url(../images/subpixel-green-top.png), url(../images/subpixel-blue-bottom.png), url(../images/subpixel-blue-top.png)
+  background-repeat repeat
+  --subpixel-size: 2px
+  background-size var(--subpixel-size)
+
+.vector-vs-raster-bottom.bespoke-backdrop-active
+  full-dimension-backdrop(false)
+  background-image url(../images/vector-image.svg), url(../images/raster-image.png)
+  background-position 5% 150%, 95% 150%
+  background-size 400px
+  animation floatingvectorraster 10s ease-in-out 0s infinite alternate-reverse
+
+@keyframes floatingvectorraster
+  0%
+    background-position 5% 148%, 95% 152%
+  50%
+    background-position 5% 152%, 95% 148%
+  100%
+    background-position 5% 148%, 95% 152%
+
+
+.affine-geometry.bespoke-backdrop-active
+  background-image url(../images/affine-geometry.svg)
+  full-dimension-backdrop(false)
+  opacity .1
+
+.assembly-line.bespoke-backdrop-active
+  background-image url(../images/assembly-line.jpg)
+  full-dimension-backdrop(false)
+.bespoke-slide[data-bespoke-backdrop="assembly-line"]
+  h1
+    padding .15em .5em
+    border-radius .25em
+    background-image linear-gradient(to bottom, rgba(white, .5) 0%, rgba(white,0.15) 100%)
+    font-weight bolder
+    color #0833BF
+    text-shadow 2px 2px black
+
+.pipeline-subway.bespoke-backdrop-active
+  background-image url(../images/pipeline-subway.jpg)
+  width 100%
+  height 100%
+  background-position 100% 0
+  background-size contain
+  background-repeat no-repeat
+.bespoke-slide[data-bespoke-backdrop="pipeline-subway"]
+  h2
+    padding .15em .5em
+    border-radius .25em
+    background-image linear-gradient(to bottom, rgba(white, .5) 0%, rgba(white,0.15) 100%)
+    font-weight bolder
+    color #0833BF
+    text-shadow 2px 2px black
+
+.paradigma-universos.bespoke-backdrop-active
+  background-image url(../images/paradigma-universos-legenda.png)
+  full-dimension-backdrop(false)
+  background-size inherit
+  background-position 3% 97%
+
+.stars.bespoke-backdrop
+  background-image url(../images/stars-bg.png)
+  full-dimension-backdrop(true)
+.bespoke-slide[data-bespoke-backdrop="stars"]
+  color white
+
+.lighting-balloons.bespoke-backdrop-active
+  background-image url(../images/lighting-balloons.png)
+  full-dimension-backdrop(true)
+  background-size cover
+.shading.bespoke-backdrop-active
+  background-image url(../images/shading.png)
+  full-dimension-backdrop(true)
+  background-size cover
+.lowpoly.bespoke-backdrop-active
+  background-image url(../images/lowpoly-fox.jpg)
+  full-dimension-backdrop(true)
+  background-size cover
+  background-position center center
+.bespoke-slide[data-bespoke-backdrop="lighting-balloons"],
+.bespoke-slide[data-bespoke-backdrop="shading"],
+.bespoke-slide[data-bespoke-backdrop="lowpoly"]
+  h1
+    color #f92672
+    font-weight bold
+  text-shadow 3px 1px #e8e8e8
+
+.tf2-texture.bespoke-backdrop-active
+  background-image url(../images/tf2-woodwall-texture.jpg)
+  full-dimension-backdrop(false)
+  background-size cover
+.bespoke-slide[data-bespoke-backdrop="tf2-texture"]
+  h1
+    font-family Aladin, cursive
+    color black
+    font-size 8em
+
+.skybox.bespoke-backdrop-active
+  background-image url(../images/skybox.jpg)
+  full-dimension-backdrop(false)
+.billboarding.bespoke-backdrop-active
+  background-image url(../images/billboarded-trees.jpg)
+  full-dimension-backdrop(false)
+  background-position-y 100%
+.particles.bespoke-backdrop-active
+  background-image url(../images/sistema-particulas-infamous.jpg)
+  full-dimension-backdrop(false)
+.particle-system-fire.bespoke-backdrop-active
+  background-image url(../images/particle-system-fire.jpg)
+  opacity 0.5
+  full-dimension-backdrop(false)
+  background-size contain
+  background-position-x 50%
+  background-color #ababab
+.depth-of-field.bespoke-backdrop-active
+  background-image url(../images/depth-of-field-unreal.png)
+  full-dimension-backdrop(false)
+.bespoke-slide[data-bespoke-backdrop="skybox"],
+.bespoke-slide[data-bespoke-backdrop="billboarding"],
+.bespoke-slide[data-bespoke-backdrop="particles"],
+.bespoke-slide[data-bespoke-backdrop="depth-of-field"]
+  background-image linear-gradient(to bottom, rgba(white, .5) 0%, rgba(white,0.15) 100%)
+  border-radius 5px
+  h1
+    color #0833BF
+.bespoke-slide[data-bespoke-backdrop="particle-system-fire"],
+  background-color #ababab
+
+.bespoke-slide[data-bespoke-backdrop="billboarding"]
+  h1
+    color #0EB90D
+    text-shadow 2px 2px rgba(0, 0, 0, 0.62)
+.bespoke-slide[data-bespoke-backdrop="particles"]
+  h1
+    color #BFBB08
+
+.raytraced-realism.bespoke-backdrop-active
+  background-image url(../images/raytraced-high-realism.jpg)
+  full-dimension-backdrop(false)
+.bespoke-slide[data-bespoke-backdrop="raytraced-realism"]
+  h1
+    color white
+
+
+.raytracing-collision.bespoke-backdrop-active
+  background-image url(../images/raytracing-ray.png)
+  full-dimension-backdrop(false)
+  background-size auto
+  background-position 50% 50%
+  opacity 0.1
+  transition-delay 0s
+  .bespoke-parent:hover &
+    opacity 1
+.bespoke-slide[data-bespoke-backdrop="raytracing-collision"]:hover
+  opacity 0.1
+
+.cpp-vs-java.bespoke-backdrop-active
+  background-image url(../images/cpp-vs-java.jpg)
+  full-dimension-backdrop(false)
+  background-position-x 50%
+
+.bespoke-slide[data-bespoke-backdrop="cpp-vs-java"]
+  h1
+    color #AE81FF
+    text-shadow 2px 2px darken(#AE81FF, 75%)
+
+.ninokuni.bespoke-backdrop-active
+  background-image url(../images/ni-no-kuni.jpg)
+  full-dimension-backdrop(false)
+
+.introduction.bespoke-backdrop-active
+  background-image url(../images/forest.jpg)
+  full-dimension-backdrop(false)
+
+.bespoke-slide[data-bespoke-backdrop="ninokuni"]
+.bespoke-slide[data-bespoke-backdrop="introduction"]
+.bespoke-slide[data-bespoke-backdrop="wind-waker-raytraced"]
+  h1
+    text-shadow 1px 1px black
+    background-color rgba(white,.5)
+    padding .3em
+    border-radius 10px
+    transition opacity 200ms ease-out
+    &:hover
+      background-color rgba(white, 0)
+      opacity 0
+
+.wind-waker-raytraced.bespoke-backdrop-active
+  background-image url(../images/zelda-ww-raytracing.jpg)
+  full-dimension-backdrop(false)
+  background-position-y 100%
+
+.wind-waker-raytraced-2.bespoke-backdrop-active
+  background-image url(../images/zelda-ww-raytracing-2.jpg)
+  full-dimension-backdrop(false)
+
+
+.minecraft-glsl.bespoke-backdrop-active
+  background-image url(../images/minecraft-glsl.jpg)
+  full-dimension-backdrop(false)
+
+.bespoke-slide[data-bespoke-backdrop="big-code"]
+  pre
+    box-sizing border-box
+    width 100%
+    height 320px
+    overflow auto
+    & > code
+      overflow-x hidden
+
+
+.threed-hardware-generation-1.bespoke-backdrop-active
+  background-image url(../images/duke-nuken-3d.png)
+  full-dimension-backdrop(false)
+
+.threed-hardware-generation-2.bespoke-backdrop-active
+  background-image url(../images/resident-evil-2-1998.jpg)
+  full-dimension-backdrop(false)
+
+.threed-hardware-generation-3.bespoke-backdrop-active
+  background-image url(../images/max-payne-2001.jpg)
+  full-dimension-backdrop(false)
+
+.threed-hardware-generation-4.bespoke-backdrop-active
+  background-image url(../images/duke-nuken-3d.png)
+  full-dimension-backdrop(false)
+
+.white-noise.bespoke-backdrop-active
+  background-image url(../images/white-noise2.gif)
+  full-dimension-backdrop(false)
+  background-size cover
+  background-position 50% 50%
+  opacity 0.05
