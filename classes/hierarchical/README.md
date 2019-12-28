@@ -202,10 +202,10 @@ _A wild TP2 appears..._ <!-- {style="color: white;"} -->
 <!-- { "layout": "regular" } -->
 ## TP2: Parque de Diversões
 
-<img alt="" src="https://raw.githubusercontent.com/fegemo/cefet-cg/v2/assignments/tp2-amusement/images/rollercoasterTycoon.jpg"
+<img alt="" src="https://raw.githubusercontent.com/fegemo/cefet-cg/master/assignments/tp2-amusement/images/rollercoasterTycoon.jpg"
   style="float: right; width: 450px; margin: 0 0 5px 20px">
   -- _A Disney comprou o CEFET ~~for legal reasons, that's a joke~~ e colocou
   a turma de Computação Gráfica para administrar os parques da empresa. Seu
   trabalho é projetar o próximo parque de diversões._
 
-- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/v2/assignments/tp2-amusement/README.md)).
+- Enunciado no Moodle (ou [na página do curso](https://github.com/fegemo/cefet-cg/blob/master/assignments/tp2-amusement/README.md)).
