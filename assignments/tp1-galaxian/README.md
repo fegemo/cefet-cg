@@ -56,9 +56,6 @@ Implementando-as, você pode obter até **125%** da pontuação do trabalho! :3
 Exemplos de funcionalidades com suas respectivas pontuações **máximas** são
 mostrados a seguir:
 
-- Deve haver um _head-up display_ (**HUD**) mostrando a pontuação atual
-de cada jogador.
-
 - Relativas a **texturas e gráficos**:
   1. :star: **Texturas animadas (até 10%)**: crie animações para as texturas dos
      inimigos e personagem. **#dikentinha**: busque por _spritesheet_ no Google.
