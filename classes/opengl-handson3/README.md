@@ -352,15 +352,15 @@ _A wild TP1 appears..._
 
 ---
 <!-- {"layout": "2-column-content"} -->
-# TP1: **Ping Phong**
+# TP1: **Galaxian**
 
 
-> Considerado, por muitos, o primeiro jogo eletrônico da história,
-> "Pong" não só deu início à Atari, mas a toda a industria de jogos.
-> Às vezes é necessário voltar às origens para buscar inspiração,
-> sendo assim, nos inspiraremos na raiz de todo o mal.
+> Um dos primeiros jogos que surgiu se chamava Galaxian.
+> Nele, o jogador pilota uma nave que fica na parte de baixo
+> da tela e, com ela, se defende de um ataque alienígena.
 
-![](../../images/tp1-ping-phong.gif) <!-- {.push-right style="width: 210px; margin-left: 1em"} -->
+
+![](../../images/galaxian-original.png) <!-- {.push-right style="width: 210px; margin-left: 1em"} -->
 - Enunciado no Moodle
 
 ---
