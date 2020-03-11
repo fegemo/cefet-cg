@@ -586,8 +586,8 @@ module.exports = function() {
 
 },{}],12:[function(require,module,exports){
 (function (global){
-/*! bespoke-theme-sandy v1.1.0 © 2019 Flávio Coutinho, MIT License */
-!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;(t=(t=(t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this).bespoke||(t.bespoke={})).theme||(t.theme={})).sandy=e()}}(function(){return function n(l,s,r){function p(t,e){if(!s[t]){if(!l[t]){var o="function"==typeof require&&require;if(!e&&o)return o(t,!0);if(b)return b(t,!0);var i=new Error("Cannot find module '"+t+"'");throw i.code="MODULE_NOT_FOUND",i}var a=s[t]={exports:{}};l[t][0].call(a.exports,function(e){return p(l[t][1][e]||e)},a,a.exports,n,l,s,r)}return s[t].exports}for(var b="function"==typeof require&&require,e=0;e<r.length;e++)p(r[e]);return p}({1:[function(e,t,o){var i=e("bespoke-classes"),a=e("insert-css");t.exports=function(e){var t=t="@import url(https://fonts.googleapis.com/css?family=Maitree:400,700|Roboto:400,700|Cousine);\n/*# sourceMappingURL=fonts.css.map */\n/*# sourceMappingURL=fonts.css.map */\n";return(e=e||{insertFonts:!0}).insertFonts&&a(t,{prepend:!0}),a('/*! normalize.css v3.0.0 | MIT License | git.io/normalize */\n@-webkit-keyframes floating{0%{-webkit-transform:translateY(0);transform:translateY(0)}to{-webkit-transform:translateY(-25%);transform:translateY(-25%)}}@keyframes floating{0%{-webkit-transform:translateY(0);transform:translateY(0)}to{-webkit-transform:translateY(-25%);transform:translateY(-25%)}}@-webkit-keyframes floated-element-shadow{0%{-webkit-transform:scaleX(1);transform:scaleX(1)}to{-webkit-transform:scaleX(.5);transform:scaleX(.5)}}@keyframes floated-element-shadow{0%{-webkit-transform:scaleX(1);transform:scaleX(1)}to{-webkit-transform:scaleX(.5);transform:scaleX(.5)}}@-webkit-keyframes bouncing-left{to{-webkit-transform:translateX(5%) scaleX(.96);transform:translateX(5%) scaleX(.96)}}@keyframes bouncing-left{to{-webkit-transform:translateX(5%) scaleX(.96);transform:translateX(5%) scaleX(.96)}}@-webkit-keyframes circling{0%{-webkit-transform:rotate(0turn) translate(180px) rotate(0turn);transform:rotate(0turn) translate(180px) rotate(0turn)}to{-webkit-transform:rotate(1turn) translate(180px) rotate(-1turn);transform:rotate(1turn) translate(180px) rotate(-1turn)}}@keyframes circling{0%{-webkit-transform:rotate(0turn) translate(180px) rotate(0turn);transform:rotate(0turn) translate(180px) rotate(0turn)}to{-webkit-transform:rotate(1turn) translate(180px) rotate(-1turn);transform:rotate(1turn) translate(180px) rotate(-1turn)}}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,ol,section,summary,ul{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:0 0;color:#209934;text-decoration:none}a:active,a:hover{outline:0}abbr[title]{border-bottom:initial}b{font-weight:700}dfn{font-style:italic}h1,mark{color:#000}h1{font-family:\'Maitree\',times,serif;font-size:2.5em}mark{background:#ff0}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre,samp{font-size:1em}pre{overflow:auto}samp{font-family:monospace,monospace}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend,pre>code{border:0;padding:0}textarea{overflow:auto}optgroup,strong{font-weight:700}table{border-collapse:collapse;border-spacing:0;border:2px solid gray;max-width:100%}td,th{border:1px solid gray}*{-webkit-box-sizing:border-box;box-sizing:border-box}@media screen{.bespoke-parent{position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;background-color:#f7f9fb;color:#333;font-size:24px}.bespoke-parent:not(.emphatic){-webkit-transition:background-color 400ms ease;transition:background-color 400ms ease}.bespoke-slide{position:absolute;width:1066.6666666666665px;height:600px;top:50%;left:50%;margin-left:-533.3333333333333px;margin-top:-300px;overflow:hidden;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;will-change:transform}.bespoke-inactive{opacity:0;pointer-events:none}.bespoke-inactive .bespoke-bullet-inactive{-webkit-transition:opacity .4s ease;transition:opacity .4s ease}.bespoke-inactive:not(.bespoke-after-1):not(.bespoke-before-1):not(.bespoke-after-2):not(.bespoke-before-2):not(.bespoke-after-3):not(.bespoke-before-3){display:none}.emphatic{background-color:#3507a3}.emphatic,.emphatic h1,.emphatic h2,.emphatic h3,.emphatic h4,.emphatic h5,.emphatic h6{color:#fff}.emphatic strong{color:#38088e}}h2{font-size:1.5em}h3,ol.columns-3>li>h1,ol.columns-3>li>h2,ol.columns-3>li>h3,ol.columns-3>li>h4,ol.columns-3>li>h5,ol.columns-3>li>h6,ul.columns-3>li>h1,ul.columns-3>li>h2,ul.columns-3>li>h3,ul.columns-3>li>h4,ul.columns-3>li>h5,ul.columns-3>li>h6{font-size:1.25em}h4,h5,h6{font-size:1em}code,h2,h3,h4,h5,h6,pre{font-family:\'Roboto\',\'San Francisco\',helvetica,arial,sans-serif;color:#000}h1,h2,h3,h4,h5,h6{font-weight:400;margin:0 0 .25em;line-height:1em}li,p{font-size:24px;line-height:1.5em}strong{color:#3507a3}strong.alternate-color{color:#7b9c02}article{font-family:\'Roboto\',\'San Francisco\',helvetica,arial,sans-serif}a:hover{text-decoration:underline}code,pre{border:1px solid rgba(0,20,80,.1);border-radius:.15em;background:#fff;font-family:\'Cousine\',monospace;-webkit-transition:-webkit-box-shadow 200ms ease;transition:box-shadow 200ms ease;transition:box-shadow 200ms ease,-webkit-box-shadow 200ms ease}pre{padding:1em;-webkit-box-shadow:0 8px 16px rgba(0,20,80,.039),0 4px 16px rgba(0,0,0,.078);box-shadow:0 8px 16px rgba(0,20,80,.039),0 4px 16px rgba(0,0,0,.078);border:1px solid #d9dcde;max-width:1026.6666666666665px}pre:hover{-webkit-box-shadow:0 8px 32px rgba(0,20,80,.2),0 4px 24px rgba(0,0,0,.2);box-shadow:0 8px 32px rgba(0,20,80,.2),0 4px 24px rgba(0,0,0,.2)}code{font-size:.75em;background-color:#fff;padding:.25em;-webkit-box-shadow:0 4px 8px rgba(0,20,80,.039),0 2px 8px rgba(0,0,0,.078);box-shadow:0 4px 8px rgba(0,20,80,.039),0 2px 8px rgba(0,0,0,.078)}code:hover{-webkit-box-shadow:0 4px 24px rgba(0,20,80,.078),0 2px 24px rgba(0,0,0,.078);box-shadow:0 4px 24px rgba(0,20,80,.078),0 2px 24px rgba(0,0,0,.078)}pre>code{font-size:.83333em;background-color:transparent;border:initial}pre>code,pre>code:hover{-webkit-box-shadow:initial;box-shadow:initial}pre code span{word-wrap:break-word;word-break:break-all}pre.hljs{margin:auto}.hljs{padding:1em}ol.no-list-icon,ul.no-list-icon{list-style-type:none}ol.columns-3,ul.columns-3{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}ol.columns-3>li,ul.columns-3>li{-webkit-box-flex:1;-ms-flex:1;flex:1}ol.columns-3>li:not(:last-of-type),ul.columns-3>li:not(:last-of-type){margin-right:1em}dd,dt{margin-bottom:.5em}dt{float:left;clear:left;width:10em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right;font-weight:700;padding-right:1em;position:relative}dd{margin-left:10.5em}dl.width-40>dt{width:40%}dl.width-40>dd{margin-left:42%}dl.width-50>dt{width:50%}dl.width-50>dd{margin-left:52%}del{color:gray}tr{background-color:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.4)}tr:nth-of-type(even)>td{background-color:rgba(255,255,255,.4)}td{padding:6px}th{color:#fff;padding:10px;background-color:#333}td:not(:last-child),th:not(:last-child){border-right:1px solid rgba(0,0,0,.2)}thead>tr{background-color:#555;color:#fff}blockquote{position:relative;margin:.25em 0;padding:.25em 40px;background:#f5f5f5;-webkit-box-shadow:4px 4px 4px silver;box-shadow:4px 4px 4px silver;line-height:1.45;font-size:18px;font-family:Georgia,serif;font-style:italic;color:#383838;border:1px solid silver}blockquote.centered{margin-left:auto;margin-right:auto}blockquote>p{margin:.5em auto}blockquote::before{content:"\\201C";display:block;position:absolute;left:-.25em;top:-.25em;font-size:80px;color:#7a7a7a}blockquote cite{display:block;margin-top:5px;font-size:75%;color:#999}blockquote cite::before{content:"\\2014 \\2009"}kbd{padding:.1em .6em;font-size:.8em;border:1px solid #ccc;font-family:Consolas,Menlo,Monaco,monospace;background-color:#f7f7f7;color:#333;-webkit-box-shadow:0 4px 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;box-shadow:0 4px 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;border-radius:3px;display:inline-block;margin:0 .1em;text-shadow:0 1px 0 #fff;line-height:1.3;white-space:nowrap;top:0;-webkit-transition:top 40ms ease-out,-webkit-box-shadow 40ms ease-out;transition:top 40ms ease-out,box-shadow 40ms ease-out;transition:top 40ms ease-out,box-shadow 40ms ease-out,-webkit-box-shadow 40ms ease-out}kbd:hover{top:4px;-webkit-box-shadow:0 0 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;box-shadow:0 0 0 rgba(0,0,0,.2),0 0 0 2px #fff inset}figcaption{background-color:#f5f5f5;padding:5px;margin-bottom:3px}.figure-slides>p,figure,figure p,figure.embedded-caption p{margin:0}figure.embedded-caption,kbd{position:relative}figure.embedded-caption figcaption{position:absolute;background-color:rgba(0,0,0,.25)}figure.embedded-caption figcaption.caption-bottom{bottom:1em}figure.embedded-caption figcaption.caption-top{top:1em;left:0;right:0}figure.embedded-caption figcaption.caption-bottom{left:0;right:0}.push-code-right>code,img[alt$=right]{float:right}.push-code-left>code,img[alt$=left]{float:left}.push-right{float:right;margin-left:20px}.push-left{float:left;margin-right:20px}.push-code-right pre{float:right;clear:right}.push-code-left pre{float:left;clear:left}.two-column-code code,.two-column-code pre{-webkit-column-count:2;-moz-column-count:2;column-count:2;-webkit-column-rule:3px double rgba(0,0,0,.3);-moz-column-rule:3px double rgba(0,0,0,.3);column-rule:3px double rgba(0,0,0,.3);-webkit-column-gap:2em;-moz-column-gap:2em;column-gap:2em}.floating-right-code pre{float:right;width:auto;margin-left:1em}.figure-slides{position:relative}.figure-slides.opacity-only .bespoke-bullet{-webkit-transition-property:opacity;transition-property:opacity}.figure-slides.opacity-only .bespoke-bullet:not(.bespoke-bullet-current){-webkit-transform:initial;transform:initial}.figure-slides.clean .bespoke-bullet:not(.bespoke-bullet-current){visibility:hidden}.figure-step:not(:first-child){position:absolute;top:0;left:0}a.bookmarklet{border-radius:5px;border:2px solid silver;padding:4px 7px;background-color:rgba(255,255,255,.1);-webkit-transition:all 200ms ease-out;transition:all 200ms ease-out}a.bookmarklet:hover{text-decoration:none;background-color:#b66c7e;color:#ddd;border-color:#333;cursor:move}input.switch:empty{display:block;margin-left:-999px}input.switch:empty~label{position:relative;float:left;line-height:1.6em;text-indent:4em;margin:.2em 0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}input.switch:empty~label:after,input.switch:empty~label:before{position:absolute;display:block;top:0;bottom:0;left:0;content:\' \';width:3.6em;background-color:#c33;border-radius:.3em;-webkit-box-shadow:inset 0 .2em 0 rgba(0,0,0,.3);box-shadow:inset 0 .2em 0 rgba(0,0,0,.3);-webkit-transition:all 100ms ease-in;transition:all 100ms ease-in}input.switch:empty~label:after{width:1.4em;top:.1em;bottom:.1em;margin-left:.1em;background-color:#fff;border-radius:.15em;-webkit-box-shadow:inset 0 -.2em 0 rgba(0,0,0,.2);box-shadow:inset 0 -.2em 0 rgba(0,0,0,.2)}input.switch:checked~label:before{background-color:#393}input.switch:checked~label:after{margin-left:2.1em}img.full-width{width:100%}img.large-width{width:80%}img.medium-width{width:60%}img.small-width{width:40%}img.full-height{height:100%}img.huge-height{height:80%}img.large-height{height:60%}img.medium-height{height:40%}img.small-height{height:20%}img.block{display:block}.floating-portrait-container *,.portrait,.portrait img{display:inline-block;width:150px;height:150px;border-radius:50%}.floating-portrait-container * figcaption,.portrait figcaption,.portrait img figcaption{background-color:transparent}.floating-portrait-container{position:relative}.floating-portrait-container *{margin:0;-webkit-animation:floating 2s ease-in-out 0s infinite alternate;animation:floating 2s ease-in-out 0s infinite alternate}.floating-portrait-container::after{content:" ";position:absolute;width:100%;height:20%;left:0;right:0;bottom:-20%;background:radial-gradient(ellipse closest-side,rgba(21,21,21,.25) 0,rgba(255,255,255,0) 100%);z-index:-1;-webkit-animation:floated-element-shadow 2s ease-in-out 0s infinite alternate;animation:floated-element-shadow 2s ease-in-out 0s infinite alternate}.flips{-webkit-transition:-webkit-transform 600ms ease-out;transition:transform 600ms ease-out;transition:transform 600ms ease-out,-webkit-transform 600ms ease-out}.flips *{margin:0}.flips:hover{-webkit-transform:rotateY(720deg);transform:rotateY(720deg)}.portrait{shape-outside:circle(50%)}.contain{max-width:100%;max-height:100%}.half-width{width:50%}.three-quarter-width{width:75%}img.centered{display:block;margin-left:auto;margin-right:auto}.full-width,.layout-stripe.bespoke-slide h1+p,.layout-stripe.bespoke-slide h2+p,.layout-stripe.bespoke-slide h3+p,.layout-stripe.bespoke-slide h4+p,.layout-stripe.bespoke-slide h5+p,.layout-stripe.bespoke-slide h6+p{width:100%}.center-aligned{text-align:center}.centered{margin-left:auto;margin-right:auto}.emoji{height:1em;width:1em;vertical-align:middle}.on-line{height:1em;line-height:1em}.no-margin{margin:0}.no-padding{padding:0}.full-page-video-caption{position:absolute;bottom:30px;font-size:.75em;left:50%;width:16em;text-align:center;margin-left:-8em;padding:0;background-color:rgba(255,255,8,.65);border-radius:.25em;-webkit-box-shadow:3px 3px 3px rgba(0,0,0,.2);box-shadow:3px 3px 3px rgba(0,0,0,.2)}.bullet-no-anim{-webkit-transition:none!important;transition:none!important}.full-width-slides,.full-width-slides img{max-width:100%}.bordered{border:1px solid rgba(0,0,0,.5)}.rounded{border-radius:4px}.clear-both,.clearer{clear:both}.compact-code pre,.compact-code~pre{line-height:1em}.compact-code-more pre,.compact-code-more~pre{line-height:1em;font-size:75%}.code-split-2{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.code-split-2 pre.hljs{-webkit-box-flex:1;-ms-flex:1;flex:1;margin-top:0;margin-bottom:0}.code-split-2 pre.hljs:not(:last-of-type){border-right:3px double #fff}.code-split-2 pre.hljs+pre.hljs{margin-top:0}.inverted-text-colors{background:#333;color:#eee}.smaller-text-80{font-size:80%}.smaller-text-70{font-size:70%}.horizontal-list{list-style:none}.horizontal-list>li{display:inline-block;width:25%;margin:0 4.5% 0 0;vertical-align:middle}.horizontal-list>li:last-of-type{margin:0}.multi-column-list-2,.multi-column-list-3{padding-left:0;-webkit-column-count:2;-moz-column-count:2;column-count:2;list-style-position:inside}.multi-column-list-3{-webkit-column-count:3;-moz-column-count:3;column-count:3}.multi-column-list-4,.multi-column-list-5{padding-left:0;-webkit-column-count:4;-moz-column-count:4;column-count:4;list-style-position:inside}.multi-column-list-5{-webkit-column-count:5;-moz-column-count:5;column-count:5}.horizontal-list-flex{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.no-bullet,.no-bullet li{list-style-type:none}.layout-split-2,.layout-split-3,.layout-split-4,.layout-split-5{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;height:100%;width:100%}.layout-split-2>section{width:50%;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;text-align:center}.layout-split-3>section,.layout-split-4>section,.layout-split-5>section{width:33.33333333333333%;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;text-align:center}.layout-split-4>section,.layout-split-5>section{width:25%}.layout-split-5>section{width:20%}.item-code-with-image,.item-code-with-result{padding-left:0;list-style-type:none}.item-code-with-image li,.item-code-with-result li{clear:right;margin-bottom:1em}.item-code-with-image li>.result,.item-code-with-image li>img,.item-code-with-result li>.result,.item-code-with-result li>img{float:right;margin-left:1em}.note{border:1px solid transparent;list-style-type:none;border-radius:5px;-webkit-box-shadow:3px 3px 3px rgba(0,0,0,.2);box-shadow:3px 3px 3px rgba(0,0,0,.2);padding:.3em .5em}.note>p:first-of-type{margin-top:0}.note::before{content:"";margin-right:1rem;color:currentColor;width:1.5em;height:1.5em;display:inline-block;float:left;shape-outside:circle(50%);text-align:center;line-height:1.5em;font-size:1em;-webkit-box-sizing:border-box;box-sizing:border-box}.note.info{border-color:#0ba8b8;background:-webkit-gradient(linear,left top,right bottom,from(#ffffe0),to(#a9dbe0));background:linear-gradient(to right bottom,#ffffe0,#a9dbe0)}.note.info strong{color:#0ba8b8}.note.info::before{content:"ℹ️"}.note.warning{border-color:#b8860b;background:-webkit-gradient(linear,left top,right bottom,from(#ffffe0),to(#fff176));background:linear-gradient(to right bottom,#ffffe0,#fff176)}.note.warning strong{color:#b8860b}.note.warning::before{content:"⚠️"}.badge{display:inline-block;background-color:#fff;border-radius:4px;border:1px solid #333;color:#666;font-size:75%;line-height:1em;padding:.1em .2em}.badge.type1{color:teal;border-color:teal}.badge.type2{color:#6495ed;border-color:#6495ed}.bouncing-left{-webkit-animation:bouncing-left .8s cubic-bezier(.22,.61,.36,1) 0s infinite alternate;animation:bouncing-left .8s cubic-bezier(.22,.61,.36,1) 0s infinite alternate}.delay-1{-webkit-animation-delay:.2s;animation-delay:.2s;-webkit-transition-delay:.2s;transition-delay:.2s}.delay-2{-webkit-animation-delay:.4s;animation-delay:.4s;-webkit-transition-delay:.4s;transition-delay:.4s}.delay-3{-webkit-animation-delay:.6s;animation-delay:.6s;-webkit-transition-delay:.6s;transition-delay:.6s}.delay-4{-webkit-animation-delay:.8s;animation-delay:.8s;-webkit-transition-delay:.8s;transition-delay:.8s}.delay-5{-webkit-animation-delay:1s;animation-delay:1s;-webkit-transition-delay:1s;transition-delay:1s}.delay-6{-webkit-animation-delay:1.2s;animation-delay:1.2s;-webkit-transition-delay:1.2s;transition-delay:1.2s}.card-list,.card-list li{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}.card-list{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-pack:distribute;justify-content:space-around;list-style-type:none;padding:0}.card-list li{-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;margin-right:.25em}.card-list li figcaption,.card-list li h1,.card-list li h2,.card-list li h3,.card-list li h4,.card-list li h5,.card-list li h6{font-size:1em;text-align:center;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin-top:.5em!important}.card-list li img{max-width:100%;margin:auto;-o-object-fit:contain;object-fit:contain;-o-object-position:center;object-position:center}.card-list.polaroid li{background:#fff;-webkit-box-shadow:0 8px 16px rgba(0,20,80,.039),0 4px 16px rgba(0,0,0,.078);box-shadow:0 8px 16px rgba(0,20,80,.039),0 4px 16px rgba(0,0,0,.078)}.card-list.polaroid li img{background-color:#f0f8ff;border:11px solid #fff}.card-list.cover li img{-o-object-fit:cover;object-fit:cover}.card-list.contain li img{-o-object-fit:contain;object-fit:contain}.card-list li img,.card-list.title-top figcaption,.card-list.title-top h1,.card-list.title-top h2,.card-list.title-top h3,.card-list.title-top h4,.card-list.title-top h5,.card-list.title-top h6{-webkit-box-ordinal-group:1;-ms-flex-order:0;order:0}.card-list.title-top img{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media screen{.transition-sliding,.transition-subtle,.transition-subtle-to-right{overflow:hidden}.bespoke-slide,.transition-sliding .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:opacity .4s ease,-webkit-transform 400ms ease;transition:transform 400ms ease,opacity .4s ease;transition:transform 400ms ease,opacity .4s ease,-webkit-transform 400ms ease}.transition-sliding .bespoke-before{-webkit-transform:translate3d(-101%,0,0);transform:translate3d(-101%,0,0)}.transition-sliding .bespoke-after{-webkit-transform:translate3d(101%,0,0);transform:translate3d(101%,0,0)}.bespoke-slide{-webkit-transition:opacity 400ms ease,-webkit-transform 400ms ease;transition:transform 400ms ease,opacity 400ms ease;transition:transform 400ms ease,opacity 400ms ease,-webkit-transform 400ms ease}.bespoke-before{-webkit-transform:translate3d(-10%,0,0);transform:translate3d(-10%,0,0)}.bespoke-before-2,.bespoke-before-3,.bespoke-before-4{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}.bespoke-after{-webkit-transform:translate3d(10%,0,0);transform:translate3d(10%,0,0)}.bespoke-after-2,.bespoke-after-3,.bespoke-after-4{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}.transition-book,.transition-giant-wheel,.transition-subtle-to-bottom,.transition-subtle-to-left,.transition-subtle-to-top{overflow:hidden}.transition-subtle-to-left .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.transition-subtle-to-left .bespoke-before{-webkit-transform:translate3d(10%,0,0);transform:translate3d(10%,0,0)}.transition-subtle-to-left .bespoke-before-2,.transition-subtle-to-left .bespoke-before-3,.transition-subtle-to-left .bespoke-before-4{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}.transition-subtle-to-left .bespoke-after{-webkit-transform:translate3d(-10%,0,0);transform:translate3d(-10%,0,0)}.transition-subtle-to-left .bespoke-after-2,.transition-subtle-to-left .bespoke-after-3,.transition-subtle-to-left .bespoke-after-4{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}.transition-subtle-to-bottom .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.transition-subtle-to-bottom .bespoke-before{-webkit-transform:translate3d(0,-10%,0);transform:translate3d(0,-10%,0)}.transition-subtle-to-bottom .bespoke-before-2,.transition-subtle-to-bottom .bespoke-before-3,.transition-subtle-to-bottom .bespoke-before-4{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}.transition-subtle-to-bottom .bespoke-after{-webkit-transform:translate3d(0,10%,0);transform:translate3d(0,10%,0)}.transition-subtle-to-bottom .bespoke-after-2,.transition-subtle-to-bottom .bespoke-after-3,.transition-subtle-to-bottom .bespoke-after-4{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}.transition-subtle-to-top .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.transition-subtle-to-top .bespoke-before{-webkit-transform:translate3d(0,10%,0);transform:translate3d(0,10%,0)}.transition-subtle-to-top .bespoke-before-2,.transition-subtle-to-top .bespoke-before-3,.transition-subtle-to-top .bespoke-before-4{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}.transition-subtle-to-top .bespoke-after{-webkit-transform:translate3d(0,-10%,0);transform:translate3d(0,-10%,0)}.transition-subtle-to-top .bespoke-after-2,.transition-subtle-to-top .bespoke-after-3,.transition-subtle-to-top .bespoke-after-4{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}.transition-giant-wheel .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:-webkit-transform 400ms ease;transition:transform 400ms ease;transition:transform 400ms ease,-webkit-transform 400ms ease;-webkit-transform-origin:50% -100%;transform-origin:50% -100%}.transition-giant-wheel .bespoke-before{-webkit-transform:rotateZ(15deg);transform:rotateZ(15deg)}.transition-giant-wheel .bespoke-after{-webkit-transform:rotateZ(-15deg);transform:rotateZ(-15deg)}.transition-book .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:-webkit-transform 400ms ease;transition:transform 400ms ease;transition:transform 400ms ease,-webkit-transform 400ms ease;-webkit-transform-origin:0 0;transform-origin:0 0}.transition-book .bespoke-before{-webkit-transform:rotateY(-10deg);transform:rotateY(-10deg)}.transition-book .bespoke-after{-webkit-transform:rotateY(10deg);transform:rotateY(10deg)}.transition-zoom-in .bepoke-slide{-webkit-transform:scale(1);transform:scale(1);-webkit-transition-duration:400ms;transition-duration:400ms;transition-easing:ease;transition-properties:opacity,transform}.transition-zoom-in .bespoke-before{opacity:0;-webkit-transform:scale(1.4);transform:scale(1.4)}.transition-zoom-in .bespoke-after{opacity:0;-webkit-transform:scale(.7);transform:scale(.7)}}.layout-title.bespoke-slide{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.layout-title.bespoke-slide h1{-webkit-box-flex:.65;-ms-flex:.65;flex:.65;margin:0;padding:.25em;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end;color:#fff;text-align:left;text-shadow:.025em .025em #000}.layout-title.bespoke-slide h1::before{content:"";position:absolute;left:0;right:0;top:0;bottom:35%;background-size:cover;background-position:50% 100%;z-index:-1}.layout-title.bespoke-slide h2{-webkit-box-flex:.25;-ms-flex:.25;flex:.25;-webkit-box-sizing:content-box;box-sizing:content-box;width:100%;padding:.25em;text-align:right;color:#000}.layout-section-header.bespoke-slide{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.layout-section-header.bespoke-slide::after,.layout-section-header.bespoke-slide::before{content:"";position:absolute;top:0;bottom:0;width:50%}.layout-section-header.bespoke-slide::after{z-index:-1}.layout-section-header.bespoke-slide::before{left:0;-webkit-box-shadow:10px 0 10px rgba(0,0,0,.2);box-shadow:10px 0 10px rgba(0,0,0,.2);z-index:0}.layout-section-header.bespoke-slide::after{right:0;background-color:#fff;background-size:cover}.layout-section-header.bespoke-slide h1+:not(h2),.layout-section-header.bespoke-slide h1+h2~:not(.content){-webkit-box-flex:1;-ms-flex:1;flex:1}.layout-section-header.bespoke-slide .content{height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;color:#fff;text-shadow:.05em .05em #000}.layout-section-header.bespoke-slide .content strong{color:#8a5cf8}.layout-section-header.bespoke-slide .content>img{width:-webkit-max-content;width:-moz-max-content;width:max-content;height:-webkit-max-content;height:-moz-max-content;height:max-content;justify-self:center;-ms-flex-item-align:center;align-self:center}.layout-section-header.bespoke-slide .content li,.layout-section-header.bespoke-slide .content p{display:inline}.layout-section-header.bespoke-slide .content p::after{content:" ";display:block;margin-bottom:.5em}.layout-section-header.bespoke-slide .content li::before{content:" ";display:list-item;float:left}.layout-section-header.bespoke-slide .content li::after{content:" ";display:block}.layout-section-header.bespoke-slide>*{width:50%;padding:0 1em}.layout-section-header.bespoke-slide>ol,.layout-section-header.bespoke-slide>ul{padding-left:2em}.layout-section-header.bespoke-slide h1,.layout-section-header.bespoke-slide h2{margin:0;padding:.25em;text-align:left}.layout-section-header.bespoke-slide h1{-webkit-box-flex:.25;-ms-flex:.25;flex:.25;font-weight:700}.layout-section-header.bespoke-slide h2{-webkit-box-flex:.75;-ms-flex:.75;flex:.75;color:inherit}.layout-2-column-content.bespoke-slide,.layout-3-column-content.bespoke-slide,.layout-regular.bespoke-slide,.layout-stripe.bespoke-slide{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:1.5rem}.layout-regular.bespoke-slide>h1,.layout-regular.bespoke-slide>h2{font-size:2em}.layout-regular.bespoke-slide h1,.layout-regular.bespoke-slide h2,.layout-regular.bespoke-slide h3,.layout-regular.bespoke-slide h4,.layout-regular.bespoke-slide h5,.layout-regular.bespoke-slide h6{margin:0 0 .75em;padding:0}.layout-stripe.bespoke-slide>h1,.layout-stripe.bespoke-slide>h2{font-size:2em}.layout-stripe.bespoke-slide .stripe{width:100%;height:3em;-o-object-fit:contain;object-fit:contain;background-size:5em;background-repeat:repeat-x;margin-bottom:2em}.layout-stripe.bespoke-slide h1,.layout-stripe.bespoke-slide h2,.layout-stripe.bespoke-slide h3,.layout-stripe.bespoke-slide h4,.layout-stripe.bespoke-slide h5,.layout-stripe.bespoke-slide h6{-ms-flex-item-align:center;align-self:center}.layout-2-column-content.bespoke-slide,.layout-3-column-content.bespoke-slide{-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.layout-2-column-content.bespoke-slide>h1,.layout-2-column-content.bespoke-slide>h2,.layout-3-column-content.bespoke-slide>h1,.layout-3-column-content.bespoke-slide>h2{font-size:2em}.layout-2-column-content.bespoke-slide h1,.layout-2-column-content.bespoke-slide h2,.layout-2-column-content.bespoke-slide h3,.layout-2-column-content.bespoke-slide h4,.layout-2-column-content.bespoke-slide h5,.layout-2-column-content.bespoke-slide h6,.layout-3-column-content.bespoke-slide h1,.layout-3-column-content.bespoke-slide h2,.layout-3-column-content.bespoke-slide h3,.layout-3-column-content.bespoke-slide h4,.layout-3-column-content.bespoke-slide h5,.layout-3-column-content.bespoke-slide h6{-ms-flex-preferred-size:100%;flex-basis:100%}.layout-2-column-content.bespoke-slide>*+*,.layout-3-column-content.bespoke-slide>*+*{margin-right:0}.layout-2-column-content.bespoke-slide>*+*{width:49%;margin-left:1%}.layout-2-column-content.bespoke-slide>*+:last-child{margin-right:0}.layout-2-column-content.bespoke-slide>*+:nth-child(2){margin-left:0}.layout-3-column-content.bespoke-slide>*+*{width:32%;margin-left:1%}.layout-3-column-content.bespoke-slide>*+:last-child{margin-right:0}.layout-3-column-content.bespoke-slide>*+:nth-child(2){margin-left:0}.layout-centered-horizontal.bespoke-slide{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;padding:1.5rem;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.layout-2-column-content-zigzag.bespoke-slide>h1,.layout-2-column-content-zigzag.bespoke-slide>h2,.layout-centered-horizontal.bespoke-slide>h1,.layout-centered-horizontal.bespoke-slide>h2,.layout-regular-block.bespoke-slide>h1,.layout-regular-block.bespoke-slide>h2,.layout-regular-horizontal.bespoke-slide>h1,.layout-regular-horizontal.bespoke-slide>h2{font-size:2em}.layout-regular-horizontal.bespoke-slide{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.layout-2-column-content-zigzag.bespoke-slide,.layout-regular-block.bespoke-slide,.layout-regular-horizontal.bespoke-slide,[class*=layout-2-column-content-]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;padding:1.5rem;align-items:flex-start}.layout-regular-block.bespoke-slide{display:block}.layout-2-column-content-zigzag.bespoke-slide,[class*=layout-2-column-content-]{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap}.layout-2-column-content-zigzag.bespoke-slide h1,.layout-2-column-content-zigzag.bespoke-slide h2{width:100%}.layout-2-column-content-zigzag.bespoke-slide>:not(:first-child){width:48%}.layout-2-column-content-result.bespoke-slide{display:-webkit-box;display:-ms-flexbox;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;padding:1.5rem;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.layout-2-column-content-result.bespoke-slide>h1,.layout-2-column-content-result.bespoke-slide>h2,.layout-2-column-highlight-and-list>h1,.layout-2-column-highlight-and-list>h2,[class*=layout-2-column-content-]>h1,[class*=layout-2-column-content-]>h2{font-size:2em}.layout-2-column-content-result.bespoke-slide>*{width:48%}[class*=layout-2-column-content-]>:first-child{width:100%;-ms-flex-item-align:end;align-self:flex-end}[class*=layout-2-column-content-]>pre{max-height:calc(100% - .25em - 1.5em - 24px - 4em)}.layout-2-column-highlight-and-list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:1.5rem;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-perspective:900px;perspective:900px}.layout-2-column-highlight-and-list h1,.layout-2-column-highlight-and-list h2,.layout-2-column-highlight-and-list h3,.layout-2-column-highlight-and-list h4,.layout-2-column-highlight-and-list h5,.layout-2-column-highlight-and-list h6{-ms-flex-preferred-size:100%;flex-basis:100%}.layout-2-column-highlight-and-list>:nth-child(2){width:30%;-webkit-box-shadow:20px 20px 20px rgba(0,0,0,.2);box-shadow:20px 20px 20px rgba(0,0,0,.2);-webkit-transition:all 500ms ease 400ms;transition:all 500ms ease 400ms;opacity:.5;-webkit-transform:scale(.75);transform:scale(.75);-webkit-transform-origin:right;transform-origin:right;margin-top:1em}.layout-2-column-highlight-and-list>:nth-child(2)>img,.layout-tall-figure-left>:nth-child(2)>img,.layout-tall-figure-right>:nth-child(2)>img{max-width:100%;max-height:100%}.layout-2-column-highlight-and-list.bespoke-active>:nth-child(2){-webkit-transform:rotateY(30deg) scale(1);transform:rotateY(30deg) scale(1);opacity:1}.layout-2-column-highlight-and-list>*+*{width:60%;margin-left:1%;margin-right:0}.layout-2-column-highlight-and-list>*+::last-child{margin-left:0}.layout-3-column-element-with-titles-expansible{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.layout-3-column-element-with-titles-expansible>*{width:calc(33% - 1rem)}.layout-3-column-element-with-titles-expansible h1,.layout-3-column-element-with-titles-expansible h2,.layout-3-column-element-with-titles-expansible h3,.layout-3-column-element-with-titles-expansible h4,.layout-3-column-element-with-titles-expansible h5,.layout-3-column-element-with-titles-expansible h6{margin:auto 0}.layout-3-column-element-with-titles-expansible h1:not(:last-of-type),.layout-3-column-element-with-titles-expansible h2:not(:last-of-type),.layout-3-column-element-with-titles-expansible h3:not(:last-of-type),.layout-3-column-element-with-titles-expansible h4:not(:last-of-type),.layout-3-column-element-with-titles-expansible h5:not(:last-of-type),.layout-3-column-element-with-titles-expansible h6:not(:last-of-type){margin-right:1rem}.layout-3-column-element-with-titles-expansible>:nth-child(2n){height:calc(100% - 2.5em);margin:0;-webkit-transition:all 100ms ease;transition:all 100ms ease;position:relative}.layout-3-column-element-with-titles-expansible>:nth-child(2n):not(:last-of-type){margin-right:1rem}.layout-3-column-element-with-titles-expansible>:nth-child(2n):hover{left:0;width:100%;z-index:1}.layout-3-column-element-with-titles-expansible>:nth-child(2n):nth-of-type(2){-webkit-transition-duration:50ms;transition-duration:50ms}.layout-3-column-element-with-titles-expansible>:nth-child(2n):nth-of-type(2):hover{left:-33%}.layout-3-column-element-with-titles-expansible>:nth-child(2n):nth-of-type(3){-webkit-transition:none;transition:none}.layout-3-column-element-with-titles-expansible>:nth-child(2n):nth-of-type(3):hover{left:-67%}.layout-main-point.bespoke-slide{background-image:-webkit-gradient(linear,left top,right bottom,from(#3507a3),to(#1d045a));background-image:linear-gradient(to right bottom,#3507a3,#1d045a)}.layout-main-point.bespoke-slide h1,.layout-main-point.bespoke-slide h2,.layout-main-point.bespoke-slide h3,.layout-main-point.bespoke-slide h4,.layout-main-point.bespoke-slide h5,.layout-main-point.bespoke-slide h6{color:#fff}.layout-circling-balloons h1,.layout-circling-balloons h2,.layout-circling-balloons h3,.layout-circling-balloons h4,.layout-circling-balloons h5,.layout-circling-balloons h6{z-index:1}.layout-circling-balloons>ul{position:absolute;left:0;top:0;width:100%;height:100%;margin:0}.layout-circling-balloons>ul>li{position:absolute;width:200px;height:200px;left:calc(50% - 100px);top:calc(50% - 100px);padding:0;margin:0;border-radius:50%;background:gold;overflow:hidden;list-style-type:none;-webkit-transition:all 250ms ease;transition:all 250ms ease;-webkit-animation:circling 36s linear 0s infinite;animation:circling 36s linear 0s infinite}.layout-circling-balloons>ul>li:nth-of-type(1){-webkit-animation-delay:0s;animation-delay:0s}.layout-circling-balloons>ul>li:nth-of-type(2){-webkit-animation-delay:-12s;animation-delay:-12s}.layout-circling-balloons>ul>li:nth-of-type(3){-webkit-animation-delay:-24s;animation-delay:-24s}.layout-circling-balloons>ul>li>p:first-child{margin:0}.layout-circling-balloons>ul>li>img:first-child,.layout-circling-balloons>ul>li>p:first-child{position:absolute;top:0;right:0;bottom:0;left:0;-webkit-transition:all 250ms ease;transition:all 250ms ease}.layout-circling-balloons>ul>li>img:first-child,.layout-circling-balloons>ul>li>img:first-child img,.layout-circling-balloons>ul>li>p:first-child img{display:block;width:125px;height:125px;margin:37.5px auto}.layout-circling-balloons>ul>li>:nth-child(2){margin-top:200px;padding:1em}.layout-circling-balloons>ul>li:hover{width:26em;height:10em;top:calc(50% - 5em);left:calc(50% - 13em);border-radius:2em;overflow:visible;z-index:2}.layout-circling-balloons>ul>li:hover>:first-child{-webkit-transform:translateY(-50%);transform:translateY(-50%)}.layout-circling-balloons>ul>li:hover>:nth-child(2){margin-top:1em}.layout-circling-balloons>ul:hover>li{-webkit-animation-play-state:paused;animation-play-state:paused}.layout-tall-figure-left,.layout-tall-figure-right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:1.5rem;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.layout-tall-figure-left>h1,.layout-tall-figure-left>h2,.layout-tall-figure-right>h1,.layout-tall-figure-right>h2{font-size:2em}.layout-tall-figure-left h1,.layout-tall-figure-left h2,.layout-tall-figure-left h3,.layout-tall-figure-left h4,.layout-tall-figure-left h5,.layout-tall-figure-left h6,.layout-tall-figure-right h1,.layout-tall-figure-right h2,.layout-tall-figure-right h3,.layout-tall-figure-right h4,.layout-tall-figure-right h5,.layout-tall-figure-right h6{-ms-flex-preferred-size:100%;flex-basis:100%}.layout-tall-figure-left>:nth-child(2),.layout-tall-figure-right>:nth-child(2){-ms-flex-preferred-size:30%;flex-basis:30%}.layout-tall-figure-left>:nth-child(3),.layout-tall-figure-right>:nth-child(3){-ms-flex-preferred-size:70%;flex-basis:70%}.layout-tall-figure-right>:nth-child(2){-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}.layout-tall-figure-left>:nth-child(2),.layout-tall-figure-right>:nth-child(3){-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}.layout-tall-figure-left>:nth-child(3){-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}.show-active-slide-and-previous .bespoke-before-1{-webkit-transform:translate3d(-30%,0,-250px) rotateY(10deg);transform:translate3d(-30%,0,-250px) rotateY(10deg);opacity:1}.show-active-slide-and-previous .bespoke-active{-webkit-transform:translate3d(30%,0,-250px) rotateY(-10deg);transform:translate3d(30%,0,-250px) rotateY(-10deg)}[data-bespoke-state=show-active-slide-and-previous].bespoke-after-1{-webkit-transform:translate3d(100%,0,0) rotateY(-10deg);transform:translate3d(100%,0,0) rotateY(-10deg)}[data-bespoke-state=show-active-slide-and-previous].bespoke-before-1{-webkit-transform:translate3d(-100%,0,0) rotateY(10deg);transform:translate3d(-100%,0,0) rotateY(10deg);opacity:0}.no-margin .katex-display{margin:0}.left-aligned,.left-aligned .katex,.left-aligned .katex-display{text-align:left!important}.picture-steps .katex-display,.picture-steps>p .katex-display{text-align:left}.picture-steps .bullet .math,.picture-steps .bullet.math,.picture-steps>p .bullet .math,.picture-steps>p .bullet.math{padding-top:1px}@media screen{.bespoke-scale-parent{position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;pointer-events:none}.bespoke-scale-parent .bespoke-active{pointer-events:auto}.bespoke-bullet{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:all .4s ease;transition:all .4s ease}.bespoke-bullet-inactive{opacity:0;pointer-events:none;-webkit-transform:translate3d(40px,0,0);transform:translate3d(40px,0,0);-webkit-transition:all .2s ease;transition:all .2s ease}.bespoke-bullet-off .bespoke-bullet-inactive{display:list-item;opacity:initial;-webkit-transform:initial;transform:initial}.bullet-old{color:gray}.bullet-old strong{color:#c4adfc}.bullet-no-anim{-webkit-transition-property:opacity;transition-property:opacity}.bullet-no-anim.bespoke-bullet-inactive{-webkit-transform:none;transform:none}.bullet.bullet.bullet-no-anim.bespoke-bullet-inactive{-webkit-transform:none;transform:none;-webkit-transition:none;transition:none}.bespoke-progress-parent{position:absolute;bottom:0;left:0;right:0;height:5px;z-index:2}.bespoke-progress-bar{position:absolute;height:100%;-webkit-transition:width .3s ease;transition:width .3s ease}.bespoke-progress-bar::before{content:" ";position:absolute;display:block;width:100%;height:100%;background:#3507a3}.bespoke-progress-number{position:absolute;font-size:9px;min-width:2em;height:2em;right:1rem;top:1rem;-webkit-box-sizing:content-box;box-sizing:content-box;background-color:rgba(204,204,204,.6);background-clip:content-box;color:#3507a3;text-align:center;line-height:2em;padding:0;border:3px double rgba(204,204,204,.6)}.bespoke-parent,.bespoke-scale-parent{-webkit-perspective:900px;perspective:900px}.bespoke-simple-overview .bespoke-slide{position:absolute;opacity:1;outline:4px solid silver}.bespoke-simple-overview .bespoke-slide:hover{outline-color:#4682b4}.bespoke-simple-overview .bespoke-slide.bespoke-active{-webkit-transform:translate3d(0,0,-2000px);transform:translate3d(0,0,-2000px);outline-color:#4682b4;z-index:100}.bespoke-simple-overview .bespoke-slide.bespoke-after:not(.bespoke-after-1):not(.bespoke-after-2):not(.bespoke-after-3):not(.bespoke-after-4):not(.bespoke-after-5):not(.bespoke-after-6){-webkit-transform:translate3d(7634.667338669354px,0,-2000px);transform:translate3d(7634.667338669354px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before:not(.bespoke-before-1):not(.bespoke-before-2):not(.bespoke-before-3):not(.bespoke-before-4):not(.bespoke-before-5):not(.bespoke-before-6){-webkit-transform:translate3d(-7634.667338669354px,0,-2000px);transform:translate3d(-7634.667338669354px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-1{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(1090.6667626670505px,0,-2000px);transform:translate3d(1090.6667626670505px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-1{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-1090.6667626670505px,0,-2000px);transform:translate3d(-1090.6667626670505px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-2{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(2181.333525334101px,0,-2000px);transform:translate3d(2181.333525334101px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-2{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-2181.333525334101px,0,-2000px);transform:translate3d(-2181.333525334101px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-3{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(3272.0002880011516px,0,-2000px);transform:translate3d(3272.0002880011516px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-3{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-3272.0002880011516px,0,-2000px);transform:translate3d(-3272.0002880011516px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-4{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(4362.667050668202px,0,-2000px);transform:translate3d(4362.667050668202px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-4{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-4362.667050668202px,0,-2000px);transform:translate3d(-4362.667050668202px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-5{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(5453.333813335253px,0,-2000px);transform:translate3d(5453.333813335253px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-5{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-5453.333813335253px,0,-2000px);transform:translate3d(-5453.333813335253px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-6{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(6544.000576002303px,0,-2000px);transform:translate3d(6544.000576002303px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-6{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-6544.000576002303px,0,-2000px);transform:translate3d(-6544.000576002303px,0,-2000px)}.bespoke-simple-overview .bespoke-bullet-inactive{display:list-item;opacity:initial;-webkit-transform:initial;transform:initial}#bespoke-search{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0;background-color:rgba(128,128,128,.3);-webkit-transition:opacity 100ms ease-out;transition:opacity 100ms ease-out}#bespoke-search.bespoke-search-searching{opacity:1}#bespoke-search.bespoke-search-searching>#bespoke-search-input{bottom:5%}#bespoke-search-input{position:absolute;left:50%;bottom:0;pointer-events:all;width:200px;margin-left:-100px;padding:8px;border-radius:10px;border:1px solid silver;outline:0;color:gray;font-size:x-large;background-color:rgba(255,255,255,.9);-webkit-transition:bottom 140ms ease-out;transition:bottom 140ms ease-out}.bespoke-search-result{background-color:#ff0}.bespoke-search-result-focused{background-color:orange}#bespoke-search.bespoke-search-no-result>#bespoke-search-input{border:1px solid #8b0000;color:#8b0000}#bespoke-search-results-count{position:absolute;bottom:1%;left:50%;margin-left:-30px;width:60px;text-align:center;font-size:smaller;color:#8a2be2;font-weight:700}}@media print{*{background:0 0!important}body,html{overflow:visible!important}body{margin:0!important;padding:.1in!important;height:auto!important}body,code{line-height:1em!important}code,ol,pre,ul{text-align:left!important}pre code{border:1px solid #696969!important;padding:5px!important;border-radius:4px!important}@page{margin:.79in!important}.bespoke-slide{-webkit-box-sizing:border-box!important;box-sizing:border-box!important;display:block!important;float:left!important;border:2px solid #000!important;text-align:center!important;margin-top:0!important;margin-left:0!important;page-break-inside:avoid!important}.bespoke-slide>*{zoom:.65!important}.bespoke-slide>* *{zoom:.85!important}.bespoke-slide>h1:only-child,.bespoke-slide>h2:only-child,.bespoke-slide>h3:only-child,.bespoke-slide>h4:only-child,.bespoke-slide>h5:only-child,.bespoke-slide>h6:only-child{margin-top:4em!important}.bespoke-slide .bespoke-bullet-inactive{opacity:1!important;-webkit-transform:none!important;transform:none!important;-webkit-transition:none!important;transition:none!important}.bespoke-slide:nth-child(6n),.bespoke-slide:nth-of-type(6n){page-break-after:always!important;-webkit-column-break-after:page!important;-moz-column-break-after:page!important;break-after:page!important}}@media print and (orientation:portrait){.bespoke-slide{width:2.919472443000001in!important;height:2.189604332250001in!important;margin-right:.324385827in!important;margin-bottom:.324385827in!important}.bespoke-slide:nth-child(2n){margin-right:0!important}.bespoke-parent{width:6.487716540000001in!important}img{max-width:5.248012976470589in!important}}@media print and (orientation:landscape){.bespoke-slide{width:2.97387402in!important;height:2.230405515in!important;margin-right:.297387402in!important;margin-bottom:.297387402in!important}.bespoke-slide:nth-child(3n){margin-right:0!important}.bespoke-parent{width:9.9129134in!important}img{max-width:3.498675317647059in!important}}\n/*# sourceMappingURL=theme.css.map */\n/*# sourceMappingURL=theme.css.map */\n',{prepend:!0}),function(e){i()(e)}}},{"bespoke-classes":2,"insert-css":3}],2:[function(e,t,o){t.exports=function(){return function(n){function l(e,t){e.classList.add("bespoke-"+t)}function s(e,t){e.className=e.className.replace(new RegExp("bespoke-"+t+"(\\s|$)","g")," ").trim()}function t(e,t){var o=n.slides[n.slide()],i=t-n.slide(),a=0<i?"after":"before";["before(-\\d+)?","after(-\\d+)?","active","inactive"].map(s.bind(null,e)),e!==o&&["inactive",a,a+"-"+Math.abs(i)].map(l.bind(null,e))}l(n.parent,"parent"),n.slides.map(function(e){l(e,"slide")}),n.on("activate",function(e){n.slides.map(t),l(e.slide,"active"),s(e.slide,"inactive")})}}},{}],3:[function(e,t,o){var s=[],r=[];function i(e,t){if(t=t||{},void 0===e)throw new Error("insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).");var o,i,a=!0===t.prepend?"prepend":"append",n=void 0!==t.container?t.container:document.querySelector("head"),l=s.indexOf(n);return-1===l&&(l=s.push(n)-1,r[l]={}),void 0!==r[l]&&void 0!==r[l][a]?o=r[l][a]:(o=r[l][a]=((i=document.createElement("style")).setAttribute("type","text/css"),i),"prepend"==a?n.insertBefore(o,n.childNodes[0]):n.appendChild(o)),65279===e.charCodeAt(0)&&(e=e.substr(1,e.length)),o.styleSheet?o.styleSheet.cssText+=e:o.textContent+=e,o}t.exports=i,t.exports.insertCss=i},{}]},{},[1])(1)});
+/*! bespoke-theme-sandy v1.0.0 © 2019 Flávio Coutinho, MIT License */
+!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;(t=(t=(t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this).bespoke||(t.bespoke={})).theme||(t.theme={})).sandy=e()}}(function(){return function n(l,r,s){function p(t,e){if(!r[t]){if(!l[t]){var o="function"==typeof require&&require;if(!e&&o)return o(t,!0);if(b)return b(t,!0);var i=new Error("Cannot find module '"+t+"'");throw i.code="MODULE_NOT_FOUND",i}var a=r[t]={exports:{}};l[t][0].call(a.exports,function(e){return p(l[t][1][e]||e)},a,a.exports,n,l,r,s)}return r[t].exports}for(var b="function"==typeof require&&require,e=0;e<s.length;e++)p(s[e]);return p}({1:[function(e,t,o){var i=e("bespoke-classes"),a=e("insert-css");t.exports=function(e){var t=t="@import url(https://fonts.googleapis.com/css?family=Maitree:400,700|Roboto:400,700|Cousine);\n/*# sourceMappingURL=fonts.css.map */\n/*# sourceMappingURL=fonts.css.map */\n";return(e=e||{insertFonts:!0}).insertFonts&&a(t,{prepend:!0}),a('/*! normalize.css v3.0.0 | MIT License | git.io/normalize */\n@-webkit-keyframes floating{0%{-webkit-transform:translateY(0);transform:translateY(0)}to{-webkit-transform:translateY(-25%);transform:translateY(-25%)}}@keyframes floating{0%{-webkit-transform:translateY(0);transform:translateY(0)}to{-webkit-transform:translateY(-25%);transform:translateY(-25%)}}@-webkit-keyframes floated-element-shadow{0%{-webkit-transform:scaleX(1);transform:scaleX(1)}to{-webkit-transform:scaleX(.5);transform:scaleX(.5)}}@keyframes floated-element-shadow{0%{-webkit-transform:scaleX(1);transform:scaleX(1)}to{-webkit-transform:scaleX(.5);transform:scaleX(.5)}}@-webkit-keyframes bouncing-left{to{-webkit-transform:translateX(5%) scaleX(.96);transform:translateX(5%) scaleX(.96)}}@keyframes bouncing-left{to{-webkit-transform:translateX(5%) scaleX(.96);transform:translateX(5%) scaleX(.96)}}@-webkit-keyframes circling{0%{-webkit-transform:rotate(0turn) translate(180px) rotate(0turn);transform:rotate(0turn) translate(180px) rotate(0turn)}to{-webkit-transform:rotate(1turn) translate(180px) rotate(-1turn);transform:rotate(1turn) translate(180px) rotate(-1turn)}}@keyframes circling{0%{-webkit-transform:rotate(0turn) translate(180px) rotate(0turn);transform:rotate(0turn) translate(180px) rotate(0turn)}to{-webkit-transform:rotate(1turn) translate(180px) rotate(-1turn);transform:rotate(1turn) translate(180px) rotate(-1turn)}}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}.figure-slides>p,body,figure.embedded-caption p{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,ol,section,summary,ul{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:0 0;color:#209934;text-decoration:none}a:active,a:hover{outline:0}abbr[title]{border-bottom:initial}b{font-weight:700}dfn{font-style:italic}h1,mark{color:#000}h1{font-family:\'Maitree\',times,serif;font-size:2.5em}mark{background:#ff0}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}hr{-webkit-box-sizing:content-box;box-sizing:content-box;height:0}pre,samp{font-size:1em}pre{overflow:auto}samp{font-family:monospace,monospace}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{-webkit-box-sizing:border-box;box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend,pre>code{border:0;padding:0}textarea{overflow:auto}optgroup,strong{font-weight:700}table{border-collapse:collapse;border-spacing:0;border:2px solid gray;max-width:100%}td,th{border:1px solid gray}*{-webkit-box-sizing:border-box;box-sizing:border-box}@media screen{.bespoke-parent{position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;background-color:#f7f9fb;color:#333;font-size:24px}.bespoke-parent:not(.emphatic){-webkit-transition:background-color 400ms ease;transition:background-color 400ms ease}.bespoke-slide{position:absolute;width:1066.6666666666665px;height:600px;top:50%;left:50%;margin-left:-533.3333333333333px;margin-top:-300px;overflow:hidden;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;will-change:transform}.bespoke-inactive{opacity:0;pointer-events:none}.bespoke-inactive .bespoke-bullet-inactive{-webkit-transition:opacity .4s ease;transition:opacity .4s ease}.bespoke-inactive:not(.bespoke-after-1):not(.bespoke-before-1):not(.bespoke-after-2):not(.bespoke-before-2):not(.bespoke-after-3):not(.bespoke-before-3){display:none}.emphatic{background-color:#3507a3}.emphatic,.emphatic h1,.emphatic h2,.emphatic h3,.emphatic h4,.emphatic h5,.emphatic h6{color:#fff}.emphatic strong{color:#38088e}}h2{font-size:1.5em}h3,ol.columns-3>li>h1,ol.columns-3>li>h2,ol.columns-3>li>h3,ol.columns-3>li>h4,ol.columns-3>li>h5,ol.columns-3>li>h6,ul.columns-3>li>h1,ul.columns-3>li>h2,ul.columns-3>li>h3,ul.columns-3>li>h4,ul.columns-3>li>h5,ul.columns-3>li>h6{font-size:1.25em}h4,h5,h6{font-size:1em}code,h2,h3,h4,h5,h6,pre{font-family:\'Roboto\',\'San Francisco\',helvetica,arial,sans-serif;color:#000}h1,h2,h3,h4,h5,h6{font-weight:400;margin:0 0 .25em;line-height:1em}li,p{font-size:24px;line-height:1.5em}strong{color:#3507a3}strong.alternate-color{color:#7b9c02}article{font-family:\'Roboto\',\'San Francisco\',helvetica,arial,sans-serif}a:hover{text-decoration:underline}code,pre{border:1px solid rgba(0,20,80,.1);border-radius:.15em;background:#fff;font-family:\'Cousine\',monospace;-webkit-transition:-webkit-box-shadow 200ms ease;transition:box-shadow 200ms ease;transition:box-shadow 200ms ease,-webkit-box-shadow 200ms ease}pre{border:1px solid #d9dcde;max-width:1026.6666666666665px;padding:1em;-webkit-box-shadow:0 8px 16px rgba(0,20,80,.039),0 4px 16px rgba(0,0,0,.078);box-shadow:0 8px 16px rgba(0,20,80,.039),0 4px 16px rgba(0,0,0,.078)}pre:hover{-webkit-box-shadow:0 8px 32px rgba(0,20,80,.2),0 4px 24px rgba(0,0,0,.2);box-shadow:0 8px 32px rgba(0,20,80,.2),0 4px 24px rgba(0,0,0,.2)}code{font-size:.75em;background-color:#fff;padding:.25em;-webkit-box-shadow:0 4px 8px rgba(0,20,80,.039),0 2px 8px rgba(0,0,0,.078);box-shadow:0 4px 8px rgba(0,20,80,.039),0 2px 8px rgba(0,0,0,.078)}code:hover{-webkit-box-shadow:0 4px 24px rgba(0,20,80,.078),0 2px 24px rgba(0,0,0,.078);box-shadow:0 4px 24px rgba(0,20,80,.078),0 2px 24px rgba(0,0,0,.078)}pre>code{font-size:.83333em;background-color:transparent;border:initial}pre>code,pre>code:hover{-webkit-box-shadow:initial;box-shadow:initial}pre code span{word-wrap:break-word;word-break:break-all}pre.hljs{margin:auto}ol.no-list-icon,ul.no-list-icon{list-style-type:none}ol.columns-3,ul.columns-3{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}ol.columns-3>li,ul.columns-3>li{-webkit-box-flex:1;-ms-flex:1;flex:1}ol.columns-3>li:not(:last-of-type),ul.columns-3>li:not(:last-of-type){margin-right:1em}dd,dt{margin-bottom:.5em}dt{float:left;clear:left;width:10em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right;font-weight:700;padding-right:1em;position:relative}dd{margin-left:10.5em}dl.width-40>dt{width:40%}dl.width-40>dd{margin-left:42%}dl.width-50>dt{width:50%}dl.width-50>dd{margin-left:52%}del{color:gray}tr{background-color:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.4)}tr:nth-of-type(even)>td{background-color:rgba(255,255,255,.4)}td{padding:6px}th{color:#fff;padding:10px;background-color:#333}td:not(:last-child),th:not(:last-child){border-right:1px solid rgba(0,0,0,.2)}thead>tr{background-color:#555;color:#fff}blockquote{margin:.25em 0;padding:.25em 40px;background:#f5f5f5;-webkit-box-shadow:4px 4px 4px silver;box-shadow:4px 4px 4px silver;line-height:1.45;font-size:18px;font-family:Georgia,serif;font-style:italic;color:#383838;border:1px solid silver}blockquote.centered{margin-left:auto;margin-right:auto}blockquote>p{margin:.5em auto}blockquote::before{content:"\\201C";display:block;position:absolute;left:-.25em;top:-.25em;font-size:80px;color:#7a7a7a}blockquote cite{display:block;margin-top:5px;font-size:75%;color:#999}blockquote cite::before{content:"\\2014 \\2009"}kbd{padding:.1em .6em;font-size:.8em;border:1px solid #ccc;font-family:Consolas,Menlo,Monaco,monospace;background-color:#f7f7f7;color:#333;-webkit-box-shadow:0 4px 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;box-shadow:0 4px 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;border-radius:3px;display:inline-block;margin:0 .1em;text-shadow:0 1px 0 #fff;line-height:1.3;white-space:nowrap;top:0;-webkit-transition:top 40ms ease-out,-webkit-box-shadow 40ms ease-out;transition:top 40ms ease-out,box-shadow 40ms ease-out;transition:top 40ms ease-out,box-shadow 40ms ease-out,-webkit-box-shadow 40ms ease-out}kbd:hover{top:4px;-webkit-box-shadow:0 0 0 rgba(0,0,0,.2),0 0 0 2px #fff inset;box-shadow:0 0 0 rgba(0,0,0,.2),0 0 0 2px #fff inset}figcaption{background-color:#f5f5f5;padding:5px;margin-bottom:3px}blockquote,figure.embedded-caption,kbd{position:relative}figure.embedded-caption figcaption{position:absolute;background-color:rgba(0,0,0,.25)}figure.embedded-caption figcaption.caption-bottom{bottom:1em}figure.embedded-caption figcaption.caption-top{top:1em;left:0;right:0}figure.embedded-caption figcaption.caption-bottom{left:0;right:0}.push-code-right>code,img[alt$=right]{float:right}.push-code-left>code,img[alt$=left]{float:left}.push-right{float:right;margin-left:20px}.push-left{float:left;margin-right:20px}.push-code-right pre{float:right;clear:right}.push-code-left pre{float:left;clear:left}.two-column-code code,.two-column-code pre{-webkit-column-count:2;column-count:2;-webkit-column-rule:3px double rgba(0,0,0,.3);column-rule:3px double rgba(0,0,0,.3);-webkit-column-gap:2em;column-gap:2em}.floating-right-code pre{float:right;width:auto;margin-left:1em}.figure-slides{position:relative}.figure-slides.opacity-only .bespoke-bullet{-webkit-transition-property:opacity;transition-property:opacity}.figure-slides.opacity-only .bespoke-bullet:not(.bespoke-bullet-current){-webkit-transform:initial;transform:initial}.figure-slides.clean .bespoke-bullet:not(.bespoke-bullet-current){visibility:hidden}.figure-step:not(:first-child){position:absolute;top:0;left:0}a.bookmarklet{border-radius:5px;border:2px solid silver;padding:4px 7px;background-color:rgba(255,255,255,.1);-webkit-transition:all 200ms ease-out;transition:all 200ms ease-out}a.bookmarklet:hover{text-decoration:none;background-color:#b66c7e;color:#ddd;border-color:#333;cursor:move}input.switch:empty{display:block;margin-left:-999px}input.switch:empty~label{position:relative;float:left;line-height:1.6em;text-indent:4em;margin:.2em 0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}input.switch:empty~label:after,input.switch:empty~label:before{position:absolute;display:block;top:0;bottom:0;left:0;content:\' \';width:3.6em;background-color:#c33;border-radius:.3em;-webkit-box-shadow:inset 0 .2em 0 rgba(0,0,0,.3);box-shadow:inset 0 .2em 0 rgba(0,0,0,.3);-webkit-transition:all 100ms ease-in;transition:all 100ms ease-in}input.switch:empty~label:after{width:1.4em;top:.1em;bottom:.1em;margin-left:.1em;background-color:#fff;border-radius:.15em;-webkit-box-shadow:inset 0 -.2em 0 rgba(0,0,0,.2);box-shadow:inset 0 -.2em 0 rgba(0,0,0,.2)}input.switch:checked~label:before{background-color:#393}input.switch:checked~label:after{margin-left:2.1em}img.full-width{width:100%}img.large-width{width:80%}img.medium-width{width:60%}img.small-width{width:40%}img.full-height{height:100%}img.huge-height{height:80%}img.large-height{height:60%}img.medium-height{height:40%}img.small-height{height:20%}img.block{display:block}.floating-portrait-container *,.portrait,.portrait img{display:inline-block;width:150px;height:150px;border-radius:50%}.floating-portrait-container * figcaption,.portrait figcaption,.portrait img figcaption{background-color:transparent}.floating-portrait-container{position:relative}.floating-portrait-container *{margin:0;-webkit-animation:floating 2s ease-in-out 0s infinite alternate;animation:floating 2s ease-in-out 0s infinite alternate}.floating-portrait-container::after{content:" ";position:absolute;width:100%;height:20%;left:0;right:0;bottom:-20%;background:radial-gradient(ellipse closest-side,rgba(21,21,21,.25) 0%,rgba(255,255,255,0) 100%);z-index:-1;-webkit-animation:floated-element-shadow 2s ease-in-out 0s infinite alternate;animation:floated-element-shadow 2s ease-in-out 0s infinite alternate}.flips{-webkit-transition:-webkit-transform 600ms ease-out;transition:transform 600ms ease-out;transition:transform 600ms ease-out,-webkit-transform 600ms ease-out}.flips *{margin:0}.flips:hover{-webkit-transform:rotateY(720deg);transform:rotateY(720deg)}.portrait{shape-outside:circle(50%)}.contain{max-width:100%;max-height:100%}.half-width{width:50%}.three-quarter-width{width:75%}img.centered{display:block;margin-left:auto;margin-right:auto}.full-width,.layout-stripe.bespoke-slide h1+p,.layout-stripe.bespoke-slide h2+p,.layout-stripe.bespoke-slide h3+p,.layout-stripe.bespoke-slide h4+p,.layout-stripe.bespoke-slide h5+p,.layout-stripe.bespoke-slide h6+p{width:100%}.center-aligned{text-align:center}.centered{margin-left:auto;margin-right:auto}.emoji{height:1em;width:1em;vertical-align:middle}.on-line{height:1em;line-height:1em}.no-margin{margin:0}.no-padding{padding:0}.full-page-video-caption{position:absolute;bottom:30px;font-size:.75em;left:50%;width:16em;text-align:center;margin-left:-8em;padding:0;background-color:rgba(255,255,8,.65);border-radius:.25em;-webkit-box-shadow:3px 3px 3px rgba(0,0,0,.2);box-shadow:3px 3px 3px rgba(0,0,0,.2)}.bullet-no-anim{-webkit-transition:none!important;transition:none!important}.full-width-slides,.full-width-slides img{max-width:100%}.bordered{border:1px solid rgba(0,0,0,.5)}.rounded{border-radius:4px}.clearer{clear:both}.compact-code pre,.compact-code~pre{line-height:1em}.compact-code-more pre,.compact-code-more~pre{line-height:1em;font-size:75%}.code-split-2{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.code-split-2 pre.hljs{-webkit-box-flex:1;-ms-flex:1;flex:1;margin-top:0;margin-bottom:0}.code-split-2 pre.hljs:not(:last-of-type){border-right:3px double #fff}.code-split-2 pre.hljs+pre.hljs{margin-top:0}.horizontal-list{list-style:none}.horizontal-list>li{display:inline-block;width:25%;margin:0 4.5% 0 0;vertical-align:middle}.horizontal-list>li:last-of-type{margin:0}.multi-column-list-2,.multi-column-list-3{padding-left:0;-webkit-column-count:2;column-count:2;list-style-position:inside}.multi-column-list-3{-webkit-column-count:3;column-count:3}.multi-column-list-4,.multi-column-list-5{padding-left:0;-webkit-column-count:4;column-count:4;list-style-position:inside}.multi-column-list-5{-webkit-column-count:5;column-count:5}.horizontal-list-flex{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.no-bullet,.no-bullet li{list-style-type:none}.layout-split-2,.layout-split-3,.layout-split-4,.layout-split-5{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;height:100%;width:100%}.layout-split-2>section{width:50%;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;text-align:center}.layout-split-3>section,.layout-split-4>section,.layout-split-5>section{width:33.33333333333333%;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;text-align:center}.layout-split-4>section,.layout-split-5>section{width:25%}.layout-split-5>section{width:20%}.item-code-with-image,.item-code-with-result{padding-left:0;list-style-type:none}.item-code-with-image li,.item-code-with-result li{clear:right;margin-bottom:1em}.item-code-with-image li>.result,.item-code-with-image li>img,.item-code-with-result li>.result,.item-code-with-result li>img{float:right;margin-left:1em}.note{border:1px solid transparent;list-style-type:none;border-radius:5px;-webkit-box-shadow:3px 3px 3px rgba(0,0,0,.2);box-shadow:3px 3px 3px rgba(0,0,0,.2);padding:.3em .5em}.note>p:first-of-type{margin-top:0}.note::before{content:"";margin-right:1rem;color:currentColor;width:1.5em;height:1.5em;display:inline-block;float:left;shape-outside:circle(50%);text-align:center;line-height:1.5em;font-size:1em;-webkit-box-sizing:border-box;box-sizing:border-box}.note.info{border-color:#0ba8b8;background:-webkit-gradient(linear,left top,right bottom,from(#ffffe0),to(#a9dbe0));background:linear-gradient(to right bottom,#ffffe0,#a9dbe0)}.note.info strong{color:#0ba8b8}.note.info::before{content:"🛈"}.note.warning{border-color:#b8860b;background:-webkit-gradient(linear,left top,right bottom,from(#ffffe0),to(#fff176));background:linear-gradient(to right bottom,#ffffe0,#fff176)}.note.warning strong{color:#b8860b}.note.warning::before{content:"⚠"}.badge{display:inline-block;background-color:#fff;border-radius:4px;border:1px solid #333;color:#666;font-size:75%;line-height:1em;padding:.1em .2em}.badge.type1{color:teal;border-color:teal}.badge.type2{color:#6495ed;border-color:#6495ed}.bouncing-left{-webkit-animation:bouncing-left .8s cubic-bezier(.22,.61,.36,1) 0s infinite alternate;animation:bouncing-left .8s cubic-bezier(.22,.61,.36,1) 0s infinite alternate}.delay-1{-webkit-animation-delay:.2s;animation-delay:.2s;-webkit-transition-delay:.2s;transition-delay:.2s}.delay-2{-webkit-animation-delay:.4s;animation-delay:.4s;-webkit-transition-delay:.4s;transition-delay:.4s}.delay-3{-webkit-animation-delay:.6s;animation-delay:.6s;-webkit-transition-delay:.6s;transition-delay:.6s}.delay-4{-webkit-animation-delay:.8s;animation-delay:.8s;-webkit-transition-delay:.8s;transition-delay:.8s}.delay-5{-webkit-animation-delay:1s;animation-delay:1s;-webkit-transition-delay:1s;transition-delay:1s}.delay-6{-webkit-animation-delay:1.2s;animation-delay:1.2s;-webkit-transition-delay:1.2s;transition-delay:1.2s}.card-list,.card-list li{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}.card-list{list-style-type:none;padding:0;-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-pack:distribute;justify-content:space-around}.card-list li{-webkit-box-flex:1;-ms-flex:1;flex:1;-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;margin-right:.25em}.card-list li figcaption,.card-list li h1,.card-list li h2,.card-list li h3,.card-list li h4,.card-list li h5,.card-list li h6{font-size:1em;text-align:center;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin-top:.5em!important}.card-list li img{max-width:100%;margin:auto;-o-object-fit:contain;object-fit:contain;-o-object-position:center;object-position:center}.card-list.polaroid li{background:#fff;-webkit-box-shadow:0 8px 16px rgba(0,20,80,.039),0 4px 16px rgba(0,0,0,.078);box-shadow:0 8px 16px rgba(0,20,80,.039),0 4px 16px rgba(0,0,0,.078)}.card-list.polaroid li img{background-color:#f0f8ff;border:11px solid #fff}.card-list.cover li img{-o-object-fit:cover;object-fit:cover}.card-list.contain li img{-o-object-fit:contain;object-fit:contain}.card-list li img,.card-list.title-top figcaption,.card-list.title-top h1,.card-list.title-top h2,.card-list.title-top h3,.card-list.title-top h4,.card-list.title-top h5,.card-list.title-top h6{-webkit-box-ordinal-group:1;-ms-flex-order:0;order:0}.card-list.title-top img{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}@media screen{.transition-sliding,.transition-subtle,.transition-subtle-to-right{overflow:hidden}.bespoke-slide,.transition-sliding .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:opacity .4s ease,-webkit-transform 400ms ease;transition:transform 400ms ease,opacity .4s ease;transition:transform 400ms ease,opacity .4s ease,-webkit-transform 400ms ease}.transition-sliding .bespoke-before{-webkit-transform:translate3d(-101%,0,0);transform:translate3d(-101%,0,0)}.transition-sliding .bespoke-after{-webkit-transform:translate3d(101%,0,0);transform:translate3d(101%,0,0)}.bespoke-slide{-webkit-transition:opacity 400ms ease,-webkit-transform 400ms ease;transition:transform 400ms ease,opacity 400ms ease;transition:transform 400ms ease,opacity 400ms ease,-webkit-transform 400ms ease}.bespoke-before{-webkit-transform:translate3d(-10%,0,0);transform:translate3d(-10%,0,0)}.bespoke-before-2,.bespoke-before-3,.bespoke-before-4{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}.bespoke-after{-webkit-transform:translate3d(10%,0,0);transform:translate3d(10%,0,0)}.bespoke-after-2,.bespoke-after-3,.bespoke-after-4{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}.transition-book,.transition-giant-wheel,.transition-subtle-to-bottom,.transition-subtle-to-left,.transition-subtle-to-top{overflow:hidden}.transition-subtle-to-left .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.transition-subtle-to-left .bespoke-before{-webkit-transform:translate3d(10%,0,0);transform:translate3d(10%,0,0)}.transition-subtle-to-left .bespoke-before-2,.transition-subtle-to-left .bespoke-before-3,.transition-subtle-to-left .bespoke-before-4{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}.transition-subtle-to-left .bespoke-after{-webkit-transform:translate3d(-10%,0,0);transform:translate3d(-10%,0,0)}.transition-subtle-to-left .bespoke-after-2,.transition-subtle-to-left .bespoke-after-3,.transition-subtle-to-left .bespoke-after-4{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}.transition-subtle-to-bottom .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.transition-subtle-to-bottom .bespoke-before{-webkit-transform:translate3d(0,-10%,0);transform:translate3d(0,-10%,0)}.transition-subtle-to-bottom .bespoke-before-2,.transition-subtle-to-bottom .bespoke-before-3,.transition-subtle-to-bottom .bespoke-before-4{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}.transition-subtle-to-bottom .bespoke-after{-webkit-transform:translate3d(0,10%,0);transform:translate3d(0,10%,0)}.transition-subtle-to-bottom .bespoke-after-2,.transition-subtle-to-bottom .bespoke-after-3,.transition-subtle-to-bottom .bespoke-after-4{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}.transition-subtle-to-top .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}.transition-subtle-to-top .bespoke-before{-webkit-transform:translate3d(0,10%,0);transform:translate3d(0,10%,0)}.transition-subtle-to-top .bespoke-before-2,.transition-subtle-to-top .bespoke-before-3,.transition-subtle-to-top .bespoke-before-4{-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0)}.transition-subtle-to-top .bespoke-after{-webkit-transform:translate3d(0,-10%,0);transform:translate3d(0,-10%,0)}.transition-subtle-to-top .bespoke-after-2,.transition-subtle-to-top .bespoke-after-3,.transition-subtle-to-top .bespoke-after-4{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0)}.transition-giant-wheel .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:-webkit-transform 400ms ease;transition:transform 400ms ease;transition:transform 400ms ease,-webkit-transform 400ms ease;-webkit-transform-origin:50% -100%;transform-origin:50% -100%}.transition-giant-wheel .bespoke-before{-webkit-transform:rotateZ(15deg);transform:rotateZ(15deg)}.transition-giant-wheel .bespoke-after{-webkit-transform:rotateZ(-15deg);transform:rotateZ(-15deg)}.transition-book .bespoke-slide{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:-webkit-transform 400ms ease;transition:transform 400ms ease;transition:transform 400ms ease,-webkit-transform 400ms ease;-webkit-transform-origin:0 0;transform-origin:0 0}.transition-book .bespoke-before{-webkit-transform:rotateY(-10deg);transform:rotateY(-10deg)}.transition-book .bespoke-after{-webkit-transform:rotateY(10deg);transform:rotateY(10deg)}.transition-zoom-in .bepoke-slide{-webkit-transform:scale(1);transform:scale(1);-webkit-transition-duration:400ms;transition-duration:400ms;transition-easing:ease;transition-properties:opacity,transform}.transition-zoom-in .bespoke-before{opacity:0;-webkit-transform:scale(1.4);transform:scale(1.4)}.transition-zoom-in .bespoke-after{opacity:0;-webkit-transform:scale(.7);transform:scale(.7)}}.layout-title.bespoke-slide{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.layout-title.bespoke-slide h1{-webkit-box-flex:.65;-ms-flex:.65;flex:.65;margin:0;padding:.25em;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end;color:#fff;text-align:left;text-shadow:.025em .025em #000}.layout-title.bespoke-slide h1::before{content:"";position:absolute;left:0;right:0;top:0;bottom:35%;background-size:cover;background-position:50% 100%;z-index:-1}.layout-title.bespoke-slide h2{-webkit-box-flex:.25;-ms-flex:.25;flex:.25;-webkit-box-sizing:content-box;box-sizing:content-box;width:100%;padding:.25em;text-align:right;color:#000}.layout-section-header.bespoke-slide{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.layout-section-header.bespoke-slide::after,.layout-section-header.bespoke-slide::before{content:"";position:absolute;top:0;bottom:0;width:50%}.layout-section-header.bespoke-slide::after{z-index:-1}.layout-section-header.bespoke-slide::before{left:0;-webkit-box-shadow:10px 0 10px rgba(0,0,0,.2);box-shadow:10px 0 10px rgba(0,0,0,.2);z-index:0}.layout-section-header.bespoke-slide::after{right:0;background-color:#fff;background-size:cover}.layout-section-header.bespoke-slide h1+:not(h2),.layout-section-header.bespoke-slide h1+h2~:not(.content){-webkit-box-flex:1;-ms-flex:1;flex:1}.layout-section-header.bespoke-slide .content{height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-sizing:border-box;box-sizing:border-box;color:#fff;text-shadow:.05em .05em #000}.layout-section-header.bespoke-slide .content strong{color:#8a5cf8}.layout-section-header.bespoke-slide .content>img{width:-webkit-max-content;width:-moz-max-content;width:max-content;height:-webkit-max-content;height:-moz-max-content;height:max-content;justify-self:center;-ms-flex-item-align:center;align-self:center}.layout-section-header.bespoke-slide .content li,.layout-section-header.bespoke-slide .content p{display:inline}.layout-section-header.bespoke-slide .content p::after{content:" ";display:block;margin-bottom:.5em}.layout-section-header.bespoke-slide .content li::before{content:" ";display:list-item;float:left}.layout-section-header.bespoke-slide .content li::after{content:" ";display:block}.layout-section-header.bespoke-slide>*{width:50%;padding:0 1em}.layout-section-header.bespoke-slide>ol,.layout-section-header.bespoke-slide>ul{padding-left:2em}.layout-section-header.bespoke-slide h1,.layout-section-header.bespoke-slide h2{margin:0;padding:.25em;text-align:left}.layout-section-header.bespoke-slide h1{-webkit-box-flex:.25;-ms-flex:.25;flex:.25;font-weight:700}.layout-section-header.bespoke-slide h2{-webkit-box-flex:.75;-ms-flex:.75;flex:.75;color:inherit}.layout-2-column-content.bespoke-slide,.layout-3-column-content.bespoke-slide,.layout-regular.bespoke-slide,.layout-stripe.bespoke-slide{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:1.5rem}.layout-regular.bespoke-slide>h1,.layout-regular.bespoke-slide>h2{font-size:2em}.layout-regular.bespoke-slide h1,.layout-regular.bespoke-slide h2,.layout-regular.bespoke-slide h3,.layout-regular.bespoke-slide h4,.layout-regular.bespoke-slide h5,.layout-regular.bespoke-slide h6{margin:0 0 .75em;padding:0}.layout-stripe.bespoke-slide>h1,.layout-stripe.bespoke-slide>h2{font-size:2em}.layout-stripe.bespoke-slide .stripe{width:100%;height:3em;-o-object-fit:contain;object-fit:contain;background-size:5em;background-repeat:repeat-x;margin-bottom:2em}.layout-stripe.bespoke-slide h1,.layout-stripe.bespoke-slide h2,.layout-stripe.bespoke-slide h3,.layout-stripe.bespoke-slide h4,.layout-stripe.bespoke-slide h5,.layout-stripe.bespoke-slide h6{-ms-flex-item-align:center;align-self:center}.layout-2-column-content.bespoke-slide,.layout-3-column-content.bespoke-slide{-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.layout-2-column-content.bespoke-slide>h1,.layout-2-column-content.bespoke-slide>h2,.layout-3-column-content.bespoke-slide>h1,.layout-3-column-content.bespoke-slide>h2{font-size:2em}.layout-2-column-content.bespoke-slide h1,.layout-2-column-content.bespoke-slide h2,.layout-2-column-content.bespoke-slide h3,.layout-2-column-content.bespoke-slide h4,.layout-2-column-content.bespoke-slide h5,.layout-2-column-content.bespoke-slide h6,.layout-3-column-content.bespoke-slide h1,.layout-3-column-content.bespoke-slide h2,.layout-3-column-content.bespoke-slide h3,.layout-3-column-content.bespoke-slide h4,.layout-3-column-content.bespoke-slide h5,.layout-3-column-content.bespoke-slide h6{-ms-flex-preferred-size:100%;flex-basis:100%}.layout-2-column-content.bespoke-slide>*+*,.layout-3-column-content.bespoke-slide>*+*{margin-right:0}.layout-2-column-content.bespoke-slide>*+*{width:49%;margin-left:1%}.layout-2-column-content.bespoke-slide>*+:last-child{margin-right:0}.layout-2-column-content.bespoke-slide>*+:nth-child(2){margin-left:0}.layout-3-column-content.bespoke-slide>*+*{width:32%;margin-left:1%}.layout-3-column-content.bespoke-slide>*+:last-child{margin-right:0}.layout-3-column-content.bespoke-slide>*+:nth-child(2){margin-left:0}.layout-centered-horizontal.bespoke-slide{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;padding:1.5rem;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.layout-2-column-content-zigzag.bespoke-slide>h1,.layout-2-column-content-zigzag.bespoke-slide>h2,.layout-centered-horizontal.bespoke-slide>h1,.layout-centered-horizontal.bespoke-slide>h2,.layout-regular-block.bespoke-slide>h1,.layout-regular-block.bespoke-slide>h2,.layout-regular-horizontal.bespoke-slide>h1,.layout-regular-horizontal.bespoke-slide>h2{font-size:2em}.layout-regular-horizontal.bespoke-slide{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.layout-2-column-content-zigzag.bespoke-slide,.layout-regular-block.bespoke-slide,.layout-regular-horizontal.bespoke-slide,[class*=layout-2-column-content-]{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;padding:1.5rem;align-items:flex-start}.layout-regular-block.bespoke-slide{display:block}.layout-2-column-content-zigzag.bespoke-slide,[class*=layout-2-column-content-]{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap}.layout-2-column-content-zigzag.bespoke-slide h1,.layout-2-column-content-zigzag.bespoke-slide h2{width:100%}.layout-2-column-content-zigzag.bespoke-slide>:not(:first-child){width:48%}.layout-2-column-content-result.bespoke-slide{display:-webkit-box;display:-ms-flexbox;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;padding:1.5rem;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}.layout-2-column-content-result.bespoke-slide>h1,.layout-2-column-content-result.bespoke-slide>h2,.layout-2-column-highlight-and-list>h1,.layout-2-column-highlight-and-list>h2,[class*=layout-2-column-content-]>h1,[class*=layout-2-column-content-]>h2{font-size:2em}.layout-2-column-content-result.bespoke-slide>*{width:48%}[class*=layout-2-column-content-]>:first-child{width:100%;-ms-flex-item-align:end;align-self:flex-end}[class*=layout-2-column-content-]>pre{max-height:calc(100% - .25em - 1.5em - 24px - 4em)}.layout-2-column-highlight-and-list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:1.5rem;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-perspective:900px;perspective:900px}.layout-2-column-highlight-and-list h1,.layout-2-column-highlight-and-list h2,.layout-2-column-highlight-and-list h3,.layout-2-column-highlight-and-list h4,.layout-2-column-highlight-and-list h5,.layout-2-column-highlight-and-list h6{-ms-flex-preferred-size:100%;flex-basis:100%}.layout-2-column-highlight-and-list>:nth-child(2){width:30%;-webkit-box-shadow:20px 20px 20px rgba(0,0,0,.2);box-shadow:20px 20px 20px rgba(0,0,0,.2);-webkit-transition:all 500ms ease 400ms;transition:all 500ms ease 400ms;opacity:.5;-webkit-transform:scale(.75);transform:scale(.75);-webkit-transform-origin:right;transform-origin:right;margin-top:1em}.layout-2-column-highlight-and-list>:nth-child(2)>img,.layout-tall-figure-left>:nth-child(2)>img,.layout-tall-figure-right>:nth-child(2)>img{max-width:100%;max-height:100%}.layout-2-column-highlight-and-list.bespoke-active>:nth-child(2){-webkit-transform:rotateY(30deg) scale(1);transform:rotateY(30deg) scale(1);opacity:1}.layout-2-column-highlight-and-list>*+*{width:60%;margin-left:1%;margin-right:0}.layout-2-column-highlight-and-list>*+::last-child{margin-left:0}.layout-3-column-element-with-titles-expansible{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}.layout-3-column-element-with-titles-expansible>*{width:calc(33% - 1rem)}.layout-3-column-element-with-titles-expansible h1,.layout-3-column-element-with-titles-expansible h2,.layout-3-column-element-with-titles-expansible h3,.layout-3-column-element-with-titles-expansible h4,.layout-3-column-element-with-titles-expansible h5,.layout-3-column-element-with-titles-expansible h6{margin:auto 0}.layout-3-column-element-with-titles-expansible h1:not(:last-of-type),.layout-3-column-element-with-titles-expansible h2:not(:last-of-type),.layout-3-column-element-with-titles-expansible h3:not(:last-of-type),.layout-3-column-element-with-titles-expansible h4:not(:last-of-type),.layout-3-column-element-with-titles-expansible h5:not(:last-of-type),.layout-3-column-element-with-titles-expansible h6:not(:last-of-type){margin-right:1rem}.layout-3-column-element-with-titles-expansible>:nth-child(2n){height:calc(100% - 2.5em);margin:0;-webkit-transition:all 100ms ease;transition:all 100ms ease;position:relative}.layout-3-column-element-with-titles-expansible>:nth-child(2n):not(:last-of-type){margin-right:1rem}.layout-3-column-element-with-titles-expansible>:nth-child(2n):hover{left:0;width:100%;z-index:1}.layout-3-column-element-with-titles-expansible>:nth-child(2n):nth-of-type(2){-webkit-transition-duration:50ms;transition-duration:50ms}.layout-3-column-element-with-titles-expansible>:nth-child(2n):nth-of-type(2):hover{left:-33%}.layout-3-column-element-with-titles-expansible>:nth-child(2n):nth-of-type(3){-webkit-transition:none;transition:none}.layout-3-column-element-with-titles-expansible>:nth-child(2n):nth-of-type(3):hover{left:-67%}.layout-main-point.bespoke-slide{background-image:-webkit-gradient(linear,left top,right bottom,from(#3507a3),to(#1d045a));background-image:linear-gradient(to right bottom,#3507a3,#1d045a)}.layout-main-point.bespoke-slide h1,.layout-main-point.bespoke-slide h2,.layout-main-point.bespoke-slide h3,.layout-main-point.bespoke-slide h4,.layout-main-point.bespoke-slide h5,.layout-main-point.bespoke-slide h6{color:#fff}.layout-circling-balloons h1,.layout-circling-balloons h2,.layout-circling-balloons h3,.layout-circling-balloons h4,.layout-circling-balloons h5,.layout-circling-balloons h6{z-index:1}.layout-circling-balloons>ul{position:absolute;left:0;top:0;width:100%;height:100%;margin:0}.layout-circling-balloons>ul>li{position:absolute;width:200px;height:200px;left:calc(50% - 100px);top:calc(50% - 100px);padding:0;margin:0;border-radius:50%;background:gold;overflow:hidden;list-style-type:none;-webkit-transition:all 250ms ease;transition:all 250ms ease;-webkit-animation:circling 36s linear 0s infinite;animation:circling 36s linear 0s infinite}.layout-circling-balloons>ul>li:nth-of-type(1){-webkit-animation-delay:0s;animation-delay:0s}.layout-circling-balloons>ul>li:nth-of-type(2){-webkit-animation-delay:-12s;animation-delay:-12s}.layout-circling-balloons>ul>li:nth-of-type(3){-webkit-animation-delay:-24s;animation-delay:-24s}.layout-circling-balloons>ul>li>p:first-child{margin:0}.layout-circling-balloons>ul>li>img:first-child,.layout-circling-balloons>ul>li>p:first-child{position:absolute;top:0;right:0;bottom:0;left:0;-webkit-transition:all 250ms ease;transition:all 250ms ease}.layout-circling-balloons>ul>li>img:first-child,.layout-circling-balloons>ul>li>img:first-child img,.layout-circling-balloons>ul>li>p:first-child img{display:block;width:125px;height:125px;margin:37.5px auto}.layout-circling-balloons>ul>li>:nth-child(2){margin-top:200px;padding:1em}.layout-circling-balloons>ul>li:hover{width:26em;height:10em;top:calc(50% - 5em);left:calc(50% - 13em);border-radius:2em;overflow:visible;z-index:2}.layout-circling-balloons>ul>li:hover>:first-child{-webkit-transform:translateY(-50%);transform:translateY(-50%)}.layout-circling-balloons>ul>li:hover>:nth-child(2){margin-top:1em}.layout-circling-balloons>ul:hover>li{-webkit-animation-play-state:paused;animation-play-state:paused}.layout-tall-figure-left,.layout-tall-figure-right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:1.5rem;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}.layout-tall-figure-left>h1,.layout-tall-figure-left>h2,.layout-tall-figure-right>h1,.layout-tall-figure-right>h2{font-size:2em}.layout-tall-figure-left h1,.layout-tall-figure-left h2,.layout-tall-figure-left h3,.layout-tall-figure-left h4,.layout-tall-figure-left h5,.layout-tall-figure-left h6,.layout-tall-figure-right h1,.layout-tall-figure-right h2,.layout-tall-figure-right h3,.layout-tall-figure-right h4,.layout-tall-figure-right h5,.layout-tall-figure-right h6{-ms-flex-preferred-size:100%;flex-basis:100%}.layout-tall-figure-left>:nth-child(2),.layout-tall-figure-right>:nth-child(2){-ms-flex-preferred-size:30%;flex-basis:30%}.layout-tall-figure-left>:nth-child(3),.layout-tall-figure-right>:nth-child(3){-ms-flex-preferred-size:70%;flex-basis:70%}.layout-tall-figure-right>:nth-child(2){-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}.layout-tall-figure-left>:nth-child(2),.layout-tall-figure-right>:nth-child(3){-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}.layout-tall-figure-left>:nth-child(3){-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}.show-active-slide-and-previous .bespoke-before-1{-webkit-transform:translate3d(-30%,0,-250px) rotateY(10deg);transform:translate3d(-30%,0,-250px) rotateY(10deg);opacity:1}.show-active-slide-and-previous .bespoke-active{-webkit-transform:translate3d(30%,0,-250px) rotateY(-10deg);transform:translate3d(30%,0,-250px) rotateY(-10deg)}[data-bespoke-state=show-active-slide-and-previous].bespoke-after-1{-webkit-transform:translate3d(100%,0,0) rotateY(-10deg);transform:translate3d(100%,0,0) rotateY(-10deg)}[data-bespoke-state=show-active-slide-and-previous].bespoke-before-1{-webkit-transform:translate3d(-100%,0,0) rotateY(10deg);transform:translate3d(-100%,0,0) rotateY(10deg);opacity:0}@media screen{.bespoke-scale-parent{position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;pointer-events:none}.bespoke-scale-parent .bespoke-active{pointer-events:auto}.bespoke-bullet{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-transition:all .4s ease;transition:all .4s ease}.bespoke-bullet-inactive{opacity:0;pointer-events:none;-webkit-transform:translate3d(40px,0,0);transform:translate3d(40px,0,0);-webkit-transition:all .2s ease;transition:all .2s ease}.bespoke-bullet-off .bespoke-bullet-inactive{display:list-item;opacity:initial;-webkit-transform:initial;transform:initial}.bullet-old{color:gray}.bullet-old strong{color:#c4adfc}.bullet-no-anim{-webkit-transition-property:opacity;transition-property:opacity}.bullet-no-anim.bespoke-bullet-inactive{-webkit-transform:none;transform:none}.bullet.bullet.bullet-no-anim.bespoke-bullet-inactive{-webkit-transform:none;transform:none;-webkit-transition:none;transition:none}.bespoke-progress-parent{position:absolute;bottom:0;left:0;right:0;height:5px;z-index:2}.bespoke-progress-bar{position:absolute;height:100%;-webkit-transition:width .3s ease;transition:width .3s ease}.bespoke-progress-bar::before{content:" ";position:absolute;display:block;width:100%;height:100%;background:#3507a3}.bespoke-progress-number{position:absolute;font-size:9px;min-width:2em;height:2em;right:1rem;top:1rem;-webkit-box-sizing:content-box;box-sizing:content-box;background-color:rgba(204,204,204,.6);background-clip:content-box;color:#3507a3;text-align:center;line-height:2em;padding:0;border:3px double rgba(204,204,204,.6)}.bespoke-parent,.bespoke-scale-parent{-webkit-perspective:900px;perspective:900px}.bespoke-simple-overview .bespoke-slide{position:absolute;opacity:1;outline:4px solid silver}.bespoke-simple-overview .bespoke-slide:hover{outline-color:#4682b4}.bespoke-simple-overview .bespoke-slide.bespoke-active{-webkit-transform:translate3d(0,0,-2000px);transform:translate3d(0,0,-2000px);outline-color:#4682b4;z-index:100}.bespoke-simple-overview .bespoke-slide.bespoke-after:not(.bespoke-after-1):not(.bespoke-after-2):not(.bespoke-after-3):not(.bespoke-after-4):not(.bespoke-after-5):not(.bespoke-after-6){-webkit-transform:translate3d(7634.667338669354px,0,-2000px);transform:translate3d(7634.667338669354px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before:not(.bespoke-before-1):not(.bespoke-before-2):not(.bespoke-before-3):not(.bespoke-before-4):not(.bespoke-before-5):not(.bespoke-before-6){-webkit-transform:translate3d(-7634.667338669354px,0,-2000px);transform:translate3d(-7634.667338669354px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-1{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(1090.6667626670505px,0,-2000px);transform:translate3d(1090.6667626670505px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-1{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-1090.6667626670505px,0,-2000px);transform:translate3d(-1090.6667626670505px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-2{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(2181.333525334101px,0,-2000px);transform:translate3d(2181.333525334101px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-2{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-2181.333525334101px,0,-2000px);transform:translate3d(-2181.333525334101px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-3{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(3272.0002880011516px,0,-2000px);transform:translate3d(3272.0002880011516px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-3{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-3272.0002880011516px,0,-2000px);transform:translate3d(-3272.0002880011516px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-4{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(4362.667050668202px,0,-2000px);transform:translate3d(4362.667050668202px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-4{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-4362.667050668202px,0,-2000px);transform:translate3d(-4362.667050668202px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-5{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(5453.333813335253px,0,-2000px);transform:translate3d(5453.333813335253px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-5{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-5453.333813335253px,0,-2000px);transform:translate3d(-5453.333813335253px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-after-6{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(6544.000576002303px,0,-2000px);transform:translate3d(6544.000576002303px,0,-2000px)}.bespoke-simple-overview .bespoke-slide.bespoke-before-6{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-transform:translate3d(-6544.000576002303px,0,-2000px);transform:translate3d(-6544.000576002303px,0,-2000px)}.bespoke-simple-overview .bespoke-bullet-inactive{display:list-item;opacity:initial;-webkit-transform:initial;transform:initial}#bespoke-search{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0;background-color:rgba(128,128,128,.3);-webkit-transition:opacity 100ms ease-out;transition:opacity 100ms ease-out}#bespoke-search.bespoke-search-searching{opacity:1}#bespoke-search.bespoke-search-searching>#bespoke-search-input{bottom:5%}#bespoke-search-input{position:absolute;left:50%;bottom:0;pointer-events:all;width:200px;margin-left:-100px;padding:8px;border-radius:10px;border:1px solid silver;outline:0;color:gray;font-size:x-large;background-color:rgba(255,255,255,.9);-webkit-transition:bottom 140ms ease-out;transition:bottom 140ms ease-out}.bespoke-search-result{background-color:#ff0}.bespoke-search-result-focused{background-color:orange}#bespoke-search.bespoke-search-no-result>#bespoke-search-input{border:1px solid #8b0000;color:#8b0000}#bespoke-search-results-count{position:absolute;bottom:1%;left:50%;margin-left:-30px;width:60px;text-align:center;font-size:smaller;color:#8a2be2;font-weight:700}}@media print{*{background:0 0!important}body,html{overflow:visible!important}body{margin:0!important;padding:.1in!important;height:auto!important}body,code{line-height:1em!important}code,ol,pre,ul{text-align:left!important}pre code{border:1px solid #696969!important;padding:5px!important;border-radius:4px!important}@page{margin:.79in!important}.bespoke-slide{-webkit-box-sizing:border-box!important;box-sizing:border-box!important;display:block!important;float:left!important;border:2px solid #000!important;text-align:center!important;margin-top:0!important;margin-left:0!important;page-break-inside:avoid!important}.bespoke-slide>*{zoom:.65!important}.bespoke-slide>* *{zoom:.85!important}.bespoke-slide>h1:only-child,.bespoke-slide>h2:only-child,.bespoke-slide>h3:only-child,.bespoke-slide>h4:only-child,.bespoke-slide>h5:only-child,.bespoke-slide>h6:only-child{margin-top:4em!important}.bespoke-slide .bespoke-bullet-inactive{opacity:1!important;-webkit-transform:none!important;transform:none!important;-webkit-transition:none!important;transition:none!important}.bespoke-slide:nth-child(6n),.bespoke-slide:nth-of-type(6n){page-break-after:always!important;-webkit-column-break-after:page!important;break-after:page!important}}@media print and (orientation:portrait){.bespoke-slide{width:2.919472443000001in!important;height:2.189604332250001in!important;margin-right:.324385827in!important;margin-bottom:.324385827in!important}.bespoke-slide:nth-child(2n){margin-right:0!important}.bespoke-parent{width:6.487716540000001in!important}img{max-width:5.248012976470589in!important}}@media print and (orientation:landscape){.bespoke-slide{width:2.97387402in!important;height:2.230405515in!important;margin-right:.297387402in!important;margin-bottom:.297387402in!important}.bespoke-slide:nth-child(3n){margin-right:0!important}.bespoke-parent{width:9.9129134in!important}img{max-width:3.498675317647059in!important}}\n/*# sourceMappingURL=theme.css.map */\n/*# sourceMappingURL=theme.css.map */\n',{prepend:!0}),function(e){i()(e)}}},{"bespoke-classes":2,"insert-css":3}],2:[function(e,t,o){t.exports=function(){return function(n){var l=function(e,t){e.classList.add("bespoke-"+t)},r=function(e,t){e.className=e.className.replace(new RegExp("bespoke-"+t+"(\\s|$)","g")," ").trim()},t=function(e,t){var o=n.slides[n.slide()],i=t-n.slide(),a=0<i?"after":"before";["before(-\\d+)?","after(-\\d+)?","active","inactive"].map(r.bind(null,e)),e!==o&&["inactive",a,a+"-"+Math.abs(i)].map(l.bind(null,e))};l(n.parent,"parent"),n.slides.map(function(e){l(e,"slide")}),n.on("activate",function(e){n.slides.map(t),l(e.slide,"active"),r(e.slide,"inactive")})}}},{}],3:[function(e,t,o){var r=[],s=[];function i(e,t){if(t=t||{},void 0===e)throw new Error("insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).");var o,i,a=!0===t.prepend?"prepend":"append",n=void 0!==t.container?t.container:document.querySelector("head"),l=r.indexOf(n);return-1===l&&(l=r.push(n)-1,s[l]={}),void 0!==s[l]&&void 0!==s[l][a]?o=s[l][a]:(o=s[l][a]=((i=document.createElement("style")).setAttribute("type","text/css"),i),"prepend"===a?n.insertBefore(o,n.childNodes[0]):n.appendChild(o)),65279===e.charCodeAt(0)&&(e=e.substr(1,e.length)),o.styleSheet?o.styleSheet.cssText+=e:o.textContent+=e,o}t.exports=i,t.exports.insertCss=i},{}]},{},[1])(1)});
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
 },{}],13:[function(require,module,exports){
@@ -717,8 +717,7 @@ https://highlightjs.org/
 
   // Setup highlight.js for different environments. First is Node.js or
   // CommonJS.
-  // `nodeType` is checked to ensure that `exports` is not a HTML element.
-  if(typeof exports !== 'undefined' && !exports.nodeType) {
+  if(typeof exports !== 'undefined') {
     factory(exports);
   } else if(globalObject) {
     // Export hljs globally even when using AMD for cases when this script
@@ -742,21 +741,16 @@ https://highlightjs.org/
   var languages = {},
       aliases   = {};
 
-  // safe/production mode - swallows more errors, tries to keep running
-  // even if a single syntax or parse hits a fatal error
-  var SAFE_MODE = true;
-
   // Regular expressions used throughout the highlight.js library.
   var noHighlightRe    = /^(no-?highlight|plain|text)$/i,
       languagePrefixRe = /\blang(?:uage)?-([\w-]+)\b/i,
       fixMarkupRe      = /((^(<[^>]+>|\t|)+|(?:\n)))/gm;
 
-  // The object will be assigned by the build tool. It used to synchronize API
+  // The object will be assigned by the build tool. It used to synchronize API 
   // of external language files with minified version of the highlight.js library.
   var API_REPLACES;
 
   var spanEndTag = '</span>';
-  var LANGUAGE_NOT_FOUND = "Could not find the language '{}', did you forget to load/include a language module?";
 
   // Global options used when within external APIs. This is modified when
   // calling the `hljs.configure` function.
@@ -766,9 +760,6 @@ https://highlightjs.org/
     useBR: false,
     languages: undefined
   };
-
-  // keywords that should have no default relevance value
-  var COMMON_KEYWORDS = 'of and for in not or if then'.split(' ');
 
 
   /* Utility functions */
@@ -799,12 +790,7 @@ https://highlightjs.org/
     // language-* takes precedence over non-prefixed class names.
     match = languagePrefixRe.exec(classes);
     if (match) {
-      var language = getLanguage(match[1]);
-      if (!language) {
-        console.warn(LANGUAGE_NOT_FOUND.replace("{}", match[1]));
-        console.warn("Falling back to no-highlight mode for this block.", block);
-      }
-      return language ? match[1] : 'no-highlight';
+      return getLanguage(match[1]) ? match[1] : 'no-highlight';
     }
 
     classes = classes.split(/\s+/);
@@ -818,12 +804,6 @@ https://highlightjs.org/
     }
   }
 
-  /**
-   * performs a shallow merge of multiple objects into one
-   *
-   * @arguments list of objects with properties to merge
-   * @returns a single new object
-   */
   function inherit(parent) {  // inherit(parent, override_obj, override_obj, ...)
     var key;
     var result = {};
@@ -902,9 +882,7 @@ https://highlightjs.org/
     }
 
     function open(node) {
-      function attr_str(a) {
-        return ' ' + a.nodeName + '="' + escape(a.value).replace(/"/g, '&quot;') + '"';
-      }
+      function attr_str(a) {return ' ' + a.nodeName + '="' + escape(a.value).replace('"', '&quot;') + '"';}
       result += '<' + tag(node) + ArrayProto.map.call(node.attributes, attr_str).join('') + '>';
     }
 
@@ -947,87 +925,22 @@ https://highlightjs.org/
 
   /* Initialization */
 
-  function dependencyOnParent(mode) {
-    if (!mode) return false;
-
-    return mode.endsWithParent || dependencyOnParent(mode.starts);
-  }
-
-  function expand_or_clone_mode(mode) {
+  function expand_mode(mode) {
     if (mode.variants && !mode.cached_variants) {
       mode.cached_variants = mode.variants.map(function(variant) {
         return inherit(mode, {variants: null}, variant);
       });
     }
-
-    // EXPAND
-    // if we have variants then essentially "replace" the mode with the variants
-    // this happens in compileMode, where this function is called from
-    if (mode.cached_variants)
-      return mode.cached_variants;
-
-    // CLONE
-    // if we have dependencies on parents then we need a unique
-    // instance of ourselves, so we can be reused with many
-    // different parents without issue
-    if (dependencyOnParent(mode))
-      return [inherit(mode, { starts: mode.starts ? inherit(mode.starts) : null })];
-
-    if (Object.isFrozen(mode))
-      return [inherit(mode)];
-
-    // no special dependency issues, just return ourselves
-    return [mode];
+    return mode.cached_variants || (mode.endsWithParent && [inherit(mode)]) || [mode];
   }
 
   function restoreLanguageApi(obj) {
     if(API_REPLACES && !obj.langApiRestored) {
       obj.langApiRestored = true;
-      for(var key in API_REPLACES) {
-        if (obj[key]) {
-          obj[API_REPLACES[key]] = obj[key];
-        }
-      }
+      for(var key in API_REPLACES)
+        obj[key] && (obj[API_REPLACES[key]] = obj[key]);
       (obj.contains || []).concat(obj.variants || []).forEach(restoreLanguageApi);
     }
-  }
-
-  function compileKeywords(rawKeywords, case_insensitive) {
-      var compiled_keywords = {};
-
-      if (typeof rawKeywords === 'string') { // string
-        splitAndCompile('keyword', rawKeywords);
-      } else {
-        objectKeys(rawKeywords).forEach(function (className) {
-          splitAndCompile(className, rawKeywords[className]);
-        });
-      }
-    return compiled_keywords;
-
-    // ---
-
-    function splitAndCompile(className, str) {
-      if (case_insensitive) {
-        str = str.toLowerCase();
-      }
-      str.split(' ').forEach(function(keyword) {
-        var pair = keyword.split('|');
-        compiled_keywords[pair[0]] = [className, scoreForKeyword(pair[0], pair[1])];
-      });
-    }
-  }
-
-  function scoreForKeyword(keyword, providedScore) {
-    // manual scores always win over common keywords
-    // so you can force a score of 1 if you really insist
-    if (providedScore)
-      return Number(providedScore);
-
-    return commonKeyword(keyword) ? 0 : 1;
-  }
-
-  function commonKeyword(word) {
-    return COMMON_KEYWORDS.indexOf(word.toLowerCase()) != -1;
   }
 
   function compileLanguage(language) {
@@ -1043,15 +956,8 @@ https://highlightjs.org/
       );
     }
 
-    function reCountMatchGroups(re) {
-      return (new RegExp(re.toString() + '|')).exec('').length - 1;
-    }
-
     // joinRe logically computes regexps.join(separator), but fixes the
     // backreferences so they continue to match.
-    // it also places each individual regular expression into it's own
-    // match group, keeping track of the sequencing of those match groups
-    // is currently an exercise for the caller. :-)
     function joinRe(regexps, separator) {
       // backreferenceRe matches an open parenthesis or backreference. To avoid
       // an incorrect parse, it additionally matches the following:
@@ -1064,13 +970,11 @@ https://highlightjs.org/
       var numCaptures = 0;
       var ret = '';
       for (var i = 0; i < regexps.length; i++) {
-        numCaptures += 1;
         var offset = numCaptures;
         var re = reStr(regexps[i]);
         if (i > 0) {
           ret += separator;
         }
-        ret += "(";
         while (re.length > 0) {
           var match = backreferenceRe.exec(re);
           if (match == null) {
@@ -1089,73 +993,8 @@ https://highlightjs.org/
             }
           }
         }
-        ret += ")";
       }
       return ret;
-    }
-
-    function buildModeRegex(mode) {
-
-      var matchIndexes = {};
-      var matcherRe;
-      var regexes = [];
-      var matcher = {};
-      var matchAt = 1;
-
-      function addRule(rule, regex) {
-        matchIndexes[matchAt] = rule;
-        regexes.push([rule, regex]);
-        matchAt += reCountMatchGroups(regex) + 1;
-      }
-
-      var term;
-      for (var i=0; i < mode.contains.length; i++) {
-        var re;
-        term = mode.contains[i];
-        if (term.beginKeywords) {
-          re = '\\.?(?:' + term.begin + ')\\.?';
-        } else {
-          re = term.begin;
-        }
-        addRule(term, re);
-      }
-      if (mode.terminator_end)
-        addRule("end", mode.terminator_end);
-      if (mode.illegal)
-        addRule("illegal", mode.illegal);
-
-      var terminators = regexes.map(function(el) { return el[1]; });
-      matcherRe = langRe(joinRe(terminators, '|'), true);
-
-      matcher.lastIndex = 0;
-      matcher.exec = function(s) {
-        var rule;
-
-        if( regexes.length === 0) return null;
-
-        matcherRe.lastIndex = matcher.lastIndex;
-        var match = matcherRe.exec(s);
-        if (!match) { return null; }
-
-        for(var i = 0; i<match.length; i++) {
-          if (match[i] != undefined && matchIndexes["" +i] != undefined ) {
-            rule = matchIndexes[""+i];
-            break;
-          }
-        }
-
-        // illegal or end match
-        if (typeof rule === "string") {
-          match.type = rule;
-          match.extra = [mode.illegal, mode.terminator_end];
-        } else {
-          match.type = "begin";
-          match.rule = rule;
-        }
-        return match;
-      };
-
-      return matcher;
     }
 
     function compileMode(mode, parent) {
@@ -1164,9 +1003,28 @@ https://highlightjs.org/
       mode.compiled = true;
 
       mode.keywords = mode.keywords || mode.beginKeywords;
-      if (mode.keywords)
-        mode.keywords = compileKeywords(mode.keywords, language.case_insensitive);
+      if (mode.keywords) {
+        var compiled_keywords = {};
 
+        var flatten = function(className, str) {
+          if (language.case_insensitive) {
+            str = str.toLowerCase();
+          }
+          str.split(' ').forEach(function(kw) {
+            var pair = kw.split('|');
+            compiled_keywords[pair[0]] = [className, pair[1] ? Number(pair[1]) : 1];
+          });
+        };
+
+        if (typeof mode.keywords === 'string') { // string
+          flatten('keyword', mode.keywords);
+        } else {
+          objectKeys(mode.keywords).forEach(function (className) {
+            flatten(className, mode.keywords[className]);
+          });
+        }
+        mode.keywords = compiled_keywords;
+      }
       mode.lexemesRe = langRe(mode.lexemes || /\w+/, true);
 
       if (parent) {
@@ -1194,7 +1052,7 @@ https://highlightjs.org/
         mode.contains = [];
       }
       mode.contains = Array.prototype.concat.apply([], mode.contains.map(function(c) {
-        return expand_or_clone_mode(c === 'self' ? mode : c);
+        return expand_mode(c === 'self' ? mode : c);
       }));
       mode.contains.forEach(function(c) {compileMode(c, mode);});
 
@@ -1202,20 +1060,16 @@ https://highlightjs.org/
         compileMode(mode.starts, parent);
       }
 
-      mode.terminators = buildModeRegex(mode);
+      var terminators =
+        mode.contains.map(function(c) {
+          return c.beginKeywords ? '\\.?(?:' + c.begin + ')\\.?' : c.begin;
+        })
+        .concat([mode.terminator_end, mode.illegal])
+        .map(reStr)
+        .filter(Boolean);
+      mode.terminators = terminators.length ? langRe(joinRe(terminators, '|'), true) : {exec: function(/*s*/) {return null;}};
     }
-
-    // self is not valid at the top-level
-    if (language.contains && language.contains.indexOf('self') != -1) {
-      if (!SAFE_MODE) {
-        throw new Error("ERR: contains `self` is not supported at the top-level of a language.  See documentation.")
-      } else {
-        // silently remove the broken rule (effectively ignoring it), this has historically
-        // been the behavior in the past, so this removal preserves compatibility with broken
-        // grammars when running in Safe Mode
-        language.contains = language.contains.filter(function(mode) { return mode != 'self'; });
-      }
-    }
+    
     compileMode(language);
   }
 
@@ -1234,6 +1088,19 @@ https://highlightjs.org/
       return new RegExp(value.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'm');
     }
 
+    function subMode(lexeme, mode) {
+      var i, length;
+
+      for (i = 0, length = mode.contains.length; i < length; i++) {
+        if (testRe(mode.contains[i].beginRe, lexeme)) {
+          if (mode.contains[i].endSameAsBegin) {
+            mode.contains[i].endRe = escapeRe( mode.contains[i].beginRe.exec(lexeme)[0] );
+          }
+          return mode.contains[i];
+        }
+      }
+    }
+
     function endOfMode(mode, lexeme) {
       if (testRe(mode.endRe, lexeme)) {
         while (mode.endsParent && mode.parent) {
@@ -1246,20 +1113,21 @@ https://highlightjs.org/
       }
     }
 
+    function isIllegal(lexeme, mode) {
+      return !ignore_illegals && testRe(mode.illegalRe, lexeme);
+    }
+
     function keywordMatch(mode, match) {
       var match_str = language.case_insensitive ? match[0].toLowerCase() : match[0];
       return mode.keywords.hasOwnProperty(match_str) && mode.keywords[match_str];
     }
 
-    function buildSpan(className, insideSpan, leaveOpen, noPrefix) {
-      if (!leaveOpen && insideSpan === '') return '';
-      if (!className) return insideSpan;
-
+    function buildSpan(classname, insideSpan, leaveOpen, noPrefix) {
       var classPrefix = noPrefix ? '' : options.classPrefix,
           openSpan    = '<span class="' + classPrefix,
           closeSpan   = leaveOpen ? '' : spanEndTag;
 
-      openSpan += className + '">';
+      openSpan += classname + '">';
 
       return openSpan + insideSpan + closeSpan;
     }
@@ -1301,7 +1169,7 @@ https://highlightjs.org/
                    highlightAuto(mode_buffer, top.subLanguage.length ? top.subLanguage : undefined);
 
       // Counting embedded language score towards the host language may be disabled
-      // with zeroing the containing mode relevance. Use case in point is Markdown that
+      // with zeroing the containing mode relevance. Usecase in point is Markdown that
       // allows XML everywhere and makes every XML snippet to have a much larger Markdown
       // score.
       if (top.relevance > 0) {
@@ -1323,120 +1191,78 @@ https://highlightjs.org/
       top = Object.create(mode, {parent: {value: top}});
     }
 
+    function processLexeme(buffer, lexeme) {
 
-    function doBeginMatch(match) {
-      var lexeme = match[0];
-      var new_mode = match.rule;
-
-      if (new_mode && new_mode.endSameAsBegin) {
-        new_mode.endRe = escapeRe( lexeme );
-      }
-
-      if (new_mode.skip) {
-        mode_buffer += lexeme;
-      } else {
-        if (new_mode.excludeBegin) {
-          mode_buffer += lexeme;
-        }
-        processBuffer();
-        if (!new_mode.returnBegin && !new_mode.excludeBegin) {
-          mode_buffer = lexeme;
-        }
-      }
-      startNewMode(new_mode);
-      return new_mode.returnBegin ? 0 : lexeme.length;
-    }
-
-    function doEndMatch(match) {
-      var lexeme = match[0];
-      var matchPlusRemainder = value.substr(match.index);
-      var end_mode = endOfMode(top, matchPlusRemainder);
-      if (!end_mode) { return; }
-
-      var origin = top;
-      if (origin.skip) {
-        mode_buffer += lexeme;
-      } else {
-        if (!(origin.returnEnd || origin.excludeEnd)) {
-          mode_buffer += lexeme;
-        }
-        processBuffer();
-        if (origin.excludeEnd) {
-          mode_buffer = lexeme;
-        }
-      }
-      do {
-        if (top.className) {
-          result += spanEndTag;
-        }
-        if (!top.skip && !top.subLanguage) {
-          relevance += top.relevance;
-        }
-        top = top.parent;
-      } while (top !== end_mode.parent);
-      if (end_mode.starts) {
-        if (end_mode.endSameAsBegin) {
-          end_mode.starts.endRe = end_mode.endRe;
-        }
-        startNewMode(end_mode.starts);
-      }
-      return origin.returnEnd ? 0 : lexeme.length;
-    }
-
-    var lastMatch = {};
-    function processLexeme(text_before_match, match) {
-
-      var lexeme = match && match[0];
-
-      // add non-matched text to the current mode buffer
-      mode_buffer += text_before_match;
+      mode_buffer += buffer;
 
       if (lexeme == null) {
         processBuffer();
         return 0;
       }
 
-      // we've found a 0 width match and we're stuck, so we need to advance
-      // this happens when we have badly behaved rules that have optional matchers to the degree that
-      // sometimes they can end up matching nothing at all
-      // Ref: https://github.com/highlightjs/highlight.js/issues/2140
-      if (lastMatch.type=="begin" && match.type=="end" && lastMatch.index == match.index && lexeme === "") {
-        // spit the "skipped" character that our regex choked on back into the output sequence
-        mode_buffer += value.slice(match.index, match.index + 1);
-        return 1;
+      var new_mode = subMode(lexeme, top);
+      if (new_mode) {
+        if (new_mode.skip) {
+          mode_buffer += lexeme;
+        } else {
+          if (new_mode.excludeBegin) {
+            mode_buffer += lexeme;
+          }
+          processBuffer();
+          if (!new_mode.returnBegin && !new_mode.excludeBegin) {
+            mode_buffer = lexeme;
+          }
+        }
+        startNewMode(new_mode, lexeme);
+        return new_mode.returnBegin ? 0 : lexeme.length;
       }
-      lastMatch = match;
 
-      if (match.type==="begin") {
-        return doBeginMatch(match);
-      } else if (match.type==="illegal" && !ignore_illegals) {
-        // illegal match, we do not continue processing
-        throw new Error('Illegal lexeme "' + lexeme + '" for mode "' + (top.className || '<unnamed>') + '"');
-      } else if (match.type==="end") {
-        var processed = doEndMatch(match);
-        if (processed != undefined)
-          return processed;
+      var end_mode = endOfMode(top, lexeme);
+      if (end_mode) {
+        var origin = top;
+        if (origin.skip) {
+          mode_buffer += lexeme;
+        } else {
+          if (!(origin.returnEnd || origin.excludeEnd)) {
+            mode_buffer += lexeme;
+          }
+          processBuffer();
+          if (origin.excludeEnd) {
+            mode_buffer = lexeme;
+          }
+        }
+        do {
+          if (top.className) {
+            result += spanEndTag;
+          }
+          if (!top.skip && !top.subLanguage) {
+            relevance += top.relevance;
+          }
+          top = top.parent;
+        } while (top !== end_mode.parent);
+        if (end_mode.starts) {
+          if (end_mode.endSameAsBegin) {
+            end_mode.starts.endRe = end_mode.endRe;
+          }
+          startNewMode(end_mode.starts, '');
+        }
+        return origin.returnEnd ? 0 : lexeme.length;
       }
+
+      if (isIllegal(lexeme, top))
+        throw new Error('Illegal lexeme "' + lexeme + '" for mode "' + (top.className || '<unnamed>') + '"');
 
       /*
-      Why might be find ourselves here?  Only one occasion now.  An end match that was
-      triggered but could not be completed.  When might this happen?  When an `endSameasBegin`
-      rule sets the end rule to a specific match.  Since the overall mode termination rule that's
-      being used to scan the text isn't recompiled that means that any match that LOOKS like
-      the end (but is not, because it is not an exact match to the beginning) will
-      end up here.  A definite end match, but when `doEndMatch` tries to "reapply"
-      the end rule and fails to match, we wind up here, and just silently ignore the end.
-
-      This causes no real harm other than stopping a few times too many.
+      Parser should not reach this point as all types of lexemes should be caught
+      earlier, but if it does due to some bug make sure it advances at least one
+      character forward to prevent infinite looping.
       */
-
       mode_buffer += lexeme;
-      return lexeme.length;
+      return lexeme.length || 1;
     }
 
     var language = getLanguage(name);
     if (!language) {
-      console.error(LANGUAGE_NOT_FOUND.replace("{}", name));
       throw new Error('Unknown language: "' + name + '"');
     }
 
@@ -1458,7 +1284,7 @@ https://highlightjs.org/
         match = top.terminators.exec(value);
         if (!match)
           break;
-        count = processLexeme(value.substring(index, match.index), match);
+        count = processLexeme(value.substring(index, match.index), match[0]);
         index = match.index + count;
       }
       processLexeme(value.substr(index));
@@ -1470,27 +1296,17 @@ https://highlightjs.org/
       return {
         relevance: relevance,
         value: result,
-        illegal:false,
         language: name,
         top: top
       };
-    } catch (err) {
-      if (err.message && err.message.indexOf('Illegal') !== -1) {
+    } catch (e) {
+      if (e.message && e.message.indexOf('Illegal') !== -1) {
         return {
-          illegal: true,
           relevance: 0,
           value: escape(value)
         };
-      } else if (SAFE_MODE) {
-        return {
-          relevance: 0,
-          value: escape(value),
-          language: name,
-          top: top,
-          errorRaised: err
-        };
       } else {
-        throw err;
+        throw e;
       }
     }
   }
@@ -1538,18 +1354,16 @@ https://highlightjs.org/
 
   */
   function fixMarkup(value) {
-    if (!(options.tabReplace || options.useBR)) {
-      return value;
-    }
-
-    return value.replace(fixMarkupRe, function(match, p1) {
-        if (options.useBR && match === '\n') {
-          return '<br>';
-        } else if (options.tabReplace) {
-          return p1.replace(/\t/g, options.tabReplace);
-        }
-        return '';
-    });
+    return !(options.tabReplace || options.useBR)
+      ? value
+      : value.replace(fixMarkupRe, function(match, p1) {
+          if (options.useBR && match === '\n') {
+            return '<br>';
+          } else if (options.tabReplace) {
+            return p1.replace(/\t/g, options.tabReplace);
+          }
+          return '';
+      });
   }
 
   function buildClassName(prevClassName, currentLang, resultLang) {
@@ -1579,7 +1393,7 @@ https://highlightjs.org/
         return;
 
     if (options.useBR) {
-      node = document.createElement('div');
+      node = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
       node.innerHTML = block.innerHTML.replace(/\n/g, '').replace(/<br[ \/]*>/g, '\n');
     } else {
       node = block;
@@ -1589,7 +1403,7 @@ https://highlightjs.org/
 
     originalStream = nodeStream(node);
     if (originalStream.length) {
-      resultNode = document.createElement('div');
+      resultNode = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
       resultNode.innerHTML = result.value;
       result.value = mergeStreams(originalStream, nodeStream(resultNode), text);
     }
@@ -1632,29 +1446,13 @@ https://highlightjs.org/
   Attaches highlighting to the page load event.
   */
   function initHighlightingOnLoad() {
-    window.addEventListener('DOMContentLoaded', initHighlighting, false);
-    window.addEventListener('load', initHighlighting, false);
+    addEventListener('DOMContentLoaded', initHighlighting, false);
+    addEventListener('load', initHighlighting, false);
   }
 
-  var PLAINTEXT_LANGUAGE = { disableAutodetect: true };
-
   function registerLanguage(name, language) {
-    var lang;
-    try { lang = language(hljs); }
-    catch (error) {
-      console.error("Language definition for '{}' could not be registered.".replace("{}", name));
-      // hard or soft error
-      if (!SAFE_MODE) { throw error; } else { console.error(error); }
-      // languages that have serious errors are replaced with essentially a
-      // "plaintext" stand-in so that the code blocks will still get normal
-      // css classes applied to them - and one bad language won't break the
-      // entire highlighter
-      lang = PLAINTEXT_LANGUAGE;
-    }
-    languages[name] = lang;
+    var lang = languages[name] = language(hljs);
     restoreLanguageApi(lang);
-    lang.rawDefinition = language.bind(null,hljs);
-
     if (lang.aliases) {
       lang.aliases.forEach(function(alias) {aliases[alias] = name;});
     }
@@ -1662,20 +1460,6 @@ https://highlightjs.org/
 
   function listLanguages() {
     return objectKeys(languages);
-  }
-
-  /*
-    intended usage: When one language truly requires another
-
-    Unlike `getLanguage`, this will throw when the requested language
-    is not available.
-  */
-  function requireLanguage(name) {
-    var lang = getLanguage(name);
-    if (lang) { return lang; }
-
-    var err = new Error('The \'{}\' language is required, but not loaded.'.replace('{}',name));
-    throw err;
   }
 
   function getLanguage(name) {
@@ -1700,10 +1484,8 @@ https://highlightjs.org/
   hljs.registerLanguage = registerLanguage;
   hljs.listLanguages = listLanguages;
   hljs.getLanguage = getLanguage;
-  hljs.requireLanguage = requireLanguage;
   hljs.autoDetection = autoDetection;
   hljs.inherit = inherit;
-  hljs.debugMode = function() { SAFE_MODE = false; }
 
   // Common regexps
   hljs.IDENT_RE = '[a-zA-Z]\\w*';
@@ -1809,48 +1591,6 @@ https://highlightjs.org/
     relevance: 0
   };
 
-  var constants = [
-    hljs.BACKSLASH_ESCAPE,
-    hljs.APOS_STRING_MODE,
-    hljs.QUOTE_STRING_MODE,
-    hljs.PHRASAL_WORDS_MODE,
-    hljs.COMMENT,
-    hljs.C_LINE_COMMENT_MODE,
-    hljs.C_BLOCK_COMMENT_MODE,
-    hljs.HASH_COMMENT_MODE,
-    hljs.NUMBER_MODE,
-    hljs.C_NUMBER_MODE,
-    hljs.BINARY_NUMBER_MODE,
-    hljs.CSS_NUMBER_MODE,
-    hljs.REGEXP_MODE,
-    hljs.TITLE_MODE,
-    hljs.UNDERSCORE_TITLE_MODE,
-    hljs.METHOD_GUARD
-  ]
-  constants.forEach(function(obj) { deepFreeze(obj); });
-
-  // https://github.com/substack/deep-freeze/blob/master/index.js
-  function deepFreeze (o) {
-    Object.freeze(o);
-
-    var objIsFunction = typeof o === 'function';
-
-    Object.getOwnPropertyNames(o).forEach(function (prop) {
-      if (o.hasOwnProperty(prop)
-      && o[prop] !== null
-      && (typeof o[prop] === "object" || typeof o[prop] === "function")
-      // IE11 fix: https://github.com/highlightjs/highlight.js/issues/2318
-      // TODO: remove in the future
-      && (objIsFunction ? prop !== 'caller' && prop !== 'callee' && prop !== 'arguments' : true)
-      && !Object.isFrozen(o[prop])) {
-        deepFreeze(o[prop]);
-      }
-    });
-
-    return o;
-  };
-
-
   return hljs;
 }));
 
@@ -1922,11 +1662,6 @@ module.exports = function(hljs) {
       }
     ]
   };
-  var ESCAPED_QUOTE = {
-    className: '',
-    begin: /\\"/
-
-  };
   var APOS_STRING = {
     className: 'string',
     begin: /'/, end: /'/
@@ -1975,7 +1710,6 @@ module.exports = function(hljs) {
       },
       hljs.HASH_COMMENT_MODE,
       QUOTE_STRING,
-      ESCAPED_QUOTE,
       APOS_STRING,
       VAR
     ]
@@ -1988,9 +1722,6 @@ module.exports = function(hljs) {
     begin: '\\b[a-z\\d_]*_t\\b'
   };
 
-  // https://en.cppreference.com/w/cpp/language/escape
-  // \\ \x \xFF \u2837 \u00323747 \374
-  var CHARACTER_ESCAPES = '\\\\(x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4,8}|[0-7]{3}|\\S)'
   var STRINGS = {
     className: 'string',
     variants: [
@@ -1999,11 +1730,11 @@ module.exports = function(hljs) {
         illegal: '\\n',
         contains: [hljs.BACKSLASH_ESCAPE]
       },
+      { begin: /(?:u8?|U|L)?R"([^()\\ ]{0,16})\((?:.|\n)*?\)\1"/ },
       {
-        begin: '(u8?|U|L)?\'(' + CHARACTER_ESCAPES + "|.)", end: '\'',
+        begin: '\'\\\\?.', end: '\'',
         illegal: '.'
-      },
-      { begin: /(?:u8?|U|L)?R"([^()\\ ]{0,16})\((?:.|\n)*?\)\1"/ }
+      }
     ]
   };
 
@@ -2023,7 +1754,7 @@ module.exports = function(hljs) {
     keywords: {
       'meta-keyword':
         'if else elif endif define undef warning error line ' +
-        'pragma _Pragma ifdef ifndef include'
+        'pragma ifdef ifndef include'
     },
     contains: [
       {
@@ -2032,7 +1763,7 @@ module.exports = function(hljs) {
       hljs.inherit(STRINGS, {className: 'meta-string'}),
       {
         className: 'meta-string',
-        begin: /<.*?>/, end: /$/,
+        begin: /<[^\n>]*>/, end: /$/,
         illegal: '\\n',
       },
       hljs.C_LINE_COMMENT_MODE,
@@ -2043,27 +1774,26 @@ module.exports = function(hljs) {
   var FUNCTION_TITLE = hljs.IDENT_RE + '\\s*\\(';
 
   var CPP_KEYWORDS = {
-    keyword: 'int float while private char char8_t char16_t char32_t catch import module export virtual operator sizeof ' +
+    keyword: 'int float while private char catch import module export virtual operator sizeof ' +
       'dynamic_cast|10 typedef const_cast|10 const for static_cast|10 union namespace ' +
       'unsigned long volatile static protected bool template mutable if public friend ' +
-      'do goto auto void enum else break extern using asm case typeid wchar_t' +
+      'do goto auto void enum else break extern using asm case typeid ' +
       'short reinterpret_cast|10 default double register explicit signed typename try this ' +
-      'switch continue inline delete alignas alignof constexpr consteval constinit decltype ' +
-      'concept co_await co_return co_yield requires ' +
-      'noexcept static_assert thread_local restrict final override ' +
+      'switch continue inline delete alignof constexpr decltype ' +
+      'noexcept static_assert thread_local restrict _Bool complex _Complex _Imaginary ' +
       'atomic_bool atomic_char atomic_schar ' +
       'atomic_uchar atomic_short atomic_ushort atomic_int atomic_uint atomic_long atomic_ulong atomic_llong ' +
       'atomic_ullong new throw return ' +
-      'and and_eq bitand bitor compl not not_eq or or_eq xor xor_eq',
-    built_in: 'std string wstring cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream ' +
+      'and or not',
+    built_in: 'std string cin cout cerr clog stdin stdout stderr stringstream istringstream ostringstream ' +
       'auto_ptr deque list queue stack vector map set bitset multiset multimap unordered_set ' +
-      'unordered_map unordered_multiset unordered_multimap array shared_ptr abort terminate abs acos ' +
+      'unordered_map unordered_multiset unordered_multimap array shared_ptr abort abs acos ' +
       'asin atan2 atan calloc ceil cosh cos exit exp fabs floor fmod fprintf fputs free frexp ' +
-      'fscanf future isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper ' +
+      'fscanf isalnum isalpha iscntrl isdigit isgraph islower isprint ispunct isspace isupper ' +
       'isxdigit tolower toupper labs ldexp log10 log malloc realloc memchr memcmp memcpy memset modf pow ' +
       'printf putchar puts scanf sinh sin snprintf sprintf sqrt sscanf strcat strchr strcmp ' +
       'strcpy strcspn strlen strncat strncmp strncpy strpbrk strrchr strspn strstr tanh tan ' +
-      'vfprintf vprintf vsprintf endl initializer_list unique_ptr _Bool complex _Complex imaginary _Imaginary',
+      'vfprintf vprintf vsprintf endl initializer_list unique_ptr',
     literal: 'true false nullptr NULL'
   };
 
@@ -2076,7 +1806,7 @@ module.exports = function(hljs) {
   ];
 
   return {
-    aliases: ['c', 'cc', 'h', 'c++', 'h++', 'hpp', 'hh', 'hxx', 'cxx'],
+    aliases: ['c', 'cc', 'h', 'c++', 'h++', 'hpp'],
     keywords: CPP_KEYWORDS,
     illegal: '</',
     contains: EXPRESSION_CONTAINS.concat([
@@ -2173,52 +1903,45 @@ module.exports = function(hljs) {
 };
 },{}],20:[function(require,module,exports){
 module.exports = function(hljs) {
-  var FUNCTION_LIKE = {
-    begin: /[\w-]+\(/, returnBegin: true,
-    contains: [
-      {
-        className: 'built_in',
-        begin: /[\w-]+/
-      },
-      {
-        begin: /\(/, end: /\)/,
-        contains: [
-          hljs.APOS_STRING_MODE,
-          hljs.QUOTE_STRING_MODE,
-          hljs.CSS_NUMBER_MODE,
-        ]
-      }
-    ]
-  }
-  var ATTRIBUTE = {
-    className: 'attribute',
-    begin: /\S/, end: ':', excludeEnd: true,
-    starts: {
-      endsWithParent: true, excludeEnd: true,
-      contains: [
-        FUNCTION_LIKE,
-        hljs.CSS_NUMBER_MODE,
-        hljs.QUOTE_STRING_MODE,
-        hljs.APOS_STRING_MODE,
-        hljs.C_BLOCK_COMMENT_MODE,
-        {
-          className: 'number', begin: '#[0-9A-Fa-f]+'
-        },
-        {
-          className: 'meta', begin: '!important'
-        }
-      ]
-    }
-  }
-  var AT_IDENTIFIER = '@[a-z-]+' // @font-face
-  var AT_MODIFIERS = "and or not only"
-  var MEDIA_TYPES = "all print screen speech"
-  var AT_PROPERTY_RE = /@\-?\w[\w]*(\-\w+)*/ // @-webkit-keyframes
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var RULE = {
-    begin: /(?:[A-Z\_\.\-]+|--[a-zA-Z0-9_-]+)\s*:/, returnBegin: true, end: ';', endsWithParent: true,
+    begin: /[A-Z\_\.\-]+\s*:/, returnBegin: true, end: ';', endsWithParent: true,
     contains: [
-      ATTRIBUTE
+      {
+        className: 'attribute',
+        begin: /\S/, end: ':', excludeEnd: true,
+        starts: {
+          endsWithParent: true, excludeEnd: true,
+          contains: [
+            {
+              begin: /[\w-]+\(/, returnBegin: true,
+              contains: [
+                {
+                  className: 'built_in',
+                  begin: /[\w-]+/
+                },
+                {
+                  begin: /\(/, end: /\)/,
+                  contains: [
+                    hljs.APOS_STRING_MODE,
+                    hljs.QUOTE_STRING_MODE
+                  ]
+                }
+              ]
+            },
+            hljs.CSS_NUMBER_MODE,
+            hljs.QUOTE_STRING_MODE,
+            hljs.APOS_STRING_MODE,
+            hljs.C_BLOCK_COMMENT_MODE,
+            {
+              className: 'number', begin: '#[0-9A-Fa-f]+'
+            },
+            {
+              className: 'meta', begin: '!important'
+            }
+          ]
+        }
+      }
     ]
   };
 
@@ -2236,23 +1959,16 @@ module.exports = function(hljs) {
       {
         className: 'selector-attr',
         begin: /\[/, end: /\]/,
-        illegal: '$',
-        contains: [
-          hljs.APOS_STRING_MODE,
-          hljs.QUOTE_STRING_MODE,
-        ]
+        illegal: '$'
       },
       {
         className: 'selector-pseudo',
         begin: /:(:)?[a-zA-Z0-9\_\-\+\(\)"'.]+/
       },
-      // matching these here allows us to treat them more like regular CSS
-      // rules so everything between the {} gets regular rule highlighting,
-      // which is what we want for page and font-face
       {
-        begin: '@(page|font-face)',
-        lexemes: AT_IDENTIFIER,
-        keywords: '@page @font-face'
+        begin: '@(font-face|page)',
+        lexemes: '[a-z-]+',
+        keywords: 'font-face page'
       },
       {
         begin: '@', end: '[{;]', // at_rule eating first "{" is a good thing
@@ -2260,23 +1976,16 @@ module.exports = function(hljs) {
                                  // a rule set but instead drops parser into
                                  // the default mode which is how it should be.
         illegal: /:/, // break on Less variables @var: ...
-        returnBegin: true,
         contains: [
           {
             className: 'keyword',
-            begin: AT_PROPERTY_RE
+            begin: /\w+/
           },
           {
             begin: /\s/, endsWithParent: true, excludeEnd: true,
             relevance: 0,
-            keywords: AT_MODIFIERS,
             contains: [
-              {
-                begin: /[a-z-]+:/,
-                className:"attribute"
-              },
-              hljs.APOS_STRING_MODE,
-              hljs.QUOTE_STRING_MODE,
+              hljs.APOS_STRING_MODE, hljs.QUOTE_STRING_MODE,
               hljs.CSS_NUMBER_MODE
             ]
           }
@@ -2484,76 +2193,35 @@ module.exports = function(hljs) {
   };
 };
 },{}],24:[function(require,module,exports){
-module.exports = function (hljs) {
-  var BUILT_INS = {'builtin-name': 'each in with if else unless bindattr action collection debugger log outlet template unbound view yield lookup'};
-
-  var IDENTIFIER_PLAIN_OR_QUOTED = {
-    begin: /".*?"|'.*?'|\[.*?\]|\w+/
-  };
-
-  var EXPRESSION_OR_HELPER_CALL = hljs.inherit(IDENTIFIER_PLAIN_OR_QUOTED, {
-    keywords: BUILT_INS,
-    starts: {
-      // helper params
-      endsWithParent: true,
-      relevance: 0,
-      contains: [hljs.inherit(IDENTIFIER_PLAIN_OR_QUOTED, {relevance: 0})]
-    }
-  });
-
-  var BLOCK_MUSTACHE_CONTENTS = hljs.inherit(EXPRESSION_OR_HELPER_CALL, {
-    className: 'name'
-  });
-
-  var BASIC_MUSTACHE_CONTENTS = hljs.inherit(EXPRESSION_OR_HELPER_CALL, {
-    // relevance 0 for backward compatibility concerning auto-detection
-    relevance: 0
-  });
-
-  var ESCAPE_MUSTACHE_WITH_PRECEEDING_BACKSLASH = {begin: /\\\{\{/, skip: true};
-  var PREVENT_ESCAPE_WITH_ANOTHER_PRECEEDING_BACKSLASH = {begin: /\\\\(?=\{\{)/, skip: true};
-
+module.exports = function(hljs) {
+  var BUILT_INS = {'builtin-name': 'each in with if else unless bindattr action collection debugger log outlet template unbound view yield'};
   return {
     aliases: ['hbs', 'html.hbs', 'html.handlebars'],
     case_insensitive: true,
     subLanguage: 'xml',
     contains: [
-      ESCAPE_MUSTACHE_WITH_PRECEEDING_BACKSLASH,
-      PREVENT_ESCAPE_WITH_ANOTHER_PRECEEDING_BACKSLASH,
-      hljs.COMMENT(/\{\{!--/, /--\}\}/),
-      hljs.COMMENT(/\{\{!/, /\}\}/),
+    hljs.COMMENT('{{!(--)?', '(--)?}}'),
       {
-        // open raw block "{{{{raw}}}} content not evaluated {{{{/raw}}}}"
-        className: 'template-tag',
-        begin: /\{\{\{\{(?!\/)/, end: /\}\}\}\}/,
-        contains: [BLOCK_MUSTACHE_CONTENTS],
-        starts: {end: /\{\{\{\{\//, returnEnd: true, subLanguage: 'xml'}
-      },
-      {
-        // close raw block
-        className: 'template-tag',
-        begin: /\{\{\{\{\//, end: /\}\}\}\}/,
-        contains: [BLOCK_MUSTACHE_CONTENTS]
-      },
-      {
-        // open block statement
         className: 'template-tag',
         begin: /\{\{[#\/]/, end: /\}\}/,
-        contains: [BLOCK_MUSTACHE_CONTENTS],
+        contains: [
+          {
+            className: 'name',
+            begin: /[a-zA-Z\.-]+/,
+            keywords: BUILT_INS,
+            starts: {
+              endsWithParent: true, relevance: 0,
+              contains: [
+                hljs.QUOTE_STRING_MODE
+              ]
+            }
+          }
+        ]
       },
       {
-        // template variable or helper-call that is NOT html-escaped
-        className: 'template-variable',
-        begin: /\{\{\{/, end: /\}\}\}/,
-        keywords: BUILT_INS,
-        contains: [BASIC_MUSTACHE_CONTENTS]
-      },
-      {
-        // template variable or helper-call that is html-escaped
         className: 'template-variable',
         begin: /\{\{/, end: /\}\}/,
-        keywords: BUILT_INS,
-        contains: [BASIC_MUSTACHE_CONTENTS]
+        keywords: BUILT_INS
       }
     ]
   };
@@ -2733,9 +2401,9 @@ module.exports = function(hljs) {
   var NUMBER = {
     className: 'number',
     variants: [
-      { begin: '\\b(0[bB][01]+)n?' },
-      { begin: '\\b(0[oO][0-7]+)n?' },
-      { begin: hljs.C_NUMBER_RE + 'n?' }
+      { begin: '\\b(0[bB][01]+)' },
+      { begin: '\\b(0[oO][0-7]+)' },
+      { begin: hljs.C_NUMBER_RE }
     ],
     relevance: 0
   };
@@ -2744,28 +2412,6 @@ module.exports = function(hljs) {
     begin: '\\$\\{', end: '\\}',
     keywords: KEYWORDS,
     contains: []  // defined later
-  };
-  var HTML_TEMPLATE = {
-    begin: 'html`', end: '',
-    starts: {
-      end: '`', returnEnd: false,
-      contains: [
-        hljs.BACKSLASH_ESCAPE,
-        SUBST
-      ],
-      subLanguage: 'xml',
-    }
-  };
-  var CSS_TEMPLATE = {
-    begin: 'css`', end: '',
-    starts: {
-      end: '`', returnEnd: false,
-      contains: [
-        hljs.BACKSLASH_ESCAPE,
-        SUBST
-      ],
-      subLanguage: 'css',
-    }
   };
   var TEMPLATE_STRING = {
     className: 'string',
@@ -2778,19 +2424,17 @@ module.exports = function(hljs) {
   SUBST.contains = [
     hljs.APOS_STRING_MODE,
     hljs.QUOTE_STRING_MODE,
-    HTML_TEMPLATE,
-    CSS_TEMPLATE,
     TEMPLATE_STRING,
     NUMBER,
     hljs.REGEXP_MODE
-  ];
+  ]
   var PARAMS_CONTAINS = SUBST.contains.concat([
     hljs.C_BLOCK_COMMENT_MODE,
     hljs.C_LINE_COMMENT_MODE
   ]);
 
   return {
-    aliases: ['js', 'jsx', 'mjs', 'cjs'],
+    aliases: ['js', 'jsx'],
     keywords: KEYWORDS,
     contains: [
       {
@@ -2804,47 +2448,12 @@ module.exports = function(hljs) {
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE,
-      HTML_TEMPLATE,
-      CSS_TEMPLATE,
       TEMPLATE_STRING,
       hljs.C_LINE_COMMENT_MODE,
-      hljs.COMMENT(
-        '/\\*\\*',
-        '\\*/',
-        {
-          relevance : 0,
-          contains : [
-            {
-              className : 'doctag',
-              begin : '@[A-Za-z]+',
-              contains : [
-                {
-                  className: 'type',
-                  begin: '\\{',
-                  end: '\\}',
-                  relevance: 0
-                },
-                {
-                  className: 'variable',
-                  begin: IDENT_RE + '(?=\\s*(-)|$)',
-                  endsParent: true,
-                  relevance: 0
-                },
-                // eat spaces (not newlines) so we can find
-                // types or variables
-                {
-                  begin: /(?=[^\n])\s/,
-                  relevance: 0
-                },
-              ]
-            }
-          ]
-        }
-      ),
       hljs.C_BLOCK_COMMENT_MODE,
       NUMBER,
       { // object attr container
-        begin: /[{,\n]\s*/, relevance: 0,
+        begin: /[{,]\s*/, relevance: 0,
         contains: [
           {
             begin: IDENT_RE + '\\s*:', returnBegin: true,
@@ -2884,21 +2493,15 @@ module.exports = function(hljs) {
               }
             ]
           },
-          {
-            className: '',
-            begin: /\s/,
-            end: /\s*/,
-            skip: true,
-          },
           { // E4X / JSX
-            begin: /</, end: /(\/[A-Za-z0-9\\._:-]+|[A-Za-z0-9\\._:-]+\/)>/,
+            begin: /</, end: /(\/\w+|\w+\/)>/,
             subLanguage: 'xml',
             contains: [
-              { begin: /<[A-Za-z0-9\\._:-]+\s*\/>/, skip: true },
+              {begin: /<\w+\s*\/>/, skip: true},
               {
-                begin: /<[A-Za-z0-9\\._:-]+/, end: /(\/[A-Za-z0-9\\._:-]+|[A-Za-z0-9\\._:-]+\/)>/, skip: true,
+                begin: /<\w+/, end: /(\/\w+|\w+\/)>/, skip: true,
                 contains: [
-                  { begin: /<[A-Za-z0-9\\._:-]+\s*\/>/, skip: true },
+                  {begin: /<\w+\s*\/>/, skip: true},
                   'self'
                 ]
               }
@@ -2945,10 +2548,6 @@ module.exports = function(hljs) {
 },{}],28:[function(require,module,exports){
 module.exports = function(hljs) {
   var LITERALS = {literal: 'true false null'};
-  var ALLOWED_COMMENTS = [
-    hljs.C_LINE_COMMENT_MODE,
-    hljs.C_BLOCK_COMMENT_MODE
-  ]
   var TYPES = [
     hljs.QUOTE_STRING_MODE,
     hljs.C_NUMBER_MODE
@@ -2968,7 +2567,7 @@ module.exports = function(hljs) {
         illegal: '\\n',
       },
       hljs.inherit(VALUE_CONTAINER, {begin: /:/})
-    ].concat(ALLOWED_COMMENTS),
+    ],
     illegal: '\\S'
   };
   var ARRAY = {
@@ -2976,10 +2575,7 @@ module.exports = function(hljs) {
     contains: [hljs.inherit(VALUE_CONTAINER)], // inherit is a workaround for a bug that makes shared modes with endsWithParent compile only the ending of one of the parents
     illegal: '\\S'
   };
-  TYPES.push(OBJECT, ARRAY);
-  ALLOWED_COMMENTS.forEach(function(rule) {
-    TYPES.push(rule)
-  })
+  TYPES.splice(TYPES.length, 0, OBJECT, ARRAY);
   return {
     contains: TYPES,
     keywords: LITERALS,
@@ -3166,8 +2762,16 @@ module.exports = function(hljs) {
     ]
   };
   /* Variable assignment */
-  var ASSIGNMENT = {
-    begin: '^' + hljs.UNDERSCORE_IDENT_RE + '\\s*(?=[:+?]?=)'
+  var VAR_ASSIG = {
+    begin: '^' + hljs.UNDERSCORE_IDENT_RE + '\\s*[:+?]?=',
+    illegal: '\\n',
+    returnBegin: true,
+    contains: [
+      {
+        begin: '^' + hljs.UNDERSCORE_IDENT_RE, end: '[:+?]?=',
+        excludeEnd: true,
+      }
+    ]
   };
   /* Meta targets (.PHONY) */
   var META = {
@@ -3193,7 +2797,7 @@ module.exports = function(hljs) {
       VARIABLE,
       QUOTE_STRING,
       FUNC,
-      ASSIGNMENT,
+      VAR_ASSIG,
       META,
       TARGET,
     ]
@@ -3221,7 +2825,7 @@ module.exports = function(hljs) {
       // lists (indicators only)
       {
         className: 'bullet',
-        begin: '^\\s*([*+-]|(\\d+\\.))\\s+'
+        begin: '^([*+-]|(\\d+\\.))\\s+'
       },
       // strong segments
       {
@@ -3248,13 +2852,13 @@ module.exports = function(hljs) {
         className: 'code',
         variants: [
           {
-            begin: '^```\\w*\\s*$', end: '^```[ ]*$'
+            begin: '^```\w*\s*$', end: '^```\s*$'
           },
           {
             begin: '`.+?`'
           },
           {
-            begin: '^( {4}|\\t)', end: '$',
+            begin: '^( {4}|\t)', end: '$',
             relevance: 0
           }
         ]
@@ -3454,10 +3058,6 @@ module.exports = function(hljs) {
     keywords: KEYWORDS,
     illegal: /#/
   };
-  var LITERAL_BRACKET = {
-    begin: /\{\{/,
-    relevance: 0
-  };
   var STRING = {
     className: 'string',
     contains: [hljs.BACKSLASH_ESCAPE],
@@ -3474,11 +3074,11 @@ module.exports = function(hljs) {
       },
       {
         begin: /(fr|rf|f)'''/, end: /'''/,
-        contains: [hljs.BACKSLASH_ESCAPE, PROMPT, LITERAL_BRACKET, SUBST]
+        contains: [hljs.BACKSLASH_ESCAPE, PROMPT, SUBST]
       },
       {
         begin: /(fr|rf|f)"""/, end: /"""/,
-        contains: [hljs.BACKSLASH_ESCAPE, PROMPT, LITERAL_BRACKET, SUBST]
+        contains: [hljs.BACKSLASH_ESCAPE, PROMPT, SUBST]
       },
       {
         begin: /(u|r|ur)'/, end: /'/,
@@ -3496,11 +3096,11 @@ module.exports = function(hljs) {
       },
       {
         begin: /(fr|rf|f)'/, end: /'/,
-        contains: [hljs.BACKSLASH_ESCAPE, LITERAL_BRACKET, SUBST]
+        contains: [hljs.BACKSLASH_ESCAPE, SUBST]
       },
       {
         begin: /(fr|rf|f)"/, end: /"/,
-        contains: [hljs.BACKSLASH_ESCAPE, LITERAL_BRACKET, SUBST]
+        contains: [hljs.BACKSLASH_ESCAPE, SUBST]
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE
@@ -3517,7 +3117,7 @@ module.exports = function(hljs) {
   var PARAMS = {
     className: 'params',
     begin: /\(/, end: /\)/,
-    contains: ['self', PROMPT, NUMBER, STRING, hljs.HASH_COMMENT_MODE]
+    contains: ['self', PROMPT, NUMBER, STRING]
   };
   SUBST.contains = [STRING, NUMBER, PROMPT];
   return {
@@ -3527,9 +3127,6 @@ module.exports = function(hljs) {
     contains: [
       PROMPT,
       NUMBER,
-      // eat "if" prior to string so that it won't accidentally be
-      // labeled as an f-string as in:
-      { beginKeywords: "if", relevance: 0 },
       STRING,
       hljs.HASH_COMMENT_MODE,
       {
@@ -3560,8 +3157,6 @@ module.exports = function(hljs) {
 };
 },{}],34:[function(require,module,exports){
 module.exports = function(hljs) {
-  var AT_IDENTIFIER = '@[a-z-]+' // @font-face
-  var AT_MODIFIERS = "and or not only"
   var IDENT_RE = '[a-zA-Z-][a-zA-Z0-9_-]*';
   var VARIABLE = {
     className: 'variable',
@@ -3613,17 +3208,15 @@ module.exports = function(hljs) {
         relevance: 0
       },
       {
-        className: 'selector-pseudo',
         begin: ':(visited|valid|root|right|required|read-write|read-only|out-range|optional|only-of-type|only-child|nth-of-type|nth-last-of-type|nth-last-child|nth-child|not|link|left|last-of-type|last-child|lang|invalid|indeterminate|in-range|hover|focus|first-of-type|first-line|first-letter|first-child|first|enabled|empty|disabled|default|checked|before|after|active)'
       },
       {
-        className: 'selector-pseudo',
         begin: '::(after|before|choices|first-letter|first-line|repeat-index|repeat-item|selection|value)'
       },
       VARIABLE,
       {
         className: 'attribute',
-        begin: '\\b(src|z-index|word-wrap|word-spacing|word-break|width|widows|white-space|visibility|vertical-align|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-rendering|text-overflow|text-indent|text-decoration-style|text-decoration-line|text-decoration-color|text-decoration|text-align-last|text-align|tab-size|table-layout|right|resize|quotes|position|pointer-events|perspective-origin|perspective|page-break-inside|page-break-before|page-break-after|padding-top|padding-right|padding-left|padding-bottom|padding|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|order|opacity|object-position|object-fit|normal|none|nav-up|nav-right|nav-left|nav-index|nav-down|min-width|min-height|max-width|max-height|mask|marks|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-height|letter-spacing|left|justify-content|initial|inherit|ime-mode|image-orientation|image-resolution|image-rendering|icon|hyphens|height|font-weight|font-variant-ligatures|font-variant|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|empty-cells|display|direction|cursor|counter-reset|counter-increment|content|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|columns|color|clip-path|clip|clear|caption-side|break-inside|break-before|break-after|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background-blend-mode|background|backface-visibility|auto|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|align-self|align-items|align-content)\\b',
+        begin: '\\b(z-index|word-wrap|word-spacing|word-break|width|widows|white-space|visibility|vertical-align|unicode-bidi|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform-style|transform-origin|transform|top|text-underline-position|text-transform|text-shadow|text-rendering|text-overflow|text-indent|text-decoration-style|text-decoration-line|text-decoration-color|text-decoration|text-align-last|text-align|tab-size|table-layout|right|resize|quotes|position|pointer-events|perspective-origin|perspective|page-break-inside|page-break-before|page-break-after|padding-top|padding-right|padding-left|padding-bottom|padding|overflow-y|overflow-x|overflow-wrap|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|order|opacity|object-position|object-fit|normal|none|nav-up|nav-right|nav-left|nav-index|nav-down|min-width|min-height|max-width|max-height|mask|marks|margin-top|margin-right|margin-left|margin-bottom|margin|list-style-type|list-style-position|list-style-image|list-style|line-height|letter-spacing|left|justify-content|initial|inherit|ime-mode|image-orientation|image-resolution|image-rendering|icon|hyphens|height|font-weight|font-variant-ligatures|font-variant|font-style|font-stretch|font-size-adjust|font-size|font-language-override|font-kerning|font-feature-settings|font-family|font|float|flex-wrap|flex-shrink|flex-grow|flex-flow|flex-direction|flex-basis|flex|filter|empty-cells|display|direction|cursor|counter-reset|counter-increment|content|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|columns|color|clip-path|clip|clear|caption-side|break-inside|break-before|break-after|box-sizing|box-shadow|box-decoration-break|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-left-width|border-left-style|border-left-color|border-left|border-image-width|border-image-source|border-image-slice|border-image-repeat|border-image-outset|border-image|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-attachment|background-blend-mode|background|backface-visibility|auto|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-fill-mode|animation-duration|animation-direction|animation-delay|animation|align-self|align-items|align-content)\\b',
         illegal: '[^\\s]'
       },
       {
@@ -3642,32 +3235,19 @@ module.exports = function(hljs) {
           }
         ]
       },
-      // matching these here allows us to treat them more like regular CSS
-      // rules so everything between the {} gets regular rule highlighting,
-      // which is what we want for page and font-face
-      {
-        begin: '@(page|font-face)',
-        lexemes: AT_IDENTIFIER,
-        keywords: '@page @font-face'
-      },
       {
         begin: '@', end: '[{;]',
-        returnBegin: true,
-        keywords: AT_MODIFIERS,
+        keywords: 'mixin include extend for if else each while charset import debug media page content font-face namespace warn',
         contains: [
-          {
-            begin: AT_IDENTIFIER,
-            className: "keyword"
-          },
           VARIABLE,
           hljs.QUOTE_STRING_MODE,
           hljs.APOS_STRING_MODE,
           HEXCOLOR,
           hljs.CSS_NUMBER_MODE,
-          // {
-          //   begin: '\\s[A-Za-z0-9_.-]+',
-          //   relevance: 0
-          // }
+          {
+            begin: '\\s[A-Za-z0-9_.-]+',
+            relevance: 0
+          }
         ]
       }
     ]
@@ -3805,22 +3385,23 @@ module.exports = function(hljs) {
             'true false null unknown',
           built_in:
             'array bigint binary bit blob bool boolean char character date dec decimal float int int8 integer interval number ' +
-            'numeric real record serial serial8 smallint text time timestamp tinyint varchar varchar2 varying void'
+            'numeric real record serial serial8 smallint text time timestamp tinyint varchar varying void'
         },
         contains: [
           {
             className: 'string',
             begin: '\'', end: '\'',
-            contains: [{begin: '\'\''}]
+            contains: [hljs.BACKSLASH_ESCAPE, {begin: '\'\''}]
           },
           {
             className: 'string',
             begin: '"', end: '"',
-            contains: [{begin: '""'}]
+            contains: [hljs.BACKSLASH_ESCAPE, {begin: '""'}]
           },
           {
             className: 'string',
-            begin: '`', end: '`'
+            begin: '`', end: '`',
+            contains: [hljs.BACKSLASH_ESCAPE]
           },
           hljs.C_NUMBER_MODE,
           hljs.C_BLOCK_COMMENT_MODE,
@@ -3887,62 +3468,6 @@ module.exports = function(hljs) {
       ARGS
     ]
   };
-  var NUMBER = {
-    className: 'number',
-    variants: [
-      { begin: '\\b(0[bB][01]+)n?' },
-      { begin: '\\b(0[oO][0-7]+)n?' },
-      { begin: hljs.C_NUMBER_RE + 'n?' }
-    ],
-    relevance: 0
-  };
-  var SUBST = {
-    className: 'subst',
-    begin: '\\$\\{', end: '\\}',
-    keywords: KEYWORDS,
-    contains: []  // defined later
-  };
-  var HTML_TEMPLATE = {
-    begin: 'html`', end: '',
-    starts: {
-      end: '`', returnEnd: false,
-      contains: [
-        hljs.BACKSLASH_ESCAPE,
-        SUBST
-      ],
-      subLanguage: 'xml',
-    }
-  };
-  var CSS_TEMPLATE = {
-    begin: 'css`', end: '',
-    starts: {
-      end: '`', returnEnd: false,
-      contains: [
-        hljs.BACKSLASH_ESCAPE,
-        SUBST
-      ],
-      subLanguage: 'css',
-    }
-  };
-  var TEMPLATE_STRING = {
-    className: 'string',
-    begin: '`', end: '`',
-    contains: [
-      hljs.BACKSLASH_ESCAPE,
-      SUBST
-    ]
-  };
-  SUBST.contains = [
-    hljs.APOS_STRING_MODE,
-    hljs.QUOTE_STRING_MODE,
-    HTML_TEMPLATE,
-    CSS_TEMPLATE,
-    TEMPLATE_STRING,
-    NUMBER,
-    hljs.REGEXP_MODE
-  ];
-
-
 
   return {
     aliases: ['ts'],
@@ -3954,12 +3479,28 @@ module.exports = function(hljs) {
       },
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE,
-      HTML_TEMPLATE,
-      CSS_TEMPLATE,
-      TEMPLATE_STRING,
+      { // template string
+        className: 'string',
+        begin: '`', end: '`',
+        contains: [
+          hljs.BACKSLASH_ESCAPE,
+          {
+            className: 'subst',
+            begin: '\\$\\{', end: '\\}'
+          }
+        ]
+      },
       hljs.C_LINE_COMMENT_MODE,
       hljs.C_BLOCK_COMMENT_MODE,
-      NUMBER,
+      {
+        className: 'number',
+        variants: [
+          { begin: '\\b(0[bB][01]+)' },
+          { begin: '\\b(0[oO][0-7]+)' },
+          { begin: hljs.C_NUMBER_RE }
+        ],
+        relevance: 0
+      },
       { // "value" container
         begin: '(' + hljs.RE_STARTERS_RE + '|\\b(case|return|throw)\\b)\\s*',
         keywords: 'return throw case',
@@ -4000,7 +3541,7 @@ module.exports = function(hljs) {
       },
       {
         className: 'function',
-        beginKeywords: 'function', end: /[\{;]/, excludeEnd: true,
+        begin: 'function', end: /[\{;]/, excludeEnd: true,
         keywords: KEYWORDS,
         contains: [
           'self',
@@ -4011,7 +3552,7 @@ module.exports = function(hljs) {
         relevance: 0 // () => {} is more typical in TypeScript
       },
       {
-        beginKeywords: 'constructor', end: /[\{;]/, excludeEnd: true,
+        beginKeywords: 'constructor', end: /\{/, excludeEnd: true,
         contains: [
           'self',
           PARAMS
@@ -4043,23 +3584,6 @@ module.exports = function(hljs) {
 },{}],37:[function(require,module,exports){
 module.exports = function(hljs) {
   var XML_IDENT_RE = '[A-Za-z0-9\\._:-]+';
-  var XML_ENTITIES = {
-    className: 'symbol',
-    begin: '&[a-z]+;|&#[0-9]+;|&#x[a-f0-9]+;'
-  };
-  var XML_META_KEYWORDS = {
-	  begin: '\\s',
-	  contains:[
-	    {
-	      className: 'meta-keyword',
-	      begin: '#?[a-z_][a-z1-9_-]+',
-	      illegal: '\\n',
-      }
-	  ]
-  };
-  var XML_META_PAR_KEYWORDS = hljs.inherit(XML_META_KEYWORDS, {begin: '\\(', end: '\\)'});
-  var APOS_META_STRING_MODE = hljs.inherit(hljs.APOS_STRING_MODE, {className: 'meta-string'});
-  var QUOTE_META_STRING_MODE = hljs.inherit(hljs.QUOTE_STRING_MODE, {className: 'meta-string'});
   var TAG_INTERNALS = {
     endsWithParent: true,
     illegal: /</,
@@ -4078,8 +3602,8 @@ module.exports = function(hljs) {
             className: 'string',
             endsParent: true,
             variants: [
-              {begin: /"/, end: /"/, contains: [XML_ENTITIES]},
-              {begin: /'/, end: /'/, contains: [XML_ENTITIES]},
+              {begin: /"/, end: /"/},
+              {begin: /'/, end: /'/},
               {begin: /[^\s"'=<>`]+/}
             ]
           }
@@ -4088,34 +3612,14 @@ module.exports = function(hljs) {
     ]
   };
   return {
-    aliases: ['html', 'xhtml', 'rss', 'atom', 'xjb', 'xsd', 'xsl', 'plist', 'wsf', 'svg'],
+    aliases: ['html', 'xhtml', 'rss', 'atom', 'xjb', 'xsd', 'xsl', 'plist'],
     case_insensitive: true,
     contains: [
       {
         className: 'meta',
-        begin: '<![a-z]', end: '>',
+        begin: '<!DOCTYPE', end: '>',
         relevance: 10,
-        contains: [
-				  XML_META_KEYWORDS,
-				  QUOTE_META_STRING_MODE,
-				  APOS_META_STRING_MODE,
-					XML_META_PAR_KEYWORDS,
-					{
-					  begin: '\\[', end: '\\]',
-					  contains:[
-						  {
-					      className: 'meta',
-					      begin: '<![a-z]', end: '>',
-					      contains: [
-					        XML_META_KEYWORDS,
-					        XML_META_PAR_KEYWORDS,
-					        QUOTE_META_STRING_MODE,
-					        APOS_META_STRING_MODE
-						    ]
-			        }
-					  ]
-				  }
-				]
+        contains: [{begin: '\\[', end: '\\]'}]
       },
       hljs.COMMENT(
         '<!--',
@@ -4128,7 +3632,6 @@ module.exports = function(hljs) {
         begin: '<\\!\\[CDATA\\[', end: '\\]\\]>',
         relevance: 10
       },
-      XML_ENTITIES,
       {
         className: 'meta',
         begin: /<\?xml/, end: /\?>/, relevance: 10
@@ -4154,7 +3657,7 @@ module.exports = function(hljs) {
         ending braket. The '$' is needed for the lexeme to be recognized
         by hljs.subMode() that tests lexemes outside the stream.
         */
-        begin: '<style(?=\\s|>)', end: '>',
+        begin: '<style(?=\\s|>|$)', end: '>',
         keywords: {name: 'style'},
         contains: [TAG_INTERNALS],
         starts: {
@@ -4165,7 +3668,7 @@ module.exports = function(hljs) {
       {
         className: 'tag',
         // See the comment in the <style tag about the lookahead pattern
-        begin: '<script(?=\\s|>)', end: '>',
+        begin: '<script(?=\\s|>|$)', end: '>',
         keywords: {name: 'script'},
         contains: [TAG_INTERNALS],
         starts: {
@@ -5898,8 +5401,99 @@ module.exports = function sub_plugin(md) {
 };
 
 },{}],43:[function(require,module,exports){
-var n={false:"push",true:"unshift"},e=Object.prototype.hasOwnProperty,r=function(n,t){t=Object.assign({},r.defaults,t),n.core.ruler.push("anchor",function(n){var r,i={},u=n.tokens,o=Array.isArray(t.level)?(r=t.level,function(n){return r.includes(n)}):function(n){return function(e){return e>=n}}(t.level);u.filter(function(n){return"heading_open"===n.type}).filter(function(n){return o(Number(n.tag.substr(1)))}).forEach(function(r){var o=u[u.indexOf(r)+1].children.filter(function(n){return"text"===n.type||"code_inline"===n.type}).reduce(function(n,e){return n+e.content},""),c=r.attrGet("id");null==c&&(c=function(n,r){for(var t=n,i=2;e.call(r,t);)t=n+"-"+i++;return r[t]=!0,t}(t.slugify(o),i),r.attrPush(["id",c])),t.permalink&&t.renderPermalink(c,t,n,u.indexOf(r)),t.callback&&t.callback(r,{slug:c,title:o})})})};r.defaults={level:1,slugify:function(n){return encodeURIComponent(String(n).trim().toLowerCase().replace(/\s+/g,"-"))},permalink:!1,renderPermalink:function(e,r,t,i){var u,o=[Object.assign(new t.Token("link_open","a",1),{attrs:[["class",r.permalinkClass],["href",r.permalinkHref(e,t)]]}),Object.assign(new t.Token("html_block","",0),{content:r.permalinkSymbol}),new t.Token("link_close","a",-1)];r.permalinkSpace&&o[n[!r.permalinkBefore]](Object.assign(new t.Token("text","",0),{content:" "})),(u=t.tokens[i+1].children)[n[r.permalinkBefore]].apply(u,o)},permalinkClass:"header-anchor",permalinkSpace:!0,permalinkSymbol:"¶",permalinkBefore:!1,permalinkHref:function(n){return"#"+n}},module.exports=r;
+const slugify = (s) => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-'))
 
+const position = {
+  false: 'push',
+  true: 'unshift'
+}
+
+const hasProp = Object.prototype.hasOwnProperty
+
+const permalinkHref = slug => `#${slug}`
+
+const renderPermalink = (slug, opts, state, idx) => {
+  const space = () => Object.assign(new state.Token('text', '', 0), { content: ' ' })
+
+  const linkTokens = [
+    Object.assign(new state.Token('link_open', 'a', 1), {
+      attrs: [
+        ['class', opts.permalinkClass],
+        ['href', opts.permalinkHref(slug, state)],
+        ['aria-hidden', 'true']
+      ]
+    }),
+    Object.assign(new state.Token('html_block', '', 0), { content: opts.permalinkSymbol }),
+    new state.Token('link_close', 'a', -1)
+  ]
+
+  // `push` or `unshift` according to position option.
+  // Space is at the opposite side.
+  linkTokens[position[!opts.permalinkBefore]](space())
+  state.tokens[idx + 1].children[position[opts.permalinkBefore]](...linkTokens)
+}
+
+const uniqueSlug = (slug, slugs) => {
+  let uniq = slug
+  let i = 2
+  while (hasProp.call(slugs, uniq)) uniq = `${slug}-${i++}`
+  slugs[uniq] = true
+  return uniq
+}
+
+const isLevelSelectedNumber = selection => level => level >= selection
+const isLevelSelectedArray = selection => level => selection.includes(level)
+
+const anchor = (md, opts) => {
+  opts = Object.assign({}, anchor.defaults, opts)
+
+  md.core.ruler.push('anchor', state => {
+    const slugs = {}
+    const tokens = state.tokens
+
+    const isLevelSelected = Array.isArray(opts.level)
+      ? isLevelSelectedArray(opts.level)
+      : isLevelSelectedNumber(opts.level)
+
+    tokens
+      .filter(token => token.type === 'heading_open')
+      .filter(token => isLevelSelected(Number(token.tag.substr(1))))
+      .forEach(token => {
+        // Aggregate the next token children text.
+        const title = tokens[tokens.indexOf(token) + 1].children
+          .filter(token => token.type === 'text' || token.type === 'code_inline')
+          .reduce((acc, t) => acc + t.content, '')
+
+        let slug = token.attrGet('id')
+
+        if (slug == null) {
+          slug = uniqueSlug(opts.slugify(title), slugs)
+          token.attrPush(['id', slug])
+        }
+
+        if (opts.permalink) {
+          opts.renderPermalink(slug, opts, state, tokens.indexOf(token))
+        }
+
+        if (opts.callback) {
+          opts.callback(token, { slug, title })
+        }
+      })
+  })
+}
+
+anchor.defaults = {
+  level: 1,
+  slugify,
+  permalink: false,
+  renderPermalink,
+  permalinkClass: 'header-anchor',
+  permalinkSymbol: '¶',
+  permalinkBefore: false,
+  permalinkHref
+}
+
+module.exports = anchor
 
 },{}],44:[function(require,module,exports){
 // Process block-level custom containers

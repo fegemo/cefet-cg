@@ -1,0 +1,5 @@
+convert.exe C:\Users\Flavio\Pictures\CG-favicon\favicon-16.png C:\Users\Flavio\Pictures\CG-favicon\favicon-24.png C:\Users\Flavio\Pictures\CG-favicon\favicon-32.png C:\Users\Flavio\Pictures\CG-favicon\favicon-57.png C:\Users\Flavio\Pictures\CG-favicon\favicon-72.png C:\Users\Flavio\Pictures\CG-favicon\favicon-96.png C:\Users\Flavio\Pictures\CG-favicon\favicon-120.png C:\Users\Flavio\Pictures\CG-favicon\favicon-128.png C:\Users\Flavio\Pictures\CG-favicon\favicon-144.png C:\Users\Flavio\Pictures\CG-favicon\favicon-152.png  C:\Users\Flavio\Pictures\CG-favicon\favicon.ico
+
+optipng.exe C:\Users\Flavio\Pictures\CG-favicon\favicon-*.png -o 2
+
+convert.exe C:\Users\Flavio\Pictures\CG-favicon\favicon-16.png C:\Users\Flavio\Pictures\CG-favicon\favicon-24.png C:\Users\Flavio\Pictures\CG-favicon\favicon-32.png C:\Users\Flavio\Pictures\CG-favicon\favicon-48.png C:\Users\Flavio\Pictures\CG-favicon\favicon-64.png  C:\Users\Flavio\Pictures\CG-favicon\favicon.ico
