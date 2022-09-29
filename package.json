@@ -37,7 +37,7 @@
     "bespoke-theme-sandy": "^1.1.1",
     "bespoke-touch": "^1.0.0",
     "bespoke-vis": "github:fegemo/bespoke-vis",
-    "d3": "^5.14.2",
+    "d3": "^7.6.1",
     "markdown-it-abbr": "^1.0.4",
     "markdown-it-anchor": "^5.2.5",
     "markdown-it-container": "^2.0.0",
