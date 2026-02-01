@@ -1,26 +1,34 @@
 // bespoke and its plugins
-const bespoke = require('bespoke'),
-  vis = require('bespoke-vis'),
-  keys = require('bespoke-keys'),
-  hash = require('bespoke-hash'),
-  math = require('bespoke-math'),
-  touch = require('bespoke-touch'),
-  scale = require('bespoke-scale'),
-  state = require('bespoke-state'),
-  qrcode = require('bespoke-qrcode'),
-  bullets = require('bespoke-bullets'),
-  sandy = require('bespoke-theme-sandy'),
-  progress = require('bespoke-progress'),
-  backdrop = require('bespoke-backdrop'),
-  markdown = require('bespoke-markdownit'),
-  overview = require('bespoke-simple-overview');
+import bespoke from 'bespoke';
+import vis from 'bespoke-vis';
+import keys from 'bespoke-keys';
+import hash from 'bespoke-hash';
+import math from 'bespoke-math';
+import touch from 'bespoke-touch';
+import scale from 'bespoke-scale';
+import state from 'bespoke-state';
+import qrcode from 'bespoke-qrcode';
+import bullets from 'bespoke-bullets';
+import sandy from 'bespoke-theme-sandy';
+import progress from 'bespoke-progress';
+import backdrop from 'bespoke-backdrop';
+import markdown from 'bespoke-markdownit/lazy-hljs';
+import overview from 'bespoke-simple-overview';
 
 // utilities
-const tutorial = require('./tutorial'),
-  markdownItConfig = require('./markdown-config');
+import tutorial from './tutorial.js';
+import { config as mdConfig, extensions as mdExtensions } from './markdown-config.js';
+
+const markdownItConfig = {
+  config: mdConfig,
+  extensions: mdExtensions,
+  hljsOptions: {
+    languagePath: '../hljs-languages/'
+  }
+};
 
 bespoke.from('article', [
-  markdown(markdownItConfig.config, markdownItConfig.extensions),
+  markdown(markdownItConfig.config, markdownItConfig.extensions, markdownItConfig.hljsOptions),
   sandy({ insertFonts: false }),
   scale('transform'),
   keys(),

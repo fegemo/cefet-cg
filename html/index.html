@@ -49,10 +49,6 @@
       <aside class="tutorial">Use as <strong>setas</strong> (&#x2190; &#x2192;) para navegar</aside>
     </section>
 
-    <script src="{path-to-root}/build/build.js"></script>
-    <!-- @if NODE_ENV='development' -->
-    <!-- live reload during dev -->
-    <script type="text/javascript">document.write('<script src="' + (location.protocol || 'http:') + '//' + (location.hostname || 'localhost') + ':35729/livereload.js?snipver=1" type="text/javascript"><\/script>')</script>
-    <!-- @endif -->
+    <script type="module" src="{path-to-root}/build/build.js"></script>
   </body>
 </html>

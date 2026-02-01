@@ -22,12 +22,13 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@highlightjs/cdn-assets": "^11.11.1",
     "bespoke": "^1.1.0",
     "bespoke-backdrop": "^1.0.0",
     "bespoke-bullets": "^1.1.0",
     "bespoke-hash": "^1.1.0",
     "bespoke-keys": "^1.1.0",
-    "bespoke-markdownit": "^1.1.0",
+    "bespoke-markdownit": "^2.0.0",
     "bespoke-math": "^1.3.2",
     "bespoke-progress": "github:fegemo/bespoke-progress#slide-number",
     "bespoke-qrcode": "^1.0.0",
@@ -46,9 +47,15 @@
     "markdown-it-emoji": "^1.4.0"
   },
   "type": "module",
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp dev",
+    "deploy": "gulp deploy",
+    "vite:build": "vite build",
+    "vite:dev": "vite"
+  },
   "devDependencies": {
     "browser-sync": "^2.27.11",
-    "browserify": "^16.5.0",
     "del": "^6.1.1",
     "gh-pages": "^2.2.0",
     "gulp": "^5.0.0",
@@ -64,9 +71,9 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-stylus": "^2.7.0",
     "gulp-terser": "^1.2.0",
+    "highlight.js": "^11.11.1",
     "ordered-read-streams": "^2.0.0",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0"
+    "vite": "^5.0.0"
   },
   "engines": {
     "node": ">=10.0.0"

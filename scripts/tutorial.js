@@ -35,7 +35,7 @@ var tutorial = {
     }
   };
 
-module.exports = function(tutorialEl) {
+export default function(tutorialEl) {
   return function(deck) {
     tutorial.start(deck, tutorialEl);
   };

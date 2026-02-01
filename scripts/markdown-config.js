@@ -1,10 +1,10 @@
 // markdownit plugins
-const markdownItAnchor = require('markdown-it-anchor'),
-  markdownItContainer = require('markdown-it-container'),
-  markdownItDecorate = require('markdown-it-decorate'),
-  markdownItDefList = require('markdown-it-deflist'),
-  markdownItEmoji = require('markdown-it-emoji'),
-  markdownItAbbr = require('markdown-it-abbr');
+import markdownItAnchor from 'markdown-it-anchor';
+import markdownItContainer from 'markdown-it-container';
+import markdownItDecorate from 'markdown-it-decorate';
+import markdownItDefList from 'markdown-it-deflist';
+import markdownItEmoji from 'markdown-it-emoji';
+import markdownItAbbr from 'markdown-it-abbr';
 
 const config = {
   backdrop: (slide, value) => {
@@ -422,5 +422,4 @@ const extensions = [
   markdownItEmoji
 ];
 
-exports.config = config;
-exports.extensions = extensions;
+export { config, extensions };

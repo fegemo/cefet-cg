@@ -1,14 +1,10 @@
 import { src, dest, series, parallel, watch } from 'gulp';
 import csso from 'gulp-csso';
 import rename from 'gulp-rename';
-import terser from 'gulp-terser';
 import stylus from 'gulp-stylus';
-import buffer from 'vinyl-buffer';
 import replace from 'gulp-replace';
 import changed from 'gulp-changed';
-import sourcemaps from 'gulp-sourcemaps';
 import preprocess from 'gulp-preprocess';
-import source from 'vinyl-source-stream';
 import autoprefixer from 'gulp-autoprefixer';
 import gulpIf from 'gulp-if';
 
@@ -17,7 +13,7 @@ import path from 'path';
 import del from 'del';
 import ghpages from 'gh-pages';
 import merge from 'ordered-read-streams';
-import browserify from 'browserify';
+import { build as viteBuild } from 'vite';
 import browserSyncModule from 'browser-sync';
 const browserSync = browserSyncModule.create();
 
@@ -27,16 +23,27 @@ async function clean() {
   return del(['dist']);
 }
 
-function js() {
-  return browserify({ entries: 'scripts/main.js', debug: !isDist })
-    .bundle()
-    .pipe(source('build.js'))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(gulpIf(isDist, terser()))
-    .on('error', console.log)
-    .pipe(sourcemaps.write('./'))
-    .pipe(dest('dist/build'));
+async function js() {
+  await viteBuild({
+    build: {
+      outDir: 'dist/build',
+      emptyOutDir: false,
+      sourcemap: !isDist,
+      minify: isDist ? 'terser' : false,
+      lib: {
+        entry: 'scripts/main.js',
+        name: 'build',
+        formats: ['iife'],
+        fileName: () => 'build.js'
+      },
+      rollupOptions: {
+        output: {
+          entryFileNames: 'build.js',
+          sourcemapFile: 'build.js.map'
+        }
+      }
+    }
+  });
 }
 
 function jsClasses() {
@@ -133,6 +140,7 @@ const videos = copierTaskGenerator('videos', 'videos/**/*', 'dist/videos');
 const audios = copierTaskGenerator('audios', 'audios/**/*', 'dist/audios');
 const favicon = copierTaskGenerator('favicon', 'favicon/**/*', 'dist/favicon');
 const classesStuff = copierTaskGenerator('classes-stuff', ['classes/**/*', '!classes/**/*.md'], 'dist/classes');
+const hljsLanguages = copierTaskGenerator('hljs-languages', 'node_modules/@highlightjs/cdn-assets/es/languages/**/*.js', 'dist/hljs-languages');
 
 function getFolders(cwd, dir) {
   const targetDirectory = path.join(cwd, dir);
@@ -209,6 +217,7 @@ function devServer() {
   watch('styles/classes/*.css', series(cssClasses, reload));
   watch(['README.md', 'classes/**/*.md'], series(md, reload));
   watch(['classes/**/*', '!classes/**/*.md'], series(classesStuff, reload));
+  watch('node_modules/highlight.js/lib/languages/**/*.js', series(hljsLanguages, reload));
 
   return Promise.resolve();
 }
@@ -219,7 +228,7 @@ function deploy(done) {
 
 export { clean };
 export const build = series(
-  parallel(js, md, css, html, images, audios, videos, favicon, samples, jsClasses, cssClasses, attachments, classesStuff),
+  parallel(js, md, css, html, images, audios, videos, favicon, samples, jsClasses, cssClasses, attachments, classesStuff, hljsLanguages),
   buildClasses
 );
 export const dev = series(build, devServer);

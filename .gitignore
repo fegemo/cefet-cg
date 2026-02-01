@@ -3,4 +3,6 @@ bower_components
 dist
 bespoke-theme-*
 Thumbs.db
-.idea
+.idea.vite
+dist
+.DS_Store
